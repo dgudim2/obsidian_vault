@@ -4,30 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "efa88662b24dadd6",
+        "id": "da920f0617b85366",
         "type": "tabs",
         "children": [
           {
-            "id": "e1268d5d38011ec5",
+            "id": "6a4dcd6f50a67b3d",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {}
             }
-          },
-          {
-            "id": "3ad0f3cbdd756240",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".obsidian/plugins/obsidian-git/data.json",
-                "staged": false
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -167,7 +155,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "3ad0f3cbdd756240",
+  "active": "6a4dcd6f50a67b3d",
   "lastOpenFiles": [
     "Outline.md",
     "Films_etc/Watched.md",

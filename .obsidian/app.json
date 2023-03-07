@@ -1,0 +1,10 @@
+{
+  "spellcheckLanguages": [
+    "en-US",
+    "ru"
+  ],
+  "trashOption": "local",
+  "newFileLocation": "current",
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "./"
+}

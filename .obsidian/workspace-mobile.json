@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "3dd3493305cc8293",
+        "id": "f29fcaa4f2d1eb44",
         "type": "tabs",
         "children": [
           {
-            "id": "7312ba11ac5c69a5",
+            "id": "3dd847ba9f753774",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -132,8 +132,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "7312ba11ac5c69a5",
+  "active": "3dd847ba9f753774",
   "lastOpenFiles": [
+    "CodeIdeas.md",
     "2023-03-07.md",
     "Notes.md"
   ]

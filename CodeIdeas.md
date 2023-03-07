@@ -11,13 +11,9 @@
 # Ideas
 
 + Игра как настолка с поездом у саши 
-
 + Timeless(игра по сну)(пространство = время 
-
 + Vk post tree builder 
-
 + Byte compression algorithm 
-
 + Ai sha256 
 + Sound from game of life
 + Music sorter/deduper

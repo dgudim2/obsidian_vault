@@ -109,9 +109,17 @@
           "type": "outline",
           "state": {}
         }
+      },
+      {
+        "id": "8422e1c1b4dd5fd8",
+        "type": "leaf",
+        "state": {
+          "type": "git-view",
+          "state": {}
+        }
       }
     ],
-    "currentTab": 0
+    "currentTab": 3
   },
   "left-ribbon": {
     "hiddenItems": {

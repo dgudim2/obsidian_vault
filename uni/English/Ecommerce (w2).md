@@ -1,6 +1,8 @@
 
 Previous lesson: [[W1 (Stuff)]]
 
+-----
+
 ## Questions
 
 1. What are the main methods of sourcing products? (making, manufacturing, wholesale and dropshipping)
@@ -9,6 +11,7 @@ Previous lesson: [[W1 (Stuff)]]
 
 3. What is the last stage?
 
+-----
 
 ## Task 2
 
@@ -24,5 +27,6 @@ Previous lesson: [[W1 (Stuff)]]
 10. f
 11. b
 
+-----
 
 Next lesson: [[Ethics (w3)]]

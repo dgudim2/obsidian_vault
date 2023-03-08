@@ -2,6 +2,11 @@
 Previous lesson: [[Ecommerce (w2)]]
 
 
+Handout ![[HANDOUT- Ethics.docx]]
+Transcript [[transcript.png]]
+
+-----
+
 ## Task 1
 | type      | word         | synonym / antonym / similar               |
 | --------- | ------------ | ----------------------------------------- |
@@ -21,13 +26,15 @@ Previous lesson: [[Ecommerce (w2)]]
 | adj       | beneficial   | benefit harmful                           |
 
 
+-----
+
 ## Task 2
 
 reason, result: as a result (between, within), because (between, within), since (between, within), so (between), one result of this is (within, between)
 
 build an argument: another point is (between),  firstly/secondly/finally (between), for example (between, within), in addition/moreover (between)
 
-
+-----
 
 ## Task 3
 
@@ -45,6 +52,7 @@ build an argument: another point is (between),  firstly/secondly/finally (betwee
 - example
 - So
 
+-----
 
 ## Listening 1
 
@@ -62,6 +70,7 @@ Examples
   Software copyright infringement
 
 
+-----
 
 ## Listening 2
 
@@ -69,20 +78,8 @@ C.
 2 categories of laws: national, international
 Justifications: The greatest good (more people will benefit), personal beliefs
 
-1. Powerful enough (Big brother society (government knows everything))
-2. Us senses, taxes, military (detailed pictures)
-3.
-4. Difficult to enforce, excluded collection except by government
-5. Placed responsibly on all organizations, registering their databases
-6. Countries who didn't update their law frameworks
-7.
-8.
-WIPO
-DMCA
-ECD
-DRM
-Dissecting the hacker manifesto
-9. Contract law: employment, sales, maintenance
+### Questions
+![[Transcript]]
 
 
 

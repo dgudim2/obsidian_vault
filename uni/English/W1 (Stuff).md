@@ -13,6 +13,7 @@
 | store         | record        |
 | stage         | step          |
 
+-----
 
 | word          | antonym        |
 | ------------- | -------------- |
@@ -28,7 +29,7 @@
 | current       | obsolete       |
 | limited       | flexible       |
 
-
+-----
 
 ## Listening 1
 
@@ -43,6 +44,8 @@ For academic use
 Babylonians, developed tools in 5000 years ago
 Abbacuss
 Used beads
+
+-----
 
 ## Listening 2
 

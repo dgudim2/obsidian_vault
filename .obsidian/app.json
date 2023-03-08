@@ -3,7 +3,7 @@
     "en-US",
     "ru"
   ],
-  "trashOption": "local",
+  "trashOption": "system",
   "newFileLocation": "current",
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "./"

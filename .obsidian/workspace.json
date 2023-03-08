@@ -11,8 +11,11 @@
             "id": "6a4dcd6f50a67b3d",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/app.json",
+                "staged": false
+              }
             }
           }
         ]

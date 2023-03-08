@@ -11,8 +11,11 @@
             "id": "8ad810e20e826590",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/workspace.json",
+                "staged": false
+              }
             }
           }
         ]
@@ -157,6 +160,8 @@
   },
   "active": "8ad810e20e826590",
   "lastOpenFiles": [
+    "Outline.md",
+    "uni/Lookup.md",
     "Reference.md",
     "uni/English/ethics/Ethics (w3).md",
     "conflict-files-obsidian-git.md",
@@ -169,7 +174,6 @@
     "uni/English/ethics",
     "uni/English",
     "uni",
-    "Outline.md",
     "Films_etc/Watched.md",
     "Random.md",
     "Films_etc/ToWatch.md",

@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "da920f0617b85366",
+        "id": "1af0ebc44ecf6f92",
         "type": "tabs",
         "children": [
           {
-            "id": "6a4dcd6f50a67b3d",
+            "id": "ecfb928b66ce1fd7",
             "type": "leaf",
             "state": {
               "type": "diff-view",
@@ -158,8 +158,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "6a4dcd6f50a67b3d",
+  "active": "ecfb928b66ce1fd7",
   "lastOpenFiles": [
+    "conflict-files-obsidian-git.md",
+    "uni/English/W1 (Stuff).md",
+    "uni/English/Ethics (w3).md",
+    "uni/English/Ecommerce (w2).md",
+    "uni/English",
+    "uni",
     "Outline.md",
     "Films_etc/Watched.md",
     "Random.md",

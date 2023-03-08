@@ -11,8 +11,12 @@
             "id": "3dd847ba9f753774",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "uni/English/ethics/Ethics (w3).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
+            "file": "uni/English/ethics/Ethics (w3).md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
+            "file": "uni/English/ethics/Ethics (w3).md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -107,7 +113,9 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {}
+          "state": {
+            "file": "uni/English/ethics/Ethics (w3).md"
+          }
         }
       },
       {
@@ -132,9 +140,28 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8422e1c1b4dd5fd8",
+  "active": "3dd847ba9f753774",
   "lastOpenFiles": [
     "CodeIdeas.md",
+    "uni/English/ethics/transcript.png",
+    "uni/English/ethics/Transcript.md",
+    "uni/English/ethics/HANDOUT- Ethics.docx",
+    "uni/English/ethics/Ethics (w3).md",
+    "uni/English/W1 (Stuff).md",
+    "uni/English/Ecommerce (w2).md",
+    "/uni/English/ethics/transcript.png",
+    "/uni/English/ethics/Transcript.md",
+    "/uni/English/ethics/HANDOUT- Ethics.docx",
+    "/uni/English/ethics/Ethics (w3).md",
+    "/uni/English/W1 (Stuff).md",
+    "/uni/English/Ecommerce (w2).md",
+    "uni/English/ethics",
+    "uni/English",
+    "uni",
+    "/uni/English/ethics",
+    "/uni/English",
+    "/uni",
+    "Random.md",
     "2023-03-07.md",
     "Notes.md"
   ]

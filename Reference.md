@@ -105,7 +105,7 @@ See [reference](https://katex.org/docs/supported.html) & [examples](https://gith
 
 ### Math inline
 
-$ I = \frac V R $
+$$ I = \frac V R $$
 
 ### Math block
 
@@ -212,27 +212,19 @@ graph LR
 ```
 
 
+```mermaid
+graph LR
+    A --> B
+    A --> C
+    C --> A
+    B --> D
+    C --> D
+```
+
 
 ## Admonition Extension
 Create block-styled side content.  
 Use one of these qualifiers to select the icon and the block color: abstract, summary, tldr, bug, danger, error, example, snippet, failure, fail, missing, question, help, faq, info, todo, note, seealso, quote, cite, success, check, done, tip, hint, important, warning, caution, attention.
 
-!!! warning 'Optional Title'
-    Block-Styled Side Content with **Markdown support**
-
-!!! info ''
-    No-Heading Content
-
-??? bug 'Collapsed by default'
-    Collapsible Block-Styled Side Content
-
-???+ example 'Open by default'
-     Collapsible Block-Styled Side Content
-
-------------------
-
-This Markdown reference file was created for the [Markor](https://gsantner.net/project/markor?source=markdownref) project by [Gregor Santner](https://gsantner.net) and is licensed [Creative Commons Zero 1.0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) (public domain). File revision 3.
-
-------------------
-
-
+> [!warning]
+  Block-Styled Side Content with **Markdown support**

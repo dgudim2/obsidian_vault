@@ -48,16 +48,16 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 ## Vocabulary
 
 
-| verbs          | Nouns         | Adjectives   | Adverbs        |
-| -------------- | ------------- | ------------ | -------------- |
-| consist        | consistency   | *consistent* | consistently   |
-|                | *feasibility* | feasible     |                |
-| perspect       | perspective   |              | *perceptively* |
-| *upgrade*      | upgradability | upgradable   |                |
-|                | *latency*     |              |                |
-| *avail*        |               |              |                |
-|suffice|               | *sufficient* |                |
-|deploy| *deployment*  |              |                |
-| *substantiate* |               |              |                |
-|mean|               |              | *meaningfully* |
-|measure|               |*immeasurable*|                |
+| verbs          | Nouns         | Adjectives     | Adverbs        |
+| -------------- | ------------- | -------------- | -------------- |
+| consist        | consistency   | *consistent*   | consistently   |
+|                | *feasibility* | feasible       |                |
+| perspect       | perspective   |                | *perceptively* |
+| *upgrade*      | upgradability | upgradable     |                |
+|                | *latency*     |                |                |
+| *avail*        | availability  | available      |                |
+| suffice        |               | *sufficient*   |                |
+| deploy         | *deployment*  |                |                |
+| *substantiate* |               |                |                |
+| mean           |               |                | *meaningfully* |
+| measure        |               | *immeasurable* |                |

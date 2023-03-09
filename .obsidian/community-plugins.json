@@ -2,5 +2,10 @@
   "obsidian-version-history-diff",
   "table-editor-obsidian",
   "obsidian-git",
-  "obsidian-admonition"
+  "obsidian-admonition",
+  "obsidian-graphviz",
+  "quick-latex",
+  "obsidian-kanban",
+  "obsidian-markmind",
+  "multi-column-markdown"
 ]

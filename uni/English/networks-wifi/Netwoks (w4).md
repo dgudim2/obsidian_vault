@@ -59,5 +59,5 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | suffice        | sufficiency | *sufficient*   | sufficiently   |
 | deploy         | *deployment*            | deployable | - |
 | *substantiate* | substance | substrantial | substantially  |
-| mean           |                         |                | *meaningfully* |
+| mean           | mean / meaning | mean / meaningfull | *meaningfully* |
 | measure        | measurement             | *immeasurable* |                |

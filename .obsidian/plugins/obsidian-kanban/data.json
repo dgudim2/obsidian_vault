@@ -1,3 +1,4 @@
 {
-  "tag-colors": []
+  "tag-colors": [],
+  "new-line-trigger": "enter"
 }

@@ -3,9 +3,9 @@
   "table-editor-obsidian",
   "obsidian-git",
   "obsidian-admonition",
-  "obsidian-graphviz",
   "quick-latex",
-  "obsidian-kanban",
+  "obsidian-graphviz",
   "obsidian-markmind",
-  "multi-column-markdown"
+  "multi-column-markdown",
+  "obsidian-kanban"
 ]

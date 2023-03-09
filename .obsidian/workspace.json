@@ -4,30 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "44e81c34fdae2e16",
+        "id": "371198020a1bfff5",
         "type": "tabs",
         "children": [
           {
-            "id": "d7c33eab5bf14379",
+            "id": "b61f1903ff17fc78",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
-            }
-          },
-          {
-            "id": "c0d14ed16d48e1f7",
-            "type": "leaf",
-            "state": {
-              "type": "diff-view",
+              "type": "markdown",
               "state": {
-                "file": ".obsidian/graph.json",
-                "staged": false
+                "file": "uni/Discrete math/Graphs - basics.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "uni/Discrete math/Graphs - basics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "uni/Discrete math/Graphs - basics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -130,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "uni/Discrete math/Graphs - basics.md"
+              }
             }
           },
           {
@@ -167,14 +163,14 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "433327a3a5d858fa",
+  "active": "b61f1903ff17fc78",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
-    "markor-markdown-reference.md",
+    "uni/Discrete math/Graphs - basics.md",
     "uni/English/networks-wifi/Netwoks (w4).md",
     "uni/English/networks-wifi/HANDOUT- Networking and WIFI.pdf",
+    "conflict-files-obsidian-git.md",
+    "markor-markdown-reference.md",
     "uni/English/networks-wifi",
-    "uni/Discrete math/Graphs - basics.md",
     "uni/Discrete math",
     "uni/English/ethics/Ethics (w3).md",
     "uni/English/W1 (Stuff).md",

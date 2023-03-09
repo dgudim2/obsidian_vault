@@ -18,7 +18,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 - How is this technology designed? What is its primary goal? 
 > [!tldr]
 >   - Entirely IP based model designed for the wireless and mobile networks
-  > - ability of devices to identify their geographical location as well as weather
+  > - Ability of devices to identify their geographical location as well as weather
   > - It promptly distinguishes the changes in its environment and hence respond accordingly to provide uninterrupted quality service.
 
 - Why is 5G Technology so beneficial?  

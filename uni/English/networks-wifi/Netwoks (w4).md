@@ -62,4 +62,8 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | measure        | measurement             | *immeasurable*     | measurably     |
 
 
-### 
+### Sentences
+
+The consistency of wi-fi conccentions may vary.
+
+The 

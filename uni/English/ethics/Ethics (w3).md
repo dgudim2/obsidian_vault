@@ -1,4 +1,4 @@
-revious lesson: [[Ecommerce (w2)]]
+Previous lesson: [[Ecommerce (w2)]]
 
 
 Handout ![[HANDOUT- Ethics.docx]]
@@ -79,3 +79,11 @@ Justifications: The greatest good (more people will benefit), personal beliefs
 
 ### Questions
 ![[Transcript]]
+
+---
+
+
+
+---
+
+Next lesson: [[Netwoks (w4)]]

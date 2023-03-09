@@ -124,10 +124,7 @@ a -- {b c d}
 
 > If the graph is symmetric we can replace any pair of arcs 
 
-$$
-(V_{i}, V_{j},) \ and \ (V_{j}, V_{i},) \ with \ a \ pair \ \{V_{i}, V_{j}\} \ and \ call \ it \ EDGE
-$$
-
+$(V_{i}, V_{j},)$ and $(V_{j}, V_{i},)$ with a pair $\{V_{i}, V_{j}\}$ and call it **edge**
 
 
 # Defining a graph
@@ -168,3 +165,91 @@ d -- {e, b}
 }
 ```
 
+# Graph properties and stuff
+
+## Order
+
+Order of $G = (V, E)$ is $|V| = n$ 
+
+## Special graphs
+
+$G = (V, \emptyset)$ - **empty**
+$G = (\emptyset, \emptyset)$ - **null**
+$G = (\{V\}, \emptyset)$ - **trivials**
+
+If a graph G has all $\frac{n(n-1)}{n}$ edges is is **complete**
+
+```dot
+graph neato {
+
+bgcolor="transparent"
+
+graph [layout = neato]
+
+node [shape = circle,
+      style = filled,
+      width=0.3,
+      height=0.3,
+      color = grey]
+
+node [fillcolor = white]
+
+edge [color = grey]
+a -- {b c d e}
+b -- {a c d e}
+c -- {a b d e}
+d -- {a b c e}
+e -- {a b c d}
+}
+```
+
+## Vertices 
+
+### Adjacency
+
+$A$ and $B$ are **adjacent**, C and D are not
+$A$ and $B$ are **incident** to edge $\{a, b\}$ 
+Edges $\{a,d\}$ and $\{e,d\}$ are **adjacent**
+```dot
+graph neato {
+
+bgcolor="transparent"
+
+graph [layout = neato]
+
+node [shape = circle,
+      style = filled,
+      width=0.3,
+      height=0.3,
+      color = grey]
+
+node [fillcolor = lightgreen]
+a b
+
+node [fillcolor = red]
+c d
+
+node [fillcolor = white]
+
+edge [color = lightgreen]
+a -- b
+
+edge [color = yellow]
+d -- e
+d -- a
+
+edge [color = grey]
+a -- c
+b -- c
+d -- b
+}
+```
+
+### Adjacency matrix
+
+> [!note] 
+> Simple undirected graph is a *symmetric* *anti-reflexive* relation, so it’s matrix will be *symmetric* and with *zero main diagonal*.
+
+$$
+\begin{pmatrix}    - & 1 & 1 & 1 & -\\   1 & - & 1 & 1 & - \\ 1 & 1 & - & - & - \\  1 & 1 & - & - & 1   \\ - & - & - & 1 & -   \end{pmatrix}
+$$

@@ -8,7 +8,10 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 ## Text
 
 - Which features make 5G Technology different from the previous ones?  
-  > 
+  > - more speed
+  > - lower latency
+  > - 1000x bandwidth per unit area
+  > - 
 
 - How is this technology designed? What is its primary goal?  
 - Why is 5G Technology so beneficial?  

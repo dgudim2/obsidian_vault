@@ -11,11 +11,10 @@
             "id": "3dd847ba9f753774",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "uni/English/ethics/Ethics (w3).md",
-                "mode": "source",
-                "source": false
+                "file": ".obsidian/plugins/obsidian-git/data.json",
+                "staged": false
               }
             }
           }
@@ -85,7 +84,6 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "uni/English/ethics/Ethics (w3).md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +100,6 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "uni/English/ethics/Ethics (w3).md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -113,9 +110,7 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {
-            "file": "uni/English/ethics/Ethics (w3).md"
-          }
+          "state": {}
         }
       },
       {
@@ -142,10 +137,11 @@
   },
   "active": "3dd847ba9f753774",
   "lastOpenFiles": [
+    "uni/English/ethics/Ethics (w3).md",
+    "/Reference.md",
     "/uni/English/ethics/Ethics (w3).md",
     "uni/English/Ecommerce (w2).md",
     "uni/English/ethics/Transcript.md",
-    "uni/English/ethics/Ethics (w3).md",
     "CodeIdeas.md",
     "uni/English/ethics/transcript.png",
     "uni/English/ethics/HANDOUT- Ethics.docx",

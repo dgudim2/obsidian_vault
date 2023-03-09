@@ -18,6 +18,8 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 - How is this technology designed? What is its primary goal? 
 > [!tldr]
 >   - Entirely IP based model designed for the wireless and mobile networks
+>   - The IP technology is designed exclusively to ensure sufficient control data for appropriate routing of IP packets related to a certain application connection
+>   
   > - Ability of devices to identify their geographical location as well as weather
   > - It promptly distinguishes the changes in its environment and hence respond accordingly to provide uninterrupted quality service.
 

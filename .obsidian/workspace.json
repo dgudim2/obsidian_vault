@@ -4,15 +4,18 @@
     "type": "split",
     "children": [
       {
-        "id": "2dea62028e77dd51",
+        "id": "ed4045166efda3ff",
         "type": "tabs",
         "children": [
           {
-            "id": "9cf24bb4e109f1ad",
+            "id": "8ad810e20e826590",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "diff-view",
+              "state": {
+                "file": ".obsidian/workspace.json",
+                "staged": false
+              }
             }
           }
         ]
@@ -155,15 +158,22 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "9cf24bb4e109f1ad",
+  "active": "8ad810e20e826590",
   "lastOpenFiles": [
-    "uni/English/W1 (Stuff).md",
-    "uni/English/Ethics (w3).md",
-    "uni/English/Ecommerce (w2).md",
+    "Outline.md",
+    "uni/Lookup.md",
+    "Reference.md",
+    "uni/English/ethics/Ethics (w3).md",
     "conflict-files-obsidian-git.md",
+    "uni/English/W1 (Stuff).md",
+    "uni/English/Ecommerce (w2).md",
+    "uni/English/ethics/Transcript.md",
+    "uni/English/ethics/transcript.png",
+    "uni/English/ethics/HANDOUT- Ethics.docx",
+    "uni/English/ethics/Ethics Transcript.docx",
+    "uni/English/ethics",
     "uni/English",
     "uni",
-    "Outline.md",
     "Films_etc/Watched.md",
     "Random.md",
     "Films_etc/ToWatch.md",

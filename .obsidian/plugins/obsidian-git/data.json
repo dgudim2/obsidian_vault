@@ -25,5 +25,5 @@
   "setLastSaveToLastCommit": false,
   "submoduleRecurseCheckout": false,
   "gitDir": "",
-  "autoCommitMessage": "vault sync: {{date}}"
+  "autoCommitMessage": "vault auto sync: {{date}}"
 }

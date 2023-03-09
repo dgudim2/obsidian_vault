@@ -47,26 +47,27 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 ## Vocabulary
 
-| verbs          | Nouns                   | Adjectives         | Adverbs        |
-| -------------- | ----------------------- | ------------------ | -------------- |
-| consist        | consistency             | *consistent*       | consistently   |
-| -              | *feasibility*           | feasible           | feasibly       |
-| perceive       | perception              | perceptive         | *perceptively* |
-| *upgrade*      | upgrade / upgradability | upgradable         | -              |
-| -              | *latency*               | latent             |                |
-| *avail*        | availability            | available          | -              |
-| suffice        | sufficiency             | *sufficient*       | sufficiently   |
-| deploy         | *deployment*            | deploy-able         | -              |
+| verbs          | Nouns                   | Adjectives        | Adverbs        |
+| -------------- | ----------------------- | ----------------- | -------------- |
+| consist        | consistency             | *consistent*      | consistently   |
+| -              | *feasibility*           | feasible          | feasibly       |
+| perceive       | perception              | perceptive        | *perceptively* |
+| *upgrade*      | upgrade / upgradability | upgradable        | -              |
+| -              | *latency*               | latent            |                |
+| *avail*        | availability            | available         | -              |
+| suffice        | sufficiency             | *sufficient*      | sufficiently   |
+| deploy         | *deployment*            | deploy-able       | -              |
 | *substantiate* | substance               | substantial       | substantially  |
-| mean           | mean / meaning          | mean / meaningfull | *meaningfully* |
-| measure        | measurement             | *immeasurable*     | measurably     |
+| mean           | mean / meaning          | mean / meaningful | *meaningfully* |
+| measure        | measurement             | *immeasurable*    | measurably     |
+
 
 
 ### Sentences
 
-- The consistency of wi-fi conccentions may vary.
+- The consistency of wi-fi conncentions may vary.
 
-- Some people percieve 5G as the great evil.
+- Some people perceive 5G as the great evil.
 
-- Deployment of 5G network is not feasible in some countries.
+- Deployment of 5G network is not feasible in some countries due to 
 

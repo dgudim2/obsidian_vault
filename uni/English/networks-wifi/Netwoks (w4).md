@@ -48,9 +48,9 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 ## Vocabulary
 
 
-| verbs   | Nouns         | Adjectives   | Adverbs      |
-| ------- | ------------- | ------------ | ------------ |
-| consist | consistency   | *consistent* | consistently |
-|         | *feasibility* | feasible     |              |
-|         |               |              |              |
-|         |               |              |              |
+| verbs    | Nouns         | Adjectives   | Adverbs        |
+| -------- | ------------- | ------------ | -------------- |
+| consist  | consistency   | *consistent* | consistently   |
+|          | *feasibility* | feasible     |                |
+| perspect | perspective   |              | *perceptively* |
+|upgrade|upgradability|              |                |

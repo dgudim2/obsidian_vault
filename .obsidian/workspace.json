@@ -4,18 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "ed4045166efda3ff",
+        "id": "79e01b5865791f87",
         "type": "tabs",
         "children": [
           {
-            "id": "8ad810e20e826590",
+            "id": "7e7724a87f45c0f7",
             "type": "leaf",
             "state": {
-              "type": "diff-view",
-              "state": {
-                "file": ".obsidian/workspace.json",
-                "staged": false
-              }
+              "type": "empty",
+              "state": {}
             }
           }
         ]
@@ -158,7 +155,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "8ad810e20e826590",
+  "active": "7e7724a87f45c0f7",
   "lastOpenFiles": [
     "Outline.md",
     "uni/Lookup.md",

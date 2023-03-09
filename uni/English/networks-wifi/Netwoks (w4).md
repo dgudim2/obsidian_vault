@@ -52,7 +52,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | -------------- | ------------- | -------------- | -------------- |
 | consist        | consistency   | *consistent*   | consistently   |
 | -          | *feasibility* | feasible       | feasibly |
-| perspect       | perspective   |percept| *perceptively* |
+| perceive       | perception   |perceptive| *perceptively* |
 | *upgrade*      | upgradability | upgradable     |                |
 | - | *latency*     |                |                |
 | *avail*        | availability  | available      |                |

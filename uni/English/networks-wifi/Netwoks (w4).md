@@ -69,5 +69,9 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 - Some people perceive 5G as the great evil.
 
-- Deployment of 5G network is not feasible in some countries due to 
+- Deployment of 5G network is not feasible in some countries due to insufficient funds and availability of hardware.
+
+
+
+
 

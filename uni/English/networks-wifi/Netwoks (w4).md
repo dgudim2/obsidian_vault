@@ -5,4 +5,13 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 ----
 
-## T
+## Text
+
+- Which features make 5G Technology different from the previous ones?  
+  > 
+
+- How is this technology designed? What is its primary goal?  
+- Why is 5G Technology so beneficial?  
+- How will the fifth generation of mobile communication networks influence our future life?  
+- When is it expected to be implemented?
+

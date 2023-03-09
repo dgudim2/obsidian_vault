@@ -4,8 +4,9 @@
   "obsidian-git",
   "obsidian-admonition",
   "quick-latex",
-  "obsidian-graphviz",
   "obsidian-markmind",
   "multi-column-markdown",
-  "obsidian-kanban"
+  "obsidian-kanban",
+  "code-block-copy",
+  "obsidian-icon-folder"
 ]

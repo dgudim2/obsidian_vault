@@ -19,7 +19,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
   > - It promptly distinguishes the changes in its environment and hence respond accordingly to provide uninterrupted quality service.
 
 - Why is 5G Technology so beneficial?  
->  - 
+>  - The features and its usability are much beyond the expectation of a normal human being. With its ultra-high speed, it is potential enough to change the meaning of a cell phone usability.
 
 
 - How will the fifth generation of mobile communication networks influence our future life?  

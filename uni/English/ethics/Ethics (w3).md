@@ -1,4 +1,4 @@
-revious lesson: [[Ecommerce (w2)]]
+Previous lesson: [[Ecommerce (w2)]]
 
 
 Handout ![[HANDOUT- Ethics.docx]]

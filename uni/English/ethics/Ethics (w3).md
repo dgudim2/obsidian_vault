@@ -82,3 +82,8 @@ Justifications: The greatest good (more people will benefit), personal beliefs
 
 ---
 
+
+
+---
+
+Next lesson: [[Netwoks (w4)]]

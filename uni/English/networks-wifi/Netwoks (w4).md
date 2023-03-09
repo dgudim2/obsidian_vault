@@ -66,4 +66,4 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 The consistency of wi-fi conccentions may vary.
 
-The 
+The feasibility of installing 5G towers 

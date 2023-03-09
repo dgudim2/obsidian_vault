@@ -47,17 +47,19 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 ## Vocabulary
 
+| verbs          | Nouns                   | Adjectives         | Adverbs        |
+| -------------- | ----------------------- | ------------------ | -------------- |
+| consist        | consistency             | *consistent*       | consistently   |
+| -              | *feasibility*           | feasible           | feasibly       |
+| perceive       | perception              | perceptive         | *perceptively* |
+| *upgrade*      | upgrade / upgradability | upgradable         | -              |
+| -              | *latency*               | latent             |                |
+| *avail*        | availability            | available          | -              |
+| suffice        | sufficiency             | *sufficient*       | sufficiently   |
+| deploy         | *deployment*            | deployable         | -              |
+| *substantiate* | substance               | substrantial       | substantially  |
+| mean           | mean / meaning          | mean / meaningfull | *meaningfully* |
+| measure        | measurement             | *immeasurable*     | measurably     |
 
-| verbs          | Nouns                   | Adjectives     | Adverbs        |
-| -------------- | ----------------------- | -------------- | -------------- |
-| consist        | consistency             | *consistent*   | consistently   |
-| -              | *feasibility*           | feasible       | feasibly       |
-| perceive       | perception              | perceptive     | *perceptively* |
-| *upgrade*      | upgrade / upgradability | upgradable     | - |
-| -              | *latency*               | latent |                |
-| *avail*        | availability            | available      | - |
-| suffice        | sufficiency | *sufficient*   | sufficiently   |
-| deploy         | *deployment*            | deployable | - |
-| *substantiate* | substance | substrantial | substantially  |
-| mean           | mean / meaning | mean / meaningfull | *meaningfully* |
-| measure        | measurement             | *immeasurable* |                |
+
+### 

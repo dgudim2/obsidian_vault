@@ -53,7 +53,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | consist        | consistency   | *consistent*   | consistently   |
 | -          | *feasibility* | feasible       | feasibly |
 | perceive       | perception   |perceptive| *perceptively* |
-| *upgrade*      | upgradability | upgradable     |                |
+| *upgrade*      | upgrade / upgradability | upgradable     | |
 | - | *latency*     |                |                |
 | *avail*        | availability  | available      |                |
 | suffice        |               | *sufficient*   | sufficiently   |

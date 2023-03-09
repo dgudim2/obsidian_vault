@@ -21,7 +21,6 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 - Why is 5G Technology so beneficial?  
 >  - The features and its usability are much beyond the expectation of a normal human being. With its ultra-high speed, it is potential enough to change the meaning of a cell phone usability.
 
-
 - How will the fifth generation of mobile communication networks influence our future life?  
 >  - now your smart phone would be more parallel to the laptop
 >  - more gaming options
@@ -32,5 +31,5 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 >  - high quality sound and HD video
 
 - When is it expected to be implemented?
->  - ime period required for the 5G technology development and its implementation is about two years more from now (by 2020).
+> [!] Time period required for the 5G technology development and its implementation is about two years more from now (by 2020).
 

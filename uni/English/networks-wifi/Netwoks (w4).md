@@ -51,12 +51,12 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | verbs          | Nouns         | Adjectives     | Adverbs        |
 | -------------- | ------------- | -------------- | -------------- |
 | consist        | consistency   | *consistent*   | consistently   |
-|                | *feasibility* | feasible       |                |
+|fease| *feasibility* | feasible       |                |
 | perspect       | perspective   |                | *perceptively* |
 | *upgrade*      | upgradability | upgradable     |                |
 |                | *latency*     |                |                |
 | *avail*        | availability  | available      |                |
-| suffice        |               | *sufficient*   |                |
+| suffice        |               | *sufficient*   |sufficiently|
 | deploy         | *deployment*  |                |                |
 | *substantiate* |               |                |                |
 | mean           |               |                | *meaningfully* |

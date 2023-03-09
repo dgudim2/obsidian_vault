@@ -23,8 +23,12 @@
             "id": "f2c9b9a46af1a69f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "uni/English/networks-wifi/Netwoks (w4).md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ],
@@ -94,6 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "uni/English/networks-wifi/Netwoks (w4).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,6 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "uni/English/networks-wifi/Netwoks (w4).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -131,7 +137,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "uni/English/networks-wifi/Netwoks (w4).md"
+              }
             }
           },
           {
@@ -168,9 +176,11 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "32c03edfb27ab8d4",
+  "active": "f2c9b9a46af1a69f",
   "lastOpenFiles": [
-    "uni/English/Untitled",
+    "uni/English/networks-wifi/HANDOUT- Networking and WIFI.pdf",
+    "uni/English/networks-wifi/Netwoks (w4).md",
+    "uni/English/networks-wifi",
     "uni/English/ethics/Ethics (w3).md",
     "uni/English/ethics/transcript.png",
     "uni/English/ethics/Transcript.md",

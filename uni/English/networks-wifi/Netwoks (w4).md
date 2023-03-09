@@ -20,8 +20,13 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 - Why is 5G Technology so beneficial?  
 - How will the fifth generation of mobile communication networks influence our future life?  
->  - now your smart phone would be more parallel to the  
-laptop
-   - 
+>  - now your smart phone would be more parallel to the laptop
+>  - more gaming options
+>  - wider multimedia options
+>  - connectivity everywhere
+>  - zero latency
+>  - faster response time
+>  - high quality sound and HD video
+>  - 
 - When is it expected to be implemented?
 

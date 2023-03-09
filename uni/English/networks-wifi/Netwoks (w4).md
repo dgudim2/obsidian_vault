@@ -56,8 +56,8 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | -              | *latency*               | latent             |                |
 | *avail*        | availability            | available          | -              |
 | suffice        | sufficiency             | *sufficient*       | sufficiently   |
-| deploy         | *deployment*            | deployable         | -              |
-| *substantiate* | substance               | substrantial       | substantially  |
+| deploy         | *deployment*            | deploy-able         | -              |
+| *substantiate* | substance               | substantial       | substantially  |
 | mean           | mean / meaning          | mean / meaningfull | *meaningfully* |
 | measure        | measurement             | *immeasurable*     | measurably     |
 

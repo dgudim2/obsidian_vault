@@ -79,3 +79,6 @@ Justifications: The greatest good (more people will benefit), personal beliefs
 
 ### Questions
 ![[Transcript]]
+
+---
+

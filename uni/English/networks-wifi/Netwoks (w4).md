@@ -13,6 +13,8 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
   > - lower latency
   > - 1000x bandwidth per unit area
   > - 90% reduction in network energy use
+  > - feasibility to connect 10 to  
+100 number of devices
 
 - How is this technology designed? What is its primary goal? 
 > [!tldr]

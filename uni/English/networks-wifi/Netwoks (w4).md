@@ -56,7 +56,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 | *upgrade*      | upgrade / upgradability | upgradable     | - |
 | -              | *latency*               | latent |                |
 | *avail*        | availability            | available      | - |
-| suffice        |                         | *sufficient*   | sufficiently   |
+| suffice        | sufficiency | *sufficient*   | sufficiently   |
 | deploy         | *deployment*            |                |                |
 | *substantiate* |                         |                | substantially  |
 | mean           |                         |                | *meaningfully* |

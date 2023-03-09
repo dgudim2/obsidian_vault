@@ -64,7 +64,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 ### Sentences
 
-The consistency of wi-fi conccentions may vary.
+- The consistency of wi-fi conccentions may vary.
 
 - Some people percieve 5G as the great evil.
 

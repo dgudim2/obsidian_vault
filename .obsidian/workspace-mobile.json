@@ -11,11 +11,10 @@
             "id": "3dd847ba9f753774",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "diff-view",
               "state": {
-                "file": "uni/English/networks-wifi/Netwoks (w4).md",
-                "mode": "source",
-                "source": false
+                "file": "uni/Discrete math/Graphs - basics.md",
+                "staged": false
               }
             }
           }
@@ -85,7 +84,6 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "uni/English/networks-wifi/Netwoks (w4).md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +100,6 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "uni/English/networks-wifi/Netwoks (w4).md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -113,9 +110,7 @@
         "type": "leaf",
         "state": {
           "type": "outline",
-          "state": {
-            "file": "uni/English/networks-wifi/Netwoks (w4).md"
-          }
+          "state": {}
         }
       },
       {
@@ -140,10 +135,18 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "3dd847ba9f753774",
+  "active": "8422e1c1b4dd5fd8",
   "lastOpenFiles": [
-    "uni/English/ethics/Ethics (w3).md",
+    "uni/Discrete math/Graphs - operations.md",
+    "/uni/Discrete math/Graphs - operations.md",
+    "/uni/Discrete math/Graphs - basics.md",
+    "markor-markdown-reference.md",
+    "/markor-markdown-reference.md",
+    "uni/Discrete math/Graphs - basics.md",
     "uni/English/networks-wifi/Netwoks (w4).md",
+    "uni/Discrete math",
+    "/uni/Discrete math",
+    "uni/English/ethics/Ethics (w3).md",
     "uni/English/networks-wifi/HANDOUT- Networking and WIFI.pdf",
     "/uni/English/networks-wifi/Netwoks (w4).md",
     "/uni/English/networks-wifi/HANDOUT- Networking and WIFI.pdf",
@@ -164,8 +167,6 @@
     "/uni/English/Ecommerce (w2).md",
     "uni/English/ethics",
     "uni/English",
-    "uni",
-    "/uni/English/ethics",
     "Random.md",
     "2023-03-07.md",
     "Notes.md"

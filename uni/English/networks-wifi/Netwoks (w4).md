@@ -14,7 +14,10 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
   > - 90% reduction in network energy use
 
 - How is this technology designed? What is its primary goal? 
-  > 
+  > - ability of devices to identify their geographical location as well as weather
+  > - t promptly distinguishes the  
+changes in its environment and hence respond accordingly to provide uninterrupted quality service
+
 - Why is 5G Technology so beneficial?  
 - How will the fifth generation of mobile communication networks influence our future life?  
 - When is it expected to be implemented?

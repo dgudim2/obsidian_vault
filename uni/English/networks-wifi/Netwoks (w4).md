@@ -25,8 +25,8 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 - Why is 5G Technology so beneficial?  
 > [!tldr]
->  - our world would have universal and uninterrupted access to information, communication, and entertainment that will open a new dimension to our lives and will change our  
-life style meaningfully.
+>  - Our world would have universal and uninterrupted access to information, communication, and entertainment that will open a new dimension to our lives and will change our life style meaningfully.
+>  
 >  - The features and its usability are much beyond the expectation of a normal human being. With its ultra-high speed, it is potential enough to change the meaning of a cell phone usability.
 
 - How will the fifth generation of mobile communication networks influence our future life?  
@@ -44,3 +44,8 @@ life style meaningfully.
 > 
 > Time period required for the 5G technology development and its implementation is about two years more from now (by 2020).
 
+
+## Vocabulary
+
+
+| verbs 

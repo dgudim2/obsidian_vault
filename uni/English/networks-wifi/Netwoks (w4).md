@@ -48,4 +48,6 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 ## Vocabulary
 
 
-| verbs 
+| verbs | Nouns | Adjectives | Adverbs |
+| ----- | ----- | ---------- | ------- |
+|       |       |            |         |

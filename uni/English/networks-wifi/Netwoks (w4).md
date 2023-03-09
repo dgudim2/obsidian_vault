@@ -66,4 +66,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 The consistency of wi-fi conccentions may vary.
 
-The feasibility of installing 5G towers 
+- Some people percieve 5G as the great evil.
+
+- Deployment of 5G network is not feasible in some countries.
+

@@ -9,5 +9,6 @@
   "attachmentFolderPath": "./",
   "alwaysUpdateLinks": true,
   "livePreview": true,
-  "spellcheck": true
+  "spellcheck": true,
+  "showLineNumber": false
 }

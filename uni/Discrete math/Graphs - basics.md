@@ -50,69 +50,80 @@ $$
 
 > **Digraph** without loops is a **simple digraph**.
 
+
 # Undirected graph
 
-> [!col]
->> [!col-md]
->> ```dot
->> digraph neato {
->> 
->> bgcolor="transparent"
->> 
->> graph [layout = neato]
->> 
->> node [shape = circle,
->>       style = filled,
->>       width=0.3,
->>       height=0.3,
->>       color = grey,
->>       label = ""]
->> 
->> node [fillcolor = red]
->> a
->> 
->> node [fillcolor = lightgreen]
->> b c d
->> 
->> node [fillcolor = orange]
->> 
->> edge [color = grey]
->> a -> {b c d}
->> b -> a
->> c -> a
->> d -> a
->> 
->> }
->> ```
->
->> [!col-md]
->> ```dot
->> graph neato {
->> 
->> bgcolor="transparent"
->> 
->> graph [layout = neato]
->> 
->> node [shape = circle,
->>       style = filled,
->>       width=0.3,
->>       height=0.3,
->>       color = grey,
->>       label = ""]
->> 
->> node [fillcolor = red]
->> a
->> 
->> node [fillcolor = lightgreen]
->> b c d
->> 
->> node [fillcolor = orange]
->> 
->> edge [color = grey]
->> a -- {b c d}
->> 
->> }
->> ```
+`````col
+````col-md
+flexGrow=1
+===
+
+```dot
+digraph neato {
+
+bgcolor="transparent"
+
+graph [layout = neato]
+
+node [shape = circle,
+      style = filled,
+      width=0.3,
+      height=0.3,
+      color = grey,
+      label = ""]
+
+node [fillcolor = red]
+a
+
+node [fillcolor = lightgreen]
+b c d
+
+node [fillcolor = orange]
+
+edge [color = grey]
+a -> {b c d}
+b -> a
+c -> a
+d -> a
+
+}
+```
+
+````
+````col-md
+flexGrow=1
+===
+
+```dot
+graph neato {
+
+bgcolor="transparent"
+
+graph [layout = neato]
+
+node [shape = circle,
+      style = filled,
+      width=0.3,
+      height=0.3,
+      color = grey,
+      label = ""]
+
+node [fillcolor = red]
+a
+
+node [fillcolor = lightgreen]
+b c d
+
+node [fillcolor = orange]
+
+edge [color = grey]
+a -- {b c d}
+
+}
+```
+
+````
+`````
 
 > If the graph is symmetric we can replace any pair of arcs 
 > $(V_{i}, V_{j},)$ and $(V_{j}, V_{i},)$ with a pair $\{V_{i}, V_{j}\}$ and call it **edge**
@@ -156,11 +167,13 @@ d -- {e, b}
 }
 ```
 
+
 # Graph properties and stuff
 
 ## Graph order
 
 Order of graph $G = (V, E)$ is $|V| = n$ (number of vertices)
+
 
 ## Special graphs
 
@@ -171,8 +184,7 @@ $G = (\{V\}, \emptyset)$ - **trivials**
 If a graph G has $$
 \begin{flalign}
 \frac{n(n-1)}{n} &&
-\end{flalign}$$edges is is **complete**
-
+\end{flalign}$$edges is is **complete** ($K_{n}$)
 
 ```dot
 graph neato {
@@ -197,6 +209,7 @@ d -- {a b c e}
 e -- {a b c d}
 }
 ```
+
 
 ## Vertices and edges
 
@@ -264,6 +277,7 @@ $$
 \end{array}
 $$
 
+
 ### Incidence matrix
 
 > Rows are **vertices**. 
@@ -287,6 +301,7 @@ $$
 
 \end{array}
 $$
+
 
 ### Neighborhood of vertices
 

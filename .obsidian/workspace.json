@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "8e0078ae7d2d1520",
+        "id": "8eba19e8cd4e9180",
         "type": "tabs",
         "children": [
           {
-            "id": "ca504c826a483c6d",
+            "id": "ec10f3f224b9a10b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Random.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "cb7d28b82b30c8c0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "uni/Discrete math/Graphs - operations.md",
                 "mode": "source",
-                "source": false
+                "source": true
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -69,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 286.5
   },
   "right": {
     "id": "630577852ab1fd5e",
@@ -163,8 +176,10 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "433327a3a5d858fa",
+  "active": "cb7d28b82b30c8c0",
   "lastOpenFiles": [
+    "Random.md",
+    "Reference.md",
     "uni/Discrete math/Graphs - basics.md",
     "uni/Discrete math/Graphs - operations.md",
     "uni/Discrete math/[.md",
@@ -178,7 +193,6 @@
     "uni/English/W1 (Stuff).md",
     "Outline.md",
     "uni/Lookup.md",
-    "Reference.md",
     "uni/English/Ecommerce (w2).md",
     "uni/English/ethics/Transcript.md",
     "uni/English/ethics/transcript.png",
@@ -188,7 +202,6 @@
     "uni/English",
     "uni",
     "Films_etc/Watched.md",
-    "Random.md",
     "Films_etc/ToWatch.md",
     "CodeIdeas.md",
     "Films_etc"

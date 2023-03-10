@@ -1,5 +1,5 @@
 {
   "dotPath": "dot",
-  "renderer": "d3_graphviz",
+  "renderer": "dot",
   "imageFormat": "png"
 }

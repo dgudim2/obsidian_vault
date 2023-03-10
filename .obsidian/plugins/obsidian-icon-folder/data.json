@@ -5,14 +5,28 @@
     "fontSize": 16,
     "emojiStyle": "none",
     "iconColor": null,
-    "recentlyUsedIcons": [],
+    "recentlyUsedIcons": [
+      "FasList-ul",
+      "LiBook",
+      "FasLanguage",
+      "FasDice-six",
+      "FarLightbulb"
+    ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
     "extraMargin": {
-      "top": 0,
+      "top": -1,
       "right": 4,
       "bottom": 0,
-      "left": 0
+      "left": -1
     }
-  }
+  },
+  "uni/Discrete math": "RiCalculatorLine",
+  "uni/English": "FasLanguage",
+  "uni/English/networks-wifi": "RiHomeWifiLine",
+  "uni/English/ethics": "RiOpenArmLine",
+  "CodeIdeas.md": "FarLightbulb",
+  "Random.md": "FasDice-six",
+  "uni": "LiBook",
+  "Reference.md": "FasList-ul"
 }

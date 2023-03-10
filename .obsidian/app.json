@@ -8,6 +8,6 @@
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "./",
   "alwaysUpdateLinks": true,
-  "livePreview": false,
+  "livePreview": true,
   "spellcheck": true
 }

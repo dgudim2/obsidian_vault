@@ -13,9 +13,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "uni/Discrete math/Graphs - basics.md",
+                "file": "uni/Discrete math/Graphs - operations.md",
                 "mode": "source",
-                "source": true
+                "source": false
               }
             }
           }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "uni/Discrete math/Graphs - basics.md",
+                "file": "uni/Discrete math/Graphs - operations.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "uni/Discrete math/Graphs - basics.md",
+                "file": "uni/Discrete math/Graphs - operations.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "uni/Discrete math/Graphs - basics.md"
+                "file": "uni/Discrete math/Graphs - operations.md"
               }
             }
           },
@@ -165,8 +165,8 @@
   },
   "active": "ca504c826a483c6d",
   "lastOpenFiles": [
-    "uni/Discrete math/Graphs - operations.md",
     "uni/Discrete math/Graphs - basics.md",
+    "uni/Discrete math/Graphs - operations.md",
     "uni/Discrete math/[.md",
     "uni/English/networks-wifi/Netwoks (w4).md",
     "uni/English/networks-wifi/HANDOUT- Networking and WIFI.pdf",

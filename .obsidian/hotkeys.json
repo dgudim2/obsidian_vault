@@ -22,5 +22,14 @@
       ],
       "key": "N"
     }
+  ],
+  "app:show-debug-info": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "D"
+    }
   ]
 }

@@ -341,3 +341,4 @@ Number of edges:
 2. We can take [[#Adjacency matrix]] or [[#Incidence matrix]] and sum all elements, we will get the same result
 
 
+Next: [[Graphs - operations]]

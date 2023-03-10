@@ -82,7 +82,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 286.5
   },
   "right": {
     "id": "630577852ab1fd5e",
@@ -98,7 +98,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "uni/Discrete math/Graphs - operations.md",
+                "file": "uni/Discrete math/Graphs - basics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +115,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "uni/Discrete math/Graphs - operations.md",
+                "file": "uni/Discrete math/Graphs - basics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +138,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "uni/Discrete math/Graphs - operations.md"
+                "file": "uni/Discrete math/Graphs - basics.md"
               }
             }
           },
@@ -176,7 +176,7 @@
       "table-editor-obsidian:Advanced Tables Toolbar": false
     }
   },
-  "active": "cb7d28b82b30c8c0",
+  "active": "32c03edfb27ab8d4",
   "lastOpenFiles": [
     "uni/Discrete math/Graphs - basics.md",
     "uni/Discrete math/Graphs - operations.md",

@@ -6,5 +6,21 @@
       ],
       "key": "M"
     }
+  ],
+  "obsidian-columns:insert-column-wrapper": [
+    {
+      "modifiers": [
+        "Meta"
+      ],
+      "key": "M"
+    }
+  ],
+  "obsidian-columns:insert-column": [
+    {
+      "modifiers": [
+        "Meta"
+      ],
+      "key": "N"
+    }
   ]
 }

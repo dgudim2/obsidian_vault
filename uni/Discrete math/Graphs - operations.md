@@ -4,14 +4,11 @@ If $G_{1}=(V_{1}, E_{1})$, and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \cap G_{2}=(V
 
 > (Intersection of vertices and edges)
 
+`````col
 
-```start-multi-column
-ID: intersection
-Number of Columns: 3
-largest column: center
-Largest Column: standard
-```
-
+````col-md
+## $G_{1}$
+---
 ```dot
 graph neato {
 
@@ -33,9 +30,11 @@ c -- {b}
 d -- {b}
 }
 ```
+````
 
---- column-end ---
-
+````col-md
+## $G_{2}$
+---
 ```dot
 graph neato {
 
@@ -57,9 +56,11 @@ d -- c
 c -- b
 }
 ```
+````
 
---- column-end ---
-
+````col-md
+## $G_{1} \cap G_{2}$
+---
 ```dot
 graph neato {
 
@@ -80,8 +81,16 @@ a -- d
 c -- b
 }
 ```
+````
 
-=== end-multi-column ===
+`````
+
+
+
+
+
+
+
 
 # Union
 

@@ -52,79 +52,70 @@ $$
 
 # Undirected graph
 
-
-```start-multi-column
-ID: Graphs
-Number of Columns: 2
-Largest Column: standard
-```
-
-```dot
-digraph neato {
-
-bgcolor="transparent"
-
-graph [layout = neato]
-
-node [shape = circle,
-      style = filled,
-      width=0.3,
-      height=0.3,
-      color = grey,
-      label = ""]
-
-node [fillcolor = red]
-a
-
-node [fillcolor = lightgreen]
-b c d
-
-node [fillcolor = orange]
-
-edge [color = grey]
-a -> {b c d}
-b -> a
-c -> a
-d -> a
-
-}
-```
-
---- column-end ---
-
-```dot
-graph neato {
-
-bgcolor="transparent"
-
-graph [layout = neato]
-
-node [shape = circle,
-      style = filled,
-      width=0.3,
-      height=0.3,
-      color = grey,
-      label = ""]
-
-node [fillcolor = red]
-a
-
-node [fillcolor = lightgreen]
-b c d
-
-node [fillcolor = orange]
-
-edge [color = grey]
-a -- {b c d}
-
-}
-```
-
-=== end-multi-column
+> [!col]
+>> [!col-md]
+>> ```dot
+>> digraph neato {
+>> 
+>> bgcolor="transparent"
+>> 
+>> graph [layout = neato]
+>> 
+>> node [shape = circle,
+>>       style = filled,
+>>       width=0.3,
+>>       height=0.3,
+>>       color = grey,
+>>       label = ""]
+>> 
+>> node [fillcolor = red]
+>> a
+>> 
+>> node [fillcolor = lightgreen]
+>> b c d
+>> 
+>> node [fillcolor = orange]
+>> 
+>> edge [color = grey]
+>> a -> {b c d}
+>> b -> a
+>> c -> a
+>> d -> a
+>> 
+>> }
+>> ```
+>
+>> [!col-md]
+>> ```dot
+>> graph neato {
+>> 
+>> bgcolor="transparent"
+>> 
+>> graph [layout = neato]
+>> 
+>> node [shape = circle,
+>>       style = filled,
+>>       width=0.3,
+>>       height=0.3,
+>>       color = grey,
+>>       label = ""]
+>> 
+>> node [fillcolor = red]
+>> a
+>> 
+>> node [fillcolor = lightgreen]
+>> b c d
+>> 
+>> node [fillcolor = orange]
+>> 
+>> edge [color = grey]
+>> a -- {b c d}
+>> 
+>> }
+>> ```
 
 > If the graph is symmetric we can replace any pair of arcs 
-
-$(V_{i}, V_{j},)$ and $(V_{j}, V_{i},)$ with a pair $\{V_{i}, V_{j}\}$ and call it **edge**
+> $(V_{i}, V_{j},)$ and $(V_{j}, V_{i},)$ with a pair $\{V_{i}, V_{j}\}$ and call it **edge**
 
 
 # Defining a graph

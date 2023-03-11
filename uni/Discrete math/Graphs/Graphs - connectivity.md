@@ -1,3 +1,6 @@
+
+Previous: [[Graphs - operations]]
+
 # Subgraph ($G' \subset G$)
 
 > Graph $G' = (V', E')$ is a *subgraph* of graph $G = (V, E)$ if $V' \subset V$, $E' \subset E$
@@ -323,6 +326,9 @@ Can be written in 2 ways:
 
 > [[#Walk]] is **open** if first and last [[Graphs - basics#Directed graphs|vertices]] are different
 > If walk starts and ends in the same vertex, it called **closed**
+
+> [!info] 
+> First and last vertices are called **terminal** vertices
 
 ## Circuit
 
@@ -795,3 +801,6 @@ e -- g
 > Any [[#Bridges|bridge]] is a [[#Separating sets|separating set]] and a **cut**
 
 > In this case $\{\{d,f\}, \{e,f\}, \{g,f\}\}$ is a **cut**
+
+
+Next: [[Graphs - metrics]]

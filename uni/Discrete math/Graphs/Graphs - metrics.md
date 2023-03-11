@@ -1,10 +1,21 @@
+
+Previous: [[Graphs - connectivity]]
+
 # Length of the path
 
 > **Length of the [[Graphs - connectivity#Path|path]]** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
 
+# Distances
+
 ## Distance between vertices
 
-> Distance between 2 [[Graphs - basics#Directed graphs|vertices]] is the length of shortest [[Graphs - connectivity#Path|path]] connecting these vertices.
+> Distance between 2 [[Graphs - basics#Directed graphs|vertices]] is the length of shortest [[Graphs - connectivity#Path|path]] connecting these vertices. 
+> Notion: $\rho (u,w)$ 
+
+> [!note] 
+> 1. $\rho (u,w)$ >= 0. $\rho (u,w)$ = 0, if u = w
+> 2. $\rho (u,w)$ = $\rho (w,u)$
+> 3. $\rho (x,y)$ + $\rho (y,z)$ >= $\rho (x,z)$ 
 
 ## Distance matrix
 
@@ -53,14 +64,14 @@ edge [color = grey]
 flexGrow=1
 ===
 
-|     | 1              | 2              | 3              | 4              | 5              | 6              |
+|     | #h/white **1**  | #h/white **2** | #h/white **3** | #h/white **4** | #h/white **5** | #h/white **6** | 
 | --- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| 1   | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** |
-| 2   | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          |
-| 3   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   |
-| 4   | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          |
-| 5   | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** |
-| 6   | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              |
+| #h/white **1**   | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** |
+| #h/white **2**   | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          |
+| #h/white **3**   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   |
+| #h/white **4**   | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          |
+| #h/white **5**   | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** |
+| #h/white **6**   | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              |
 
 ````
 `````
@@ -160,4 +171,97 @@ $$
 $$
 
 6. All newly formed *non-zero elements* show that the distance between the vertices is not greater than *3*. We write *3* in **distance matrix**
+
+### Distance matrix properties
+
+`````col
+````col-md
+flexGrow=1
+===
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+f [pos="0.5,-0.9!"] 
+
+edge [color = grey] 
+
+a -- {c d} 
+b -- {c a d}
+f -- {a e}
+
+} 
+```
+
+````
+````col-md
+flexGrow=1.2
+===
+
+
+|     | **a** | **b** | **c** | **d** | **e** | **f** | Row max |         notes |
+|:---:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|:-------:| -------------:|
+|  **a**  |   **X**   |   1   |   1   |   1   |   2   |   1   |    2    | [[#Center of a graph\|center/radius]] |
+|  **b**  |   1   |   **X**   |   1   |   1   |   *3*   |   2   |    3    |      [[#Diameter of a graph\|diameter]] |
+|  **c**  |   1   |   1   |   **X**   |   2   |   *3*   |   2   |    3    |      [[#Diameter of a graph\|diameter]] |
+|  **d**  |   1   |   1   |   2   |   **X**   |   *3*   |   2   |    3    |      [[#Diameter of a graph\|diameter]] |
+|  **e**  |   2   |   *3*   |   *3*   |   *3*   |   **X**   |   1   |    3    |      [[#Diameter of a graph\|diameter]] |
+|  **f**  |   1   |   2   |   2   |   2   |   1   |   **X**   |    2    | [[#Center of a graph\|center/radius]] |
+
+
+````
+`````
+
+--- 
+<br>
+
+# Eccentricity of a vertex
+
+> **Eccentricity** of a [[Graphs - basics#Directed graphs|vertex]] is it's maximum [[#Distances|distances to other vertices]] of a given graph
+> $e(u)=max \ \rho (v,u)$ 
+
+--- 
+<br>
+
+# Diameter of a graph
+
+> The **diameter** of a graph is the maximum [[#Distances|distance between vertices]] 
+> $d(G)=max \ \rho (u,w)$ 
+
+## Diametrical circuit
+
+> A simple [[Graphs - connectivity#Circuit|circuit]] is **diametrical** if it's [[#Length of the path|length]] is equal to the **diameter** and is the shortest path connecting it's [[Graphs - connectivity#Open / closed walk|terminal]] vertices
+
+--- 
+<br>
+
+# Center of a graph
+
+> [[Graphs - basics#Directed graphs|Vertex]] $c \in V$ is called a **center** of a graph, if it has minimal [[#Eccentricity of a vertex|eccentricity]] among all graph [[Graphs - basics#Directed graphs|vertices]] 
+> $e(c)=min \ e(v)$ 
+
+## Graph radius
+
+> The **radius** of a graph is it's [[#Center of a graph|center]] [[#Eccentricity of a vertex|eccentricity]] (minimum [[#Eccentricity of a vertex|eccentricity]] of all it's [[Graphs - basics#Directed graphs|vertices]])
+> $r(G)=min \ e(v)$
+
+--- 
+<br>
+
 

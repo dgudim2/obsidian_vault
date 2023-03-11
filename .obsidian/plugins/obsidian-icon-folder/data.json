@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "SiLatex",
       "RiFullscreenExitLine",
       "FasDiceSix",
       "FasList-ul",
-      "LiBook",
-      "FasLanguage"
+      "LiBook"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -28,5 +28,6 @@
   "CodeIdeas.md": "FarLightbulb",
   "Random.md": "FasDiceSix",
   "uni": "LiBook",
-  "Reference.md": "RiFullscreenExitLine"
+  "Reference.md": "RiFullscreenExitLine",
+  "latex_symbols.pdf": "SiLatex"
 }

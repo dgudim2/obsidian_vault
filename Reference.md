@@ -78,7 +78,7 @@ awesome
 ## Links
 [Link](https://duckduckgo.com/)
 
-[File in same folder as the document.](markor-markdown-reference.md) Use %20 for spaces!
+[File in same folder as the document.](Reference.md) Use %20 for spaces!
 
 <!-- --------------- -->
 
@@ -105,7 +105,7 @@ See [reference](https://katex.org/docs/supported.html) & [examples](https://gith
 
 ### Math inline
 
-$$ I = \frac V R $$
+$I = \frac V R$
 
 ### Math block
 

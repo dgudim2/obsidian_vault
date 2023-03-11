@@ -206,11 +206,19 @@ See also: mermaidjs [live editor](https://mermaid-js.github.io/mermaid-live-edit
 ```mermaid
 graph LR
     A[Square Rect] -- Link text --> B((Circle))
-    A --> C(Round Rect)
-    B --> D{Rhombus}
-    C --> D
+    A --- C(Round Rect)
+    B --- D{Rhombus}
+    C --- D
 ```
 
+
+```mermaid
+graph LR
+    A[Square Rect] -- Link text --> B((Circle))
+    A --- C(Round Rect)
+    B --- D{Rhombus}
+    C --- D
+```
 
 ```mermaid
 graph LR

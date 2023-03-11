@@ -197,9 +197,8 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey]
-
-node [fillcolor = white]
+      color = grey,
+      fillcolor = white]
 
 edge [color = grey]
 a -- {b c d e}

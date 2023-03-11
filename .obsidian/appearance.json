@@ -5,5 +5,9 @@
   "interfaceFontFamily": "Segoe UI",
   "textFontFamily": "FiraCode Nerd Font",
   "monospaceFontFamily": "FiraCode Nerd Font Mono",
-  "nativeMenus": false
+  "nativeMenus": false,
+  "enabledCssSnippets": [
+    "8 + 8 highlight colors",
+    "Combine Nested tag colors and Highlight colors "
+  ]
 }

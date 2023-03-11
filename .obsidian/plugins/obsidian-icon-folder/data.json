@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "SiGraphql",
       "SiDiagramsdotnetWhite",
       "SiLatex",
       "RiFullscreenExitLine",
-      "FasDiceSix",
-      "FasList-ul"
+      "FasDiceSix"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -30,5 +30,6 @@
   "uni": "LiBook",
   "Reference.md": "RiFullscreenExitLine",
   "Latex symbols.pdf": "SiLatex",
-  "uni/Discrete math/Graph tasks.pdf": "SiDiagramsdotnetWhite"
+  "uni/Discrete math/Graphs/Graph tasks.pdf": "SiDiagramsdotnetWhite",
+  "uni/Discrete math/Graphs": "SiGraphql"
 }

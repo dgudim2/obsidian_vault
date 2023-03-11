@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "RiFullscreenExitLine",
+      "FasDiceSix",
       "FasList-ul",
       "LiBook",
-      "FasLanguage",
-      "FasDice-six",
-      "FarLightbulb"
+      "FasLanguage"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -26,7 +26,7 @@
   "uni/English/networks-wifi": "RiHomeWifiLine",
   "uni/English/ethics": "RiOpenArmLine",
   "CodeIdeas.md": "FarLightbulb",
-  "Random.md": "FasDice-six",
+  "Random.md": "FasDiceSix",
   "uni": "LiBook",
-  "Reference.md": "FasList-ul"
+  "Reference.md": "RiFullscreenExitLine"
 }

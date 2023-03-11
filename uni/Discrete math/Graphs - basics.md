@@ -319,6 +319,7 @@ In out [[#Properties|graph]]:
 
 Order/degree of vertex $p(V)= | \Gamma(V) |$ 
 
+> Number of [[#Neighborhood of vertices|neightbours]]
 > For example: $p(A) = 3$ 
 
 > [!note] 

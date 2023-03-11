@@ -1,6 +1,7 @@
 # Subgraph ($G' \subset G$)
 
 > Graph $G' = (V', E')$ is a *subgraph* of graph $G = (V, E)$ if $V' \subset V$, $E' \subset E$
+
 `````col
 ````col-md
 flexGrow=1

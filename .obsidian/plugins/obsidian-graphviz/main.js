@@ -9,46 +9,30 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
 var __commonJS = (cb, mod) => function __require() {
-  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
-  __markAsModule(target);
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
 };
-var __reExport = (target, module2, desc) => {
-  if (module2 && typeof module2 === "object" || typeof module2 === "function") {
-    for (let key of __getOwnPropNames(module2))
-      if (!__hasOwnProp.call(target, key) && key !== "default")
-        __defProp(target, key, { get: () => module2[key], enumerable: !(desc = __getOwnPropDesc(module2, key)) || desc.enumerable });
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
   }
-  return target;
+  return to;
 };
-var __toModule = (module2) => {
-  return __reExport(__markAsModule(__defProp(module2 != null ? __create(__getProtoOf(module2)) : {}, "default", module2 && module2.__esModule && "default" in module2 ? { get: () => module2.default, enumerable: true } : { value: module2, enumerable: true })), module2);
-};
-var __async = (__this, __arguments, generator) => {
-  return new Promise((resolve, reject) => {
-    var fulfilled = (value) => {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var rejected = (value) => {
-      try {
-        step(generator.throw(value));
-      } catch (e) {
-        reject(e);
-      }
-    };
-    var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
-    step((generator = generator.apply(__this, __arguments)).next());
-  });
-};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // node_modules/fs.realpath/old.js
 var require_old = __commonJS({
@@ -551,11 +535,15 @@ var require_minimatch = __commonJS({
   "node_modules/minimatch/minimatch.js"(exports, module2) {
     module2.exports = minimatch;
     minimatch.Minimatch = Minimatch;
-    var path = { sep: "/" };
-    try {
-      path = require("path");
-    } catch (er) {
-    }
+    var path = function() {
+      try {
+        return require("path");
+      } catch (e) {
+      }
+    }() || {
+      sep: "/"
+    };
+    minimatch.sep = path.sep;
     var GLOBSTAR = minimatch.GLOBSTAR = Minimatch.GLOBSTAR = {};
     var expand = require_brace_expansion();
     var plTypes = {
@@ -585,58 +573,68 @@ var require_minimatch = __commonJS({
       };
     }
     function ext(a, b) {
-      a = a || {};
       b = b || {};
       var t = {};
-      Object.keys(b).forEach(function(k) {
-        t[k] = b[k];
-      });
       Object.keys(a).forEach(function(k) {
         t[k] = a[k];
+      });
+      Object.keys(b).forEach(function(k) {
+        t[k] = b[k];
       });
       return t;
     }
     minimatch.defaults = function(def) {
-      if (!def || !Object.keys(def).length)
+      if (!def || typeof def !== "object" || !Object.keys(def).length) {
         return minimatch;
+      }
       var orig = minimatch;
       var m = function minimatch2(p, pattern, options) {
-        return orig.minimatch(p, pattern, ext(def, options));
+        return orig(p, pattern, ext(def, options));
       };
       m.Minimatch = function Minimatch2(pattern, options) {
         return new orig.Minimatch(pattern, ext(def, options));
       };
+      m.Minimatch.defaults = function defaults(options) {
+        return orig.defaults(ext(def, options)).Minimatch;
+      };
+      m.filter = function filter2(pattern, options) {
+        return orig.filter(pattern, ext(def, options));
+      };
+      m.defaults = function defaults(options) {
+        return orig.defaults(ext(def, options));
+      };
+      m.makeRe = function makeRe2(pattern, options) {
+        return orig.makeRe(pattern, ext(def, options));
+      };
+      m.braceExpand = function braceExpand2(pattern, options) {
+        return orig.braceExpand(pattern, ext(def, options));
+      };
+      m.match = function(list, pattern, options) {
+        return orig.match(list, pattern, ext(def, options));
+      };
       return m;
     };
     Minimatch.defaults = function(def) {
-      if (!def || !Object.keys(def).length)
-        return Minimatch;
       return minimatch.defaults(def).Minimatch;
     };
     function minimatch(p, pattern, options) {
-      if (typeof pattern !== "string") {
-        throw new TypeError("glob pattern string required");
-      }
+      assertValidPattern(pattern);
       if (!options)
         options = {};
       if (!options.nocomment && pattern.charAt(0) === "#") {
         return false;
       }
-      if (pattern.trim() === "")
-        return p === "";
       return new Minimatch(pattern, options).match(p);
     }
     function Minimatch(pattern, options) {
       if (!(this instanceof Minimatch)) {
         return new Minimatch(pattern, options);
       }
-      if (typeof pattern !== "string") {
-        throw new TypeError("glob pattern string required");
-      }
+      assertValidPattern(pattern);
       if (!options)
         options = {};
       pattern = pattern.trim();
-      if (path.sep !== "/") {
+      if (!options.allowWindowsEscape && path.sep !== "/") {
         pattern = pattern.split(path.sep).join("/");
       }
       this.options = options;
@@ -646,14 +644,13 @@ var require_minimatch = __commonJS({
       this.negate = false;
       this.comment = false;
       this.empty = false;
+      this.partial = !!options.partial;
       this.make();
     }
     Minimatch.prototype.debug = function() {
     };
     Minimatch.prototype.make = make;
     function make() {
-      if (this._made)
-        return;
       var pattern = this.pattern;
       var options = this.options;
       if (!options.nocomment && pattern.charAt(0) === "#") {
@@ -667,7 +664,9 @@ var require_minimatch = __commonJS({
       this.parseNegate();
       var set = this.globSet = this.braceExpand();
       if (options.debug)
-        this.debug = console.error;
+        this.debug = function debug() {
+          console.error.apply(console, arguments);
+        };
       this.debug(this.pattern, set);
       set = this.globParts = set.map(function(s) {
         return s.split(slashSplit);
@@ -712,23 +711,32 @@ var require_minimatch = __commonJS({
         }
       }
       pattern = typeof pattern === "undefined" ? this.pattern : pattern;
-      if (typeof pattern === "undefined") {
-        throw new TypeError("undefined pattern");
-      }
-      if (options.nobrace || !pattern.match(/\{.*\}/)) {
+      assertValidPattern(pattern);
+      if (options.nobrace || !/\{(?:(?!\{).)*\}/.test(pattern)) {
         return [pattern];
       }
       return expand(pattern);
     }
+    var MAX_PATTERN_LENGTH = 1024 * 64;
+    var assertValidPattern = function(pattern) {
+      if (typeof pattern !== "string") {
+        throw new TypeError("invalid pattern");
+      }
+      if (pattern.length > MAX_PATTERN_LENGTH) {
+        throw new TypeError("pattern is too long");
+      }
+    };
     Minimatch.prototype.parse = parse;
     var SUBPARSE = {};
     function parse(pattern, isSub) {
-      if (pattern.length > 1024 * 64) {
-        throw new TypeError("pattern is too long");
-      }
+      assertValidPattern(pattern);
       var options = this.options;
-      if (!options.noglobstar && pattern === "**")
-        return GLOBSTAR;
+      if (pattern === "**") {
+        if (!options.noglobstar)
+          return GLOBSTAR;
+        else
+          pattern = "*";
+      }
       if (pattern === "")
         return "";
       var re = "";
@@ -769,8 +777,9 @@ var require_minimatch = __commonJS({
           continue;
         }
         switch (c) {
-          case "/":
+          case "/": {
             return false;
+          }
           case "\\":
             clearStateChar();
             escaping = true;
@@ -854,17 +863,15 @@ var require_minimatch = __commonJS({
               escaping = false;
               continue;
             }
-            if (inClass) {
-              var cs = pattern.substring(classStart + 1, i);
-              try {
-                RegExp("[" + cs + "]");
-              } catch (er) {
-                var sp = this.parse(cs, SUBPARSE);
-                re = re.substr(0, reClassStart) + "\\[" + sp[0] + "\\]";
-                hasMagic = hasMagic || sp[1];
-                inClass = false;
-                continue;
-              }
+            var cs = pattern.substring(classStart + 1, i);
+            try {
+              RegExp("[" + cs + "]");
+            } catch (er) {
+              var sp = this.parse(cs, SUBPARSE);
+              re = re.substr(0, reClassStart) + "\\[" + sp[0] + "\\]";
+              hasMagic = hasMagic || sp[1];
+              inClass = false;
+              continue;
             }
             hasMagic = true;
             inClass = false;
@@ -906,8 +913,8 @@ var require_minimatch = __commonJS({
       }
       var addPatternStart = false;
       switch (re.charAt(0)) {
-        case ".":
         case "[":
+        case ".":
         case "(":
           addPatternStart = true;
       }
@@ -994,8 +1001,9 @@ var require_minimatch = __commonJS({
       }
       return list;
     };
-    Minimatch.prototype.match = match;
-    function match(f, partial) {
+    Minimatch.prototype.match = function match(f, partial) {
+      if (typeof partial === "undefined")
+        partial = this.partial;
       this.debug("match", f, this.pattern);
       if (this.comment)
         return false;
@@ -1034,10 +1042,13 @@ var require_minimatch = __commonJS({
       if (options.flipNegate)
         return false;
       return this.negate;
-    }
+    };
     Minimatch.prototype.matchOne = function(file2, pattern, partial) {
       var options = this.options;
-      this.debug("matchOne", { "this": this, file: file2, pattern });
+      this.debug(
+        "matchOne",
+        { "this": this, file: file2, pattern }
+      );
       this.debug("matchOne", file2.length, pattern.length);
       for (var fi = 0, pi = 0, fl = file2.length, pl = pattern.length; fi < fl && pi < pl; fi++, pi++) {
         this.debug("matchOne loop");
@@ -1082,11 +1093,7 @@ var require_minimatch = __commonJS({
         }
         var hit;
         if (typeof p === "string") {
-          if (options.nocase) {
-            hit = f.toLowerCase() === p.toLowerCase();
-          } else {
-            hit = f === p;
-          }
+          hit = f === p;
           this.debug("string match", p, f, hit);
         } else {
           hit = f.match(p);
@@ -1100,8 +1107,7 @@ var require_minimatch = __commonJS({
       } else if (fi === fl) {
         return partial;
       } else if (pi === pl) {
-        var emptyFileEnd = fi === fl - 1 && file2[fi] === "";
-        return emptyFileEnd;
+        return fi === fl - 1 && file2[fi] === "";
       }
       throw new Error("wtf?");
     };
@@ -1209,7 +1215,7 @@ var require_common = __commonJS({
     function setopts(self, pattern, options) {
       if (!options)
         options = {};
-      if (options.matchBase && pattern.indexOf("/") === -1) {
+      if (options.matchBase && -1 === pattern.indexOf("/")) {
         if (options.noglobstar) {
           throw new Error("base matching requires globstar");
         }
@@ -1219,7 +1225,7 @@ var require_common = __commonJS({
       self.pattern = pattern;
       self.strict = options.strict !== false;
       self.realpath = !!options.realpath;
-      self.realpathCache = options.realpathCache || Object.create(null);
+      self.realpathCache = options.realpathCache || /* @__PURE__ */ Object.create(null);
       self.follow = !!options.follow;
       self.dot = !!options.dot;
       self.mark = !!options.mark;
@@ -1236,9 +1242,9 @@ var require_common = __commonJS({
       self.absolute = !!options.absolute;
       self.fs = options.fs || fs2;
       self.maxLength = options.maxLength || Infinity;
-      self.cache = options.cache || Object.create(null);
-      self.statCache = options.statCache || Object.create(null);
-      self.symlinks = options.symlinks || Object.create(null);
+      self.cache = options.cache || /* @__PURE__ */ Object.create(null);
+      self.statCache = options.statCache || /* @__PURE__ */ Object.create(null);
+      self.symlinks = options.symlinks || /* @__PURE__ */ Object.create(null);
       setupIgnores(self, options);
       self.changedCwd = false;
       var cwd = process.cwd();
@@ -1258,12 +1264,13 @@ var require_common = __commonJS({
       self.nomount = !!options.nomount;
       options.nonegate = true;
       options.nocomment = true;
+      options.allowWindowsEscape = false;
       self.minimatch = new Minimatch(pattern, options);
       self.options = self.minimatch.options;
     }
     function finish(self) {
       var nou = self.nounique;
-      var all = nou ? [] : Object.create(null);
+      var all = nou ? [] : /* @__PURE__ */ Object.create(null);
       for (var i = 0, l = self.matches.length; i < l; i++) {
         var matches = self.matches[i];
         if (!matches || Object.keys(matches).length === 0) {
@@ -1400,11 +1407,11 @@ var require_sync = __commonJS({
       this._finish();
     }
     GlobSync.prototype._finish = function() {
-      assert(this instanceof GlobSync);
+      assert.ok(this instanceof GlobSync);
       if (this.realpath) {
         var self = this;
         this.matches.forEach(function(matchset, index) {
-          var set = self.matches[index] = Object.create(null);
+          var set = self.matches[index] = /* @__PURE__ */ Object.create(null);
           for (var p in matchset) {
             try {
               p = self._makeAbs(p);
@@ -1422,7 +1429,7 @@ var require_sync = __commonJS({
       common.finish(this);
     };
     GlobSync.prototype._process = function(pattern, index, inGlobStar) {
-      assert(this instanceof GlobSync);
+      assert.ok(this instanceof GlobSync);
       var n = 0;
       while (typeof pattern[n] === "string") {
         n++;
@@ -1443,7 +1450,9 @@ var require_sync = __commonJS({
       var read;
       if (prefix === null)
         read = ".";
-      else if (isAbsolute(prefix) || isAbsolute(pattern.join("/"))) {
+      else if (isAbsolute(prefix) || isAbsolute(pattern.map(function(p) {
+        return typeof p === "string" ? p : "[*]";
+      }).join("/"))) {
         if (!prefix || !isAbsolute(prefix))
           prefix = "/" + prefix;
         read = prefix;
@@ -1485,7 +1494,7 @@ var require_sync = __commonJS({
         return;
       if (remain.length === 1 && !this.mark && !this.stat) {
         if (!this.matches[index])
-          this.matches[index] = Object.create(null);
+          this.matches[index] = /* @__PURE__ */ Object.create(null);
         for (var i = 0; i < len; i++) {
           var e = matchedEntries[i];
           if (prefix) {
@@ -1638,7 +1647,7 @@ var require_sync = __commonJS({
     GlobSync.prototype._processSimple = function(prefix, index) {
       var exists = this._stat(prefix);
       if (!this.matches[index])
-        this.matches[index] = Object.create(null);
+        this.matches[index] = /* @__PURE__ */ Object.create(null);
       if (!exists)
         return;
       if (prefix && isAbsolute(prefix) && !this.nomount) {
@@ -1789,7 +1798,7 @@ var require_once = __commonJS({
 var require_inflight = __commonJS({
   "node_modules/inflight/inflight.js"(exports, module2) {
     var wrappy = require_wrappy();
-    var reqs = Object.create(null);
+    var reqs = /* @__PURE__ */ Object.create(null);
     var once = require_once();
     module2.exports = wrappy(inflight);
     function inflight(key, cb) {
@@ -1979,7 +1988,7 @@ var require_glob = __commonJS({
       var n = found.length;
       if (n === 0)
         return cb();
-      var set = this.matches[index] = Object.create(null);
+      var set = this.matches[index] = /* @__PURE__ */ Object.create(null);
       found.forEach(function(p, i) {
         p = self._makeAbs(p);
         rp.realpath(p, self.realpathCache, function(er, real) {
@@ -2065,7 +2074,9 @@ var require_glob = __commonJS({
       var read;
       if (prefix === null)
         read = ".";
-      else if (isAbsolute(prefix) || isAbsolute(pattern.join("/"))) {
+      else if (isAbsolute(prefix) || isAbsolute(pattern.map(function(p) {
+        return typeof p === "string" ? p : "[*]";
+      }).join("/"))) {
         if (!prefix || !isAbsolute(prefix))
           prefix = "/" + prefix;
         read = prefix;
@@ -2112,7 +2123,7 @@ var require_glob = __commonJS({
         return cb();
       if (remain.length === 1 && !this.mark && !this.stat) {
         if (!this.matches[index])
-          this.matches[index] = Object.create(null);
+          this.matches[index] = /* @__PURE__ */ Object.create(null);
         for (var i = 0; i < len; i++) {
           var e = matchedEntries[i];
           if (prefix) {
@@ -2303,7 +2314,7 @@ var require_glob = __commonJS({
     };
     Glob.prototype._processSimple2 = function(prefix, index, er, exists, cb) {
       if (!this.matches[index])
-        this.matches[index] = Object.create(null);
+        this.matches[index] = /* @__PURE__ */ Object.create(null);
       if (!exists)
         return cb();
       if (prefix && isAbsolute(prefix) && !this.nomount) {
@@ -2997,13 +3008,15 @@ var require_tmp = __commonJS({
 });
 
 // src/main.ts
-__export(exports, {
+var main_exports = {};
+__export(main_exports, {
   default: () => GraphvizPlugin
 });
-var import_obsidian2 = __toModule(require("obsidian"));
+module.exports = __toCommonJS(main_exports);
+var import_obsidian2 = require("obsidian");
 
 // src/setting.ts
-var import_obsidian = __toModule(require("obsidian"));
+var import_obsidian = require("obsidian");
 var DEFAULT_SETTINGS = {
   dotPath: "dot",
   renderer: "dot",
@@ -3017,120 +3030,120 @@ var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Graphviz renderer").setDesc("Please choose the Graphviz renderer, after that, you will need to restart obsidian.").addDropdown((dropdown) => dropdown.addOption("dot", "dot").addOption("d3_graphviz", "D3 Graphviz (experimental)").setValue(this.plugin.settings.renderer).onChange((value) => __async(this, null, function* () {
+    new import_obsidian.Setting(containerEl).setName("Graphviz renderer").setDesc("Please choose the Graphviz renderer, after that, you will need to restart obsidian.").addDropdown((dropdown) => dropdown.addOption("dot", "dot").addOption("d3_graphviz", "D3 Graphviz (experimental)").setValue(this.plugin.settings.renderer).onChange(async (value) => {
       this.plugin.settings.renderer = value;
-      yield this.plugin.saveSettings();
-    })));
-    new import_obsidian.Setting(containerEl).setName("Dot Path").setDesc("Dot executable path").addText((text) => text.setPlaceholder(DEFAULT_SETTINGS.dotPath).setValue(this.plugin.settings.dotPath).onChange((value) => __async(this, null, function* () {
-      this.plugin.settings.dotPath = value;
-      yield this.plugin.saveSettings();
-    })));
-    new import_obsidian.Setting(containerEl).setName("Image format").setDesc("Graphviz output format.").addDropdown((dropdown) => dropdown.addOption("png", "png").addOption("svg", "svg").setValue(this.plugin.settings.imageFormat).onChange((value) => __async(this, null, function* () {
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian.Setting(containerEl).setName("Dot Path").setDesc("Dot executable path").addText(
+      (text) => text.setPlaceholder(DEFAULT_SETTINGS.dotPath).setValue(this.plugin.settings.dotPath).onChange(
+        async (value) => {
+          this.plugin.settings.dotPath = value;
+          await this.plugin.saveSettings();
+        }
+      )
+    );
+    new import_obsidian.Setting(containerEl).setName("Image format").setDesc("Graphviz output format.").addDropdown((dropdown) => dropdown.addOption("png", "png").addOption("svg", "svg").setValue(this.plugin.settings.imageFormat).onChange(async (value) => {
       this.plugin.settings.imageFormat = value;
-      yield this.plugin.saveSettings();
-    })));
+      await this.plugin.saveSettings();
+    }));
   }
 };
 
 // src/processors.ts
-var tmp = __toModule(require_tmp());
-var fs = __toModule(require("fs"));
-var import_child_process = __toModule(require("child_process"));
-var import_crypto = __toModule(require("crypto"));
+var tmp = __toESM(require_tmp());
+var fs = __toESM(require("fs"));
+var import_child_process = require("child_process");
+var import_crypto = require("crypto");
 var Processors = class {
   constructor(plugin) {
-    this.imageMimeType = new Map([
+    this.imageMimeType = /* @__PURE__ */ new Map([
       ["png", "image/png"],
       ["svg", "image/svg+xml"]
     ]);
     this.plugin = plugin;
   }
-  writeDotFile(sourceFile) {
-    return __async(this, null, function* () {
-      return new Promise((resolve, reject) => {
-        const cmdPath = this.plugin.settings.dotPath;
-        const imageFormat = this.plugin.settings.imageFormat;
-        const parameters = [`-T${imageFormat}`, sourceFile];
-        console.debug(`Starting dot process ${cmdPath}, ${parameters}`);
-        const dotProcess = (0, import_child_process.spawn)(cmdPath, parameters);
-        const outData = [];
-        let errData = "";
-        dotProcess.stdout.on("data", function(data) {
-          outData.push(data);
-        });
-        dotProcess.stderr.on("data", function(data) {
-          errData += data;
-        });
-        dotProcess.stdin.end();
-        dotProcess.on("exit", function(code) {
-          if (code !== 0) {
-            reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
-          } else {
-            resolve(Buffer.concat(outData));
-          }
-        });
-        dotProcess.on("error", function(err) {
-          reject(`"${cmdPath} ${parameters}" failed, ${err}`);
-        });
+  async writeDotFile(sourceFile) {
+    return new Promise((resolve, reject) => {
+      const cmdPath = this.plugin.settings.dotPath;
+      const imageFormat = this.plugin.settings.imageFormat;
+      const parameters = [`-T${imageFormat}`, sourceFile];
+      console.debug(`Starting dot process ${cmdPath}, ${parameters}`);
+      const dotProcess = (0, import_child_process.spawn)(cmdPath, parameters);
+      const outData = [];
+      let errData = "";
+      dotProcess.stdout.on("data", function(data) {
+        outData.push(data);
+      });
+      dotProcess.stderr.on("data", function(data) {
+        errData += data;
+      });
+      dotProcess.stdin.end();
+      dotProcess.on("exit", function(code) {
+        if (code !== 0) {
+          reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
+        } else {
+          resolve(Buffer.concat(outData));
+        }
+      });
+      dotProcess.on("error", function(err) {
+        reject(`"${cmdPath} ${parameters}" failed, ${err}`);
       });
     });
   }
-  convertToImage(source) {
-    return __async(this, null, function* () {
-      const self = this;
-      return new Promise((resolve, reject) => {
-        tmp.file(function(err, tmpPath, fd, _) {
-          if (err)
-            reject(err);
-          fs.write(fd, source, function(err2) {
-            if (err2) {
-              reject(`write to ${tmpPath} error ${err2}`);
-              return;
-            }
-            fs.close(fd, function(err3) {
+  async convertToImage(source) {
+    const self = this;
+    return new Promise((resolve, reject) => {
+      tmp.file(function(err, tmpPath, fd, _) {
+        if (err)
+          reject(err);
+        fs.write(fd, source, function(err2) {
+          if (err2) {
+            reject(`write to ${tmpPath} error ${err2}`);
+            return;
+          }
+          fs.close(
+            fd,
+            function(err3) {
               if (err3) {
                 reject(`close ${tmpPath} error ${err3}`);
                 return;
               }
               return self.writeDotFile(tmpPath).then((data) => resolve(data)).catch((message) => reject(message));
-            });
-          });
+            }
+          );
         });
       });
     });
   }
-  imageProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      try {
-        console.debug("Call image processor");
-        const imageData = yield this.convertToImage(source);
-        const blob = new Blob([imageData], { "type": this.imageMimeType.get(this.plugin.settings.imageFormat) });
-        const url = window.URL || window.webkitURL;
-        const blobUrl = url.createObjectURL(blob);
-        const img = document.createElement("img");
-        img.src = blobUrl;
-        el.appendChild(img);
-      } catch (errMessage) {
-        console.error("convert to image error", errMessage);
-        const pre = document.createElement("pre");
-        const code = document.createElement("code");
-        pre.appendChild(code);
-        code.setText(errMessage);
-        el.appendChild(pre);
-      }
-    });
+  async imageProcessor(source, el, _) {
+    try {
+      console.debug("Call image processor");
+      const imageData = await this.convertToImage(source);
+      const blob = new Blob([imageData], { "type": this.imageMimeType.get(this.plugin.settings.imageFormat) });
+      const url = window.URL || window.webkitURL;
+      const blobUrl = url.createObjectURL(blob);
+      const img = document.createElement("img");
+      img.src = blobUrl;
+      el.appendChild(img);
+    } catch (errMessage) {
+      console.error("convert to image error", errMessage);
+      const pre = document.createElement("pre");
+      const code = document.createElement("code");
+      pre.appendChild(code);
+      code.setText(errMessage);
+      el.appendChild(pre);
+    }
   }
-  d3graphvizProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      console.debug("Call d3graphvizProcessor");
-      const div = document.createElement("div");
-      const graphId = "d3graph_" + (0, import_crypto.createHash)("md5").update(source).digest("hex").substring(0, 6);
-      div.setAttr("id", graphId);
-      div.setAttr("style", "text-align: center");
-      el.appendChild(div);
-      const script = document.createElement("script");
-      const escapedSource = source.replaceAll("\\", "\\\\").replaceAll("`", "\\`");
-      script.text = `if( typeof d3 != 'undefined') { 
+  async d3graphvizProcessor(source, el, _) {
+    console.debug("Call d3graphvizProcessor");
+    const div = document.createElement("div");
+    const graphId = "d3graph_" + (0, import_crypto.createHash)("md5").update(source).digest("hex").substring(0, 6);
+    div.setAttr("id", graphId);
+    div.setAttr("style", "text-align: center");
+    el.appendChild(div);
+    const script = document.createElement("script");
+    const escapedSource = source.replaceAll("\\", "\\\\").replaceAll("`", "\\`");
+    script.text = `if( typeof d3 != 'undefined') { 
         d3.select("#${graphId}").graphviz()
         .onerror(d3error)
        .renderDot(\`${escapedSource}\`);
@@ -3139,59 +3152,56 @@ var Processors = class {
         d3.select("#${graphId}").html(\`<div class="d3graphvizError"> d3.graphviz(): \`+err.toString()+\`</div>\`);
         console.error('Caught error on ${graphId}: ', err);
     }`;
-      el.appendChild(script);
-    });
+    el.appendChild(script);
   }
 };
 
 // src/main.ts
 var GraphvizPlugin = class extends import_obsidian2.Plugin {
-  onload() {
-    return __async(this, null, function* () {
-      console.debug("Load graphviz plugin");
-      yield this.loadSettings();
-      this.addSettingTab(new GraphvizSettingsTab(this));
-      const processors = new Processors(this);
-      const d3Sources = [
-        "https://d3js.org/d3.v5.min.js",
-        "https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js",
-        "https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"
-      ];
-      this.app.workspace.onLayoutReady(() => {
-        switch (this.settings.renderer) {
-          case "d3_graphviz":
-            for (const src of d3Sources) {
-              const script = document.createElement("script");
-              script.src = src;
-              (document.head || document.documentElement).appendChild(script);
-            }
-            this.registerMarkdownCodeBlockProcessor("dot", processors.d3graphvizProcessor.bind(processors));
-            break;
-          default:
-            this.registerMarkdownCodeBlockProcessor("dot", processors.imageProcessor.bind(processors));
-        }
-      });
+  async onload() {
+    console.debug("Load graphviz plugin");
+    await this.loadSettings();
+    this.addSettingTab(new GraphvizSettingsTab(this));
+    const processors = new Processors(this);
+    const d3Sources = [
+      "https://d3js.org/d3.v5.min.js",
+      "https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js",
+      "https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"
+    ];
+    this.app.workspace.onLayoutReady(() => {
+      switch (this.settings.renderer) {
+        case "d3_graphviz":
+          for (const src of d3Sources) {
+            const script = document.createElement("script");
+            script.src = src;
+            (document.head || document.documentElement).appendChild(script);
+          }
+          this.registerMarkdownCodeBlockProcessor("dot", processors.d3graphvizProcessor.bind(processors));
+          break;
+        default:
+          this.registerMarkdownCodeBlockProcessor("dot", processors.imageProcessor.bind(processors));
+      }
     });
   }
   onunload() {
     console.debug("Unload graphviz plugin");
   }
-  loadSettings() {
-    return __async(this, null, function* () {
-      this.settings = Object.assign({}, DEFAULT_SETTINGS, yield this.loadData());
-      return Promise.resolve();
-    });
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    return Promise.resolve();
   }
-  saveSettings() {
-    return __async(this, null, function* () {
-      yield this.saveData(this.settings);
-    });
+  async saveSettings() {
+    await this.saveData(this.settings);
   }
 };
-/*!
- * Tmp
- *
- * Copyright (c) 2011-2017 KARASZI Istvan <github@spam.raszi.hu>
- *
- * MIT Licensed
- */
+/*! Bundled license information:
+
+tmp/lib/tmp.js:
+  (*!
+   * Tmp
+   *
+   * Copyright (c) 2011-2017 KARASZI Istvan <github@spam.raszi.hu>
+   *
+   * MIT Licensed
+   *)
+*/

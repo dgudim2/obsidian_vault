@@ -260,5 +260,5 @@ flexGrow=1.2
 --- 
 <br>
 
-Next: [[Graphs - edge graph]]
+Next: [[Graphs - metrics2]]
 

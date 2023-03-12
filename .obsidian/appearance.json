@@ -3,7 +3,7 @@
   "cssTheme": "Obsidian gruvbox",
   "baseFontSize": 15,
   "interfaceFontFamily": "Segoe UI",
-  "textFontFamily": "Consolas,FiraCode Nerd Font",
+  "textFontFamily": "FiraCode Nerd Font",
   "monospaceFontFamily": "FiraCode Nerd Font Mono",
   "nativeMenus": false,
   "enabledCssSnippets": [

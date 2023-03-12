@@ -293,7 +293,7 @@ $C=A \cup B$ | $c_{ij}=a_{ij} \ \lor \ b_{ij}$
 flexGrow=1
 ===
 
-$G$
+#### $G$
 
 $$
 
@@ -315,7 +315,7 @@ $$
 flexGrow=1
 ===
 
-$T$
+#### $T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -333,10 +333,10 @@ $$
 
 ```
 ```col-md
-flexGrow=1
+flexGrow=1.1
 ===
 
-$G \cup T$
+#### $G \cup T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -473,7 +473,7 @@ $C=A \oplus B$ | $c_{ij}=a_{ij} \ \oplus \ b_{ij}$
 flexGrow=1
 ===
 
-$G$
+#### $G$
 
 $$
 
@@ -495,7 +495,7 @@ $$
 flexGrow=1
 ===
 
-$T$
+#### $T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -516,7 +516,7 @@ $$
 flexGrow=1
 ===
 
-$G \oplus T$
+#### $G \oplus T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -551,7 +551,7 @@ Complement of graph $G=(V, E)$ is a graph $\neg G=(V, \neg E)$
 `````col
 
 ````col-md
-## $G$
+### $G$
 ---
 ```dot
 graph neato {
@@ -581,7 +581,7 @@ d -- {b}
 ````
 
 ````col-md
-## $\neg G$
+### $\neg G$
 ---
 ```dot
 graph neato {
@@ -622,7 +622,7 @@ $C=\neg  A$ | $c_{ij}=\neg a_{ij}$
 `````col
 
 ````col-md
-## $G$
+### $G$
 ---
 ```dot
 graph neato {
@@ -652,7 +652,7 @@ d -- b
 ````
 
 ````col-md
-## $B$
+### $B$
 ---
 ```dot
 graph neato {
@@ -681,7 +681,7 @@ d -- b
 ````
 
 ````col-md
-## $G\cap \neg B \ \ \ (A - B)$
+### $G\cap \neg B \ \ \ (A - B)$
 ---
 ```dot
 graph neato {
@@ -725,7 +725,7 @@ $C=A \textbackslash B$ | $c_{ij}=a_{ij} \& \neg b_{ij}$
 flexGrow=1
 ===
 
-$G$
+#### $G$
 
 $$
 
@@ -747,7 +747,7 @@ $$
 flexGrow=1
 ===
 
-$T$
+#### $T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -768,7 +768,7 @@ $$
 flexGrow=1
 ===
 
-$G \textbackslash T$
+#### $G \textbackslash T$
 
 $$
 \begin{array}{c c c c c} & 

@@ -204,6 +204,11 @@
       "id": "editing-toolbar:workplace-fullscreen-focus",
       "name": "workplace-Fullscreen ",
       "icon": "exit-fullscreen"
+    },
+    {
+      "id": "obsidian-git:push",
+      "name": "Obsidian Git: Create backup",
+      "icon": "upload"
     }
   ],
   "appendMethod": "body",

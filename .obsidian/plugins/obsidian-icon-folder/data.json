@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "RiTodoLine",
       "SiGraphql",
       "SiDiagramsdotnetWhite",
       "SiLatex",
-      "RiFullscreenExitLine",
-      "FasDiceSix"
+      "RiFullscreenExitLine"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -31,5 +31,6 @@
   "Reference.md": "RiFullscreenExitLine",
   "Latex symbols.pdf": "SiLatex",
   "uni/Discrete math/Graphs/Graph tasks.pdf": "SiDiagramsdotnetWhite",
-  "uni/Discrete math/Graphs": "SiGraphql"
+  "uni/Discrete math/Graphs": "SiGraphql",
+  "Scheduler.md": "RiTodoLine"
 }

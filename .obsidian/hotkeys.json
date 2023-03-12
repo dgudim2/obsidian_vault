@@ -92,5 +92,13 @@
       ],
       "key": "ArrowUp"
     }
+  ],
+  "obsidian-icons-plugin:open-icons-plugin-modal": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "I"
+    }
   ]
 }

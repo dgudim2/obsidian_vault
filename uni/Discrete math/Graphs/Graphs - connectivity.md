@@ -9,7 +9,7 @@ Previous: [[Graphs - operations]]
 ````col-md
 flexGrow=1
 ===
-$G$
+## $G$
 
 ```dot 
 graph neato { 
@@ -42,7 +42,7 @@ d -- {b b}
 ````col-md
 flexGrow=1
 ===
-$T \subset G$
+## $T \subset G$
 
 ```dot 
 graph neato { 
@@ -197,7 +197,7 @@ f -- {a b}
 ````col-md
 flexGrow=1
 ===
-### Connected
+## Connected
 
 ```dot 
 graph neato { 
@@ -232,7 +232,7 @@ e -- f
 ````col-md
 flexGrow=1
 ===
-### Not connected
+## Not connected
 
 ```dot 
 graph neato { 

@@ -322,6 +322,7 @@ Can be written in 2 ways:
 > [!note]
 > If you are going for a walk, you can visit same street ([[Graphs - basics#Undirected graph|edges]]) several times
 
+
 ## Open / closed walk
 
 > [[#Walk]] is **open** if first and last [[Graphs - basics#Directed graphs|vertices]] are different
@@ -330,9 +331,11 @@ Can be written in 2 ways:
 > [!info] 
 > First and last vertices are called **terminal** vertices
 
+
 ## Circuit
 
 > If all [[Graphs - basics#Undirected graph|edges]] of [[#Walk|walk]] are distinct, it called a **circuit**
+
 
 ## Path
 
@@ -341,6 +344,7 @@ Can be written in 2 ways:
 ### Length of the path
 
 > **Length of the [[#Path|path]] ** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
+
 
 ## Cycle
 
@@ -521,6 +525,20 @@ f -- a
 ````
 `````
 
+#### Cyclomatic number
+
+> **Cyclomatic** number is the number of [[#Independent cycles|independent cycles]] in a graph 
+> $G=(V,E)$; 
+> $v(G)=m-n+k$
+> n - amount of [[Graphs - basics#Directed graphs|vertices]]
+> m - amount of [[Graphs - basics#Undirected graph|edges]]
+> k - amount of [[#Connected components|connected components]]
+
+> [!note] 
+> 1. Graph has *no cycles* if and only if $v(G)=0$
+> 2. [[#Connected graph]] is a ==#TODO: link to trees== tree if and only if $v(G)=0$
+> 3. Graph is *k*-forest ==#TODO: link to forest== if and only if it has *k* [[#Connected components|connected components]] and $v(G)=0$
+
 #### How to determine which cycles are independent
 
 > Which [[#Cycle|cycles]] of a [[Graphs - basics#Complete graph|complete graph]] $K_{5}$ are **independent**?
@@ -629,6 +647,9 @@ flexGrow=1
 ````
 
 > In this case **base** is $\{C_{1}, C_{3}\}$ or $\{C_{1}, C_{2}\}$
+
+> Any [[#Cycle|cycle]] in a graph can be expressed by it's **base** cycles:
+> $C=C_{i1} \ \oplus \ C_{i2} \ \oplus \ ...\ \oplus \ C_{in}$   
 
 --- 
 <br>

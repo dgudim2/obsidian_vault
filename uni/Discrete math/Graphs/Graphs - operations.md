@@ -545,7 +545,7 @@ $$
 Complement of graph $G=(V, E)$ is a graph $\neg G=(V, \neg E)$
 
 > [!note]
-> 1. $G \cup \neg G=K_{n}$ ([[#Union (OR/$ cup$)|Union]] of graph and it's complement is a [[Graphs - basics#Special graphs|complete]] graph) 
+> 1. $G \cup \neg G=K_{n}$ ([[#Union (OR/$ cup$)|Union]] of graph and it's complement is a [[Graphs - basics#Complete graph|complete]] graph) 
 > 2. $G \cap \neg G=(V, \emptyset)$ ([[#Intersection (AND/$ cap$)|Intersection]] of graph and it's complement is a graph with no edges)
 
 `````col

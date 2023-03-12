@@ -1,15 +1,11 @@
 
 Previous: [[Graphs - connectivity]]
 
-# Length of the path
-
-> **Length of the [[Graphs - connectivity#Path|path]]** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
-
 # Distances
 
 ## Distance between vertices
 
-> Distance between 2 [[Graphs - basics#Directed graphs|vertices]] is the length of shortest [[Graphs - connectivity#Path|path]] connecting these vertices. 
+> **Distance between 2 [[Graphs - basics#Directed graphs|vertices]]** is the *length* of shortest [[Graphs - connectivity#Path|path]] connecting these vertices. 
 > Notion: $\rho (u,w)$ 
 
 > [!note] 

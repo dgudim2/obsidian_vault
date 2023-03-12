@@ -338,6 +338,10 @@ Can be written in 2 ways:
 
 > [[#Open / closed walk|Open]] [[#Circuit|circuit]] is called a **path** 
 
+### Length of the path
+
+> **Length of the [[#Path|path]] ** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
+
 ## Cycle
 
 > [[#Open / closed walk|Closed]] [[#Circuit|circuit]] is called a **cycle** 
@@ -375,6 +379,256 @@ f -- a
 ```
 
 > [[#Connected graph]] is a [[#Cycle|cycle]], if all vertices have [[Graphs - basics#Order (degree) of vertices|degree]] 2 | $p(v_{i})=2$
+
+### Independent cycles
+
+`````col
+````col-md
+flexGrow=1
+===
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+f [pos="0.5,-0.9!"] 
+o [pos="1,0!"]
+
+edge [color = grey] 
+ 
+a -- b
+f -- a
+d -- o
+
+edge [color = yellow] 
+b -- c
+c -- d
+b -- o
+f -- o
+e -- f
+d -- e
+
+} 
+```
+
+````
+````col-md
+flexGrow=1
+===
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+f [pos="0.5,-0.9!"] 
+o [pos="1,0!"]
+
+edge [color = grey] 
+ 
+a -- b
+d -- e
+e -- f
+f -- a
+
+f -- o
+
+edge [color = red] 
+b -- c
+c -- d
+b -- o
+d -- o
+
+} 
+```
+
+````
+````col-md
+flexGrow=1
+===
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+f [pos="0.5,-0.9!"] 
+o [pos="1,0!"]
+
+edge [color = grey] 
+ 
+
+d -- e
+e -- f
+
+b -- c
+c -- d
+
+d -- o
+
+edge [color = cyan] 
+b -- o
+f -- o
+a -- b
+f -- a
+
+} 
+```
+
+````
+`````
+
+#### How to determine which cycles are independent
+
+> Which [[#Cycle|cycles]] of a [[Graphs - basics#Complete graph|complete graph]] $K_{5}$ are **independent**?
+> 
+> $C_{1}=\{v_{5}, v_{2}, v_{3}, v_{4}, v_{2}, v_{1}, v_{4}, v_{5}\}$
+> $C_{2}=\{v_{5}, v_{2}, v_{1}, v_{4}, v_{5}\}$
+> $C_{3}=\{v_{2}, v_{3}, v_{4}, v_{2}\}$
+> $C_{4}=\{v_{5}, v_{1}, v_{3}, v_{4}, v_{5}\}$
+> $C_{5}=\{v_{1}, v_{4}, v_{3}, v_{1}\}$
+
+1. Let's enumerate the edges: 
+	- $\{v_{1}, v_{2}\} - 1$
+	- $\{v_{1}, v_{3}\} - 2$
+	- $\{v_{1}, v_{4}\} - 3$
+	- $\{v_{1}, v_{5}\} - 4$
+	- $\{v_{2}, v_{3}\} - 5$
+	- $\{v_{2}, v_{4}\} - 6$
+	- $\{v_{2}, v_{5}\} - 7$
+	- $\{v_{3}, v_{4}\} - 8$
+	- $\{v_{3}, v_{5}\} - 9$
+	- $\{v_{4}, v_{5}\} - 10$
+
+2. Make vectors for every cycle and fill the table
+	- [[Graphs - basics#Undirected graph|Edge]] $\{v_{1}, v_{2}\}$ is present in $C_{1}$ and $C_{2}$ but in *reverse order*, we write *-1* in the table for those [[#Cycle|cycles]]
+	- [[Graphs - basics#Undirected graph|Edge]] $\{v_{1}, v_{2}\}$ is *not present* in any other [[#Cycle|cycles]], we write *0* in the table for those [[#Cycle|cycles]]
+	- [[Graphs - basics#Undirected graph|Edge]] $\{v_{1}, v_{3}\}$ is present in $C_{4}$ in the *same order*, we write *1* in the table for this [[#Cycle|cycle]]
+
+|         |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
+| ------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| $C_{1}$ | -1  |  0  |  1  |  0  |  1  | -1  | -1  |  1  |  0  |  1  |
+| $C_{2}$ | -1  |  0  |  1  |  0  |  0  |  0  | -1  |  0  |  0  |  1  |
+| $C_{3}$ |  0  |  0  |  0  |  0  |  1  | -1  |  0  |  1  |  0  |  0  |
+| $C_{4}$ |  0  |  1  |  0  | -1  |  0  |  0  |  0  |  1  |  0  |  1  |
+| $C_{5}$ |  0  | -1  |  1  |  0  |  0  |  0  |  0  | -1  |  0  |  0  |
+
+3. Now we find the *rank* of the matrix
+> After simplification we get *4* **independent** cycles
+
+|         |  1  |  2  |  3  |  4  |
+| ------- |:---:|:---:|:---:|:---:|
+| $C_{2}$ |  1  |  0  |  0  |  0  |
+| $C_{5}$ |  0  |  1  |  0  |  0  |
+| $C_{4}$ |  0  |  0  |  1  |  0  |
+| $C_{1}$ |  0  |  0  |  0  |  1  |
+
+#### Cycles base
+
+> Let's take this case for example
+
+|         |  1  |  2  |  4  |
+| ------- |:---:|:---:|:---:|
+| $C_{1}$ |  1  |  0  | -1  |
+| $C_{2}$ |  1  | -1  |  0  |
+| $C_{3}$ | -1  |  1  |  0  |
+
+> To find the **base** we need to find minors with *determinant* not equal to *0*
+
+> We will discard one row and try to make *nonzero determinant* from remaining ones.
+
+````col
+```col-md
+flexGrow=1
+===
+
+##### Remove $C_{1}$
+
+|         |  1  |  2  |  4  |
+| ------- |:---:|:---:|:---:|
+| $C_{2}$ |  1  | -1  |  0  |
+| $C_{3}$ | -1  |  1  |  0  |
+
+> Column 3 is all zeros, we can't use it
+> Remaining columns make *zero determinant*. So these vectors are *dependent*.
+
+```
+```col-md
+flexGrow=1
+===
+
+##### Remove $C_{2}$
+
+|         |  1  |  2  |  4  |
+| ------- |:---:|:---:|:---:|
+| $C_{1}$ |  1  |  0  | -1  |
+| $C_{3}$ | -1  |  1  |  0  |
+
+> Column 1 and 2 make a *nonzero* determinant.
+> Base is $\{C_{1}, C_{3}\}$
+
+```
+```col-md
+flexGrow=1
+===
+
+##### Remove $C_{3}$
+
+|         |  1  |  2  |  4  |
+| ------- |:---:|:---:|:---:|
+| $C_{1}$ |  1  |  0  | -1  |
+| $C_{2}$ |  1  | -1  |  0  |
+
+> Column 1 and 2 make a *nonzero* determinant.
+> Base is $\{C_{1}, C_{2}\}$
+
+```
+````
+
+> In this case **base** is $\{C_{1}, C_{3}\}$ or $\{C_{1}, C_{2}\}$
 
 --- 
 <br>

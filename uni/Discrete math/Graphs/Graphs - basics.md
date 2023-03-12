@@ -172,7 +172,7 @@ d -- {e, b}
 
 ## Graph order
 
-Order of graph $G = (V, E)$ is $|V| = n$ (number of vertices)
+> Order of graph $G = (V, E)$ is $|V| = n$ (number of vertices)
 
 
 ## Special graphs
@@ -181,7 +181,9 @@ $G = (V, \emptyset)$ - **empty**
 $G = (\emptyset, \emptyset)$ - **null**
 $G = (\{V\}, \emptyset)$ - **trivials**
 
-If a graph G has $$
+### Complete graph
+
+> If a graph G has $$
 \begin{flalign}
 \frac{n(n-1)}{n} &&
 \end{flalign}$$edges is is **complete** ($K_{n}$)

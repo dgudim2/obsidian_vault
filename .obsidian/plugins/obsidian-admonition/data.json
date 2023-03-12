@@ -1,5 +1,32 @@
 {
-  "userAdmonitions": {},
+  "userAdmonitions": {
+    "definition": {
+      "type": "definition",
+      "color": "142, 192, 124",
+      "icon": {
+        "type": "obsidian",
+        "name": "lucide-chevrons-left-right"
+      },
+      "command": false,
+      "title": "Definition",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "theorem": {
+      "type": "theorem",
+      "color": "254, 128, 25",
+      "icon": {
+        "type": "obsidian",
+        "name": "lucide-align-start-vertical"
+      },
+      "command": false,
+      "title": "Theorem",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": true
+    }
+  },
   "syntaxHighlight": false,
   "copyButton": true,
   "version": "9.2.1",

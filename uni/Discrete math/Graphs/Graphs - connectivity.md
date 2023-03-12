@@ -3,6 +3,7 @@ Previous: [[Graphs - operations]]
 
 # Subgraph ($G' \subset G$)
 
+> [!definition] 
 > Graph $G' = (V', E')$ is a *subgraph* of graph $G = (V, E)$ if $V' \subset V$, $E' \subset E$
 
 `````col
@@ -184,6 +185,7 @@ f -- {a b}
 } 
 ```
 
+> [!definition] 
 > Graph is **homogeneous**, if all [[Graphs - basics#Directed graphs|vertices]] have the same [[Graphs - basics#Order (degree) of vertices|degree]] 
 
 --- 
@@ -191,6 +193,7 @@ f -- {a b}
 
 # Connected graph
 
+> [!definition]
 > Graph is called **connected**, if any two [[Graphs - basics#Directed graphs|vertices]] can be connected by a [[#Path|path]]
 
 `````col
@@ -270,7 +273,9 @@ b -- {c d}
 
 ## Connected components
 
+> [!definition]
 > Maximal [[#Connected graph|connected]] [[#Subgraph ($G' subset G$)|subgraph]] is called a **connected component**. 
+
 > Second [[#Connected graph|graph]] has *2* **connected components**
 
 > [!note]
@@ -284,7 +289,8 @@ b -- {c d}
 
 # Walk
 
-> *Walk* is any finite sequence of graph [[Graphs - basics#Directed graphs|vertices]] and [[Graphs - basics#Undirected graph|edges]] 
+> [!definition]
+> **Walk** is any finite sequence of graph [[Graphs - basics#Directed graphs|vertices]] and [[Graphs - basics#Undirected graph|edges]] 
 
 ```dot 
 graph neato { 
@@ -689,6 +695,7 @@ f -- e
 
 ## Articulations
 
+> [!definition]
 > [[Graphs - basics#Directed graphs|Vertex]] $v \in V$ of graph $G=(V, E)$ is called **articulation**, if graph $G-v$ has more [[#Connected components|connected components]] than graph $G$
 
 > If graph has an **articulation** it is **separable**
@@ -799,6 +806,7 @@ b -- a
 
 ## Blocks
 
+> [!definition]
 > **Block** - maximal [[#Subgraph ($G' subset G$)|subgraph]] without [[#Articulations|articulations]] 
 
 > [[#Separability of graphs|Our graph]] has *4* **blocks**
@@ -919,7 +927,8 @@ edge [color = grey]
 
 ## Bridges
 
-> [[Graphs - basics#Undirected graph|Edge]] $e \in E$ of graph $G=(V, E)$ is called **articulation**, if graph $G-e$ has more [[#Connected components|connected components]] than graph $G$ 
+> [!definition]
+> [[Graphs - basics#Undirected graph|Edge]] $e \in E$ of graph $G=(V, E)$ is called **bridge**, if graph $G-e$ has more [[#Connected components|connected components]] than graph $G$ 
 
 > [[Graphs - basics#Undirected graph|Edges]] $\{c, d\}$, $\{e, f\}$ and $\{a, f\}$ are **bridges** in [[#Separability of graphs|our graph]] 
 

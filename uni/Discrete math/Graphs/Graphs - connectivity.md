@@ -575,6 +575,7 @@ f -- a
 | $C_{5}$ |  0  | -1  |  1  |  0  |  0  |  0  |  0  | -1  |  0  |  0  |
 
 3. Now we find the *rank* of the matrix
+
 > After simplification we get *4* **independent** cycles
 
 |         |  1  |  2  |  3  |  4  |
@@ -1079,3 +1080,4 @@ e -- g
 
 
 Next: [[Graphs - metrics]]
+

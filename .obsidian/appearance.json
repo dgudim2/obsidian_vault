@@ -12,5 +12,6 @@
     "big-math",
     "banner-fix"
   ],
-  "showViewHeader": true
+  "showViewHeader": true,
+  "theme": "system"
 }

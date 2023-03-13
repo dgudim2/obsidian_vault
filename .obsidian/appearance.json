@@ -9,6 +9,8 @@
   "enabledCssSnippets": [
     "8 + 8 highlight colors",
     "Combine Nested tag colors and Highlight colors ",
-    "big-math"
-  ]
+    "big-math",
+    "banner-fix"
+  ],
+  "showViewHeader": true
 }

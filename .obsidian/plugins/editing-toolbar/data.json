@@ -212,6 +212,23 @@
           "key": "P"
         }
       ]
+    },
+    {
+      "id": "SubmenuCommands-lf6if2td9",
+      "name": "submenu",
+      "icon": "image",
+      "SubmenuCommands": [
+        {
+          "id": "obsidian-banners:banners:addIcon",
+          "name": "Set emoji",
+          "icon": "star"
+        },
+        {
+          "id": "obsidian-banners:banners:addBanner",
+          "name": "Set banner",
+          "icon": "image-plus"
+        }
+      ]
     }
   ],
   "appendMethod": "body",
@@ -219,7 +236,7 @@
   "cMenuVisibility": true,
   "cMenuBottomValue": 4.25,
   "cMenuNumRows": 12,
-  "cMenuWidth": 502,
+  "cMenuWidth": 554,
   "cMenuFontColor": "#ffc000",
   "cMenuBackgroundColor": "#d3f8b6",
   "autohide": false,

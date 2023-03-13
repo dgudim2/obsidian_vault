@@ -1,4 +1,4 @@
-# Homomorphism
+# Homomorphism 
 
 > [!definition]
 > Graphs $G_{1}=(V_{1},E_{1})$ and $G_{2}=(V_{2},E_{2})$ are **homomorphic**, if there exists such function: $f:G_{1}\to G_{2}$
@@ -13,4 +13,3 @@
 
 > [!tldr] 
 > We map one graph onto another
-

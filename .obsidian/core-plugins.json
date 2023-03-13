@@ -8,13 +8,11 @@
   "outgoing-link",
   "tag-pane",
   "page-preview",
-  "daily-notes",
   "templates",
   "note-composer",
   "command-palette",
   "slash-command",
   "editor-status",
   "starred",
-  "outline",
-  "file-recovery"
+  "outline"
 ]

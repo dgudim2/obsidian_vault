@@ -12,4 +12,199 @@
 > 3. If graph $G_{1}$ is [[Graphs - basics#Complete graph|complete]] and function $f$ is **homomorphism**, then $f(G_{1})$ is also [[Graphs - basics#Complete graph|complete]]
 
 > [!tldr] 
-> We map one graph onto another
+> We map one graph onto another [[#Folding|folding]] if necessary
+
+> [!example] 
+> Construct **homomorphism** from *B* to *A*
+> 
+> `````col
+> ````col-md
+> flexGrow=1
+> ===
+> **A**
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> edge [color = grey] 
+> 
+> "3/b" -- {1 "2/a"}
+> "2/a" -- 1
+> 
+> } 
+> ```
+> 
+> ````
+> ````col-md
+> flexGrow=1
+> ===
+> 
+> **B**
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> edge [color = grey] 
+> 
+> a -- b
+> 
+> } 
+> ```
+> 
+> ````
+> `````
+> 
+> $f(a)=2, f(b)=3$
+
+## Folding
+
+> One of the techniques for constructing [[#Homomorphism|homomorphism]] is **graph folding**
+
+> [!example] 
+> Map *A* to *B* 
+> 
+> `````col 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **A**
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> 1 [pos="-1,-0.5!"] 
+> 2 [pos="1,-0.5!"] 
+> 3 [pos="-1,0.5!"] 
+> 4 [pos="1,0.5!"] 
+> 5 [pos="0,0!"] 
+> 
+> 
+> node [color=transparent, 
+>       fillcolor=transparent, 
+>       label="", 
+> 	  width=0,
+>       height=0]
+> "-" [pos="0, 1!"] 
+> "." [pos="0,-1!"]
+> 
+> edge [color = grey] 
+> 
+> 5 -- {1 2 3 4}
+> 1 -- 3
+> 2 -- 4
+> 
+> edge [style=dashed, color=green]
+> 5 -- {".", "-"}
+> 
+> } 
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **B**
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> a [pos="-1,-0.5!"] 
+> b [pos="-1,0.5!"] 
+> c [pos="0,0!"] 
+> 
+> edge [color = grey] 
+> 
+> a -- b
+> b -- c
+> c -- a
+> 
+> } 
+> ```
+> 
+> ```` 
+> `````
+> 
+> We get this:
+> 
+> $f(1)=f(2)=a$
+> $f(3)=f(4)=b$
+> $f(5)=c$
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> "1,2" [pos="-1,-0.5!"] 
+> "3,4" [pos="-1,0.5!"] 
+> 
+> node [width=0.65, 
+>       height=0.65]
+> 5 [pos="0,0!"] 
+> 
+> edge [color = grey] 
+> 
+> 5 -- {"3,4", "1,2"}
+> "3,4" -- "1,2"
+> 
+> 
+> } 
+> ```
+
+# Isomorphism
+

@@ -10,7 +10,8 @@
     "8 + 8 highlight colors",
     "Combine Nested tag colors and Highlight colors ",
     "big-math",
-    "banner-fix"
+    "banner-fix",
+    "custom-admonitions.b75f10"
   ],
   "showViewHeader": true,
   "theme": "system"

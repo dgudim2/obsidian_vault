@@ -26,6 +26,4 @@ list from "uni/English"
 
 ```` 
 `````
-```dataview
-task from /Scheduler
-```
+

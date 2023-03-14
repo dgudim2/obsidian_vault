@@ -264,9 +264,11 @@
 > ```dot 
 > graph neato { 
 > 
+> rankdir=LR;
+> 
 > bgcolor="transparent" 
 > 
-> graph [layout = neato] 
+> graph [layout = dot] 
 > 
 > node [shape = circle, 
 >       style = filled, 
@@ -275,9 +277,6 @@
 >       color=green, 
 >       fillcolor = white] 
 > 
-> 1 [pos="1,0!"] 
-> 2 [pos="0,1!"] 
-> 4 [pos="4,1!"] 
 > 
 > edge [color = grey] 
 >  

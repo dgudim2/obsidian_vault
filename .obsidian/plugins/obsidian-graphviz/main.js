@@ -154,12 +154,16 @@ var Processors = class {
     return __async(this, null, function* () {
       try {
         console.debug("Call image processor");
+        if (source.trimEnd().at(-1) != "}") {
+          console.error("Bad dot source, won't render");
+          return;
+        }
         const imagePath = yield this.convertToImage(source);
         const img = document.createElement("img");
         img.src = `app://local${imagePath}`;
         el.appendChild(img);
       } catch (errMessage) {
-        console.error("convert to image error", errMessage);
+        console.error("convert to image error: " + errMessage);
         const pre = document.createElement("pre");
         const code = document.createElement("code");
         pre.appendChild(code);

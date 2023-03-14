@@ -337,8 +337,6 @@ d -- e
 > 
 > graph [layout = neato] 
 > 
-> 
-> 
 > node [shape = circle, 
 >       style = filled, 
 >       width=0.3, 
@@ -388,8 +386,6 @@ d -- e
 > bgcolor="transparent" 
 > 
 > graph [layout = neato] 
-> 
-> 
 > 
 > node [shape = circle, 
 >       style = filled, 

@@ -13,7 +13,8 @@
     "banner-fix",
     "custom-admonitions.b75f10",
     "kanban",
-    "fix_highligh"
+    "fix_highligh",
+    "debug"
   ],
   "showViewHeader": true,
   "theme": "system"

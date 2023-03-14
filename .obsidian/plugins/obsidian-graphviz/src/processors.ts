@@ -57,7 +57,7 @@ export class Processors {
 
   private async convertToImage(source: string): Promise<string> {
     const self = this;
-    
+
     const dir = path.join(os.tmpdir(), 'obsidian-dot');
     const file = path.join(dir, md5(source));
 
@@ -74,13 +74,18 @@ export class Processors {
   public async imageProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
     try {
       console.debug('Call image processor');
-      //make sure url is defined. once the setting gets reset to default, an empty string will be returned by settings
+
+      if (source.trimEnd().at(-1) != '}') {
+        console.error('Bad dot source, won\'t render');
+        return;
+      }
+
       const imagePath = await this.convertToImage(source);
       const img = document.createElement('img');
       img.src = `app://local${imagePath}`;
       el.appendChild(img);
     } catch (errMessage) {
-      console.error('convert to image error', errMessage);
+      console.error('convert to image error: ' + errMessage);
       const pre = document.createElement('pre');
       const code = document.createElement('code');
       pre.appendChild(code);

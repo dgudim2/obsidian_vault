@@ -1,8 +1,9 @@
 ---
 title: Title 123123
 foot: test
-brief: 
+brief: Test
 ---
+
 
 > Multi-graph is a collection of points
 > and line segments that connect these points

@@ -21,10 +21,10 @@
       "obsidianBlockName": "bpmn",
       "description": "",
       "url": "https://github.com/bpmn-io/bpmn-js",
-      "enabled": false,
+      "enabled": true,
       "toggle": {
         "disabled": false,
-        "on": false,
+        "on": true,
         "toggleEl": {}
       }
     },
@@ -73,10 +73,10 @@
       "obsidianBlockName": "nwdiag",
       "description": "Nw Diag !!!",
       "url": "https://github.com/blockdiag/nwdiag",
-      "enabled": false,
+      "enabled": true,
       "toggle": {
         "disabled": false,
-        "on": false,
+        "on": true,
         "toggleEl": {}
       }
     },
@@ -125,10 +125,10 @@
       "obsidianBlockName": "ditaa",
       "description": "",
       "url": "http://ditaa.sourceforge.net/",
-      "enabled": false,
+      "enabled": true,
       "toggle": {
         "disabled": false,
-        "on": false,
+        "on": true,
         "toggleEl": {}
       }
     },
@@ -177,10 +177,10 @@
       "obsidianBlockName": "graphviz",
       "description": "",
       "url": "https://www.graphviz.org/",
-      "enabled": true,
+      "enabled": false,
       "toggle": {
         "disabled": false,
-        "on": true,
+        "on": false,
         "toggleEl": {}
       }
     },
@@ -216,10 +216,10 @@
       "obsidianBlockName": "pikchr",
       "description": "",
       "url": "https://github.com/drhsqlite/pikchr",
-      "enabled": false,
+      "enabled": true,
       "toggle": {
         "disabled": false,
-        "on": false,
+        "on": true,
         "toggleEl": {}
       }
     },

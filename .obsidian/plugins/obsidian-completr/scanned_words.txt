@@ -342,6 +342,7 @@ We
 WiSoePTT
 Web
 Walls
+Waypoint
 And
 Adjacency
 Also
@@ -506,6 +507,7 @@ BFgU
 Bold
 Break
 Block
+Begin
 possible
 points
 parallel

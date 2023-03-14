@@ -11,7 +11,8 @@
     "Combine Nested tag colors and Highlight colors ",
     "big-math",
     "banner-fix",
-    "custom-admonitions.b75f10"
+    "custom-admonitions.b75f10",
+    "fix_highligh"
   ],
   "showViewHeader": true,
   "theme": "system"

@@ -139,8 +139,8 @@ var Processors = class {
   convertToImage(source) {
     return __async(this, null, function* () {
       const self = this;
-      const dir = "obsidian-dot";
-      const file = path.join(os.tmpdir(), dir, md5(source));
+      const dir = path.join(os.tmpdir(), "obsidian-dot");
+      const file = path.join(dir, md5(source));
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
       }

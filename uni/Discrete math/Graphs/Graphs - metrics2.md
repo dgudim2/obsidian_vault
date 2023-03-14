@@ -333,6 +333,8 @@ d -- e
 > ```dot 
 > graph neato { 
 > 
+> rankdir=LR;
+> 
 > bgcolor="transparent" 
 > 
 > graph [layout = neato] 

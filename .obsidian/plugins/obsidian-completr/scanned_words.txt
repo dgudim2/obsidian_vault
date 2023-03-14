@@ -16,6 +16,8 @@ below
 button
 break
 bug
+bugs
+brief
 icon
 is
 if
@@ -76,6 +78,9 @@ class
 cite
 check
 caution
+calendar
+count
+contribution
 md
 many
 make
@@ -127,6 +132,7 @@ DTD
 Double
 Dropdown
 Diagrams
+Dialog
 Math
 Multi
 Map
@@ -150,6 +156,7 @@ Expand
 Expanded
 ER
 Extension
+Event
 Scheduler
 Stable
 Stability
@@ -207,11 +214,13 @@ gridSize
 guides
 geometry
 generate
+gestures
 Graph
 Graphs
 Gehui
 GpbzYYIP
 GnWHugxV
+Google
 edge
 edges
 example
@@ -253,6 +262,8 @@ erat
 eos
 expand
 error
+event
+entries
 has
 homomorphic
 homomorphism
@@ -301,6 +312,7 @@ always
 audio
 abstract
 attention
+adding
 of
 out
 one
@@ -320,6 +332,7 @@ oHTT
 option
 outline
 own
+open
 were
 will
 with
@@ -343,6 +356,7 @@ WiSoePTT
 Web
 Walls
 Waypoint
+When
 And
 Adjacency
 Also
@@ -356,6 +370,8 @@ Another
 At
 Audio
 Admonition
+An
+Archive
 flexGrow
 find
 from
@@ -377,6 +393,9 @@ flow
 failure
 fail
 faq
+foot
+fragment
+features
 dominant
 directed
 digraph
@@ -406,6 +425,7 @@ details
 dropdown
 danger
 done
+doesn
 sub
 sets
 set
@@ -461,6 +481,10 @@ select
 snippet
 seealso
 success
+sync
+sort
+separately
+section
 two
 to
 this
@@ -487,6 +511,8 @@ tempor
 tldr
 todo
 tip
+test
+translators
 not
 no
 number
@@ -501,6 +527,7 @@ nested
 nonumy
 new
 note
+name
 Basically
 BXye
 BFgU
@@ -508,6 +535,8 @@ Bold
 Break
 Block
 Begin
+Bugs
+Broken
 possible
 points
 parallel
@@ -541,6 +570,7 @@ Isomorphism
 Intersection
 Italic
 Images
+Implemented
 How
 Homomorphism
 Header
@@ -551,6 +581,8 @@ Folding
 FMtXJy
 Format
 FF
+Features
+Fixed
 vertices
 vertex
 view
@@ -607,6 +639,7 @@ Collapse
 Charts
 Create
 Content
+Contribution
 Line
 Links
 LSC
@@ -640,6 +673,7 @@ round
 right
 required
 rebum
+renamed
 OR
 Order
 One
@@ -663,6 +697,8 @@ uXig
 unordered
 ut
 up
+updates
+update
 zero
 zwf
 Rows
@@ -697,3 +733,4 @@ question
 JKWiNa
 you
 keeps
+kanban

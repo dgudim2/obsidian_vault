@@ -310,6 +310,25 @@ $$
 \end{array}
 $$
 
+### Degree matrix
+
+> **Degree matrix** is constructed like this:
+
+$$ 
+\begin{pmatrix} 
+d_{11} & 0 & 0 & 0 & 0 & 0 \\
+0 & d_{22} & 0 & 0 & 0 & 0 \\
+0 & 0 & d_{33} & 0 & 0 & 0 \\
+0 & 0 & 0 & d_{44} & 0 & 0 \\
+0 & 0 & 0 & 0 & d_{55} & 0 \\
+0 & 0 & 0 & 0 & 0 & d_{66}
+\end{pmatrix} 
+$$
+
+> $d_{ii} = d_{i} + d$
+> Where:
+> 1. $d_{i}$ - [[#Order (degree) of vertices|Degree]] of a vertex
+> 2. $d$ - Biggest [[#Order (degree) of vertices|degree]] in a graph
 
 ### Neighborhood of vertices
 
@@ -327,7 +346,7 @@ In out [[#Properties|graph]]:
 
 Order/degree of vertex $p(V)= | \Gamma(V) |$ 
 
-> Number of [[#Neighborhood of vertices|neightbours]]
+> Number of [[#Neighborhood of vertices|neighbours]]
 > For example: $p(A) = 3$ 
 
 > [!note] 

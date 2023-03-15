@@ -333,11 +333,11 @@ d -- e
 > ```dot 
 > graph neato { 
 > 
+> rankdir=LR;
+> 
 > bgcolor="transparent" 
 > 
 > graph [layout = neato] 
-> 
-> 
 > 
 > node [shape = circle, 
 >       style = filled, 
@@ -388,8 +388,6 @@ d -- e
 > bgcolor="transparent" 
 > 
 > graph [layout = neato] 
-> 
-> 
 > 
 > node [shape = circle, 
 >       style = filled, 

@@ -5,14 +5,14 @@
 > 1. If $v \in V_{1}$, then $f(v) \in V_{2}$
 > 2. If $e \in E_{1}$, then $f(e) \in E_{2}$
 > 3. If in graph $G$ [[Graphs - basics#Directed graphs|vertices]] $u$ and $v$ were [[Graphs - basics#Vertices and edges|adjacent]], then in $G_{2}$ [[Graphs - basics#Directed graphs|vertices]] $f(u)$ and $f(v)$ are also [[Graphs - basics#Vertices and edges|adjacent]]
+> 
+> > [!tldr] 
+> > We map one graph onto another, [[#Folding|folding]] if necessary
 
 > [!theorem] 
 > 1. If function $f$ is **homomorphism** from $G_{1}$ to $G_{2}$, then $f(G_{1})$ is a [[Graphs - connectivity#Subgraph ($G' subset G$)|subgraph]] of $G_{2}$
 > 2. If graph $G_{1}$ is [[Graphs - connectivity#Connected graph|connected]] and function $f$ is **homomorphism**, then $f(G_{1})$ is also [[Graphs - connectivity#Connected graph|connected]]
 > 3. If graph $G_{1}$ is [[Graphs - basics#Complete graph|complete]] and function $f$ is **homomorphism**, then $f(G_{1})$ is also [[Graphs - basics#Complete graph|complete]]
-
-> [!tldr] 
-> We map one graph onto another [[#Folding|folding]] if necessary
 
 > [!example] 
 > Construct **homomorphism** from *B* to *A*
@@ -207,3 +207,94 @@
 > ```
 
 # Isomorphism
+
+> [!definition] 
+> Graphs $G_{1}=(V_{1},E_{1})$ and $G_{2}=(V_{2},E_{2})$ are **isomorphic** ($G_{1} \cong G_{2}$), if there exists such *bijection* $f:G_{1} \to G_{2}$, that 
+> $\forall \{u,v\} \in E_{1} \implies \{f(u), f(v)\} \in E_{2}$ and 
+> $\forall \{w,y\} \in E_{2} \implies \{f^{-1}(w), f^{-1}(y)\} \in E_{1}$ 
+> $|V_{1}|=|V_{2}|$, $|E_{1}|=|E_{2}|$
+> 
+> > [!tldr] 
+> > The same graph written differently
+
+> [!example] 
+> 
+> `````col 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> ## $G$
+> 
+> ```dot 
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> a [pos="1,0!"] 
+> b [pos="0,1!"] 
+> c [pos="0,0!"] 
+> d [pos="1,1!"] 
+> 
+> edge [color = grey] 
+>  
+> c -- {a b d}
+> a -- {b d}
+> b -- d
+> 
+> } 
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=2
+> ===
+> 
+> ## $T$
+> 
+> ```dot 
+> graph neato { 
+> 
+> rankdir=LR;
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = dot] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> 
+> edge [color = grey] 
+>  
+> 3 -- {1 2 4}
+> 1 -- {2 4}
+> 2 -- 4
+> 
+> } 
+> ```
+> 
+> ```` 
+> `````
+> 
+
+> [!info] 
+> Properties:
+> 
+> 1. Graph is **isomorphic** to itself
+> 2. If $G_{1}$ is **isomorphic** to $G_{2}$, then $G_{2}$ is **isomorphic** to $G_{1}$
+> 3. If $G_{1}$ is **isomorphic** to $G_{2}$ and $G_{2}$ to $G_{3}$, then $G_{1}$ is **isomorphic** to $G_{3}$
+

@@ -469,12 +469,240 @@ c -- {1}
 
 ## Checking for isomorphism
 
-1. We can start from [[#Invariants|invariants]], so we'll first check:
+1. We can check [[#Invariants|invariants]]:
 	1. Amount of [[Graphs - basics#Directed graphs|vertices]]
 	2. Amount of [[Graphs - basics#Undirected graph|edges]]
 	3. Vertex [[Graphs - basics#Order (degree) of vertices|degrees]]
 	4. [[Graphs - metrics#Distance matrix|Distance matrices]]
 	5. [[Graphs - connectivity#Length of the path|Length]] of [[Graphs - connectivity#Cycle|cycles]] 
 	6. ...
+
+2. Also, we can use this method: 
+> We will use the following 2 graphs as an example:
+`````col 
+````col-md 
+flexGrow=1
+===
+
+### $Ga$
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+5 [pos="0,0!"] 
+4 [pos="0.5,0.9!"] 
+3 [pos="1.5,0.9!"] 
+2 [pos="2,0!"] 
+1 [pos="1.5,-0.9!"] 
+6 [pos="0.5,-0.9!"] 
+
+edge [color = grey] 
+
+5 -- {4 6 1}
+2 -- {1 3 6}
+4 -- {6 1}
+3 -- {6 1}
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+### $Gb$
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+5 [pos="0,0!"] 
+4 [pos="0.5,0.9!"] 
+3 [pos="1.5,0.9!"] 
+2 [pos="2,0!"] 
+1 [pos="1.5,-0.9!"] 
+6 [pos="0.5,-0.9!"] 
+
+edge [color = grey] 
+
+6 -- {5 1 2}
+3 -- {2 4 1}
+5 -- {1 2}
+4 -- {1 2}
+
+} 
+```
+
+```` 
+`````
+
+1. Make [[Graphs - basics#Adjacency matrix|adjacency]] matrix:
+
+````col
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+G_{A} = 
+
+\begin{pmatrix} 
+* & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 &* \\
+\color{orange}1 & * & \color{orange}1 & * & * & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & * & * & * & \color{orange}1 \\
+\color{orange}1 & * & * & * & \color{orange}1 & \color{orange}1 \\
+\color{orange}1 & * & * & \color{orange}1 & * & \color{orange}1 \\
+* & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 &*
+\end{pmatrix} 
+
+$$
+
+```
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+G_{B} = 
+
+\begin{pmatrix} 
+* & * & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+* & * & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & * & \color{orange}1 & * & * \\
+\color{orange}1 & \color{orange}1 & \color{orange}1 & * & * & * \\
+\color{orange}1 & \color{orange}1 & * & * & * & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & * & * & \color{orange}1 & *
+\end{pmatrix} 
+
+$$
+
+```
+````
+
+2. Make [[Graphs - basics#Degree matrix|degree]] matrix:
+
+$d=4$
+
+````col
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+D_{A}=
+
+\begin{pmatrix} 
+\color{lime}8 & 0 & 0 & 0 & 0 & 0 \\
+0 & \color{cyan}7 & 0 & 0 & 0 & 0 \\
+0 & 0 & \color{cyan}7 & 0 & 0 & 0 \\
+0 & 0 & 0 & \color{cyan}7 & 0 & 0 \\
+0 & 0 & 0 & 0 & \color{cyan}7 & 0 \\
+0 & 0 & 0 & 0 & 0 & \color{lime}8
+\end{pmatrix} 
+
+$$
+
+```
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+D_{B}=
+
+\begin{pmatrix} 
+\color{lime}8 & 0 & 0 & 0 & 0 & 0 \\
+0 & \color{lime}8 & 0 & 0 & 0 & 0 \\
+0 & 0 & \color{cyan}7 & 0 & 0 & 0 \\
+0 & 0 & 0 & \color{cyan}7 & 0 & 0 \\
+0 & 0 & 0 & 0 & \color{cyan}7 & 0 \\
+0 & 0 & 0 & 0 & 0 & \color{cyan}7
+\end{pmatrix} 
+
+$$
+
+```
+````
+
+3. Sum those matrices **($A = G_{A} + D_{A}$ ; $B=G_{B}+D_{B}$):**
+
+````col
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+A = 
+
+\begin{pmatrix} 
+\color{lime}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 &* \\
+\color{orange}1 & \color{cyan}7 & \color{orange}1 & * & * & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & \color{cyan}7 & * & * & \color{orange}1 \\
+\color{orange}1 & * & * & \color{cyan}7 & \color{orange}1 & \color{orange}1 \\
+\color{orange}1 & * & * & \color{orange}1 & \color{cyan}7 & \color{orange}1 \\
+* & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{lime}8
+\end{pmatrix} 
+
+$$
+
+```
+```col-md
+flexGrow=1
+===
+
+$$ 
+
+B = 
+
+\begin{pmatrix} 
+\color{lime}8 & * & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+* & \color{lime}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & \color{cyan}7 & \color{orange}1 & * & * \\
+\color{orange}1 & \color{orange}1 & \color{orange}1 & \color{cyan}7 & * & * \\
+\color{orange}1 & \color{orange}1 & * & * & \color{cyan}7 & \color{orange}1 \\
+\color{orange}1 & \color{orange}1 & * & * & \color{orange}1 & \color{cyan}7
+\end{pmatrix} 
+
+$$
+
+```
+````
+4. Add any small number $\large\epsilon_{0.1}$ to both element in both matrices ($b_{11}$ or $b_{22}$) and find inverse of both matrices.
+	- Find which element in the second inverted matrix is equal to our element in first matrix
+	- Repeat for all elements
+	- Get $$p= 
+\begin{Bmatrix}
+1 & 2 & 3 & 4 & 5 & 6 \\
+1 & 3 & 4 & 5 & 6 & 1
+\end{Bmatrix} $$
+
+
 
 

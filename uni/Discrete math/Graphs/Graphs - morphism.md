@@ -206,6 +206,9 @@
 > } 
 > ```
 
+--- 
+<br>
+
 # Isomorphism
 
 > [!definition] 
@@ -297,4 +300,181 @@
 > 1. Graph is **isomorphic** to itself
 > 2. If $G_{1}$ is **isomorphic** to $G_{2}$, then $G_{2}$ is **isomorphic** to $G_{1}$
 > 3. If $G_{1}$ is **isomorphic** to $G_{2}$ and $G_{2}$ to $G_{3}$, then $G_{1}$ is **isomorphic** to $G_{3}$
+
+
+## Labeled and unlabeled graphs
+
+> [!definition] 
+> A class of graphs any representatives of which are [[#Isomorphism|isomorphic]] graphs is called an **unlabeled** graph
+> Any element of this class is a **labeled** graph
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+### D (Unlabeled)
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white, 
+      label=""] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.8!"] 
+c [pos="1,0!"] 
+
+edge [color = grey] 
+ 
+a -- {b} 
+c -- {b} 
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+### A (Labeled)
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+1 [pos="0,0!"] 
+2 [pos="0.5,0.8!"] 
+3 [pos="1,0!"] 
+
+edge [color = grey] 
+ 
+1 -- {2} 
+1 -- {3} 
+} 
+```
+
+```` 
+
+````col-md 
+flexGrow=1
+===
+
+### B (Labeled)
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+1 [pos="0,0!"] 
+2 [pos="0.5,0.8!"] 
+3 [pos="1,0!"] 
+
+edge [color = grey] 
+ 
+1 -- 2 
+3 -- 2 
+} 
+```
+
+```` 
+
+````col-md 
+flexGrow=1
+===
+
+### C (Labeled)
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+1 [pos="0.5,0.8!"] 
+c [pos="1,0!"] 
+
+edge [color = grey] 
+ 
+a -- {c} 
+c -- {1} 
+} 
+```
+
+```` 
+
+`````
+
+### Invariants
+
+> [!definition] 
+> Graph functions ([[Graphs - basics#Directed graphs|vertices]], [[Graphs - basics#Undirected graph|edges]], [[Graphs - basics#Order (degree) of vertices|degree]] sequences, [[Graphs - metrics#Diameter of a graph|diameter]], amount of [[Graphs - metrics#Center of a graph|centers]], amount of [[Graphs - connectivity#Articulations|articulations]], etc.), that have same value with all [[#Isomorphism|isomorphic]] graphs are called **invariants**. 
+
+> [!example] 
+> $A$, $B$, $C$ are [[#Isomorphism|isomorphic]] to each other, all of them have 3 [[Graphs - basics#Directed graphs|vertices]], 2 [[Graphs - basics#Undirected graph|edges]], same [[Graphs - basics#Order (degree) of vertices|degree]] sequences, same [[Graphs - metrics#Diameter of a graph|diameter]] and amount of [[Graphs - metrics#Center of a graph|centers]], same amount of [[Graphs - connectivity#Articulations|articulations]] and so on.
+
+### Amount of labeled graphs
+
+> Let’s $|V|=n;$, then amount of all possible [[Graphs - basics#Undirected graph|edges]] (pairs of 2 different [[Graphs - basics#Directed graphs|vertices]]) is:
+> 
+> $\large m=\frac{n(n-1)}{2}$
+> 
+> So generating function for amount of $n$-th order [[#Labeled and unlabeled graphs|labeled]] graphs is:
+> 
+> $G_{n}(x)=(1+x)^m$
+> 
+> Amount of *all* possible [[#Labeled and unlabeled graphs|labeled]] graphs (of $n$-th order): $G_{n}(1)=(1+1)^m=2^m$
+> 
+> Amount of *all* possible [[#Labeled and unlabeled graphs|labeled]] graphs can be calculated *approximately*:
+> 
+> $\large g_{n}(x) \sim \frac{2^m}{n!}, n \to \infty$
+
+## Checking for isomorphism
+
+1. We can start from [[#Invariants|invariants]], so we'll first check:
+	1. Amount of [[Graphs - basics#Directed graphs|vertices]]
+	2. Amount of [[Graphs - basics#Undirected graph|edges]]
+	3. Vertex [[Graphs - basics#Order (degree) of vertices|degrees]]
+	4. [[Graphs - metrics#Distance matrix|Distance matrices]]
+	5. [[Graphs - connectivity#Length of the path|Length]] of [[Graphs - connectivity#Cycle|cycles]] 
+	6. ...
+
 

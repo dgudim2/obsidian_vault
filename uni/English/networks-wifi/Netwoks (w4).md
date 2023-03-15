@@ -65,7 +65,7 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 ### Sentences
 
-- The consistency of wi-fi conncentions may vary.
+- The consistency of wi-fi connection may vary.
 
 - Some people perceive 5G as the great evil.
 
@@ -73,5 +73,9 @@ Handout: [[HANDOUT- Networking and WIFI.pdf]]
 
 
 
+
+## The advantages and disadvantages of 5G High speed wireless networking
+
+5G Wireless networking is the new big thing in cellular communication. It offers a substantial bandwidth increase and decrease in latency over 4G, moreover, it can support a greater number of devices per unit area. All this leads to better user experience and satisfaction. However, this technology is a double-edged sword, namely, the cost of deploying 5G infrastructure is high, thus limiting its scope to developed countries. Another drawback is cell tower coverage, due to 5G using millimeter waves which don't travel as far, more towers are needed to cover the same area. And the last drawback is that for most end users speed provided by 4G is already enough, this is also backed by the fact that most servers won't even allow you to download content at high speeds provided by 5G, so providers don't see the point in spending money on upgrades if the users are satisfied with the current solutions. 
 
 

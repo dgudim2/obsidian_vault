@@ -112,6 +112,8 @@ d -- {b}
 \end{document}
 ```
 
+## Theorems
+
 > [!note] 
 > These 2 graphs are **not** planar
 > 

@@ -5,6 +5,7 @@ by
 before
 below
 blocks
+bigger
 icon
 is
 it
@@ -21,6 +22,7 @@ commands
 completr
 conflicted
 conflicts
+case
 md
 mode
 Discrete
@@ -32,6 +34,7 @@ Source
 TODO
 Tree
 This
+These
 tree
 the
 two
@@ -41,6 +44,8 @@ trees
 them
 txt
 text
+then
+than
 spanning
 subset
 scanned
@@ -49,7 +54,9 @@ simple
 of
 obsidian
 occurrence
+our
 graph
+graphs
 and
 all
 area
@@ -57,9 +64,12 @@ any
 automatically
 available
 above
+are
+areas
 has
 vertices
 viewing
+vertex
 examples
 each
 every
@@ -79,6 +89,7 @@ with
 where
 will
 words
+which
 not
 flexGrow
 followed
@@ -88,6 +99,7 @@ files
 following
 Area
 Additional
+Any
 line
 link
 list
@@ -100,4 +112,6 @@ using
 use
 Not
 Instructions
+If
+In
 For

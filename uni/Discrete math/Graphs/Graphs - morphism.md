@@ -1,3 +1,4 @@
+
 # Homomorphism 
 
 > [!definition]
@@ -706,12 +707,16 @@ $$
 1 & 3 & 4 & 5 & 6 & 1
 \end{Bmatrix} $$
 
-## Homeomorphism (topological [[#Isomorphism|isomorphism]])
+--- 
+<br>
+
+# Homeomorphism (topological [[#Isomorphism|isomorphism]])
 
 > [!definition] 
 > Graphs $G$ and $G'$ are called **homeomorphic**, if they can be [[#Derived graph|derived]] derived from the same graph
 
 > $G_{2}$ and $G_{3}$ are **homeomorphic**, they can be both [[#Derived graph|derived]] from $G_{1}$ by adding [[#Extension|extensions]] $5$ and $6$ respectively
+
 `````col 
 ````col-md 
 flexGrow=1
@@ -809,10 +814,9 @@ edge [color = grey]
 `````
 
 > [!theorem] 
-> If graphs $G$ and $G'$ are **homeomorphic**, they will have same amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]].
+> If graphs $G$ and $G'$ are **homeomorphic**, they will have same amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]]
 > > [!note] 
-> > So, if [[Graphs - basics#Directed graphs|vertex]] [[Graphs - basics#Order (degree) of vertices|degrees]] of two graphs are *1,3,3,3,2* and *1,3,2,2,2* correspondingly, *these graphs are not homeomorphic*. If amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]] *is the same*, we can’t predict the situation.
-
+> > So, if [[Graphs - basics#Directed graphs|vertex]] [[Graphs - basics#Order (degree) of vertices|degrees]] of two graphs are *1,3,3,3,2* and *1,3,2,2,2* correspondingly, *these graphs are not homeomorphic*. If amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]] *is the same*, we can’t predict the situation
 
 ### Extension
 
@@ -1038,3 +1042,11 @@ i -- a
 ````
 
 `````
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

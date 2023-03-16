@@ -1,6 +1,4 @@
 
-Previous: [[Graphs - metrics]]
-
 # Edge graph
 
 > Graph's $G=(V,E)$ *edge graph* is graph $G_{b}=(V_{b},E_{b})$ if it has as many [[Graphs - basics#Directed graphs|vertices]] as $G$ has [[Graphs - basics#Undirected graph|edges]], and it's [[Graphs - basics#Directed graphs|vertices]] are [[Graphs - basics#Vertices and edges|adjacent]] if corresponding [[Graphs - basics#Undirected graph|edges]] of $G$ were [[Graphs - basics#Vertices and edges|adjacent]]
@@ -421,3 +419,10 @@ d -- e
 > } 
 > ```
 
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

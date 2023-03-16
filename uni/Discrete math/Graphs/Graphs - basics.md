@@ -50,6 +50,8 @@ $$
 
 > **Digraph** without loops is a **simple digraph**.
 
+--- 
+<br>
 
 # Undirected graph
 
@@ -128,6 +130,8 @@ a -- {b c d}
 > If the graph is symmetric we can replace any pair of arcs 
 > $(V_{i}, V_{j},)$ and $(V_{j}, V_{i},)$ with a pair $\{V_{i}, V_{j}\}$ and call it **edge**
 
+--- 
+<br>
 
 # Defining a graph
 
@@ -167,6 +171,8 @@ d -- {e, b}
 }
 ```
 
+--- 
+<br>
 
 # Graph properties and stuff
 
@@ -362,5 +368,11 @@ Number of edges:
 1. $$\frac{p(A)+p(B)+p(C)+p(D)+p(E)}{2}=\frac{3+3+2+3+1}{2}=\frac{12}{6}=6$$
 2. We can take [[#Adjacency matrix]] or [[#Incidence matrix]] and sum all elements, we will get the same result
 
+--- 
+<br>
 
-Next: [[Graphs - operations]]
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```
+

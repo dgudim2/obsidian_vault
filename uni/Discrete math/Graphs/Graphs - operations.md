@@ -1,6 +1,4 @@
 
-Previous: [[Graphs - basics]]
-
 # Intersection (AND/$\cap$)
 
 If $G_{1}=(V_{1}, E_{1})$ and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \cap G_{2}=(V_{1} \cap V_{2}, E_{1} \cap E_{2})$ 
@@ -787,4 +785,11 @@ $$
 ```
 ````
 
-Next: [[Graphs - connectivity]]
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```
+

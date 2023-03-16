@@ -1,3 +1,4 @@
+
 # Planar graph
 
 > [!definition] 

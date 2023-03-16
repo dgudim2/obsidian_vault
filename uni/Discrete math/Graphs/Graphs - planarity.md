@@ -196,6 +196,8 @@ d -- {b}
 > 
 > ```` 
 > `````
+> 
+> If any graph or it's [[Graphs - connectivity#Subgraph ($G' subset G$)|subgraph]] is [[Graphs - morphism#Homeomorphism (topological Isomorphism isomorphism)|homeomorphic]] to any of them it is *not* [[#Planar graph|planar]]
 
 > [!theorem] 
 > If $G$ is [[Graphs - connectivity#Connected graph|connected]] graph, with *n* [[Graphs - basics#Directed graph|vertices]], *m* [[Graphs - basics#Undirected graph|edges]] and *a* areas, then
@@ -210,3 +212,13 @@ d -- {b}
 > [!theorem] 
 > Any [[#Planar graph|planar]] graph has vertex which [[Graphs - basics#Order (degree) of vertices|degree]] is *not bigger than 5*
 
+> [!theorem] 
+>  If two graphs are [[Graphs - morphism#Homeomorphism (topological Isomorphism isomorphism)|homeomorphic]], then they both are [[#Planar graph|planar]] or both are not [[#Planar graph|planar]]
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

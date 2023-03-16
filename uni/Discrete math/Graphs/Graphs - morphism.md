@@ -477,6 +477,8 @@ c -- {1}
 	5. [[Graphs - connectivity#Length of the path|Length]] of [[Graphs - connectivity#Cycle|cycles]] 
 	6. ...
 
+### Method for programs
+
 2. Also, we can use this method: 
 > We will use the following 2 graphs as an example:
 `````col 
@@ -694,15 +696,345 @@ $$
 
 ```
 ````
-4. Add any small number $\large\epsilon_{0.1}$ to both element in both matrices ($b_{11}$ or $b_{22}$) and find inverse of both matrices.
-	- Find which element in the second inverted matrix is equal to our element in first matrix
-	- Repeat for all elements
-	- Get $$p= 
+4. Add any small number $\large\epsilon_{0.1}$ to the same value in the diagonal of both matrices. I.e: $a_{11}=8$ and ($b_{11}=8$ or $b_{22}=8$)
+	- Invert those matrices
+	- Search for element equal to $a_{11}$ in the inverted *B* matrix
+	- Repeat (Choose one more element and add $\large\epsilon_{0.2}$, $\large\epsilon_{0.1}$ will stay in it's position)
+	- Get mapping $$p= 
 \begin{Bmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 1 & 3 & 4 & 5 & 6 & 1
 \end{Bmatrix} $$
 
+## Homeomorphism (topological [[#Isomorphism|isomorphism]])
+
+> [!definition] 
+> Graphs $G$ and $G'$ are called **homeomorphic**, if they can be [[#Derived graph|derived]] derived from the same graph
+
+> $G_{2}$ and $G_{3}$ are **homeomorphic**, they can be both [[#Derived graph|derived]] from $G_{1}$ by adding [[#Extension|extensions]] $5$ and $6$ respectively
+`````col 
+````col-md 
+flexGrow=1
+===
+
+### $G_1$
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = grey] 
+
+2 -- {1 3 4}
+1 -- 3
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+### $G_2$
 
 
 
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = grey] 
+
+2 -- {1 5 4}
+5 -- 3
+1 -- 3
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+### $G_3$
+
+```dot 
+graph neato { 
+
+rankdir="LR";
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = grey] 
+
+2 -- {1 3 6}
+1 -- 3
+6 -- 4
+
+} 
+```
+
+```` 
+`````
+
+> [!theorem] 
+> If graphs $G$ and $G'$ are **homeomorphic**, they will have same amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]].
+> > [!note] 
+> > So, if [[Graphs - basics#Directed graphs|vertex]] [[Graphs - basics#Order (degree) of vertices|degrees]] of two graphs are *1,3,3,3,2* and *1,3,2,2,2* correspondingly, *these graphs are not homeomorphic*. If amount of [[Graphs - basics#Directed graphs|vertices]] with <u>odd</u> [[Graphs - basics#Order (degree) of vertices|degrees]] *is the same*, we can’t predict the situation.
+
+
+### Extension
+
+> [!definition] 
+> If graph $G(V,E)$ has [[Graphs - basics#Undirected graph|edge]] $e=\{v_{1},v_{2}\}$, and graph $G'(V',E')$ is produced from $G(V,E)$ by *putting additional vertex* $v$ on that [[Graphs - basics#Undirected graph|edge]] (It becomes $\{v_{1},v\}$ and $\{v,v_{2}\}$), then $G'(V',E')$ is an **extension** of $G(V,E)$
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+**$G(V,E)$**
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+
+edge [color = grey] 
+
+a -- b
+b -- c
+c -- d
+d -- e
+e -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+**$G'(V',E')$**
+
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+
+node [fillcolor=darkgreen]
+f [pos="0.5,-0.9!"] 
+
+edge [color = grey] 
+
+a -- b
+b -- c
+c -- d
+d -- e
+e -- f
+f -- a
+
+} 
+```
+
+```` 
+`````
+
+### Derived graph
+
+> [!definition] 
+> If graphs $G_{1},G_{2},G_{3},\dots G_{n}$ are such that every graph $G_{i+1}$ is an [[#Extension|extension]] of graph $G_{i}$, then graph $G_{n}$ is a **derived** graph of graph $G_{1}$
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+**$G_1$**
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+
+edge [color = grey] 
+
+a -- b
+b -- c
+c -- d
+d -- e
+e -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+**$G_2$**
+
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+
+node [fillcolor=darkgreen]
+f 
+
+edge [color = grey] 
+
+a -- b
+b -- c
+c -- d
+d -- e
+e -- f
+f -- a
+
+} 
+```
+
+```` 
+
+````col-md 
+flexGrow=1
+===
+
+**$G_3$**
+
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0,0!"] 
+b [pos="0.5,0.9!"] 
+c [pos="1.5,0.9!"] 
+d [pos="2,0!"] 
+e [pos="1.5,-0.9!"] 
+
+node [fillcolor=darkgreen]
+f [pos="0.7,-1.2!"] 
+i [pos="0,-0.8!"] 
+
+edge [color = grey] 
+
+a -- b
+b -- c
+c -- d
+d -- e
+e -- f
+f -- i
+i -- a
+
+} 
+```
+
+````
+
+`````

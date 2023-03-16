@@ -82,6 +82,5 @@
 > [!definition]
 > *Tree* $T$ is *spanning* of graph $G$ it is a [[Graphs - connectivity#Subgraph ($G' subset G$)|subset]] of $G$ and has all vertices of $G$	
 
-#TODO include examples, link to trees
 
 

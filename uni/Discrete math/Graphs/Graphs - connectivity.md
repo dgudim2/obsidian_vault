@@ -349,6 +349,10 @@ Can be written in 2 ways:
 
 > **Length of the [[#Path|path]] ** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
 
+### Euler path
+
+> **Euler path** is [[#Path|path]] that goes through every [[Graphs - basics#Undirected graph|edge]] of a graph *exactly once*
+
 
 ## Cycle
 
@@ -387,6 +391,12 @@ f -- a
 ```
 
 > [[#Connected graph]] is a [[#Cycle|cycle]], if all vertices have [[Graphs - basics#Order (degree) of vertices|degree]] 2 | $p(v_{i})=2$
+
+### Cyclic graph
+
+> 1. A graph with at least one [[#Cycle|cycle]] is called a **cyclic** graph
+> 2. A graph without any [[#Cycle|cycles]] is called an **acyclic** graph
+> 	- Graph has *no cycles* if and only if it's [[#Cyclomatic number|cyclomatic number]] = 0 ($v(G)=0$)
 
 ### Independent cycles
 
@@ -537,11 +547,6 @@ f -- a
 > n - amount of [[Graphs - basics#Directed graphs|vertices]]
 > m - amount of [[Graphs - basics#Undirected graph|edges]]
 > k - amount of [[#Connected components|connected components]]
-
-> [!note] 
-> 1. Graph has *no cycles* if and only if $v(G)=0$
-> 2. [[#Connected graph]] is a ==#TODO: link to trees== tree if and only if $v(G)=0$
-> 3. Graph is *k*-forest ==#TODO: link to forest== if and only if it has *k* [[#Connected components|connected components]] and $v(G)=0$
 
 #### How to determine which cycles are independent
 

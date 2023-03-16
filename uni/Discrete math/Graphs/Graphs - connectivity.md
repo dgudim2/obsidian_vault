@@ -1,6 +1,4 @@
 
-Previous: [[Graphs - operations]]
-
 # Subgraph ($G' \subset G$)
 
 > [!definition] 
@@ -1087,6 +1085,12 @@ e -- g
 
 > In this case $\{\{d,f\}, \{e,f\}, \{g,f\}\}$ is a **cut**
 
+--- 
+<br>
 
-Next: [[Graphs - metrics]]
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```
+
 

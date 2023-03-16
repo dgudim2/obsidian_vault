@@ -1,6 +1,4 @@
 
-Previous: [[Graphs - connectivity]]
-
 # Distances
 
 ## Distance between vertices
@@ -260,5 +258,9 @@ flexGrow=1.2
 --- 
 <br>
 
-Next: [[Graphs - metrics2]]
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```
+
 

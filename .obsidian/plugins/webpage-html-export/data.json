@@ -6,7 +6,7 @@
   "includePluginCSS": "obsidian-list-callouts\nobsidian-columns",
   "addDarkModeToggle": true,
   "includeOutline": true,
-  "customLineWidth": 900,
+  "customLineWidth": 0,
   "openAfterExport": false,
-  "lastExportPath": "/home/kloud/Documents/export/graphs---basics.html"
+  "lastExportPath": "/home/kloud/Downloads/graphs---planarity.html"
 }

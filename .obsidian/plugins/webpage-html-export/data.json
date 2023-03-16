@@ -3,10 +3,10 @@
   "inlineJS": true,
   "inlineImages": true,
   "makeNamesWebStyle": true,
-  "includePluginCSS": "",
+  "includePluginCSS": "obsidian-list-callouts\nobsidian-columns",
   "addDarkModeToggle": true,
   "includeOutline": true,
   "customLineWidth": 900,
   "openAfterExport": false,
-  "lastExportPath": "/home/kloud/Downloads/graphs---basics.html"
+  "lastExportPath": "/home/kloud/Documents/export/graphs---basics.html"
 }

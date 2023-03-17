@@ -77,6 +77,7 @@
 > } 
 > ```
 
+
 ## Spanning tree
 
 > [!definition]
@@ -369,6 +370,7 @@ edge [color = grey]
 		} 
 		```
 4. In our case the array will look like this: *[5, 6, 0, 6, 0, 4, 4, 4]*, and the [[#Tree|tree]] will have just *2* connected vertices: *4* and *9*
+
 
 ## Array to tree
 

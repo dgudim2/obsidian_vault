@@ -58,19 +58,17 @@ edge [color = grey]
 flexGrow=1
 ===
 
-|     | #h/white **1**  | #h/white **2** | #h/white **3** | #h/white **4** | #h/white **5** | #h/white **6** | 
+|     | #c/white **1**  | #c/white **2** | #c/white **3** | #c/white **4** | #c/white **5** | #c/white **6** | 
 | --- | -------------- | -------------- | -------------- | -------------- | -------------- | -------------- |
-| #h/white **1**   | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** |
-| #h/white **2**   | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   | **2**          |
-| #h/white **3**   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          | #h/red **3**   |
-| #h/white **4**   | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** | **2**          |
-| #h/white **5**   | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              | #h/green **1** |
-| #h/white **6**   | #h/green **1** | **2**          | #h/red **3**   | **2**          | #h/green **1** | X              |
+| #c/white **1**   | X              | #c/green **1** | **2**          | #c/red **3**   | **2**          | #c/green **1** |
+| #c/white **2**   | #c/green **1** | X              | #c/green **1** | **2**          | #c/red **3**   | **2**          |
+| #c/white **3**   | **2**          | #c/green **1** | X              | #c/green **1** | **2**          | #c/red **3**   |
+| #c/white **4**   | #c/red **3**   | **2**          | #c/green **1** | X              | #c/green **1** | **2**          |
+| #c/white **5**   | **2**          | #c/red **3**   | **2**          | #c/green **1** | X              | #c/green **1** |
+| #c/white **6**   | #c/green **1** | **2**          | #c/red **3**   | **2**          | #c/green **1** | X              |
 
 ````
 `````
-
-
 
 1. Make an [[Graphs - basics#Adjacency matrix|adjacency matrix]] T
 

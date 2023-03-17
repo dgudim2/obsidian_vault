@@ -7,17 +7,17 @@ Download::
 https://github.com/steveyang331/Obsidian-css/
 
 How to use highlight code syntax:：
-    #h/COLOR_name
+    #c/COLOR_name
     
     Highlighted text background , 
     Highlighted bold text ,
     Highlighted italic . 
 
-    #h/pink ==pink== 
+    #c/pink ==pink==
 
-    #h/pink **pink**
+    #c/pink **pink**
 
-    #h/pink _pink_
+    #c/pink _pink_
  
 */
 
@@ -327,12 +327,12 @@ div:not(.CodeMirror-activeline) > .CodeMirror-line span.cm-tag-hnavy
 
 /*----------------------- Preview mode ------------------------ */
 
-a[href^="#h/"]{
+a[href^="#c/"]{
     display:none !important;  
 }
 
 
-a[href^="#h/"] + mark {
+a[href^="#c/"] + mark {
     color: white !important; /* change this color to white or black or others for light or Dark Theme */
 	border-radius: 5px;
 	padding-left: 5px;
@@ -341,228 +341,228 @@ a[href^="#h/"] + mark {
 }
 
 /* -- white --  */
-a[href^="#h/white"] + mark {
+a[href^="#c/white"] + mark {
 	background-color: rgb(255,255,255) !important;
     color: black !important;
 }
 
-a[href^="#h/white"] + strong {
+a[href^="#c/white"] + strong {
 	color: rgb(255,255,255);
 }
 
-a[href^="#h/white"] + em {
+a[href^="#c/white"] + em {
 	color: rgb(255,255,255);
 }
 
 /* -- black --  */
-a[href^="#h/black"] + mark {
+a[href^="#c/black"] + mark {
 	background-color: rgb(0,0,0)!important;
 }
 
-a[href^="#h/black"] + strong {
+a[href^="#c/black"] + strong {
 	color: rgb(0,0,0);
 }
 
-a[href^="#h/black"] + em {
+a[href^="#c/black"] + em {
 	color: rgb(0,0,0);
 }
 
 /* -- red --  */
-a[href^="#h/red"] + mark {
+a[href^="#c/red"] + mark {
 	background-color: rgb(255,0,0) !important;
 }
 
-a[href^="#h/red"] + strong {
+a[href^="#c/red"] + strong {
 	color: rgb(255,0,0);
 }
 
-a[href^="#h/red"] + em {
+a[href^="#c/red"] + em {
 	color: rgb(255,0,0);
 }
 
 /* -- aqua --  */
-a[href^="#h/aqua"] + mark {
+a[href^="#c/aqua"] + mark {
 	background-color: rgb(0,255,255)!important;
 }
 
-a[href^="#h/aqua"] + strong {
+a[href^="#c/aqua"] + strong {
 	color: rgb(0,255,255);
 }
 
-a[href^="#h/aqua"] + em {
+a[href^="#c/aqua"] + em {
 	color: rgb(0,255,255);
 }
 
 /* -- fuchsia --  */
-a[href^="#h/fuchsia"] + mark {
+a[href^="#c/fuchsia"] + mark {
 	background-color: rgb(255,0,255)!important;
 }
 
-a[href^="#h/fuchsia"] + strong {
+a[href^="#c/fuchsia"] + strong {
 	color: rgb(255,0,255);
 }
 
-a[href^="#h/fuchsia"] + em {
+a[href^="#c/fuchsia"] + em {
 	color: rgb(255,0,255);
 }
 
 
 /* -- pink --  */
-a[href^="#h/pink"] + mark {
+a[href^="#c/pink"] + mark {
 	background-color: rgb(255,0,255)!important;
 }
 
-a[href^="#h/pink"] + strong {
+a[href^="#c/pink"] + strong {
 	color: rgb(255,0,255);
 }
 
-a[href^="#h/pink"] + em {
+a[href^="#c/pink"] + em {
 	color: rgb(255,0,255);
 }
 
 /* -- green --  */
-a[href^="#h/green"] + mark {
+a[href^="#c/green"] + mark {
 	background-color: rgb(0,255,0)!important;
 }
 
-a[href^="#h/green"] + strong {
+a[href^="#c/green"] + strong {
 	color: rgb(0,255,0);
 }
 
-a[href^="#h/green"] + em {
+a[href^="#c/green"] + em {
 	color: rgb(0,255,0);
 }
 
 /* -- yellow --  */
-a[href^="#h/yellow"] + mark {
+a[href^="#c/yellow"] + mark {
 	background-color: rgb(255,255,0) !important;
     color: black !important;
 }
 
-a[href^="#h/yellow"] + strong {
+a[href^="#c/yellow"] + strong {
 	color: rgb(255,255,0) ;
 }
 
-a[href^="#h/yellow"] + em {
+a[href^="#c/yellow"] + em {
 	color: rgb(255,255,0) ;
 }
 
 
 /* -- blue --  */
-a[href^="#h/blue"] + mark {
+a[href^="#c/blue"] + mark {
 	background-color: rgb(0,0,255) !important;
 }
 
-a[href^="#h/blue"] + strong {
+a[href^="#c/blue"] + strong {
 	color: rgb(0,0,255);
 }
 
-a[href^="#h/blue"] + em {
+a[href^="#c/blue"] + em {
 	color: rgb(0,0,255);
 }
 
 
 /* -- gray --  */
-a[href^="#h/gray"] + mark {
+a[href^="#c/gray"] + mark {
 	background-color: rgb(128,128,128) !important;
 }
 
-a[href^="#h/gray"] + strong {
+a[href^="#c/gray"] + strong {
 	color: rgb(128,128,128);
 }
 
-a[href^="#h/gray"] + em {
+a[href^="#c/gray"] + em {
 	color: rgb(128,128,128);
 }
 
 /* -- silver --  */
-a[href^="#h/silver"] + mark {
+a[href^="#c/silver"] + mark {
 	background-color: rgb(192,192,192) !important;
 }
 
-a[href^="#h/silver"] + strong {
+a[href^="#c/silver"] + strong {
 	color: rgb(192,192,192);
 }
 
-a[href^="#h/silver"] + em {
+a[href^="#c/silver"] + em {
 	color: rgb(192,192,192);
 }
 
 /* -- maroon --  */
-a[href^="#h/maroon"] + mark {
+a[href^="#c/maroon"] + mark {
 	background-color: rgb(128,0,0) !important;
 }
 
-a[href^="#h/maroon"] + strong {
+a[href^="#c/maroon"] + strong {
 	color: rgb(128,0,0);
 }
 
-a[href^="#h/maroon"] + em {
+a[href^="#c/maroon"] + em {
 	color: rgb(128,0,0);
 }
 
 /* -- teal --  */
-a[href^="#h/teal"] + mark {
+a[href^="#c/teal"] + mark {
 	background-color: rgb(0,128,128)!important;
 }
 
-a[href^="#h/teal"] + strong {
+a[href^="#c/teal"] + strong {
 	color: rgb(0,128,128);
 }
 
-a[href^="#h/teal"] + em {
+a[href^="#c/teal"] + em {
 	color: rgb(0,128,128);
 }
 
 /* -- teal --  */
-a[href^="#h/purple"] + mark {
+a[href^="#c/purple"] + mark {
 	background-color: rgb(128,0,128)!important;
 }
 
-a[href^="#h/purple"] + strong {
+a[href^="#c/purple"] + strong {
 	color: rgb(128,0,128);
 }
 
-a[href^="#h/purple"] + em {
+a[href^="#c/purple"] + em {
 	color: rgb(128,0,128);
 }
 
 /* -- lime --  */
-a[href^="#h/lime"] + mark {
+a[href^="#c/lime"] + mark {
 	background-color: rgb(0,128,0)!important;
 }
 
-a[href^="#h/lime"] + strong {
+a[href^="#c/lime"] + strong {
 	color: rgb(0,128,0);
 }
 
-a[href^="#h/lime"] + em {
+a[href^="#c/lime"] + em {
 	color: rgb(0,128,0);
 }
 
 /* -- olive --  */
-a[href^="#h/olive"] + mark {
+a[href^="#c/olive"] + mark {
 	background-color: rgb(128,128,0)!important;
 }
 
-a[href^="#h/olive"] + strong {
+a[href^="#c/olive"] + strong {
 	color: rgb(128,128,0);
 }
 
-a[href^="#h/olive"] + em {
+a[href^="#c/olive"] + em {
 	color: rgb(128,128,0);
 }
 
 /* -- navy --  */
-a[href^="#h/navy"] + mark {
+a[href^="#c/navy"] + mark {
 	background-color: rgb(0,0,128)!important;
 }
 
-a[href^="#h/navy"] + strong {
+a[href^="#c/navy"] + strong {
 	color: rgb(0,0,128);
 }
 
-a[href^="#h/navy"] + em {
+a[href^="#c/navy"] + em {
 	color: rgb(0,0,128);
 }
 

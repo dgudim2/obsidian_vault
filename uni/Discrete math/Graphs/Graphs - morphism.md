@@ -698,10 +698,10 @@ $$
 ```
 ````
 4. Add any small number $\large\epsilon_{0.1}$ to the same value in the diagonal of both matrices. I.e: $a_{11}=8$ and ($b_{11}=8$ or $b_{22}=8$)
-	- Invert those matrices
-	- Search for element equal to $a_{11}$ in the inverted *B* matrix
-	- Repeat (Choose one more element and add $\large\epsilon_{0.2}$, $\large\epsilon_{0.1}$ will stay in it's position)
-	- Get mapping $$p= 
+5. Invert those matrices
+6. Search for element equal to $a_{11}$ in the inverted *B* matrix
+7. Repeat (Choose one more element and add $\large\epsilon_{0.2}$, $\large\epsilon_{0.1}$ will stay in it's position)
+8. Construct mapping $$p= 
 \begin{Bmatrix}
 1 & 2 & 3 & 4 & 5 & 6 \\
 1 & 3 & 4 & 5 & 6 & 1

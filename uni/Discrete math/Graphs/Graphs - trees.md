@@ -607,5 +607,281 @@ edge [color = grey]
 --- 
 <br>
 
-# Steiner graphs
+# Steiner's point
 
+> [!definition] 
+> **Steiner's point** will exist if in the triangle there are no angles $\geq 120^o$ 
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+1. Find length of [[Graphs - basics#Undirected graph|edges]] 
+$|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
+
+```tikz
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node at (0.0, 0.0) (a) {}; % a
+   \node at (4.0, 0.0) (b) {}; % b
+   \node at (0.0, 8.0) (c) {}; % c
+
+   % WEIGHTS AND CONNECTIONS
+   \draw (a) -- (b) node [midway, above] {\Huge 3};
+   \draw (a) -- (c) node [midway, left] {\Huge 4};
+   \draw (b) -- (c) node [midway, right] {\Huge 5};
+
+   % DRAW NODES
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+````col-md 
+flexGrow=1.5
+===
+
+2. Find *longest* [[Graphs - basics#Undirected graph|edge]] (BC)
+3. Construct triangle $\Delta BCX$ such that $|BC|=|BX|=|CX|$
+
+```tikz
+\usepackage{tikz}
+
+\definecolor{green_g}{HTML}{82851b}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node (a) at ( 0.0,  0.0) {}; % a
+   \node (b) at ( 4.0,  0.0) {}; % b
+   \node (c) at ( 0.0,  8.0) {}; % c
+   \node (x) at ( 9.0,  7.5) {}; % x
+
+   % DRAW AREAS
+   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+
+   % WEIGHTS AND CONNECTIONS
+   \draw (a) -- (b) node [midway, above] {\Huge 3};
+   \draw (a) -- (c) node [midway, left]  {\Huge 4};
+   \draw (b) -- (c) node [midway, right] {\Huge 5};
+   \draw (b) -- (x) node [midway, left]  {\Huge 5};
+   \draw (c) -- (x) node [midway, below] {\Huge 5};
+
+   % DRAW NODES
+   \draw[color=white, fill=black]  (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black]  (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black]  (c) circle (0.4) node {\Huge c};
+   \draw[color=white, fill=black]  (x) circle (0.4) node {\Huge x};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+`````
+
+
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```tikz
+\usepackage{tikz}
+
+\definecolor{green_g}{HTML}{B8BB26}
+\definecolor{orange_g}{HTML}{FE8019}
+\definecolor{blue_g}{HTML}{83A598}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node (a) at ( 0.0,  0.0) {}; % a
+   \node (b) at ( 4.0,  0.0) {}; % b
+   \node (c) at ( 0.0,  8.0) {}; % c
+   \node (x) at ( 9.0,  7.5) {}; % x
+
+   \draw[orange_g, fill=blue_g] (4.4, 5.1) circle (5.1);
+
+   % DRAW AREAS
+   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+ 
+   % CONNECTIONS
+   \draw (a) -- (b);
+   \draw (a) -- (c);
+   \draw (b) -- (c);
+   \draw (b) -- (x);
+   \draw (c) -- (x);
+
+   % DRAW NODES
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=white, fill=black] (x) circle (0.4) node {\Huge x};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+
+````col-md 
+flexGrow=1
+===
+
+4. Draw a *circle* that goes through points $B$, $C$, $X$
+$(x-a)^2+(y-b)^2=R^2$
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```tikz
+\usepackage{tikz}
+
+\definecolor{green_g}{HTML}{B8BB26}
+\definecolor{orange_g}{HTML}{FE8019}
+\definecolor{blue_g}{HTML}{83A598}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node (a) at ( 0.0,  0.0) {}; % a
+   \node (b) at ( 4.0,  0.0) {}; % b
+   \node (c) at ( 0.0,  8.0) {}; % c
+   \node (x) at ( 9.0,  7.5) {}; % x
+   \node (s) at ( 1.3,  1.1) {}; % s
+
+   \draw[orange_g, fill=blue_g] (4.4, 5.1) circle (5.1);
+
+   % DRAW AREAS
+   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+ 
+   % CONNECTIONS
+   \draw (a) -- (b);
+   \draw (a) -- (c);
+   \draw (b) -- (c);
+   \draw (b) -- (x);
+   \draw (c) -- (x);
+   \draw (a) -- (x);
+
+   % DRAW NODES
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=white, fill=black] (x) circle (0.4) node {\Huge x};
+   \draw[color=red,   fill=black] (s) circle (0.4) node {\Huge s};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+5. Find a point where *circle intersects* with line $AX$
+Line equation: $$\frac{x-x_{1}}{x_{2}-x_{1}}=\frac{y-y_{1}}{y_{2}-y_{1}}$$
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+## Before
+Weight = $4+3+5=12$
+
+```tikz
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node at (0.0, 0.0) (a) {}; % a
+   \node at (4.0, 0.0) (b) {}; % b
+   \node at (0.0, 8.0) (c) {}; % c
+
+   % WEIGHTS AND CONNECTIONS
+   \draw (a) -- (b) node [midway, above] {\Huge 3};
+   \draw (a) -- (c) node [midway, left] {\Huge 4};
+   \draw (b) -- (c) node [midway, right] {\Huge 5};
+
+   % DRAW NODES
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+## After
+$AS \approx 1.0239$ $BS \approx 2.3540$ $CS \approx 2.3540$
+Weight = $6.7664$
+
+```tikz
+\usepackage{tikz}
+
+\definecolor{green_g}{HTML}{B8BB26}
+\definecolor{orange_g}{HTML}{FE8019}
+\definecolor{blue_g}{HTML}{83A598}
+
+\begin{document}
+
+\begin{tikzpicture}[very thick]
+   % NODES
+   \node (a) at ( 0.0,  0.0) {}; % a
+   \node (b) at ( 4.0,  0.0) {}; % b
+   \node (c) at ( 0.0,  8.0) {}; % c
+   \node (s) at ( 1.3,  1.1) {}; % s
+ 
+   % CONNECTIONS
+   \draw (a) -- (s);
+   \draw (b) -- (s);
+   \draw (c) -- (s);
+
+   % DRAW NODES
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=white, fill=black] (s) circle (0.4) node {\Huge s};
+
+\end{tikzpicture}
+
+\end{document}
+```
+
+```` 
+`````

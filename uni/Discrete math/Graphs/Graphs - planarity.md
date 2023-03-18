@@ -82,18 +82,20 @@ d -- {b}
 
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[very thick]
    % NODES
-   \node (a) at ( -3.0,  0.0) {}; % a
-   \node (1) at ( 1.7, -2.0) {}; % 1
-   \node (2) at ( 1.0,  0.0) {}; % 2
-   \node (c) at ( 7,    0) {}; % c
-   \node (3) at ( 1.2,  2) {}; % 3
+   \node at (-3.0,  0.0) (a) {}; % a
+   \node at ( 1.7, -2.0) (1) {}; % 1
+   \node at ( 1.0,  0.0) (2) {}; % 2
+   \node at ( 7.0,  0.0) (c) {}; % c
+   \node at ( 1.2,  2.0) (3) {}; % 3
 
-   % DRAW CONNECTIONS
+   % DRAW AREAS
    \fill[fill=orange_g] (a.center)--(2.center)--(3.center);
    \fill[fill=green_g]  (c.center)--(2.center)--(3.center);
    \fill[fill=blue_g]   (a.center)--(c.center)--(1.center);
+   
+   % DRAW CONNECTIONS
    \path[draw] (a)--(c);
    \path[draw] (2)--(3);
    \path[draw] (a)--(3);
@@ -102,11 +104,11 @@ d -- {b}
    \path[draw] (1)--(c);
 
    % DRAW NODES
-   \draw[color=white, fill=black]  (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black]  (1) circle (0.4) node {\Huge 1};
-   \draw[color=white, fill=black]  (2) circle (0.4) node {\Huge 2};
-   \draw[color=white, fill=black]  (3) circle (0.4) node {\Huge 3};
-   \draw[color=white, fill=black]  (c) circle (0.4) node {\Huge c};
+   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
+   \draw[color=white, fill=black] (1) circle (0.4) node {\Huge 1};
+   \draw[color=white, fill=black] (2) circle (0.4) node {\Huge 2};
+   \draw[color=white, fill=black] (3) circle (0.4) node {\Huge 3};
+   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
 
 \end{tikzpicture}
 

@@ -28,7 +28,7 @@
     }
   },
   "syntaxHighlight": false,
-  "copyButton": true,
+  "copyButton": false,
   "version": "9.2.1",
   "autoCollapse": true,
   "defaultCollapseType": "open",

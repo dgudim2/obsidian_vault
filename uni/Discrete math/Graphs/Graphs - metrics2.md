@@ -4,7 +4,10 @@
 > Graph's $G=(V,E)$ *edge graph* is graph $G_{b}=(V_{b},E_{b})$ if it has as many [[Graphs - basics#Directed graphs|vertices]] as $G$ has [[Graphs - basics#Undirected graph|edges]], and it's [[Graphs - basics#Directed graphs|vertices]] are [[Graphs - basics#Vertices and edges|adjacent]] if corresponding [[Graphs - basics#Undirected graph|edges]] of $G$ were [[Graphs - basics#Vertices and edges|adjacent]]
 
 > [!info] 
-> **Edge** graph has $$\frac{1}{2} \sum_{n=1}^{n} p^2 {(v_{i})}-m$$ edges
+> **Edge** graph has $$
+> \begin{flalign*} 
+> & \frac{1}{2} \sum_{n=1}^{n} p^2 {(v_{i})}-m &
+> \end{flalign*}$$ edges
 > Where **m** - amount of graph's $G$ edges
 > And $p(v_{i})$ - [[Graphs - basics#Order (degree) of vertices|vertex degree]] 
 

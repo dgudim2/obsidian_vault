@@ -12,7 +12,8 @@
     "big-math",
     "banner-fix",
     "fix_highligh",
-    "kanban"
+    "kanban",
+    "custom-admonitions.b75f10"
   ],
   "showViewHeader": true,
   "theme": "system"

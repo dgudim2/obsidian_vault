@@ -222,8 +222,8 @@ e -- {a b c d}
 
 ### Properties
 
-1. $A$ and $B$ are **adjacent**, C and D are not. See [[#Adjacency matrix]]
-2. $A$ and $B$ are **incident** to edge $\{a, b\}$. See [[#Incidence matrix]]
+1. $A$ and $B$ are **adjacent**, C and D are not. Also see [[#Adjacency matrix]]
+2. $A$ and $B$ are **incident** to edge $\{a, b\}$. Also see [[#Incidence matrix]]
 3. Edges $\{a,d\}$ and $\{e,d\}$ are **adjacent**
 
 ```dot

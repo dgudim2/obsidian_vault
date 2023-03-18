@@ -29,9 +29,9 @@
   "Random.md": "FasDiceSix",
   "uni": "LiBook",
   "Reference.md": "RiFullscreenExitLine",
-  "Latex symbols.pdf": "SiLatex",
   "uni/Discrete math/Graphs/Graph tasks.pdf": "SiDiagramsdotnetWhite",
   "uni/Discrete math/Graphs": "SiGraphql",
   "Scheduler.md": "RiTodoLine",
-  "Home.md": "LiHome"
+  "Home.md": "LiHome",
+  "LaTeX docs/Latex symbols.pdf": "SiLatex"
 }

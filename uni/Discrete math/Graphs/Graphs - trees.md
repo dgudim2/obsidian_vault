@@ -885,3 +885,11 @@ Weight = $6.7664$
 
 ```` 
 `````
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

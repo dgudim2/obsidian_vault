@@ -190,9 +190,9 @@ $G = (\{V\}, \emptyset)$ - **trivials**
 ### Complete graph
 
 > If a graph G has $$
-\begin{flalign}
-\frac{n(n-1)}{n} &&
-\end{flalign}$$edges is is **complete** ($K_{n}$)
+\begin{flalign*}
+& \frac{n(n-1)}{n} &
+\end{flalign*}$$edges is is **complete** ($K_{n}$)
 
 ```dot
 graph neato {

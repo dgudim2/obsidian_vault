@@ -9,7 +9,7 @@ If $G_{1}=(V_{1}, E_{1})$ and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \cap G_{2}=(V_
 
 ````col-md
 ## $G_{1}$
----
+
 ```dot
 graph neato {
 
@@ -39,7 +39,7 @@ d -- {b}
 
 ````col-md
 ## $G_{2}$
----
+
 ```dot
 graph neato {
 
@@ -69,7 +69,7 @@ c -- b
 
 ````col-md
 ## $G_{1} \cap G_{2}$
----
+
 ```dot
 graph neato {
 
@@ -112,7 +112,7 @@ $C=A \cap B$ | $c_{ij}=a_{ij} \ \& \ b_{ij}$
 flexGrow=1
 ===
 
-$G$
+#### $G$
 
 $$
 
@@ -134,7 +134,7 @@ $$
 flexGrow=1
 ===
 
-$T$
+#### $T$
 
 $$
 \begin{array}{c c c c c} & 
@@ -155,7 +155,7 @@ $$
 flexGrow=1
 ===
 
-$G \cap T$
+#### $G \cap T$
 
 $$
 \begin{array}{c c c c c} & 

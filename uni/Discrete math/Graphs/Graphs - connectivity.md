@@ -372,7 +372,7 @@ Can be written in 2 ways:
 
 ### Hamiltonian path
 
-> The **Hamiltonian** [[#Path|path]] is a simple *open* [[#Circuit|circuit]] that goes through all [[Graphs - basics#Directed graphs|vertices]] of a graph *exactly once*
+> The **Hamiltonian** [[#Path|path]] is a simple [[#Open / closed walk|open/closed]] [[#Circuit|circuit]] that goes through all [[Graphs - basics#Directed graphs|vertices]] of a graph *exactly once*
 
 > [!theorem] 
 > - If a graph has a [[#Bridges|bridge]], then it has *no* **Hamiltonian** [[#Cycle|cycle]]. 

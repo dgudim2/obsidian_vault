@@ -285,12 +285,12 @@ b -- {c d}
 --- 
 <br>
 
-# Clojure
+# Closure
 
 > [!definition] 
 > If $G(V,E)$ has $n$ [[Graphs - basics#Directed graphs|vertices]], then it’s **closure** $cl(G)$ is a graph obtained from $G$ by adding [[Graphs - basics#Undirected graph|edges]]: if sum of [[Graphs - basics#Order (degree) of vertices|degrees]] of 2 vertices $p(u)+p(v) \geq n$, then [[Graphs - basics#Undirected graph|edge]] $\{u,v\}$ is added. 
 > 
-> This procedure is done until no more edges can be added.
+> - This procedure is done until no more edges can be added.
 
 --- 
 <br>
@@ -357,11 +357,17 @@ Can be written in 2 ways:
 
 ### Length of the path
 
-> **Length of the [[#Path|path]] ** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
+> **Length of the [[#Path|path]]** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
 
 ### Euler path
 
 > **Euler path** is [[#Path|path]] that goes through every [[Graphs - basics#Undirected graph|edge]] of a graph *exactly once*
+
+> [!note] 
+> - If the [[Graphs - basics#Order (degree) of vertices|degrees]] of all [[Graphs - basics#Directed graphs|vertices]] of the graph are *not less than 2*, then the graph has at least one [[#Euler path|Euler]] [[#Cycle|cycle]]
+> - A [[#Connected graph|connected]] [[Graphs - basics#Undirected graph|undirected]] graph has an [[#Euler path|Euler]] [[#Cycle|cycle]] *if, and only if* the [[Graphs - basics#Order (degree) of vertices|degrees]] of *all* [[Graphs - basics#Directed graphs|vertices]] of the graph are *even* numbers
+> - If the [[Graphs - basics#Order (degree) of vertices|degrees]] of *exactly two* [[Graphs - basics#Directed graphs|vertices]] are *odd* numbers, then the **Euler path** exists. 
+> 	- Its beginning and end are at [[Graphs - basics#Directed graphs|vertices]] of *odd* [[Graphs - basics#Order (degree) of vertices|degrees]] 
 
 #### Euler graph
 
@@ -369,6 +375,17 @@ Can be written in 2 ways:
 
 > [!note] 
 > [[Graphs - metrics2#Edge graph|Edge graph]] of **Euler graph** has both [[#Euler path|Euler]] and [[#Hamiltonian path|Hamiltonian]] [[#Cycle|cycles]].
+
+#### How to find a Euler cycle
+
+1. Take any [[Graphs - basics#Directed graphs|vertex]] $v$
+2. Find [[Graphs - basics#Properties|adjacent]] vertex $w$. If there are no [[Graphs - basics#Properties|adjacent]] vertices - stop
+3. Check if [[Graphs - basics#Undirected graph|edge]] $\{v,w\}$ is a [[#Bridges|bridge]]
+	- If [[Graphs - basics#Undirected graph|edge]] is *not* a [[#Bridges|bridge]], add it to the cycle and remove from the graph
+	- If [[Graphs - basics#Undirected graph|edge]] *is* a [[#Bridges|bridge]]
+		- If *there are more vertices* [[Graphs - basics#Properties|adjacent]] to $v$ - choose another vertex
+		- If there are *no* more vertices [[Graphs - basics#Properties|adjacent]] to $v$ - add edge to the cycle and remove it from graph. Go to vertex $w$ and repeat
+4. Repeat until no [[Graphs - basics#Undirected graph|edges]] left
 
 ### Hamiltonian path
 
@@ -392,10 +409,11 @@ Can be written in 2 ways:
 > 
 > <u>This leads to the following:</u>
 > 
-> $G(V,E)$ is **Hamiltonian** *if and only if* it’s [[#Clojure]] is **Hamiltonian**
+> $G(V,E)$ is **Hamiltonian** *if and only if* it’s [[#Closure]] is **Hamiltonian**
  
 > [!note] 
 > [[Graphs - metrics2#Edge graph|Edge graph]] of a **Hamiltonian graph** is also **Hamiltonian graph**
+
 
 ## Cycle
 

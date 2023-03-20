@@ -285,6 +285,16 @@ b -- {c d}
 --- 
 <br>
 
+# Clojure
+
+> [!definition] 
+> If $G(V,E)$ has $n$ [[Graphs - basics#Directed graphs|vertices]], then it’s **closure** $cl(G)$ is a graph obtained from $G$ by adding [[Graphs - basics#Undirected graph|edges]]: if sum of [[Graphs - basics#Order (degree) of vertices|degrees]] of 2 vertices $p(u)+p(v) \geq n$, then [[Graphs - basics#Undirected graph|edge]] $\{u,v\}$ is added. 
+> 
+> This procedure is done until no more edges can be added.
+
+--- 
+<br>
+
 # Walk
 
 > [!definition]
@@ -353,6 +363,39 @@ Can be written in 2 ways:
 
 > **Euler path** is [[#Path|path]] that goes through every [[Graphs - basics#Undirected graph|edge]] of a graph *exactly once*
 
+#### Euler graph
+
+> If a graph has a [[#Euler path]] and it's a [[#Cycle|cycle]], the graph is called a **Euler** graph
+
+> [!note] 
+> [[Graphs - metrics2#Edge graph|Edge graph]] of **Euler graph** has both [[#Euler path|Euler]] and [[#Hamiltonian path|Hamiltonian]] [[#Cycle|cycles]].
+
+### Hamiltonian path
+
+> The **Hamiltonian** [[#Path|path]] is a simple *open* [[#Circuit|circuit]] that goes through all [[Graphs - basics#Directed graphs|vertices]] of a graph *exactly once*
+
+> [!theorem] 
+> - If a graph has a [[#Bridges|bridge]], then it has *no* **Hamiltonian** [[#Cycle|cycle]]. 
+> - If the graph obtained by *removing* this [[#Bridges|bridge]] _has a **Hamiltonian** cycle_, then the *initial* graph _has a **Hamiltonian** path_.
+
+#### Hamiltonian graph
+
+> If a graph has a [[#Hamiltonian path]] and it's a [[#Cycle|cycle]], the graph is called a **Hamiltonian** graph
+
+> [!theorem] 
+> If $G(V,E)$ is [[#Connected graph|connected]], has $n$ [[Graphs - basics#Directed graphs|vertices]]. $n\geq 3$ and *every* vertex's *v* [[Graphs - basics#Order (degree) of vertices|degree]], $p(v)\geq \frac{n}{2}$, then graph is **Hamiltonian**
+> > [!note] 
+> > This is not a *necessary* condition, only a *sufficient* one: a graph whose [[Graphs - basics#Order (degree) of vertices|degrees]] of all vertices are equal to 2 ([[#Cycle|cycle]]) is *both* an [[#Euler graph|Euler]] and a **Hamiltonian** graph
+
+> [!theorem] 
+> If $G(V,E)$ is [[#Connected graph|connected]], has $n$ [[Graphs - basics#Directed graphs|vertices]]. $n\geq 3$ and sum of [[Graphs - basics#Order (degree) of vertices|degrees]] of some [[Graphs - basics#Properties|nonadjacent]] vertices, $p(u)+p(v) \geq n$, then graph is **Hamiltonian** *if and only if* graph with [[Graphs - basics#Undirected graph|edge]] $\{u,v\}$ is **Hamiltonian**
+> 
+> <u>This leads to the following:</u>
+> 
+> $G(V,E)$ is **Hamiltonian** *if and only if* it’s [[#Clojure]] is **Hamiltonian**
+ 
+> [!note] 
+> [[Graphs - metrics2#Edge graph|Edge graph]] of a **Hamiltonian graph** is also **Hamiltonian graph**
 
 ## Cycle
 

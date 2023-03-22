@@ -10,6 +10,7 @@
 + They see
 + Free guy
 + Altered carbon
++ Gattaca
 
 ## Anime
 + Стальной алхимик 2008
@@ -25,5 +26,6 @@
 + Клинок, рассекающий демонов
 + Ночные стражи
 + Arcane
-
++ Gunsmith cats
++ Магический индекс
 

@@ -12,6 +12,7 @@
 + Altered carbon
 + Gattaca
 + Падение луны
++ 
 
 ## Anime
 + Стальной алхимик 2008
@@ -29,4 +30,5 @@
 + Arcane
 + Gunsmith cats
 + Магический индекс
++ Шарлотта
 

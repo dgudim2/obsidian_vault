@@ -56,7 +56,7 @@
 > - 000 001 010 011
 > - 100 101 110 111
 
-All meaning is determined by how the [[#Bit (Binary digit)|bits]] are interpreted
+> All meaning is determined by how the [[#Bit (Binary digit)|bits]] are interpreted
 
 > [!example] 
 > Possible interpretation of 3 [[#Bit (Binary digit)|bits]] 
@@ -64,12 +64,16 @@ All meaning is determined by how the [[#Bit (Binary digit)|bits]] are interprete
 > 	- First [[#Bit (Binary digit)|bit]] is *1* if disk is connected
 > 	- Seconds [[#Bit (Binary digit)|bit]] is *1* if printer is connected
 > 	- Third [[#Bit (Binary digit)|bit]] is *1* is keyboard is connected
+> - Integer interpretation
+> 	- [[#Binary weighted positional interpretation|Positional interpretation]] uses base *2*
+> 	- Values are from *0* to *7*
+> 	- [[#Order of bits and bytes|Order of bits]] must be specified
 
-#### Integer interpretation
+#### Binary weighted positional interpretation
 
-- Positional representation uses base *2*
-- Values are from *0* to *7*
-- Order of bits must be specified
+| $2^5$ | $2^4$ | $2^3$ | $2^2$ | $2^1$ | $2^0$ |
+| -------- | -------- | ------- | ------- | ------- | ------- |
+| 32       | 16       | 8       | 4       | 2       | 1       | 
 
 > [!example] 
 > <u>0 1 0 1 0 1</u> is interpreted as:
@@ -77,34 +81,31 @@ All meaning is determined by how the [[#Bit (Binary digit)|bits]] are interprete
 
 - A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*
 
-##### Powers of 2
-
-| Power of 2 | Decimal value | Decimal digits |
-| ---------- | ------------- | -------------- |
-| 0          | 1             | 1              |
-| 1          | 2             | 1              |
-| 2          | 4             | 1              |
-| 3          | 8             | 1              |
-| 4          | 16            | 2              |
-| 5          | 32            | 2              |
-| 6          | 64            | 2              |
-| 7          | 128           | 3              |
-| 8          | 256           | 3              |
-| 9          | 512           | 3              |
-| 10         | 1024          | 4              |
-| 11         | 2048          | 4              |
-| 12         | 4096          | 4              |
-| 15         | 16384         | 5              |
-| 16         | 32768         | 5              |
-| 20         | 1048576       | 7              |
-| 30         | 1073741824    | 10             |
-| 32         | 4294967296    | 20             |
-
-##### Hexadecimal notation
-
-- Mathematically it's *base 16*
-- Each hex digit encodes *4* [[#Bit (Binary digit)|bits]]
-- Typically syntax: starts with *0x*
+> [!seealso] 
+> 1. [[#Integer representation in binary]]
+> 
+> 2. ##### Powers of 2
+> 
+> | Power of 2 | Decimal value | Decimal digits |
+> | ---------- | ------------- | -------------- |
+> | 0          | 1             | 1              |
+> | 1          | 2             | 1              |
+> | 2          | 4             | 1              |
+> | 3          | 8             | 1              |
+> | 4          | 16            | 2              |
+> | 5          | 32            | 2              |
+> | 6          | 64            | 2              |
+> | 7          | 128           | 3              |
+> | 8          | 256           | 3              |
+> | 9          | 512           | 3              |
+> | 10         | 1024          | 4              |
+> | 11         | 2048          | 4              |
+> | 12         | 4096          | 4              |
+> | 15         | 16384         | 5              |
+> | 16         | 32768         | 5              |
+> | 20         | 1048576       | 7              |
+> | 30         | 1073741824    | 10             |
+> | 32         | 4294967296    | 20             |
 
 #### Number systems
 
@@ -113,6 +114,13 @@ All meaning is determined by how the [[#Bit (Binary digit)|bits]] are interprete
 > Binary: *0b*
 > Octal: *0o*
 > Hex: *0x*
+
+##### Hexadecimal notation
+
+- Mathematically it's *base 16*
+- Each hex digit encodes *4* [[#Bit (Binary digit)|bits]]
+- Typically syntax: starts with *0x*
+- Supported in some languages
 
 ##### Any system to decimal
 
@@ -137,7 +145,7 @@ $$\large (x_{n-1},x_{n-2},\dots ,x_{0},x_{-1},x_{-2}, \dots ,x_{-l})=\sum_{i=-l}
 		2. *0,765* does not change, *0* is recorded
 	3. Repeat until the desired *precision* is reached
 
-##### Binary to hex and octal and reverse
+##### Binary to hex/octal and reverse
 
 > Group/ungroup by *4* for *hex*, by *3* for *octal*
 
@@ -150,7 +158,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 > [!summary] 
 > - Fundamental value in digital logic is a [[#Bit (Binary digit)|bit]]
 > - Binary conversations are used to represent bits to programmer
-> - Hexadecimal number system is used to shorten binary representation
+> - [[#Hexadecimal notation|Hexadecimal number]] system is used to shorten binary representation
 
 --- 
 <br>
@@ -160,11 +168,12 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 - American Standard Code for Information Interchange
 - Vendor independent
 - Adopted by PC manufacturers
-- Specifies 128 characters
+- Specifies <u>128 characters</u>
 - Unprintable characters for modem control
 
+> [!seealso] 
 > Full ASCII table
-
+> 
 |     | Dec | Char                     | Dec | Char  | Dec | Char | Dec | Char |
 | --- | --- | ------------------------ | --- | ----- | --- | ---- | --- | ---- |
 | 0   | NUL | (null)                   | 32  | SPACE | 64  | @    | 96  | `    |
@@ -207,3 +216,137 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- Characters can be 16/32 [[#Bit (Binary digit)|bits]] long
 - Can represent larger set of characters
 - Can accommodate languages such as Chinese
+
+--- 
+<br>
+
+# Integer representation in binary
+
+- Each binary integer represented in *k* [[#Bit (Binary digit)|bits]]
+- Computers have used $k=8,16,32,60,64$
+- Many computers support multiple integer sizes
+- [[#Binary weighted positional interpretation|Positional interpretation]] produces [[#Unsigned integers|unsigned]] integers
+
+## Unsigned integers
+
+- Straightforward [[#Binary weighted positional interpretation|positional interpretation]]
+- Each successive [[#Bit (Binary digit)|bit]] represents next power of 2
+- No negative numbers (A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*)
+- Precision is fixed (size of integer is constant)
+- Arithmetic operations can produce overflow/underflow (result can't be represented in *k* bits)
+- [[#Overflow]] is handled with wraparound and carry bit
+
+## Overflow
+
+- Values wrap around address space
+- Hardware records **overflow** in a separate <u>carry indicator</u>
+	- Software must check it after operations
+	- Can be used to *raise an exception*
+
+> Red is overflow
+$$
+\begin{align}
+1\ 0\ 0 \\
++\ 1\ 1\ 0 \\
+\hline
+{\color{red}1}\ 0\ 1\ 0
+\end{align}
+$$
+
+## Signed integers
+
+- Needed by most programs
+- Several representations are possible
+	- [[#Sign magnitude]]
+	- [[#One's complement]]
+	- [[#Two's complement]]
+- Some [[#Bit (Binary digit)|bit]] patters are used for negative values
+- Trade-off: [[#Unsigned integers|unsigned]] representation can store integers twice as large
+
+| Binary | [[#Unsigned integers\|Unsigned]] | [[#Sign magnitude]] | [[#One's complement]] | [[#Two's complement]] |
+| ------ |:--------------------------------:|:-------------------:|:---------------------:|:---------------------:|
+| 0000   |                0                 |          0          |           0           |           0           |
+| 0001   |                1                 |          1          |           1           |           1           |
+| 0010   |                2                 |          2          |           2           |           2           |
+| 0011   |                3                 |          3          |           3           |           3           |
+| 0100   |                4                 |          4          |           4           |           4           |
+| 0101   |                5                 |          5          |           5           |           5           |
+| 0110   |                6                 |          6          |           6           |           6           |
+| 0111   |                7                 |          7          |           7           |           7           |
+| 1000   |                8                 |         -0          |          -7           |          -8           |
+| 1001   |                9                 |         -1          |          -6           |          -7           |
+| 1010   |                10                |         -2          |          -5           |          -6           |
+| 1011   |                11                |         -3          |          -4           |          -5           |
+| 1100   |                12                |         -4          |          -3           |          -4           |
+| 1101   |                13                |         -5          |          -2           |          -3           |
+| 1110   |                14                |         -6          |          -1           |          -2           |
+| 1111   |                15                |         -7          |          -0           |          -1           |
+
+### Sign magnitude
+
+- Familiar to humans
+- First [[#Bit (Binary digit)|bit]] represents *sign*
+- Successive [[#Bit (Binary digit)|bits]] represent absolute value of integer
+- Quirk: can create *-0*
+
+### One's complement
+
+- Positive numbers use [[#Binary weighted positional interpretation|positional representation]]
+- Negative number are formed by inverting all [[#Bit (Binary digit)|bits]] of positive value
+- Quirk: two representations for *0*: 0000 and 1111
+
+> [!note] 
+> Some checksum algorthms use **one's complement**
+
+### Two's complement
+
+- Positive numbers use [[#Binary weighted positional interpretation|positional representation]]
+- Negative numbers formed by subtracting *1* from positive value and inverting all bits
+	- 0010 represents 2
+	- 1110 represents -2
+	- High order bit is set if number is negative
+- Quirk: one more <u>negative</u> value
+
+#### Implementation
+
+- We consider using [[#Unsigned integers|unsigned]] **two's complement** together because a single piece of hardware can handle arithmetic of both.
+- Software can choose an interpretation for each integer
+
+> [!example] 
+> *4* [[#Bit (Binary digit)|bits]]
+> - Adding *1* to binary *1001* produces *1010*
+> - [[#Unsigned integers|Unsigned]] interpretation goes from *9* to *10*
+> - [[#Two's complement]] interpretation goes from *-7* to *-6*
+
+### Sign extension
+
+- Needed for [[#Unsigned integers|unsigned]] and [[#Two's complement|two's complement]] representations
+- Used to accommodate <u>multiple sizes of integers</u>
+- Extends high-order [[#Bit (Binary digit)|bit]] (sign [[#Bit (Binary digit)|bit]])
+
+## Order of bits and bytes
+
+- Need to choose order for
+	- Storage in physical memory system
+	- Transmission over a network
+
+1. [[#Bit (Binary digit)|Bit]] order 
+	- Handled by hardware
+	- Usually hidden from programmer
+2. [[#Byte]] order
+	- Affects multi-byte data items (i.e: integers)
+	- Visible and important to programmer
+
+### Endianness
+
+![[endianness_had.webp]]
+
+#### Little endian
+
+> <u>Least</u> significant byte of integer is in lowest memory location
+
+#### Big Endian
+
+> <u>Most</u> significant byte of integer is in lowest memory location
+
+

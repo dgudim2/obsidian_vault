@@ -27,7 +27,7 @@
 
 - Can be *0* or *1*
 - Multiple **bits** are used to represent complex data items
-- Same underlying hardware can represent bits of an integer or bits of a character
+- Same underlying hardware can represent bits of an [[#Integer representation in binary|integer]] or bits of a character
 
 ### Byte
 
@@ -64,7 +64,7 @@
 > 	- First [[#Bit (Binary digit)|bit]] is *1* if disk is connected
 > 	- Seconds [[#Bit (Binary digit)|bit]] is *1* if printer is connected
 > 	- Third [[#Bit (Binary digit)|bit]] is *1* is keyboard is connected
-> - Integer interpretation
+> - *Integer* interpretation
 > 	- [[#Binary weighted positional interpretation|Positional interpretation]] uses base *2*
 > 	- Values are from *0* to *7*
 > 	- [[#Order of bits and bytes|Order of bits]] must be specified
@@ -345,7 +345,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- Handled by hardware
 	- Usually hidden from programmer
 2. [[#Byte]] order
-	- Affects multi-byte data items (i.e: integers)
+	- Affects multi-byte data items (i.e: [[#Integer representation in binary|integers]])
 	- Visible and important to programmer
 
 ### Endianness
@@ -413,7 +413,8 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 |===
 ```
-- Double precision format
+
+- [[Processor#Double precision|Double precision]] format
 ```asciidoc-table
 [cols="3,8,23"]
 |===

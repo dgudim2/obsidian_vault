@@ -237,7 +237,7 @@ graph TB;
 
 - [[#Processor Terminology|Processor]] runs [[#Fetch-execute cycle|fetch-execute]] indefinitely
 - Software must plan next step
-- Two possibilities when the *last step* of computation finishes
+- *Two possibilities* when the *last step* of computation finishes
 	- On smallest embedded systems: code enters a loop for testing for a change in input
 	- Larger systems: OS runs an infinite loop
 - & Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until *I/O* activity occurs
@@ -326,6 +326,31 @@ graph TB;
 - Allows for instructions with *no [[#Parts on an instruction|operands]]*, a *few [[#Parts on an instruction|operands]]*, or *many [[#Parts on an instruction|operands]]*
 - *No wasted space*
 
+## Types of Instruction sets
+
+### CISC
+
+> Complex Instruction Set Computer
+
+- *Many instructions* (often *hundreds*)
+- Given instruction can require *arbitrary time to compute*
+- & Example: Intel/AMD (x86/x64) or IBM [[#Instruction sets|instruction set]]
+- @ Typical complex instructions:
+	- Move graphical item on bitmapped display
+	- Copy or clear a region of memory
+	- Perform a [[Data representation#Floating point|floating point]] computation
+
+### RISC
+
+> Reduced Instruction Set Computer
+
+- *Few instructions* (typically *32* or *64*)
+- Each instruction executes in *one clock cycle*
+- & Example: MIPS or ARM instruction set
+- Omits complex instructions, instead *sequence of instructions* are used
+	- No [[Data representation#Floating point|floating point]] instructions
+	- No *graphics* instructions
+
 --- 
 <br>
 
@@ -346,7 +371,7 @@ graph TB;
 
 - *High-speed* storage mechanism
 - Part of the [[#Processor Terminology|processor]] (*on chip*)
-- Each register holds an [[Data representation#Integer representation in binary|integer]] or a *pointer*
+- Each [[#Registers|register]] holds an [[Data representation#Integer representation in binary|integer]] or a *pointer*
 - Numbered from *0* to *N-1*
 - $ Basic uses:
 	- *Temporary storage* during computation
@@ -390,6 +415,32 @@ graph TB;
 #### Typical register bank scheme
 
 - Registers are divided into *2* [[#Register banks|banks]]
-- [[#Major components|ALU]] instruction that takes *2* [[#Parts on an instruction|operands]] must have one [[#Parts on an instruction|operand]] from each [[#Register banks|banks]]
+- [[#Major components|ALU]] [[#Instruction sets|instruction]] that takes *2* [[#Parts on an instruction|operands]] must have one [[#Parts on an instruction|operand]] from each [[#Register banks|banks]]
 - Compiler (sometimes programmer) must *ensure that operands are in separate [[#Register banks|banks]]*
 - & Note: having *2* [[#Parts on an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
+
+#### Why register banks?
+
+- *Parallel hardware facilities* allow simultaneous access to both [[#Register banks|banks]]
+- Access takes half as long as using *a single* [[#Register banks|bank]]
+
+#### Consequences
+
+- <u>Some trivial programs cause problems</u>
+
+> [!example] 
+> 
+> - $X + Y \to R$
+> - $Z - X \to S$
+> - $Y + Z \to T$
+> 
+> [[#Parts on an instruction|Operands]] must be assigned to [[#Register banks|banks]]
+> - ! No feasible choise for the above snippet
+
+- <u>Register conflicts</u>
+	- Occur when [[#Parts on an instruction|operands]] specify the same [[#Registers|register]] [[#Register banks|bank]]
+	- Reported by the [[#Program translation|compiler/assembler]]
+	- Code should be modified or *extra [[#Instruction sets|instruction]] to copy* an [[#Parts on an instruction|operand]] value to the opposite [[#Registers|register]] [[#Register banks|bank]] should be added
+	- & Example: In the previous sample 
+		- Start with *Y* and *Z* in the same bank
+		- Before adding *Y* and *Z*, copy one to another [[#Registers|register]] [[#Register banks|bank]]

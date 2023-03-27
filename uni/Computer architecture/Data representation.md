@@ -155,11 +155,6 @@ $$\large (x_{n-1},x_{n-2},\dots ,x_{0},x_{-1},x_{-2}, \dots ,x_{-l})=\sum_{i=-l}
 
 $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
-> [!summary] 
-> - Fundamental value in digital logic is a [[#Bit (Binary digit)|bit]]
-> - Binary conversations are used to represent bits to programmer
-> - [[#Hexadecimal notation|Hexadecimal number]] system is used to shorten binary representation
-
 --- 
 <br>
 
@@ -230,7 +225,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 ## Unsigned integers
 
 - Straightforward [[#Binary weighted positional interpretation|positional interpretation]]
-- Each successive [[#Bit (Binary digit)|bit]] represents next power of 2
+- Each successive [[#Bit (Binary digit)|bit]] represents <u>next power of 2</u>
 - No negative numbers (A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*)
 - Precision is fixed (size of integer is constant)
 - Arithmetic operations can produce overflow/underflow (result can't be represented in *k* bits)
@@ -244,14 +239,8 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- Can be used to *raise an exception*
 
 > Red is overflow
-$$
-\begin{align}
-1\ 0\ 0 \\
-+\ 1\ 1\ 0 \\
-\hline
-{\color{red}1}\ 0\ 1\ 0
-\end{align}
-$$
+> 
+> $\begin{align} 1\ 0\ 0 \\ +\ 1\ 1\ 0 \\ \hline {\color{red}1}\ 0\ 1\ 0 \end{align}$
 
 ## Signed integers
 
@@ -302,15 +291,15 @@ $$
 
 - Positive numbers use [[#Binary weighted positional interpretation|positional representation]]
 - Negative numbers formed by subtracting *1* from positive value and inverting all bits
-	- 0010 represents 2
-	- 1110 represents -2
-	- High order bit is set if number is negative
+	- *0010* represents *2*
+	- *1110* represents *-2*
+	- <u>High order bit is set if number is negative</u>
 - Quirk: one more <u>negative</u> value
 
 #### Implementation
 
 - We consider using [[#Unsigned integers|unsigned]] **two's complement** together because a single piece of hardware can handle arithmetic of both.
-- Software can choose an interpretation for each integer
+- <u>Software can choose</u> an interpretation for each integer
 
 > [!example] 
 > *4* [[#Bit (Binary digit)|bits]]
@@ -324,11 +313,33 @@ $$
 - Used to accommodate <u>multiple sizes of integers</u>
 - Extends high-order [[#Bit (Binary digit)|bit]] (sign [[#Bit (Binary digit)|bit]])
 
+> When using [[#Two's complement|two's complement representation]] and assigning *32-bit* integer to *64-bit* integer, upper 32 [[#Bit (Binary digit)|bits]] are filled with
+> - *0* for a <u>positive</u> number
+> - *1* for a <u>negative</u> number
+> - (High order [[#Bit (Binary digit)|bit]] is replicated)
+
+> [!example] 
+> - The *8-bit* version of integer *-3* is
+> 	- *11111101*
+> - The *16-bit* version of integer *-3* is
+> 	- *__<u>11111111</u>__11111101*
+
+> *Sign extension* also applies to <u>bit-shifting</u>
+
+> [!example] 
+> Shifting *-4* one [[#Bit (Binary digit)|bit]] right should produce *-2* (divide by *2*)
+> - *16-bit* representation of *-4* is
+> 	- *1111 1111 1111 1100*
+> - After right shift, value is *-2*
+> 	- *__<u>1</u>__111 1111 1111 1110*
+> 	  
+> So, for right shift we also replicate <u>high order</u> [[#Bit (Binary digit)|bit]]
+
 ## Order of bits and bytes
 
 - Need to choose order for
-	- Storage in physical memory system
-	- Transmission over a network
+	- *Storage* in physical memory system
+	- *Transmission* over a network
 
 1. [[#Bit (Binary digit)|Bit]] order 
 	- Handled by hardware
@@ -350,3 +361,98 @@ $$
 > <u>Most</u> significant byte of integer is in lowest memory location
 
 
+## Binary coded decimal (BCD)
+
+- Pioneered by IBM
+- <u>Represents integer as a string</u> of [[#Byte|bytes]]
+	- Unpacked: one digit per *8-bit* [[#Byte|byte]]
+	- Packed: one digit per *4-bit* **nibble**
+- Uses [[#Sign magnitude|sign magntude]] representation
+
+> [!example] 
+> Unpacked **BCD**
+> - *123456* is stored as
+> 	- 0x01 0x02 0x03 0x04 0x05 0x06
+> - *-123456* is stored as
+> 	- 0x01 0x02 0x03 0x04 0x05 0x06 0x0D
+
+- <u>Disadvantages</u> 
+	- Takes up more space
+	- Hardware is slower than integer or floating point
+- <u>Advanages</u>
+	- Gives results humans expect 
+	- Avoids repeating binary value for *.01*
+
+> [!note] 
+> Preferred by banks
+
+--- 
+<br>
+
+# Floating point
+
+> Fundamental idea: follow standard scientific representation, specify *a few significant bits* and an *order of magnitude*
+> 
+> *Example:* $6.022*10^{23}$
+> 
+> - Hardware allocates fixed-size [[#Bit (Binary digit)|bit]] blocks for *exponent* and *mantissa*
+
+## IEEE standard 754
+
+> Widely adopted by computer architects
+
+- Single precision format
+```asciidoc-table
+[cols="3,8,23"]
+|===
+| S | Exponent | Mantissa
+
+| 1 bit
+| 8 bits
+| 23 bits
+
+|===
+```
+- Double precision format
+```asciidoc-table
+[cols="3,8,23"]
+|===
+| S | Exponent | Mantissa
+
+| 1 bit
+| 11 bits
+| 52 bits
+
+|===
+```
+
+> [!example] 
+> Let's take *6.5*
+> - In binary. *6* is *110* and *.5* is *.1*, giving *110.1*
+> - Normalizing gives _$1.101*2^2$_
+> - In IEEE floating point
+> 	- The sign [[#Bit (Binary digit)|bit]] is *0* for positive numbers
+> 	- <u>The exponent is biased</u> by adding *127*, giving *129* (*1000 0001*)
+> 	- The leading *1* of the *mantissa* is not stored, giving *1010 0000*
+> - The result is
+> 
+> ```asciidoc-table
+> [cols="3,8,22"]
+> |===
+> | S | Exponent | Mantissa
+> 
+> | 0
+> | 1 0 0 0 0 0 0 1
+> | 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+> 
+> |===
+> ```
+
+### Special values in IEEE floating point
+
+- Zero
+- Positive infinity ($+\infty$)
+- Negative infinity ($-\infty$)
+
+> [!note] 
+> <u>Infinity</u> values handles cases such as the <u>result of division by 0</u>

@@ -401,7 +401,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 > Widely adopted by computer architects
 
-- Single precision format
+- *Single precision format*
 ```asciidoc-table
 [cols="3,8,23"]
 |===
@@ -414,7 +414,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 |===
 ```
 
-- [[Processor#Double precision|Double precision]] format
+- *[[Processor#Double precision|Double precision]] format*
 ```asciidoc-table
 [cols="3,8,23"]
 |===

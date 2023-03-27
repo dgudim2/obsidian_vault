@@ -133,12 +133,12 @@ $$\large (x_{n-1},x_{n-2},\dots ,x_{0},x_{-1},x_{-2}, \dots ,x_{-l})=\sum_{i=-l}
 
 ##### Decimal to any system
 
-1. For the whole part:
+1. <u>For the whole part</u>:
 	1. Divide by the *base* of the system 
 	2. Keep track of *quotient* and *remainder*
 	3. Keep dividing the *quotient* until you get a *0*
 	4. Write *remainders* in reverse order
-2. For the fractional part:
+2. <u>For the fractional part</u>:
 	1. Multiply the fractional part by the *base*
 	2. Take the *whole* part 
 		1. *1,345* becomes *0,345*, *1* is recorded
@@ -250,7 +250,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- [[#One's complement]]
 	- [[#Two's complement]]
 - Some [[#Bit (Binary digit)|bit]] patters are used for negative values
-- Trade-off: [[#Unsigned integers|unsigned]] representation can store integers twice as large
+- ! Trade-off: [[#Unsigned integers|unsigned]] representation can store integers twice as large
 
 | Binary | [[#Unsigned integers\|Unsigned]] | [[#Sign magnitude]] | [[#One's complement]] | [[#Two's complement]] |
 | ------ |:--------------------------------:|:-------------------:|:---------------------:|:---------------------:|
@@ -276,13 +276,13 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 - Familiar to humans
 - First [[#Bit (Binary digit)|bit]] represents *sign*
 - Successive [[#Bit (Binary digit)|bits]] represent absolute value of integer
-- Quirk: can create *-0*
+- ? Quirk: can create *-0*
 
 ### One's complement
 
 - Positive numbers use [[#Binary weighted positional interpretation|positional representation]]
 - Negative number are formed by inverting all [[#Bit (Binary digit)|bits]] of positive value
-- Quirk: two representations for *0*: 0000 and 1111
+- ? Quirk: two representations for *0*: 0000 and 1111
 
 > [!note] 
 > Some checksum algorthms use **one's complement**
@@ -294,7 +294,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- *0010* represents *2*
 	- *1110* represents *-2*
 	- <u>High order bit is set if number is negative</u>
-- Quirk: one more <u>negative</u> value
+- ? Quirk: one more <u>negative</u> value
 
 #### Implementation
 
@@ -391,7 +391,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 # Floating point
 
-> Fundamental idea: follow standard scientific representation, specify *a few significant bits* and an *order of magnitude*
+> - @ Fundamental idea: follow standard scientific representation, specify *a few significant bits* and an *order of magnitude*
 > 
 > *Example:* $6.022*10^{23}$
 > 

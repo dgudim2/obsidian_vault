@@ -337,7 +337,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 ## Order of bits and bytes
 
-- Need to choose order for
+- @ Need to choose order for
 	- *Storage* in physical memory system
 	- *Transmission* over a network
 

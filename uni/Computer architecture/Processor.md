@@ -178,12 +178,11 @@ dm -> {cpu, io}
 
 ### Fetch-execute algorithm
 
-> Repeat <u>forever</u> {
-> 
-> - *Fetch*: access the **next step** of the program
-> - *Execute*: **Perform** the step of the program
-> 
-> }
+- Fetch the next [[#Instruction sets|instruction]]
+- Decode the [[#Instruction sets|instruction]] and fetch [[#Parts on an instruction|operands]] from [[#Registers|registers]]
+- Perform the *operation* specified by the [[#Parts on an instruction|opcode]] 
+- Perform memory *read* or *write*, if needed
+- Store the result back to the [[#Registers|registers]]
 
 ## Program translation
 
@@ -296,7 +295,7 @@ graph TB;
 - Instruction is represented as a sequence of [[Data representation#Bit (Binary digit)|bits]] in memory (usually multiple of [[Data representation#Byte|bytes]])
 	- Typically
 		- **Opcode** at the beginning of instruction
-		- **Operands** follow opcode
+		- **Operands** follow **opcode**
 
 ```asciidoc-table
 [cols="1,1,1,3"]
@@ -347,7 +346,7 @@ graph TB;
 - *Few instructions* (typically *32* or *64*)
 - Each instruction executes in *one clock cycle*
 - & Example: MIPS or ARM instruction set
-- Omits complex instructions, instead *sequence of instructions* are used
+- @ Omits complex instructions, instead *sequence of instructions* are used
 	- No [[Data representation#Floating point|floating point]] instructions
 	- No *graphics* instructions
 
@@ -444,3 +443,4 @@ graph TB;
 	- & Example: In the previous sample 
 		- Start with *Y* and *Z* in the same bank
 		- Before adding *Y* and *Z*, copy one to another [[#Registers|register]] [[#Register banks|bank]]
+

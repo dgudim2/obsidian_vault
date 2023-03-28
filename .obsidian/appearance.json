@@ -13,7 +13,10 @@
     "banner-fix",
     "fix_highligh",
     "kanban",
-    "list_padding"
+    "list_padding",
+    "mermaid",
+    "width-800px",
+    "dialogs"
   ],
   "showViewHeader": true,
   "theme": "system"

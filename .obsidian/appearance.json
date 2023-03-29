@@ -14,9 +14,9 @@
     "fix_highligh",
     "kanban",
     "list_padding",
+    "dialogs",
     "mermaid",
-    "width-800px",
-    "dialogs"
+    "width-800px"
   ],
   "showViewHeader": true,
   "theme": "system"

@@ -6,11 +6,11 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FabResearchgate",
       "RiCpu-line",
       "RiCpu-fill",
       "LiBinary",
-      "LiCpu",
-      "LiHome"
+      "LiCpu"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -23,8 +23,6 @@
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",
-  "uni/English/networks-wifi": "RiHomeWifiLine",
-  "uni/English/ethics": "RiOpenArmLine",
   "CodeIdeas.md": "FarLightbulb",
   "Random.md": "FasDiceSix",
   "uni": "LiBook",
@@ -35,5 +33,8 @@
   "Home.md": "LiHome",
   "uni/Computer architecture": "LiCpu",
   "uni/Computer architecture/Data representation.md": "LiBinary",
-  "uni/Computer architecture/Processor.md": "RiCpu-line"
+  "uni/Computer architecture/Processor.md": "RiCpu-line",
+  "uni/English/ethics (w3)": "RiOpenArmLine",
+  "uni/English/networks-wifi (w4, w5)": "RiHomeWifiLine",
+  "uni/English/Research proposal (w7)": "FabResearchgate"
 }

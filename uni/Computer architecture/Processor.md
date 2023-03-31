@@ -157,7 +157,7 @@ dm -> {cpu, io}
 			- not
 			- xor
 	- Performs *one operations at a time* as directed
-- $ Local data storage
+- $ Local data storage ([[#Instructions|instruction]] and *data* memory)
 	- *Holds data* values for operations
 	- Values must be inserted (e.g., loaded from memory) before the operation can be performed
 - $ Internal interconnects (data paths)
@@ -165,6 +165,23 @@ dm -> {cpu, io}
 - $ External interfaces (I/O buses)
 	- *Handle communication* between **CPU** and rest of the computer system
 	- *Provides interaction* with *external* memory as well as external *I/O* devices
+
+### Additional components
+
+#### Multiplexer
+
+- Small hardware unit
+- Fits into data path (i.e., handles parallel data)
+- Takes *multiple inputs*
+- Has *one output*
+- @ At any time:
+	- Forwards [[Data representation#Bit (Binary digit)|bits]] from *one input to the output*
+	- Selection is determined by a *controller*
+
+#### Instruction decoder
+
+- Small hardware unit
+- Breaks out fields of the [[#Instructions|instruction]] into *separate data paths*
 
 --- 
 <br>
@@ -299,7 +316,7 @@ dm -> {cpu, io}
 - & Example:
 	- C <-- add A B
 	- D <-- subtract E C
-- Forwarding hardware passes the result of *add* operation *directly to ALU* without storing it in the [[#Registers|register]]
+- Forwarding hardware passes the result of *add* operation *directly to [[#Major components|ALU]]* without storing it in the [[#Registers|register]]
 	- Ensures the value arrives by the time *subtract* [[#Instructions|instruction]] reaches the *pipeline* stage of execution
 
 #### No-op instruction
@@ -323,7 +340,7 @@ dm -> {cpu, io}
 ### Approach
 
 - Build *separate hardware blocks* for each step of the [[#Fetch-execute cycle|fetch-execute cycle]]
-- Arrange hardware to *pass an instruction through the sequence* of hardware blocks
+- Arrange hardware to *pass an [[#Instructions|instruction]] through the sequence* of hardware blocks
 - Allow step *K* of instruction to execute while step *K-1* of next instruction executes
 
 ```mermaid
@@ -472,20 +489,19 @@ graph TB;
 	- Typically
 		- **Opcode** at the beginning of instruction
 		- **Operands** follow **opcode**
-
-```asciidoc-table
-[frame=none]
-[cols="1,1,1,3"]
-|===
-
-^| Opcode
-^| Operand 1
-
-^| Operand 2
-^| . . .
-
-|===
-```
+			 ```asciidoc-table
+			[frame=none]
+			[cols="1,1,1,3"]
+			|===
+			
+			^| Opcode
+			^| Operand 1
+			
+			^| Operand 2
+			^| . . .
+			
+			|===
+			```
 
 ### Types of opcodes
 
@@ -499,13 +515,107 @@ graph TB;
 	- [[#Processor Terminology|Processor]] control
 	- Graphics
 
+### Source and destination operands
+
+- **Source** [[#Parts of an instruction|operand]] can specify
+	- A [[Data representation#Signed integers|signed]] constant
+	- An [[Data representation#Unsigned integers|unsigned]] constant
+	- Contents of a [[#Registers|register]]
+	- A value in memory
+- **Destination** [[#Parts of an instruction|operand]] can specify
+	- A single [[#Registers|register]]
+	- A pair of contiguous [[#Registers|registers]]
+	- A memory location
+
+### Types of operands
+
+#### Immediate operand
+
+> [!definition] 
+> An [[#Parts of an instruction|operand]] that gives a [[Data representation#Signed integers|signed]] or [[Data representation#Unsigned integers|unsigned]] constant is called an **immediate operand**
+
+- Less expensive than *memory references*, and thus preferred on [[#Von Neumann]] architecture
+
+#### In-memory operand
+
+- [[#Parts of an instruction|Operand]] can specify
+	- *Value in memory* (*memory reference*)
+	- *Location in memory* that contains the address of the operand (*indirect reference*)
+- @ Note: accessing memory is relatively expensive
+
+##### Types of indirection
+
+1. Indirection through a [[#Registers|register]]
+	- [[#Parts of an instruction|Operand]] specifies [[#Registers|register]] number *R*
+	- Obtain *A* (value from *R*)
+	- Interpret *A* as a memory address, and fetch the [[#Parts of an instruction|operand]] from memory location *A*
+2. Indirection through a *memory location*
+	- [[#Parts of an instruction|Operand]] specifies *memory address A*
+	- Obtain *M* (value from *A*)
+	- Interpret *M* as a memory address, and fetch the [[#Parts of an instruction|operand]] from memory location *A*
+
+#### Multiple-type operand
+
+- [[#Parts of an instruction|Operand]] contains multiple items
+- [[#Processor Terminology|Processor]] computes [[#Parts of an instruction|operand]] value from individual items
+- & Typical computation: *sum*
+- & Example: 
+	- A *[[#Registers|register]]-offset* [[#Parts of an instruction|operand]] specifies a [[#Registers|register]] and an [[#Immediate operand|immediate]] value
+	- [[#Processor Terminology|Processor]] adds immediate value to contents of the [[#Registers|register]] and uses the result as  [[#Parts of an instruction|operand]]
+
+```asciidoc-table
+[frame=none]
+[cols="1,1,1,1,1,1,1"]
+|===
+^| Opcode
+3+^| Operand 1
+3+^| Operand 2
+
+^| add
+
+^| register-offset
+^| 2
+^| -17
+
+^| register-offset
+^| 4
+^| 76
+
+|===
+```
+
+### Operand type encoding
+
+#### Implicit type encoding
+
+- [[#Parts of an instruction|Opcode]] specifies the type of each [[#Parts of an instruction|operand]] 
+- ! Many [[#Parts of an instruction|opcodes]] needed
+- & Example [[#Parts of an instruction|opcode]]: add_signed_immediate_to_register
+
+#### Explicit type encoding
+
+- Each [[#Parts of an instruction|operand]] has extra [[Data representation#Bit (Binary digit)|bits]] that specify a type
+- $ Fewer [[#Parts of an instruction|opcodes]] needed
+- & Example: [[#Parts of an instruction|opcode]] is *add* and the two [[#Parts of an instruction|operands]] specify the types *signed_immediate* and *register* 
+
+### Operand trade-offs 
+
+- No single [[#Types of operands|style]] of [[#Parts of an instruction|operand]] is optimal for all purposes
+- ! Trade-offs among:
+	- Ease of programming
+	- Fewer [[#Instructions|instructions]]
+	- Smaller [[#Instructions|instructions]]
+	- Large range of [[#Immediate operand|immediate]] values
+	- Faster [[#Parts of an instruction|operand]] fetch and decode
+	- Smaller hardware size
+
 ## Branching
 
-- $ Absolute branch
+1. $ Absolute branch
 	- Typically named *jump*
 	- [[#Parts of an instruction|Operand]] is an *address*
 	- *Assigns* [[#Parts of an instruction|operand]] value to internal [[#Registers|register]] *A* 
-- $ Conditional branch
+2. $ Conditional branch
 	- Same as *Absolute branch*, but branches on condition
 		```armasm
 		cmp r4 r5 # compare r4 and r5, set condition code
@@ -513,20 +623,20 @@ graph TB;
 		mov r3, 0 # place 0 in r3
 		```
 
-- $ Relative branch
+3. $ Relative branch
 	- Typically named *br*
 	- [[#Parts of an instruction|Operand]] is a [[Data representation#Signed integers|signed]] value
 	- *Adds* [[#Parts of an instruction|operand]] to internal [[#Registers|register]] *A* 
 
 ## Subroutine call
 
-- Jump to *subroutine* (*jsr* [[#Instruction sets|instruction]])
+1. Jump to *subroutine* (*jsr* [[#Instruction sets|instruction]])
 	- Similar to *jump*
 	- *Saves* value of internal [[#Registers|register]] *A*
-	- *Replaces* *A* with [[#Parts on an instruction|operand]] address
-- Return from *subroutine* (*ret* instruction)
+	- *Replaces A* with [[#Parts on an instruction|operand]] address
+2. Return from *subroutine* (*ret* instruction)
 	- *Retrieves* value saved during *jsr*
-	- *Replaces* *A* with saved value
+	- *Replaces A* with saved value
 
 ### Passing arguments
 
@@ -544,14 +654,14 @@ graph TB;
 
 ### Fixed-length
 
-- Every instruction is the *same size*
+- Every [[#Instructions|instruction]] is the *same size*
 - Hardware is *less complex*
 - $ Hardware can *run faster*
 - ! *Wasted space*: some instructions don't use all the bits
 
 ### Variable length
 
-- Some instructions are shorter than others
+- Some [[#Instructions|instructions]] are shorter than others
 - Allows for [[#Instructions|instructions]] with *no [[#Parts of an instruction|operands]]*, a *few [[#Parts of an instruction|operands]]*, or *many [[#Parts of an instruction|operands]]*
 - $ *No wasted space*
 
@@ -594,15 +704,64 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## Aesthetic aspects of instruction sets
 
-- $ Elegance
+1. $ Elegance
 	- Balanced
 	- No frivolous or useless [[#Instruction sets|instructions]]
-- $ Orthogonality
+2. $ Orthogonality
 	- No unnecessary duplication
 	- No overlap between [[#Instruction sets|instructions]]
-- $ Ease of programming 
+3. $ Ease of programming 
 	- [[#Instruction sets|Instructions]] match intuition
 	- [[#Instruction sets|Instructions]] are free from arbitrary restrictions
+
+## Possible instruction architectures
+
+### 0-Address architecture
+
+- **Stack-based** architecture
+- *No* explicit [[#Parts of an instruction|operands]] in the [[#Instruction sets|instruction]]
+- @ Program:
+	- Pushes [[#Parts of an instruction|operands]] onto a stack in memory
+	- Executes [[#Instruction sets|instruction]]
+		- *Removes* top *N* items from the stack
+		- *Leaves result* on the top of the stack
+
+> [!example]
+>
+> - push X - place a *copy of a variable* on the stack
+> - push 7
+> - add    - take 2 items from the stack and *add* them
+> - pop X  - remove the result from the stack and put it into *X*
+
+### 1-Address architecture
+
+- Analogous to a calculator
+- *One* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- [[#Processor Terminology|Processor]] has a special [[#Registers|register]] called **accumulator**
+	- Holds *seconds argument* for each instruction
+	- Used to store the *result*
+
+> [!example] 
+> - load X  - place a copy of *X* into the **accumulator**
+> - add 7   - add *7* to the **accumulator**
+> - store X - copy **accumulator** into *X*
+
+### 2-Address architecture
+
+- *Two* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- *Result overwrites* one of the [[#Parts of an instruction|operands]]
+- [[#Parts of an instruction|Operands]] are known as *source* and *destination*
+- $ Works well for [[#Instruction sets|instructions]] such as *memory copy*
+
+> [!example] 
+> - add 7 X - add *7* to *X* and store in *X*
+> - move X Y - move from *X* to *Y*
+
+### 3-Address architecture
+
+- *Three* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- [[#Parts of an instruction|Operands]] specify *two values* and a location for the result
+- & Example: add X Y Z - add *X* and *Y*, place into *Z*
 
 --- 
 <br>
@@ -776,4 +935,12 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 ^| 
 
 |===
+```
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Computer architecture"
 ```

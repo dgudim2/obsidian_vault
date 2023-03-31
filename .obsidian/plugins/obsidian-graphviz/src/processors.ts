@@ -3,118 +3,115 @@ import * as os from 'os';
 import * as path from 'path';
 import * as fs from 'fs';
 import { spawn } from 'child_process';
-import { createHash } from 'crypto';
 import GraphvizPlugin from './main';
 
 import * as crypto from 'crypto';
 const md5 = (contents: string) => crypto.createHash('md5').update(contents).digest('hex');
 
-// import {graphviz} from 'd3-graphviz'; => does not work, ideas how to embed d3 into the plugin?
+type RenderType = 'dot' | 'latex';
+
+
 
 export class Processors {
-  plugin: GraphvizPlugin;
+    plugin: GraphvizPlugin;
 
-  constructor(plugin: GraphvizPlugin) {
-    this.plugin = plugin;
-  }
+    constructor(plugin: GraphvizPlugin) {
+        this.plugin = plugin;
+    }
 
-  imageMimeType = new Map<string, string>([
-    ['png', 'image/png'],
-    ['svg', 'image/svg+xml']
-  ]);
-
-  private async writeDotFile(sourceFile: string): Promise<string> {
-    return new Promise<string>((resolve, reject) => {
-      const cmdPath = this.plugin.settings.dotPath;
-      const imageFormat = this.plugin.settings.imageFormat;
-      const out = `${sourceFile}.${imageFormat}`;
-
-      if (fs.existsSync(out)) {
-        return resolve(out);
-      }
-
-      const parameters = [`-T${imageFormat}`, sourceFile, '-o', out];
-
-      console.debug(`Starting dot process ${cmdPath}, ${parameters}`);
-      const dotProcess = spawn(cmdPath, parameters);
-      let errData = '';
-
-      dotProcess.stderr.on('data', (data) => {
-        errData += data;
-      });
-      dotProcess.stdin.end();
-
-      dotProcess.on('exit', (code) => {
-        if (code !== 0) {
-          return reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
+    private getRenderer(type: RenderType): string {
+        switch (type) {
+            case 'dot':
+                return this.plugin.settings.dotPath;
+            case 'latex':
+                return this.plugin.settings.pdflatexPath;
         }
-        return resolve(out);
-      });
-
-      dotProcess.on('error', (err: Error) => reject(`"${cmdPath} ${parameters}" failed, ${err}`));
-    });
-  }
-
-  private async convertToImage(source: string): Promise<string> {
-    const self = this;
-
-    const dir = path.join(os.tmpdir(), 'obsidian-dot');
-    const file = path.join(dir, md5(source));
-
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir);
     }
 
-    if (!fs.existsSync(file)) {
-      fs.writeFileSync(file, source);
+    private spawnProcess(cmdPath: string, parameters: string[]): Promise<string> {
+        return new Promise<string>((resolve, reject) => {
+            console.debug(`Starting external process ${cmdPath}, ${parameters}`);
+            const process = spawn(cmdPath, parameters);
+            let errData = '';
+            process.stderr.on('data', (data) => { errData += data; });
+            process.on('error', (err: Error) => reject(`"${cmdPath} ${parameters}" failed, ${err}`));
+            process.stdin.end();
+
+            process.on('exit', (code) => {
+                if (code !== 0) {
+                    return reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
+                }
+                resolve('');
+            });
+        });
     }
-    return self.writeDotFile(file);
-  }
 
-  public async imageProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
-    try {
-      console.debug('Call image processor');
+    private async writeRenderedFile(sourceFile: string, type: RenderType): Promise<string> {
 
-      if (source.trimEnd().at(-1) != '}') {
-        console.error('Bad dot source, won\'t render');
-        return;
-      }
+        const cmdPath = this.getRenderer(type);
+        const out = `${sourceFile}.png`;
 
-      const imagePath = await this.convertToImage(source);
-      const img = document.createElement('img');
-      img.src = `app://local${imagePath}`;
-      el.appendChild(img);
-    } catch (errMessage) {
-      console.error('convert to image error: ' + errMessage);
-      const pre = document.createElement('pre');
-      const code = document.createElement('code');
-      pre.appendChild(code);
-      code.setText(errMessage);
-      el.appendChild(pre);
+        if (fs.existsSync(out)) {
+            return out;
+        }
+
+        const parameters = type === 'dot' ? ['-Tpng', sourceFile, '-o', out] : ['-shell-escape', '-output-directory', this.getTempDir(type), sourceFile];
+
+        await this.spawnProcess(cmdPath, parameters);
+        if (type === 'latex') {
+            await this.spawnProcess(this.plugin.settings.imageMagickConvertPath, ['-density', '300', '-units', 'PixelsPerInch', `${sourceFile}.pdf[0]`, out]);
+        }
+
+        return out;
     }
-  }
 
-  public async d3graphvizProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
-    console.debug('Call d3graphvizProcessor');
-    const div = document.createElement('div');
-    const graphId = 'd3graph_' + createHash('md5').update(source).digest('hex').substring(0, 6);
-    div.setAttr('id', graphId);
-    div.setAttr('style', 'text-align: center');
-    el.appendChild(div);
-    const script = document.createElement('script');
-    // graphviz(graphId).renderDot(source); => does not work, ideas how to use it?
-    // Besides, sometimes d3 is undefined, so there must be a proper way to integrate d3.
-    const escapedSource = source.replaceAll('\\', '\\\\').replaceAll('`', '\\`');
-    script.text =
-      `if( typeof d3 != 'undefined') { 
-        d3.select("#${graphId}").graphviz()
-        .onerror(d3error)
-       .renderDot(\`${escapedSource}\`);
+    private getTempDir(type: RenderType): string {
+        return path.join(os.tmpdir(), `obsidian-${type}`);
     }
-    function d3error (err) {
-        d3.select("#${graphId}").html(\`<div class="d3graphvizError"> d3.graphviz(): \`+err.toString()+\`</div>\`);
-        console.error('Caught error on ${graphId}: ', err);
-    }`;
-    el.appendChild(script);
-  }
+
+    private async convertToImage(source: string, type: RenderType): Promise<string> {
+
+        const dir = this.getTempDir(type);
+        const file = path.join(dir, md5(source));
+
+        if (!fs.existsSync(dir)) {
+            fs.mkdirSync(dir);
+        }
+
+        if (!fs.existsSync(file)) {
+            fs.writeFileSync(file, source);
+        }
+        return this.writeRenderedFile(file, type);
+    }
+
+    public async dotProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
+        return this.imageProcessor(source, el, _, 'dot');
+    }
+
+    public async latexProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
+        return this.imageProcessor(source, el, _, 'latex');
+    }
+
+    private async imageProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext, type: RenderType): Promise<void> {
+        try {
+            console.debug(`Call image processor for ${type}`);
+
+            if (type === 'dot' && source.trimEnd().at(-1) != '}') {
+                console.error('Bad source, won\'t render');
+                return;
+            }
+
+            const imagePath = await this.convertToImage(source, type);
+            const img = document.createElement('img');
+            img.src = `app://local${imagePath}`;
+            el.appendChild(img);
+        } catch (errMessage) {
+            console.error('convert to image error: ' + errMessage);
+            const pre = document.createElement('pre');
+            const code = document.createElement('code');
+            pre.appendChild(code);
+            code.setText(errMessage);
+            el.appendChild(pre);
+        }
+    }
 }

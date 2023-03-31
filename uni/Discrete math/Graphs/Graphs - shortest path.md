@@ -52,8 +52,8 @@
 	- Set the initial node as current
 
 > [!note]  
-> - The tentative distance of a node is the [[Graphs - connectivity#Length of the path|length]] of the shortest path discovered so far between the node and the starting node
-> - Since initially no path is known to any other [[Graphs - basics#Directed graphs|vertex]] other than the source itself, all other tentative distances are set to infinity
+> - The *tentative distance *of a node is the [[Graphs - connectivity#Length of the path|length]] of the shortest path discovered so far between the node and the starting node
+> - Since initially no path is known to any other [[Graphs - basics#Directed graphs|vertex]] other than the source itself, all other *tentative distances* are set to *infinity*
 
 3. For the current node, consider all of its <u>unvisited</u> [[Graphs - basics#Properties|neighbors]] and *calculate their tentative distances through the current node*. Compare the newly calculated tentative distance to the current assigned value and *assign the smallest one* 
 4. Mark the current node as <u>visited</u> and remove it from the *unvisited set*. (A visited node will never be checked again)
@@ -350,3 +350,43 @@ subgraph cluster_space {
 
 ### Floyd-Warshall algorithm
 
+1. Make matrices
+
+```latex
+
+\documentclass[preview,class=memoir]{standalone}   
+
+\usepackage{amsmath}
+\usepackage[table]{xcolor}
+
+\newcommand\x{\times}
+\newcommand\y{\cellcolor{green!10}}
+
+\begin{document}
+\color{black}
+
+\begin{equation}\label{eq:appendrow}
+  \left(\begin{array}{cccc}
+    \rowcolor{red!20}
+    \x  & \x  & \x & \x \\
+    0   & \x  & \x & \x \\
+   \rowcolor{blue!20}
+    0   & 0   & \x & \x \\
+    0   & 0   & 0  & \x \\
+    \y a  &  b  & \y c &  d\\
+  \end{array}\right)
+\end{equation}
+
+\begin{equation}
+  \left(\begin{array}{>{\columncolor{olive!20}}cc>{\columncolor{yellow!20}}cc}
+    \x  & \x  & \x & \x \\
+    0   & \x  & \x & \x \\
+    0   & 0   & \x & \x \\
+    0   & 0   & 0  & \x \\
+    a  & b  & c & d \\
+  \end{array}\right)
+\end{equation}
+
+\end{document}
+
+```

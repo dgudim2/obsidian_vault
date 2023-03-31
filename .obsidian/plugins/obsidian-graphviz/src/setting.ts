@@ -3,14 +3,16 @@ import GraphvizPlugin from './main';
 
 export interface GraphvizSettings {
   dotPath: string;
-  renderer: string;
-  imageFormat: string;
+  pdflatexPath: string;
+  imageMagickConvertPath: string;
+  latexRenderBg: string
 }
 
 export const DEFAULT_SETTINGS: GraphvizSettings = {
   dotPath: 'dot',
-  renderer: 'dot',
-  imageFormat: 'png'
+  pdflatexPath: 'pdflatex',
+  imageMagickConvertPath: 'convert',
+  latexRenderBg: '#ebdbb2'
 };
 
 export class GraphvizSettingsTab extends PluginSettingTab {
@@ -26,17 +28,38 @@ export class GraphvizSettingsTab extends PluginSettingTab {
 
     containerEl.empty();
 
-    new Setting(containerEl)
-    .setName('Graphviz renderer')
-    .setDesc('Please choose the Graphviz renderer, after that, you will need to restart obsidian.')
-    .addDropdown(dropdown => dropdown
-      .addOption('dot', 'dot')
-      .addOption('d3_graphviz', 'D3 Graphviz (experimental)')
-      .setValue(this.plugin.settings.renderer)
+    new Setting(containerEl).setName('Latex rendering background')
+    .setDesc('Background of the rendered latex codeblocks')
+    .addText(text => text.setPlaceholder(DEFAULT_SETTINGS.imageMagickConvertPath)
+      .setValue(this.plugin.settings.imageMagickConvertPath)
       .onChange(async (value) => {
-        this.plugin.settings.renderer = value;
-        await this.plugin.saveSettings();
-      }));
+          this.plugin.settings.imageMagickConvertPath = value;
+          await this.plugin.saveSettings();
+        }
+      )
+    );
+
+    new Setting(containerEl).setName('ImageMagick convert Path')
+      .setDesc('ImageMagick convert executable path')
+      .addText(text => text.setPlaceholder(DEFAULT_SETTINGS.imageMagickConvertPath)
+        .setValue(this.plugin.settings.imageMagickConvertPath)
+        .onChange(async (value) => {
+            this.plugin.settings.imageMagickConvertPath = value;
+            await this.plugin.saveSettings();
+          }
+        )
+      );
+
+    new Setting(containerEl).setName('Pdflatex Path')
+      .setDesc('Pdflatex executable path')
+      .addText(text => text.setPlaceholder(DEFAULT_SETTINGS.pdflatexPath)
+        .setValue(this.plugin.settings.pdflatexPath)
+        .onChange(async (value) => {
+            this.plugin.settings.pdflatexPath = value;
+            await this.plugin.saveSettings();
+          }
+        )
+      );
 
     new Setting(containerEl).setName('Dot Path')
       .setDesc('Dot executable path')
@@ -49,16 +72,5 @@ export class GraphvizSettingsTab extends PluginSettingTab {
         )
       );
 
-	new Setting(containerEl)
-    .setName('Image format')
-    .setDesc('Graphviz output format.')
-    .addDropdown(dropdown => dropdown
-      .addOption('png', 'png')
-      .addOption('svg', 'svg')
-      .setValue(this.plugin.settings.imageFormat)
-      .onChange(async (value) => {
-        this.plugin.settings.imageFormat = value;
-        await this.plugin.saveSettings();
-      }));
   }
 }

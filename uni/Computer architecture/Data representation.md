@@ -287,7 +287,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 - Positive numbers use [[#Binary weighted positional interpretation|positional representation]]
 - Negative number are formed by inverting all [[#Bit (Binary digit)|bits]] of positive value
-- ? Quirk: two representations for *0*: 0000 and 1111
+- ? Quirk: two representations for *0*: *0000* and *1111*
 
 > [!note] 
 > Some checksum algorthms use **one's complement**
@@ -381,10 +381,10 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 > - *-123456* is stored as
 > 	- 0x01 0x02 0x03 0x04 0x05 0x06 0x0D
 
-- <u>Disadvantages</u> 
+- ! Disadvantages
 	- Takes up more space
 	- Hardware is slower than integer or floating point
-- <u>Advanages</u>
+- $ Advantages
 	- Gives results humans expect 
 	- Avoids repeating binary value for *.01*
 
@@ -462,3 +462,11 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 > [!note] 
 > <u>Infinity</u> values handles cases such as the <u>result of division by 0</u>
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Computer architecture"
+```

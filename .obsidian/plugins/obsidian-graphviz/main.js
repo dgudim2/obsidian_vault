@@ -63,8 +63,8 @@ var import_obsidian2 = require("obsidian");
 var import_obsidian = require("obsidian");
 var DEFAULT_SETTINGS = {
   dotPath: "dot",
-  renderer: "dot",
-  imageFormat: "png"
+  pdflatexPath: "pdflatex",
+  imageMagickConvertPath: "convert"
 };
 var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
   constructor(plugin) {
@@ -74,10 +74,14 @@ var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Graphviz renderer").setDesc("Please choose the Graphviz renderer, after that, you will need to restart obsidian.").addDropdown((dropdown) => dropdown.addOption("dot", "dot").addOption("d3_graphviz", "D3 Graphviz (experimental)").setValue(this.plugin.settings.renderer).onChange((value) => __async(this, null, function* () {
-      this.plugin.settings.renderer = value;
-      yield this.plugin.saveSettings();
-    })));
+    new import_obsidian.Setting(containerEl).setName("Pdflatex Path").setDesc("Pdflatex executable path").addText(
+      (text) => text.setPlaceholder(DEFAULT_SETTINGS.pdflatexPath).setValue(this.plugin.settings.pdflatexPath).onChange(
+        (value) => __async(this, null, function* () {
+          this.plugin.settings.pdflatexPath = value;
+          yield this.plugin.saveSettings();
+        })
+      )
+    );
     new import_obsidian.Setting(containerEl).setName("Dot Path").setDesc("Dot executable path").addText(
       (text) => text.setPlaceholder(DEFAULT_SETTINGS.dotPath).setValue(this.plugin.settings.dotPath).onChange(
         (value) => __async(this, null, function* () {
@@ -86,10 +90,6 @@ var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
         })
       )
     );
-    new import_obsidian.Setting(containerEl).setName("Image format").setDesc("Graphviz output format.").addDropdown((dropdown) => dropdown.addOption("png", "png").addOption("svg", "svg").setValue(this.plugin.settings.imageFormat).onChange((value) => __async(this, null, function* () {
-      this.plugin.settings.imageFormat = value;
-      yield this.plugin.saveSettings();
-    })));
   }
 };
 
@@ -98,48 +98,59 @@ var os = __toESM(require("os"));
 var path = __toESM(require("path"));
 var fs = __toESM(require("fs"));
 var import_child_process = require("child_process");
-var import_crypto = require("crypto");
 var crypto = __toESM(require("crypto"));
 var md5 = (contents) => crypto.createHash("md5").update(contents).digest("hex");
 var Processors = class {
   constructor(plugin) {
-    this.imageMimeType = /* @__PURE__ */ new Map([
-      ["png", "image/png"],
-      ["svg", "image/svg+xml"]
-    ]);
     this.plugin = plugin;
   }
-  writeDotFile(sourceFile) {
-    return __async(this, null, function* () {
-      return new Promise((resolve, reject) => {
-        const cmdPath = this.plugin.settings.dotPath;
-        const imageFormat = this.plugin.settings.imageFormat;
-        const out = `${sourceFile}.${imageFormat}`;
-        if (fs.existsSync(out)) {
-          return resolve(out);
+  getRenderer(type) {
+    switch (type) {
+      case "dot":
+        return this.plugin.settings.dotPath;
+      case "latex":
+        return this.plugin.settings.pdflatexPath;
+    }
+  }
+  spawnProcess(cmdPath, parameters) {
+    return new Promise((resolve, reject) => {
+      console.debug(`Starting external process ${cmdPath}, ${parameters}`);
+      const process = (0, import_child_process.spawn)(cmdPath, parameters);
+      let errData = "";
+      process.stderr.on("data", (data) => {
+        errData += data;
+      });
+      process.on("error", (err) => reject(`"${cmdPath} ${parameters}" failed, ${err}`));
+      process.stdin.end();
+      process.on("exit", (code) => {
+        if (code !== 0) {
+          return reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
         }
-        const parameters = [`-T${imageFormat}`, sourceFile, "-o", out];
-        console.debug(`Starting dot process ${cmdPath}, ${parameters}`);
-        const dotProcess = (0, import_child_process.spawn)(cmdPath, parameters);
-        let errData = "";
-        dotProcess.stderr.on("data", (data) => {
-          errData += data;
-        });
-        dotProcess.stdin.end();
-        dotProcess.on("exit", (code) => {
-          if (code !== 0) {
-            return reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
-          }
-          return resolve(out);
-        });
-        dotProcess.on("error", (err) => reject(`"${cmdPath} ${parameters}" failed, ${err}`));
+        resolve("");
       });
     });
   }
-  convertToImage(source) {
+  writeRenderedFile(sourceFile, type) {
     return __async(this, null, function* () {
-      const self = this;
-      const dir = path.join(os.tmpdir(), "obsidian-dot");
+      const cmdPath = this.getRenderer(type);
+      const out = `${sourceFile}.png`;
+      if (fs.existsSync(out)) {
+        return out;
+      }
+      const parameters = type === "dot" ? ["-Tpng", sourceFile, "-o", out] : ["-shell-escape", "-output-directory", this.getTempDir(type), sourceFile];
+      yield this.spawnProcess(cmdPath, parameters);
+      if (type === "latex") {
+        yield this.spawnProcess(this.plugin.settings.imageMagickConvertPath, ["-density", "300", "-units", "PixelsPerInch", `${sourceFile}.pdf[0]`, out]);
+      }
+      return out;
+    });
+  }
+  getTempDir(type) {
+    return path.join(os.tmpdir(), `obsidian-${type}`);
+  }
+  convertToImage(source, type) {
+    return __async(this, null, function* () {
+      const dir = this.getTempDir(type);
       const file = path.join(dir, md5(source));
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
@@ -147,18 +158,28 @@ var Processors = class {
       if (!fs.existsSync(file)) {
         fs.writeFileSync(file, source);
       }
-      return self.writeDotFile(file);
+      return this.writeRenderedFile(file, type);
     });
   }
-  imageProcessor(source, el, _) {
+  dotProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "dot");
+    });
+  }
+  latexProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "latex");
+    });
+  }
+  imageProcessor(source, el, _, type) {
     return __async(this, null, function* () {
       try {
-        console.debug("Call image processor");
-        if (source.trimEnd().at(-1) != "}") {
-          console.error("Bad dot source, won't render");
+        console.debug(`Call image processor for ${type}`);
+        if (type === "dot" && source.trimEnd().at(-1) != "}") {
+          console.error("Bad source, won't render");
           return;
         }
-        const imagePath = yield this.convertToImage(source);
+        const imagePath = yield this.convertToImage(source, type);
         const img = document.createElement("img");
         img.src = `app://local${imagePath}`;
         el.appendChild(img);
@@ -172,56 +193,19 @@ var Processors = class {
       }
     });
   }
-  d3graphvizProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      console.debug("Call d3graphvizProcessor");
-      const div = document.createElement("div");
-      const graphId = "d3graph_" + (0, import_crypto.createHash)("md5").update(source).digest("hex").substring(0, 6);
-      div.setAttr("id", graphId);
-      div.setAttr("style", "text-align: center");
-      el.appendChild(div);
-      const script = document.createElement("script");
-      const escapedSource = source.replaceAll("\\", "\\\\").replaceAll("`", "\\`");
-      script.text = `if( typeof d3 != 'undefined') { 
-        d3.select("#${graphId}").graphviz()
-        .onerror(d3error)
-       .renderDot(\`${escapedSource}\`);
-    }
-    function d3error (err) {
-        d3.select("#${graphId}").html(\`<div class="d3graphvizError"> d3.graphviz(): \`+err.toString()+\`</div>\`);
-        console.error('Caught error on ${graphId}: ', err);
-    }`;
-      el.appendChild(script);
-    });
-  }
 };
 
 // src/main.ts
 var GraphvizPlugin = class extends import_obsidian2.Plugin {
   onload() {
     return __async(this, null, function* () {
-      console.debug("Load graphviz plugin");
+      console.debug("Load graphviz - latex plugin");
       yield this.loadSettings();
       this.addSettingTab(new GraphvizSettingsTab(this));
       const processors = new Processors(this);
-      const d3Sources = [
-        "https://d3js.org/d3.v5.min.js",
-        "https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js",
-        "https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"
-      ];
       this.app.workspace.onLayoutReady(() => {
-        switch (this.settings.renderer) {
-          case "d3_graphviz":
-            for (const src of d3Sources) {
-              const script = document.createElement("script");
-              script.src = src;
-              (document.head || document.documentElement).appendChild(script);
-            }
-            this.registerMarkdownCodeBlockProcessor("dot", processors.d3graphvizProcessor.bind(processors));
-            break;
-          default:
-            this.registerMarkdownCodeBlockProcessor("dot", processors.imageProcessor.bind(processors));
-        }
+        this.registerMarkdownCodeBlockProcessor("dot", processors.dotProcessor.bind(processors));
+        this.registerMarkdownCodeBlockProcessor("latex", processors.latexProcessor.bind(processors));
       });
     });
   }

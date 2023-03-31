@@ -182,11 +182,26 @@ dm -> {cpu, io}
 
 ### Fetch-execute algorithm
 
-- Fetch the next [[#Instruction sets|instruction]]
-- Decode the [[#Instruction sets|instruction]] and fetch [[#Parts on an instruction|operands]] from [[#Registers|registers]]
-- Perform the *operation* specified by the [[#Parts on an instruction|opcode]] 
+- Fetch the next [[#Instructions|instruction]]
+- Decode the [[#Instructions|instruction]] and fetch [[#Parts of an instruction|operands]] from [[#Registers|registers]]
+- Perform the *operation* specified by the [[#Parts of an instruction|opcode]] 
 - Perform memory *read* or *write*, if needed
 - Store the result back to the [[#Registers|registers]]
+
+### Program counter
+
+> [!definition] 
+> - Hardware [[#Registers|register]]
+> - Used during [[#Fetch-execute cycle|fetch-execute cycle]]
+> - Gives address of *next* [[#Instructions|instruction]] to execute
+> - ? Also known as *instruction pointer* or *instruction counter*
+
+#### [[#Fetch-execute algorithm]] details
+
+- Access the *next step* of the program from the location given by the [[#Program counter|program counter]]
+- Set an internal [[#Registers|address register]] *A* to the address beyond the [[#Instructions|instruction]] that was just fetched
+- Execute: Perform the step of the program
+- Copy the content from *A* to the [[#Program counter|program counter]]
 
 ## Instruction pipeline
 
@@ -196,6 +211,13 @@ dm -> {cpu, io}
 > - Also called **execution pipeline**
 > - $ Optimizes performance
 > - Typically used with [[#RISC]] instruction set
+
+> [!note] 
+> - We can think of pipelining as an *automatic optimization*
+> 	- Hardware speeds up processing *if possible*
+> 	- If speedup is not possible, hardware is still correct
+> - @ Consequence:
+> 	- Code that is not optimized will work correctly, but may run slower
 
 ### Pipeline features
 
@@ -210,14 +232,93 @@ dm -> {cpu, io}
 - ! Stalls if item is not available when a stage needs it
 	- Consider code that
 		- Performs *addition* and *subtraction*
-		- Uses [[#Registers|registers]] from *A* to *E* for [[#Parts on an instruction|operands]] 
+		- Uses [[#Registers|registers]] from *A* to *E* for [[#Parts of an instruction|operands]] 
 		- Instruction sequence
 			- $A+B \to C$
-			- $E-C \to D$ <-- This instruction must wait for *C* to be computed
+			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
 	- *Pipeline* stall can also occur on
 		- *I/O* access
 		- External storage access (memory reference)
 		- [[#Roles|Coprocessor]] invocation
+
+### Maximizing pipeline speed
+
+- Program must be written to accommodate *instruction pipeline*
+- To minimize stalls
+	- Avoid *introducing unnecessary [[#Branching|branches]]*
+	- Delay references to result [[#Registers|registers]]
+- ! A contradiction
+	- Good software practice is to *split* a program *into smaller functions*
+	- A [[#Subroutine call|function call]] *stalls the pipeline*
+
+> [!example] 
+> 
+> Rearranging *A* to *B* eliminates stalls. (Compilers do that)
+> 
+> `````col 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **A**
+> 
+> ```ruby
+> C <-- add A B
+> D <-- subtract E C
+> F <-- add G H
+> J <-- subtract I F
+> M <-- add K L
+> P <-- subtract M N
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **B**
+> 
+> ```ruby
+> C <-- add A B
+> F <-- add G H
+> M <-- add K L
+> D <-- subtract E C
+> J <-- subtract I F
+> P <-- subtract M N
+> ```
+> 
+> ```` 
+> `````
+
+#### Result forwarding
+
+> [!definition] 
+> - *Hardware optimization* to *avoid stalls*
+> - Allows [[#Major components|ALU]] to reference result in *next instruction*
+
+- & Example:
+	- C <-- add A B
+	- D <-- subtract E C
+- Forwarding hardware passes the result of *add* operation *directly to ALU* without storing it in the [[#Registers|register]]
+	- Ensures the value arrives by the time *subtract* [[#Instructions|instruction]] reaches the *pipeline* stage of execution
+
+#### No-op instruction
+
+- Often included in [[#RISC]]
+- May seem useless
+- Has *no effect* on 
+	- [[#Registers|Registers]]
+	- Memory
+	- [[#Program counter]]
+	- Computation
+- $ Can be inserted to avoid stalls
+
+- & Example:
+	- C <-- add A B
+	- no-op
+	- D <-- subtract E C
+- If [[#Result forwarding|forwarding]] is available, **no-op** allows for result from [[#Registers|register]] *C* to be fetched for *subtract* operation
+- Compilers insert **no-op** [[#Instructions|instructions]] to optimize performance
 
 ### Approach
 
@@ -245,7 +346,7 @@ E(Store\nresult)
 end
 ```
 
-- Instructions passing through a 5-stage *pipeline*.
+- [[#Instructions|Instructions]] passing through a 5-stage *pipeline*.
 - Once the *pipeline* is filled, each stage is busy on each clock cycle
 
 | clock | stage 1  | stage 2  | stage 3  | stage 4  | stage 5  |
@@ -326,7 +427,7 @@ graph TB;
 --- 
 <br>
 
-# Instruction sets
+# Instructions
 
 ## What instructions should a CPU offer?
 
@@ -353,12 +454,12 @@ graph TB;
 	- Functionality: what the instructions *provide*
 		- Arithmetic ([[Data representation#Integer representation in binary|integers]] or [[Data representation#Floating point|floating point]])
 		- Logic ([[Data representation#Bit (Binary digit)|bit]] manipulation and testing)
-		- Control (*branching*, *function call*)
+		- Control ([[#Branching|branching]], *function call*)
 		- Other (*graphics*, *data conversion*)
 	- Format: *representation* of each instruction
 	- Semantics: *effect* when instruction is executed
 
-## Parts on an instruction
+## Parts of an instruction
 
 - $ Opcode
 	- Specifies *operation* to be performed
@@ -373,6 +474,7 @@ graph TB;
 		- **Operands** follow **opcode**
 
 ```asciidoc-table
+[frame=none]
 [cols="1,1,1,3"]
 |===
 
@@ -385,20 +487,73 @@ graph TB;
 |===
 ```
 
+### Types of opcodes
+
+- Operations are usually classified into groups`
+- & Example classification:
+	- [[Data representation#Integer representation in binary|Integer]] arithmetic
+	- [[Data representation#Floating point|Floating point]] arithmetic
+	- Logical (boolean)
+	- Data access and transfer
+	- Conditional and unconditional [[#Branching|branching]]
+	- [[#Processor Terminology|Processor]] control
+	- Graphics
+
+## Branching
+
+- $ Absolute branch
+	- Typically named *jump*
+	- [[#Parts of an instruction|Operand]] is an *address*
+	- *Assigns* [[#Parts of an instruction|operand]] value to internal [[#Registers|register]] *A* 
+- $ Conditional branch
+	- Same as *Absolute branch*, but branches on condition
+		```armasm
+		cmp r4 r5 # compare r4 and r5, set condition code
+		be  lab1  # branch to lab1 if condition code specifies equal (be = branch equal)
+		mov r3, 0 # place 0 in r3
+		```
+
+- $ Relative branch
+	- Typically named *br*
+	- [[#Parts of an instruction|Operand]] is a [[Data representation#Signed integers|signed]] value
+	- *Adds* [[#Parts of an instruction|operand]] to internal [[#Registers|register]] *A* 
+
+## Subroutine call
+
+- Jump to *subroutine* (*jsr* [[#Instruction sets|instruction]])
+	- Similar to *jump*
+	- *Saves* value of internal [[#Registers|register]] *A*
+	- *Replaces* *A* with [[#Parts on an instruction|operand]] address
+- Return from *subroutine* (*ret* instruction)
+	- *Retrieves* value saved during *jsr*
+	- *Replaces* *A* with saved value
+
+### Passing arguments
+
+- Multiple methods are used
+- Choice depends on *language/compiler* and *hardware*
+- & Examples:
+	- Store arguments *in memory*
+	- Store arguments *in special-purpose hardware [[#Registers|registers]]
+	- Store arguments *in [[#General purpose registers|general purpose registers]]*
+- Many techniques are also used for *returning result* from function 
+
+- $ Also see: [[#Register window|register window]]
+
 ## Instruction length
 
 ### Fixed-length
 
 - Every instruction is the *same size*
 - Hardware is *less complex*
-- Hardware can *run faster*
-- *Wasted space*: some instructions don't use all the bits
+- $ Hardware can *run faster*
+- ! *Wasted space*: some instructions don't use all the bits
 
 ### Variable length
 
 - Some instructions are shorter than others
-- Allows for instructions with *no [[#Parts on an instruction|operands]]*, a *few [[#Parts on an instruction|operands]]*, or *many [[#Parts on an instruction|operands]]*
-- *No wasted space*
+- Allows for [[#Instructions|instructions]] with *no [[#Parts of an instruction|operands]]*, a *few [[#Parts of an instruction|operands]]*, or *many [[#Parts of an instruction|operands]]*
+- $ *No wasted space*
 
 ## Types of Instruction sets
 
@@ -408,9 +563,9 @@ graph TB;
 > **C**omplex **I**nstruction **S**et **C**omputer
 
 - *Many instructions* (often *hundreds*)
-- Given instruction can require *arbitrary time to compute*
-- & Example: Intel/AMD (x86/x64) or IBM [[#Instruction sets|instruction set]]
-- @ Typical complex instructions:
+- Given [[#Instructions|instruction]] can require *arbitrary time to compute*
+- & Example: Intel/AMD (x86/x64) or IBM [[#Instructions|instruction set]]
+- @ Typical complex [[#Instructions|instructions]]:
 	- Move graphical item on bitmapped display
 	- Copy or clear a region of memory
 	- Perform a [[Data representation#Floating point|floating point]] computation
@@ -422,10 +577,32 @@ graph TB;
 
 - *Few instructions* (typically *32* or *64*)
 - Each instruction executes in *one clock cycle*
-- & Example: MIPS or ARM instruction set
+- & Example: [[#MIPS]] or ARM instruction set
 - @ Omits complex instructions, instead *sequence of instructions* are used
 	- No [[Data representation#Floating point|floating point]] instructions
 	- No *graphics* instructions
+
+## Example instruction set
+
+### MIPS
+
+- Early [[#RISC]] design
+- Minimalistic
+- Only *32* [[#Instruction sets|instructions]]
+
+More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/materials/MIPS_Instruction_Set.pdf) [instruction set reference 2](https://ecs-network.serv.pacific.edu/ecpe-170/tutorials/mips-instruction-set)
+
+## Aesthetic aspects of instruction sets
+
+- $ Elegance
+	- Balanced
+	- No frivolous or useless [[#Instruction sets|instructions]]
+- $ Orthogonality
+	- No unnecessary duplication
+	- No overlap between [[#Instruction sets|instructions]]
+- $ Ease of programming 
+	- [[#Instruction sets|Instructions]] match intuition
+	- [[#Instruction sets|Instructions]] are free from arbitrary restrictions
 
 --- 
 <br>
@@ -451,14 +628,25 @@ graph TB;
 - Numbered from *0* to *N-1*
 - $ Basic uses:
 	- *Temporary storage* during computation
-	- [[#Parts on an instruction|Operand]] for arithmetic operation
+	- [[#Parts of an instruction|Operand]] for arithmetic operation
 - & Note: some [[#Processor Terminology|processors]] require *all operands* for an arithmetic operation to come from **general-purpose** [[#Registers|registers]]
 
 ## Floating point registers
 
 - Usually separate from [[#General purpose registers|general purpose]] [[#Registers|registers]]
 - Each holds one [[Data representation#Floating point|floating point]] value
-- **Floating point** registers are [[#Parts on an instruction|operands]] for [[Data representation#Floating point|floating point]] arithmetic
+- **Floating point** registers are [[#Parts of an instruction|operands]] for [[Data representation#Floating point|floating point]] arithmetic
+
+## Condition codes
+
+- Extra hardware [[Data representation#Bit (Binary digit)|bits]] (not part of [[#General purpose registers|general purpose]] [[#Registers|registers]])
+- Set by [[#Major components|ALU]] each time an [[#Instruction sets|instruction]] produces a result
+- Used to indicate
+	- [[Data representation#Overflow|Overflow]]
+	- Underflow
+	- Whether result is positive, negative, or zero
+	- Other exceptions
+- Tested in [[#Branching|conditional branch instruction]] 
 
 ## Register terminology
 
@@ -491,33 +679,101 @@ graph TB;
 #### Typical register bank scheme
 
 - Registers are divided into *2* [[#Register banks|banks]]
-- [[#Major components|ALU]] [[#Instruction sets|instruction]] that takes *2* [[#Parts on an instruction|operands]] must have one [[#Parts on an instruction|operand]] from each [[#Register banks|banks]]
+- [[#Major components|ALU]] [[#Instructions|instruction]] that takes *2* [[#Parts of an instruction|operands]] must have one [[#Parts of an instruction|operand]] from each [[#Register banks|banks]]
 - Compiler (sometimes programmer) must *ensure that operands are in separate [[#Register banks|banks]]*
-- & Note: having *2* [[#Parts on an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
+- & Note: having *2* [[#Parts of an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
 
 #### Why register banks?
 
 - *Parallel hardware facilities* allow simultaneous access to both [[#Register banks|banks]]
-- Access takes half as long as using *a single* [[#Register banks|bank]]
+- Access takes *half as long* as using *a single* [[#Register banks|bank]]
 
-#### Consequences
+#### Consequences of using register banks
 
 - <u>Some trivial programs cause problems</u>
 
 > [!example] 
 > 
-> - $X + Y \to R$
-> - $Z - X \to S$
-> - $Y + Z \to T$
+> 1. $X + Y \to R$
+> 2. $Z - X \to S$
+> 3. $Y + Z \to T$
 > 
-> [[#Parts on an instruction|Operands]] must be assigned to [[#Register banks|banks]]
+> [[#Parts of an instruction|Operands]] must be assigned to [[#Register banks|banks]]
 > - ! No feasible choise for the above snippet
 
 - <u>Register conflicts</u>
-	- Occur when [[#Parts on an instruction|operands]] specify the same [[#Registers|register]] [[#Register banks|bank]]
+	- Occur when [[#Parts of an instruction|operands]] specify the same [[#Register banks|register bank]]
 	- Reported by the [[#Program translation|compiler/assembler]]
-	- Code should be modified or *extra [[#Instruction sets|instruction]] to copy* an [[#Parts on an instruction|operand]] value to the opposite [[#Registers|register]] [[#Register banks|bank]] should be added
+	- Code should be modified or *extra [[#Instructions|instruction]] to copy* an [[#Parts of an instruction|operand]] value to the opposite [[#Register banks|register bank]] should be added
 	- & Example: In the previous sample 
-		- Start with *Y* and *Z* in the same bank
-		- Before adding *Y* and *Z*, copy one to another [[#Registers|register]] [[#Register banks|bank]]
+		- Start with *Y* and *Z* in the same [[#Register banks|register bank]]
+		- Before adding *Y* and *Z*, copy one to another [[#Register banks|register bank]]
 
+### Register window
+
+> [!definition] 
+> - Hardware optimization for [[#Passing arguments|passing arguments]] 
+> - Makes only a *subset* of registers visible at any time
+> - Caller places arguments in *reserved* [[#Registers|registers]]
+> - During procedure call, **register window** moves to *hide old* [[#Registers|registers]] and *expose new* ones
+
+- Before [[#Subroutine call|calling a subroutine]] (*A*, *B*, *C*, *D* are arguments)
+```asciidoc-table
+[frame=none]
+[cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
+|===
+
+8+^| Registers 0-7
+8+^| Unavailable
+
+^| x1
+^| x2
+^| x3
+^| x4
+^| *A*
+^| *B*
+^| *C*
+^| *D*
+
+^| 
+^| 
+^| 
+^| 
+^| 
+^| 
+^| 
+^| 
+
+|===
+```
+
+- After [[#Subroutine call|calling a subroutine]]
+```asciidoc-table
+[frame=none]
+[cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
+|===
+
+4+^| Unavailable
+8+^| Registers 0-7
+4+^| Unavailable
+
+^| x1
+^| x2
+^| x3
+^| x4
+^| *A*
+^| *B*
+^| *C*
+^| *D*
+
+^| I1
+^| I2
+^| I3
+^| I4
+^| 
+^| 
+^| 
+^| 
+
+|===
+```

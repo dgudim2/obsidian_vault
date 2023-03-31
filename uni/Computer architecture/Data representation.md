@@ -233,7 +233,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 - Each successive [[#Bit (Binary digit)|bit]] represents <u>next power of 2</u>
 - No negative numbers (A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*)
 - Precision is fixed (size of integer is constant)
-- Arithmetic operations can produce overflow/underflow (result can't be represented in *k* bits)
+- Arithmetic operations can produce [[#Overflow|overflow]]/underflow (result can't be represented in *k* bits)
 - [[#Overflow]] is handled with wraparound and carry bit
 
 ## Overflow
@@ -241,7 +241,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 - Values wrap around address space
 - Hardware records **overflow** in a separate <u>carry indicator</u>
 	- Software must check it after operations
-	- Can be used to *raise an exception*
+	- Can be used to [[Processor#Condition codes|raise an exception]]
 
 > Red is overflow
 > 

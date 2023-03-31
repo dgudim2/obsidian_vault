@@ -36,9 +36,9 @@
 > Set of multiple [[#Bit (Binary digit)|bits]]
 
 - Size depends on underlying hardware (computer)
-	- CDC - 6 [[#Bit (Binary digit)|bits]]
-	- BB&N - 10 [[#Bit (Binary digit)|bits]]
-	- IBM - 8 [[#Bit (Binary digit)|bits]] (standard nowadays)
+	- CDC - **6 [[#Bit (Binary digit)|bits]]**
+	- BB&N - **10 [[#Bit (Binary digit)|bits]]**
+	- IBM - **8 [[#Bit (Binary digit)|bits]]** (standard nowadays)
 - On most computers the **byte** is the <u>smallest addressable</u> unit of storage
 
 #### Byte size
@@ -47,9 +47,9 @@
 > Numbers of [[#Bit (Binary digit)|bits]] per [[#Byte|byte]] determines range of values that can be stored 
 
 - [[#Byte]] of *k* [[#Bit (Binary digit)|bits]] can store *$2^k$* values
-	- 6 [[#Bit (Binary digit)|bits]] - *64* values
-	- 8 [[#Bit (Binary digit)|bits]] - *256* values
-	- 10 [[#Bit (Binary digit)|bits]] - *1024* values
+	- **6 [[#Bit (Binary digit)|bits]]** - **64** values
+	- **8 [[#Bit (Binary digit)|bits]]** - **256** values
+	- **10 [[#Bit (Binary digit)|bits]]** - **1024** values
 
 ### Binary representation
 
@@ -213,8 +213,8 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 - Extends [[#ASCII]]
 	- Assigns meaning to values from 128 to 255
-	- Characters can be 16/32 [[#Bit (Binary digit)|bits]] long
-- Can represent larger set of characters
+	- Characters can be **16/32 [[#Bit (Binary digit)|bits]]** long
+- Can represent *larger set* of characters
 - Can accommodate languages such as Chinese
 
 --- 
@@ -343,8 +343,8 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 ## Order of bits and bytes
 
 - @ Need to choose order for
-	- *Storage* in physical memory system
-	- *Transmission* over a network
+	- **Storage** in physical memory system
+	- **Transmission** over a network
 
 1. [[#Bit (Binary digit)|Bit]] order 
 	- Handled by hardware

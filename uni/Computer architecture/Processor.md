@@ -989,7 +989,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 	- [[#Parts of an instruction|Opcode]] processing
 	- [[#Parts of an instruction|Operand]] decode and fetch
 
-## Why use microcode
+## Why use microcode?
 
 - Higher level of *abstraction*
 - **Easier to build** and **less error-prone** than building with logic gates
@@ -1001,6 +1001,10 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 	- More *overhead*
 	- **Macro** instruction performance depends on **micro** instruction set
 	- Microprocessor hardware must run at *extremely high* [[#Clock rate|clock rate]] to accommodate multiple **micro** instructions per **macro** instruction 
+
+## Visibility to programmers
+
+
 
 --- 
 <br>

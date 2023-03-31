@@ -94,7 +94,7 @@ dm -> {cpu, io}
 	- Programmable logic
 
 - Most computer architectures follow a *hierarchical* approach  
-- Subparts of a large CPU are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
+- Sub-parts of a large CPU are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
 
 ## Programmable device
 
@@ -558,7 +558,7 @@ graph TB;
 
 - [[#Parts of an instruction|Operand]] contains multiple items
 - [[#Processor Terminology|Processor]] computes [[#Parts of an instruction|operand]] value from individual items
-- & Typical computation: *sum*
+- ~ Typical computation: *sum*
 - & Example: 
 	- A *[[#Registers|register]]-offset* [[#Parts of an instruction|operand]] specifies a [[#Registers|register]] and an [[#Immediate operand|immediate]] value
 	- [[#Processor Terminology|Processor]] adds immediate value to contents of the [[#Registers|register]] and uses the result as  [[#Parts of an instruction|operand]]
@@ -719,7 +719,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 ### 0-Address architecture
 
 - **Stack-based** architecture
-- *No* explicit [[#Parts of an instruction|operands]] in the [[#Instruction sets|instruction]]
+- **No** explicit [[#Parts of an instruction|operands]] in the [[#Instruction sets|instruction]]
 - @ Program:
 	- Pushes [[#Parts of an instruction|operands]] onto a stack in memory
 	- Executes [[#Instruction sets|instruction]]
@@ -736,7 +736,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 ### 1-Address architecture
 
 - Analogous to a calculator
-- *One* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- **One** explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
 - [[#Processor Terminology|Processor]] has a special [[#Registers|register]] called **accumulator**
 	- Holds *seconds argument* for each instruction
 	- Used to store the *result*
@@ -748,7 +748,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ### 2-Address architecture
 
-- *Two* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- **Two** explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
 - *Result overwrites* one of the [[#Parts of an instruction|operands]]
 - [[#Parts of an instruction|Operands]] are known as *source* and *destination*
 - $ Works well for [[#Instruction sets|instructions]] such as *memory copy*
@@ -759,7 +759,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ### 3-Address architecture
 
-- *Three* explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
+- **Three** explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
 - [[#Parts of an instruction|Operands]] specify *two values* and a location for the result
 - & Example: add X Y Z - add *X* and *Y*, place into *Z*
 
@@ -781,7 +781,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## General purpose registers
 
-- *High-speed* storage mechanism
+- **High-speed** storage mechanism
 - Part of the [[#Processor Terminology|processor]] (*on chip*)
 - Each [[#Registers|register]] holds an [[Data representation#Integer representation in binary|integer]] or a *pointer*
 - Numbered from *0* to *N-1*
@@ -813,8 +813,8 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 - Occurs when *a [[#Registers|register]] is* needed for a computation and *all registers are occupied*
 - General idea:
-	- *Save* current contents of [[#Registers|register]](s) *into memory*
-	- *Load* [[#Registers|register]](s) from memory *when values are needed*
+	- **Save** current contents of [[#Registers|register]](s) *into memory*
+	- **Load** [[#Registers|register]](s) from memory *when values are needed*
 
 ### Register allocation
 
@@ -825,8 +825,8 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 - Refers to value that is *twice as large* as a standard value ([[Data representation#Integer representation in binary|integer]], [[Data representation#Floating point|floating point]])
 - Most [[#Processor Terminology|processors]] *don't have dedicated registers* for **double precision** computation, so instead *a contiguous pair of registers is used*
-- & Example: multiplication of 2 *32-[[Data representation#Bit (Binary digit)|bit]]* [[Data representation#Integer representation in binary|integers]] 
-	- Result can require *64-[[Data representation#Bit (Binary digit)|bits]]*, (so it goes into *2* [[#Registers|registers]] e.g. 4 and 5)
+- & Example: multiplication of 2 **32-[[Data representation#Bit (Binary digit)|bit]]** [[Data representation#Integer representation in binary|integers]] 
+	- Result can require **64-[[Data representation#Bit (Binary digit)|bits]]**, (so it goes into *2* [[#Registers|registers]] e.g. 4 and 5)
 
 ### Register banks
 
@@ -936,6 +936,71 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 |===
 ```
+
+--- 
+<br>
+
+# Modes of execution
+
+- CPU hardware has several possible *modes of execution*
+- At any time, CPU operates in **one mode**
+- Mode dictates:
+	- [[#Instructions|Instructions]] that are valid
+	- Regions of memory that are accessible
+	- Amount of **privilege**
+	- Backward compatibility
+- CPU behavior *can vary widely* between modes
+
+## How can mode change?
+
+- Automatic
+- Manual
+- Application makes explicit request (calls OS function)
+- Initiated by hardware (device needs service)
+- Prior to change OS must specify which code to run when the change occurs
+
+# Privilege level
+
+- Determines which resources a program can use
+- Usually coupled to [[#Modes of execution|mode or execution]]
+- ~ Basic scheme: 2 levels
+	- **User mode** for applications
+	- **Kernel mode** for OS
+- ~ Advanced scheme: multiple levels
+	![[Priv_rings.svg]]
+
+# Microcode
+
+- Hardware technique used with [[#CISC]] processors
+- Employs *2 levels* of processor hardware
+	- Microprocessor provides **basic operations**
+	- *Macro* instruction set is *built on top of micro* instructions
+	- ? Macro instructions and micro instructions **may differ completely**
+		- Size of registers may differ (**16-[[Data representation#Bit (Binary digit)|bit]]** for *micro*, **32-[[Data representation#Bit (Binary digit)|bit]]** for *macro*)
+
+## Variations
+
+- *Restricted* or <font color="#92d050">full scope</font>
+	- **Special-purpose** instructions only
+	- $ **All** instructions
+- *Partial* or <font color="#92d050">complete</font> use
+	- $ Entire [[#Fetch-execute cycle|fetch-execute cycle]]
+	- Instruction fetch and decode
+	- [[#Parts of an instruction|Opcode]] processing
+	- [[#Parts of an instruction|Operand]] decode and fetch
+
+## Why use microcode
+
+- Higher level of *abstraction*
+- **Easier to build** and **less error-prone** than building with logic gates
+- Easier to change
+	- Easy upgrade
+	- Allows for **field upgrades**
+
+- ! Disadvantages
+	- More *overhead*
+	- **Macro** instruction performance depends on **micro** instruction set
+	- Microprocessor hardware must run at *extremely high* [[#Clock rate|clock rate]] to accommodate multiple **micro** instructions per **macro** instruction 
 
 --- 
 <br>

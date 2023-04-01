@@ -27,7 +27,7 @@ graph[layout=neato]
 
 fontcolor=green
 
-node[shape=rect, width=1, height=1, color=gray, fontcolor=gray]
+node[shape=rect, width=1, height=1, color=gray, fontcolor=white]
 
 processor [pos="0,1.25!"]
 memory [pos="1.25,1.25!"]
@@ -36,7 +36,7 @@ node[width=2.25, height=1]
 "I/O facilities" [pos="0.625,0!"]
 
 
-edge[arrowhead=vee, arrowsize=.7, color=maroon]
+edge[arrowhead=vee, arrowsize=.7, color=green]
 processor -> {memory, "I/O facilities"}
 memory -> {processor, "I/O facilities"}
 
@@ -60,7 +60,7 @@ graph[layout=neato]
 
 fontcolor=green
 
-node[shape=rect, width=1, height=1, color=gray, fontcolor=gray]
+node[shape=rect, width=1, height=1, color=gray, fontcolor=white]
 
 cpu [label=processor,pos="0,1.25!"]
 
@@ -72,7 +72,7 @@ node[width=2.25, height=1]
 io [label="I/O facilities",pos="0.625,0!"]
 
 
-edge[arrowhead=vee, arrowsize=.7, color=maroon]
+edge[arrowhead=vee, arrowsize=.7, color=green]
 cpu -> {io, im, dm}
 io -> {cpu, dm}
 im -> cpu
@@ -1071,6 +1071,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > |                                                                  |
 > \------------------------------------------------------------------/
 > ```
+> 
 >> Example hardware control commands
 > 
 > ```asciidoc-table

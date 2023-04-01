@@ -93,14 +93,14 @@ dm -> {cpu, io}
 	- Parameterized logic
 	- Programmable logic
 
-- Most computer architectures follow a *hierarchical* approach  
+- Most computer architectures follow a **hierarchical** approach  
 - Sub-parts of a large CPU are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
 
 ## Programmable device
 
 - ? To a software engineer programming means
-	- *Writing, compiling and loading* code into memory
-	- *Executing* the resulting memory image
+	- **Writing**, compiling and loading code into memory
+	- **Executing** the resulting memory image
 - ? To a hardware engineer a programmable device
 	- Has a [[#Processor Terminology|processor]] separate from the program it runs
 	- May have the program *burned onto a chip*
@@ -126,7 +126,7 @@ dm -> {cpu, io}
 	- Generally *low power consumption*
 	- & Example: control TV, including commands received from a remote and front panel
 - <u>General-purpose processors</u>
-	- *Most powerful*
+	- **Most powerful**
 	- Completely [[#Programmable device|programmable]]
 	- Full functionality
 	- Power consumption is a secondary consideration
@@ -202,7 +202,7 @@ dm -> {cpu, io}
 - Fetch the next [[#Instructions|instruction]]
 - Decode the [[#Instructions|instruction]] and fetch [[#Parts of an instruction|operands]] from [[#Registers|registers]]
 - Perform the *operation* specified by the [[#Parts of an instruction|opcode]] 
-- Perform memory *read* or *write*, if needed
+- Perform memory **read** or **write**, if needed
 - Store the result back to the [[#Registers|registers]]
 
 ### Program counter
@@ -215,7 +215,7 @@ dm -> {cpu, io}
 
 #### [[#Fetch-execute algorithm]] details
 
-- Access the *next step* of the program from the location given by the [[#Program counter|program counter]]
+- Access the **next step** of the program from the location given by the [[#Program counter|program counter]]
 - Set an internal [[#Registers|address register]] *A* to the address beyond the [[#Instructions|instruction]] that was just fetched
 - Execute: Perform the step of the program
 - Copy the content from *A* to the [[#Program counter|program counter]]
@@ -248,12 +248,12 @@ dm -> {cpu, io}
 		- For [[#RISC]] [[#Processor Terminology|processor]], one instruction on *every clock cycle* (instead of 5)
 - ! Stalls if item is not available when a stage needs it
 	- Consider code that
-		- Performs *addition* and *subtraction*
+		- Performs **addition** and **subtraction**
 		- Uses [[#Registers|registers]] from *A* to *E* for [[#Parts of an instruction|operands]] 
 		- Instruction sequence
 			- $A+B \to C$
 			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
-	- *Pipeline* stall can also occur on
+	- **Pipeline** stall can also occur on
 		- *I/O* access
 		- External storage access (memory reference)
 		- [[#Roles|Coprocessor]] invocation
@@ -310,7 +310,7 @@ dm -> {cpu, io}
 #### Result forwarding
 
 > [!definition] 
-> - *Hardware optimization* to *avoid stalls*
+> - **Hardware optimization** to *avoid stalls*
 > - Allows [[#Major components|ALU]] to reference result in *next instruction*
 
 - & Example:
@@ -416,20 +416,20 @@ graph TB;
 
 ### Clock rate
 
-- *Rate* at which *gates are clocked*
+- **Rate** at which *gates are clocked*
 - Provides a measure of the underlying *hardware speed*
 
 ### Instruction rate
 
 - Measures the *number of instructions* a [[#Processor Terminology|processor]] can execute *per unit time*
-- *Some instructions* can take more than a single *clock cycle*
+- *Some instructions* can take more than a single **clock cycle**
 	- & Example: multiplication takes longer than addition
 
 ## Stopping a processor
 
 - [[#Processor Terminology|Processor]] runs [[#Fetch-execute cycle|fetch-execute]] indefinitely
 - Software must plan next step
-- *Two possibilities* when the *last step* of computation finishes
+- **Two possibilities** when the *last step* of computation finishes
 	- On smallest embedded systems: code enters a loop for testing for a change in input
 	- Larger systems: OS runs an infinite loop
 - & Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until *I/O* activity occurs
@@ -539,8 +539,8 @@ graph TB;
 #### In-memory operand
 
 - [[#Parts of an instruction|Operand]] can specify
-	- *Value in memory* (*memory reference*)
-	- *Location in memory* that contains the address of the operand (*indirect reference*)
+	- **Value** *in memory* (*memory reference*)
+	- **Location** *in memory* that contains the address of the operand (*indirect reference*)
 - @ Note: accessing memory is relatively expensive
 
 ##### Types of indirection
@@ -596,7 +596,7 @@ graph TB;
 
 - Each [[#Parts of an instruction|operand]] has extra [[Data representation#Bit (Binary digit)|bits]] that specify a type
 - $ Fewer [[#Parts of an instruction|opcodes]] needed
-- & Example: [[#Parts of an instruction|opcode]] is *add* and the two [[#Parts of an instruction|operands]] specify the types *signed_immediate* and *register* 
+- & Example: [[#Parts of an instruction|opcode]] is **add** and the two [[#Parts of an instruction|operands]] specify the types *signed_immediate* and *register* 
 
 ### Operand trade-offs 
 
@@ -614,7 +614,7 @@ graph TB;
 1. $ Absolute branch
 	- Typically named *jump*
 	- [[#Parts of an instruction|Operand]] is an *address*
-	- *Assigns* [[#Parts of an instruction|operand]] value to internal [[#Registers|register]] *A* 
+	- **Assigns** [[#Parts of an instruction|operand]] value to internal [[#Registers|register]] *A* 
 2. $ Conditional branch
 	- Same as *Absolute branch*, but branches on condition
 		```armasm
@@ -626,17 +626,17 @@ graph TB;
 3. $ Relative branch
 	- Typically named *br*
 	- [[#Parts of an instruction|Operand]] is a [[Data representation#Signed integers|signed]] value
-	- *Adds* [[#Parts of an instruction|operand]] to internal [[#Registers|register]] *A* 
+	- **Adds** [[#Parts of an instruction|operand]] to internal [[#Registers|register]] *A* 
 
 ## Subroutine call
 
 1. Jump to *subroutine* (*jsr* [[#Instruction sets|instruction]])
 	- Similar to *jump*
-	- *Saves* value of internal [[#Registers|register]] *A*
-	- *Replaces A* with [[#Parts on an instruction|operand]] address
+	- **Saves** value of internal [[#Registers|register]] *A*
+	- **Replaces** *A* with [[#Parts on an instruction|operand]] address
 2. Return from *subroutine* (*ret* instruction)
-	- *Retrieves* value saved during *jsr*
-	- *Replaces A* with saved value
+	- **Retrieves** value saved during *jsr*
+	- **Replaces** *A* with saved value
 
 ### Passing arguments
 
@@ -645,7 +645,7 @@ graph TB;
 - & Examples:
 	- Store arguments *in memory*
 	- Store arguments *in special-purpose hardware [[#Registers|registers]]
-	- Store arguments *in [[#General purpose registers|general purpose registers]]*
+	- Store arguments *in [[#General-purpose registers|general purpose registers]]*
 - Many techniques are also used for *returning result* from function 
 
 - $ Also see: [[#Register window|register window]]
@@ -655,7 +655,7 @@ graph TB;
 ### Fixed-length
 
 - Every [[#Instructions|instruction]] is the *same size*
-- Hardware is *less complex*
+- $ Hardware is *less complex*
 - $ Hardware can *run faster*
 - ! *Wasted space*: some instructions don't use all the bits
 
@@ -672,7 +672,7 @@ graph TB;
 > [!definition] 
 > **C**omplex **I**nstruction **S**et **C**omputer
 
-- *Many instructions* (often *hundreds*)
+- **Many instructions** (often *hundreds*)
 - Given [[#Instructions|instruction]] can require *arbitrary time to compute*
 - & Example: Intel/AMD (x86/x64) or IBM [[#Instructions|instruction set]]
 - @ Typical complex [[#Instructions|instructions]]:
@@ -685,7 +685,7 @@ graph TB;
 > [!definition] 
 > **R**educed **I**nstruction **S**et **C**omputer
 
-- *Few instructions* (typically *32* or *64*)
+- **Few instructions* *(typically *32* or *64*)
 - Each instruction executes in *one clock cycle*
 - & Example: [[#MIPS]] or ARM instruction set
 - @ Omits complex instructions, instead *sequence of instructions* are used
@@ -698,7 +698,7 @@ graph TB;
 
 - Early [[#RISC]] design
 - Minimalistic
-- Only *32* [[#Instruction sets|instructions]]
+- Only **32** [[#Instruction sets|instructions]]
 
 More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/materials/MIPS_Instruction_Set.pdf) [instruction set reference 2](https://ecs-network.serv.pacific.edu/ecpe-170/tutorials/mips-instruction-set)
 
@@ -779,7 +779,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > 	- *Add* the value in register *1* to the value in register *2*, and put the result in register *3*
 > 	- *Store* a copy of the value from [[#Registers|register]] *3* in *Z*
 
-## General purpose registers
+## General-purpose registers
 
 - **High-speed** storage mechanism
 - Part of the [[#Processor Terminology|processor]] (*on chip*)
@@ -792,13 +792,13 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## Floating point registers
 
-- Usually separate from [[#General purpose registers|general purpose]] [[#Registers|registers]]
+- Usually separate from [[#General-purpose registers|general purpose]] [[#Registers|registers]]
 - Each holds one [[Data representation#Floating point|floating point]] value
 - **Floating point** registers are [[#Parts of an instruction|operands]] for [[Data representation#Floating point|floating point]] arithmetic
 
 ## Condition codes
 
-- Extra hardware [[Data representation#Bit (Binary digit)|bits]] (not part of [[#General purpose registers|general purpose]] [[#Registers|registers]])
+- Extra hardware [[Data representation#Bit (Binary digit)|bits]] (not part of [[#General-purpose registers|general purpose]] [[#Registers|registers]])
 - Set by [[#Major components|ALU]] each time an [[#Instruction sets|instruction]] produces a result
 - Used to indicate
 	- [[Data representation#Overflow|Overflow]]
@@ -980,10 +980,10 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## Variations
 
-- *Restricted* or <font color="#92d050">full scope</font>
+- <font color="#d83931">Restricted</font> or <font color="#92d050">full scope</font>
 	- **Special-purpose** instructions only
 	- $ **All** instructions
-- *Partial* or <font color="#92d050">complete</font> use
+- <font color="#d83931">Partial</font> or <font color="#92d050">complete</font> use
 	- $ Entire [[#Fetch-execute cycle|fetch-execute cycle]]
 	- Instruction fetch and decode
 	- [[#Parts of an instruction|Opcode]] processing
@@ -1004,7 +1004,255 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## Visibility to programmers
 
+- $ Fixed (immutable) [[#Microcode|microcode]]
+	- Approach used by most CPUs
+	- [[#Microcode]] only visible to CPU designer
+- $ Alterable [[#Microcode|microcode]]
+	- [[#Microcode]] loaded **dynamically**
+	- May be *restricted* to extensions (creating new **macro** instructions)
+	- User software written to use new instructions
+	- Knows as a *reconfigurable* CPU
+	- ~ In practice:
+		- Writing [[#Microcode|microcode]] is *tedious* compared to application programming
+		- Results are difficult to test
+		- Performance of [[#Microcode|microcode]] can be *much worse* than that of dedicated hardware
+		- @ Result: *reconfigurable* CPUs are not wide-spread (But there are FPGAs)
 
+## Types of microcode
+
+### Vertical microcode
+
+- Similar to *conventional assembly*
+- Microprocessor uses [[#Fetch-execute cycle|fetch-execute]] and executes **one** [[#Instructions|instruction]] at a time
+- **Micro** instructions can access
+	- ALU
+	- Macro [[#General-purpose registers|general-purpose registers]]
+	- Memory
+	- *I/O* buses
+
+- $ Advantages:
+	- Easy to read
+	- Programmers are comfortable using it
+- ! Disadvantages
+	- Unattractive to *hardware* designers because *higher* [[#Clock rate|clock rates]] are needed
+	- Generally has *low* performance (several **micro** instructions per **macro** instruction)
+
+### Horizontal microcode
+
+> Alternative to [[#Vertical microcode|vertical microcode]]
+
+- Exploits *parallelism* in underlying hardware
+- Controls functional units and data movement
+- ! *Extremely* difficult to program
+- @ Paradigm:
+	- Each **micro** instruction controls a set of hardware units
+	- An instruction specifies *which hardware* units to operate and *how data is transferred* among them
+
+> [!example] 
+> 
+> Consider the internal structure of a CPU
+> 
+> ```ditaa
+>        +---------------+     +----------+----------+    +-----------------+
+>        |               |     |          |          |    |      macro      |
+>        |      ALU      +---->+ result 1 | result 2 |    |  general purpose|
+>        |               |     |          |          |    |    registers    |
+>        +-+-----------+-+     +-------+--+--+-------+    +---------=+------+
+>          ^           ^               |     |                       |
+>          |           |               |     |        +--------------+--+
+> +--------+--+     +--+--------+      |     |        | register access |
+> | operand 1 |     | operand 1 |      |     |        +-----------------+
+> +-----+-----+     +-----+-----+      |     |                 ^
+>       ^                 ^            |     |                 |
+>       |                 |            v     v                 v
+> /-----+-----------------+------------+-----+-----------------+-----\
+> |                                                                  |
+> |                     data transfer mechanism                      |
+> |                                                                  |
+> \------------------------------------------------------------------/
+> ```
+>> Example hardware control commands
+> 
+> ```asciidoc-table
+> [frame=none]
+> [cols="1,3,15"]
+> |===
+> 
+> ^| Unit
+> ^| Command
+> ^| Meaning
+> 
+> .8+^| **ALU**
+> 
+> ^| *0 0 0*
+> | No operation
+> ^| *0 0 1*
+> | Add
+> ^| *0 1 0*
+> | Subtract
+> ^| *0 1 1*
+> | Multiply
+> ^| *1 0 0*
+> | Divide
+> ^| *1 0 1*
+> | Left shift
+> ^| *1 1 0*
+> | Right shift
+> ^| *1 1 1*
+> | Continue previous operation
+> 
+> .2+^| **operand 1**
+> ^| *0*
+> | No operation
+> ^| *1*
+> | Load value from data transfer mechanism
+> 
+> .2+^| **operand 2**
+> ^| *0*
+> | No operation
+> ^| *1*
+> | Load value from data transfer mechanism
+> 
+> .2+^| **result 1**
+> ^| *0*
+> | No operation
+> ^| *1*
+> | Send value to data transfer mechanism
+> 
+> .2+^| **result 2**
+> ^| *0*
+> | No operation
+> ^| *1*
+> | Send value to data transfer mechanism
+> 
+> .4+^| **register interface**
+> ^| *0 0 x x x x*
+> | No operation
+> ^| *0 1 x x x x*
+> | Move register *xxxx* to data transfer mechanism
+> ^| *1 0 x x x x*
+> | Move data from data transfer mechanism to register *x x x x*
+> ^| *1 1 x x x x*
+> | No operation
+> 
+> |===
+> ```
+> 
+>> Microcode [[#Instructions|instruction]] for our example
+> 
+> 
+> 1. Move the *value* from [[#Registers|register]] **4** to the hardware unit for [[#Parts of an instruction|operand]] **1**
+> 2. Move the *value* from [[#Registers|register]] **13** to the hardware unit for [[#Parts of an instruction|operand]] **2**
+> 3. Arrange for the *ALU* to perform the *operation*
+> 4. Move the *value* from the hardware unit for *result* **2** (low order [[Data representation#Bit (Binary digit)|bits]] of the result) to [[#Registers|register]] **4**
+> 
+> ```asciidoc-table
+> [frame=none]
+> [cols="3,3,3,3,3,3,4,4,3,3,3,3,3,3"]
+> |===
+> 
+> ^| Inst
+> 3+^| ALU
+> ^| O1
+> ^| O2
+> ^| Res 1
+> ^| Res 2
+> 6+^| Register interface
+> 
+> ^| 1
+> 
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| 0
+> 
+> ^| 2
+> 
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| *1*
+> ^| *1*
+> ^| 0
+> ^| *1*
+> 
+> ^| 3
+> 
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> 
+> ^| 4
+> 
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| *1*
+> ^| 0
+> ^| 0
+> ^| *1*
+> ^| 0
+> ^| 0
+> 
+> |===
+> ```
+
+#### Horizontal microcode timing
+
+- Each [[#Microcode|microcode]] [[#Instructions|instruction]] takes *one* **micro cycle**
+- Given functional unit may require more than *one* cycle to complete an operation
+- Programmer must accommodate hardware timing
+- To wait for functional unit, insert [[#Microcode|microcode]] instruction that continues the operation (similar to [[#No-op instruction]])
+
+--- 
+<br>
+
+# Intelligent microprocessor
+
+1. Schedules [[#Instructions|instructions]] by assigning work to functional units
+2. Handles operations in **parallel**
+3. Performs *branch optimization* by beginning to execute *both paths* of a [[#Branching|branch]]
+	- Keeps results separate
+	- Decides path to use when [[#Branching|branch]] direction is finally known
+4. @ Uses mechanisms:
+	- Scoreboards
+	- Re-Order Buffer (ROB)
+
+## Branch prediction
+
+> Alternative to **parallel execution**
+
+- Handles *conditional* execution
+- Hardware assumes that [[#Branching|branch]] **will** be taken, and unrolls computation if it's not
 
 --- 
 <br>

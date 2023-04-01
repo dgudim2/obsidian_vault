@@ -1,10 +1,10 @@
 # Digital logic
 
 - Built on <u>two-valued</u> logic system
-	- *+5v* and *0v*
-	- *High* and *low*
-	- *true* and *false*
-	- *asserted* and *not asserted*
+	- **+5v** and *0v*
+	- **High** and *low***
+	- **true** and *false*
+	- **asserted** and *not asserted*
 
 > [!note] 
 > Underneath it's all electrons and wires

@@ -5,12 +5,12 @@ module.exports = {
   extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   rules: {
     "@typescript-eslint/no-unused-vars": [
-      "error",
+      "warn",
       {args: "all", argsIgnorePattern: "^_"},
     ],
 
     "@typescript-eslint/no-this-alias": [
-      "error",
+      "warn",
       {
         "allowedNames": ["self"],
         "allowDestructuring": true
@@ -29,7 +29,7 @@ module.exports = {
     {
       "files": ["*.json"],
       "rules": {
-        "quotes": ["error", "double"],
+        "quotes": ["warn", "double"],
         "indent": ["error", 2],
         "semi": ["error", "never"]
       }

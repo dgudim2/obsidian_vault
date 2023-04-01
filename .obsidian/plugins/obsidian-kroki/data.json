@@ -125,10 +125,10 @@
       "obsidianBlockName": "ditaa",
       "description": "",
       "url": "http://ditaa.sourceforge.net/",
-      "enabled": true,
+      "enabled": false,
       "toggle": {
         "disabled": false,
-        "on": true,
+        "on": false,
         "toggleEl": {}
       }
     },

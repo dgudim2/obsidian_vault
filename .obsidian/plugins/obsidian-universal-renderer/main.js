@@ -64,7 +64,8 @@ var import_obsidian = require("obsidian");
 var DEFAULT_SETTINGS = {
   dotPath: "dot",
   pdflatexPath: "pdflatex",
-  imageMagickConvertPath: "convert"
+  imageMagickConvertPath: "convert",
+  ditaaPath: "ditaa"
 };
 var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
   constructor(plugin) {
@@ -74,22 +75,17 @@ var GraphvizSettingsTab = class extends import_obsidian.PluginSettingTab {
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian.Setting(containerEl).setName("Pdflatex Path").setDesc("Pdflatex executable path").addText(
-      (text) => text.setPlaceholder(DEFAULT_SETTINGS.pdflatexPath).setValue(this.plugin.settings.pdflatexPath).onChange(
-        (value) => __async(this, null, function* () {
-          this.plugin.settings.pdflatexPath = value;
-          yield this.plugin.saveSettings();
-        })
-      )
-    );
-    new import_obsidian.Setting(containerEl).setName("Dot Path").setDesc("Dot executable path").addText(
-      (text) => text.setPlaceholder(DEFAULT_SETTINGS.dotPath).setValue(this.plugin.settings.dotPath).onChange(
-        (value) => __async(this, null, function* () {
-          this.plugin.settings.dotPath = value;
-          yield this.plugin.saveSettings();
-        })
-      )
-    );
+    let setting;
+    for (setting in DEFAULT_SETTINGS) {
+      new import_obsidian.Setting(containerEl).setName(setting).addText(
+        (text) => text.setPlaceholder(DEFAULT_SETTINGS[setting]).setValue(this.plugin.settings[setting]).onChange(
+          (value) => __async(this, null, function* () {
+            this.plugin.settings[setting] = value;
+            yield this.plugin.saveSettings();
+          })
+        )
+      );
+    }
   }
 };
 
@@ -102,14 +98,25 @@ var crypto = __toESM(require("crypto"));
 var md5 = (contents) => crypto.createHash("md5").update(contents).digest("hex");
 var Processors = class {
   constructor(plugin) {
-    this.plugin = plugin;
+    this.pluginSettings = plugin.settings;
+    this.renderTypeMapping = /* @__PURE__ */ new Map([
+      ["latex", this.latexProcessor],
+      ["dot", this.dotProcessor],
+      ["ditaa", this.ditaaProcessor]
+    ]);
   }
-  getRenderer(type) {
+  getRendererParameters(type, sourceFile) {
+    let outputFile;
     switch (type) {
       case "dot":
-        return this.plugin.settings.dotPath;
+        outputFile = `${sourceFile}.svg`;
+        return [this.pluginSettings.dotPath, outputFile, ["-Tsvg", sourceFile, "-o", outputFile]];
       case "latex":
-        return this.plugin.settings.pdflatexPath;
+        outputFile = `${sourceFile}.png`;
+        return [this.pluginSettings.pdflatexPath, outputFile, ["-shell-escape", "-output-directory", this.getTempDir(type), sourceFile]];
+      case "ditaa":
+        outputFile = `${sourceFile}.svg`;
+        return [this.pluginSettings.ditaaPath, outputFile, [sourceFile, "--transparent", "--svg", "--overwrite"]];
     }
   }
   spawnProcess(cmdPath, parameters) {
@@ -126,29 +133,33 @@ var Processors = class {
         if (code !== 0) {
           return reject(`"${cmdPath} ${parameters}" failed, error code: ${code}, stderr: ${errData}`);
         }
-        resolve("");
+        resolve("ok");
       });
     });
   }
   writeRenderedFile(sourceFile, type) {
     return __async(this, null, function* () {
-      const cmdPath = this.getRenderer(type);
-      const out = `${sourceFile}.png`;
-      if (fs.existsSync(out)) {
-        return out;
+      const [cmdPath, outputFile, params] = this.getRendererParameters(type, sourceFile);
+      if (fs.existsSync(outputFile)) {
+        return outputFile;
       }
-      const parameters = type === "dot" ? ["-Tpng", sourceFile, "-o", out] : ["-shell-escape", "-output-directory", this.getTempDir(type), sourceFile];
-      yield this.spawnProcess(cmdPath, parameters);
+      yield this.spawnProcess(cmdPath, params);
       if (type === "latex") {
-        yield this.spawnProcess(this.plugin.settings.imageMagickConvertPath, ["-density", "300", "-units", "PixelsPerInch", `${sourceFile}.pdf[0]`, out]);
+        yield this.spawnProcess(this.pluginSettings.imageMagickConvertPath, ["-density", "300", "-units", "PixelsPerInch", `${sourceFile}.pdf[0]`, outputFile]);
       }
-      return out;
+      return outputFile;
     });
   }
   getTempDir(type) {
     return path.join(os.tmpdir(), `obsidian-${type}`);
   }
-  convertToImage(source, type) {
+  preprocessSource(type, source) {
+    switch (type) {
+      case "dot":
+        return source.replaceAll("color=brightwhite", 'color="#FBF1C7"').replaceAll("color=white", 'color="#EBDBB2"').replaceAll("color=lightgray", 'color="#BDAE93"').replaceAll("color=gray", 'color="#928374"').replaceAll("color=darkgray", 'color="#665C54').replaceAll("color=green", 'color="#b8bb26"').replaceAll("color=darkgreen", 'color="#98971A"').replaceAll("color=aqua", 'color="#8ec07c"').replaceAll("color=darkaqua", 'color="#689D6A"').replaceAll("color=red", 'color="#fb4934"').replaceAll("color=darkred", 'color="#CC241D"').replaceAll("color=yellow", 'color="#fabd2f"').replaceAll("color=darkyellow", 'color="#D79921"').replaceAll("color=blue", 'color="#83a598"').replaceAll("color=darkblue", 'color="#458588"').replaceAll("color=purple", 'color="#D3869B"').replaceAll("color=darkpurple", 'color="#B16286"').replaceAll("color=orange", 'color="#FE8019"').replaceAll("color=darkorange", 'color="#D65D0E"');
+    }
+  }
+  convertToImage(type, source) {
     return __async(this, null, function* () {
       const dir = this.getTempDir(type);
       const file = path.join(dir, md5(source));
@@ -156,19 +167,9 @@ var Processors = class {
         fs.mkdirSync(dir);
       }
       if (!fs.existsSync(file)) {
-        fs.writeFileSync(file, source);
+        fs.writeFileSync(file, this.preprocessSource(type, source));
       }
       return this.writeRenderedFile(file, type);
-    });
-  }
-  dotProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "dot");
-    });
-  }
-  latexProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "latex");
     });
   }
   imageProcessor(source, el, _, type) {
@@ -179,7 +180,7 @@ var Processors = class {
           console.error("Bad source, won't render");
           return;
         }
-        const imagePath = yield this.convertToImage(source, type);
+        const imagePath = yield this.convertToImage(type, source);
         const img = document.createElement("img");
         img.src = `app://local${imagePath}`;
         el.appendChild(img);
@@ -193,24 +194,40 @@ var Processors = class {
       }
     });
   }
+  ditaaProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "ditaa");
+    });
+  }
+  dotProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "dot");
+    });
+  }
+  latexProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "latex");
+    });
+  }
 };
 
 // src/main.ts
 var GraphvizPlugin = class extends import_obsidian2.Plugin {
   onload() {
     return __async(this, null, function* () {
-      console.debug("Load graphviz - latex plugin");
+      console.debug("Load universal renderer plugin");
       yield this.loadSettings();
       this.addSettingTab(new GraphvizSettingsTab(this));
       const processors = new Processors(this);
       this.app.workspace.onLayoutReady(() => {
-        this.registerMarkdownCodeBlockProcessor("dot", processors.dotProcessor.bind(processors));
-        this.registerMarkdownCodeBlockProcessor("latex", processors.latexProcessor.bind(processors));
+        for (const [type, func] of processors.renderTypeMapping) {
+          this.registerMarkdownCodeBlockProcessor(type, func.bind(processors));
+        }
       });
     });
   }
   onunload() {
-    console.debug("Unload graphviz plugin");
+    console.debug("Unload universal renderer plugin");
   }
   loadSettings() {
     return __async(this, null, function* () {

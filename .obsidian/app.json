@@ -25,5 +25,6 @@
   "showInlineTitle": true,
   "userIgnoreFilters": [
     "export/"
-  ]
+  ],
+  "rightToLeft": false
 }

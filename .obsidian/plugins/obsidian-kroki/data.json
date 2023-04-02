@@ -47,10 +47,10 @@
       "obsidianBlockName": "seqdiag",
       "description": "",
       "url": "https://github.com/blockdiag/seqdiag",
-      "enabled": false,
+      "enabled": true,
       "toggle": {
         "disabled": false,
-        "on": false,
+        "on": true,
         "toggleEl": {}
       }
     },

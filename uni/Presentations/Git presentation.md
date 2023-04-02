@@ -101,13 +101,15 @@ flexGrow=1
 ```
 ````
 
-> You can even self-host your own server of set up a local repo with users on the same file system
+> You can even self-host your own server or set up a local repo with users on the same file system
 
 ---
 
 # Vilniustech gitlab instance
 
-![[vt_git_instance.svg|500]]
+<svg width="100mm" height="101mm" version="1.1" viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg">
+ <path fill="var(--text-normal)" d="m3.1048 85.997v-11.391h22.781v22.781h-22.781zm19.527 0v-8.1361h-16.272v16.272h16.272zm-13.018 0v-4.8817h9.7634v9.7634h-9.7634zm19.527 8.1361v-3.2544h3.2545v6.5089h-3.2545zm6.5089-1.6272v-4.8817h-6.5089v-6.5089h3.2545v3.2544h3.2544v-6.5089h3.2544v6.5089h-3.2544v3.2544h3.2544v3.2545h3.2544v3.2544h6.5089v3.2544h-6.5089v-3.2544h-3.2544v3.2544h-3.2544zm16.272 3.2545v-1.6272h6.5089v3.2544h-6.5089zm13.018 0v-1.6272h-3.2545v-3.2544h6.5089v3.2544h3.2544v-6.5089h3.2545v6.5089h3.2544v-9.7634h-9.7634v3.2544h-9.7634v3.2545h-6.5089v-3.2545h-3.2544v3.2545h-6.5089v-9.7634h3.2545v6.5089h3.2544v-3.2544h6.5089v3.2544h3.2544v-3.2544h6.5089v-3.2544h-6.5089v-3.2545h6.5089v-3.2544h3.2545v-6.5089h-3.2545v6.5089h-6.5089v-6.5089h3.2544v-3.2545h-3.2544v-3.2544h3.2544v-3.2545h3.2545v-3.2544h6.5089v3.2544h3.2545v3.2545h6.5089v-3.2545h3.2545v3.2545h3.2544v3.2544h3.2544v3.2545h3.2545v3.2544h-6.5089v6.5089h-3.2544v3.2545h3.2544v3.2544h-6.5089v3.2544h3.2545v3.2545h-3.2545v3.2544h3.2545v-3.2544h3.2544v-3.2545h6.5089v-3.2544h3.2544v9.7634h-3.2544v-3.2544h-3.2545v3.2544h-3.2544v3.2544h-22.781zm16.272-19.527v-4.8817h-9.7634v9.7634h9.7634zm-6.5089 0v-1.6272h3.2544v3.2544h-3.2544zm3.2544-9.7634v-1.6272h-3.2544v-3.2544h-6.5089v3.2544h3.2544v3.2545h6.5089zm-22.781 16.272v-1.6272h-6.5089v-3.2545h-6.5089v-3.2544h3.2545v-3.2544h-3.2545v-6.5089h9.7634v3.2545h3.2545v-3.2545h-3.2545v-13.018h-3.2544v-3.2545h-3.2544v3.2545h-3.2545v3.2544h-3.2544v-3.2544h-3.2544v-3.2545h-3.2544v-9.7634h3.2544v-3.2544h6.5089v3.2544h3.2545v6.5089h-6.5089v-3.2544h-3.2544v6.5089h9.7634v-3.2544h6.5089v-3.2544h6.5089v6.5089h-3.2544v3.2545h3.2544v6.5089h-3.2544v6.5089h3.2544v3.2545h-3.2544v6.5089h3.2544v3.2544h-3.2544v3.2545h3.2544v3.2544h-3.2544zm-3.2545-8.1361v-3.2544h-3.2544v6.5089h3.2544zm42.308 4.8817v-1.6272h3.2544v3.2545h-3.2544zm-65.089-6.5089v-1.6272h-6.5089v-3.2544h-6.5089v3.2544h-13.018v-19.527h6.5089v3.2544h-3.2544v3.2544h3.2544v-3.2544h3.2545v3.2544h3.2544v-3.2544h-3.2544v-3.2544h6.5089v-3.2545h6.5089v-3.2544h-3.2544v-3.2544h3.2544v-3.2545h-3.2544v3.2545h-3.2545v6.5089h-6.5089v3.2545h-3.2545v-3.2545h-6.5089v-3.2544h3.2544v-3.2544h3.2544v-3.2545h-3.2544v-3.2544h3.2544v3.2544h3.2545v-3.2544h3.2544v-3.2544h-3.2544v-3.2545h6.5089v6.5089h-3.2544v3.2544h-3.2544v6.5089h3.2544v-3.2544h3.2544v-3.2545h3.2545v-3.2544h3.2544v-3.2544h-3.2544v-3.2545h3.2544v3.2545h3.2544v16.272h-3.2544v3.2545h-3.2544v3.2544h3.2544v3.2544h3.2544v3.2545h3.2545v-3.2545h3.2544v3.2545h3.2544v-3.2545h6.5089v-3.2544h3.2544v6.5089h-6.5089v3.2544h-3.2544v3.2545h-3.2544v3.2544h-3.2544v3.2544h-3.2545zm3.2545-3.2544v-1.6272h3.2544v-6.5089h-3.2544v6.5089h-3.2545v3.2544h3.2545zm-16.272-4.8817v-3.2544h-3.2544v3.2544h-3.2545v3.2545h6.5089zm9.7634 1.6272v-1.6272h-3.2544v-3.2544h3.2544v-3.2545h-3.2544v-3.2544h-3.2545v9.7634h3.2545v3.2545h3.2544zm68.343-3.2544v-1.6272h-6.5089v-3.2545h-3.2544v-3.2544h-13.018v-6.5089h3.2545v3.2545h3.2544v-3.2545h-3.2544v-6.5089h6.5089v3.2544h13.018v-6.5089h3.2544v16.272h-3.2544v-6.5089h-3.2545v6.5089h-3.2544v3.2544h6.5089v3.2545h3.2544v3.2544h-3.2544zm-6.5089-11.391v-3.2545h-3.2544v6.5089h3.2544zm-58.58 1.6272v-1.6272h3.2545v3.2544h-3.2545zm29.29-3.2544v-1.6272h3.2544v-3.2544h3.2545v3.2544h3.2545v3.2545h-9.7634zm9.7634-6.5089v-1.6272h-3.2545v-3.2545h3.2545v-3.2544h-6.5089v6.5089h-3.2544v-3.2545h-6.5089v3.2545h-3.2544v-6.5089h-6.5089v-3.2544h-6.5089v3.2544h-3.2544v-6.5089h-3.2545v-6.5089h3.2545v6.5089h3.2544v-9.7634h-3.2544v-3.2544h3.2544v3.2544h3.2544v-3.2544h3.2544v-6.5089h9.7634v3.2545h-3.2544v3.2544h-6.5089v3.2544h6.5089v3.2545h3.2544v3.2544h3.2545v-9.7634h3.2544v-3.2544h-3.2544v-9.7634h6.5089v3.2544h6.5089v3.2544h3.2544v3.2545h-6.5089v-3.2545h-6.5089v3.2545h3.2544v9.7634h-3.2544v3.2544h-3.2544v9.7634h6.5089v-3.2544h-3.2544v-3.2545h3.2544v-6.5089h3.2545v3.2544h3.2545v-6.5089h-3.2545v-3.2544h3.2545v3.2544h3.2544v9.7634h-9.7633v3.2545h6.5089v3.2544h3.2544v3.2544h3.2545v3.2545h-3.2545v3.2544h-3.2544zm-19.527-13.018v-1.6272h3.2544v-3.2544h-3.2544v-3.2544h-3.2544v3.2544h-3.2545v-6.5089h-3.2544v6.5089h3.2544v6.5089h6.5089zm-3.2544-3.2544v-1.6272h3.2544v3.2544h-3.2544zm35.799 13.018v-1.6272h-3.2544v-6.5089h-3.2544v-3.2545h3.2544v3.2545h6.5089v6.5089h3.2544v-6.5089h6.5089v-3.2545h3.2544v3.2545h-3.2544v3.2544h-3.2545v3.2544h-3.2544v3.2545h-6.5089zm-78.107-9.7634v-1.6272h6.5089v3.2545h-6.5089zm0-16.272v-11.391h22.781v22.781h-22.781zm19.527 0v-8.1361h-16.272v16.272h16.272zm-13.018 0v-4.8817h9.7634v9.7634h-9.7634zm65.089 0v-11.391h22.781v22.781h-22.781zm19.527 0v-8.1361h-16.272v16.272h16.272zm-13.018 0v-4.8817h9.7634v9.7634h-9.7634zm-45.562-3.2544v-1.6272h-3.2544v-3.2544h-3.2545v-3.2544h3.2545v3.2544h6.5089v-3.2544h6.5089v3.2544h-6.5089v6.5089h-3.2544zm13.018-6.5089v-1.6272h3.2544v3.2544h-3.2544z" stroke-width="1.0848"/>
+</svg>
 
 ---
 
@@ -122,7 +124,8 @@ flexGrow=1
 - Easily *keep track* of file versions
 - *Rollback* to previous file versions
 - Ability to have *unlimited* number of developers working on the same code base
-- Losing work is *really* hard
+
+> Also, losing work is *really* hard
 
 ---
 
@@ -302,14 +305,6 @@ graph G {
 
 # More about categories
 
-## Local VCS
-
-![[Screenshot_20230402_143505.png|100%]]
-
----
-
-# More about categories
-
 ## Centralized VCS
 
 `````col 
@@ -398,7 +393,7 @@ flexGrow=1
 - Many operations are local
 	- Check in/out from *local* repo
 	- Commit changes to *local* repo
-	- Local repo keeps version hostory
+	- Local repo keeps version history
 
 - When you are ready, you can "*push*" changes back to the server
 
@@ -482,7 +477,7 @@ graph G {
 
 # Git areas
 
-### In your local copy files can be:
+### Files can be:
 
 - Checked out, *Modified*, but not yet committed (*working copy*)
 - *Staged*, but not yet committed - Staged files are ready to be committed
@@ -564,7 +559,198 @@ A -- {B, C, D, E, F, G, H, I, J, K, L}
 
 ---
 
-# Command usages
+# Initializing a repo
+
+- $ Two common scenarios
+
+`````col 
+````col-md 
+flexGrow=1.3
+===
+
+### To create a local Git repo in current directory
+
+```bash
+git init  # this will create a .git directory
+git add . # add all files to the staging area
+git commit -m "First commit OwO"
+```
+
+#### Adding a remote
+
+```bash
+git remote add "remote_name" "repo_url"
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+### To clone a remote repo
+
+```bash
+git clone https://github.com/torvalds/linux
+```
+
+This will create a new directory with the name of the repo and create a local copy of the files from the repo, along with all the commits
+
+```` 
+`````
+
+---
+
+# Adding files
+
+- The first time we ask a file to be *tracked* by git, and *every time* before *commit*, we must add it to the *staging area*
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+## Before
+
+![[Pasted image 20230402184812.png]]
+
+```` 
+````col-md
+````col-md 
+flexGrow=1
+===
+
+## Add files
+
+```bash 
+git add file1.txt file2.txt file3.txt
+```
+```` 
+````col-md 
+flexGrow=1
+===
+
+## After
+
+![[Pasted image 20230402184729.png]]
+
+```` 
+`````
+
+---
+
+# Committing
+
+- To move *staged* changes into the *repo*, we *commit*:
+
+`````col 
+````col-md 
+flexGrow=1.6
+===
+
+```bash
+git commit -m "First commit OwO"
+```
+
+![[Pasted image 20230402185127.png]]
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+![[Pasted image 20230402185225.png]]
+
+```` 
+`````
+
+---
+
+# Viewing changes
+
+- To view status of files in *working directory* and *staging* area
+
+```bash
+git status
+```
+![[Pasted image 20230402192409.png]]
+
+---
+
+# Viewing changes
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+- To see what is *modified* but *unstaged*
+
+```bash
+git diff
+```
+
+![[Pasted image 20230402192725.png]]
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+- To see what is *modified* and *staged*
+
+```bash
+git diff --cached
+```
+
+![[Pasted image 20230402192652.png]]
+
+```` 
+`````
+
+---
+
+# Viewing changes
+
+- To see a log of all changes in your local repo
+
+```bash
+git log --oneline
+```
+![[Pasted image 20230402193057.png]]
+
+---
+
+# Interacting with the remote
+
+- To *push* your local changes to the *remote* repo
+
+```bash
+git push
+```
+
+- If you want to *push* to a non-default *remote* repo
+
+```bash
+git push "remote_name" "branch_name"
+```
+
+![[Pasted image 20230402193527.png|100%]]
+
+--- 
+
+# Interacting with the remote
+
+- To *pull* changes from the *remote* repo and put them into your working directory
+
+```bash
+git pull
+```
+
+- To *pull* changes from the *remote* repo *without putting* them them into your working directory
+
+```bash
+git fetch
+```
 
 ---
 
@@ -646,6 +832,18 @@ git merge "branch_name"
 
 ````
 `````
+
+---
+
+# Merge conflicts
+
+- When you *merge* branches or pull changes, **merge** conflicts can happen
+- Lucky for you, *git* handles them gracefully
+- After *pulling* / *merging*, git may complain about conflicts
+![[Pasted image 20230402201348.png]]
+- The conflicting files will contain *>>>* and *<<<* sections to indicate where git was unable to resolve a conflict
+![[Pasted image 20230402201627.png]]
+- You can resolve the conflict manually or through any *GUI*
 
 ---
 

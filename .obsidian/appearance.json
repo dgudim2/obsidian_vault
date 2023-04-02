@@ -16,7 +16,9 @@
     "list_padding",
     "dialogs",
     "mermaid",
-    "width-800px"
+    "width-800px",
+    "slides-bg-color",
+    "slides-theme-colors"
   ],
   "showViewHeader": true,
   "theme": "system"

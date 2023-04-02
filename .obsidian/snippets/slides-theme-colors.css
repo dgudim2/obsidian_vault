@@ -47,46 +47,27 @@
   font-size: 1.5em; /* for mobile use 1.5em */
 }
 
-/* zoom level for (mobile) landscape mode */
-/* @media screen and (orientation:landscape) {
+/*@media screen and (orientation:landscape) {
   .slides {
-    zoom: 1.1 !important;
+    zoom: 0.7 !important;
   }
-} */
+}*/
 
 
 /* ---------------------------------------------------- */
 
-/* adds scrollbar
-.slides {
+/*/adds scrollbar*/
+/*.slides {
   overflow-x: hidden !important;
   overflow-y: auto !important;
   pointer-events: auto !important;
-}*/
+}
 
 
-/* hide scroll bar
+ hide scroll bar
 .slide ::-webkit-scrollbar {
   display: none !important;
 }*/
-
-
-
-/* ---------------------------------------------------- */
-
-/* fixes padding for heading after list. e.g. see padding of this
-
-- item1
-## heading 2
-*/
-.reveal ul {
-  padding-bottom: 1.5%;
-}
-
-.reveal ol {
-  padding-bottom: 1.5%;
-}
-
 
 
 /* ---------------------------------------------------- */
@@ -94,7 +75,6 @@
 /* code styles */
 .reveal code {
   max-height: fit-content !important; /* disable this if you want scrollable code blocks */
-  color: #ffad00;
 }
 
 
@@ -113,10 +93,7 @@
 
 /* move copy button to top right corner */
 .slide .copy-code-button {
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  /* display: none !important; // hides the copy button */
+  display: none !important;
 }
 
 
@@ -161,16 +138,3 @@
   line-height: 1.5;
 }
 
-
-/* ---------------------------------------------------- */
-
-/* move left and right arrow button */
-.navigate-right {
-  /* bottom: 1.4em !important; */
-  right: 8em !important;
-}
-
-.navigate-left {
-  /* bottom: 1.4em !important; */
-  right: 15em !important;
-}

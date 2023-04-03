@@ -4,14 +4,16 @@ import GraphvizPlugin from './main';
 export type GraphvizSettings = {
   dotPath: string;
   pdflatexPath: string;
-  imageMagickConvertPath: string;
+  pdf2svgPath: string;
+  blockdiagPath: string;
   ditaaPath: string;
 }
 
 export const DEFAULT_SETTINGS: GraphvizSettings = {
   dotPath: 'dot',
   pdflatexPath: 'pdflatex',
-  imageMagickConvertPath: 'convert',
+  pdf2svgPath: 'pdf2svg',
+  blockdiagPath: 'blockdiag',
   ditaaPath: 'ditaa'
 };
 

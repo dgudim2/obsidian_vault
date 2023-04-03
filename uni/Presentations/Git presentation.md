@@ -489,7 +489,7 @@ sequenceDiagram
 	participant Staging area;
 	participant Git repo (.git);
 	participant Remote repo;
-	Git repo (.git)-)Working dir: Checkout the project
+	Git repo (.git)->>Working dir: Checkout the project
     Working dir-)Staging area: Stage files
     Staging area-)Git repo (.git): Commit
     Git repo (.git)-)Remote repo: Push

@@ -10,7 +10,7 @@ import { GraphvizSettings } from './setting';
 import * as crypto from 'crypto';
 const md5 = (contents: string) => crypto.createHash('md5').update(contents).digest('hex');
 
-type RenderType = 'dot' | 'latex' | 'ditaa';
+type RenderType = 'dot' | 'latex' | 'ditaa' | 'blockdiag';
 
 export class Processors {
     pluginSettings: GraphvizSettings;
@@ -26,17 +26,16 @@ export class Processors {
     }
 
     private getRendererParameters(type: RenderType, sourceFile: string): [string, string, string[]] {
-        let outputFile: string;
+        let outputFile = `${sourceFile}.svg`;
         switch (type) {
             case 'dot':
-                outputFile = `${sourceFile}.svg`;
                 return [this.pluginSettings.dotPath, outputFile, ['-Tsvg', sourceFile, '-o', outputFile]];
             case 'latex':
-                outputFile = `${sourceFile}.png`;
                 return [this.pluginSettings.pdflatexPath, outputFile, ['-shell-escape', '-output-directory', this.getTempDir(type), sourceFile]];
             case 'ditaa':
-                outputFile = `${sourceFile}.svg`;
                 return [this.pluginSettings.ditaaPath, outputFile, [sourceFile, '--transparent', '--svg', '--overwrite']];
+            case 'blockdiag':
+                return [this.pluginSettings.ditaaPath, outputFile, ['--antialias', '-Tsvg', sourceFile, '-o', outputFile]];
         }
     }
 
@@ -68,7 +67,7 @@ export class Processors {
 
         await this.spawnProcess(cmdPath, params);
         if (type === 'latex') {
-            await this.spawnProcess(this.pluginSettings.imageMagickConvertPath, ['-density', '300', '-units', 'PixelsPerInch', `${sourceFile}.pdf[0]`, outputFile]);
+            await this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile, '0']);
         }
 
         return outputFile;
@@ -78,10 +77,10 @@ export class Processors {
         return path.join(os.tmpdir(), `obsidian-${type}`);
     }
 
-    private preprocessSource(type: RenderType, source: string) {
+    private makeDynamicSvg(type: RenderType, svg_source: string) {
         switch (type) {
             case 'dot':
-                return source
+                return svg_source
                     .replaceAll('color=brightwhite', 'color="#FBF1C7"')
                     .replaceAll('color=white', 'color="#EBDBB2"')
                     .replaceAll('color=lightgray', 'color="#BDAE93"')
@@ -102,6 +101,7 @@ export class Processors {
                     .replaceAll('color=orange', 'color="#FE8019"')
                     .replaceAll('color=darkorange', 'color="#D65D0E"');
         }
+        return svg_source;
     }
 
     private async convertToImage(type: RenderType, source: string): Promise<string> {
@@ -114,7 +114,7 @@ export class Processors {
         }
 
         if (!fs.existsSync(file)) {
-            fs.writeFileSync(file, this.preprocessSource(type, source));
+            fs.writeFileSync(file, this.makeDynamicSvg(type, source));
         }
         return this.writeRenderedFile(file, type);
     }

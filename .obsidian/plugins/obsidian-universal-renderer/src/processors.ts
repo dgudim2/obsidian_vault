@@ -12,6 +12,77 @@ const md5 = (contents: string) => crypto.createHash('md5').update(contents).dige
 
 type RenderType = 'dot' | 'latex' | 'ditaa' | 'blockdiag';
 
+const svgColorMap = new Map<string, string>([
+
+    // dark colors
+    ['darkred', '--g-color-dark-red'],
+    ['firebrick', '--g-color-dark-red'],
+    ['maroon', '--g-color-dark-red'],
+    ['brown', '--g-color-dark-red'],
+    ['darkred', '--g-color-dark-red'],
+
+    ['darkmagenta', '--g-color-dark-purple'],
+    ['darkviolet', '--g-color-dark-purple'],
+    ['blueviolet', '--g-color-dark-purple'],
+    ['darkorchid', '--g-color-dark-purple'],
+    ['indigo', '--g-color-dark-purple'],
+
+    ['darkgreen', '--g-color-dark-green'],
+
+    ['darkblue', '--g-color-dark-blue'],
+
+    ['chocolate', '--g-color-dark-orange'],
+
+    ['goldenrod', '--g-color-dark-yellow'],
+
+    ['darkcyan', '--g-color-dark-aqua'],
+
+    // neutral colors
+    ['red', '--g-color-red'],
+    ['purple', '--g-color-purple'],
+    ['green', '--g-color-green'],
+    ['blue', '--g-color-blue'],
+    ['darkorange', '--g-color-orange'],
+    ['yellow', '--g-color-yellow'],
+    ['cyan', '--g-color-aqua'],
+
+    // light colors
+    ['tomato', '--g-color-light-red'],
+    ['lightcoral', '--g-color-light-red'],
+    ['indianred', '--g-color-light-red'],
+
+    ['magenta', '--g-color-light-purple'],
+    ['lightgreen', '--g-color-light-green'],
+    ['lightblue', '--g-color-light-blue'],
+
+    ['orange', '--g-color-light-orange'],
+    ['coral', '--g-color-light-orange'],
+
+    ['yellow', '--g-color-light-yellow'],
+    ['cyan', '--g-color-light-aqua'],
+
+
+    // gray colors
+
+    ['ghostwhite', '--g-color-light100-hard'], // #F9F5D7
+    ['white', '--g-color-light100'],           // #FBF1C7
+    ['seashell', '--g-color-light100-soft'],   // #F2E5BC
+    ['snow', '--g-color-light90'],             // #EBDBB2                    
+    ['whitesmoke', '--g-color-light80'],       // #D5C4A1
+    ['lightgray', '--g-color-light70'],        // #BDAE93
+    ['silver', '--g-color-light60'],           // #A89984
+
+    //['--g-color-dark100-hard']               // #1D2021 unused
+    ['black', '--g-color-dark100'],            // #282828
+    ['dimgray', '--g-color-dark100-soft'],     // #32302F
+    ['darkslategray', '--g-color-dark90'],     // #3C3836
+    ['slategray', '--g-color-dark80'],         // #504945
+    ['lightslategray', '--g-color-dark70'],    // #665C54
+    ['gray', '--g-color-dark60'],              // #7C6F64
+
+    ['darkgray', '--g-color-gray']            // #928374
+]);
+
 export class Processors {
     pluginSettings: GraphvizSettings;
     renderTypeMapping: Map<RenderType, (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => Promise<unknown> | void>;
@@ -26,7 +97,7 @@ export class Processors {
     }
 
     private getRendererParameters(type: RenderType, sourceFile: string): [string, string, string[]] {
-        let outputFile = `${sourceFile}.svg`;
+        const outputFile = `${sourceFile}.svg`;
         switch (type) {
             case 'dot':
                 return [this.pluginSettings.dotPath, outputFile, ['-Tsvg', sourceFile, '-o', outputFile]];
@@ -70,6 +141,10 @@ export class Processors {
             await this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile, '0']);
         }
 
+        const imageData = this.makeDynamicSvg(fs.readFileSync(outputFile).toString());
+        fs.unlinkSync(outputFile);
+        fs.writeFileSync(outputFile, imageData);
+
         return outputFile;
     }
 
@@ -77,29 +152,9 @@ export class Processors {
         return path.join(os.tmpdir(), `obsidian-${type}`);
     }
 
-    private makeDynamicSvg(type: RenderType, svg_source: string) {
-        switch (type) {
-            case 'dot':
-                return svg_source
-                    .replaceAll('color=brightwhite', 'color="#FBF1C7"')
-                    .replaceAll('color=white', 'color="#EBDBB2"')
-                    .replaceAll('color=lightgray', 'color="#BDAE93"')
-                    .replaceAll('color=gray', 'color="#928374"')
-                    .replaceAll('color=darkgray', 'color="#665C54')
-                    .replaceAll('color=green', 'color="#b8bb26"')
-                    .replaceAll('color=darkgreen', 'color="#98971A"')
-                    .replaceAll('color=aqua', 'color="#8ec07c"')
-                    .replaceAll('color=darkaqua', 'color="#689D6A"')
-                    .replaceAll('color=red', 'color="#fb4934"')
-                    .replaceAll('color=darkred', 'color="#CC241D"')
-                    .replaceAll('color=yellow', 'color="#fabd2f"')
-                    .replaceAll('color=darkyellow', 'color="#D79921"')
-                    .replaceAll('color=blue', 'color="#83a598"')
-                    .replaceAll('color=darkblue', 'color="#458588"')
-                    .replaceAll('color=purple', 'color="#D3869B"')
-                    .replaceAll('color=darkpurple', 'color="#B16286"')
-                    .replaceAll('color=orange', 'color="#FE8019"')
-                    .replaceAll('color=darkorange', 'color="#D65D0E"');
+    private makeDynamicSvg(svg_source: string) {
+        for (const [color, target_var] of svgColorMap) {
+            svg_source = svg_source.replaceAll(`"${color}"`, `"var(${target_var})"`);
         }
         return svg_source;
     }
@@ -114,7 +169,7 @@ export class Processors {
         }
 
         if (!fs.existsSync(file)) {
-            fs.writeFileSync(file, this.makeDynamicSvg(type, source));
+            fs.writeFileSync(file, source);
         }
         return this.writeRenderedFile(file, type);
     }
@@ -129,9 +184,12 @@ export class Processors {
             }
 
             const imagePath = await this.convertToImage(type, source);
-            const img = document.createElement('img');
-            img.src = `app://local${imagePath}`;
-            el.appendChild(img);
+
+            //const img = document.createElement('img');
+            //img.src = `app://local${imagePath}`;
+            el.classList.add('multi-graph-normal');
+            el.innerHTML = fs.readFileSync(imagePath).toString();
+            //el.appendChild(img);
         } catch (errMessage) {
             console.error('convert to image error: ' + errMessage);
             const pre = document.createElement('pre');

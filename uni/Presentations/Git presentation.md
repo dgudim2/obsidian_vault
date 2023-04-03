@@ -86,7 +86,7 @@ flexGrow=1
 ```col-md
 flexGrow=1
 ===
-### GitTea
+### Gitea
 
 ![[Gitea_Logo.svg|150]]
 

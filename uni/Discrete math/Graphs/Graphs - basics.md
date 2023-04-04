@@ -15,7 +15,7 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey,
+      color = lightgray,
       label = ""]
 
 node [fillcolor = red]
@@ -26,7 +26,7 @@ b c d
 
 node [fillcolor = orange]
 
-edge [color = grey]
+edge [color = lightgray]
 a -> {b c d}
 b -> {e f g h i j}
 c -> {k l m n o p}
@@ -71,7 +71,7 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey,
+      color = gray,
       label = ""]
 
 node [fillcolor = red]
@@ -82,7 +82,7 @@ b c d
 
 node [fillcolor = orange]
 
-edge [color = grey]
+edge [color = gray]
 a -> {b c d}
 b -> a
 c -> a
@@ -107,7 +107,7 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey,
+      color = gray,
       label = ""]
 
 node [fillcolor = red]
@@ -118,7 +118,7 @@ b c d
 
 node [fillcolor = orange]
 
-edge [color = grey]
+edge [color = gray]
 a -- {b c d}
 
 }

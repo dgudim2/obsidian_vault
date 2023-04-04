@@ -81,9 +81,9 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
 	      penwidth=3]  
 	
@@ -130,13 +130,13 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
 	      penwidth=3] 
 	
-	a [label="\n\n\nA(0,0)",color=darkaqua,fontcolor=darkblue]
+	a [label="\n\n\nA(0,0)",color=darkcyan,fontcolor=blue]
 	b [label="\n\n\nB(5,A)",fontcolor=red]
 	c [label="\n\n\nC(6,A)",fontcolor=red]
 	d [label="D(∞,0)\n\n\n\n"]
@@ -181,14 +181,14 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
 	      penwidth=3]
 	
-	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
-	b [label="\n\n\nB(5,A)",color=darkaqua,fontcolor=darkblue]
+	a [label="\n\n\nA(0,0)",color=orange,fontcolor=blue]
+	b [label="\n\n\nB(5,A)",color=darkcyan,fontcolor=blue]
 	c [label="\n\n\n    C(6,A)",xlabel=<<font color="red">(8,B)</font>>]
 	d [label="D(12,B)\n\n\n\n",fontcolor=red]
 	e [label="E(7,B)\n\n\n\n",fontcolor=red]
@@ -230,15 +230,15 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
 	      penwidth=3] 
 	
-	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
-	b [label="\n\n\nB(5,A)",color=darkpurple,fontcolor=darkblue]
-	c [label="\n\n\nC(6,A)",color=darkaqua,fontcolor=darkblue]
+	a [label="\n\n\nA(0,0)",color=orange,fontcolor=blue]
+	b [label="\n\n\nB(5,A)",color=purple,fontcolor=blue]
+	c [label="\n\n\nC(6,A)",color=darkcyan,fontcolor=blue]
 	d [label="D(12,B)\n\n\n\n"]
 	e [label="E(7,B)\n\n\n\n",xlabel=<<font color="red">(13,C)</font>>]
 	f [label="\n\n\nF(15,B)",color=red]
@@ -278,24 +278,24 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
 	      penwidth=3] 
 	
-	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
-	b [label="\n\n\nB(5,A)",color=darkpurple,fontcolor=darkblue]
-	c [label="\n\n\nC(6,A)",color=darkpurple,fontcolor=darkblue]
+	a [label="\n\n\nA(0,0)",color=orange,fontcolor=blue]
+	b [label="\n\n\nB(5,A)",color=purple,fontcolor=blue]
+	c [label="\n\n\nC(6,A)",color=purple,fontcolor=blue]
 	d [label="D(12,B)\n\n\n\n"]
-	e [label="E(7,B)\n\n\n\n",color=darkaqua,fontcolor=darkblue]
+	e [label="E(7,B)\n\n\n\n",color=darkcyan,fontcolor=blue]
 	f [label="\n\n\n      F(15,B)",color=red,xlabel=<<font color="red">(11,E)</font>>]
 	
 	edge [color=lightgray, fontcolor=lightgray] 
 	
-	a -- b [label="5",weight=5,color=green,penwidth=2]
+	a -- b [label="5",weight=5,color=lightgreen,penwidth=2]
 	a -- c [label="6",weight=6]
-	b -- e [label="2",weight=2,color=green,penwidth=2]
+	b -- e [label="2",weight=2,color=lightgreen,penwidth=2]
 	b -- f [label="10",weight=10]
 	b -- c [label="3",weight=3]
 	b -- d [label="7",weight=7]
@@ -332,24 +332,24 @@ subgraph cluster_space {
 	      fixedsize=true,
 	      penwidth=3]
 	
-	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
-	b [label="\n\n\nB(5,A)",color=purple,fontcolor=darkblue]
-	c [label="\n\n\nC(6,A)",color=purple,fontcolor=darkblue]
+	a [label="\n\n\nA(0,0)",color=orange,fontcolor=blue]
+	b [label="\n\n\nB(5,A)",color=purple,fontcolor=blue]
+	c [label="\n\n\nC(6,A)",color=purple,fontcolor=blue]
 	d [label="D(12,B)\n\n\n\n"]
-	e [label="E(7,B)\n\n\n\n",color=purple,fontcolor=darkblue]
+	e [label="E(7,B)\n\n\n\n",color=purple,fontcolor=blue]
 	f [label="\n\n\nF(11,E)",color=red,fontcolor=red]
 	
 	edge [color=lightgray, fontcolor=lightgray] 
 	
-	a -- b [label="5",weight=5,color=green,penwidth=3]
+	a -- b [label="5",weight=5,color=lightgreen,penwidth=3]
 	a -- c [label="6",weight=6]
-	b -- e [label="2",weight=2,color=green,penwidth=3]
+	b -- e [label="2",weight=2,color=lightgreen,penwidth=3]
 	b -- f [label="10",weight=10]
 	b -- c [label="3",weight=3]
 	b -- d [label="7",weight=7]
 	c -- e [label="7",weight=7]
 	d -- f [label="2",weight=2]
-	f -- e [label="4",weight=4,color=green,penwidth=3]
+	f -- e [label="4",weight=4,color=lightgreen,penwidth=3]
 	
 	}
 } 
@@ -360,7 +360,9 @@ subgraph cluster_space {
 1. Make matrices
 
 ```latex
-
+---
+inverted:true
+---
 \documentclass[preview,class=memoir]{standalone}   
 
 \usepackage{amsmath}

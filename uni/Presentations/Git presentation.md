@@ -142,6 +142,9 @@ flexGrow=1
 ### Local VCS
 
 ```dot
+---
+ref-name:local_vcs
+---
 graph G {
 
     graph [compound=true, fontcolor=white, bgcolor=transparent, splines=polyline];
@@ -149,12 +152,14 @@ graph G {
     edge [color=white]
 
     subgraph cluster_2 {
+	    fontcolor = white
 	    label = "Local computer";
-	    node [style=filled,fillcolor=blue];
+	    node [style=filled,fillcolor=lightblue];
 	    "File"
 	    subgraph cluster_3 {
 	        node [style=filled,fillcolor=green];
 	        "version 3" "version 2" "version 1";
+	        fontcolor = snow
 	        label = "Version database";
 	        color=blue;
         }
@@ -178,6 +183,9 @@ flexGrow=2.1
 ### Centralized VCS
 
 ```dot
+---
+ref-name:central_vcs
+---
 digraph G {
 
     graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
@@ -186,17 +194,19 @@ digraph G {
 
     subgraph cluster_0 {
         node [style=filled];
-        node[fillcolor=blue]
+        node[fillcolor=lightblue]
         "File A"[label="File"];
         label = "Computer A";
         color=blue;
     }
 
 	subgraph cluster_2 {
+	    fontcolor = white
 	    label = "Central VSC server";
 	    subgraph cluster_3 {
 	        node [style=filled,fillcolor=green];
 	        "version 3" "version 2" "version 1";
+	        fontcolor = snow
 	        label = "Version database";
 	        color=blue;
         }
@@ -204,8 +214,9 @@ digraph G {
     }
 
     subgraph cluster_1 {
-        node [style=filled,fillcolor=blue];
+        node [style=filled,fillcolor=lightblue];
         "File B"[label="File"];
+        fontcolor = white
         label = "Computer B";
         color=blue;
     }
@@ -229,6 +240,9 @@ flexGrow=3
 ### Distributed VCS
 
 ```dot
+---
+ref-name:distributed_vcs
+---
 graph G {
 
     graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
@@ -236,10 +250,12 @@ graph G {
     edge [color=white]
 
 	subgraph cluster_2 {
+	    fontcolor = white
 	    label = "Server computer";
 	    subgraph cluster_3 {
 	        node [style=filled,fillcolor=green];
 	        "version 3" "version 2" "version 1";
+	        fontcolor = snow
 	        label = "Version database";
 	        color=blue;
         }
@@ -247,14 +263,16 @@ graph G {
     }
 
     subgraph cluster_10 {
+	    fontcolor = white
 	    label = "Computer A";
-	    node [style=filled,fillcolor=blue];
+	    node [style=filled,fillcolor=lightblue];
 	    "FileA"[label=File]
 	    subgraph cluster_11 {
 	        node [style=filled,fillcolor=green];
 	        "version 3_"[label="version 3"];
 	        "version 2_"[label="version 2"];
 	        "version 1_"[label="version 1"];
+	        fontcolor = snow
 	        label = "Version database";
 	        color=blue;
         }
@@ -262,14 +280,16 @@ graph G {
     }
 
     subgraph cluster_23 {
+	    fontcolor = white
 	    label = "Computer B";
-	    node [style=filled,fillcolor=blue];
+	    node [style=filled,fillcolor=lightblue];
 	    "FileB"[label=File]
 	    subgraph cluster_24 {
 	        node [style=filled,fillcolor=green];
 	        "version 3__"[label="version 3"];
 	        "version 2__"[label="version 2"];
 	        "version 1__"[label="version 1"];
+	        fontcolor = snow
 	        label = "Version database";
 	        color=blue;
         }
@@ -327,47 +347,8 @@ flexGrow=1.2
 flexGrow=1
 ===
 
-```dot
-digraph G {
-
-    graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
-    node [shape=oval,color=white];
-    edge [color=white]
-
-    subgraph cluster_0 {
-        node [style=filled];
-        node[fillcolor=blue]
-        "File A"[label="File"];
-        label = "Computer A";
-        color=blue;
-    }
-
-	subgraph cluster_2 {
-	    label = "Central VSC server";
-	    subgraph cluster_3 {
-	        node [style=filled,fillcolor=green];
-	        "version 3" "version 2" "version 1";
-	        label = "Version database";
-	        color=blue;
-        }
-        color=gray;
-    }
-
-    subgraph cluster_1 {
-        node [style=filled,fillcolor=blue];
-        "File B"[label="File"];
-        label = "Computer B";
-        color=blue;
-    }
-
-    // Edges between nodes render fine
-    "version 1" -> "version 2";
-    "version 2" -> "version 3";
-
-    // Edges that directly connect one cluster to another
-    "version 1" -> "File A" [ltail=cluster_2, label="  checkout", fontcolor=white];
-    "version 1" -> "File B" [ltail=cluster_2, label="  checkout", fontcolor=white,constraint=false];
-}
+```refgraph
+central_vcs
 ```
 
 ```` 
@@ -402,72 +383,8 @@ flexGrow=1
 flexGrow=1
 ===
 
-```dot
-graph G {
-
-    graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
-    node [shape=oval,color=white];
-    edge [color=white]
-
-	subgraph cluster_2 {
-	    label = "Server computer";
-	    subgraph cluster_3 {
-	        node [style=filled,fillcolor=green];
-	        "version 3" "version 2" "version 1";
-	        label = "Version database";
-	        color=blue;
-        }
-        color=gray;
-    }
-
-    subgraph cluster_10 {
-	    label = "Computer A";
-	    node [style=filled,fillcolor=blue];
-	    "FileA"[label=File]
-	    subgraph cluster_11 {
-	        node [style=filled,fillcolor=green];
-	        "version 3_"[label="version 3"];
-	        "version 2_"[label="version 2"];
-	        "version 1_"[label="version 1"];
-	        label = "Version database";
-	        color=blue;
-        }
-        color=gray;
-    }
-
-    subgraph cluster_23 {
-	    label = "Computer B";
-	    node [style=filled,fillcolor=blue];
-	    "FileB"[label=File]
-	    subgraph cluster_24 {
-	        node [style=filled,fillcolor=green];
-	        "version 3__"[label="version 3"];
-	        "version 2__"[label="version 2"];
-	        "version 1__"[label="version 1"];
-	        label = "Version database";
-	        color=blue;
-        }
-        color=gray;
-    }
-    
-    "version 1" -- "version 2";
-    "version 2" -- "version 3";
-    
-    "version 1_" -- "version 2_";
-    "version 2_" -- "version 3_";
-    
-    "version 1__" -- "version 2__";
-    "version 2__" -- "version 3__";
-
-	"version 3_" -- "FileA"[ltail=cluster_11]
-	"version 3__" -- "FileB"[ltail=cluster_24]
-
-	"version 2__" -- "version 3_" [ltail=cluster_23,lhead=cluster_10,constraint=false]
-	
-	"version 1__" -- "version 2"  [ltail=cluster_23,lhead=cluster_2,constraint=false]
-
-	"version 1"   -- "version 1_" [ltail=cluster_2,lhead=cluster_10,constraint=false]
-}
+```refgraph
+central_vcs
 ```
 
 ```` 
@@ -534,7 +451,8 @@ node [shape = circle,
       width=0.3, 
       height=0.3, 
       color=green, 
-      fillcolor=white] 
+      fillcolor=white,
+      fontcolor=black]
 
 A[label="Git commands", fillcolor=yellow] 
 B[label=clone]

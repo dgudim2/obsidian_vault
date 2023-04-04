@@ -131,7 +131,7 @@ var svgColorMap = /* @__PURE__ */ new Map([
   ["lightblue", "--g-color-light-blue"],
   ["orange", "--g-color-light-orange"],
   ["coral", "--g-color-light-orange"],
-  ["yellow", "--g-color-light-yellow"],
+  ["gold", "--g-color-light-yellow"],
   ["cyan", "--g-color-light-aqua"],
   // gray colors
   ["ghostwhite", "--g-color-light100-hard"],
@@ -166,24 +166,26 @@ var svgColorMap = /* @__PURE__ */ new Map([
 ]);
 var Processors = class {
   constructor(plugin) {
+    this.referenceGraphMap = /* @__PURE__ */ new Map();
     this.pluginSettings = plugin.settings;
     this.renderTypeMapping = /* @__PURE__ */ new Map([
       ["latex", this.latexProcessor],
       ["dot", this.dotProcessor],
-      ["ditaa", this.ditaaProcessor]
+      ["ditaa", this.ditaaProcessor],
+      ["blockdiag", this.blockdiagProcessor],
+      ["refgraph", this.refgraphProcessor]
     ]);
   }
-  getRendererParameters(type, sourceFile) {
-    const outputFile = `${sourceFile}.svg`;
+  getRendererParameters(type, sourceFile, outputFile) {
     switch (type) {
       case "dot":
-        return [this.pluginSettings.dotPath, outputFile, ["-Tsvg", sourceFile, "-o", outputFile]];
+        return [this.pluginSettings.dotPath, ["-Tsvg", sourceFile, "-o", outputFile]];
       case "latex":
-        return [this.pluginSettings.pdflatexPath, outputFile, ["-shell-escape", "-output-directory", this.getTempDir(type), sourceFile]];
+        return [this.pluginSettings.pdflatexPath, ["-shell-escape", "-output-directory", this.getTempDir(type), sourceFile]];
       case "ditaa":
-        return [this.pluginSettings.ditaaPath, outputFile, [sourceFile, "--transparent", "--svg", "--overwrite"]];
+        return [this.pluginSettings.ditaaPath, [sourceFile, "--transparent", "--svg", "--overwrite"]];
       case "blockdiag":
-        return [this.pluginSettings.ditaaPath, outputFile, ["--antialias", "-Tsvg", sourceFile, "-o", outputFile]];
+        return [this.pluginSettings.blockdiagPath, ["--antialias", "-Tsvg", sourceFile, "-o", outputFile]];
     }
   }
   spawnProcess(cmdPath, parameters) {
@@ -204,15 +206,12 @@ var Processors = class {
       });
     });
   }
-  writeRenderedFile(sourceFile, type) {
+  writeRenderedFile(sourceFile, outputFile, type) {
     return __async(this, null, function* () {
-      const [cmdPath, outputFile, params] = this.getRendererParameters(type, sourceFile);
-      if (fs.existsSync(outputFile)) {
-        return outputFile;
-      }
+      const [cmdPath, params] = this.getRendererParameters(type, sourceFile, outputFile);
       yield this.spawnProcess(cmdPath, params);
       if (type === "latex") {
-        yield this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile, "0"]);
+        yield this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile]);
       }
       const imageData = this.makeDynamicSvg(fs.readFileSync(outputFile).toString());
       fs.unlinkSync(outputFile);
@@ -229,38 +228,70 @@ var Processors = class {
     }
     return svg_source;
   }
+  parseFrontMatter(source, outputFile) {
+    if (source.startsWith("---")) {
+      const lastIndex = source.indexOf("---", 3);
+      const frontMatter = source.substring(source.indexOf("---") + 3, lastIndex);
+      const parameters = frontMatter.trim().split("\n");
+      for (const parameter of parameters) {
+        const parameter_split = parameter.split(":");
+        const parameter_name = parameter_split[0].trim();
+        const parameter_value = parameter_split[1].trim();
+        switch (parameter_name) {
+          case "ref-name":
+            this.referenceGraphMap.set(parameter_value, outputFile);
+        }
+      }
+      return source.substring(lastIndex + 3);
+    }
+    return source;
+  }
   convertToImage(type, source) {
     return __async(this, null, function* () {
-      const dir = this.getTempDir(type);
-      const file = path.join(dir, md5(source));
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir);
+      if (type === "refgraph") {
+        return this.referenceGraphMap.get(source.trim());
       }
-      if (!fs.existsSync(file)) {
-        fs.writeFileSync(file, source);
+      const temp_dir = this.getTempDir(type);
+      const graph_hash = md5(source);
+      const inputFile = path.join(temp_dir, graph_hash);
+      const outputFile = `${inputFile}.svg`;
+      if (!fs.existsSync(temp_dir)) {
+        fs.mkdirSync(temp_dir);
       }
-      return this.writeRenderedFile(file, type);
+      source = this.parseFrontMatter(source, outputFile);
+      if (!fs.existsSync(inputFile)) {
+        fs.writeFileSync(inputFile, source);
+      } else if (fs.existsSync(outputFile)) {
+        return outputFile;
+      }
+      return this.writeRenderedFile(inputFile, outputFile, type);
     });
   }
   imageProcessor(source, el, _, type) {
     return __async(this, null, function* () {
       try {
         console.debug(`Call image processor for ${type}`);
-        if (type === "dot" && source.trimEnd().at(-1) != "}") {
-          console.error("Bad source, won't render");
-          return;
-        }
-        const imagePath = yield this.convertToImage(type, source);
+        const imagePath = yield this.convertToImage(type, source.trim());
         el.classList.add("multi-graph-normal");
         el.innerHTML = fs.readFileSync(imagePath).toString();
       } catch (errMessage) {
         console.error("convert to image error: " + errMessage);
         const pre = document.createElement("pre");
         const code = document.createElement("code");
-        pre.appendChild(code);
         code.setText(errMessage);
+        pre.appendChild(code);
         el.appendChild(pre);
       }
+    });
+  }
+  refgraphProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "refgraph");
+    });
+  }
+  blockdiagProcessor(source, el, _) {
+    return __async(this, null, function* () {
+      return this.imageProcessor(source, el, _, "blockdiag");
     });
   }
   ditaaProcessor(source, el, _) {

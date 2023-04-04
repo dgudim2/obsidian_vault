@@ -189,7 +189,7 @@ subgraph cluster_space {
 	
 	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
 	b [label="\n\n\nB(5,A)",color=darkaqua,fontcolor=darkblue]
-	c [label="\n\n\n    C(6,A)",xlabel=<<font color=red>(8,B)</font>>]
+	c [label="\n\n\n    C(6,A)",xlabel=<<font color="red">(8,B)</font>>]
 	d [label="D(12,B)\n\n\n\n",fontcolor=red]
 	e [label="E(7,B)\n\n\n\n",fontcolor=red]
 	f [label="\n\n\nF(15,B)",color=red,fontcolor=red]
@@ -240,7 +240,7 @@ subgraph cluster_space {
 	b [label="\n\n\nB(5,A)",color=darkpurple,fontcolor=darkblue]
 	c [label="\n\n\nC(6,A)",color=darkaqua,fontcolor=darkblue]
 	d [label="D(12,B)\n\n\n\n"]
-	e [label="E(7,B)\n\n\n\n",xlabel=<<font color=red>(13,C)</font>>]
+	e [label="E(7,B)\n\n\n\n",xlabel=<<font color="red">(13,C)</font>>]
 	f [label="\n\n\nF(15,B)",color=red]
 	
 	edge [color=lightgray, fontcolor=lightgray]  
@@ -289,7 +289,7 @@ subgraph cluster_space {
 	c [label="\n\n\nC(6,A)",color=darkpurple,fontcolor=darkblue]
 	d [label="D(12,B)\n\n\n\n"]
 	e [label="E(7,B)\n\n\n\n",color=darkaqua,fontcolor=darkblue]
-	f [label="\n\n\n      F(15,B)",color=red,xlabel=<<font color=red>(11,E)</font>>]
+	f [label="\n\n\n      F(15,B)",color=red,xlabel=<<font color="red">(11,E)</font>>]
 	
 	edge [color=lightgray, fontcolor=lightgray] 
 	
@@ -326,17 +326,17 @@ subgraph cluster_space {
 	      style = filled, 
 	      width=0.45, 
 	      height=0.45, 
-	      color=darkyellow, 
-	      fillcolor=white, 
-	      fontcolor=brightwhite,
+	      color=yellow, 
+	      fillcolor=snow, 
+	      fontcolor=ghostwhite,
 	      fixedsize=true,
-	      penwidth=3] 
+	      penwidth=3]
 	
 	a [label="\n\n\nA(0,0)",color=orange,fontcolor=darkblue]
-	b [label="\n\n\nB(5,A)",color=darkpurple,fontcolor=darkblue]
-	c [label="\n\n\nC(6,A)",color=darkpurple,fontcolor=darkblue]
+	b [label="\n\n\nB(5,A)",color=purple,fontcolor=darkblue]
+	c [label="\n\n\nC(6,A)",color=purple,fontcolor=darkblue]
 	d [label="D(12,B)\n\n\n\n"]
-	e [label="E(7,B)\n\n\n\n",color=darkpurple,fontcolor=darkblue]
+	e [label="E(7,B)\n\n\n\n",color=purple,fontcolor=darkblue]
 	f [label="\n\n\nF(11,E)",color=red,fontcolor=red]
 	
 	edge [color=lightgray, fontcolor=lightgray] 
@@ -374,7 +374,7 @@ subgraph cluster_space {
 
 \begin{equation}\label{eq:appendrow}
   \left(\begin{array}{cccc}
-    \rowcolor{red!20}
+    \rowcolor{red}
     \x  & \x  & \x & \x \\
     0   & \x  & \x & \x \\
    \rowcolor{blue!20}

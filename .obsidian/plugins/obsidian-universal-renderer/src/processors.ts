@@ -10,7 +10,7 @@ import { GraphvizSettings } from './setting';
 import * as crypto from 'crypto';
 const md5 = (contents: string) => crypto.createHash('md5').update(contents).digest('hex');
 
-type RenderType = 'dot' | 'latex' | 'ditaa' | 'blockdiag';
+type RenderType = 'dot' | 'latex' | 'ditaa' | 'blockdiag' | 'refgraph';
 
 const svgColorMap = new Map<string, string>([
 
@@ -58,7 +58,7 @@ const svgColorMap = new Map<string, string>([
     ['orange', '--g-color-light-orange'],
     ['coral', '--g-color-light-orange'],
 
-    ['yellow', '--g-color-light-yellow'],
+    ['gold', '--g-color-light-yellow'],
     ['cyan', '--g-color-light-aqua'],
 
 
@@ -87,26 +87,29 @@ export class Processors {
     pluginSettings: GraphvizSettings;
     renderTypeMapping: Map<RenderType, (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => Promise<unknown> | void>;
 
+    referenceGraphMap: Map<string, string> = new Map();
+
     constructor(plugin: GraphvizPlugin) {
         this.pluginSettings = plugin.settings;
         this.renderTypeMapping = new Map<RenderType, (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => Promise<unknown> | void>([
             ['latex', this.latexProcessor],
             ['dot', this.dotProcessor],
-            ['ditaa', this.ditaaProcessor]
+            ['ditaa', this.ditaaProcessor],
+            ['blockdiag', this.blockdiagProcessor],
+            ['refgraph', this.refgraphProcessor]
         ]);
     }
 
-    private getRendererParameters(type: RenderType, sourceFile: string): [string, string, string[]] {
-        const outputFile = `${sourceFile}.svg`;
+    private getRendererParameters(type: RenderType, sourceFile: string, outputFile: string): [string, string[]] {
         switch (type) {
             case 'dot':
-                return [this.pluginSettings.dotPath, outputFile, ['-Tsvg', sourceFile, '-o', outputFile]];
+                return [this.pluginSettings.dotPath, ['-Tsvg', sourceFile, '-o', outputFile]];
             case 'latex':
-                return [this.pluginSettings.pdflatexPath, outputFile, ['-shell-escape', '-output-directory', this.getTempDir(type), sourceFile]];
+                return [this.pluginSettings.pdflatexPath, ['-shell-escape', '-output-directory', this.getTempDir(type), sourceFile]];
             case 'ditaa':
-                return [this.pluginSettings.ditaaPath, outputFile, [sourceFile, '--transparent', '--svg', '--overwrite']];
+                return [this.pluginSettings.ditaaPath, [sourceFile, '--transparent', '--svg', '--overwrite']];
             case 'blockdiag':
-                return [this.pluginSettings.ditaaPath, outputFile, ['--antialias', '-Tsvg', sourceFile, '-o', outputFile]];
+                return [this.pluginSettings.blockdiagPath, ['--antialias', '-Tsvg', sourceFile, '-o', outputFile]];
         }
     }
 
@@ -128,17 +131,13 @@ export class Processors {
         });
     }
 
-    private async writeRenderedFile(sourceFile: string, type: RenderType): Promise<string> {
+    private async writeRenderedFile(sourceFile: string, outputFile: string, type: RenderType): Promise<string> {
 
-        const [cmdPath, outputFile, params] = this.getRendererParameters(type, sourceFile);
-
-        if (fs.existsSync(outputFile)) {
-            return outputFile;
-        }
+        const [cmdPath, params] = this.getRendererParameters(type, sourceFile, outputFile);
 
         await this.spawnProcess(cmdPath, params);
         if (type === 'latex') {
-            await this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile, '0']);
+            await this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile]);
         }
 
         const imageData = this.makeDynamicSvg(fs.readFileSync(outputFile).toString());
@@ -153,37 +152,63 @@ export class Processors {
     }
 
     private makeDynamicSvg(svg_source: string) {
+
         for (const [color, target_var] of svgColorMap) {
             svg_source = svg_source.replaceAll(`"${color}"`, `"var(${target_var})"`);
         }
         return svg_source;
     }
 
+    private parseFrontMatter(source: string, outputFile: string) {
+        if (source.startsWith('---')) {
+            const lastIndex = source.indexOf('---', 3);
+            const frontMatter = source.substring(source.indexOf('---') + 3, lastIndex);
+            const parameters = frontMatter.trim().split('\n');
+            for (const parameter of parameters) {
+                const parameter_split = parameter.split(':');
+                const parameter_name = parameter_split[0].trim();
+                const parameter_value = parameter_split[1].trim();
+                switch (parameter_name) {
+                    case 'ref-name':
+                        this.referenceGraphMap.set(parameter_value, outputFile);
+                }
+            }
+            return source.substring(lastIndex + 3);
+        }
+        return source;
+    }
+
     private async convertToImage(type: RenderType, source: string): Promise<string> {
 
-        const dir = this.getTempDir(type);
-        const file = path.join(dir, md5(source));
-
-        if (!fs.existsSync(dir)) {
-            fs.mkdirSync(dir);
+        if (type === 'refgraph') {
+            return this.referenceGraphMap.get(source.trim());
         }
 
-        if (!fs.existsSync(file)) {
-            fs.writeFileSync(file, source);
+        const temp_dir = this.getTempDir(type);
+        const graph_hash = md5(source);
+        const inputFile = path.join(temp_dir, graph_hash);
+        const outputFile = `${inputFile}.svg`;
+
+        if (!fs.existsSync(temp_dir)) {
+            fs.mkdirSync(temp_dir);
         }
-        return this.writeRenderedFile(file, type);
+
+        source = this.parseFrontMatter(source, outputFile);
+
+        if (!fs.existsSync(inputFile)) {
+            fs.writeFileSync(inputFile, source);
+        } else if (fs.existsSync(outputFile)) {
+            return outputFile;
+        }
+
+        return this.writeRenderedFile(inputFile, outputFile, type);
     }
 
     private async imageProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext, type: RenderType): Promise<void> {
         try {
             console.debug(`Call image processor for ${type}`);
 
-            if (type === 'dot' && source.trimEnd().at(-1) != '}') {
-                console.error('Bad source, won\'t render');
-                return;
-            }
-
-            const imagePath = await this.convertToImage(type, source);
+            const imagePath = await this.convertToImage(type, source.trim());
 
             //const img = document.createElement('img');
             //img.src = `app://local${imagePath}`;
@@ -194,10 +219,18 @@ export class Processors {
             console.error('convert to image error: ' + errMessage);
             const pre = document.createElement('pre');
             const code = document.createElement('code');
-            pre.appendChild(code);
             code.setText(errMessage);
+            pre.appendChild(code);
             el.appendChild(pre);
         }
+    }
+
+    public async refgraphProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
+        return this.imageProcessor(source, el, _, 'refgraph');
+    }
+
+    public async blockdiagProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {
+        return this.imageProcessor(source, el, _, 'blockdiag');
     }
 
     public async ditaaProcessor(source: string, el: HTMLElement, _: MarkdownPostProcessorContext): Promise<void> {

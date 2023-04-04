@@ -146,10 +146,9 @@ flexGrow=1
 ref-name:local_vcs
 ---
 graph G {
-
     graph [compound=true, fontcolor=white, bgcolor=transparent, splines=polyline];
     node [shape=oval,color=white];
-    edge [color=white]
+    edge [color=white] 
 
     subgraph cluster_2 {
 	    fontcolor = white
@@ -190,7 +189,7 @@ digraph G {
 
     graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
     node [shape=oval,color=white];
-    edge [color=white]
+    edge [color=white] 
 
     subgraph cluster_0 {
         node [style=filled];
@@ -247,7 +246,7 @@ graph G {
 
     graph [compound=true, fontcolor=white, bgcolor=transparent, nodesep=1];
     node [shape=oval,color=white];
-    edge [color=white]
+    edge [color=white] 
 
 	subgraph cluster_2 {
 	    fontcolor = white
@@ -384,7 +383,7 @@ flexGrow=1
 ===
 
 ```refgraph
-central_vcs
+distributed_vcs
 ```
 
 ```` 

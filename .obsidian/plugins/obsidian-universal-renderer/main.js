@@ -97,6 +97,7 @@ var fs = __toESM(require("fs"));
 var import_child_process = require("child_process");
 var crypto = __toESM(require("crypto"));
 var md5 = (contents) => crypto.createHash("md5").update(contents).digest("hex");
+var renderTypes = ["dot", "latex", "ditaa", "blockdiag", "refgraph", "dynamic-svg"];
 var svgColorMap = /* @__PURE__ */ new Map([
   // dark colors
   ["darkred", "--g-color-dark-red"],
@@ -113,7 +114,7 @@ var svgColorMap = /* @__PURE__ */ new Map([
   ["darkblue", "--g-color-dark-blue"],
   ["chocolate", "--g-color-dark-orange"],
   ["goldenrod", "--g-color-dark-yellow"],
-  ["darkcyan", "--g-color-dark-aqua"],
+  ["darkcyan", "--g-color-dark-cyan"],
   // neutral colors
   ["red", "--g-color-red"],
   ["purple", "--g-color-purple"],
@@ -121,7 +122,7 @@ var svgColorMap = /* @__PURE__ */ new Map([
   ["blue", "--g-color-blue"],
   ["darkorange", "--g-color-orange"],
   ["yellow", "--g-color-yellow"],
-  ["cyan", "--g-color-aqua"],
+  ["cyan", "--g-color-cyan"],
   // light colors
   ["tomato", "--g-color-light-red"],
   ["lightcoral", "--g-color-light-red"],
@@ -132,7 +133,8 @@ var svgColorMap = /* @__PURE__ */ new Map([
   ["orange", "--g-color-light-orange"],
   ["coral", "--g-color-light-orange"],
   ["gold", "--g-color-light-yellow"],
-  ["cyan", "--g-color-light-aqua"],
+  ["aqua", "--g-color-light-cyan"],
+  ["aquamarine", "--g-color-light-cyan"],
   // gray colors
   ["ghostwhite", "--g-color-light100-hard"],
   // #F9F5D7
@@ -168,13 +170,7 @@ var Processors = class {
   constructor(plugin) {
     this.referenceGraphMap = /* @__PURE__ */ new Map();
     this.pluginSettings = plugin.settings;
-    this.renderTypeMapping = /* @__PURE__ */ new Map([
-      ["latex", this.latexProcessor],
-      ["dot", this.dotProcessor],
-      ["ditaa", this.ditaaProcessor],
-      ["blockdiag", this.blockdiagProcessor],
-      ["refgraph", this.refgraphProcessor]
-    ]);
+    this.vaultAdapter = plugin.app.vault.adapter;
   }
   getRendererParameters(type, sourceFile, outputFile) {
     switch (type) {
@@ -186,7 +182,14 @@ var Processors = class {
         return [this.pluginSettings.ditaaPath, [sourceFile, "--transparent", "--svg", "--overwrite"]];
       case "blockdiag":
         return [this.pluginSettings.blockdiagPath, ["--antialias", "-Tsvg", sourceFile, "-o", outputFile]];
+      default:
+        return ["", []];
     }
+  }
+  getProcessorForType(type) {
+    return (source, el, ctx) => {
+      return this.imageProcessor(source, el, ctx, type);
+    };
   }
   spawnProcess(cmdPath, parameters) {
     return new Promise((resolve, reject) => {
@@ -206,29 +209,36 @@ var Processors = class {
       });
     });
   }
-  writeRenderedFile(sourceFile, outputFile, type) {
+  writeRenderedFile(inputFile, outputFile, type, conversionParams) {
     return __async(this, null, function* () {
-      const [cmdPath, params] = this.getRendererParameters(type, sourceFile, outputFile);
+      const [cmdPath, params] = this.getRendererParameters(type, inputFile, outputFile);
       yield this.spawnProcess(cmdPath, params);
       if (type === "latex") {
-        yield this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${sourceFile}.pdf`, outputFile]);
+        yield this.spawnProcess(this.pluginSettings.pdf2svgPath, [`${inputFile}.pdf`, outputFile]);
       }
-      const imageData = this.makeDynamicSvg(fs.readFileSync(outputFile).toString());
-      fs.unlinkSync(outputFile);
-      fs.writeFileSync(outputFile, imageData);
-      return outputFile;
+      const svg = this.makeDynamicSvg(fs.readFileSync(outputFile).toString(), conversionParams);
+      fs.writeFileSync(outputFile, svg.svgData);
+      return svg;
     });
+  }
+  readFileString(path2) {
+    return fs.readFileSync(path2).toString();
   }
   getTempDir(type) {
     return path.join(os.tmpdir(), `obsidian-${type}`);
   }
-  makeDynamicSvg(svg_source) {
+  makeDynamicSvg(svgSource, conversionParams) {
     for (const [color, target_var] of svgColorMap) {
-      svg_source = svg_source.replaceAll(`"${color}"`, `"var(${target_var})"`);
+      svgSource = svgSource.replaceAll(`"${color}"`, `"var(${target_var})"`);
     }
-    return svg_source;
+    return {
+      svgData: svgSource,
+      extras: conversionParams
+    };
   }
   parseFrontMatter(source, outputFile) {
+    const conversionParams = /* @__PURE__ */ new Map();
+    let referenceName = "";
     if (source.startsWith("---")) {
       const lastIndex = source.indexOf("---", 3);
       const frontMatter = source.substring(source.indexOf("---") + 3, lastIndex);
@@ -237,19 +247,33 @@ var Processors = class {
         const parameter_split = parameter.split(":");
         const parameter_name = parameter_split[0].trim();
         const parameter_value = parameter_split[1].trim();
-        switch (parameter_name) {
-          case "ref-name":
-            this.referenceGraphMap.set(parameter_value, outputFile);
+        if (parameter_name === "ref-name") {
+          referenceName = parameter_value;
+        } else {
+          conversionParams.set(parameter_name, parameter_value);
         }
       }
-      return source.substring(lastIndex + 3);
+      source = source.substring(lastIndex + 3);
+      if (referenceName.length > 0) {
+        this.referenceGraphMap.set(referenceName, {
+          sourcePath: outputFile,
+          extras: conversionParams
+        });
+      }
     }
-    return source;
+    return {
+      cleanedSource: source.trim(),
+      extras: conversionParams
+    };
   }
-  convertToImage(type, source) {
+  renderImage(type, source) {
     return __async(this, null, function* () {
       if (type === "refgraph") {
-        return this.referenceGraphMap.get(source.trim());
+        const graphData2 = this.referenceGraphMap.get(source.trim());
+        return {
+          svgData: this.readFileString(graphData2.sourcePath),
+          extras: graphData2.extras
+        };
       }
       const temp_dir = this.getTempDir(type);
       const graph_hash = md5(source);
@@ -258,22 +282,28 @@ var Processors = class {
       if (!fs.existsSync(temp_dir)) {
         fs.mkdirSync(temp_dir);
       }
-      source = this.parseFrontMatter(source, outputFile);
-      if (!fs.existsSync(inputFile)) {
-        fs.writeFileSync(inputFile, source);
-      } else if (fs.existsSync(outputFile)) {
-        return outputFile;
+      const graphData = this.parseFrontMatter(source, outputFile);
+      if (type === "dynamic-svg") {
+        return this.makeDynamicSvg((yield this.vaultAdapter.read(graphData.cleanedSource)).toString(), graphData.extras);
       }
-      return this.writeRenderedFile(inputFile, outputFile, type);
+      if (!fs.existsSync(inputFile)) {
+        fs.writeFileSync(inputFile, graphData.cleanedSource);
+      } else if (fs.existsSync(outputFile)) {
+        return {
+          svgData: this.readFileString(outputFile),
+          extras: graphData.extras
+        };
+      }
+      return this.writeRenderedFile(inputFile, outputFile, type, graphData.extras);
     });
   }
   imageProcessor(source, el, _, type) {
     return __async(this, null, function* () {
       try {
         console.debug(`Call image processor for ${type}`);
-        const imagePath = yield this.convertToImage(type, source.trim());
-        el.classList.add("multi-graph-normal");
-        el.innerHTML = fs.readFileSync(imagePath).toString();
+        const image = yield this.renderImage(type, source.trim());
+        el.classList.add(image.extras.get("inverted") ? "multi-graph-inverted" : "multi-graph-normal");
+        el.innerHTML = image.svgData;
       } catch (errMessage) {
         console.error("convert to image error: " + errMessage);
         const pre = document.createElement("pre");
@@ -282,31 +312,6 @@ var Processors = class {
         pre.appendChild(code);
         el.appendChild(pre);
       }
-    });
-  }
-  refgraphProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "refgraph");
-    });
-  }
-  blockdiagProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "blockdiag");
-    });
-  }
-  ditaaProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "ditaa");
-    });
-  }
-  dotProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "dot");
-    });
-  }
-  latexProcessor(source, el, _) {
-    return __async(this, null, function* () {
-      return this.imageProcessor(source, el, _, "latex");
     });
   }
 };
@@ -320,8 +325,8 @@ var GraphvizPlugin = class extends import_obsidian2.Plugin {
       this.addSettingTab(new GraphvizSettingsTab(this));
       const processors = new Processors(this);
       this.app.workspace.onLayoutReady(() => {
-        for (const [type, func] of processors.renderTypeMapping) {
-          this.registerMarkdownCodeBlockProcessor(type, func.bind(processors));
+        for (const type of renderTypes) {
+          this.registerMarkdownCodeBlockProcessor(type, processors.getProcessorForType(type).bind(processors));
         }
       });
     });

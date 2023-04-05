@@ -11,6 +11,9 @@ flexGrow=1
 ## $G$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -44,6 +47,9 @@ flexGrow=1
 ## $T \subset G$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -85,6 +91,9 @@ flexGrow=1
 ## Isolated
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -119,6 +128,9 @@ flexGrow=1
 ## Rising
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -153,6 +165,9 @@ c -- {b a}
 # Homogeneous graph
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -201,6 +216,9 @@ flexGrow=1
 ## Connected
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -236,6 +254,9 @@ flexGrow=1
 ## Not connected
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -301,6 +322,9 @@ b -- {c d}
 > **Walk** is any finite sequence of graph [[Graphs - basics#Directed graphs|vertices]] and [[Graphs - basics#Undirected graph|edges]] 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -420,6 +444,9 @@ Can be written in 2 ways:
 > [[#Open / closed walk|Closed]] [[#Circuit|circuit]] is called a **cycle** 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -467,6 +494,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -511,6 +541,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -556,6 +589,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -728,6 +764,9 @@ flexGrow=1
 # Separability of graphs
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -770,7 +809,6 @@ e -- f
 
 > [[Graphs - basics#Directed graphs|Vertices]] *f*, *a*, *c* are **articulations** in our graph
 
-
 `````col
 ````col-md
 flexGrow=1
@@ -778,6 +816,9 @@ flexGrow=1
 ### $G-c$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -811,6 +852,9 @@ flexGrow=0.8
 ### $G-a$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -844,6 +888,9 @@ flexGrow=1
 ### $G-f$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -896,6 +943,9 @@ flexGrow=1.2
 ===
 
 `````dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -951,6 +1001,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -978,6 +1031,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1010,6 +1066,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1037,6 +1096,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1083,6 +1145,9 @@ flexGrow=1
 ### $G-\{c,d\}$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1117,7 +1182,10 @@ flexGrow=1
 ===
 ### $G-\{e,f\}$
 
-```dot 
+```dot
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1153,6 +1221,9 @@ flexGrow=1
 ### $G-\{a,f\}$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1187,6 +1258,9 @@ f -- e
 ## Separating sets
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 

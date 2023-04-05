@@ -7,6 +7,9 @@
 > [!example] 
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > rankdir="LR"
@@ -48,6 +51,9 @@
 > [!example] 
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > rankdir="LR";
@@ -88,6 +94,9 @@
 > Suppose we have the following [[#Tree|tree]] with [[Graphs - basics#Undirected graph|edge]] weights
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -135,6 +144,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -198,6 +210,9 @@ $$
 - Construct a new [[#Tree|tree]] (green edges)
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -287,6 +302,10 @@ f -- i
 > Suppose we have a [[#Tree|tree]]:
 
 ```dot 
+---
+preset:math-graph
+ellipse-fill:keep-all
+---
 graph neato { 
 rankdir="LR"
 bgcolor="transparent" 
@@ -324,6 +343,10 @@ edge [color = grey]
 3. Repeat until *2* vertices are left
 	- Remove vertex *2*, add *6* to array: *[5, 6]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -357,6 +380,10 @@ edge [color = grey]
 	
 	- Remove vertex *3*, add *0* to array: *[5, 6, 0]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -390,6 +417,10 @@ edge [color = grey]
 	
 	- Remove vertex *5*, add *6* to array: *[5, 6, 0, 6]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -423,6 +454,10 @@ edge [color = grey]
 	
 	- Remove vertex *6*, add *0* to array: *[5, 6, 0, 6, 0]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -455,6 +490,10 @@ edge [color = grey]
 	
 	- Remove vertex *0*, add *4* to array: *[5, 6, 0, 6, 0, 4]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -485,6 +524,10 @@ edge [color = grey]
 	
 	- Remove vertex *7*, add *4* to array: *[5, 6, 0, 6, 0, 4, 4]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -514,6 +557,10 @@ edge [color = grey]
 	
 	- Remove vertex *8*, add *4* to array: *[5, 6, 0, 6, 0, 4, 4, 4]*
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 
@@ -543,6 +590,10 @@ edge [color = grey]
 	
 	- Stop conversion
 		```dot 
+		---
+		preset: math-graph
+		ellipse-fill:keep-all
+		---
 		graph neato { 
 		rankdir="LR"
 		bgcolor="transparent" 

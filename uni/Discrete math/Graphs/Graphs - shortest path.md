@@ -66,6 +66,9 @@
 
 1. Assign a tentative distance value to every node
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -115,6 +118,9 @@ subgraph cluster_space {
 	- Assign **(6,A)** to *C*
 	- *B* has the smallest tentative distance, we will work with *B* next
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -166,6 +172,9 @@ subgraph cluster_space {
 	- *C* already has a smaller tentative weight, don't assign **(8,B)**. 
 	- *C* has the smallest tentative distance, we will work with *C* next
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -215,6 +224,9 @@ subgraph cluster_space {
 	- *E* already has a smaller tentative weight, don't assign **(13,C)**. 
 	- *E* has the smallest tentative distance, we will work with *E* next
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -263,6 +275,9 @@ subgraph cluster_space {
 	- We don't calculate tentative distance to *B* and *C*, because they are <u>visited</u>.
 	- Assign **(11,E)** to *F* (smaller tentative distance)
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -311,6 +326,9 @@ subgraph cluster_space {
 	- First element shows **distance**, second - **directions**
 	- So, final directions are: $A \to B \to E \to F$
 ```dot 
+---
+ellipse-fill:keep-shade
+---
 graph neato { 
 
 bgcolor="transparent" 

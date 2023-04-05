@@ -71,7 +71,7 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = gray,
+      color = lightgray,
       label = ""]
 
 node [fillcolor = red]
@@ -82,7 +82,7 @@ b c d
 
 node [fillcolor = orange]
 
-edge [color = gray]
+edge [color = lightgray]
 a -> {b c d}
 b -> a
 c -> a
@@ -107,7 +107,7 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = gray,
+      color = lightgray,
       label = ""]
 
 node [fillcolor = red]
@@ -118,7 +118,7 @@ b c d
 
 node [fillcolor = orange]
 
-edge [color = gray]
+edge [color = lightgray]
 a -- {b c d}
 
 }
@@ -150,6 +150,9 @@ G = (\{a, b, c, d, e\}, \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d,
 $$
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -160,11 +163,11 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey]
+      color = gray]
 
 node [fillcolor = white]
 
-edge [color = grey]
+edge [color = gray]
 a -- {b c d}
 c -- {b}
 d -- {e, b}
@@ -195,6 +198,9 @@ $G = (\{V\}, \emptyset)$ - **trivials**
 \end{flalign*}$$[[Graphs - basics#Undirected graph|edge]] is is **complete** ($K_{n}$)
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -205,15 +211,14 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = grey,
+      color = gray,
       fillcolor = white]
 
-edge [color = grey]
+edge [color = gray]
 a -- {b c d e}
 b -- {c d e}
 c -- {d e}
 d -- {e}
-
 }
 ```
 
@@ -227,6 +232,9 @@ d -- {e}
 3. Edges $\{a,d\}$ and $\{e,d\}$ are **adjacent**
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -254,7 +262,7 @@ edge [color = yellow]
 d -- e
 d -- a
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- c
 b -- c
 d -- b

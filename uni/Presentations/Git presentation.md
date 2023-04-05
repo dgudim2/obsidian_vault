@@ -45,6 +45,7 @@ flexGrow=1
 ---
 inverted:true
 path-fill:skip
+path-implicit-stroke:true
 width:150px
 ---
 [[Mercurial-Logo.wine.svg]]
@@ -124,7 +125,6 @@ flexGrow=1
 ```dynamic-svg
 ---
 inverted:true
-path-stroke:skip
 ---
 [[vt_git_instance.svg]]
 ```

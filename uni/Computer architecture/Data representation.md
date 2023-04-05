@@ -355,7 +355,34 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 ### Endianness
 
-![[endianness_had.webp]]
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+inverted:true
+width:100%
+---
+[[Little-Endian.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+inverted:true
+width:100%
+---
+[[Big-Endian.svg]]
+```
+
+```` 
+`````
 
 #### Little endian
 

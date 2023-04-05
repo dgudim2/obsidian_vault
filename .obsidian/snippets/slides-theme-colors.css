@@ -115,11 +115,6 @@
 
 /* adds border to table */
 
-.reveal table {
-  /* font-size: 2em;   */
-  width: 80%;
-}
-
 .reveal table>thead>tr>th {
   font-weight: 500;
   border: 1px solid hsl(0, 0%, 18%);
@@ -131,10 +126,5 @@
 
 .reveal table, th, td {
   border: 1px solid hsl(0, 0%, 18%);
-}
-
-.reveal th, td {
-  min-width: 90px;
-  line-height: 1.5;
 }
 

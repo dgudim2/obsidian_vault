@@ -407,7 +407,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 > Widely adopted by computer architects
 
 - *Single precision format*
-```asciidoc-table
+```asciidoc
 [cols="3,8,23"]
 |===
 | S | Exponent | Mantissa
@@ -420,7 +420,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 ```
 
 - *[[Processor#Double precision|Double precision]] format*
-```asciidoc-table
+```asciidoc
 [cols="3,8,23"]
 |===
 | S | Exponent | Mantissa
@@ -442,7 +442,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 > 	- The leading *1* of the *mantissa* is not stored, giving *1010 0000*
 > - The result is
 > 
-> ```asciidoc-table
+> ```asciidoc
 > [cols="3,8,22"]
 > |===
 > | S | Exponent | Mantissa

@@ -25,6 +25,9 @@
 > **A**
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -54,6 +57,9 @@
 > **B**
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -94,6 +100,9 @@
 > **A**
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -128,7 +137,7 @@
 > 1 -- 3
 > 2 -- 4
 > 
-> edge [style=dashed, color=green]
+> edge [style=dashed, color=green, penwidth=2]
 > 5 -- {".", "-"}
 > 
 > } 
@@ -142,6 +151,9 @@
 > **B**
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -178,6 +190,9 @@
 > $f(5)=c$
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -231,6 +246,9 @@
 > ## $G$
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -266,6 +284,9 @@
 > ## $T$
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > rankdir=LR;
@@ -317,6 +338,9 @@ flexGrow=1
 ### D (Unlabeled)
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -350,6 +374,9 @@ flexGrow=1
 ### A (Labeled)
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -383,6 +410,9 @@ flexGrow=1
 ### B (Labeled)
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -416,6 +446,9 @@ flexGrow=1
 ### C (Labeled)
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -490,6 +523,9 @@ flexGrow=1
 ### $Ga$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -528,6 +564,9 @@ flexGrow=1
 ### $Gb$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -725,6 +764,9 @@ flexGrow=1
 ### $G_1$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -756,6 +798,9 @@ flexGrow=1
 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -786,6 +831,9 @@ flexGrow=1
 ### $G_3$
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 rankdir="LR";
@@ -831,6 +879,9 @@ flexGrow=1
 **$G(V,E)$**
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -870,6 +921,9 @@ flexGrow=1
 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -920,6 +974,9 @@ flexGrow=1
 **$G_1$**
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -959,6 +1016,9 @@ flexGrow=1
 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -978,7 +1038,7 @@ c [pos="1.5,0.9!"]
 d [pos="2,0!"] 
 e [pos="1.5,-0.9!"] 
 
-node [fillcolor=darkgreen]
+node [fillcolor=green]
 f 
 
 edge [color = grey] 
@@ -1003,6 +1063,9 @@ flexGrow=1
 
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -1022,7 +1085,7 @@ c [pos="1.5,0.9!"]
 d [pos="2,0!"] 
 e [pos="1.5,-0.9!"] 
 
-node [fillcolor=darkgreen]
+node [fillcolor=green]
 f [pos="0.7,-1.2!"] 
 i [pos="0,-0.8!"] 
 

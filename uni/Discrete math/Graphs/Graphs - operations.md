@@ -11,6 +11,9 @@ If $G_{1}=(V_{1}, E_{1})$ and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \cap G_{2}=(V_
 ## $G_{1}$
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -41,6 +44,9 @@ d -- {b}
 ## $G_{2}$
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -71,6 +77,9 @@ c -- b
 ## $G_{1} \cap G_{2}$
 
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -189,6 +198,9 @@ If $G_{1}=(V_{1}, E_{1})$ and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \cup G_{2}=(V_
 ## $G_{1}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -219,6 +231,9 @@ d -- {b}
 ## $G_{2}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -249,6 +264,9 @@ c -- b
 ## $G_{1} \cup G_{2}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -276,6 +294,7 @@ b -- d
 ````
 
 `````
+
 ## How to calculate
 
 ### Using [[Graphs - basics#Adjacency matrix|adjacency matrix]]
@@ -369,6 +388,9 @@ $G_{1}=(V_{1}, E_{1})$ and $G_{2}=(V_{2}, E_{2})$, then $G_{1} \oplus G_{2}=(\si
 ## $G_{1}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -399,6 +421,9 @@ d -- {b}
 ## $G_{2}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -429,6 +454,9 @@ c -- b
 ## $G_{1} \oplus G_{2}$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -456,6 +484,7 @@ b -- d
 ````
 
 `````
+
 ## How to calculate
 
 ### Using [[Graphs - basics#Adjacency matrix|adjacency matrix]]
@@ -552,6 +581,9 @@ Complement of graph $G=(V, E)$ is a graph $\neg G=(V, \neg E)$
 ### $G$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -582,6 +614,9 @@ d -- {b}
 ### $\neg G$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -617,12 +652,16 @@ $C=\neg  A$ | $c_{ij}=\neg a_{ij}$
 
 
 ## Actual difference
+
 `````col
 
 ````col-md
 ### $G$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -653,6 +692,9 @@ d -- b
 ### $B$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -682,6 +724,9 @@ d -- b
 ### $G\cap \neg B \ \ \ (A - B)$
 ---
 ```dot
+---
+preset:math-graph
+---
 graph neato {
 
 bgcolor="transparent"
@@ -708,6 +753,7 @@ a -- d
 ````
 
 `````
+
 ### How to calculate
 
 #### Using [[Graphs - basics#Adjacency matrix|adjacency matrix]]

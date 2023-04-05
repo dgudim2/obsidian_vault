@@ -10,6 +10,9 @@ flexGrow=1
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 bgcolor="transparent" 
@@ -42,6 +45,9 @@ flexGrow=2
 ===
 
 ```dot 
+---
+preset:math-graph
+---
 graph neato { 
 
 rankdir=LR;
@@ -129,6 +135,9 @@ d -- {b}
 > ### $K_{3,3}$
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 
@@ -166,6 +175,9 @@ d -- {b}
 > ### $K_{5}$
 > 
 > ```dot 
+> ---
+> preset: math-graph
+> ---
 > graph neato { 
 > 
 > bgcolor="transparent" 

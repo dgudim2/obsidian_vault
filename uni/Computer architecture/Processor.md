@@ -877,7 +877,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > - During procedure call, **register window** moves to *hide old* [[#Registers|registers]] and *expose new* ones
 
 - Before [[#Subroutine call|calling a subroutine]] (*A*, *B*, *C*, *D* are arguments)
-```asciidoc-table
+```asciidoc
 [frame=none]
 [cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
 |===
@@ -907,7 +907,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 ```
 
 - After [[#Subroutine call|calling a subroutine]]
-```asciidoc-table
+```asciidoc
 [frame=none]
 [cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
 |===
@@ -1053,6 +1053,11 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > Consider the internal structure of a CPU
 > 
 > ```ditaa
+> ---
+> inverted:true
+> text-fill:invert-all
+> ---
+> 
 >        +---------------+     +----------+----------+    +-----------------+
 >        |               |     |          |          |    |      macro      |
 >        |      ALU      +---->+ result 1 | result 2 |    |  general purpose|
@@ -1074,7 +1079,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > 
 >> Example hardware control commands
 > 
-> ```asciidoc-table
+> ```asciidoc
 > [frame=none]
 > [cols="1,3,15"]
 > |===
@@ -1147,7 +1152,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > 3. Arrange for the *ALU* to perform the *operation*
 > 4. Move the *value* from the hardware unit for *result* **2** (low order [[Data representation#Bit (Binary digit)|bits]] of the result) to [[#Registers|register]] **4**
 > 
-> ```asciidoc-table
+> ```asciidoc
 > [frame=none]
 > [cols="3,3,3,3,3,3,4,4,3,3,3,3,3,3"]
 > |===

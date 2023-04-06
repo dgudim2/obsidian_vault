@@ -423,7 +423,7 @@ sequenceDiagram
 	participant Staging area;
 	participant Git repo (.git);
 	participant Remote repo;
-	Git repo (.git)->>Working dir: Checkout the project
+	Git repo (.git)-)Working dir: Checkout the project
     Working dir-)Staging area: Stage files
     Staging area-)Git repo (.git): Commit
     Git repo (.git)-)Remote repo: Push
@@ -535,7 +535,7 @@ This will create a new directory with the name of the repo and create a local co
 
 ---
 
-# Adding files
+# Staging files
 
 - The first time we ask a file to be *tracked* by git, and *every time* before *commit*, we must add it to the *staging area*
 

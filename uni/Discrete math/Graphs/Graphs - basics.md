@@ -349,7 +349,6 @@ In out [[#Properties|graph]]:
 - $\Gamma(D)=${a, b, e}
 - $\Gamma(E)=${d}
 
-
 ### Order (degree) of vertices
 
 Order/degree of vertex $p(V)= | \Gamma(V) |$ 
@@ -361,7 +360,6 @@ Order/degree of vertex $p(V)= | \Gamma(V) |$
 > Vertex of directed graph has both **indegree** and **outdegree**
 
 Also see [[#Graph order]]
-
 
 ### Number of graph edges
 

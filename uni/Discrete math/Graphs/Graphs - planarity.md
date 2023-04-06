@@ -79,12 +79,13 @@ d -- {b}
 > [!definition] 
 > **Area** of a [[#Planar graph|planar]] graph is the *biggest* possible area of plane where *any two points* can be connected by *line* that does not intersect with [[Graphs - basics#Undirected graph|edges]]
 
-```tikz
+```latex
+---
+width:500px
+inverted:true
+---
+\documentclass[tikz]{standalone}
 \usepackage{tikz}
-
-\definecolor{green_g}{HTML}{B8BB26}
-\definecolor{orange_g}{HTML}{FE8019}
-\definecolor{blue_g}{HTML}{83A598}
 
 \begin{document}
 
@@ -97,9 +98,9 @@ d -- {b}
    \node at ( 1.2,  2.0) (3) {}; % 3
 
    % DRAW AREAS
-   \fill[fill=orange_g] (a.center)--(2.center)--(3.center);
-   \fill[fill=green_g]  (c.center)--(2.center)--(3.center);
-   \fill[fill=blue_g]   (a.center)--(c.center)--(1.center);
+   \fill[fill=orange] (a.center)--(2.center)--(3.center);
+   \fill[fill=green]  (c.center)--(2.center)--(3.center);
+   \fill[fill=blue]   (a.center)--(c.center)--(1.center);
    
    % DRAW CONNECTIONS
    \path[draw] (a)--(c);

@@ -15,10 +15,11 @@
     "dialogs",
     "fix_highligh",
     "kanban",
-    "list_padding",
     "mermaid",
+    "slides-theme-colors",
     "width-800px",
-    "slides-theme-colors"
+    "list_padding",
+    "asciidoctor"
   ],
   "showViewHeader": true,
   "theme": "system"

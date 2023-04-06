@@ -27,7 +27,7 @@ graph[layout=neato]
 
 fontcolor=green
 
-node[shape=rect, width=1, height=1, color=gray, fontcolor=white]
+node[shape=rect, width=1, height=1, color=silver, fontcolor=white]
 
 processor [pos="0,1.25!"]
 memory [pos="1.25,1.25!"]
@@ -60,7 +60,7 @@ graph[layout=neato]
 
 fontcolor=green
 
-node[shape=rect, width=1, height=1, color=gray, fontcolor=white]
+node[shape=rect, width=1, height=1, color=silver, fontcolor=white]
 
 cpu [label=processor,pos="0,1.25!"]
 
@@ -1057,7 +1057,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > inverted:true
 > text-fill:invert-all
 > ---
-> 
+>   
 >        +---------------+     +----------+----------+    +-----------------+
 >        |               |     |          |          |    |      macro      |
 >        |      ALU      +---->+ result 1 | result 2 |    |  general purpose|
@@ -1088,7 +1088,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > ^| Command
 > ^| Meaning
 > 
-> .8+^| **ALU**
+> .8+^.^| **ALU**
 > 
 > ^| *0 0 0*
 > | No operation
@@ -1107,31 +1107,31 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > ^| *1 1 1*
 > | Continue previous operation
 > 
-> .2+^| **operand 1**
+> .2+^.^| **operand 1**
 > ^| *0*
 > | No operation
 > ^| *1*
 > | Load value from data transfer mechanism
 > 
-> .2+^| **operand 2**
+> .2+^.^| **operand 2**
 > ^| *0*
 > | No operation
 > ^| *1*
 > | Load value from data transfer mechanism
 > 
-> .2+^| **result 1**
+> .2+^.^| **result 1**
 > ^| *0*
 > | No operation
 > ^| *1*
 > | Send value to data transfer mechanism
 > 
-> .2+^| **result 2**
+> .2+^.^| **result 2**
 > ^| *0*
 > | No operation
 > ^| *1*
 > | Send value to data transfer mechanism
 > 
-> .4+^| **register interface**
+> .4+^.^| **register interface**
 > ^| *0 0 x x x x*
 > | No operation
 > ^| *0 1 x x x x*

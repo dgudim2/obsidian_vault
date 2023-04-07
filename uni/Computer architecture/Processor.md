@@ -1054,15 +1054,15 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > 
 > ```ditaa
 > ---
+> width:100%
 > inverted:true
-> text-fill:invert-all
 > ---
->   
->        +---------------+     +----------+----------+    +-----------------+
->        |               |     |          |          |    |      macro      |
->        |      ALU      +---->+ result 1 | result 2 |    |  general purpose|
->        |               |     |          |          |    |    registers    |
->        +-+-----------+-+     +-------+--+--+-------+    +---------=+------+
+> 
+>        +---------------+     +----------+----------+    +-----------------+ 
+>        |               |     |          |          |    |      macro      | 
+>        |      ALU      +---->+ result 1 | result 2 |    |  general purpose| 
+>        |               |     |          |          |    |    registers    | 
+>        +-+-----------+-+     +-------+--+--+-------+    +---------=+------+ 
 >          ^           ^               |     |                       |
 >          |           |               |     |        +--------------+--+
 > +--------+--+     +--+--------+      |     |        | register access |

@@ -81,8 +81,8 @@ d -- {b}
 
 ```latex
 ---
-width:500px
-inverted:true
+width:450px
+inverted:1
 ---
 \documentclass[tikz]{standalone}
 \usepackage{tikz}

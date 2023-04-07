@@ -12,7 +12,6 @@
 ---
 inverted:true
 width:350px
-path-stroke:skip
 ---
 [[github.svg]]
 ```

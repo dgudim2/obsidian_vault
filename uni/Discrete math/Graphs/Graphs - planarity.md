@@ -111,11 +111,11 @@ inverted:true
    \path[draw] (1)--(c);
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (1) circle (0.4) node {\Huge 1};
-   \draw[color=white, fill=black] (2) circle (0.4) node {\Huge 2};
-   \draw[color=white, fill=black] (3) circle (0.4) node {\Huge 3};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (1) circle (0.4) node {\Huge 1};
+   \draw[color=black, fill=white] (2) circle (0.4) node {\Huge 2};
+   \draw[color=black, fill=white] (3) circle (0.4) node {\Huge 3};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
 
 \end{tikzpicture}
 

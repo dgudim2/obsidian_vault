@@ -81,13 +81,9 @@ d -- {b}
 
 ```latex
 ---
+preset:default-tikz
 width:450px
-inverted:1
 ---
-\documentclass[tikz]{standalone}
-\usepackage{tikz}
-
-\begin{document}
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -119,7 +115,6 @@ inverted:1
 
 \end{tikzpicture}
 
-\end{document}
 ```
 
 ## Theorems

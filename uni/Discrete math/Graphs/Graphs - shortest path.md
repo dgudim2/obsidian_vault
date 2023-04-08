@@ -378,11 +378,6 @@ subgraph cluster_space {
 1. Make matrices
 
 ```latex
----
-inverted:true
----
-\documentclass[preview,class=memoir]{standalone}   
-
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 
@@ -413,7 +408,5 @@ inverted:true
     a  & b  & c & d \\
   \end{array}\right)
 \end{equation}
-
-\end{document}
 
 ```

@@ -22,5 +22,5 @@
     "asciidoctor"
   ],
   "showViewHeader": true,
-  "theme": "obsidian"
+  "theme": "system"
 }

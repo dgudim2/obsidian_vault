@@ -1055,7 +1055,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > ```ditaa
 > ---
 > width:100%
-> inverted:true
+> inverted
 > ---
 > 
 >        +---------------+     +----------+----------+    +-----------------+ 

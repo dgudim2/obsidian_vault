@@ -10,7 +10,7 @@
 
 ```dynamic-svg
 ---
-inverted:true
+inverted
 width:350px
 ---
 [[github.svg]]
@@ -42,9 +42,9 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted:true
+inverted
 path-fill:skip
-path-implicit-stroke:true
+path-implicit-stroke
 width:150px
 ---
 [[Mercurial-Logo.wine.svg]]
@@ -123,7 +123,7 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted:true
+inverted
 ---
 [[vt_git_instance.svg]]
 ```

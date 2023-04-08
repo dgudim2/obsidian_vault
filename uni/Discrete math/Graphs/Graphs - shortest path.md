@@ -1,4 +1,5 @@
 
+
 # Shortest path problem
 
 > In graph theory, the *shortest path problem* is the problem of finding a path between two [[Graphs - basics#Directed graphs|vertices]] in a graph such that the <u>sum of the weights of its edges is minimized</u>

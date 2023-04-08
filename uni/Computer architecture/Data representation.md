@@ -362,7 +362,7 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted:true
+inverted
 width:100%
 ---
 [[Little-Endian.svg]]
@@ -375,7 +375,7 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted:true
+inverted
 width:100%
 ---
 [[Big-Endian.svg]]

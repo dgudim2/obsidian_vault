@@ -379,6 +379,10 @@ subgraph cluster_space {
 1. Make matrices
 
 ```latex
+---
+mix-multiplier:0.5
+mix-mode:delta
+---
 \usepackage{amsmath}
 \usepackage[table]{xcolor}
 
@@ -401,7 +405,7 @@ subgraph cluster_space {
 \end{equation}
 
 \begin{equation}
-  \left(\begin{array}{>{\columncolor{olive!20}}cc>{\columncolor{yellow!20}}cc}
+  \left(\begin{array}{>{\columncolor{olive!20}}cc>{\columncolor{yellow!30}}cc}
     \x  & \x  & \x & \x \\
     0   & \x  & \x & \x \\
     0   & 0   & \x & \x \\

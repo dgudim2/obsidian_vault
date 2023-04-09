@@ -44,7 +44,7 @@ node [shape = circle,
 5 [pos="1.5,-0.9!"] 
 6 [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 1 -- 2
 2 -- 3
@@ -198,7 +198,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- {c d} 
 b -- {c a d}

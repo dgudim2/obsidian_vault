@@ -41,7 +41,7 @@
 >       color=green, 
 >       fillcolor = white] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > "3/b" -- {1 "2/a"}
 > "2/a" -- 1
@@ -73,7 +73,7 @@
 >       color=green, 
 >       fillcolor = white] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > a -- b
 > 
@@ -131,7 +131,7 @@
 > "-" [pos="0, 1!"] 
 > "." [pos="0,-1!"]
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > 5 -- {1 2 3 4}
 > 1 -- 3
@@ -171,7 +171,7 @@
 > b [pos="-1,0.5!"] 
 > c [pos="0,0!"] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > a -- b
 > b -- c
@@ -213,7 +213,7 @@
 >       height=0.65]
 > 5 [pos="0,0!"] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > 5 -- {"3,4", "1,2"}
 > "3,4" -- "1,2"
@@ -267,7 +267,7 @@
 > c [pos="0,0!"] 
 > d [pos="1,1!"] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 >  
 > c -- {a b d}
 > a -- {b d}
@@ -303,7 +303,7 @@
 >       fillcolor = white] 
 > 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 >  
 > 3 -- {1 2 4}
 > 1 -- {2 4}
@@ -359,7 +359,7 @@ a [pos="0,0!"]
 b [pos="0.5,0.8!"] 
 c [pos="1,0!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b} 
 c -- {b} 
@@ -394,7 +394,7 @@ node [shape = circle,
 2 [pos="0.5,0.8!"] 
 3 [pos="1,0!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 1 -- {2} 
 1 -- {3} 
@@ -430,7 +430,7 @@ node [shape = circle,
 2 [pos="0.5,0.8!"] 
 3 [pos="1,0!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 1 -- 2 
 3 -- 2 
@@ -466,7 +466,7 @@ a [pos="0,0!"]
 1 [pos="0.5,0.8!"] 
 c [pos="1,0!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {c} 
 c -- {1} 
@@ -546,7 +546,7 @@ node [shape = circle,
 1 [pos="1.5,-0.9!"] 
 6 [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 5 -- {4 6 1}
 2 -- {1 3 6}
@@ -587,7 +587,7 @@ node [shape = circle,
 1 [pos="1.5,-0.9!"] 
 6 [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 6 -- {5 1 2}
 3 -- {2 4 1}
@@ -780,7 +780,7 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 2 -- {1 3 4}
 1 -- 3
@@ -814,7 +814,7 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 2 -- {1 5 4}
 5 -- 3
@@ -849,7 +849,7 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 2 -- {1 3 6}
 1 -- 3
@@ -881,6 +881,7 @@ flexGrow=1
 ```dot 
 ---
 preset:math-graph
+name:derived_0
 ---
 graph neato { 
 
@@ -901,7 +902,7 @@ c [pos="1.5,0.9!"]
 d [pos="2,0!"] 
 e [pos="1.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- b
 b -- c
@@ -923,6 +924,7 @@ flexGrow=1
 ```dot 
 ---
 preset:math-graph
+name:derived_1
 ---
 graph neato { 
 
@@ -946,7 +948,7 @@ e [pos="1.5,-0.9!"]
 node [fillcolor=green]
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- b
 b -- c
@@ -973,38 +975,8 @@ flexGrow=1
 
 **$G_1$**
 
-```dot 
----
-preset:math-graph
----
-graph neato { 
-
-bgcolor="transparent" 
-
-graph [layout = neato] 
-
-node [shape = circle, 
-      style = filled, 
-      width=0.3, 
-      height=0.3, 
-      color=green, 
-      fillcolor = white] 
-
-a [pos="0,0!"] 
-b [pos="0.5,0.9!"] 
-c [pos="1.5,0.9!"] 
-d [pos="2,0!"] 
-e [pos="1.5,-0.9!"] 
-
-edge [color = grey] 
-
-a -- b
-b -- c
-c -- d
-d -- e
-e -- a
-
-} 
+```refgraph
+derived_0
 ```
 
 ```` 
@@ -1015,42 +987,8 @@ flexGrow=1
 **$G_2$**
 
 
-```dot 
----
-preset:math-graph
----
-graph neato { 
-
-bgcolor="transparent" 
-
-graph [layout = neato] 
-
-node [shape = circle, 
-      style = filled, 
-      width=0.3, 
-      height=0.3, 
-      color=green, 
-      fillcolor = white] 
-
-a [pos="0,0!"] 
-b [pos="0.5,0.9!"] 
-c [pos="1.5,0.9!"] 
-d [pos="2,0!"] 
-e [pos="1.5,-0.9!"] 
-
-node [fillcolor=green]
-f 
-
-edge [color = grey] 
-
-a -- b
-b -- c
-c -- d
-d -- e
-e -- f
-f -- a
-
-} 
+```refgraph 
+derived_1
 ```
 
 ```` 
@@ -1089,7 +1027,7 @@ node [fillcolor=green]
 f [pos="0.7,-1.2!"] 
 i [pos="0,-0.8!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- b
 b -- c

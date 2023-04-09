@@ -25,7 +25,7 @@
 >       color=green, 
 >       fillcolor = white] 
 > 
-> edge [color = grey] 
+> edge [color=lightgray] 
 > 
 > 1 -- 2
 > 2 -- 3
@@ -69,7 +69,7 @@
 >       color=green, 
 >       fillcolor = white] 
 >       
-> edge [color = grey] 
+> edge [color=lightgray] 
 > 
 > 1 -- 2
 > 2 -- 3
@@ -112,7 +112,7 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey, fontcolor=grey] 
+edge [color=lightgray, fontcolor=darkgray] 
 
 a -- e [label="2"]
 a -- g [label="8"]
@@ -170,7 +170,7 @@ g [pos="0,-2!"]
 h [pos="1,-2!"] 
 i [pos="2,-2!"] 
 
-edge [color = grey, fontcolor=grey]
+edge [color=lightgray, fontcolor=darkgray] 
 
 a -- b [label="3"]
 a -- d [label="1"]
@@ -236,7 +236,7 @@ g [pos="0,-2!"]
 h [pos="1,-2!"] 
 i [pos="2,-2!"] 
 
-edge [color = grey, fontcolor=grey]
+edge [color=lightgray, fontcolor=darkgray] 
 
 a -- {d b}
 b -- c
@@ -327,7 +327,7 @@ node [color=red,fillcolor=darkred,fontcolor=white]
 node [color=green,fillcolor=darkgreen,fontcolor=white]
 5
 
-edge [color = grey] 
+edge [color = darkgrey] 
 
 1 -- 5
 5 -- 6
@@ -368,7 +368,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		6
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		5 -- 6
 		6 -- {2 0}
@@ -405,7 +405,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		0
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		5 -- 6
 		6 -- {0}
@@ -442,7 +442,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		6
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		5 -- 6
 		6 -- {0}
@@ -479,7 +479,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		0
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		6 -- {0}
 		0 -- {4}
@@ -514,7 +514,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		4
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		0 -- {4}
 		4 -- {7 8 9}
@@ -548,7 +548,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		4
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		4 -- {7 8 9}
 		
@@ -581,7 +581,7 @@ edge [color = grey]
 		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		4
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		4 -- {8 9}
 		
@@ -606,7 +606,7 @@ edge [color = grey]
 		      fillcolor = white] 
 		4 9
 		
-		edge [color = grey] 
+		edge [color = darkgrey] 
 		
 		4 -- 9
 		
@@ -671,10 +671,11 @@ flexGrow=1
 1. Find length of [[Graphs - basics#Undirected graph|edges]] 
 $|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
 
-```tikz
-\usepackage{tikz}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+width:85%
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -688,13 +689,10 @@ $|AB|=\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$
    \draw (b) -- (c) node [midway, right] {\Huge 5};
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 
@@ -705,12 +703,10 @@ flexGrow=1.5
 2. Find *longest* [[Graphs - basics#Undirected graph|edge]] (BC)
 3. Construct triangle $\Delta BCX$ such that $|BC|=|BX|=|CX|$
 
-```tikz
-\usepackage{tikz}
-
-\definecolor{green_g}{HTML}{82851b}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -720,7 +716,7 @@ flexGrow=1.5
    \node (x) at ( 9.0,  7.5) {}; % x
 
    % DRAW AREAS
-   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+   \fill[fill=green]  (b.center)--(c.center)--(x.center);
 
    % WEIGHTS AND CONNECTIONS
    \draw (a) -- (b) node [midway, above] {\Huge 3};
@@ -730,14 +726,11 @@ flexGrow=1.5
    \draw (c) -- (x) node [midway, below] {\Huge 5};
 
    % DRAW NODES
-   \draw[color=white, fill=black]  (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black]  (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black]  (c) circle (0.4) node {\Huge c};
-   \draw[color=white, fill=black]  (x) circle (0.4) node {\Huge x};
+   \draw[color=black, fill=white]  (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white]  (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white]  (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white]  (x) circle (0.4) node {\Huge x};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 
@@ -750,14 +743,10 @@ flexGrow=1.5
 flexGrow=1
 ===
 
-```tikz
-\usepackage{tikz}
-
-\definecolor{green_g}{HTML}{B8BB26}
-\definecolor{orange_g}{HTML}{FE8019}
-\definecolor{blue_g}{HTML}{83A598}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -766,10 +755,10 @@ flexGrow=1
    \node (c) at ( 0.0,  8.0) {}; % c
    \node (x) at ( 9.0,  7.5) {}; % x
 
-   \draw[orange_g, fill=blue_g] (4.4, 5.1) circle (5.1);
+   \draw[orange, fill=blue] (4.4, 5.1) circle (5.1);
 
    % DRAW AREAS
-   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+   \fill[fill=green]  (b.center)--(c.center)--(x.center);
  
    % CONNECTIONS
    \draw (a) -- (b);
@@ -779,14 +768,11 @@ flexGrow=1
    \draw (c) -- (x);
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
-   \draw[color=white, fill=black] (x) circle (0.4) node {\Huge x};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (x) circle (0.4) node {\Huge x};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 
@@ -806,14 +792,10 @@ $(x-a)^2+(y-b)^2=R^2$
 flexGrow=1
 ===
 
-```tikz
-\usepackage{tikz}
-
-\definecolor{green_g}{HTML}{B8BB26}
-\definecolor{orange_g}{HTML}{FE8019}
-\definecolor{blue_g}{HTML}{83A598}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -823,10 +805,10 @@ flexGrow=1
    \node (x) at ( 9.0,  7.5) {}; % x
    \node (s) at ( 1.3,  1.1) {}; % s
 
-   \draw[orange_g, fill=blue_g] (4.4, 5.1) circle (5.1);
+   \draw[orange, fill=blue] (4.4, 5.1) circle (5.1);
 
    % DRAW AREAS
-   \fill[fill=green_g]  (b.center)--(c.center)--(x.center);
+   \fill[fill=green]  (b.center)--(c.center)--(x.center);
  
    % CONNECTIONS
    \draw (a) -- (b);
@@ -837,15 +819,12 @@ flexGrow=1
    \draw (a) -- (x);
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
-   \draw[color=white, fill=black] (x) circle (0.4) node {\Huge x};
-   \draw[color=red,   fill=black] (s) circle (0.4) node {\Huge s};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (x) circle (0.4) node {\Huge x};
+   \draw[color=red,   fill=white] (s) circle (0.4) node {\Huge s};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 
@@ -867,10 +846,11 @@ flexGrow=1
 ## Before
 Weight = $4+3+5=12$
 
-```tikz
-\usepackage{tikz}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+width:70%
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -884,13 +864,10 @@ Weight = $4+3+5=12$
    \draw (b) -- (c) node [midway, right] {\Huge 5};
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 
@@ -902,14 +879,11 @@ flexGrow=1
 $AS \approx 1.0239$ $BS \approx 2.3540$ $CS \approx 2.3540$
 Weight = $6.7664$
 
-```tikz
-\usepackage{tikz}
-
-\definecolor{green_g}{HTML}{B8BB26}
-\definecolor{orange_g}{HTML}{FE8019}
-\definecolor{blue_g}{HTML}{83A598}
-
-\begin{document}
+```latex
+---
+preset:default-tikz
+width:65%
+---
 
 \begin{tikzpicture}[very thick]
    % NODES
@@ -924,10 +898,10 @@ Weight = $6.7664$
    \draw (c) -- (s);
 
    % DRAW NODES
-   \draw[color=white, fill=black] (a) circle (0.4) node {\Huge a};
-   \draw[color=white, fill=black] (b) circle (0.4) node {\Huge b};
-   \draw[color=white, fill=black] (c) circle (0.4) node {\Huge c};
-   \draw[color=white, fill=black] (s) circle (0.4) node {\Huge s};
+   \draw[color=black, fill=white] (a) circle (0.4) node {\Huge a};
+   \draw[color=black, fill=white] (b) circle (0.4) node {\Huge b};
+   \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
+   \draw[color=black, fill=white] (s) circle (0.4) node {\Huge s};
 
 \end{tikzpicture}
 

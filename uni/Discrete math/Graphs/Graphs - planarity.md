@@ -31,7 +31,7 @@ b [pos="0,1!"]
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b d} 
 c -- {a d b} 
@@ -63,7 +63,7 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b d} 
 c -- {a d b} 
@@ -113,8 +113,6 @@ width:450px
    \draw[color=black, fill=white] (3) circle (0.4) node {\Huge 3};
    \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
 
-\end{tikzpicture}
-
 ```
 
 ## Theorems
@@ -154,7 +152,7 @@ width:450px
 > 2 [pos="1,-1!"] 
 > 3 [pos="2,-1!"] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 > 
 > a -- {1 2 3}
 > b -- {1 2 3}
@@ -193,7 +191,7 @@ width:450px
 > d [pos="1.9,-0.1!"] 
 > e [pos="1,-0.8!"] 
 > 
-> edge [color = grey] 
+> edge [color = lightgrey] 
 >  
 > a -- {b c d e}
 > b -- {c d e}

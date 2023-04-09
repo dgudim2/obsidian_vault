@@ -943,7 +943,7 @@ c [pos="1.5,0.9!"]
 d [pos="2,0!"] 
 e [pos="1.5,-0.9!"] 
 
-node [fillcolor=darkgreen]
+node [fillcolor=green]
 f [pos="0.5,-0.9!"] 
 
 edge [color = grey] 

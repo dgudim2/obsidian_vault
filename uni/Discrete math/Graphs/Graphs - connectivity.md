@@ -32,7 +32,7 @@ b [pos="0,1!"]
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b d} 
 c -- {b a d} 
@@ -68,7 +68,7 @@ b [pos="0,1!"]
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b d} 
 c -- {b} 
@@ -112,7 +112,7 @@ b [pos="0,1!"]
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- {b} 
 c -- {b a} 
@@ -149,7 +149,7 @@ b [pos="0,1!"]
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 a -- {b d} 
 c -- {b a} 
 } 
@@ -188,7 +188,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"]
 f [pos="0.5,-0.9!"]
 
-edge [color = grey] 
+edge [color = lightgrey] 
 a -- {b c}
 b -- {c d}
 c -- {d e}
@@ -239,7 +239,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- {b d e} 
 b -- {c d} 
@@ -277,7 +277,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- {b d e} 
 b -- {c d} 
@@ -345,7 +345,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 a -- {b d e} 
 b -- {c d} 
@@ -467,7 +467,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- b
 c -- d
@@ -518,13 +518,13 @@ e [pos="1.5,-0.9!"]
 f [pos="0.5,-0.9!"] 
 o [pos="1,0!"]
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- b
 f -- a
 d -- o
 
-edge [color = yellow] 
+edge [color = yellow, penwidth=2] 
 b -- c
 c -- d
 b -- o
@@ -565,7 +565,7 @@ e [pos="1.5,-0.9!"]
 f [pos="0.5,-0.9!"] 
 o [pos="1,0!"]
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 a -- b
 d -- e
@@ -574,7 +574,7 @@ f -- a
 
 f -- o
 
-edge [color = red] 
+edge [color = red, penwidth=2] 
 b -- c
 c -- d
 b -- o
@@ -613,7 +613,7 @@ e [pos="1.5,-0.9!"]
 f [pos="0.5,-0.9!"] 
 o [pos="1,0!"]
 
-edge [color = grey] 
+edge [color = lightgrey] 
  
 
 d -- e
@@ -624,7 +624,7 @@ c -- d
 
 d -- o
 
-edge [color = cyan] 
+edge [color = cyan, penwidth=2] 
 b -- o
 f -- o
 a -- b
@@ -787,12 +787,12 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!",color=red] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 c -- {a b}
 b -- a
 
-edge [color = green] 
+edge [color = lightgreen, penwidth=2] 
 c -- d
 a -- f
 e -- f
@@ -838,7 +838,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 b -- a
 a -- f
 f -- e
@@ -874,7 +874,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 d -- c
 c -- b
 f -- e
@@ -910,7 +910,7 @@ c [pos="1.5,0.9!"]
 d [pos="2,0!"] 
 e [pos="1.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 d -- c
 c -- {a b}
 b -- a
@@ -971,7 +971,7 @@ e [pos="1.5,-0.9!"]
 f [pos="0.4,-0.75!", color=red] 
 f1 [pos="0.8,-0.9!", label=f, color=red] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 
 e -- f1
 f -- a1
@@ -1020,7 +1020,7 @@ node [shape = circle,
 c [pos="0,0!"] 
 d [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  c -- d
 } 
 ```
@@ -1050,7 +1050,7 @@ node [shape = circle,
 f [pos="0,0!"] 
 e [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  f -- e
 } 
 ```
@@ -1085,7 +1085,7 @@ node [shape = circle,
 a [pos="0,0!"] 
 f [pos="1,1!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
  a -- f
 }
 ```
@@ -1116,7 +1116,7 @@ a [pos="0,0!"]
 b [pos="0.5,1!"] 
 c [pos="1,0!"]
 
-edge [color = grey] 
+edge [color = lightgrey] 
  a -- b
  b -- c
  c -- a
@@ -1168,7 +1168,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 c -- {a b}
 b -- a
 a -- f
@@ -1206,7 +1206,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 d -- c
 c -- {a b}
 b -- a
@@ -1244,7 +1244,7 @@ d [pos="2,0!"]
 e [pos="1.5,-0.9!"] 
 f [pos="0.5,-0.9!"] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 d -- c
 c -- {a b}
 b -- a
@@ -1274,19 +1274,19 @@ node [shape = circle,
       color=green, 
       fillcolor = white] 
 
-edge [color = grey] 
+edge [color = lightgrey] 
 a -- {c b}
 c -- b
 d -- {c b e}
 f -- {i}
 g -- {h}
 
-edge [color = red]
+edge [color = red, penwidth=2]
 d -- f
 e -- f
 g -- f
 
-edge [color = yellow]
+edge [color = yellow, penwidth=2]
 e -- g
 
 } 

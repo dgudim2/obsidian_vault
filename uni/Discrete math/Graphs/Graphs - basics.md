@@ -167,7 +167,7 @@ node [shape = circle,
 
 node [fillcolor = white]
 
-edge [color = gray]
+edge [color = lightgray]
 a -- {b c d}
 c -- {b}
 d -- {e, b}
@@ -214,7 +214,7 @@ node [shape = circle,
       color = gray,
       fillcolor = white]
 
-edge [color = gray]
+edge [color = lightgray]
 a -- {b c d e}
 b -- {c d e}
 c -- {d e}
@@ -255,17 +255,18 @@ a b
 node [fillcolor = red]
 c d
 
-edge [color = lightgreen]
-a -- b
-
-edge [color = yellow]
-d -- e
-d -- a
-
 edge [color = lightgrey]
 a -- c
 b -- c
 d -- b
+
+edge [color = lightgreen, penwidth=2]
+a -- b
+
+edge [color = yellow, penwidth=2]
+d -- e
+d -- a
+
 }
 ```
 

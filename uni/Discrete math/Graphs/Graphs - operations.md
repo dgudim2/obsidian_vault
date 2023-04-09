@@ -32,7 +32,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- {b}
 d -- {b}
@@ -65,7 +65,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- d
 d -- c
 c -- b
@@ -98,7 +98,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- d
 c -- b
 }
@@ -219,7 +219,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- {b}
 d -- {b}
@@ -252,7 +252,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- d
 d -- c
 c -- b
@@ -285,7 +285,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- {b d}
 b -- d
@@ -409,7 +409,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- {b}
 d -- {b}
@@ -442,7 +442,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- d
 d -- c
 c -- b
@@ -475,7 +475,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- b
 c -- d
 b -- d
@@ -602,7 +602,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- {b}
 d -- {b}
@@ -635,7 +635,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- c
 c -- d
 }
@@ -680,7 +680,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- {b d}
 c -- b
 d -- b
@@ -713,7 +713,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 a -- b
 d -- b
 }
@@ -745,7 +745,7 @@ b [pos="0,1!"]
 c [pos="0,0!"]
 d [pos="1,1!"]
 
-edge [color = grey]
+edge [color = lightgrey]
 c -- b
 a -- d
 }

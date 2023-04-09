@@ -420,13 +420,7 @@ subgraph cluster_space {
 1. Make matrices $D$ and $P$, $D$ stores [[Graphs - metrics#Distances|distances]], $P$ - information about *paths*
 
 ```latex
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[table,usenames,dvipsnames]{xcolor}
-
 \newcommand\x{\times}
-
-\begin{document}
 
 \begin{multicols}{2}
 
@@ -463,15 +457,9 @@ subgraph cluster_space {
 3. $2 + \infty > 4$, so we *don't* change the element
 
 ```latex
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[table,usenames,dvipsnames]{xcolor}
-
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}
 \newcommand\z{\cellcolor{green!80!black}}
-
-\begin{document}
 
 \begin{multicols}{2}
 
@@ -507,17 +495,11 @@ subgraph cluster_space {
 5. Same for 1 more element
 
 ```latex
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[table,usenames,dvipsnames]{xcolor}
-
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}
 \newcommand\yy{\cellcolor{yellow}}
 \newcommand\z{\cellcolor{green!80!black}}
 \newcommand\zz{\cellcolor{green!30!black}}
-
-\begin{document}
 
 \begin{multicols}{2}
 
@@ -552,10 +534,6 @@ subgraph cluster_space {
 6. Repeat for the next *row* and *column* 
 
 ```latex
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[table,usenames,dvipsnames]{xcolor}
-
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}
 \newcommand\yy{\cellcolor{yellow}}
@@ -564,8 +542,6 @@ subgraph cluster_space {
 
 \newcommand\bl{\cellcolor{blue!80!black}}
 \newcommand\blb{\cellcolor{blue!30!black}}
-
-\begin{document}
 
 \begin{multicols}{2}
 
@@ -605,12 +581,6 @@ subgraph cluster_space {
 ---
 mix-multiplier:0.4
 ---
-\usepackage{amsmath}
-\usepackage{multicol}
-\usepackage[table,usenames,dvipsnames]{xcolor}
-
-\begin{document}
-
 \newcommand\x{\cellcolor{violet!80}}
 \newcommand\y{\cellcolor{violet!10}}
 \newcommand\z{\cellcolor{blue!20}}
@@ -650,3 +620,7 @@ mix-multiplier:0.4
 > [!note] 
 > 1. Presented graph is [[Graphs - basics#Undirected graph|undirected]], so really we needed to calculate only **half** of values
 > 2. If there are any *$\infty$* after finishing algorithm – graph is **not** [[Graphs - connectivity#Connected graph|connected]]
+
+```dataview
+list from "uni/Discrete math"
+```

@@ -418,7 +418,6 @@ subgraph cluster_space {
 ```
 
 1. Make matrices $D$ and $P$, $D$ stores [[Graphs - metrics#Distances|distances]], $P$ - information about *paths*
-
 ```latex
 \newcommand\x{\times}
 
@@ -455,7 +454,6 @@ subgraph cluster_space {
 	- Take *smaller* element
 
 3. $2 + \infty > 4$, so we *don't* change the element
-
 ```latex
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}
@@ -493,7 +491,6 @@ subgraph cluster_space {
 
 4. $2+3< \infty$, so we *change* the element to **5** and mark it in the matrix $P$
 5. Same for 1 more element
-
 ```latex
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}
@@ -532,7 +529,6 @@ subgraph cluster_space {
 ```
 
 6. Repeat for the next *row* and *column* 
-
 ```latex
 \newcommand\x{\times}
 \newcommand\y{\cellcolor{olive}}

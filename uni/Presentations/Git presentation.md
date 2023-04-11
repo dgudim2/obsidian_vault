@@ -243,7 +243,7 @@ digraph G {
 
     // Edges that directly connect one cluster to another
     "version 1" -> "File A" [ltail=cluster_2, label="  checkout", fontcolor=white];
-    "version 1" -> "File B" [ltail=cluster_2, label="  checkout", fontcolor=white,constraint=false];
+    "version 1" -> "File B" [ltail=cluster_2, label="  checkout", fontcolor=white, constraint=false];
 }
 ```
 

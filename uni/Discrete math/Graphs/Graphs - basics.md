@@ -163,10 +163,9 @@ node [shape = circle,
       style = filled,
       width=0.3,
       height=0.3,
-      color = gray]
-
-node [fillcolor = white]
-
+      color = gray,
+      fillcolor = white]
+      
 edge [color = lightgray]
 a -- {b c d}
 c -- {b}

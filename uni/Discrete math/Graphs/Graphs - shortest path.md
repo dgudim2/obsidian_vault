@@ -2,9 +2,10 @@
 
 # Shortest path problem
 
+> [!definition] 
 > In graph theory, the *shortest [[Graphs - connectivity#Path|path]] problem* is the problem of finding a path between two [[Graphs - basics#Directed graphs|vertices]] in a graph such that the *sum of the weights* of its [[Graphs - basics#Undirected graph|edges]] *is minimized*
 
-> [!note] 
+> [!info] 
 > The problem of finding the shortest path between two *intersections* <u>on a road map</u> may be modeled as <u>a special case of the shortest path problem</u> in graphs, where the [[Graphs - basics#Directed graphs|vertices]] correspond to *intersections* and the [[Graphs - basics#Undirected graph|edges]] correspond to *road segments*, <u>each weighted by the length of the segment</u>
 
 ## Variations
@@ -396,10 +397,8 @@ subgraph cluster_space {
 	      width=0.45, 
 	      height=0.45, 
 	      color=yellow, 
-	      fillcolor=snow, 
-	      fontcolor=black,
-	      fixedsize=true,
-	      penwidth=1]  
+	      fillcolor=white, 
+	      fixedsize=true]  
 	
 	v1, v2, v3, v4, v5
 	
@@ -616,6 +615,459 @@ mix-multiplier:0.4
 > [!note] 
 > 1. Presented graph is [[Graphs - basics#Undirected graph|undirected]], so really we needed to calculate only **half** of values
 > 2. If there are any *$\infty$* after finishing algorithm – graph is **not** [[Graphs - connectivity#Connected graph|connected]]
+
+--- 
+<br>
+# Travelling salesman problem
+
+> [!definition] 
+> The **travelling salesman problem** ask the following question: 
+> - "Given a list of cities and the [[Graphs - metrics#Distances|distances]] between each **pair** of cities, what is the *shortest possible route* that visits *each city exactly once* and *returns to the origin* city?"
+
+## Algorthms
+
+### Exact algorithms
+
+> Give *exact* result (the best one)
+
+1. [[#Brute-force method]] - the slowest least practical one, exponential time complexity
+2. **Held-Karp** algorithm - one of the earliest applications of dynamic programming $O(n^22^n)$
+3. **Branch and bound** - up to 40-60 cities
+4. **Progressive improvement** - (techniques reminiscent of linear programming) up to 200 cities
+5. **Branch and cut** - Implementation of *branch and bound* and problem-specific cut generation, record: 85900 cities
+
+#### Brute-force method
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+##### Just try all variants
+
+```dot 
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot, rankdir=LR] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, fontcolor=white] 
+
+a -- b [label="14", weight=14]
+a -- c [label="15", weight=15]
+a -- d [label="18", weight=18]
+b -- d [label="11", weight=11]
+c -- b [label="10", weight=10]
+c -- d [label="12", weight=12]
+
+} 
+```
+
+- $4! = 24$ variants
+- $ Guarantees *optimal solution*
+- ! Huge computational cost (impractical even for 20 cities)
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+##### Lets start and end at [[Graphs - basics#Directed graphs|vertex]] *a*
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+graph [layout = neato, rankdir=LR] 
+
+bgcolor="transparent" 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey] 
+
+a [fillcolor = gold]
+b, b3, b4, b5, b6 [label=b, fillcolor=cyan]
+c, c1, c2, c5, c6 [label=c, fillcolor=purple]
+d, d1, d2, d3, d4 [label=d, fillcolor=blue]
+
+a -- {b c d}
+b -- {c1 d2}
+c1 -- d1
+d1 -- a
+d2 -- c2
+c2 -- a
+
+c -- {b3 d4}
+b3 -- d3
+d3 -- a
+d4 -- b4
+b4 -- a
+
+d -- {b5 c6}
+b5 -- c5
+c5 -- a
+c6 -- b6
+b6 -- a
+
+} 
+```
+
+```` 
+`````
+
+### Heuristics and approximation algorithms
+
+> Give approximate but good enough result, but work faster
+
+1. [[#Cheapest edge algorithm]]
+2. [[#Nearest neighbor algorithm]] and other *constructive* heuristics
+3. Algorithm of *Christofides and Serdyukov*
+4. Optimized *Markov chain* algorithms
+5. *Genetic* algorithms (ant colony, etc.)
+
+#### Cheapest edge algorithm
+
+1. Take an [[Graphs - basics#Undirected graph|edge]] of smallest *weight* and add it to the route if:
+	- No [[Graphs - basics#Directed graphs|vertex]] in this *route* will have [[Graphs - basics#Order (degree) of vertices|degree]] > 2
+	- Route will not end too early
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0.2,-0.2!"] 
+b [pos="0.8,1.8!"] 
+c [pos="3.2,1.8!"] 
+d [pos="3.8,-0.2!"] 
+e [pos="2,-1.6!"] 
+
+edge [color = lightgrey, fontcolor = white] 
+a -- b [label=14]
+a -- c [label=15]
+b -- e [label=13]
+c -- d [label=12]
+d -- e [label=17]
+
+edge [color = lightgreen, penwidth = 2, fontcolor = gold, fontsize = 20] 
+a -- e [label=13]
+a -- d [label=18]
+c -- e [label=14]
+c -- b [label=10]
+b -- d [label=11]
+
+} 
+```
+
+Total weight = $10+11+13+14+18=66$
+
+> We can also do it in **matrix** form
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+1. Make [[Graphs - metrics#Distance matrix|distance matrix]]
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & B & C & D & E \\
+	 \hline
+     A & 0     & 14    & 15    & 18    & 13 \\ \hline
+     B & \x 14 & 0     & 10    & 11    & 13 \\ \hline
+     C & \x 15 & \x 10 & 0     & 12    & 14 \\ \hline
+     D & \x 18 & \x 11 & \x 12 & 0     & 17 \\ \hline
+     E & \x 13 & \x 13 & \x 14 & \x 17 & 0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+2. Find the *smallest* element $\{B,C\} - 10$
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{green}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & B & C & D & E \\
+	 \hline
+     A & 0     & 14    & 15    & 18    & 13 \\ \hline
+     B & \x 14 & 0     & \y 10 & 11    & 13 \\ \hline
+     C & \x 15 & \y 10 & 0     & 12    & 14 \\ \hline
+     D & \x 18 & \x 11 & \x 12 & 0     & 17 \\ \hline
+     E & \x 13 & \x 13 & \x 14 & \x 17 & 0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+- Mark it in the *matrix* and in the *graph*
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+3. Next element $\{B,D\} - 11$
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{green}}
+\newcommand\z{\cellcolor{yellow}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & B & C & D & E \\
+	 \hline
+     A & 0     & 14    & 15    & 18    & 13 \\ \hline
+     B & \x 14 & 0     & \y 10 & \y 11 & 13 \\ \hline
+     C & \x 15 & \y 10 & \z 0  & 12    & 14 \\ \hline
+     D & \x 18 & \y 11 & \x 12 & \z 0  & 17 \\ \hline
+     E & \x 13 & \x 13 & \x 14 & \x 17 & 0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+- Vertex **B** can *not* be used anymore since then it's degree [[Graphs - basics#Order (degree) of vertices|degree]] will be > *2*
+- We will *hide* column and row **B** 
+- In the columns (arn rows) **C** and **D** there is one cell marked, so we *should note it*, for example, in the diagonal (to not loose this information)
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+Elements where both *row* and *column* has mark in the diagonal can't be used becasue the [[Graphs - connectivity#Cycle|cycle]] will close too early
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{red}}
+\newcommand\z{\cellcolor{yellow}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c| }{}
+	 & A & C & D & E \\
+	 \hline
+     A & 0     & 15    & 18    & 13 \\ \hline
+     C & \x 15 & \z 0  & \y 12 & 14 \\ \hline
+     D & \x 18 & \y 12 & \z 0  & 17 \\ \hline
+     E & \x 13 & \x 14 & \x 17 & 0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1.06
+===
+
+4. Next element - $\{A,E\} - 13$
+5. Next element - $\{C,E\} - 14$
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{red}}
+\newcommand\m{\cellcolor{green}}
+\newcommand\z{\cellcolor{yellow}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c| }{}
+	 & A & C & D & E \\
+	 \hline
+     A & 0     & 15    & 18    & \m 13 \\ \hline
+     C & \x 15 & \z 0  & \y 12 & \m 14 \\ \hline
+     D & \x 18 & \y 12 & \z 0  &    17 \\ \hline
+     E & \m 13 & \m 14 & \x 17 &    0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+- Hide *column* and *row* **E** because it has *2* elements
+- Hide *column* and *row* **C** because there are *2* marked cells
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+6. Only $\{A,D\}-18$ left. We will use it
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\z{\cellcolor{yellow}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c| }{}
+	 & A & D \\
+	 \hline
+     A & 0     &    18 \\ \hline
+     D & \x 18 & \z 0 \\
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+#### Nearest neighbor algorithm
+
+1. Start in any [[Graphs - basics#Directed graphs|vertex]] 
+2. Travel to the *nearest uninvited* [[Graphs - basics#Directed graphs|vertex]]
+3. If all [[Graphs - basics#Directed graphs|vertices]] are *visited*, return home (to the start)
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+a [pos="0.2,-0.2!"] 
+b [pos="0.8,1.8!"] 
+c [pos="3.2,1.8!"] 
+d [pos="3.8,-0.2!"] 
+e [pos="2,-1.6!"] 
+
+edge [color = lightgrey, fontcolor = white] 
+a -- b [label=14]
+a -- c [label=15]
+d -- e [label=17]
+c -- e [label=14]
+b -- d [label=11]
+
+edge [color = lightgreen, penwidth = 2, fontcolor = gold, fontsize = 20] 
+a -- e [label=13]
+a -- d [label=18]
+c -- b [label=10]
+b -- e [label=13]
+c -- d [label=12]
+
+} 
+```
+
+Total weight = $13+13+10+12+18=66$
+
+> We can also do it in **matrix** form
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```` 
+`````
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
+	 & A & B & C & D & E & F & G & H\\
+	 \hline
+     A & 0  & 16 & 17 & 21 & 12 & 34 & 32 & 14 \\ \hline
+     B & 16 & 0  & 3  & 3  & 38 & 28 & 36 & 21 \\ \hline
+     C & 17 & 3  & 0  & 24 & 8  & 11 & 3  & 21 \\ \hline
+     D & 21 & 3  & 24 & 0  & 38 & 26 & 22 & 15 \\ \hline
+     E & 12 & 38 & 8  & 38 & 0  & 25 & 10 & 8  \\ \hline
+     F & 34 & 28 & 11 & 26 & 15 & 0  & 30 & 29 \\ \hline
+     G & 32 & 36 & 3  & 22 & 10 & 30 & 0  & 38 \\ \hline
+     H & 14 & 21 & 21 & 15 & 8  & 29 & 38 & 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+k
+#### Repeated nearest neighbor algorithm
+
+- Use [[#Nearest neighbor algorithm|nearest neighbor algorithm]] starting it in different vertices
+- Choose the *best* result
+
+--- 
+<br>
 
 ```dataview
 list from "uni/Discrete math"

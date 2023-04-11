@@ -6,7 +6,7 @@
   "trashOption": "none",
   "newFileLocation": "current",
   "showUnsupportedFiles": true,
-  "attachmentFolderPath": "./attachements",
+  "attachmentFolderPath": "./",
   "alwaysUpdateLinks": true,
   "livePreview": true,
   "spellcheck": true,

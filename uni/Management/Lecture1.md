@@ -61,7 +61,7 @@ The four main management functions or activities that make up the management pro
 
 Primary management functions are integrally related and therefore cannot be separated in practice.
 
-__Decision-making__  is a part of all management functions.
+__Decision-making__ is a part of all management functions.
 
 # What is an organization?
 

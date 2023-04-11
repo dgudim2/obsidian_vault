@@ -6,7 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "IbArrowBendRightUp",
+      "FasArrow-trend-up",
       "FabGit-alt",
       "😀",
       "SiGit",
@@ -36,5 +36,5 @@
   "uni/Computer architecture/Processor.md": "LiCpu",
   "uni/Presentations": "SiArtifacthub",
   "uni/Presentations/Git presentation.md": "FabGit-alt",
-  "uni/Management": "IbArrowBendRightUp"
+  "uni/Management": "FasArrow-trend-up"
 }

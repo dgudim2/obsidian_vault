@@ -1039,7 +1039,7 @@ flexGrow=1
 
 ```` 
 `````
-
+1. Let's start at **A**. Find *smallest* number in the corresponding *row* and don't forget to mark cells. 
 ```latex
 \newcommand\x{\cellcolor{black!10}}
 
@@ -1047,20 +1047,44 @@ flexGrow=1
 	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
 	 & A & B & C & D & E & F & G & H\\
 	 \hline
-     A & 0  & 16 & 17 & 21 & 12 & 34 & 32 & 14 \\ \hline
-     B & 16 & 0  & 3  & 3  & 38 & 28 & 36 & 21 \\ \hline
-     C & 17 & 3  & 0  & 24 & 8  & 11 & 3  & 21 \\ \hline
-     D & 21 & 3  & 24 & 0  & 38 & 26 & 22 & 15 \\ \hline
-     E & 12 & 38 & 8  & 38 & 0  & 25 & 10 & 8  \\ \hline
-     F & 34 & 28 & 11 & 26 & 15 & 0  & 30 & 29 \\ \hline
-     G & 32 & 36 & 3  & 22 & 10 & 30 & 0  & 38 \\ \hline
-     H & 14 & 21 & 21 & 15 & 8  & 29 & 38 & 0  \\ 
+     A & 0     &    16 &    17 &    21 &    12 &    34 &    32 & 14 \\ \hline
+     B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
+     C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
+     D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
+     E & \x 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
+     F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
+     G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
+     H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
      \hline
     \end{tabular}
   \end{table}
 
 ```
-k
+
+2. So we are now at **E**. Continue search from **E**
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{green}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
+	 & A & B & C & D & E & F & G & H\\
+	 \hline
+     A & 0     &    16 &    17 &    21 & \y 12 &    34 &    32 & 14 \\ \hline
+     B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
+     C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
+     D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
+     E & \y 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
+     F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
+     G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
+     H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+
 #### Repeated nearest neighbor algorithm
 
 - Use [[#Nearest neighbor algorithm|nearest neighbor algorithm]] starting it in different vertices

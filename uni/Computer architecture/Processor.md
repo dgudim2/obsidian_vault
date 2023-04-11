@@ -328,7 +328,7 @@ dm -> {cpu, io}
 	- Memory
 	- [[#Program counter]]
 	- Computation
-- $ Can be inserted to avoid stalls
+- $ Can be inserted to avoid *stalls*
 
 - & Example:
 	- C <-- add A B
@@ -376,6 +376,23 @@ end
 | 6     | instr. 6 | instr. 5 | instr. 4 | instr. 3 | instr. 2 |
 | 7     | instr. 7 | instr. 6 | instr. 5 | instr. 4 | instr. 3 |
 | 8     | instr. 8 | instr. 7 | instr. 6 | instr. 5 | instr. 4 |
+
+- & Example with *stalls*
+
+- $add\ A\ B\ C$ - add *A* and *B*, put into *C*
+- $sub\ G\ K\ L$ - subtract *G* from *K* and put into *L*
+- $add\ C\ D\ M$ - add *C* and *D*, put into *M* (we have to wait for *C* from the first instruction)
+
+| clock | fetch | decode | execute | read mem | write mem |
+| ----- | ----- | ------ | ------- | -------- | --------- |
+| 1     | i. 1  |        |         |          |           |
+| 2     | i. 2  | i. 1   |         |          |           |
+| 3     | i. 3  | i. 2   | i. 1    |          |           |
+| 4     |       | i. 3   | i. 2    | i. 1     |           |
+| 5     |       |        | nop     | i. 2     | i. 1      |
+| 6     |       |        | i. 3    | nop      | i. 2      |
+| 7     |       |        |         | i. 3     | nop       | 
+| 8     |       |        |         |          | i. 3      |
 
 ## Program translation
 

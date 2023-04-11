@@ -21,6 +21,24 @@
 
 - Today, the systemic approach is widely used in management and is an important perspective for understanding and improving organizational performance.
 
+> [!note] 
+> - The application of system theory to management theory began in the *mid-20th century*. In the 1940s and 1950s, researchers in various fields, including engineering, biology, and psychology, were exploring the idea of systems as a way of understanding complex phenomena.
+> 
+> - In the 1960s, a group of management theorists, led by Kenneth Boulding, adopted the concept of the "general systems theory" as a way of integrating systems thinking into management theory. This theory viewed organizations as open systems that interact with their environment, taking in inputs and producing outputs.
+> 
+> - During this time, several management theorists, including Peter Drucker and Chester Barnard, began to apply system theory to the study of organizations. They recognized that organizations were complex, interdependent systems that could be analyzed and understood using systems thinking.
+> 
+> - Other management theorists, such as W. Edwards Deming and Peter Senge, further developed and popularized the idea of systems thinking in management. They emphasized the importance of understanding the entire system, including the interactions between various parts of the organization, in order to improve organizational performance.
+> 
+> - Today, the systemic approach to management is widely used and recognized as an important perspective for understanding and managing organizations. It has become an integral part of management education and practice, and is used by managers and researchers to analyze and improve organizational performance.
+> 
+> - The systemic approach in management is important because it *views organizations as complex, interrelated systems*. This approach emphasizes the interdependence of various parts of the organization and the need to consider the organization as a whole. It recognizes that changes in one part of the organization can have ripple effects throughout the system, and that the system as a whole is greater than the sum of its parts.
+> 
+> - The systemic approach involves *analyzing the organization's environment, stakeholders, processes, and structures* to understand *how they interact and influence each other*. This enables managers to identify potential sources of dysfunction or inefficiency and develop strategies to improve the overall performance of the organization.
+> 
+> - By using a systemic approach, managers can *better understand the root causes* of problems and develop solutions that address the underlying issues, rather than just treating the symptoms. This can lead to *more sustainable and effective improvements* in organizational performance over the long term.
+
+
 # System approach: Understanding complex phenomena
 
 - Systems approach is a way of analyzing and understanding complex phenomena
@@ -32,6 +50,11 @@
 - Useful in situations where complex issues and uncertainty exist and where multiple perspectives and disciplines are involved
 
 - Helps to develop more effective and sustainable solutions that consider the entire system, rather than just isolated parts of it
+
+> A systems approach, also known as a systemic approach, is a way of analyzing and understanding complex phenomena as *interconnected and interdependent systems*. It involves looking at a system as a whole and its parts, as well as the relationships and interactions between them. This approach recognizes that *changing one part of a system can have impacts on other parts of the system and on the system as a whole*.
+
+> In practical terms, a systems approach can be used in various fields, including *engineering*, *management*, *biology*, *social sciences*, and *ecology*, to help identify problems, develop solutions, and make decisions. It is particularly useful in situations where complex issues and uncertainty exist and where *multiple perspectives* and disciplines are involved. By understanding the underlying patterns and dynamics of a system, a systems approach can help us to develop more effective and sustainable solutions that consider the entire system, rather than just isolated parts of it.
+
 
 # Important terms related to systems theory
 
@@ -48,21 +71,79 @@
   * __Transformative process__
   * __Purpose, function__
 
+- System theory is a framework for understanding complex phenomena that emphasizes the interactions between the elements that make up a system. 
+
+- A system can be thought of as a structured set of interacting elements that work together to achieve a common purpose or function. The "dictionary" of systems theory includes several key concepts that are used to describe and analyze systems:
+
+- **Elements**: The individual components that make up a system. In other words, the parts that interact with each other to achieve a common purpose or function.
+- **Interactions/Connections**: The relationships between the elements in a system. These can be positive (when one element's change or action results in a beneficial effect on another element) or negative (when one element's change or action results in a detrimental effect on another element).
+- **Structure**: The organization or arrangement of the elements in a system. This refers to how the elements are connected to each other and how they are arranged in terms of hierarchy and complexity.
+- **Limits**: The boundaries or constraints that define the scope of the system. These could be physical, economic, or social limits.
+- **The Environment**: The larger context in which the system operates. The environment can have a significant impact on the behavior and performance of the system.
+- **Subsystems**: Smaller systems that exist within a larger system. Subsystems are themselves systems that contribute to the overall behavior and performance of the larger system.
+- **Input**: The resources or information that are needed to operate the system. Input is the flow of material, energy, and information that is required for the system to function.
+- **Output**: The products, services, or outcomes that are produced by the system. Output is the result of the transformation process that occurs within the system.
+- **Transformation**: The process by which input is converted into output. This involves a series of activities and processes that are designed to achieve the system's intended purpose or function.
+- **Purpose/Function**: The intended goal or objective of the system. This guides the system's design, operation, and evaluation.
+
+> These concepts are all interrelated and help to describe and analyze systems from a systemic perspective. Understanding these concepts can help to identify the relationships and dependencies between different parts of a system, which can then be used to improve the system's performance and design more efficient and effective systems.
+
 # Open system model
 
-  * With the help of a systemic approach, any object or process can be analyzed as __a whole__
+![[open-system-model.png]]
+
+- An open system is a system that interacts with its environment, meaning that it exchanges matter, energy, and information with the outside world. Examples of open systems include living organisms, social systems, and many industrial and ecological systems. Open systems are influenced by their environment and can adapt and evolve in response to changes in the environment.
+
+- In contrast, a closed system is a system that does not interact with its environment, meaning that it does not exchange matter, energy, or information with the outside world. An example of a closed system is a sealed container, where nothing can enter or exit the container. Closed systems are typically theoretical constructs that are useful for scientific analysis or modeling.
+
+- It's important to note that most real-world systems are not purely open or closed, but exist on a spectrum between the two. Even seemingly closed systems like a sealed container may still exchange heat with the environment or experience small leaks over time. Additionally, many systems can be viewed as open or closed depending on the level of analysis being used. For example, a cell can be viewed as an open system in the context of the nutrients and energy it absorbs from the environment, but as a closed system in terms of its genetic material and organelles.
+
+
+- With the help of a systemic approach, any **object** or process can be analyzed as __a whole__
+
+# Importance of Relations in a System
+
+- In a system, *everything is interconnected*. It is all about how the relationships and connections between the parts impact the system as a whole. Changing one part of a system will impact the entire system.
+- *Every action and decision will have unintended consequences*, so taking the time to analyze a system carefully, instead of rushing to find a “quick and easy fix,” is key.
+- If you want to *change a system*, it is *more efficient and impactful to change the interconnections* and purpose or function than it is to change the elements. Changing the rules and relationships can often create a “whole new system.”
+- To systems thinkers, there is *no final, definitive answer*. An answer is often the beginning to a new question.
+
 
 # Organization as an open system
 
-__External environment__
+__External environment__ / __Internal environment__
 
-__Internal environment__
+![[external-env.png]]
+
+> Remark: The diagram in the slide only highlights the factors of the microenvironment. There are many more factors in the external environment, and various methods are used to analyze them.
+
+- *An organization can be viewed as an open system*, which means that it interacts with its external environment to receive inputs and transform them into outputs. *The open system perspective emphasizes that an organization is not a closed*, *self-contained entity*, but rather is constantly interacting with its environment to obtain the resources it needs to survive and achieve its goals.
+
+- In an open system, inputs can take many forms, such as *materials, money, information, or people*. These inputs are transformed through various processes within the organization and then released back into the environment as outputs. *Outputs may include products, services, information, or other outcomes* that the organization produces.
+
+- The external environment of an organization can have a significant impact on its performance and success. This environment includes a wide range of factors, such as competitors, customers, suppliers, regulators, social norms, and technological trends. Organizations must monitor and adapt to changes in their external environment to remain competitive and achieve their goals.
+
+- The open system perspective also emphasizes that an organization is not a single, homogeneous entity, but rather is composed of many different subsystems or departments that have their own unique functions and goals. These subsystems are interconnected and interdependent, and changes in one subsystem can have ripple effects throughout the organization.
+
+- By viewing an organization as an open system, managers can *better understand the complex interactions between the organization and its environment*, as well as the *interdependence of the different parts of the organization*. This perspective can help managers to identify potential sources of dysfunction or inefficiency, develop strategies to improve the overall performance of the organization, and adapt to changes in the environment over time.
+
 
 # Management process as a system
 
-From the perspective of the cybernetic control model, management is the process of changing the state of the management object in order to achieve a specific goal.
+From the perspective of the cybernetic control model, management is the *process of changing the state of the management object* in order to *achieve a specific goal*.
 
-Recall from previous lecture – 6 fundamental elements of management
+![[goal-subj.png]]
+
+Recall from previous lecture – [[Lecture1#6 fundamental elements of management process|6 fundamental elements of management process]] (Object)
+
+- Management can be viewed as a system, where the process of achieving a goal is *controlled through __feedback loops__*. From the perspective of the cybernetic control model, management involves changing the state of the object being managed in order to achieve a specific goal. This could include, for example, *increasing productivity, improving quality, or reducing costs*.
+
+- In the cybernetic control model, the management process involves a cycle of feedback that is used to control and adjust the system. The feedback loop starts with setting a goal, which is then followed by monitoring the current state of the object of management. Based on the feedback received from monitoring, the system is adjusted to move towards the desired goal. This feedback loop continues until the goal is achieved, or until the goal is revised.
+
+- The cybernetic control model emphasizes the *importance of using feedback* to *adjust and control the system*, rather than simply trying to predict and plan for all possible contingencies. This model recognizes that there will always be uncertainties and changes in the environment that can impact the system, and that *feedback is essential for adapting* and improving the system over time.
+
+- Overall, the cybernetic control model provides a *useful framework for understanding the management* process as a system. By viewing management in this way, managers can more effectively identify and respond to problems, adjust their strategies based on feedback, and work towards achieving their goals.
+
 
 # Organization as a management object
 

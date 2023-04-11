@@ -1032,58 +1032,611 @@ Total weight = $13+13+10+12+18=66$
 flexGrow=1
 ===
 
+1. Let's start at *A*. 
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
+	 & \m A & B & C & D & E & F & G & H\\
+	 \hline
+     \m A & 0     &    16 &    17 &    21 & \z 12 &    34 &    32 & 14 \\ \hline
+        B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
+        C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
+        E & \z 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+> Find *smallest* number in the corresponding *row* and don't forget to mark cells. 
+
 ```` 
 ````col-md 
 flexGrow=1
 ===
 
-```` 
-`````
-1. Let's start at **A**. Find *smallest* number in the corresponding *row* and don't forget to mark cells. 
-```latex
-\newcommand\x{\cellcolor{black!10}}
+2. So we are now at *E*.
 
-  \begin{table}[]
-	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
-	 & A & B & C & D & E & F & G & H\\
-	 \hline
-     A & 0     &    16 &    17 &    21 &    12 &    34 &    32 & 14 \\ \hline
-     B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
-     C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
-     D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
-     E & \x 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
-     F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
-     G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
-     H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
-     \hline
-    \end{tabular}
-  \end{table}
-
-```
-
-2. So we are now at **E**. Continue search from **E**
 ```latex
 \newcommand\x{\cellcolor{black!10}}
 \newcommand\y{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
 
   \begin{table}[]
 	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
-	 & A & B & C & D & E & F & G & H\\
+	 & A & B & C & D & \m E & F & G & H\\
 	 \hline
-     A & 0     &    16 &    17 &    21 & \y 12 &    34 &    32 & 14 \\ \hline
-     B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
-     C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
-     D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
-     E & \y 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
-     F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
-     G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
-     H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
+        A & 0     &    16 &    17 &    21 & \y 12 &    34 &    32 & 14 \\ \hline
+        B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 & 21 \\ \hline
+        C & \x 17 & \x 3  &    0  &    24 &    8  &    11 &    3  & 21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 & 15 \\ \hline
+     \m E & \y 12 & \x 38 & \x 8  & \x 38 &    0  &    25 &    10 & 8  \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 & 29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  & 38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 & 0  \\ 
      \hline
     \end{tabular}
   \end{table}
 
 ```
 
+> Continue search from *E*
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+4. There are *2* ways to proceed: *C* and *H*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{green}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
+	 & A & B & C & D & \m E & F & G & H\\
+	 \hline
+        A & 0     &    16 &    17 &    21 & \y 12 &    34 &    32 &    14 \\ \hline
+        B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 &    21 \\ \hline
+        C & \x 17 & \x 3  &    0  &    24 & \z 8  &    11 &    3  &    21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 &    15 \\ \hline
+     \m E & \y 12 & \x 38 & \z 8  & \x 38 &    0  &    25 &    10 & \z 8  \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \z 8  & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+5. We choose *C* (you need to check both)
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c|c| }{}
+	 & A & B & \m C & D & E & F & G & H\\
+	 \hline
+     A & 0     &    16 &    17 &    21 & \y 12 &    34 &    32 &    14 \\ \hline
+        B & \x 16 &    0  &    3  &    3  &    38 &    28 &    36 &    21 \\ \hline
+     \m C & \x 17 & \x 3  &    0  &    24 & \y 8  &    11 &    3  &    21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    38 &    26 &    22 &    15 \\ \hline
+        E & \y 12 & \x 38 & \y 8  & \x 38 &    0  &    25 &    10 &    8  \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 & \x 15 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 10 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 8  & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+6. *E* has two marked cells. Mark diagonals with *1* mark and remove *E*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c| }{}
+	 & A & B & \m C & D & E & F & G \\
+	 \hline
+        A & \y 0  &    16 &    17 &    21 &    34 &    32 &    14 \\ \hline
+        B & \x 16 &    0  &    3  &    3  &    28 &    36 &    21 \\ \hline
+     \m C & \x 17 & \x 3  & \y 0  &    24 &    11 &    3  &    21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> Continue search from *C*
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+7. We are at *C*, here we have *2* ways again: *B* and *G*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c| }{}
+	 & A & B & \m C & D & F & G & H \\
+	 \hline
+        A & \y 0  &    16 &    17 &    21 &    34 &    32 &    14 \\ \hline
+        B & \x 16 &    0  & \z 3  &    3  &    28 &    36 &    21 \\ \hline
+     \m C & \x 17 & \z 3  & \y 0  &    24 &    11 & \z 3  &    21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \z 3  & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+8. We choose *B* (you need to check both)
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c|c| }{}
+	 & A & \m B & C & D & F & G & H \\
+	 \hline
+        A & \y 0  &    16 &    17 &    21 &    34 &    32 &    14 \\ \hline
+     \m B & \x 16 &    0  & \z 3  &    3  &    28 &    36 &    21 \\ \hline
+        C & \x 17 & \z 3  & \y 0  &    24 &    11 &    3  &    21 \\ \hline
+        D & \x 21 & \x 3  & \x 24 &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 11 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 3  & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+9. Hide *C* and mark *B* diagonal
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c| }{}
+	 & A & \m B & D & F & G & H \\
+	 \hline
+        A & \y 0  &    16 &    21 &    34 &    32 &    14 \\ \hline
+     \m B & \x 16 & \y 0  &    3  &    28 &    36 &    21 \\ \hline
+        D & \x 21 & \x 3  &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> Continue search from *B*
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+10. We have only *one* smallest element
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c| }{}
+	 & A & \m B & D & F & G & H \\
+	 \hline
+        A & \y 0  &    16 &    21 &    34 &    32 &    14 \\ \hline
+     \m B & \x 16 & \y 0  & \z 3  &    28 &    36 &    21 \\ \hline
+        D & \x 21 & \z 3  &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+11. We are now at *D*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c|c| }{}
+	 & A & B & \m D & F & G & H \\
+	 \hline
+        A & \y 0  &    16 &    21 &    34 &    32 &    14 \\ \hline
+        B & \x 16 & \y 0  & \z 3  &    28 &    36 &    21 \\ \hline
+     \m D & \x 21 & \z 3  &    0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 28 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 36 & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 21 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+12. Hide *B* and mark *D* diagonal
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & \m D & F & G & H \\
+	 \hline
+        A & \y 0  &    21 &    34 &    32 &    14 \\ \hline
+     \m D & \x 21 & \y 0  &    26 &    22 &    15 \\ \hline
+        F & \x 34 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \x 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> Continue search from *D*
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+13. We have only *one* smallest element
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & \m D & F & G & H \\
+	 \hline
+        A & \y 0  &    21 &    34 &    32 &    14 \\ \hline
+     \m D & \x 21 & \y 0  &    26 &    22 & \z 15 \\ \hline
+        F & \x 34 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 22 & \x 30 &    0  &    38 \\ \hline
+        H & \x 14 & \z 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+14. We are now at *H*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c|c| }{}
+	 & A & D & F & G & \m H \\
+	 \hline
+        A & \y 0  &    21 &    34 &    32 &    14 \\ \hline
+        D & \x 21 & \y 0  &    26 &    22 & \z 15 \\ \hline
+        F & \x 34 & \x 26 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 22 & \x 30 &    0  &    38 \\ \hline
+     \m H & \x 14 & \z 15 & \x 29 & \x 38 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+15. Hide *D* and mark *H* diagonal
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c| }{}
+	 & A & F & G & \m H \\
+	 \hline
+        A & \y 0  &    34 &    32 &    14 \\ \hline
+        F & \x 34 &    0  &    30 &    29 \\ \hline
+        G & \x 32 & \x 30 &    0  &    38 \\ \hline
+     \m H & \x 14 & \x 29 & \x 38 & \y 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> Continue search from *H*
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+16. We have only *one* smallest element
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+\newcommand\q{\cellcolor{red!60!black}}
+\newcommand\z{\cellcolor{blue}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c| }{}
+	 & A & F & G & \m H \\
+	 \hline
+        A & \y 0  &    34 &    32 & \q 14 \\ \hline
+        F & \x 34 &    0  &    30 & \z 29 \\ \hline
+        G & \x 32 & \x 30 &    0  &    38 \\ \hline
+     \m H & \q 14 & \z 29 & \x 38 & \y 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+> We can't take element *14* since the cycle will close too early, next element in *29*
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+17. We are now at *F*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+\newcommand\q{\cellcolor{red!60!black}}
+\newcommand\z{\cellcolor{green}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c|c| }{}
+	 & A & \m F & G & H \\
+	 \hline
+        A & \y 0  &    34 &    32 & \q 14 \\ \hline
+     \m F & \x 34 &    0  &    30 & \z 29 \\ \hline
+        G & \x 32 & \x 30 &    0  &    38 \\ \hline
+        H & \q 14 & \z 29 & \x 38 & \y 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+18. Hide *H* and mark *F* diagonal
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c| }{}
+	 & A & \m F & G \\
+	 \hline
+        A & \y 0  &    34 & 32 \\ \hline
+     \m F & \x 34 & \y 0  & 30 \\ \hline
+        G & \x 32 & \x 30 & 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> Continue search from *F*
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+19. We have only *one* smallest element
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{blue}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c| }{}
+	 & A & \m F & G \\
+	 \hline
+        A & \y 0  &    34 &    32 \\ \hline
+     \m F & \x 34 & \y 0  & \z 30 \\ \hline
+        G & \x 32 & \z 30 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+20. We are now at *G*
+
+```latex
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\z{\cellcolor{green}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c|c| }{}
+	 & A & F & \m G \\
+	 \hline
+        A & \y 0  &    34 &    32 \\ \hline
+        F & \x 34 & \y 0  & \z 30 \\ \hline
+     \m G & \x 32 & \z 30 &    0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+21. Hide *F* and mark *G* column
+
+```latex
+---
+width:74%
+---
+\newcommand\x{\cellcolor{black!10}}
+\newcommand\y{\cellcolor{yellow}}
+\newcommand\m{\cellcolor{violet!80}}
+
+  \begin{table}[]
+	\begin{tabular}{ c|c|c| }{}
+	 & A & \m G \\
+	 \hline
+        A & \y 0  &    32 \\ \hline
+     \m G & \x 32 & \y 0  \\ 
+     \hline
+    \end{tabular}
+  \end{table}
+
+```
+
+> We are done here, last element is *32*, cycle is complete
+
+```` 
+`````
 
 #### Repeated nearest neighbor algorithm
 

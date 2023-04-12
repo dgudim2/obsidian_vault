@@ -46,7 +46,7 @@ $$
 
 > Line, whose initial and final vertices coincide, is called a **loop**
 
-> A multi-graph that contains no parallel lines is called **directed graph** or **digraph**. 
+> A multi-graph that contains no parallel lines is called a [[Graphs - directed graphs|directed graph]] or **digraph**. 
 
 > **Digraph** without loops is a **simple digraph**.
 
@@ -226,8 +226,8 @@ d -- {e}
 
 ### Properties
 
-1. $A$ and $B$ are **adjacent**, C and D are not. Also see [[#Adjacency matrix]]
-2. $A$ and $B$ are **incident** to edge $\{a, b\}$. Also see [[#Incidence matrix]]
+1. $A$ and $B$ are **adjacent**, C and D are not. Also see: [[#Adjacency matrix]]
+2. $A$ and $B$ are **incident** to edge $\{a, b\}$. Also see: [[#Incidence matrix]]
 3. Edges $\{a,d\}$ and $\{e,d\}$ are **adjacent**
 
 ```dot

@@ -132,6 +132,14 @@ f -- g [label="3"]
 > 1. **Weight** of the [[#Tree|tree]]: sum of weights of it’s edges
 > 2. **Minimal** [[#Tree|tree]]: tree with smallest possible **weight**
 
+### Constructing the tree
+
+1. [[#Kruskal’s algorithm]]
+2. [[#Prim's algorithm]]
+3. [[#Edge elimination from a cycle]]
+4. [[#Breadth-first search]]
+5. [[#Depth-first search]]
+
 #### Kruskal’s algorithm
 
 1. Choose an [[Graphs - basics#Undirected graph|edge]] of smallest *weight*, if it will not make a [[Graphs - connectivity#Cycle|cycle]]
@@ -290,6 +298,621 @@ f -- i
 4. Eliminate this [[Graphs - basics#Undirected graph|edge]]
 5. Continue until no more [[Graphs - connectivity#Cycle|cycles]] left
 
+#### Breadth-first search
+
+1. Choose a [[Graphs - basics#Directed graphs|vertex]] from the graph
+2. Look for all it's [[Graphs - basics#Properties|adjacent]] vertices, add them to the *n-th* level of the tree (if not already)
+3. Now search for [[Graphs - basics#Properties|adjacent]] vertices of those *vertices*
+4. Repeat until all [[Graphs - basics#Directed graphs|vertices]] are added
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5, 
+      fixedsize = true
+      color=green,   
+	  fillcolor = white] 
+
+v0 [color=red, penwidth=2]
+v3, v2, v1
+
+edge [color = lightgrey] 
+ 
+v0 -- {v1 v2 v3}
+v2 -- {v3 v1 v4}
+v4 -- {v3 v5}
+v5 -- v1
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5, 
+      fixedsize = true
+      color=green,   
+	  fillcolor = white] 
+
+v0 [color=red, penwidth=2]
+v3, v2, v1 [color=darkgreen, fillcolor=lightgreen,  penwidth=2]
+
+edge [color = lightgrey] 
+ 
+v0 -- {v1 v2 v3}
+v2 -- {v3 v1 v4}
+v4 -- {v3 v5}
+v5 -- v1
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5, 
+      fixedsize = true
+      color=green,   
+	  fillcolor = white,
+	  penwidth=2] 
+
+v0 [color=red,penwidth=2]
+v3, v2, v1 [color=darkgreen, fillcolor=lightgreen]
+v4, v5 [color=darkblue,fillcolor=lightblue]
+
+edge [color = lightgrey] 
+ 
+v0 -- {v1 v2 v3}
+v2 -- {v3 v1 v4}
+v4 -- {v3 v5}
+v5 -- v1
+
+} 
+```
+
+````
+````col-md
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5, 
+      fixedsize = true
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey] 
+ 
+v0 -- {v1 v2 v3}
+v1 -- v5
+v2 -- v4
+
+} 
+```
+````
+
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5,
+      fixedsize=true, 
+      color=green, 
+      fillcolor = white, penwidth=2] 
+
+0 [color=red]
+1, 2, 3, 4, 5 [color=darkgreen, fillcolor=lightgreen]
+10 [pos="-3,-1.3!"]
+15, 18, 14, 11, 6, 10 [color=darkblue, fillcolor=lightblue]
+16, 17, 13, 12, 7, 8, 9 [color=chocolate, fillcolor=orange]
+
+edge [color = lightgrey] 
+ 
+0 -- {1 2 3 4 5}
+6 -- {1 2 3 7 8 9}
+5 -- {14, 15, 18}
+4 -- {11 14}
+10 -- {3 7 8 9}
+12 -- {11 13}
+14 -- {11 13}
+15 -- {18, 16}
+17 -- {18, 16}
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.5, 
+      height=0.5,
+      fixedsize = true 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey] 
+ 
+0 -- {1 2 3 4 5}
+1 -- 6
+6 -- {7 8 9}
+3 -- 10
+4 -- {11, 14}
+11 -- 12
+14 -- 13
+5 -- {15 18}
+15 -- 16
+18 --17
+
+} 
+```
+
+```` 
+`````
+
+#### Depth-first search
+
+**$n$** - new vertex, **$u$** - used vertex
+
+1. Note all vertices of *graph* by **n**
+2. Choose [[Graphs - basics#Directed graphs|vertex]] **$v_{0}$** and call it *root*
+3. Change *marking* of *root* to **$u$**
+4. While there are *unchosen vertices* [[Graphs - basics#Properties|adjacent]] to **$v$** do:
+	1. Take [[Graphs - basics#Directed graphs|vertex]] **$w$**, [[Graphs - basics#Properties|adjacent]] to **$v$** 
+	2. If **$w$** is noted by **$n$**, add [[Graphs - basics#Undirected graph|edge]] $\{v,w\}$ to the *tree*, change it's mark (**$w$** mark) to **$u$**
+		- Now **$v=w$** and repeat from step **4**
+	1. If **$w$** is noted by **$u$** and is not **father** of **$v$** (in the tree), then add [[Graphs - basics#Undirected graph|edge]] $\{v,w\}$ to set of *backward edges* and repeat from step **4**
+5. Repeat **4** until there are no more *unvisited* [[Graphs - basics#Directed graphs|vertices]] left
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+rankdir = "LR"
+
+graph [layout = neato] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+a b c d e f g h
+
+edge [color = lightgrey] 
+
+b -- {a d}
+a -- {d e c}
+e -- {c h}
+d -- {f g}
+g -- f
+
+} 
+```
+
+`````col 
+````col-md 
+flexGrow=0.5
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+a -- b
+ 
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+ 
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+ 
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+ 
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+f -- d [penwidth = 1, constraint=false]
+ 
+} 
+```
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+
+edge [penwidth = 1, constraint=false]
+f -- d 
+d -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+a -- c
+
+edge [penwidth = 1, constraint=false]
+f -- d 
+d -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+a -- c
+c -- e
+
+edge [penwidth = 1, constraint=false]
+f -- d 
+d -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1.25
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+a -- c
+c -- e
+
+edge [penwidth = 1, constraint=false]
+f -- d 
+d -- a
+e -- a
+
+} 
+```
+
+```` 
+````col-md 
+flexGrow=1.25
+===
+
+```dot 
+---
+preset:math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+edge [color = lightgrey, penwidth = 2] 
+
+b -- {a d}
+d -- g
+g -- f
+a -- c
+c -- e
+e -- h
+
+edge [penwidth = 1, constraint=false]
+f -- d 
+d -- a
+e -- a
+
+} 
+```
+
+```` 
+`````
+
 --- 
 <br>
 
@@ -318,7 +941,7 @@ node [shape = circle,
       fillcolor = white] 
 0 4 6
 
-node [color=yellow,fillcolor=darkred,fontcolor=white]
+node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 1
 
 node [color=red,fillcolor=darkred,fontcolor=white]
@@ -359,7 +982,7 @@ edge [color = darkgrey]
 		      fillcolor = white] 
 		0 4
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		2
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -396,7 +1019,7 @@ edge [color = darkgrey]
 		      fillcolor = white] 
 		4 6
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		3
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -439,7 +1062,7 @@ edge [color = darkgrey]
 		node [color=red,fillcolor=darkred,fontcolor=white]
 		7 8 9
 		
-		node [color=green,fillcolor=darkgreen,fontcolor=white]
+		node [color=green,fillcolor=darkgreen,fontcolor=white,penwidth=2]
 		6
 		
 		edge [color = darkgrey] 
@@ -470,7 +1093,7 @@ edge [color = darkgrey]
 		      fillcolor = white] 
 		4
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		6
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -505,7 +1128,7 @@ edge [color = darkgrey]
 		      color=green,
 		      fillcolor = white] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		0
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -539,7 +1162,7 @@ edge [color = darkgrey]
 		      color=green,
 		      fillcolor = white] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		7
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -572,7 +1195,7 @@ edge [color = darkgrey]
 		      color=green,
 		      fillcolor = white] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white]
+		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
 		8
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]

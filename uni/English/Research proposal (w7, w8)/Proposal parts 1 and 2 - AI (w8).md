@@ -1,5 +1,8 @@
 # TOPIC - Artificial Intelligence
 
+[[article1-AI.pdf]]
+[[Proposal- Part 1 and 2 AI.docx]]
+
 > Look at the pictures below and discuss the following questions
 
 1. ? What fields may AI be used (or is already being used) in, in the near future?
@@ -106,7 +109,8 @@ Although there is research on SPAs and ITSes there is little on the area of teac
 The aim of my research would be to find out how students and teachers at VGTU feel about using AI in the classroom.
 
 
-# PART 2 -Research Questions
+# PART 2 - Research Questions
+
 > Write four research questions for the following thesis statement.  Think about what you would like to find out, who you would like to ask
 > ‘The aim of the study is to see whether SPA’s could be implemented into academic life at VGTU.’
 

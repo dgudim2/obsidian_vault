@@ -71,19 +71,83 @@ A [[#Directed graph|directed graph]] has *5* tasks and *2* fictive (BEGIN and EN
 
 #### Priority lists
 
-1. Random
+##### Random
 
-A B C D E
+- A B C D E
 
 ```asciidoc
+[cols=18*]
 |===
 
-| [d-red-cell]#Obvious# and [l-red]*very obvious*.
-| [red]#Obvious# and [red]*very obvious*.
-| [red]#Obvious# and [red]*very obvious*.
-| [red]#Obvious# and [red]*very obvious*.
+^|
+^|1
+^|2
+^|3
+^|4
+^|5
+^|6
+^|7
+^|8
+^|9
+^|10
+^|11
+^|12
+^|13
+^|14
+^|15
+^|16
+^|17
+
+| V1
+6+^| [yellow-cell]#A#
+2+^| [green-cell]#D#
+9+^| -
+
+| V1
+5+^| [orange-cell]#B#
+7+^| [cyan-cell]#C#
+5+^| [blue-cell]#E#
 
 |===
 ```
 
+- A B D C E
 
+```asciidoc
+[cols=19*]
+|===
+
+^|
+^|1
+^|2
+^|3
+^|4
+^|5
+^|6
+^|7
+^|8
+^|9
+^|10
+^|11
+^|12
+^|13
+^|14
+^|15
+^|16
+^|17
+^|18
+
+| V1
+6+^| [yellow-cell]#A#
+2+^| [green-cell]#D#
+5+^| -
+5+^| [blue-cell]#E#
+
+| V1
+5+^| [orange-cell]#B#
+  ^| -
+7+^| [cyan-cell]#C#
+5+^| -
+
+|===
+```

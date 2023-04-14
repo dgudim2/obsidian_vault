@@ -26,4 +26,4 @@
 10. Psycho-pass (8.8/10)
 11. Cyberpunk: Edgerunners (9/10)
 12. Goblin slayer (6/10)
-13. 
+13. Summertime rendering (9/10)

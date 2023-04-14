@@ -1,7 +1,7 @@
 # TOPIC - Artificial Intelligence
 
-[[article1-AI.pdf]]
 [[Proposal- Part 1 and 2 AI.docx]]
+[[article1-AI.pdf]]
 
 > Look at the pictures below and discuss the following questions
 

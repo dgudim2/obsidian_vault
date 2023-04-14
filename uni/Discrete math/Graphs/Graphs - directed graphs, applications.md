@@ -5,10 +5,19 @@
 > A graph, [[Graphs - basics#Vertices and edges|edges]] of which have *directions*
 > See also: [[Graphs - basics#Directed graphs]]
 
-## Applications
+# Applications
 
-### Scheduling
- 
+## Scheduling
+
+> [!definition] 
+> **Executors** - workers performing a task ($V_{1}, V_{2}, V_{3}$)
+> **Tasks** - separate jobs that *can't* be subdivided (Must be performed by *one* **Executor**)
+> **Execution times** - a number assigned to each task. (how much time does the task take to execute)
+> **Consistency relationships** - are constraints on the order in which tasks are performed. 
+> 
+> > [!note] 
+> > Task *X* precedes Task *Y*, and this means that Task *Y* cannot be started until Task *X* is completed.
+
 The main stages of the problem are conveniently described by a [[#Directed graph|directed graph]]:
 - Graph [[Graphs - basics#Vertices and edges|vertices]] – tasks
 - Arcs (directed [[Graphs - basics#Vertices and edges|edges]]) - Relationships of Consistency.
@@ -65,15 +74,23 @@ A [[#Directed graph|directed graph]] has *5* tasks and *2* fictive (BEGIN and EN
 > The notion *A(6)* means that the execution of task *A* takes *6* units of time
 > *A* is executed before *D* (shown by arrow)
 
+### Priority lists
+
 > [!definition] 
-> **Executors** - workers performing a task ($V_{1}, V_{2}, V_{3}$)
-> **Tasks** - separate jobs that *can't* be subdivided (Must be performed by *one* **Executor**)
+> Rules according to which we assign tasks to *executors* based on a *list of priorities* are:
+> - **All executors are busy**
+> 	- Wait
+> - **One executor is free** -
+> 	- Review the list of priorities from the beginning, looking for the first *prepared* task, and assign it to that executor. 
 
-#### Priority lists
+#### Random
 
-##### Random
+> [!note] 
+> There are $5!=120$ different schedules
+> - ! But not every can be fulfilled
 
-- A B C D E
+- A B C D E 
+	- **17** time units
 
 ```asciidoc
 [cols=18*]
@@ -112,6 +129,7 @@ A [[#Directed graph|directed graph]] has *5* tasks and *2* fictive (BEGIN and EN
 ```
 
 - A B D C E
+	- **18** time units
 
 ```asciidoc
 [cols=19*]
@@ -151,3 +169,89 @@ A [[#Directed graph|directed graph]] has *5* tasks and *2* fictive (BEGIN and EN
 
 |===
 ```
+
+- C E B A D
+	- **20** time units
+
+```asciidoc
+[cols=21*]
+|===
+
+^|
+^|1
+^|2
+^|3
+^|4
+^|5
+^|6
+^|7
+^|8
+^|9
+^|10
+^|11
+^|12
+^|13
+^|14
+^|15
+^|16
+^|17
+^|18
+^|19
+^|20
+
+| V1
+7+^| [cyan-cell]#C#
+5+^| [blue-cell]#E#
+6+^| [yellow-cell]#A#
+2+^| [green-cell]#D#
+
+
+| V1
+7+^| 
+5+^| [orange-cell]#B#
+8+^| -
+
+|===
+```
+
+#### Descending time algorithm
+
+> Longer jobs should be done earlier than short-term ones.
+
+- C A B E D
+
+```asciidoc
+[cols=14*]
+|===
+
+^|
+^|1
+^|2
+^|3
+^|4
+^|5
+^|6
+^|7
+^|8
+^|9
+^|10
+^|11
+^|12
+^|13
+
+| V1
+7+^| [cyan-cell]#C#
+5+^| [blue-cell]#E#
+  ^| -
+
+
+| V1
+6+^| [yellow-cell]#A#
+5+^| [orange-cell]#B#
+2+^| [green-cell]#D#
+
+|===
+```
+
+#### Critical path algorithm
+

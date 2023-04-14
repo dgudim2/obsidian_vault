@@ -1,4 +1,4 @@
-mood
+
 # Directed graph
 
 > [!definition] 
@@ -13,7 +13,7 @@ The main stages of the problem are conveniently described by a [[#Directed graph
 - Graph [[Graphs - basics#Vertices and edges|vertices]] – tasks
 - Arcs (directed [[Graphs - basics#Vertices and edges|edges]]) - Relationships of Consistency.
 
-> Directed graphs describe relationships between objects, but these relationships are not necessarily reciprocal. 
+> Directed graphs describe *relationships* between objects, but these relationships are not necessarily reciprocal
 
 When object is *associated* with another object, this is indicated by an *arrow* pointing from point to point
 
@@ -59,4 +59,31 @@ E -> END
 
 } 
 ```
+
+A [[#Directed graph|directed graph]] has *5* tasks and *2* fictive (BEGIN and END) with *0* **execution time**
+
+> The notion *A(6)* means that the execution of task *A* takes *6* units of time
+> *A* is executed before *D* (shown by arrow)
+
+> [!definition] 
+> **Executors** - workers performing a task ($V_{1}, V_{2}, V_{3}$)
+> **Tasks** - separate jobs that *can't* be subdivided (Must be performed by *one* **Executor**)
+
+#### Priority lists
+
+1. Random
+
+A B C D E
+
+```asciidoc
+|===
+
+| [d-red-cell]#Obvious# and [l-red]*very obvious*.
+| [red]#Obvious# and [red]*very obvious*.
+| [red]#Obvious# and [red]*very obvious*.
+| [red]#Obvious# and [red]*very obvious*.
+
+|===
+```
+
 

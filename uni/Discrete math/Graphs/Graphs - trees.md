@@ -938,10 +938,11 @@ node [shape = circle,
       width=0.3, 
       height=0.3, 
       color=green,
-      fillcolor = white] 
+      fillcolor=white,
+      penwidth=2] 
 0 4 6
 
-node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+node [color=yellow,fillcolor=darkred,fontcolor=white]
 1
 
 node [color=red,fillcolor=darkred,fontcolor=white]
@@ -979,10 +980,11 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		0 4
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+		node [color=yellow,fillcolor=darkred,fontcolor=white]
 		2
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -1016,10 +1018,11 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		4 6
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+		node [color=yellow,fillcolor=darkred,fontcolor=white]
 		3
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -1053,7 +1056,8 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		4 0
 		
 		node [color=yellow,fillcolor=darkred,fontcolor=white]
@@ -1062,7 +1066,7 @@ edge [color = darkgrey]
 		node [color=red,fillcolor=darkred,fontcolor=white]
 		7 8 9
 		
-		node [color=green,fillcolor=darkgreen,fontcolor=white,penwidth=2]
+		node [color=green,fillcolor=darkgreen,fontcolor=white]
 		6
 		
 		edge [color = darkgrey] 
@@ -1090,7 +1094,8 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      fontcolor=white] 
 		4
 		
 		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
@@ -1099,7 +1104,7 @@ edge [color = darkgrey]
 		node [color=red,fillcolor=darkred,fontcolor=white]
 		7 8 9
 		
-		node [color=green,fillcolor=darkgreen,fontcolor=white]
+		node [color=green,fillcolor=darkgreen]
 		0
 		
 		edge [color = darkgrey] 
@@ -1126,9 +1131,10 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+		node [color=yellow,fillcolor=darkred,fontcolor=white]
 		0
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -1160,9 +1166,10 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+		node [color=yellow,fillcolor=darkred,fontcolor=white]
 		7
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -1193,9 +1200,10 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		
-		node [color=yellow,fillcolor=darkred,fontcolor=white,penwidth=2]
+		node [color=yellow,fillcolor=darkred,fontcolor=white]
 		8
 		
 		node [color=red,fillcolor=darkred,fontcolor=white]
@@ -1226,7 +1234,8 @@ edge [color = darkgrey]
 		      width=0.3, 
 		      height=0.3, 
 		      color=green,
-		      fillcolor = white] 
+		      fillcolor=white,
+		      penwidth=2] 
 		4 9
 		
 		edge [color = darkgrey] 
@@ -1358,8 +1367,6 @@ preset:default-tikz
 
 ```` 
 `````
-
-
 
 `````col 
 ````col-md 

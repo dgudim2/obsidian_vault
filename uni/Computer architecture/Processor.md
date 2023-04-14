@@ -506,7 +506,7 @@ graph TB;
 	- Typically
 		- **Opcode** at the beginning of instruction
 		- **Operands** follow **opcode**
-			 ```asciidoc-table
+			 ```asciidoc
 			[frame=none]
 			[cols="1,1,1,3"]
 			|===
@@ -579,10 +579,9 @@ graph TB;
 - & Example: 
 	- A *[[#Registers|register]]-offset* [[#Parts of an instruction|operand]] specifies a [[#Registers|register]] and an [[#Immediate operand|immediate]] value
 	- [[#Processor Terminology|Processor]] adds immediate value to contents of the [[#Registers|register]] and uses the result as  [[#Parts of an instruction|operand]]
-
-```asciidoc-table
+```asciidoc
 [frame=none]
-[cols="1,1,1,1,1,1,1"]
+[cols="7*"]
 |===
 ^| Opcode
 3+^| Operand 1
@@ -896,7 +895,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - Before [[#Subroutine call|calling a subroutine]] (*A*, *B*, *C*, *D* are arguments)
 ```asciidoc
 [frame=none]
-[cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
+[cols="16*"]
 |===
 
 8+^| Registers 0-7
@@ -926,7 +925,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - After [[#Subroutine call|calling a subroutine]]
 ```asciidoc
 [frame=none]
-[cols="1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1"]
+[cols="16*"]
 |===
 
 4+^| Unavailable

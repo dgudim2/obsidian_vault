@@ -2,7 +2,7 @@
 # TOPIC - Operating Systems
 
 [[Proposal- Part 3 and 4 OS.docx]]
-[[Proporal parts 3 and 4 - OS (w9)]]
+[[article2-OS.pdf]]
 
 > Look at the pictures below and discuss the following questions
 

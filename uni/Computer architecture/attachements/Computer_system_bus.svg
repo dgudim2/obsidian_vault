@@ -1,0 +1,76 @@
+<svg width="743.61" height="545.07" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <title>computer system bus</title>
+ <g transform="translate(-1.2332 -116.37)">
+  <polygon transform="matrix(.33333 0 0 -.56463 392.83 549.74)" points="44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144 26.488 44.144 26.488 211.89"/>
+  <polygon transform="matrix(.33333 0 0 .79426 392.83 265.83)" points="44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144 26.488 44.144 26.488 211.89"/>
+  <polygon transform="matrix(.33333 0 0 .91782 331.79 267.57)" points="44.144 44.144 70.631 44.144 35.316 0 0 44.144 26.488 44.144 26.488 211.89 44.144 211.89"/>
+  <g>
+   <rect x="46.197" y="152.44" width="170.01" height="114.57" fill="#00b4b5" stroke="#000000" stroke-width="2">
+    <title>CPU</title>
+   </rect>
+   <rect x="254.44" y="153.42" width="190.85" height="114.45" fill="#00b4b5" stroke="#000000" stroke-width="2.118">
+    <title>Memory</title>
+   </rect>
+   <switch fill="#000000" font-family="'Bitstream Vera Sans'" font-size="40px">
+    <text  x="269.47443" y="217.11426" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="269.47443" y="217.11426" font-family="Verdana" font-size="40px" style="line-height:1.25">Memorija</tspan></text>
+    <text x="269.47443" y="217.11426" style="line-height:0%" xml:space="preserve"><tspan x="269.47443" y="217.11426" font-family="Verdana" font-size="40px" style="line-height:1.25">Memory</tspan></text>
+   </switch>
+   <rect  x="476.84" y="152.53" width="200.66" height="114.4" fill="#00b4b5" stroke="#000000" stroke-width="2.1712">
+    <title>IO</title>
+   </rect>
+   <switch fill="#000000" font-family="Verdana" font-size="33.725px">
+    <text  transform="scale(1.0576 .94558)" x="465.85843" y="206.86366" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="465.85843" y="206.86366" style="line-height:1.25">Ulaz i </tspan><tspan  x="465.85843" y="249.94983" style="line-height:1.25">izlaz</tspan></text>
+    <text transform="scale(1.0576 .94558)" x="465.85843" y="206.86366" style="line-height:0%" xml:space="preserve"><tspan x="465.85843" y="206.86366" style="line-height:1.25">Input and</tspan><tspan x="465.85843" y="249.94983" style="line-height:1.25">output</tspan></text>
+   </switch>
+   <rect  x="34.797" y="373.3" width="612.57" height="47.121" fill="#7bffff" stroke="#000000" stroke-width="2"/>
+   <switch fill="#000000" font-family="'Bitstream Vera Sans'" font-size="40px">
+    <text  x="238.51543" y="411.17532" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="238.51543" y="411.17532" font-family="Verdana" font-size="40px" style="line-height:1.25">Kontrolna sab.</tspan></text>
+    <text x="238.51543" y="411.17532" style="line-height:0%" xml:space="preserve"><tspan x="238.51543" y="411.17532" font-family="Verdana" font-size="40px" style="line-height:1.25">Control bus</tspan></text>
+   </switch>
+   <rect x="35.259" y="461.3" width="612.57" height="47.121" fill="#7bffff" stroke="#000000" stroke-width="2"/>
+   <switch fill="#000000" font-family="'Bitstream Vera Sans'" font-size="40px">
+    <text  x="238.97739" y="498.94653" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="238.97739" y="498.94653" font-family="Verdana" font-size="40px" style="line-height:1.25">Adresna sab.</tspan></text>
+    <text x="238.97739" y="498.94653" style="line-height:0%" xml:space="preserve"><tspan x="238.97739" y="498.94653" font-family="Verdana" font-size="40px" style="line-height:1.25">Address bus</tspan></text>
+   </switch>
+   <rect x="32.487" y="549.31" width="612.57" height="47.121" fill="#7bffff" stroke="#000000" stroke-width="2"/>
+   <switch fill="#000000" font-family="'Bitstream Vera Sans'" font-size="40px">
+    <text  x="236.20555" y="586.95209" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="236.20555" y="586.95209" font-family="Verdana" font-size="40px" style="line-height:1.25">Podatkovna sab.</tspan></text>
+    <text x="236.20555" y="586.95209" style="line-height:0%" xml:space="preserve"><tspan x="236.20555" y="586.95209" font-family="Verdana" font-size="40px" style="line-height:1.25">Data bus</tspan></text>
+   </switch>
+  </g>
+  <rect x="11.05" y="345.7" width="716.58" height="278.8" fill="none" stroke="#000000" stroke-dasharray="3.80400672, 3.80400672" stroke-width="1.902"/>
+  <switch fill="#000000" font-family="'Bitstream Vera Sans'" font-size="40px">
+   <text  transform="rotate(-90)" x="-604.06744" y="700.77258" style="line-height:0%" systemLanguage="bs" xml:space="preserve"><tspan  x="-604.06744" y="700.77258" font-family="Verdana" font-size="40px" style="line-height:1.25">Sistemska sab.</tspan></text>
+   <text transform="rotate(-90)" x="-604.06744" y="700.77258" style="line-height:0%" xml:space="preserve"><tspan x="-604.06744" y="700.77258" font-family="Verdana" font-size="40px" style="line-height:1.25">System bus</tspan></text>
+  </switch>
+  <polygon transform="matrix(.33333 0 0 -.56463 602.35 549.36)" points="26.488 44.144 26.488 211.89 44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144"/>
+  <polygon transform="matrix(.33333 0 0 .79426 602.35 265.45)" points="26.488 44.144 26.488 211.89 44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144"/>
+  <g transform="matrix(4.9462 0 0 4.1915 -440.09 -47.64)">
+   <path d="m107.25 97.483v-19.967" fill="none" stroke="#000000"/>
+   <path transform="matrix(1.5403 .56327 -.61405 1.4129 -24.165 -52.639)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+   <path transform="matrix(1.5403 -.56327 -.61405 -1.4129 -24.165 228.18)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+  </g>
+  <g transform="matrix(4.9462 0 0 4.1915 -235.38 -48.038)">
+   <path d="m107.25 97.483v-19.967" fill="none" stroke="#000000"/>
+   <path transform="matrix(1.5403 .56327 -.61405 1.4129 -24.165 -52.639)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+   <path transform="matrix(1.5403 -.56327 -.61405 -1.4129 -24.165 228.18)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+  </g>
+  <g transform="matrix(4.9462 0 0 4.1915 -17.108 -48.038)">
+   <path d="m107.25 97.483v-19.967" fill="none" stroke="#000000"/>
+   <path transform="matrix(1.5403 .56327 -.61405 1.4129 -24.165 -52.639)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+   <path transform="matrix(1.5403 -.56327 -.61405 -1.4129 -24.165 228.18)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+  </g>
+  <g transform="matrix(4.9462 0 0 7.8214 34.686 -321.63)">
+   <path d="m107.25 97.483v-19.967" fill="none" stroke="#000000"/>
+   <path transform="matrix(1.5403 .56327 -.61405 1.4129 -24.165 -52.639)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+   <path transform="matrix(1.5403 -.56327 -.61405 -1.4129 -24.165 228.18)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+  </g>
+  <path d="m139.72 439.89v-172.1" fill="none" stroke="#000000" stroke-width="6.5294"/>
+  <path transform="matrix(7.6186 4.4056 -3.0372 11.051 -510.29 -733.96)" d="m110.75 64-2.3448-1.8962 2.8146-1.0825-0.46979 2.9788z"/>
+  <switch fill="#000000" font-family="Bitstream Vera Sans" font-size="40px">
+   <text x="85.467583" y="218.97112" fill="#000000" font-family="'Bitstream Vera Sans'" style="line-height:0%" xml:space="preserve"><tspan x="85.467583" y="218.97112" font-family="Verdana" font-size="40px" style="line-height:1.25">CPU</tspan></text>
+  </switch>
+  <polygon transform="matrix(.33333 0 0 -.56463 175.67 550.6)" points="44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144 26.488 44.144 26.488 211.89"/>
+  <polygon transform="matrix(.33333 0 0 .79426 175.67 266.68)" points="44.144 211.89 44.144 44.144 70.631 44.144 35.316 0 0 44.144 26.488 44.144 26.488 211.89"/>
+ </g>
+</svg>

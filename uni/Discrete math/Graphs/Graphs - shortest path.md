@@ -618,6 +618,7 @@ mix-multiplier:0.4
 
 --- 
 <br>
+
 # Travelling salesman problem
 
 > [!definition] 

@@ -24,11 +24,11 @@ flexGrow=1
 ===
 
 - ? Properties:
-	- Operates *independent* of processor
+	- Operates *independent* of [[Processor|processor]]
 	- May have *separate* power supply
 	- Digital signals used for control
 
-- $ Example: panel lights
+- & Example: panel lights
 
 ````
 ````col-md
@@ -89,7 +89,7 @@ b:f1 -> a:f1 [label="external\nconnection", fontcolor=white]
 - ! Limitation: at *high data rates*, *close parallel* wires have potential for *interference*
 
 - & Examples:
-	- [Memory bus](https://en.wikipedia.org/wiki/Bus_(computing)#Memory_bus)
+	- [Memory bus](https://en.wikipedia.org/wiki/Bus_(computing)#Memory_bus) (see [[#Buses]])
 	- [SCSI](https://en.wikipedia.org/wiki/Parallel_SCSI)
 	- [PCI](https://en.wikipedia.org/wiki/Peripheral_Component_Interconnect)
 
@@ -104,8 +104,78 @@ b:f1 -> a:f1 [label="external\nconnection", fontcolor=white]
 
 - Transfer in **one direction** at a time
 - Interfaces must *negotiate* access before transmitting
-- & Example: processor can *read* or *write* to disk, but can only perform one operation at a time
+- & Example: [[Processor|processor]] can *read* or *write* to disk, but can only perform one operation at a time
 
+## I/O performance
 
+### Latency
 
+- Measure of the *time* required to perform a transfer
 
+> Latencies of input and output may *differ* 
+
+### Throughput
+
+- Measure of the *amount* of data that can be transferred per *unit time*
+- @ Informally called speed
+
+## Data multiplexing
+
+```dynamic-svg
+---
+invert-shade
+width:70%
+---
+[[Multiplexing_diagram.svg]]
+```
+
+- Arises from *hardware limits* on parallelism (pins or wires)
+- Allows sharing of resources
+
+### Multiplexor
+
+- Accepts *multiple* sources
+- Sends each item along with an **ID**
+
+> [!seealso] 
+> [[Processor#Multiplexer]]
+
+### Demultiplexor
+
+- Receives an **ID** along with data
+- Uses this **ID** to reassemble items correctly
+
+## Buses
+
+### Why use a bus?
+
+- Cannot afford to have a *separate* physical interconnect *per device*
+	- ! Too many physical wires
+	- ! Not enough pins on a processor chip
+- Solution is a shared **bus**
+	- $ Allows *multiple devices* to use a given interconnection to transfer data
+	- & Typical use: connect [[Processor|processor]] to:
+		- Memory
+		- [[#I/O Devices]]
+
+### Bus characteristics
+
+- Passive (does not contain many electronic components)
+	- Just a *set of wires*
+	- Attached devices handle the communication
+	- May have **arbiter** that *manages sharing*
+- Shared my *multiple devices*
+	- Each component connects to the **bus**
+- **Bus** way have many wires (64)
+	- This facilitates *parallel* data transfer
+- $ Needs an access protocol
+	- Determines which device can use the **bus** at any time
+	- All attached devices *follow the protocol*
+- ~ It is possible to have *multiple* **buses** in one computer
+
+```dynamic-svg
+---
+invert-shade
+---
+[[Computer_system_bus.svg]]
+```

@@ -10,7 +10,7 @@
 
 ```dynamic-svg
 ---
-inverted
+invert-shade
 width:350px
 ---
 [[github.svg]]
@@ -42,7 +42,7 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted
+invert-shade
 path-fill:skip
 path-implicit-stroke
 width:150px
@@ -123,7 +123,7 @@ flexGrow=1
 
 ```dynamic-svg
 ---
-inverted
+invert-shade
 ---
 [[vt_git_instance.svg]]
 ```

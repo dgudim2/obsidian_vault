@@ -107,76 +107,100 @@ dm -> {cpu, io}
 
 ## Roles
 
-- <u>Coprocessor</u>
-	- Operates *in conjunction* and *under control* of *another [[#Processor Terminology|processor]]* 
-	- Usually
-		- Special-purpose
-		- Performs a *single task*
-		- Operates at *high speed*
-	- & Example: FPU (Floating point unit)
-- <u>Microcontroller</u>
-	- [[#Programmable device]]
-	- *Dedicated* to control a *physical system*
-		- & Example: control an automobile engine or grocery store door
-	- ! Drawback: extremely limited (slow [[#Processor Terminology|processor]] and tiny memory)
-	- $ Advantage: very low power consumption
-- <u>Embedded system processors</u>
-	- Runs *sophisticated* electronic device
-	- May be more powerful than a *microcontroller*
-	- Generally *low power consumption*
-	- & Example: control TV, including commands received from a remote and front panel
-- <u>General-purpose processors</u>
-	- **Most powerful**
-	- Completely [[#Programmable device|programmable]]
-	- Full functionality
-	- Power consumption is a secondary consideration
-	- & Example: CPU in a personal computer
+### Coprocessor
+
+- Operates *in conjunction* and *under control* of *another [[#Processor Terminology|processor]]* 
+- Usually
+	- Special-purpose
+	- Performs a *single task*
+	- Operates at *high speed*
+- & Example: FPU (Floating point unit)
+
+### Microcontroller
+
+- [[#Programmable device]]
+- *Dedicated* to control a *physical system*
+	- & Example: control an automobile engine or grocery store door
+- ! Drawback: extremely limited (slow [[#Processor Terminology|processor]] and tiny memory)
+- $ Advantage: very low power consumption
+
+### Embedded system processors
+
+- Runs *sophisticated* electronic device
+- May be more powerful than a [[#Microcontroller|microcontroller]]
+- Generally *low power consumption*
+- & Example: control TV, including commands received from a remote and front panel
+
+### General-purpose processors
+
+- **Most powerful**
+- Completely [[#Programmable device|programmable]]
+- Full functionality
+- Power consumption is a secondary consideration
+- & Example: CPU in a personal computer
 
 ## Major components
 
-- $ Controller to coordinate operations (often omitted from architecture diagrams)
-	- *Overall responsibility* for execution
-	- *Moves through sequence* of steps
-	- *Coordinates* other *units*
-	- *Timing-based operation*: knows how long each unit requires and schedules steps accordingly
-- $ Arithmetic Logic Unit (ALU)
-	- Operates as directed by controller
-	- Provides *arithmetic* and *boolean* operations
-		- ~ Arithmetic:
-			- addition
-			- subtraction
-			- multiplication
-			- division
-		- ~ Shift
-			- left
-			- right
-			- circular
-		- ~ Boolean
-			- and
-			- or
-			- not
-			- xor
-	- Performs *one operations at a time* as directed
-- $ Local data storage ([[#Instructions|instruction]] and *data* memory)
-	- *Holds data* values for operations
-	- Values must be inserted (e.g., loaded from memory) before the operation can be performed
-- $ Internal interconnects (data paths)
-	- Allow *transfer of values* between units
-- $ External interfaces (I/O buses)
-	- *Handle communication* between **CPU** and rest of the computer system
-	- *Provides interaction* with *external* memory as well as external *I/O* devices
+### Controller to coordinate operations 
+
+> often omitted from architecture diagrams
+
+- *Overall responsibility* for execution
+- *Moves through sequence* of steps
+- *Coordinates* other *units*
+- *Timing-based operation*: knows how long each unit requires and schedules steps accordingly
+
+### Arithmetic Logic Unit (ALU)
+
+- Operates as directed by [[#Controller to coordinate operations|controller]]
+- Provides *arithmetic* and *boolean* operations
+	- ~ Arithmetic:
+		- addition
+		- subtraction
+		- multiplication
+		- division
+	- ~ Shift
+		- left
+		- right
+		- circular
+	- ~ Boolean
+		- and
+		- or
+		- not
+		- xor
+- Performs *one operations at a time* as directed
+
+### Local data storage ([[#Instructions|instruction]] and *data* memory)
+
+- *Holds data* values for operations
+- Values must be inserted (e.g., loaded from memory) before the operation can be performed
+
+### Internal interconnects (data paths)
+
+- Allow *transfer of values* between units
+ 
+### External interfaces (I/O [[IO#Buses|buses]])
+
+- *Handle communication* between **CPU** and rest of the computer system
+- *Provides interaction* with *external* memory as well as external [[IO#I/O Devices|I/O devices]]
+
+> [!seealso] 
+> [[IO#Types of interfaces]]
 
 ### Additional components
 
 #### Multiplexer
 
 - Small hardware unit
-- Fits into data path (i.e., handles parallel data)
+- Fits into [[#Internal interconnects (data paths)|data path]] (i.e., handles parallel data)
 - Takes *multiple inputs*
 - Has *one output*
 - @ At any time:
 	- Forwards [[Data representation#Bit (Binary digit)|bits]] from *one input to the output*
-	- Selection is determined by a *controller*
+	- Selection is determined by a [[#Controller to coordinate operations|controller]]
+
+> [!seealso] 
+> [[IO#Data multiplexing]]
 
 #### Instruction decoder
 
@@ -254,7 +278,7 @@ dm -> {cpu, io}
 			- $A+B \to C$
 			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
 	- **Pipeline** stall can also occur on
-		- *I/O* access
+		- [[IO|I/O]] access
 		- External storage access (memory reference)
 		- [[#Roles|Coprocessor]] invocation
 
@@ -311,12 +335,12 @@ dm -> {cpu, io}
 
 > [!definition] 
 > - **Hardware optimization** to *avoid stalls*
-> - Allows [[#Major components|ALU]] to reference result in *next instruction*
+> - Allows [[#Arithmetic Logic Unit (ALU)|ALU]] to reference result in *next instruction*
 
 - & Example:
 	- C <-- add A B
 	- D <-- subtract E C
-- Forwarding hardware passes the result of *add* operation *directly to [[#Major components|ALU]]* without storing it in the [[#Registers|register]]
+- Forwarding hardware passes the result of *add* operation *directly to [[#Arithmetic Logic Unit (ALU)|ALU]]* without storing it in the [[#Registers|register]]
 	- Ensures the value arrives by the time *subtract* [[#Instructions|instruction]] reaches the *pipeline* stage of execution
 
 #### No-op instruction
@@ -449,7 +473,7 @@ graph TB;
 - **Two possibilities** when the *last step* of computation finishes
 	- On smallest embedded systems: code enters a loop for testing for a change in input
 	- Larger systems: OS runs an infinite loop
-- & Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until *I/O* activity occurs
+- & Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until [[IO|I/O]] activity occurs
 
 ## Starting a processor
 
@@ -815,7 +839,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 ## Condition codes
 
 - Extra hardware [[Data representation#Bit (Binary digit)|bits]] (not part of [[#General-purpose registers|general purpose]] [[#Registers|registers]])
-- Set by [[#Major components|ALU]] each time an [[#Instruction sets|instruction]] produces a result
+- Set by [[#Arithmetic Logic Unit (ALU)|ALU]] each time an [[#Instruction sets|instruction]] produces a result
 - Used to indicate
 	- [[Data representation#Overflow|Overflow]]
 	- Underflow
@@ -854,7 +878,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 #### Typical register bank scheme
 
 - Registers are divided into *2* [[#Register banks|banks]]
-- [[#Major components|ALU]] [[#Instructions|instruction]] that takes *2* [[#Parts of an instruction|operands]] must have one [[#Parts of an instruction|operand]] from each [[#Register banks|banks]]
+- [[#Arithmetic Logic Unit (ALU)|ALU]] [[#Instructions|instruction]] that takes *2* [[#Parts of an instruction|operands]] must have one [[#Parts of an instruction|operand]] from each [[#Register banks|banks]]
 - Compiler (sometimes programmer) must *ensure that operands are in separate [[#Register banks|banks]]*
 - & Note: having *2* [[#Parts of an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
 
@@ -1041,10 +1065,10 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - Similar to *conventional assembly*
 - Microprocessor uses [[#Fetch-execute cycle|fetch-execute]] and executes **one** [[#Instructions|instruction]] at a time
 - **Micro** instructions can access
-	- ALU
+	- [[#Arithmetic Logic Unit (ALU)|ALU]]
 	- Macro [[#General-purpose registers|general-purpose registers]]
 	- Memory
-	- *I/O* buses
+	- [[#External interfaces (I/O IO Buses buses )|I/O buses]]
 
 - $ Advantages:
 	- Easy to read
@@ -1071,7 +1095,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > ```ditaa
 > ---
 > width:100%
-> inverted
+> invert-shade
 > ---
 > 
 >        +---------------+     +----------+----------+    +-----------------+ 
@@ -1271,7 +1295,8 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 ## Branch prediction
 
-> Alternative to **parallel execution**
+> Alternative to **parallel execution** 
+> See: [[#Instruction pipeline]]
 
 - Handles *conditional* execution
 - Hardware assumes that [[#Branching|branch]] **will** be taken, and unrolls computation if it's not

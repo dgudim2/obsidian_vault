@@ -324,30 +324,30 @@ G -> END [color=pink]
 
 - Suppose we know the **optimal** schedule *time* $T_{opt}$
 - Then the *timing* of *any other schedule* will satisfy this inequality
-	- $$\large T\leq ( 2-\frac{1}{N} ) * T_{opt}$$
+	- $$T\leq ( 2-\frac{1}{N} ) * T_{opt}$$
 - **N** - number of *executors*
 
 > [!example] 
-> Let **N** = 2, then $$\large T\leq \frac{3}{2}*T_{opt}$$
+> Let **N** = 2, then $$T\leq \frac{3}{2}*T_{opt}$$
 > 
 > - Suppose we have *2* schedules with times $T_{1}=18$ and $T_{2}=12$
 > - $T_{2}<T_{1}$, we can assume that $T_{2}=T_{opt}$, substitute to formula:
 > 
-> $$\large T\leq \frac{3}{2} * 12 = 18$$
+> $$T\leq \frac{3}{2} * 12 = 18$$
 > 
 > We see that $T_{2}=T_{opt}$, and $T_{1}=18$ - *longest* possible schedule
 
 > [!example] 
 > Let **N** = 3, and
 > 
-> $$\large T\leq \frac{7}{4}*T_{opt}$$
+> $$T\leq \frac{7}{4}*T_{opt}$$
 > 
 > - Suppose we have a schedule with a *runtime* of $T_{1}=49$
 > - Can another timetable be drawn up with a *runtime* of $T_{2}=25$?
 > 
 > $T_{2}<T_{1}$, then $T_{1} \neq T_{opt}$. Let's substitute
 > 
-> $$\large 49 \leq \frac{7}{4} * T_{opt}\ \ \ \ \ \ 28 \leq T_{opt}$$
+> $$49 \leq \frac{7}{4} * T_{opt}\ \ \ \ \ \ 28 \leq T_{opt}$$
 > 
 > We see that $T_{2}<T_{opt}$ and it is **impossible**
 

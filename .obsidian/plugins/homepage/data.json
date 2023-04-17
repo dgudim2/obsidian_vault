@@ -14,7 +14,8 @@
       "autoScroll": false,
       "pin": true,
       "value": "Home",
-      "kind": "File"
+      "kind": "File",
+      "commands": []
     }
   },
   "separateMobile": false

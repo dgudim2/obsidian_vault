@@ -83,7 +83,6 @@
 > } 
 > ```
 
-
 ## Spanning tree
 
 > [!definition]
@@ -451,9 +450,6 @@ flexGrow=1
 ===
 
 ```dot 
----
-preset:math-graph
----
 graph neato { 
 
 bgcolor="transparent" 

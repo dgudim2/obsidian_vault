@@ -127,7 +127,7 @@
 
 ##### Any system to decimal
 
-$$\large (x_{n-1},x_{n-2},\dots ,x_{0},x_{-1},x_{-2}, \dots ,x_{-l})=\sum_{i=-l}^{n-1}x_{i}*p^i$$
+$$(x_{n-1},x_{n-2},\dots ,x_{0},x_{-1},x_{-2}, \dots ,x_{-l})=\sum_{i=-l}^{n-1}x_{i}*p^i$$
 
 - *n* - amount of decimals <u>before</u> the coma
 - *i* - amount of decimals <u>after</u> the coma

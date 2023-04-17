@@ -46,7 +46,7 @@ flexGrow=1
 
 ## Graph $G_{b}$
 
-$\huge (\emptyset,\emptyset)$
+$\Large (\emptyset,\emptyset)$
 
 ````
 `````
@@ -229,8 +229,7 @@ edge [color = lightgrey]
 > edge [color = lightgrey] 
 >  
 > a -- {b d} 
-> c -- {b} 
-> d -- {b} 
+> b -- {c d}
 > 
 > } 
 > ```

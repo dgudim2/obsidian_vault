@@ -1646,6 +1646,7 @@ width:74%
 --- 
 <br>
 
+# Go to other topics
 ```dataview
 list from "uni/Discrete math"
 ```

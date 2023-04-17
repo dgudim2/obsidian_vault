@@ -135,19 +135,17 @@ a -- {b c d}
 
 # Defining a graph
 
-$$
-V = \{a, b, c, d, e\}
-$$
-$$
-E = \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d, e\}\},
-$$
-$$
-G = (V, E)
-$$
-OR
-$$
-G = (\{a, b, c, d, e\}, \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d, e\}\})
-$$
+> Defining *vertices* and *edges* separately
+
+$V = \{a, b, c, d, e\}$
+
+$E = \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d, e\}\}$
+
+$G = (V, E)$
+
+> Defining *vertices* and *edges* together
+
+$G = (\{a, b, c, d, e\}, \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d, e\}\})$
 
 ```dot
 ---
@@ -182,12 +180,11 @@ d -- {e, b}
 
 > Order of graph $G = (V, E)$ is $|V| = n$ (number of vertices)
 
-
 ## Special graphs
 
 $G = (V, \emptyset)$ - **empty**
 $G = (\emptyset, \emptyset)$ - **null**
-$G = (\{V\}, \emptyset)$ - **trivials**
+$G = (\{V\}, \emptyset)$ - **trivial**
 
 ### Complete graph
 
@@ -226,8 +223,8 @@ d -- {e}
 
 ### Properties
 
-1. $A$ and $B$ are **adjacent**, C and D are not. Also see: [[#Adjacency matrix]]
-2. $A$ and $B$ are **incident** to edge $\{a, b\}$. Also see: [[#Incidence matrix]]
+1. *$A$* and *$B$* are **adjacent**, *$C$* and *$D$* are not. Also see: [[#Adjacency matrix]]
+2. *$A$* and *$B$* are **incident** to edge $\{a, b\}$. Also see: [[#Incidence matrix]]
 3. Edges $\{a,d\}$ and $\{e,d\}$ are **adjacent**
 
 ```dot
@@ -340,7 +337,7 @@ $$
 
 ### Neighborhood of vertices
 
-> $\Gamma(vertex)=${set of adjacent vertices}
+> $\Gamma(vertex)=${set of [[#Properties|adjacent]] vertices}
 
 In out [[#Properties|graph]]:
 - $\Gamma(A)=${b, c, d}
@@ -351,7 +348,7 @@ In out [[#Properties|graph]]:
 
 ### Order (degree) of vertices
 
-Order/degree of vertex $p(V)= | \Gamma(V) |$ 
+**Order/degree** of vertex $p(V)= | \Gamma(V) |$ 
 
 > Number of [[#Neighborhood of vertices|neighbours]]
 > For example: $p(A) = 3$ 

@@ -185,7 +185,7 @@ dm -> {cpu, io}
 - *Provides interaction* with *external* memory as well as external [[IO#I/O Devices|I/O devices]]
 
 > [!seealso] 
-> [[IO#Types of interfaces]]
+> [[IO#Interfaces]]
 
 ### Additional components
 
@@ -471,9 +471,9 @@ graph TB;
 - [[#Processor Terminology|Processor]] runs [[#Fetch-execute cycle|fetch-execute]] indefinitely
 - Software must plan next step
 - **Two possibilities** when the *last step* of computation finishes
-	- On smallest embedded systems: code enters a loop for testing for a change in input
+	- On smallest [[Processor#Embedded system processors|embedded systems]]: code enters a loop for testing for a change in input
 	- Larger systems: OS runs an infinite loop
-- & Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until [[IO|I/O]] activity occurs
+- @ Note: to reduce *power consumption*, hardware may provide a way to put CPU to sleep until [[IO|I/O]] activity occurs
 
 ## Starting a processor
 
@@ -489,13 +489,13 @@ graph TB;
 
 ## What instructions should a CPU offer?
 
-- Minimum set is *sufficient, but inconvenient*
-- Extremely large is *convenient, but inefficient*
+- Minimum set is **sufficient**, but *inconvenient*
+- Extremely large is **convenient**, but *inefficient*
 - ? Architects must consider additional factors
-	- *Physical size* of a [[#Processor Terminology|processor]] chip
+	- **Physical size** of a [[#Processor Terminology|processor]] chip
 	- Expected *use*
 	- ! Power consumption
-	- & Trade-offs mean that a variety of designs exist
+	- @ Note: trade-offs mean that a *variety* of designs exist
 
 ## Instruction set architecture
 
@@ -828,7 +828,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - $ Basic uses:
 	- *Temporary storage* during computation
 	- [[#Parts of an instruction|Operand]] for arithmetic operation
-- & Note: some [[#Processor Terminology|processors]] require *all operands* for an arithmetic operation to come from **general-purpose** [[#Registers|registers]]
+- @ Note: some [[#Processor Terminology|processors]] require *all operands* for an arithmetic operation to come from **general-purpose** [[#Registers|registers]]
 
 ## Floating point registers
 
@@ -880,7 +880,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - Registers are divided into *2* [[#Register banks|banks]]
 - [[#Arithmetic Logic Unit (ALU)|ALU]] [[#Instructions|instruction]] that takes *2* [[#Parts of an instruction|operands]] must have one [[#Parts of an instruction|operand]] from each [[#Register banks|banks]]
 - Compiler (sometimes programmer) must *ensure that operands are in separate [[#Register banks|banks]]*
-- & Note: having *2* [[#Parts of an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
+- @ Note: having *2* [[#Parts of an instruction|operands]] from the same [[#Register banks|bank]] will result in a run-time error
 
 #### Why register banks?
 
@@ -999,6 +999,9 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - Initiated by hardware (device needs service)
 - Prior to change OS must specify which code to run when the change occurs
 
+--- 
+<br>
+
 # Privilege level
 
 - Determines which resources a program can use
@@ -1008,6 +1011,9 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 	- **Kernel mode** for OS
 - ~ Advanced scheme: multiple levels
 	![[Priv_rings.svg]]
+
+--- 
+<br>
 
 # Microcode
 

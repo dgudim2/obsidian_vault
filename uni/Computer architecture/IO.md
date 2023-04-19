@@ -135,16 +135,19 @@ b:f1 -> a:f1 [label="external\nconnection", fontcolor=white]
 
 # Data multiplexing
 
+> Illustration of the transfer of **64** [[Data representation#Bit (Binary digit)|bits]] of data over a **16**-**bit** interface
+> **Multiplexing** hardware *divides* the data into **16**-bit units and *sends* one unit at a time
 ```dynamic-svg
 ---
 invert-shade
-width:70%
+width:100%
 ---
-[[Multiplexing_diagram.svg]]
+[[multiplexing.svg]]
 ```
 
 - Arises from *hardware limits* on parallelism (pins or wires)
-- Allows sharing of resources
+- Allows **sharing** of resources
+- Hardware **iterates**, transferring *one chunk* at a time
 
 ## Multiplexor
 
@@ -178,7 +181,7 @@ width:70%
 ## Bus characteristics
 
 - *Passive* (does not contain many electronic components)
-	- Just a *set of wires*
+	- Just a *set of wires* (or traces) ([[#Bus implementation]])
 	- Attached devices handle the communication
 	- May have **arbiter** that *manages sharing*
 - *Shared* my *multiple devices*
@@ -201,6 +204,26 @@ width:70%
 invert-shade
 ---
 [[Computer_system_bus.svg]]
+```
+
+### Bus implementation
+
+- Can be
+	- A cable with multiple *wires*
+	- *Traces* on a mother b
+- Usually, a [[#Buses|bus]] has [[#Address configuration and sockets|sockets]] into which devices *plug*
+
+- Each *I/0 device* is on a *circuit board*
+- *I/O devices* plug into **sockets** on the mother board
+
+> Side view of a *mother board* illustrating how a *printed circuit board* plugs into the **socket** of a [[#Buses|bus]]
+> Metal fingers on the *circuit board* press against metal contacts in the **socket**
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[socket.svg]]
 ```
 
 ### Bus width
@@ -237,6 +260,17 @@ invert-shade
 	- Multiple *memories*
 	- Multiple [[#I/O Devices]]
 - @ Bus **address space** includes *all units*
+
+> Illustration of a computer architecture that uses a single [[#Buses|bus]]
+> The [[#Buses|bus]] connects *memories* as well as *devices*
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[bus-memory-devices.svg]]
+```
 
 #### Address assignment (**Address map**)
 
@@ -278,7 +312,7 @@ invert-shade
 > - Two devices use 12 [[Data representation#Byte|bytes]] of *address space*
 > 
 > > [!note] 
-> > - Memories occupy many adresses, devices occupy a few
+> > - Memories occupy *many* addresses, devices occupy a *few*
 > 
 > ```` 
 > `````
@@ -300,6 +334,9 @@ width:100%
 ````col-md 
 flexGrow=1
 ===
+
+> - One possible **address map** for a sixteen-[[Data representation#Bit (Binary digit)|bit]] bus
+> - Two areas are available for *memory*, and one area is available for *devices*
 
 > [!note] 
 > Address maps can contain *holes* (areas of memory not available for anything)
@@ -377,6 +414,16 @@ flexGrow=1
 - Memory hardware includes *bus controller*
 - Each memory module responds to a *set of addresses*
 
+> Physical interconnections of a [[Processor|processor]] and **memory** using a *memory* [[#Buses|bus]]. 
+> A *controller* circuit in each device *handles the details* of [[#Buses|bus]] access 
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[memory-bus.svg]]
+```
+
 > Steps A Memory module takes
 ```mermaid
 flowchart
@@ -413,7 +460,8 @@ I(Ignore the request)
 flexGrow=1
 ===
 
-> Illustration of a **bridge** connecting two [[#Buses|buses]]. The **bridge** must follow the *standard* for each [[#Buses|bus]]
+> - Illustration of a **bridge** connecting two [[#Buses|buses]]
+> - The **bridge** must follow the *standard* for each [[#Buses|bus]]
 
 ```dynamic-svg
 ---
@@ -428,7 +476,8 @@ width:100%
 flexGrow=3
 ===
 
-> Illustration of a *mapping* that a **bridge** can provide between the *address space* of an *auxiliary* [[#Buses|bus]] and the *address space* of a main [[#Buses|bus]]. Only some [[#Buses|bus]] addresses need to be *mapped*.
+> Illustration of a *mapping* that a **bridge** can provide between the *address space* of an *auxiliary* [[#Buses|bus]] and the *address space* of a main [[#Buses|bus]]
+> Only some [[#Buses|bus]] addresses need to be *mapped*
 
 
 ```dynamic-svg
@@ -643,7 +692,8 @@ flexGrow=1
 - **Device** is given a linked list of *buffers*
 - **Device** hardware *uses* next *buffer* on list *automatically*
 
-> Illustration of **buffer chaining**. A [[Processor|processor]] passes a list of buffers to a *smart I/O device*, and the device fills each *buffer* on the list without waiting for the [[Processor|processor]]
+> Illustration of **buffer chaining**. 
+> A [[Processor|processor]] passes a list of buffers to a *smart I/O device*, and the device fills each *buffer* on the list without waiting for the [[Processor|processor]]
 ```dynamic-svg
 ---
 invert-shade
@@ -653,6 +703,21 @@ width:100%
 ```
 
 #### Operation Chaining
+
+- Extends [[#Buffer Chaining|buffer chaining]] to handle multiple *read*, *write* and *control operations*
+- [[Processor]] passes a *list* of *commands* to the device
+- **Device** *carries out* successive commands *automatically*
+
+> Illustration of **operation chaining** for a *smart disk device*. 
+> Each **node** specifies an operation (**R** or **W**), a disk *block number*, and a *buffer* in memory.
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[operation-chaining.svg]]
+```
 
 --- 
 <br>

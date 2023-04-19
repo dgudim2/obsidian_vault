@@ -44,7 +44,7 @@ flexGrow=1
 ---
 invert-shade
 path-fill:skip
-path-implicit-stroke
+path-stroke:implicit
 width:150px
 ---
 [[Mercurial-Logo.wine.svg]]

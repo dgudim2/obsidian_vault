@@ -1,4 +1,6 @@
 
+Previous: [[Midterm1_plagiarism_spying (w6)]]
+
 [[Research Proposals - guidelines.docx]]
 [[Research Proposals - model.docx]]
 
@@ -89,3 +91,4 @@ The final paragraph (paragraphs or section) is the conclusion.  It must contain 
 - A citation from your source materials highlighting the relevance of your chosen topic
 	- As Smith suggest, the importance of communication is….(Smith, 2019, p.23)
 
+Next lesson: [[Proposal parts 1 and 2 - AI (w8)]]

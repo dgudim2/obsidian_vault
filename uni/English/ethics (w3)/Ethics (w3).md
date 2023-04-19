@@ -1,7 +1,7 @@
 Previous lesson: [[Ecommerce (w2)]]
 
 
-Handout ![[HANDOUT- Ethics.docx]]
+Handout [[HANDOUT- Ethics.docx]]
 Transcript [[transcript.png]]
 
 -----

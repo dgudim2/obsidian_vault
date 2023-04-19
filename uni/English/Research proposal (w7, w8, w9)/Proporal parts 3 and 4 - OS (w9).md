@@ -1,8 +1,10 @@
 
-# TOPIC - Operating Systems
+Previous lesson: [[Proposal parts 1 and 2 - AI (w8)]]
 
 [[Proposal- Part 3 and 4 OS.docx]]
 [[article2-OS.pdf]]
+
+# TOPIC - Operating Systems
 
 > Look at the pictures below and discuss the following questions
 

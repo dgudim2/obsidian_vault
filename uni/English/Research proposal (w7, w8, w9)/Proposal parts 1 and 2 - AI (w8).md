@@ -1,7 +1,10 @@
-# TOPIC - Artificial Intelligence
+
+Previous lesson: [[Proposal - General info (w7)]]
 
 [[Proposal- Part 1 and 2 AI.docx]]
 [[article1-AI.pdf]]
+
+# TOPIC - Artificial Intelligence
 
 > Look at the pictures below and discuss the following questions
 
@@ -119,3 +122,5 @@ The aim of my research would be to find out how students and teachers at VGTU fe
 3. Ask teachers/students: How will the SPA’s improve the work-flow?
 4. Ask students: Are you comfortable with using this tech / do you want to see it implemented?
 5. Which classes will the AI be most effective for?
+
+Next lesson: [[Proporal parts 3 and 4 - OS (w9)]]

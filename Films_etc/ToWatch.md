@@ -3,8 +3,7 @@
 
 # Stuff to watch 
 
-## Random
-+ Шоу Трумана 
+## Random 
 + They see
 + Free guy
 + Altered carbon

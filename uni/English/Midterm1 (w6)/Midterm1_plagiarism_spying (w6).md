@@ -1,6 +1,7 @@
+Previous lesson: [[Networks 2 (w5)]]
+
 Danila Gudim
 ITfuc-22
-
 
 # [[text1.png|Text 1]]
 1. As the Turnitin database expands, it becomes more robust at detecting plagiarism, because as it grows, it obtains more samples of essays and papers, so it will be more difficult for subsequent submissions to be plagiarized, especially if those new papers take content from the papers already in the database.
@@ -15,3 +16,5 @@ ITfuc-22
 3. This will definitely change my shopping behavior, I wont even shop in those places as I will feel really uncomfortable. Being recorded by regular security cameras is one thing and is understandable, being recorded for the sole purpose of marketing and you spending more money on things you may not necessarily need is a totally different thing.
 
 4. Expanding on the previous statement, being recorded for security and for commercial gain are polar opposite things, those mannequins stand at your eye level, providing better face image quality and allowing for eavesdropping. This allows shop owners to more efficiently spy on you.
+
+Next lesson: [[Proposal - General info (w7)]]

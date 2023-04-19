@@ -33,3 +33,5 @@ Handout: [[HANDOUT- Networking and WIFI 2.pdf]]
 8. That article certainly **made a splash**, generating a great deal of criticism in the blogging world.
 9. It's a case of the more you **shun** publicity, the more it makes you enigmatic.
 10. The idea of informers and agents is **garnering** information to save lives. 
+
+Next lesson: [[Midterm1_plagiarism_spying (w6)]]

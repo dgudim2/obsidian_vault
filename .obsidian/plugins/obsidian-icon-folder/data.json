@@ -6,6 +6,8 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "IbArrowSwitch",
+      "FasSolidDiceD20",
       "FasArrow-right-arrow-left",
       "FasArrow-trend-up",
       "FabGit-alt",
@@ -36,7 +38,8 @@
   "uni/Computer architecture/Data representation.md": "LiBinary",
   "uni/Computer architecture/Processor.md": "LiCpu",
   "uni/Presentations": "SiArtifacthub",
-  "uni/Presentations/Git presentation.md": "FabGit-alt",
+  "uni/Presentations/Git presentation.md": "SiGit",
   "uni/Management": "FasArrow-trend-up",
-  "uni/Computer architecture/IO.md": "FasArrow-right-arrow-left"
+  "uni/Computer architecture/IO.md": "IbArrowSwitch",
+  "uni/Discrete math/Number theory": "FasSolidDiceD20"
 }

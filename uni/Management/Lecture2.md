@@ -51,9 +51,11 @@
 
 - Helps to develop more effective and sustainable solutions that consider the entire system, rather than just isolated parts of it
 
-> A systems approach, also known as a systemic approach, is a way of analyzing and understanding complex phenomena as *interconnected and interdependent systems*. It involves looking at a system as a whole and its parts, as well as the relationships and interactions between them. This approach recognizes that *changing one part of a system can have impacts on other parts of the system and on the system as a whole*.
-
-> In practical terms, a systems approach can be used in various fields, including *engineering*, *management*, *biology*, *social sciences*, and *ecology*, to help identify problems, develop solutions, and make decisions. It is particularly useful in situations where complex issues and uncertainty exist and where *multiple perspectives* and disciplines are involved. By understanding the underlying patterns and dynamics of a system, a systems approach can help us to develop more effective and sustainable solutions that consider the entire system, rather than just isolated parts of it.
+> [!note] 
+> 
+> - A systems approach, also known as a systemic approach, is a way of analyzing and understanding complex phenomena as *interconnected and interdependent systems*. It involves looking at a system as a whole and its parts, as well as the relationships and interactions between them. This approach recognizes that *changing one part of a system can have impacts on other parts of the system and on the system as a whole*.
+>
+> - In practical terms, a systems approach can be used in various fields, including *engineering*, *management*, *biology*, *social sciences*, and *ecology*, to help identify problems, develop solutions, and make decisions. It is particularly useful in situations where complex issues and uncertainty exist and where *multiple perspectives* and disciplines are involved. By understanding the underlying patterns and dynamics of a system, a systems approach can help us to develop more effective and sustainable solutions that consider the entire system, rather than just isolated parts of it.
 
 
 # Important terms related to systems theory

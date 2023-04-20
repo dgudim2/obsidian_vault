@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FasMemory",
       "IbArrowSwitch",
       "FasSolidDiceD20",
       "FasArrow-right-arrow-left",
@@ -41,5 +42,6 @@
   "uni/Presentations/Git presentation.md": "SiGit",
   "uni/Management": "FasArrow-trend-up",
   "uni/Computer architecture/IO.md": "IbArrowSwitch",
-  "uni/Discrete math/Number theory": "FasSolidDiceD20"
+  "uni/Discrete math/Number theory": "FasSolidDiceD20",
+  "uni/Computer architecture/Memory.md": "FasMemory"
 }

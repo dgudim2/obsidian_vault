@@ -13,9 +13,12 @@
 
 # Architechture
 
+> [!seealso] 
+> [[Memory#Two paradigms]]
+
 ## Von Neumann
 
-- *Instruction* and *data* memory are shared
+- *Instruction* and *data* [[Memory|memory]] are shared
 
 ```dot 
 digraph D {
@@ -47,8 +50,8 @@ memory -> {processor, "I/O facilities"}
 
 ## Harward
 
-- *Instruction* and *data* memory are separate
-- Typically used nowadays
+- *Instruction* and *data* [[Memory|memory]] are separate
+- **Typically used** nowadays
 
 ```dot 
 digraph D {

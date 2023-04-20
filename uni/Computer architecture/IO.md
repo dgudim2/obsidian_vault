@@ -175,7 +175,7 @@ width:100%
 - Solution is a shared **bus**
 	- $ Allows *multiple devices* to use a given interconnection to transfer data
 	- & Typical use: connect [[Processor|processor]] to
-		- Memory
+		- [[Memory]]
 		- [[#I/O Devices]]
 
 ## Bus characteristics
@@ -248,7 +248,7 @@ width:100%
 	2. Arrange sockets so that *wiring limits* each socket to a *range of addresses*
 	3. Design bus hardware that configures addresses *when system boots* (or when a *device attaches*)
 
-> - & **Socket** wiring is typically used for *memory* (*user can plug in* additional modules without configuring the hardware)
+> - & **Socket** wiring is typically used for [[Memory|memory]] (*user can plug in* additional modules without configuring the hardware)
 > - & *Automatic* configuration is usually used for [[#I/O Devices|I/O devices]]
 > 
 > > [!seealso] 
@@ -257,7 +257,7 @@ width:100%
 ### Unification of memory and devices
 
 - Single [[#Buses|bus]] can attach
-	- Multiple *memories*
+	- Multiple [[Memory#Memory hierarchy|memories]]
 	- Multiple [[#I/O Devices]]
 - @ Bus **address space** includes *all units*
 
@@ -354,9 +354,9 @@ flexGrow=1
 - [[#Buses|Bus]] hardware only supports *two* **operations**
 	- [[#Bus fetch|Fetch]] (read)
 	- [[#Bus store|Store]] (write)
-- Access paradigm is known as the *fetch-store* paradigm
+- Access paradigm is known as the [[Memory#Fetch-store paradigm|fetch-store paradigm]]
 
-> - $ Obvious for memory access
+> - $ Obvious for [[Memory|memory]] access
 > - @ But, in fact, *all device interaction*, including communication with video cameras, speakers, and microphones, must be performed using the **fetch-store** paradigm
 
 ### Bus fetch
@@ -376,7 +376,7 @@ flexGrow=1
 ### Asymmetry of operations
 
 - [[#Bus fetch|Fetch]] and [[#Bus store|store]] operations on a [[#Buses|bus]]
-	- Mean "*fetch data*" and "*store data*" for memory
+	- Mean "*fetch data*" and "*store data*" for [[Memory|memory]]
 	- May have *other meanings* for devices
 	- Are often **asymmetric** for devices
 
@@ -410,11 +410,11 @@ flexGrow=1
 
 ## Memory bus
 
-- [[#Buses|Bus]] provides path between [[Processor|processor]] and *memory*
-- Memory hardware includes *bus controller*
-- Each memory module responds to a *set of addresses*
+- [[#Buses|Bus]] provides path between [[Processor|processor]] and [[Memory|memory]]
+- [[Memory]] hardware includes *bus controller*
+- Each **memory** module responds to a *set of addresses*
 
-> Physical interconnections of a [[Processor|processor]] and **memory** using a *memory* [[#Buses|bus]]. 
+> Physical interconnections of a [[Processor|processor]] and [[Memory|memory]] using a *memory* [[#Buses|bus]]. 
 > A *controller* circuit in each device *handles the details* of [[#Buses|bus]] access 
 ```dynamic-svg
 ---
@@ -424,7 +424,7 @@ width:100%
 [[memory-bus.svg]]
 ```
 
-> Steps A Memory module takes
+> Steps a [[Memory|memory]] module takes
 ```mermaid
 flowchart
 M[Monitor the bus\nuntil a request appears]
@@ -680,7 +680,7 @@ flexGrow=1
 
 - $ Widely used
 - Works well for **high-speed** I/O and streaming
-- **Requires** *smart device* that can *move data* across the [[#Buses|bus]] *to/from* memory <u>without</u> using [[Processor|processor]]
+- **Requires** *smart device* that can *move data* across the [[#Buses|bus]] *to/from* [[Memory|memory]] <u>without</u> using [[Processor|processor]]
 + & Example: Wi-Fi network interface can read an *entire packet* and place the packet in a *specified buffer* in memory
 + @ Basic idea
 	- **CPU** tells device *location* of buffer
@@ -709,7 +709,7 @@ width:100%
 - **Device** *carries out* successive commands *automatically*
 
 > Illustration of **operation chaining** for a *smart disk device*. 
-> Each **node** specifies an operation (**R** or **W**), a disk *block number*, and a *buffer* in memory.
+> Each **node** specifies an operation (**R** or **W**), a disk *block number*, and a *buffer* in [[Memory|memory]].
 
 ```dynamic-svg
 ---

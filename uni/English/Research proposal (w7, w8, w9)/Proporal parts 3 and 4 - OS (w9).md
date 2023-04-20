@@ -8,9 +8,9 @@ Previous lesson: [[Proposal parts 1 and 2 - AI (w8)]]
 
 > Look at the pictures below and discuss the following questions
 
-1. What do you know about the development of computer operating systems? 
+1. ? What do you know about the development of computer operating systems? 
 	- There was a big jump in development
-2. Can you name all the Windows OS’s?
+2. ? Can you name all the Windows OS’s?
 	- XP
 	- 95
 	- 98
@@ -22,13 +22,13 @@ Previous lesson: [[Proposal parts 1 and 2 - AI (w8)]]
 	- 8.1
 	- 10
 	- 11
-1. Why do some people prefer various types of mobile operating systems?
+3. ? Why do some people prefer various types of mobile operating systems?
 	- User experience
 	- Security
 	- Customization
-1. Which OS’s are the most secure? Why is that?
+4. ? Which OS’s are the most secure? Why is that?
 	- None (Android without Google)
-2. Which operating systems are most popular in the field of various ‘smart home devices’?
+5. ? Which operating systems are most popular in the field of various ‘smart home devices’?
 	- Tizen
 	- Linux
 	- Android TV
@@ -37,33 +37,33 @@ Previous lesson: [[Proposal parts 1 and 2 - AI (w8)]]
 
 # Academic Article - Comparison of Mobile Operating Systems
 
-1.  Who are the Authors of the article?
+1. ? Who are the Authors of the article?
 	- Ovidiu Constantin Novac 
 	- Mihaela Novac
 	- Cornelia Gordan
 	- Tamas Berczes 
 	- Gyöngyi Bujdosó
 
-2. What is the general topic of the article?
+2. ? What is the general topic of the article?
 	- Comparative study of the most used three operating systems for mobile devices
 
-3. What year and where was the article published?
+3. ? What year and where was the article published?
 	- 2017 14th International Conference on Engineering of Modern Electric Systems (EMES)
 
-4. What is the aim of this study? (Abstract)
+4. ? What is the aim of this study? (Abstract)
 	- Compare most used operation systems on mobile, analyze advantages and disadvantages
 
-5. What is the rationale for the article?
+5. ? What is the rationale for the article?
 	- Show advantages, compare, describe the internal workings
 
-6. Find sources from the article: what do they tell us about the topic background?
+6. ? Find sources from the article: what do they tell us about the topic background?
     - *Stallings*: An operating system has the following main objectives: execute user programs and facilitate troubleshooting for users, make the computing system easy to use, use the hardware efficiently
     - *Robert*: GUI interfaces
     - *Love*: Android is based on Linux and may be considered a variant of embedded Linux
 	 - 25, Android version history: Each version of Android developed a code name based on desserts
 	 - *Mauerer*: Google virtual machine, called Dalvik, and the Linux features are not accessible to users
 
-7. What do the authors hope to do after conducting their research / what do they hope their research will help with? (Conclusion/Contribution)
+7. ? What do the authors hope to do after conducting their research / what do they hope their research will help with? (Conclusion/Contribution)
 	- Evaluate the reasons for popularity
 
 
@@ -110,3 +110,5 @@ There are three main functions of this paragraph.
 ## Complete the paragraph below with your own ideas
 
 *Qualitative* data will be analysed by identifying and describing how the participants answer the asked open questions during the *interviews* and what points are raised *in the focus groups/discussions/during feedback*. The personal views of the participants will be known, which will help to understand the current situation *in regard of mobile OSes* in relation to the research questions. Opinions, similarities and differences will be elicited from the transcriptions in order to find patterns. Further *Quantitative* data will be collected anonymously and analysed through SPSS. This data will be presented as graphs showing the preferences of various generations when it comes to answering the research questions The research findings will be shared with the colleagues in the Faculty of *Fundamental sciences*.
+
+Next lesson: [[Proposal part 5 - Cloud Computing (w10)]]

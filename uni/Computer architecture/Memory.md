@@ -318,7 +318,7 @@ width:100%
 #### Memory transfer size
 
 - *Amount of memory* that can be transferred to computer **simultaneously**
-- Determined by [[IO#Buses|bus]] between computer and controller
+- Determined by [[IO#Buses|bus]] between *computer* and *controller*
 - Important to programmers
 
 > [!example] 
@@ -326,6 +326,48 @@ width:100%
 > 	- 16 [[Data representation#Bit (Binary digit)|bits]]
 > 	- 32 [[Data representation#Bit (Binary digit)|bits]]
 > 	- 64 [[Data representation#Bit (Binary digit)|bits]]
+
+## Words
+
+> [!definition] 
+> 1. [[Data representation#Bit (Binary digit)|Bits]] of physical [[Memory|memory]] are divided into *blocks* of **N** [[Data representation#Bit (Binary digit)|bits]] each called **words**
+> 2. **N** is known as the **width** of a *word* or the **word size**
+
+- **N** is determined by [[IO#Bus width|bus width]]
+- Computer is often characterized by its **word size** (e.g., 64-[[Data representation#Bit (Binary digit)|bit]] computer)
+
+### Memory address
+
+- Each [[#Words|word]] of [[Memory|memory]] is assigned a unique number, known as a *physical memory address*
+- [[#Physical memory]] is organized as an array of [[#Words|words]]
+- Underlying hardware applies **read** or **write** to *entire word*
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[memory-address.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Physical addressing on a computer where a [[#Words|word]] thirty-two [[Data representation#Bit (Binary digit)|bits]]
+> - We think of the memory as an *array* of [[#Words|words]]
+
+
+```` 
+`````
+
+
 
 ## Synchronous memory techniques
 

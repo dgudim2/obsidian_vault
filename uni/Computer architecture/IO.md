@@ -229,7 +229,7 @@ width:100%
 ### Bus width
 
 > [!definition] 
-> **Width** refers to the number of *parallel data lines*
+> **Width** refers to the number of *parallel data lines* on the [[IO#Buses|bus]]
 
 - ? Larger width
 	- $ Advantage: higher *performance*

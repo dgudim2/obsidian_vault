@@ -15,8 +15,8 @@
     "kanban",
     "mermaid",
     "slides-theme-colors",
-    "width-800px",
-    "list_padding"
+    "list_padding",
+    "width-800px"
   ],
   "showViewHeader": true,
   "theme": "system"

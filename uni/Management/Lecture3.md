@@ -46,8 +46,6 @@ I have decided to ace the test.
 
 I have decided to diet, and I have taken out the ice cream from the freezer.
 
-![](img/Lecture%203%20-%20Management%20Decisions2.png)
-
 __Reflection__ :
 
 Which of the following represents a  _decision_ ?

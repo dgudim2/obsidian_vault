@@ -19,6 +19,8 @@ Automatically generate _table of contents_ by checking the option here: `Setting
 
 Break line (two spaces at end of line)  
 
+- 
+
 > Block quote
 
 `Inline code`
@@ -30,7 +32,7 @@ awesome
 ```
 
 <!-- --------------- -->
- 
+
 ## Lists
 ### Ordered & unordered
 
@@ -85,9 +87,9 @@ awesome
 ## Tables
 
 | Left aligned | Middle aligned | Right aligned |
-| :--------------- | :------------------: | -----------------: |
-| Test                 | Test                      | Test                    |
-| Test                 | Test                      | Test                    |
+|:------------:|:--------------:| -------------:|
+|     Test     |      Test      |          Test |
+|     Test     |      Test      |          Test |
 
 ÷÷÷÷
 

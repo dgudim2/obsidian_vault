@@ -50,7 +50,6 @@
 > 
 > - Effective organizational management requires a range of skills, including *leadership*, *communication*, *problem-solving*, and *decision-making*. Managers must be able to *adapt to changing circumstances* and align the goals of the organization with the needs and expectations of its stakeholders, including employees, customers, shareholders, and society as a whole. By effectively managing an organization, managers can help to ensure that the organization remains *competitive*, achieves its goals, and makes a positive impact on the world.
 
-
 ## 6 fundamental elements of management process
 
 - Subject – what/who manages?

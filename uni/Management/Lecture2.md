@@ -208,15 +208,15 @@ Disruptive Technology vs Sustaining Technology
 
 # The importance of technology in organizational management
 
-__Improved Efficiency: __ Technology can automate and streamline many business processes, making them more efficient and reducing the need for manual labor.
+__Improved Efficiency:__ Technology can automate and streamline many business processes, making them more efficient and reducing the need for manual labor.
 
-__Improved Decision-Making: __ Technology provides access to vast amounts of data and information, which can help managers make more informed decisions.
+__Improved Decision-Making:__ Technology provides access to vast amounts of data and information, which can help managers make more informed decisions.
 
-__Improved Communication: __ Technology has revolutionized communication, enabling managers to communicate with employees, customers, and partners more effectively and efficiently.
+__Improved Communication:__ Technology has revolutionized communication, enabling managers to communicate with employees, customers, and partners more effectively and efficiently.
 
-__Improved Innovation: __ Technology can enable companies to develop new products and services, create new business models, and enter new markets.
+__Improved Innovation:__ Technology can enable companies to develop new products and services, create new business models, and enter new markets.
 
-__Improved Customer Experience: __ Technology can enable companies to deliver better customer experiences, with features like online ordering, personalized recommendations, and 24/7 customer support.
+__Improved Customer Experience:__ Technology can enable companies to deliver better customer experiences, with features like online ordering, personalized recommendations, and 24/7 customer support.
 
 # What is the organizational environment?
 
@@ -238,8 +238,9 @@ What is the internal environment of an organization?
 
 ![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management7.png)
 
-# Impact of micro and macro environmentMarketing view
+# Impact of micro and macro environment Marketing view
 
+![[micro-macro.png]]
 __Macro environment__
 
 Demographic forces

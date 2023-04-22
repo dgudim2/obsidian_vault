@@ -710,7 +710,6 @@ width:100%
 
 > Illustration of **operation chaining** for a *smart disk device*. 
 > Each **node** specifies an operation (**R** or **W**), a disk *block number*, and a *buffer* in [[Memory|memory]].
-
 ```dynamic-svg
 ---
 invert-shade

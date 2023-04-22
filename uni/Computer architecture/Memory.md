@@ -2,10 +2,10 @@
 
 - **Technology**
 	- The type of the underlying *hardware*
-	- Choice determines cost, persistence, performance
+	- Choice determines *cost*, *persistence*, *performance*
 	- Many variants are available
-- **Organization**
-	- How underlying hardware is used to build memory system (i.e., [[Data representation#Byte|bytes]] , words, etc.)
+- [[#Memory controller (organization)|Organization]]
+	- How underlying hardware is used to build memory system (i.e., [[Data representation#Byte|bytes]], [[#Words|words]], etc.)
 	- Directly visible to programmer
 - **Characteristics**
 	- [[#Volatile memory|Volatile]] or [[#Nonvolatile memory|nonvolatile]]
@@ -421,7 +421,7 @@ Architect usually designs *all data paths* in a computer to use **one size**
 > [!example] 
 > 
 > 
-> > Example of a [[Data representation#Byte|byte]] *address* assigned to each [[Data representation#Byte|byte]] of memory even though the underlying hardware uses [[#Words|word]] *addressing* and 32-[[Data representation#Bit (Binary digit)|bit]] [[#Words|word]] size.
+> > Example of a [[Data representation#Byte|byte]] *address* assigned to each [[Data representation#Byte|byte]] of memory even though the underlying hardware uses [[#Words|word]] *addressing* and 32-[[Data representation#Bit (Binary digit)|bit]] [[#Words|word]] size
 > > 
 > `````col 
 > ````col-md 
@@ -522,10 +522,27 @@ width:100%
 ### Memory banks
 
 > [!definition] 
-> **Modular** approach to constructing *large memory*
+> > **Modular** approach to constructing *large memory*
+> - Basic [[Memory|memory]] module is *replicated* multiple times
+> - Selection circuitry chooses **bank**
 
-- Basic [[Memory|memory]] module is *replicated* multiple times
-- Selection circuitry chooses **bank**
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[memory-banks.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
 
 - @ Basic idea
 	- Use **high-order** [[Data representation#Bit (Binary digit)|bits]] of address to *select a* **bank**
@@ -533,17 +550,119 @@ width:100%
 	- **Hardware** for each bank *is identical*
 	- ~ Parallel access - one **bank** can *reset* while *another* is being *used*
 
+```` 
+`````
 
+#### Approaches
+
+- $ Transparent
+	- **Programmer** is *not concerned* with [[#Memory banks|banks]]
+	- **Hardware** *automatically* finds and *exploits* parallelism
+- $ Opaque
+	- **Programmer** *knows* about [[#Memory banks|banks]]
+	- To optimize performance, **programmer** *must place* items that will be accessed *sequentially* in separate [[#Memory banks|banks]]
 
 ### Interleaving
+
+> [!definition] 
+> > Related to [[#Memory banks|memory banks]], transparent to programmer
+> 
+> **Hardware** places *consecutive* [[#Words|words]] (or consecutive [[Data representation#Byte|bytes]]) in separate [[#Physical memory|physical memories]]
+
+- @ Technique: use low-order bits of address to choose module
+	- Known as **N**-*way* **interleaving**, where **N** is number of [[#Physical memory|physical memories]]
+
+`````col 
+````col-md 
+flexGrow=1.8
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[4-way-interleaving.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Ilustration of **4**-way **interleaving** that shows how *successive* [[#Words|words]] of memory are placed into *memory modules* to optimize performance
+
+
+```` 
+`````
+
+## Content-addressable memory (CAM)
+
+> - Blends two key ideas
+> 	- [[Memory]] **technology**
+> 	- [[#Memory controller (organization)|Memory organization]]
+> - ~ Includes *parallel hardware* for *high-speed search*
+
+> [!definition] 
+> 
+> > Think of **CAM** as a *two-dimensional* array of special-purpose *hardware cells*
+> - A **row** in the array is called a **slot**
+> 
+> - The hardware cells
+> 	- Can answer the question: "Is **X** stored in any *row* of the **CAM**?""
+> 	- *Operate in parallel* to make search fast
+> - ~ **Query** is known as a **key**
+
+`````col 
+````col-md 
+flexGrow=2
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[CAM.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of a Content Addressable Memory (**CAM**)
+> - **CAM** provides both a *memory technology* and a *memory organization*
+
+
+```` 
+`````
+
+### CAM lookup
+
+- [[#Content-addressable memory (CAM)|CAM]] presented with **key** for *lookup*
+
+- *Hardware* cells test whether *key is present*
+	- **Search** operation performed *in parallel* on *all slots* **simultaneously**
+	- **Result** is *index of slot* where value found
+- @ Note: parallel search hardware makes [[#Content-addressable memory (CAM)|CAM]] *expensive*
+
+### Ternary CAM (TCAM)
+
+- Variation of [[#Content-addressable memory (CAM)|CAM]] that adds *partial match* searching
+- Each [[Data representation#Bit (Binary digit)|bit]] in slot can have one of **3** possible values
+	- Zero
+	- One
+	- Don't care (*ignores* and reports *match*)
+- **TCAM** can either report
+	- **First** match
+	- **All** matches ([[Data representation#Bit (Binary digit)|bit]] vector)
 
 ## Synchronous memory techniques
 
 - **Both** memory and processor use a *clock*
-
 - *Synchronized* memory systems ensure *two clocks coincide*
 - Allows *higher* memory *speeds*
-
 - Technologies
 	- **S**ynchronous [[#SRAM]] (**SSRAM**) 
 	- **S**ynchronous [[#DRAM]] (**SDRAM**)
@@ -569,4 +688,9 @@ width:100%
 | ZBT-SRAM   | Zero Bus Turnaround Static **RAM** |
 | RDRAM      | Rambus Dynamic **RAM**             |
 | RLDRAM     | Reduced Latency Dynamic **RAM**    |
+
+--- 
+<br>
+
+# Caches and caching
 

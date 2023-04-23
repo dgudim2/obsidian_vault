@@ -5,6 +5,7 @@ Previous: [[Midterm1_plagiarism_spying (w6)]]
 [[Research Proposals - model.docx]]
 
 # Discuss the following questions
+
 - What areas of research (or topics from your course) are you interested in? 
 	- AI, programming languages, Data science
 - How do students or academics generally do research?  What kind of methods do they use? 
@@ -18,6 +19,7 @@ Previous: [[Midterm1_plagiarism_spying (w6)]]
 
 
 # Read the model answer and discuss the following questions
+
 1. How many different sections are there in the text?  i.e. how can the text be organised? 
 	- 5
 2. How many references are there in the reference list? 
@@ -31,7 +33,7 @@ Previous: [[Midterm1_plagiarism_spying (w6)]]
 6. What are the main differences between this model and what you will submit? 
 	- Topic, word count
 
-# The text has 5 sections- please label them accordingly
+# The text has 5 sections - please label them accordingly
 
 - PART 1: Role of leadership / Introduction / Background info
 - PART 2: Focus of the research / Research questions

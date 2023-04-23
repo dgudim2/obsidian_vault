@@ -2,7 +2,7 @@
 
 - **Technology**
 	- The type of the underlying *hardware*
-	- Choice determines *cost*, *persistence*, *performance*
+	- Choice determines *cost*, *persistence*, *performance* ([[#Measures of memory]])
 	- Many variants are available
 - [[#Memory controller (organization)|Organization]]
 	- How underlying hardware is used to build memory system (i.e., [[Data representation#Byte|bytes]], [[#Words|words]], etc.)
@@ -61,7 +61,7 @@
 
 ## Memory hierarchy
 
-- Key concept to [[Memory|memory]] *design*
+- *Key concept* to [[Memory|memory]] *design*
 - Extend the [[#Primary memory|primary]]/[[#Secondary memory|secondary]] trade-off to multiple levels
 
 - @ Basic idea
@@ -116,7 +116,7 @@
 #### Von Neumann architecture
 
 - A *single memory* holds both **programs** and **data**
-- Used on most general-purpose computers
+- Used on most **general-purpose** computers
 
 ## Fetch-store paradigm
 
@@ -129,6 +129,58 @@
 - Hardware only supports *two operations*
 	- **Fetch** (read) a value from a specified location
 	- **Store** (write) a value into a specified location
+
+## Measures of memory
+
+### Density
+
+> [!definition] 
+> Refers to *memory* cells *per square* area of silicon
+
+- Usually stated as number of [[Data representation#Bit (Binary digit)|bits]] on standard size chip
+- @ Note: *higher density* chip generates *more heat*
+
+### Latency
+
+> [!definition] 
+> **Time** that elapses between the *start* of an operation and the *completion* of the operation
+
+- May depend on previous operations
+
+> [!seealso] 
+> [[#Memory cycle time]]
+
+#### Separation of read and write latency
+
+- In many [[Memory|memory]] technologies
+	- The time required to *store exceeds* the time required to *fetch*
+	- Difference can be **dramatic**
+- @ Consequence: any measure of memory performance must give *two values*
+	- Performance of *read*
+	- Performance of *write*
+
+### Memory cycle time
+
+- More accurate measure than [[#Latency|latency]]
+- Two separate measures
+	- **Read** cycle time (t**RC**)
+	- **Write** cycle time (t**WC**)
+
+### Memory size
+
+> Memory sizes are expressed as *powers of* **2**, not *powers of* **10**
+
+- **Kilobyte** defined to be $2^{10}$ [[Data representation#Byte|bytes]]
+- **Megabyte** defined to be $2^{20}$ [[Data representation#Byte|bytes]]
+- **Gigabyte** defined to be $2^{30}$ [[Data representation#Byte|bytes]]
+- **Terabyte** defined to be $2^{40}$ [[Data representation#Byte|bytes]]
+
+#### Measures of network speed
+
+> Speeds of *data networks* and other [[IO#I/O Devices|I/O devices]] are usually expressed in *powers of* **10**
+
+- & Example: a **Gigabit** Ethernet operates at $10^9$ [[Data representation#Bit (Binary digit)|bits]] per second
+- ~ Programmer must accommodate **differences** between measures for *storage* and *transmission*
 
 --- 
 <br>
@@ -201,8 +253,8 @@ flexGrow=1
 
 #### Making DRAM work
 
-> Cannot leave bits too long or they change
-> Additional hardware known as a *refresh circuit* is used
+> Cannot leave [[Data representation#Bit (Binary digit)|bits]] too long or they change
+> **Additional hardware** known as a *refresh circuit* is used
 
 - Refresh circuit
 	+ **Steps** through each location **i** of **DRAM**
@@ -238,58 +290,6 @@ flexGrow=1
 
 ```` 
 `````
-
-## Measures of memory
-
-### Density
-
-> [!definition] 
-> Refers to *memory* cells *per square* area of silicon
-
-- Usually stated as number of [[Data representation#Bit (Binary digit)|bits]] on standard size chip
-- @ Note: *higher density* chip generates *more heat*
-
-### Latency
-
-> [!definition] 
-> **Time** that elapses between the *start* of an operation and the *completion* of the operation
-
-- May depend on previous operations
-
-> [!seealso] 
-> [[#Memory cycle time]]
-
-#### Separation of read and write latency
-
-- In many memory technologies
-	- The time required to *store exceeds* the time required to *fetch*
-	- Difference can be **dramatic**
-- @ Consequence: any measure of memory performance must give *two values*
-	- Performance of *read*
-	- Performance of *write*
-
-### Memory cycle time
-
-- More accurate measure than [[#Latency|latency]]
-- Two separate measures
-	- **Read** cycle time (t**RC**)
-	- **Write** cycle time (t**WC**)
-
-### Memory size
-
-> Memory sizes are expressed as *powers of* **2**, not *powers of* **10**
-
-- **Kilobyte** defined to be $2^{10}$ [[Data representation#Byte|bytes]]
-- **Megabyte** defined to be $2^{20}$ [[Data representation#Byte|bytes]]
-- **Gigabyte** defined to be $2^{30}$ [[Data representation#Byte|bytes]]
-- **Terabyte** defined to be $2^{40}$ [[Data representation#Byte|bytes]]
-
-#### Measures of network speed
-
-> Speeds of *data networks* and other [[IO#I/O Devices|I/O devices]] are usually expressed in *powers of* **10**
-
-- & Example: a **Gigabit** Ethernet operates at $10^9$ [[Data representation#Bit (Binary digit)|bits]] per second
-- ~ Programmer must accommodate **differences** between measures for *storage* and *transmission*
 
 ## Memory controller (organization)
 
@@ -394,9 +394,9 @@ flexGrow=1
 
 - [[#Words|Word]] size represents a fundamental **trade-off**
 - *Larger* [[#Words|word]] size
-	- Results in *higher* **performance**
+	- $ Results in *higher* **performance**
 	- Requires more *parallel wires* and circuits
-	- Has *higher* **cost** and **power** *consumption*
+	- ! Has *higher* **cost** and **power** *consumption*
 
 > [!note] 
 > 
@@ -660,7 +660,7 @@ flexGrow=1
 
 ## Synchronous memory techniques
 
-- **Both** memory and processor use a *clock*
+- **Both** [[Memory|memory]] and [[Processor|processor]] use a *clock*
 - *Synchronized* memory systems ensure *two clocks coincide*
 - Allows *higher* memory *speeds*
 - Technologies
@@ -683,14 +683,207 @@ flexGrow=1
 | Technology | Description                        |
 | ---------- | ---------------------------------- |
 |            |                                    |
-| FCRAM      | Fast Cycle **RAM**                 |
-| FPM-DRAM   | Fast Page Mode Dynamic **RAM**     |
-| ZBT-SRAM   | Zero Bus Turnaround Static **RAM** |
-| RDRAM      | Rambus Dynamic **RAM**             |
-| RLDRAM     | Reduced Latency Dynamic **RAM**    |
+| FCRAM      | **F**ast **C**ycle **RAM**                 |
+| FPM-DRAM   | **F**ast **P**age **M**ode **D**ynamic **RAM**     |
+| ZBT-SRAM   | **Z**ero **B**us **T**urnaround Static **RAM** |
+| RDRAM      | **R**ambus **D**ynamic **RAM**             |
+| RLDRAM     | **R**educed **L**atency **D**ynamic **RAM**    |
 
 --- 
 <br>
 
-# Caches and caching
+# Cache
+
+> [!definition] 
+> 
+> - Acts as an **intermediary** 
+> 	- Located *between* source of *requests* and source of *replies*
+> 	- **Copy** of selected items kept in local storage
+> 	- **Cache** answers requests from *local copy when possible*
+> - Contains *temporary* local storage
+
+> Conceptual organization of a **cache**, which is positioned on the path *between* a mechanism that *makes requests* and a storage mechanism that *answers requests*
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[cache.svg]]
+```
+
+## Cache characteristics
+
+- $ [[#Cache]] is very high-speed
+- ! Limited in size (usually *much smaller* than storage *needed* for entire set of items)
+- **Automatic** (uses sequence of requests; does not receive *extra instructions*)
+- **Active** (*makes decisions* about which items to save)
+- **Transparent** (*invisible* to both *requester* and data *store*)
+
+### Cache Implementation details
+
+- [[#Cache]] can be 
+	- Implemented in *hardware*, *software*, or a *combination*
+	- Store small or large data items (a [[Data representation#Byte|byte]] of [[Memory|memory]] or a complete file)
+	- For an *individual* processor or *shared* among processors
+	- Retrieval-only or store-and-retrieve
+
+## Cache terminology
+
+- [[#Cache]] **hit**: request *can be satisfied* from cache
+- [[#Cache]] **miss**: request *cannot be satisfied* from cache
+- **Locality of reference**: refers to whether requests are *repeated*
+	- **High** locality means *many* repetitions
+	- **Low** locality means *few* repetitions
+- @ Note: cache works well with *high locality* of reference
+
+### Caching
+
+- *Key concept* in computing (*one of the most important* optimization techniques available)
+- Used in *hardware* and *software*
+- @ Note: [[#Memory caches|Memory cache]] is essential to reduce the Von Neumann bottleneck ==#TODO==: Link to bottleneck
+
+## Cache performance
+
+- **Cost** measured with respect to *requester*
+- $C_{h}$, is the *cost* of an item *found* in the [[#Cache|cache]] ([[#Cache terminology|hit]])
+- $C_{m}$, is the *cost* of an item *not found* in the [[#Cache|cache]] ([[#Cache terminology|miss]])
+
+> Illustration of *access costs* when using a [[#Cache|cache]]. **Costs** are measured with respect to the requester
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[cache-cost.svg]]
+```
+
+### Analysis of cache performance
+
+- **Worst** *case* for sequence of **N** requests: $$C_{worst}=NC_{m}$$
+- **Best** *case* for sequence of **N** requests: $$C_{best}=C_{m}+(N-1)*C_{h}$$
+- For **best** *case*, the *average* cost per request is: $$\frac{C_{m}+(N-1)*C_{h}}{N}=\frac{C_{m}}{N}-\frac{C_{h}}{N}+C_{h}$$
+- @ Key idea: as **$N\to \infty$**, average **cost** approaches **$C_{h}$** ([[#Cache terminology|cache hit]] cost)
+
+#### Why does caching work so well
+
+- If we ignore *overhead*
+	- In the **worst** *case*, the performance of caching is *no worse* than if the cache were not present
+	- In the **best** *case*, the **cost** per request is approximately equal to the *cost of accessing the cache*
+- @ Note: for [[#Memory caches|memory caches]], parallel hardware means *almost no overhead*
+
+#### Expected performance of a cache
+
+- Access *cost* depends on [[#Cache terminology|hit]] ratio **r**
+$$Cost=r*C_{h}+(1-r)*C_{m}$$
+- @ Notes
+	- The **cost** of a [[#Cache terminology|miss]] is often *much larger* than the cost of a [[#Cache terminology|hit]]
+	- The *performance improves* if [[#Cache terminology|hit]] **ratio** *increases* or **cost** of access from cache *decreases*
+
+##### Analysis of 2-level cache
+
+- For a [[#Multilevel cache hierarchy|2-level cache]] cost is: $$Cost=r_{1}*C_{h1}+r_{2}*C_{h2}+(1-r_{1}-r_{2})*C_{m}$$ where
+	- *$r_{1}$* is **fraction** of [[#Cache terminology|hits]] for the *new* [[#Cache|cache]] 
+	- *$r_{2}$* **fraction** of [[#Cache terminology|hits]] for the *original* [[#Cache|cache]] 
+	- *$C_{h1}$* is **cost** of accessing the *new* [[#Cache|cache]] 
+	- *$C_{h2}$* is **cost** of accessing the *original* [[#Cache|cache]] 
+
+### Cache replacement policy
+
+- Because [[#Cache|cache]] is smaller than data store
+- Once [[#Cache|cache]] is full, existing item must be *ejected* before another can be *inserted*
+- **Replacement policy** chooses *item to eject*
+	- *Most popular* **replacement policy** known as **L**east **R**ecently **U**sed (**LRU**)
+		+ *Easy* to implement
+		- Tends to retain items that will be *requested again*
+		- *Works well* in practice
+
+### Preloading caches
+
+> [!definition] 
+> 
+> - *Optimization* technique
+> - Stores items in [[#Cache|cache]] *before requests arrive*
+> - Works well if data accessed is in *related groups*
+
+- & Examples
+	- When web page is fetched, web cache can **preload** images that appear on the page
+	- When [[Data representation#Byte|byte]] byte of [[Memory|memory]] is fetched, [[#Memory caches|memory cache]] can **preload** succeeding
+
+## Multilevel cache hierarchy
+
+- Can use multiple [[#Cache|caches]] to *improve performance*
+- Arranged in hierarchy by *speed* (i.e., by **cost**)
+- & Example: insert an extra, *faster* [[#Cache|cache]] in previous diagram
+
+> The organization of a system with an *additional* [[#Cache|cache]] inserted.
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[multilevel-cache.svg]]
+```
+
+## Memory caches
+
+- Several [[Memory|memory]] mechanisms operate as a [[#Cache|cache]]
+- & Examples
+	- [[#Physical memory caches]]
+	- TLB in a virtual memory system
+	- Pages in a demand paging system ==#TODO== link to topics
+
+### Physical memory caches
+
+- Located between [[Processor|processor]] and [[#Physical memory|physical memory]]
+- *Smaller* than [[#Physical memory|physical memory]]
+- Use *parallel* hardware to achieve *high performance*
+- Perform *2 operations in parallel*
+	- Search local [[#Cache|cache]]
+	- Send request to *underlying* [[#Physical memory|physical memory]]
+		- If answer found in [[#Cache|cache]], *cancel request*
+
+#### Types of physical memory caches
+
+##### Write-through cache
+
+- *Place* a copy of item in [[#Cache|cache]] 
+- *Also send* (write) a copy to [[#Physical memory|physical memory]]
+
+##### Write-back cache 
+
+> Much faster than [[#Write-through cache]]
+
+- *Place* a copy of item in [[#Cache|cache]] 
+- *Only write* the copy to [[#Physical memory|physical memory]] when *necessary*
+- $ Works well for *frequent updates* (e.g., a loop increments a value)
+
+#### Cache coherence
+
+- **Each** [[Processor|processor]] (or *core*) has its own [[#Cache|cache]]
+- **Each** [[#Cache|cache]] can retain *copy* of item
+- ~ [[#Cache]] **coherence** is needed to *ensure correctness* when one *core changes an item* and others *hold a copy*
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[2-caches.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of two [[Processor|processors]] sharing underlying [[#Physical memory|physical memory]]
+> - Because each [[Processor|processor]] has a separate [[#Cache|cache]] , conflicts can occur if both [[Processor|processors]] reference the same [[Memory|memory]] *address*
+
+```` 
+`````
 

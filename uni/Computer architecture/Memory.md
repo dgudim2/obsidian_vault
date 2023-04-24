@@ -1127,6 +1127,33 @@ flexGrow=1
 > 	- Underlying [[#Physical memory|physical memory]] uses [[#Words|word]] addresses
 > 	- [[#Memory controller (organization)|Memory controller]] translates automatically
 
+> [!example] 
+> 
+> - Most computers have more than one [[#Physical memory|physical memory]] **module**
+> - Each [[#Physical memory|physical memory]] **module**
+> - Offers addresses from **0** to **N-1** for some **N**
+> - May use an *arbitrary* [[Memory|memory]] technology (e.g., [[#SRAM]] or [[#DRAM]])
+> - **Virtual memory** system can provide *uniform address space* for all [[#Physical memory|physical memories]]
+> 
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[MMU-1-2.svg]]
+```
+
+## Modules
+
+- Concepts are similar
+- [[#Memory banks|Bank]]
+	- Generally refers to [[#Physical memory|physical memory]]
+	- Used when identical [[Memory|memory]] *modules* are *replicated*
+- **Module**
+	- More generic term often used with **virtual memory** systems
+	- Preferred when *heterogeneous* memory units are combined
+
 ## Virtual memory terminology
 
 +  **M**emory **M**anagement **U**nit (**MMU**)

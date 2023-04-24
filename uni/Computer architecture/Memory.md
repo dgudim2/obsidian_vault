@@ -742,6 +742,55 @@ width:100%
 - Used in *hardware* and *software*
 - @ Note: [[#Memory caches|Memory cache]] is essential to reduce the Von Neumann bottleneck ==#TODO==: Link to bottleneck
 
+### Cache blocks
+
++ Divide [[Memory|memory]] into **blocks** of size **B**
++ *Blocks* are numbered *modulo* **C**, where **C** is *slots* in [[#Cache|cache]]
++ & Example: **block** size of **B**=*8* [[Data representation#Byte|bytes]] and [[#Cache|cache]] size **C**=*4*
+
+`````col 
+````col-md 
+flexGrow=2
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[direct-mapped-mem-cache.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+
+> An example assignment of block numbers to [[Memory|memory]] locations for a [[#Cache|cache]] of *four* blocks with *eight* [[Data representation#Byte|bytes]] per **block**
+
+
+```` 
+`````
+
+### Cache tags
+
+> [!definition] 
+> **Tag** is the *relative number* of the [[#Cache blocks|block]] in [[Memory|memory]]
+
+- @ General idea: using **tags** allows a *smaller* [[#Cache|cache]]
+
+> - An example [[Memory|memory]] [[#Cache|cache]] with space for *four* [[#Cache blocks|blocks]] and a [[Memory|memory]] divided into *conceptual*  [[#Cache blocks|block]] of **8** [[Data representation#Byte|bytes]]
+> - Each group of *four* [[#Cache blocks|blocks]] in [[Memory|memory]] is assigned a *unique* **tag**.
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[cache-tags.svg]]
+```
+
+
 ## Cache performance
 
 - **Cost** measured with respect to *requester*
@@ -797,7 +846,7 @@ $$Cost=r*C_{h}+(1-r)*C_{m}$$
 		- Tends to retain items that will be *requested again*
 		- *Works well* in practice
 
-### Preloading caches
+### Cache preloading
 
 > [!definition] 
 > 
@@ -883,6 +932,121 @@ flexGrow=1
 
 > - Illustration of two [[Processor|processors]] sharing underlying [[#Physical memory|physical memory]]
 > - Because each [[Processor|processor]] has a separate [[#Cache|cache]] , conflicts can occur if both [[Processor|processors]] reference the same [[Memory|memory]] *address*
+
+```` 
+`````
+
+### Multilevel memory caches
+
+- Traditional [[#Memory caches|memory cache]] was *separate* from both the [[Memory|memory]] and the [[Processor|processor]]
+- To access traditional memory [[#Cache|cache]], a [[Processor|processor]] used pins that connect it to the rest of the computer
+- Using pins to access *external hardware* takes *much longer* than accessing functional units that are **internal** to the [[Processor|processor]] chip
+- Advances in technology have *made it possible* to increase the number of transistors per chip, which means a [[Processor|processor]] *chip can contain* a [[#Cache|cache]]
+
+- Level 1 [[#Cache|cache]] (**L1** cache)
+	- Per core
+- Level 2 [[#Cache|cache]] (**L2** cache)
+	- May be per core
+- Level 3 [[#Cache|cache]] (**L3** cache)
+	- Shared among all cores
+
+- @ Historical note: definitions used to specify **L1** as *on-chip*, **L2** as *off-chip*, and **L3** as *part of* [[Memory|memory]]
+
+> [!example] 
+> - Example [[#Cache|cache]] sizes in 2016. Although absolute sizes continue to change
+> - Readers should focus on the amount of cache relative to [[#Random access memory|RAM]] that is **4 GB** to **32 GB**.
+> 
+> | [[#Cache]] | Size                   | Notes                  |
+> | ----------------- | ---------------------- | ---------------------- |
+> | **L1**            | 64 **KB** to **96** KB | Per core               |
+> | **L2**            | 256 **KB** to **2** MB | May be per core        |
+> | **L3**            | 8 **MB** to **24** MB  | Shared among all cores | 
+
+### Memory cache technologies
+
+- [[#Direct mapped memory cache]]
+- [[#Set associative memory cache]]
+
+#### Direct mapped memory cache
+
++ When [[Data representation#Byte|byte]] is referenced, always place *entire* [[#Cache blocks|block]] in the [[#Cache|cache]]
+- If *block number* is **n**, place the [[#Cache blocks|block]] in [[#Cache|cache]] slot **n**
+	* Use a [[#Cache tags|tag]] to specify which *actual addresses* are currently in slot **n**
+
+##### Direct memory cache lookup
+
+
+
+#### Set associative memory cache
+
+### Efficient memory cache
+
+- Think *binary*: if all values are *powers of two*, [[Data representation#Bit (Binary digit)|bits]] of an *address* can be used to specify a [[#Cache tags|tag]], [[#Cache blocks|block]], and **offset**
+- For the example above (an unrealistically small cache)
+- [[#Cache blocks|Block]] size **B** is **8**, so use **3** [[Data representation#Bit (Binary digit)|bits]] of offset
+- [[#Cache]] size **C** is **4**, so use **2** [[Data representation#Bit (Binary digit)|bits]] of [[#Cache blocks|block]] number
+- [[#Cache tags|Tag]] is *remainder* of address (32 — 5 [[Data representation#Bit (Binary digit)|bits]])
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[eff-mem-cache.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+Illustration of how using *powers of two* allows a [[#Cache|cache]] to divide
+a [[Memory|memory]] *address* into three separate fields that correspond to a [[#Cache tags|tag]], a [[#Cache blocks|block]] number, and a [[Data representation#Byte|byte]] offset within the [[#Cache blocks|block]]
+
+
+```` 
+`````
+
+## Instruction and data caches
+
+- Instruction references are typically *sequential*
+	- High [[#Cache terminology|locality of reference]]
+	- Amenable to [[#Cache preloading|prefetching]]
+- Data references typically exhibit *more randomness*
+	- Lower [[#Cache terminology|locality of reference]]
+	- [[#Cache preloading|Prefetching]] does not work well
+- ? Question: does performance improve with *separate caches* for **data** and **instructions**?
+	- [[#Cache]] tends to work well with **sequential** *references*
+	- Adding *many random references* tends to *lower* [[#Cache|cache]] *performance*
+	- Therefore, separating instruction and data [[#Cache|caches]] can improve performance
+	- ~ However: if cache is "large enough", separation doesn’t help
+	- @ Current thinking: instead of separate [[#Cache|caches]], simply use a *single larger* [[#Cache|cache]]
+
+`````col 
+````col-md 
+flexGrow=2
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[instruction-data-cache.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> A Modified [[Processor#Harward|Harvard Architecture]] with separate **instruction** and **data** [[#Cache|caches]] leading to the same underlying [[Memory|memory]]
+
 
 ```` 
 `````

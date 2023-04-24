@@ -73,8 +73,8 @@
 
 > [!example] 
 > Dozens of general-purpose [[Processor#Registers|registers]] 
-> A dozen **gigabytes** of *main* memory
-> Several **terabytes** of solid state disk ([[#Flash]])
+> A dozen [[#Memory size|gigabyte]] of *main* memory
+> Several [[#Memory size|terabytes]] of solid state disk ([[#Flash]])
 
 ### Primary memory
 
@@ -1133,8 +1133,15 @@ flexGrow=1
 > - Each [[#Physical memory|physical memory]] **module**
 > - Offers addresses from **0** to **N-1** for some **N**
 > - May use an *arbitrary* [[Memory|memory]] technology (e.g., [[#SRAM]] or [[#DRAM]])
-> - **Virtual memory** system can provide *uniform address space* for all [[#Physical memory|physical memories]]
+> - **Virtual memory** system can provide *uniform [[#Virtual memory terminology|address space]]* for all [[#Physical memory|physical memories]]
 > 
+
+## Virtual addressing for multiple modules
+
+`````col 
+````col-md 
+flexGrow=1
+===
 
 ```dynamic-svg
 ---
@@ -1144,6 +1151,60 @@ width:100%
 [[MMU-1-2.svg]]
 ```
 
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of an architecture in which two *dissimilar memories* connect to a [[Processor|processor]]
+> - The [[Processor|processor]] can use either [[Memory|memory]]
+
+- Typical scheme: [[Processor|processor]] has a single [[#Virtual memory terminology|virtual address space]]
+- [[#Virtual memory terminology|Address space]] covers all memory modules
+- & Example
+	- Two physical memories with **1GB** each (**0x40000000**) [[Data representation#Byte|bytes]]
+	- *Virtual addresses* from **0** to **0x3fffffff** correspond to [[Memory|memory]] **1**
+	- *Virtual addresses* from **0x40000000** to **0x7fffffff** correspond to [[Memory|memory]] **2**
+- @ Note
+	- **0x40000000** is **1** [[#Memory size|gigabyte]] or **1073741824** [[Data representation#Byte|bytes]]
+	+ For identical [[#Modules|module]], these are called [[Memory|memory]] [[#Memory banks|banks]]
+
+```` 
+`````
+
+### Address translation
+
++ Performed by [[#Virtual memory terminology|MMU]]
++ ~ Also called **address mapping**
++ & Example
+	+ To determine which [[#Physical memory|physical memory]], *test* if address is **0x40000000** or above
+	+ Both memory modules use addresses **0** through **0x3fffffff**
+	+ *Subtract* **0x40000000** from address when **forwarding** a request to [[Memory|memory]]
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[virtual-addressing.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of a [[#Virtual memory|virtual memory]] system that divides an [[#Virtual memory terminology|address space]] among two [[#Physical memory|physical memories]]
+> - The [[#Virtual memory terminology|MMU]] uses an address to decide which [[Memory|memory]] to access
+
+```` 
+`````
+
 ## Modules
 
 - Concepts are similar
@@ -1151,8 +1212,8 @@ width:100%
 	- Generally refers to [[#Physical memory|physical memory]]
 	- Used when identical [[Memory|memory]] *modules* are *replicated*
 - **Module**
-	- More generic term often used with **virtual memory** systems
-	- Preferred when *heterogeneous* memory units are combined
+	- More *generic* term often used with **virtual memory** systems
+	- Preferred when *heterogeneous* [[Memory|memory]] units are combined
 
 ## Virtual memory terminology
 

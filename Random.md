@@ -17,4 +17,4 @@ Hey guys! If someday you would like to find a job in Lithuania join this linkedi
 
 
 About the guy, or obout topics, 2 more articles, reference pages, reference articles, explain what "technology is not technological", "more authentic presence in the world"
-Causality
+Causality, 2 meanings, go back to Greek from Latin

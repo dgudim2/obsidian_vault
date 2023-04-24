@@ -105,8 +105,8 @@
 - Used on *early computers* and some *embedded* systems
 
 - $ Advantages
-	- Allows separate caches
-	- Permits memory technology to be *optimized* for access patterns
+	- [[#Instruction and data caches|Allows separate caches]]
+	- Permits [[Memory|memory]] technology to be *optimized* for access patterns
 	- Instructions: [[#Sequential access memory|sequential access]]
 	- Data: [[#Random access memory|random access]]
 
@@ -609,7 +609,7 @@ flexGrow=1
 > - A **row** in the array is called a **slot**
 > 
 > - The hardware cells
-> 	- Can answer the question: "Is **X** stored in any *row* of the **CAM**?""
+> 	- Can answer the question: "Is **X** stored in any *row* of the **CAM**?"
 > 	- *Operate in parallel* to make search fast
 > - ~ **Query** is known as a **key**
 
@@ -632,8 +632,7 @@ flexGrow=1
 ===
 
 > - Illustration of a Content Addressable Memory (**CAM**)
-> - **CAM** provides both a *memory technology* and a *memory organization*
-
+> - **CAM** provides both a [[Memory|memory]] **technology** and [[#Memory controller (organization)|memory organization]]
 
 ```` 
 `````
@@ -641,7 +640,6 @@ flexGrow=1
 ### CAM lookup
 
 - [[#Content-addressable memory (CAM)|CAM]] presented with **key** for *lookup*
-
 - *Hardware* cells test whether *key is present*
 	- **Search** operation performed *in parallel* on *all slots* **simultaneously**
 	- **Result** is *index of slot* where value found
@@ -741,6 +739,13 @@ width:100%
 - *Key concept* in computing (*one of the most important* optimization techniques available)
 - Used in *hardware* and *software*
 - @ Note: [[#Memory caches|Memory cache]] is essential to reduce the Von Neumann bottleneck ==#TODO==: Link to bottleneck
+
+> [!note] 
+> 
+> - In many programs, **caching** works well *without extra work* (See: [[#Why does caching work so well]])
+> - To *optimize* [[#Cache|cache]] performance
+> - **Group** related data items into same [[#Cache|cache]] line (e.g., related [[Data representation#Byte|bytes]] into a [[#Words|word]])
+> - Perform all operations on *one data item* before moving to the *next*
 
 ### Cache blocks
 
@@ -852,7 +857,7 @@ $$Cost=r*C_{h}+(1-r)*C_{m}$$
 > 
 > - *Optimization* technique
 > - Stores items in [[#Cache|cache]] *before requests arrive*
-> - Works well if data accessed is in *related groups*
+> - Works well if data accessed is in *related groups* (See: [[#Caching]])
 
 - & Examples
 	- When web page is fetched, web cache can **preload** images that appear on the page
@@ -944,11 +949,11 @@ flexGrow=1
 - Advances in technology have *made it possible* to increase the number of transistors per chip, which means a [[Processor|processor]] *chip can contain* a [[#Cache|cache]]
 
 - Level 1 [[#Cache|cache]] (**L1** cache)
-	- Per core
+	- *Per core*
 - Level 2 [[#Cache|cache]] (**L2** cache)
-	- May be per core
+	- May be *per core*
 - Level 3 [[#Cache|cache]] (**L3** cache)
-	- Shared among all cores
+	- *Shared* among all cores
 
 - @ Historical note: definitions used to specify **L1** as *on-chip*, **L2** as *off-chip*, and **L3** as *part of* [[Memory|memory]]
 
@@ -964,8 +969,12 @@ flexGrow=1
 
 ### Memory cache technologies
 
-- [[#Direct mapped memory cache]]
-- [[#Set associative memory cache]]
+- [[#Direct mapped memory cache]] (No parallelism)
+- [[#Set associative memory cache]] (Some parallelism)
+- [[#Fully associative cache]] (More parallelism)
+
+> [!seealso] 
+> Arbitrary parallelism: [[#Content-addressable memory (CAM)]]
 
 #### Direct mapped memory cache
 
@@ -973,11 +982,59 @@ flexGrow=1
 - If *block number* is **n**, place the [[#Cache blocks|block]] in [[#Cache|cache]] slot **n**
 	* Use a [[#Cache tags|tag]] to specify which *actual addresses* are currently in slot **n**
 
-##### Direct memory cache lookup
+##### Direct mapped memory cache lookup
 
+- ~ Given
+	A [[Memory|memory]] *address*
+- ? Find
+	The **data** [[Data representation#Byte|byte]] at that *address*
+- @ Method
+	- **Extract** the [[#Cache tags|tag]] number, **t**, [[#Cache blocks|block]] number, **b**, and offset, **o**, from the *address*.
+	- **Examine** the [[#Cache tags|tag]] in slot **b** of the [[#Cache|cache]]. If the [[#Cache tags|tag]] matches **t**, extract the value from slot **b** of the [[#Cache|cache]]
+	- If the tag in slot b of the [[#Cache|cache]] does not match **t**, use the [[Memory|memory]] *address* to extract the [[#Cache blocks|block]] from [[Memory|memory]], place a copy in slot **b** of the [[#Cache|cache]], replace the [[#Cache tags|tag]] with **t**, and use **o** to select the appropriate [[Data representation#Byte|byte]] from the value
 
+> Block diagram of the hardware used to implement lookup in a [[#Memory caches|memory cache]]
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[cache-lookup.svg]]
+```
 
 #### Set associative memory cache
+
+- Alternative to [[#Direct mapped memory cache|direct mapped memory cache]]
+- Uses *parallel hardware*
+- Maintains *two*, **independent** [[#Cache|caches]]
+- Allows *two items* with same [[#Cache blocks|block]] number to be **[[#Caching|cached]] simultaneously**
+
+> Illustration of a **set associative memory cache** with *two copies* of the underlying hardware. The [[#Cache|cache]] includes hardware to *search both* copies *in parallel*
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[set-associative-cache.svg]]
+```
+
+- $ Advantages: 
+	- Assume two [[Memory|memory]] addresses **A1** and **A2**
+- Both have [[#Cache blocks|block]] number **0**
+- In [[#Direct mapped memory cache|direct mapped memory cache]]
+	- **A1**, and **A2**, contend for *single slot*
+	- *Only one* can be [[#Caching|cached]] at a given time
+- In **set associative cache**
+	- **A1** and **A2**, can be placed in *separate* [[#Cache|caches]]
+	- *Both* can be [[#Caching|cached]] at a given time
+
+#### Fully associative cache
+
+- Generalization of [[#Set associative memory cache|set associative cache]]
+- Many *parallel* [[#Cache|caches]]
+- Each [[#Cache|cache]] has exactly *one slot*
+- Slot can hold *arbitrary item*
 
 ### Efficient memory cache
 
@@ -1050,4 +1107,39 @@ flexGrow=1
 
 ```` 
 `````
+
+--- 
+<br>
+
+# Virtual memory
+
+> [!definition] 
+> 
+> - Broad concept with lots of variants
+> 	- @ General idea
+> 		- *Hide* the details of the underlying [[#Physical memory|physical memory]]
+> 		- Provide a view of [[Memory|memory]] that is more *convenient to a programmer*
+> - Goal is to allow [[#Physical memory|physical memory]] and addressing to be structured in a way that is *optimal for hardware* while providing an **interface** that is *optimal for software*
+
+> [!example] 
+> - [[#Byte addressing and translation]] fits our definition of **virtual memory**
+> 	- Architecture uses [[Data representation#Byte|byte]] addresses
+> 	- Underlying [[#Physical memory|physical memory]] uses [[#Words|word]] addresses
+> 	- [[#Memory controller (organization)|Memory controller]] translates automatically
+
+## Virtual memory terminology
+
++  **M**emory **M**anagement **U**nit (**MMU**)
+	- Hardware unit
+	- Provides *translation* between **virtual** and [[#Physical memory|physical memory]] schemes
+- **Virtual** address
+	- Generated by [[Processor|processor]] (either *instruction fetch* or *data fetch*)
+	- *Translated* into corresponding [[#Physical memory|physical memory]] address by **MMU**
+- **Physical** address
+	- Used by *underlying hardware*
+	- May be *completely hidden* from programmer
+- **Virtual** address space
+	- Set of all possible *virtual addresses*
+	- Can be larger or smaller than [[#Physical memory|physical memory]]
+	- Each process may have its own *virtual space*
 

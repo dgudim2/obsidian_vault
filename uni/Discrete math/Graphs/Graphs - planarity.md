@@ -128,7 +128,7 @@ width:450px
 > 
 > ### $K_{3,3}$
 > 
-> ```dot 
+> ```dot
 > ---
 > preset: math-graph
 > ---

@@ -9,6 +9,7 @@
   "enabledCssSnippets": [
     "8 + 8 highlight colors",
     "big-math",
+    "Combine Nested tag colors and Highlight colors ",
     "dialogs",
     "fix_highligh",
     "kanban",
@@ -16,8 +17,7 @@
     "slides-theme-colors",
     "list_padding",
     "width-800px",
-    "mjx-colors",
-    "Combine Nested tag colors and Highlight colors "
+    "mjx-colors"
   ],
   "showViewHeader": true,
   "theme": "system"

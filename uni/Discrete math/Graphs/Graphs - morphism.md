@@ -936,7 +936,7 @@ node [shape = circle,
       style = filled, 
       width=0.3, 
       height=0.3, 
-      color=green, 
+      color=lightgreen, 
       fillcolor = white] 
 
 a [pos="0,0!"] 
@@ -1014,7 +1014,7 @@ node [shape = circle,
       style = filled, 
       width=0.3, 
       height=0.3, 
-      color=green, 
+      color=lightgreen, 
       fillcolor = white] 
 
 a [pos="0,0!"] 

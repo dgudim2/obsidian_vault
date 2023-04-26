@@ -489,7 +489,7 @@ c -- {1}
 
 > Let’s $|V|=n;$, then amount of all possible [[Graphs - basics#Undirected graph|edges]] (pairs of 2 different [[Graphs - basics#Directed graphs|vertices]]) is:
 > 
-> $\large m=\frac{n(n-1)}{2}$
+> $m=\frac{n(n-1)}{2}$
 > 
 > So generating function for amount of $n$-th order [[#Labeled and unlabeled graphs|labeled]] graphs is:
 > 
@@ -499,7 +499,7 @@ c -- {1}
 > 
 > Amount of *all* possible [[#Labeled and unlabeled graphs|labeled]] graphs can be calculated *approximately*:
 > 
-> $\large g_{n}(x) \sim \frac{2^m}{n!}, n \to \infty$
+> $g_{n}(x) \sim \frac{2^m}{n!}, n \to \infty$
 
 ## Checking for isomorphism
 

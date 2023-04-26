@@ -1,3 +1,4 @@
+
 > [!definition] 
 > Integer *$a$* is a **multiple** of some integer *$b$* if we can write *$a=bm$*
 > Non-zero integer *$b$* **divides** integer *$a$* or *$b|a$* (there are several notions), if number *$a$* is it’s **multiple**. Then number *$b$* is called a **divisor** of number *$a$*

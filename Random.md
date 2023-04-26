@@ -26,3 +26,5 @@ Matrix
 Git
 Webdav
 Whoogle
+
+Luks encryption

@@ -80,12 +80,12 @@ $$
 \begin{array}{} & 
 
 \begin{pmatrix}  
-- & \color{lightgreen}1 & - & - & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & \color{lightgreen}1 & - & - & - \\ 
-- & \color{lightgreen}1 & - & \color{lightgreen}1 & - & - \\ 
-- & - & \color{lightgreen}1 & - & \color{lightgreen}1 & - \\ 
-- & - & - & \color{lightgreen}1 & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & - & - & \color{lightgreen}1 & - \\     
+- & \color{green}1 & - & - & - & \color{green}1 \\ 
+\color{green}1 & - & \color{green}1 & - & - & - \\ 
+- & \color{green}1 & - & \color{green}1 & - & - \\ 
+- & - & \color{green}1 & - & \color{green}1 & - \\ 
+- & - & - & \color{green}1 & - & \color{green}1 \\ 
+\color{green}1 & - & - & - & \color{green}1 & - \\     
 \end{pmatrix} 
 
 \end{array} 
@@ -99,21 +99,21 @@ $$
 \begin{array}{} & 
 
 \begin{pmatrix}  
-- & \color{lightgreen}1 & - & - & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & \color{lightgreen}1 & - & - & - \\ 
-- & \color{lightgreen}1 & - & \color{lightgreen}1 & - & - \\ 
-- & - & \color{lightgreen}1 & - & \color{lightgreen}1 & - \\ 
-- & - & - & \color{lightgreen}1 & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & - & - & \color{lightgreen}1 & - \\     
+- & \color{green}1 & - & - & - & \color{green}1 \\ 
+\color{green}1 & - & \color{green}1 & - & - & - \\ 
+- & \color{green}1 & - & \color{green}1 & - & - \\ 
+- & - & \color{green}1 & - & \color{green}1 & - \\ 
+- & - & - & \color{green}1 & - & \color{green}1 \\ 
+\color{green}1 & - & - & - & \color{green}1 & - \\     
 \end{pmatrix} 
 *
 \begin{pmatrix}  
-- & \color{lightgreen}1 & - & - & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & \color{lightgreen}1 & - & - & - \\ 
-- & \color{lightgreen}1 & - & \color{lightgreen}1 & - & - \\ 
-- & - & \color{lightgreen}1 & - & \color{lightgreen}1 & - \\ 
-- & - & - & \color{lightgreen}1 & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & - & - & \color{lightgreen}1 & - \\     
+- & \color{green}1 & - & - & - & \color{green}1 \\ 
+\color{green}1 & - & \color{green}1 & - & - & - \\ 
+- & \color{green}1 & - & \color{green}1 & - & - \\ 
+- & - & \color{green}1 & - & \color{green}1 & - \\ 
+- & - & - & \color{green}1 & - & \color{green}1 \\ 
+\color{green}1 & - & - & - & \color{green}1 & - \\     
 \end{pmatrix} 
 =
 \begin{pmatrix}  
@@ -136,12 +136,12 @@ $$
 \begin{array}{} & 
 
 \begin{pmatrix}  
-- & \color{lightgreen}1 & - & - & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & \color{lightgreen}1 & - & - & - \\ 
-- & \color{lightgreen}1 & - & \color{lightgreen}1 & - & - \\ 
-- & - & \color{lightgreen}1 & - & \color{lightgreen}1 & - \\ 
-- & - & - & \color{lightgreen}1 & - & \color{lightgreen}1 \\ 
-\color{lightgreen}1 & - & - & - & \color{lightgreen}1 & - \\     
+- & \color{green}1 & - & - & - & \color{green}1 \\ 
+\color{green}1 & - & \color{green}1 & - & - & - \\ 
+- & \color{green}1 & - & \color{green}1 & - & - \\ 
+- & - & \color{green}1 & - & \color{green}1 & - \\ 
+- & - & - & \color{green}1 & - & \color{green}1 \\ 
+\color{green}1 & - & - & - & \color{green}1 & - \\     
 \end{pmatrix} 
 *
 \begin{pmatrix}  

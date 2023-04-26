@@ -46,10 +46,10 @@ white*(3/4) = .silver  rgb(192,192,192)
 red/2       = .maroon  rgb(128,0,0)
 aqua/2      = .teal    rgb(0,128,128)
 
-fushsia/2   = .purple  rgb(128,0,128)
-green/2     = .lime    rgb(0,128,0)
+fushsia/2   = .purple  var(--g-color-light-purple)
+green/2     = .lime    var(--g-color-light-green)
 
-yellow/2    = .olive   rgb(128,128,0)
+yellow/2    = .olive   var(--g-color-green)
 blue/2      = .navy    rgb(0,0,128)
 
 */
@@ -274,41 +274,41 @@ div:not(.CodeMirror-activeline) > .CodeMirror-line span.cm-tag-hnavy
 
 /* -- teal --  */
 .cm-tag-hpurple ~ span.cm-highlight{
-	background-color: rgb(128,0,128)!important;
+	background-color: var(--g-color-light-purple)!important;
 }
 
 .cm-tag-hpurple ~ span.cm-strong {
-	color: rgb(128,0,128);
+	color: var(--g-color-light-purple);
 }
 
 .cm-tag-hpurple ~ span.cm-em {
-	color: rgb(128,0,128);
+	color: var(--g-color-light-purple);
 }
 
 /* -- lime --  */
 .cm-tag-hlime ~ span.cm-highlight{
-	background-color: rgb(0,128,0)!important;
+	background-color: var(--g-color-light-green)!important;
 }
 
 .cm-tag-hlime ~ span.cm-strong {
-	color: rgb(0,128,0);
+	color: var(--g-color-light-green);
 }
 
 .cm-tag-hlime ~ span.cm-em {
-	color: rgb(0,128,0);
+	color: var(--g-color-light-green);
 }
 
 /* -- olive --  */
 .cm-tag-holive ~ span.cm-highlight{
-	background-color: rgb(128,128,0)!important;
+	background-color: var(--g-color-green)!important;
 }
 
 .cm-tag-holive ~ span.cm-strong {
-	color: rgb(128,128,0);
+	color: var(--g-color-green);
 }
 
 .cm-tag-holive ~ span.cm-em {
-	color: rgb(128,128,0);
+	color: var(--g-color-green);
 }
 
 /* -- navy --  */
@@ -516,41 +516,41 @@ a[href^="#c/teal"] + em {
 
 /* -- teal --  */
 a[href^="#c/purple"] + mark {
-	background-color: rgb(128,0,128)!important;
+	background-color: var(--g-color-light-purple)!important;
 }
 
 a[href^="#c/purple"] + strong {
-	color: rgb(128,0,128);
+	color: var(--g-color-light-purple);
 }
 
 a[href^="#c/purple"] + em {
-	color: rgb(128,0,128);
+	color: var(--g-color-light-purple);
 }
 
 /* -- lime --  */
 a[href^="#c/lime"] + mark {
-	background-color: rgb(0,128,0)!important;
+	background-color: var(--g-color-light-green)!important;
 }
 
 a[href^="#c/lime"] + strong {
-	color: rgb(0,128,0);
+	color: var(--g-color-light-green);
 }
 
 a[href^="#c/lime"] + em {
-	color: rgb(0,128,0);
+	color: var(--g-color-light-green);
 }
 
 /* -- olive --  */
 a[href^="#c/olive"] + mark {
-	background-color: rgb(128,128,0)!important;
+	background-color: var(--g-color-green)!important;
 }
 
 a[href^="#c/olive"] + strong {
-	color: rgb(128,128,0);
+	color: var(--g-color-green);
 }
 
 a[href^="#c/olive"] + em {
-	color: rgb(128,128,0);
+	color: var(--g-color-green);
 }
 
 /* -- navy --  */

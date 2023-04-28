@@ -252,7 +252,7 @@ width:100%
 > - & *Automatic* configuration is usually used for [[#I/O Devices|I/O devices]]
 > 
 > > [!seealso] 
-> > [[#Dynamic Bus Connections And Pluggable Devices]]
+> > [[#Dynamic bus connections and pluggable devices]]
 
 ### Unification of memory and devices
 
@@ -339,7 +339,7 @@ flexGrow=1
 > - Two areas are available for *memory*, and one area is available for *devices*
 
 > [!note] 
-> Address maps can contain *holes* (areas of memory not available for anything)
+> Address maps can contain *holes* (areas of memory not mapped to anything)
 
 ```` 
 `````
@@ -348,6 +348,9 @@ flexGrow=1
 	- A device only requires *a few bytes* of address space
 	- Designers *leave room* for *many devices*
 	- @ Consequence: **address space** available for devices is *sparsely populated*
+
+> [!seealso] 
+> [[Memory#Address space continuity]]
 
 ## Bus operations
 
@@ -657,7 +660,7 @@ flexGrow=1
 - Rule: at any given time, at most **one** device can be **interrupting** at each *priority level*
 - @ Note: the *lowest* priority (usually **zero**) means no **interrupt** is occurring (i.e. an application program is *executing*)
 
-### Dynamic Bus Connections And Pluggable Devices
+### Dynamic bus connections and pluggable devices
 
 - Some [[#Buses|bus]] technologies allow devices to be *connected* or *disconnected* at **run-time**
 	- & Example: **U**niversal **S**erial **B**us (**USB**)

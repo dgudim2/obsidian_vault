@@ -2,7 +2,7 @@
 
 > [!definition] 
 > If *$a, b, n$* - natural numbers, and *$n$* divides *$(a-b)$* (*$a/n$* and *$b/n$* have the same **remainder**)
-> Then we can write $a \equiv b(mod\ \ n)$
+> Then we can write *$a \equiv b(mod\ \ n)$*
 > 
 > > [!example] 
 > > *$10 \equiv 1(mod\ \ 3)$*, since *$3|(10-1)$*

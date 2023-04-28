@@ -463,16 +463,18 @@ Architect usually designs *all data paths* in a computer to use **one size**
 	- [[#Words|Word]] address computed by extracting *high-order* bits
 	- **Offset** computed by extracting *low-order* bits
 
-> An example of a **mapping** from [[Data representation#Byte|byte]] address **17** to [[#Words|word]] address **4** and offset **1**
+> [!example] 
+> 
+> An example of a **mapping** from [[Data representation#Byte|byte]] address **17** to [[#Words|word]] address **4** and *offset* **1**
 > > Using a power of two for the number of [[Data representation#Byte|bytes]] per [[#Words|word]] avoids arithmetic calculations
-
-```dynamic-svg
----
-invert-shade
-width:100%
----
-[[address-translation.svg]]
-```
+> 
+> ```dynamic-svg
+> ---
+> invert-shade
+> width:100%
+> ---
+> [[address-translation.svg]]
+> ```
 
 ### Byte alignment
 
@@ -751,7 +753,7 @@ width:100%
 
 + Divide [[Memory|memory]] into **blocks** of size **B**
 + *Blocks* are numbered *modulo* **C**, where **C** is *slots* in [[#Cache|cache]]
-+ & Example: **block** size of **B**=*8* [[Data representation#Byte|bytes]] and [[#Cache|cache]] size **C**=*4*
++ & Example: **block** size of **B**=**8** [[Data representation#Byte|bytes]] and [[#Cache|cache]] size **C**=**4**
 
 `````col 
 ````col-md 
@@ -1125,16 +1127,25 @@ flexGrow=1
 > - [[#Byte addressing and translation]] fits our definition of **virtual memory**
 > 	- Architecture uses [[Data representation#Byte|byte]] addresses
 > 	- Underlying [[#Physical memory|physical memory]] uses [[#Words|word]] addresses
-> 	- [[#Memory controller (organization)|Memory controller]] translates automatically
+> 	- [[#Memory controller (organization)|Memory controller]] [[#Address translation|translates]] automatically
 
 > [!example] 
 > 
 > - Most computers have more than one [[#Physical memory|physical memory]] **module**
 > - Each [[#Physical memory|physical memory]] **module**
-> - Offers addresses from **0** to **N-1** for some **N**
+> - Offers *addresses* from **0** to **N-1** for some **N**
 > - May use an *arbitrary* [[Memory|memory]] technology (e.g., [[#SRAM]] or [[#DRAM]])
 > - **Virtual memory** system can provide *uniform [[#Virtual memory terminology|address space]]* for all [[#Physical memory|physical memories]]
 > 
+
+- $ Motivations
+	- **Hardware** perspective
+		- Allow multiple [[Memory|memory]] [[#Modules|modules]]
+		- Provide *homogeneous* integration
+	- **Software** prospective
+		- Programmer *convenience*
+		- Support for *multiprogramming* and *protection*
+
 
 ## Virtual addressing for multiple modules
 
@@ -1160,7 +1171,7 @@ flexGrow=1
 > - The [[Processor|processor]] can use either [[Memory|memory]]
 
 - Typical scheme: [[Processor|processor]] has a single [[#Virtual memory terminology|virtual address space]]
-- [[#Virtual memory terminology|Address space]] covers all memory modules
+- [[#Virtual memory terminology|Address space]] covers all memory [[#Modules|modules]]
 - & Example
 	- Two physical memories with **1GB** each (**0x40000000**) [[Data representation#Byte|bytes]]
 	- *Virtual addresses* from **0** to **0x3fffffff** correspond to [[Memory|memory]] **1**
@@ -1178,7 +1189,7 @@ flexGrow=1
 + ~ Also called **address mapping**
 + & Example
 	+ To determine which [[#Physical memory|physical memory]], *test* if address is **0x40000000** or above
-	+ Both memory modules use addresses **0** through **0x3fffffff**
+	+ Both memory [[#Modules|module]] use addresses **0** through **0x3fffffff**
 	+ *Subtract* **0x40000000** from address when **forwarding** a request to [[Memory|memory]]
 
 `````col 
@@ -1205,6 +1216,107 @@ flexGrow=1
 ```` 
 `````
 
+### Optimizing calculations
+
+- **Subtraction** is relatively *expensive*
+	- Always divide the [[#Virtual memory terminology|virtual address]] space *along boundaries* that correspond to *powers of two*
+- [[#Virtual memory terminology|Virtual address]] can be divided into groups of [[Data representation#Bit (Binary digit)|bits]] that
+	- Choose among underlying [[#Physical memory|physical memories]]
+	- Specify an *address* in the [[#Physical memory|physical memory]]
+- @ Note: selecting [[Data representation#Bit (Binary digit)|bits]] in hardware merely requires *running wires* (no **gates** and no **computation**)
+
+> [!example] 
+> 
+> - Addresses above **0x3fffffff** are the same as the *previous* set except for **high-order** [[Data representation#Bit (Binary digit)|bit]]
+> - Hardware uses **high-order** [[Data representation#Bit (Binary digit)|bit]] to select a [[#Physical memory|physical memory]] [[#Modules|module]]
+> 
+> 
+> > The *binary* values for addresses in the range **0** through **2** [[#Memory size|gigabytes]]. Except for the **high-order** [[Data representation#Bit (Binary digit)|bit]], values above **1** [[#Memory size|gigabyte]] are the same as those below
+> 
+> ```asciidoc
+> [cols="1,3"]
+> |===
+> 
+> ^| Addresses
+> ^| Values in binary (31 bits)
+> 
+> ^| **0x00000000** to **0x3fffffff**
+> ^| 00000000000000000000000000000000 to 0111111111111111111111111111111
+> 
+> ^| **0x40000000** to **0x7fffffff**
+> ^| 10000000000000000000000000000000 to 1111111111111111111111111111111
+> 
+> |===
+> ```
+
+### Address space continuity
+
+- $ Contiguous [[#Virtual memory terminology|address space]]
+	- All locations correspond to [[#Physical memory|physical memory]]
+	- ! Inflexible: requires all [[Memory|memory]] [[IO#Address configuration and sockets|sockets]] to be populated
+- $ Discontiguous [[#Virtual memory terminology|address space]]
+	- One or more **blocks** of address space do not correspond to [[#Physical memory|physical memory]]
+		- Called **hole** (See: [[IO#Address assignment (**Address map**)|address assignment]])
+		- For most systems, holes are only relevant to **OS** programmers
+		- For an [[Processor#Embedded system processors|embedded]] system, *application programmer* may need to avoid **holes**
+	- [[#Fetch-store paradigm|Fetch or store]] to any *address* in a **hole** causes an *error*
+	- $ Flexible: allows owner to decide *how much* [[Memory|memory]] to install
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[discontiguous-address-space.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Example of a *noncontiguous* [[#Virtual memory terminology|virtual address space]] of **N** [[Data representation#Byte|bytes]] that is mapped onto two [[#Physical memory|physical memories]]. 
+> - Some addresses *do not correspond* to [[#Physical memory|physical memory]]
+
+
+```` 
+`````
+
+## Dynamic address space creation
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[virtual-spaces.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+
+> - Illustration of *four* partitions mapped onto a *single* [[#Physical memory|physical memory]]. 
+> - Each [[#Virtual memory terminology|virtual address]] space starts at address **zero**
+
+
+```` 
+`````
+
+
+
 ## Modules
 
 - Concepts are similar
@@ -1230,4 +1342,3 @@ flexGrow=1
 	- Set of all possible *virtual addresses*
 	- Can be larger or smaller than [[#Physical memory|physical memory]]
 	- Each process may have its own *virtual space*
-

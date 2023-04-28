@@ -16,6 +16,9 @@
 > - If *$a$* and *$b$* are natural numbers and *$a|b$*, then *$a \leq b$*
 > - If *$a$* and *$b$* are natural numbers, *$a|b$* and *$b|a$*, then *$a=b$* or *$a=-b$*
 
+--- 
+<br>
+
 # Division with remainder
 
 > [!theorem] 
@@ -29,10 +32,13 @@
 > > - 17=3\*5+2; $gcd(17;3)=1, \ gcd(3;2)=1$
 > > - 33=6\*5+3; $gcd(33;6)=3, \ gcd(6;3)=3$
 
+--- 
+<br>
+
 # Common divisor
 
 > [!definition] 
-> Natural number *$d$* is **common divisor** of numbers *$a$* and *$b$*, if *$d|a$* and *$d|b$*
+> Natural number *$d$* is **common [[#Multiples, divisors|divisor]]** of numbers *$a$* and *$b$*, if *$d|a$* and *$d|b$*
 
 ## Greatest common divisor
 
@@ -165,7 +171,43 @@ $$
 ```
 ````
 
+--- 
+<br>
+
 # Prime numbers
+
+> [!definition] 
+> - An integer greater than **1** is called **prime** if it has *no positive [[#Multiples, divisors|divisors]]* other than **1** and itself
+> - ~ Otherwise, that number is called **composite** (can be written as a *product* of **primes**)
+
+> [!theorem] 
+> - Euclid's theorem
+> - $ There are an *infinite* amount of **prime numbers**
+
+> [!theorem] 
+> - If natural number *$n$* is **composite**, then it has such **prime** [[#Multiples, divisors|divisor]] *$p$*, that *$p^2<n$*
+> - If *$p$* - **prime** number and *$p|ab$*, where *$a$* and *$b$* - natural numbers, then *$p|a$* or *$p|b$*
+> 	- Generalized: If *$p$* divides a *product* of natural numbers, it at least divides *one* of those numbers
+> - If **prime** number *$p$* divides a *product* of **prime** numbers, it is *equal* to at least one number from the *product*
+
+## Canonical form of number
+
+$$\Large n=p_{1}^{\alpha_{1}}*p_{2}^{\alpha_{2}}*\dots * p_{k}^{\alpha_{k}}$$
+
+- $p_{1},p_{2},p_{3},\dots,p_{k}$ - different **prime** numbers
+- $\alpha_{i}\geq 1, i=1,2,\dots,k$
+
+> [!example] 
+> - $24=2^3*3^1$
+> - $18=2^1*3^2$
+
+### Number of divisors
+
+$d(n)=(\alpha_{1}+1)*(\alpha_{2}+1)*\dots*(\alpha_{k}+1)$
+
+> [!example] 
+> - $24=2^3*3^1$, $d(n)=(3+1)*(1+1)=8$ 
+> - $ Check: (1, 2, 3, 4, 6, 8, 12, 24)
 
 ## Coprime numbers
 
@@ -177,6 +219,9 @@ $$
 > [!example] 
 > - *$gcd(17;3)=1$*
 > - 3|(**6**\*17), 3|6
+
+--- 
+<br>
 
 # Common multiple
 
@@ -194,6 +239,12 @@ $$
 > 	- It is [[#Common multiple|common multiple]] 
 > 	- If *$a|n$* and *$b|n$*, then *$m|n$* (should divide all other [[#Common multiple|common multiples]])
 > - $ Notion: $lcm(a;b)$
+
+> [!theorem] 
+> If *$a$* and *$b$* - natural numbers, then $gcd({\color{orange}a};{\color{red}b})*lcm({\color{orange}a};{\color{red}b})={\color{orange}a}*{\color{red}b}$
+
+--- 
+<br>
 
 # Equations
 
@@ -213,3 +264,40 @@ $$
 > 4. $x_{0}={\frac{uc}{gcd(a;b)}} = {\frac{1*51}{17}} = 3$, $x_{1}=5$
 > 5. $y_{0}={\frac{vc}{gcd(a;b)}} = {\frac{(-2)*51}{17}} = -6$, $y_{1}=-11$
 
+--- 
+<br>
+
+# Sieve of Eratosthenes
+
+Let’s find [[#Prime numbers|prime]] numbers less than **101** 
+
+1. The first [[#Prime numbers|prime]] number is **2**. Every *second* (except **2**) is marked as not [[#Prime numbers|prime]]. They can be *divided* by **2**
+2. The first *unmarked* number after **2** is **3**. Every *third* number (except **3**) is marked as not [[#Prime numbers|prime]]. They can be *divided* by **3**
+3. The first *unmarked* number after **3** is **5**. Every *fifth* number (except **5**) is marked as not [[#Prime numbers|prime]]. They can be *divided* by **5**
+4. The first *unmarked* number after **5** is **7**. Every *seventh* number (except **7**) is marked as not [[#Prime numbers|prime]]. They can be *divided* by **7**
+5. $ We found all numbers. Why?
+	- $\sqrt{100}=10$, the largest [[#Prime numbers|prime]] number *smaller* than **10** is **7**
+
+```asciidoc
+[frame=none]
+[cols="20*"]
+|===
+
+^|1  ^|2  ^|3  ^|[orange-cell]#4#  ^|5  ^|[orange-cell]#6#  ^|7  ^|[orange-cell]#8#  ^|[yellow-cell]#9#   ^|[orange-cell]#10# ^|11 ^|[orange-cell]#12# ^|13 ^|[orange-cell]#14# ^|[yellow-cell]#15# ^|[orange-cell]#16# ^|17 ^|[orange-cell]#18# ^|19 ^|[orange-cell]#20# 
+^|[yellow-cell]#21# ^|[orange-cell]#22# ^|23 ^|[orange-cell]#24# ^|[green-cell]#25# ^|[orange-cell]#26# ^|[yellow-cell]#27# ^|[orange-cell]#28# ^|29 ^|[orange-cell]#30# ^|31 ^|[orange-cell]#32# ^|[yellow-cell]#33# ^|[orange-cell]#34# ^|[green-cell]#35# ^|[orange-cell]#36# ^|37 ^|[orange-cell]#38# ^|[yellow-cell]#39# ^|[orange-cell]#40# 
+^|41 ^|[orange-cell]#42# ^|43 ^|[orange-cell]#44# ^|[yellow-cell]#45# ^|[orange-cell]#46# ^|47 ^|[orange-cell]#48# ^|[cyan-cell]#49# ^|[orange-cell]#50# ^|[yellow-cell]#51# ^|[orange-cell]#52# ^|53 ^|[orange-cell]#54# ^|[green-cell]#55# ^|[orange-cell]#56# ^|[yellow-cell]#57# ^|[orange-cell]#58# ^|59 ^|[orange-cell]#60# 
+^|61 ^|[orange-cell]#62# ^|[yellow-cell]#63# ^|[orange-cell]#64# ^|[green-cell]#65# ^|[orange-cell]#66# ^|67 ^|[orange-cell]#68# ^|[yellow-cell]#69# ^|[orange-cell]#70# ^|71 ^|[orange-cell]#72# ^|73 ^|[orange-cell]#74# ^|[yellow-cell]#75# ^|[orange-cell]#76# ^|[cyan-cell]#77# ^|[orange-cell]#78# ^|79 ^|[orange-cell]#80# 
+^|[yellow-cell]#81# ^|[orange-cell]#82# ^|83 ^|[orange-cell]#84# ^|[green-cell]#85# ^|[orange-cell]#86# ^|[yellow-cell]#87# ^|[orange-cell]#88# ^|89 ^|[orange-cell]#90# ^|[cyan-cell]#91# ^|[orange-cell]#92# ^|[yellow-cell]#93# ^|[orange-cell]#94# ^|[green-cell]#95# ^|[orange-cell]#96# ^|97 ^|[orange-cell]#98# ^|[yellow-cell]#99# ^|[orange-cell]#100#
+
+
+
+|===
+```
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

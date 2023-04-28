@@ -16,7 +16,7 @@
 > **Consistency relationships** - are constraints on the order in which tasks are performed. 
 > 
 > > [!note] 
-> > Task *X* precedes Task *Y*, and this means that Task *Y* cannot be started until Task *X* is completed.
+> > Task *X* precedes Task *Y*, and this means that Task *Y* cannot be started until Task *X* is completed
 
 The main stages of the problem are conveniently described by a [[#Directed graph|directed graph]]:
 - Graph [[Graphs - basics#Vertices and edges|vertices]] – tasks

@@ -4,3 +4,7 @@ workspace-mobile.json
 .obsidian/icons
 scanned_words.txt
 export
+
+
+# Ignore Smart Connections folder because embeddings file is large and updated frequently
+.smart-connections

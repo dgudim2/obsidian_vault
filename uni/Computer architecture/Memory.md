@@ -43,7 +43,7 @@
 ### Flash
 
 - Contents can be *altered easily*
-- Used in solid state disks (SSDs), digital cameras, phones, etc.
+- Used in solid state [[#I/O Devices|disks]] (SSDs), digital cameras, phones, etc.
 
 ## Random access memory
 
@@ -74,7 +74,7 @@
 > [!example] 
 > Dozens of general-purpose [[Processor#Registers|registers]] 
 > A dozen [[#Memory size|gigabyte]] of *main* memory
-> Several [[#Memory size|terabytes]] of solid state disk ([[#Flash]])
+> Several [[#Memory size|terabytes]] of solid state [[#I/O Devices|disk]] ([[#Flash]])
 
 ### Primary memory
 
@@ -294,7 +294,7 @@ flexGrow=1
 ## Memory controller (organization)
 
 - Hardware unit called a **memory controller** connects a [[Processor|processor]] to a physical [[Memory|memory]] module
-- @ Main point: because all memory *requests go through the controller*, the interface a processor "sees" *can differ* from the underlying hardware organization
+- @ Main point: because all memory *requests go through the controller*, the interface a [[Processor|processor]] "sees" *can differ* from the underlying hardware organization
 
 ```dynamic-svg
 ---
@@ -314,7 +314,7 @@ width:100%
 	* **Waits** for response
 + **Controller**
 	+ **Translates** request *into signals* for *physical memory* chips
-	- **Returns** answer to processor as quickly as possible
+	- **Returns** answer to [[Processor|processor]] as quickly as possible
 	- **Sends** signals [[#Consequence of memory reset|to reset]] physical memory for *next request*
 
 #### Consequence of memory reset
@@ -361,7 +361,7 @@ width:100%
 
 ### Memory address
 
-- Each [[#Words|word]] of [[Memory|memory]] is assigned a unique number, known as a *physical memory address*
+- Each [[#Words|word]] of [[Memory|memory]] is assigned a unique number, known as a *[[#Physical memory|physical memory]] address*
 - [[#Physical memory]] is organized as an array of [[#Words|words]]
 - Underlying hardware applies **read** or **write** to *entire word*
 
@@ -509,7 +509,7 @@ Architect usually designs *all data paths* in a computer to use **one size**
 - Size of **address** limits *maximum memory*
 - & Example: 32-[[Data representation#Bit (Binary digit)|bit]] address can represent $2^{32}=4,294,967,296$ unique addresses
 	- Known as **address space**
-- @ Note: [[#Words|word]] addressing allows larger memory than [[#Byte addressing and translation|byte addressing]], but is rarely used because it is *difficult to program*
+- @ Note: [[#Words|word]] addressing allows larger memory than [[#Byte addressing and translation|byte addressing]], but is *rarely used* because it is *difficult to program*
 
 > [!seealso] 
 > [[#Memory size]]
@@ -1130,7 +1130,7 @@ flexGrow=1
 > - [[#Byte addressing and translation]] fits our definition of **virtual memory**
 > 	- Architecture uses [[Data representation#Byte|byte]] addresses
 > 	- Underlying [[#Physical memory|physical memory]] uses [[#Words|word]] addresses
-> 	- [[#Memory controller (organization)|Memory controller]] [[#Address translation|translates]] automatically
+> 	- [[#Memory controller (organization)|Memory controller]] [[#Address translation (address mapping)|translates]] automatically
 
 > [!example] 
 > 
@@ -1138,7 +1138,7 @@ flexGrow=1
 > - Each [[#Physical memory|physical memory]] **module**
 > - Offers *addresses* from **0** to **N-1** for some **N**
 > - May use an *arbitrary* [[Memory|memory]] technology (e.g., [[#SRAM]] or [[#DRAM]])
-> - **Virtual memory** system can provide *uniform [[#Virtual memory terminology|address space]]* for all [[#Physical memory|physical memories]]
+> - **Virtual memory** system can provide *uniform [[#Memory size and address space|address space]]* for all [[#Physical memory|physical memories]]
 > 
 
 - $ Motivations
@@ -1170,7 +1170,7 @@ flexGrow=1
 - **Physical** address
 	- Used by *underlying hardware*
 	- May be *completely hidden* from programmer
-- **Virtual** address space
+- **Virtual** [[#Memory size and address space|address space]]
 	- Set of all possible *virtual addresses*
 	- Can be larger or smaller than [[#Physical memory|physical memory]]
 	- Each process may have its own *virtual space*
@@ -1211,10 +1211,9 @@ flexGrow=1
 ```` 
 `````
 
-### Address translation
+### Address translation (address mapping)
 
 + Performed by [[#Virtual memory terminology|MMU]]
-+ ~ Also called **address mapping**
 + & Example
 	+ To determine which [[#Physical memory|physical memory]], *test* if address is **0x40000000** or above
 	+ Both memory [[#Modules|module]] use addresses **0** through **0x3fffffff**
@@ -1279,11 +1278,11 @@ flexGrow=1
 
 ### Address space continuity
 
-- $ Contiguous [[#Virtual memory terminology|address space]]
+- $ Contiguous [[#Memory size and address space|address space]]
 	- All locations correspond to [[#Physical memory|physical memory]]
 	- ! Inflexible: requires all [[Memory|memory]] [[IO#Address configuration and sockets|sockets]] to be populated
-- $ Discontiguous [[#Virtual memory terminology|address space]]
-	- One or more **blocks** of address space do not correspond to [[#Physical memory|physical memory]]
+- $ Discontiguous [[#Memory size and address space|address space]]
+	- One or more **blocks** of [[#Memory size and address space|address space]] do not correspond to [[#Physical memory|physical memory]]
 		- Called **hole** (See: [[IO#Address assignment (**Address map**)|address assignment]])
 		- For most systems, holes are only relevant to **OS** programmers
 		- For an [[Processor#Embedded system processors|embedded]] system, *application programmer* may need to avoid **holes**
@@ -1308,7 +1307,7 @@ width:100%
 flexGrow=1
 ===
 
-> - Example of a *noncontiguous* [[#Virtual memory terminology|virtual address space]] of **N** [[Data representation#Byte|bytes]] that is mapped onto two [[#Physical memory|physical memories]]. 
+> - Example of a *noncontiguous* [[#Memory size and address space|address space]] of **N** [[Data representation#Byte|bytes]] that is mapped onto two [[#Physical memory|physical memories]]. 
 > - Some addresses *do not correspond* to [[#Physical memory|physical memory]]
 
 
@@ -1347,7 +1346,7 @@ flexGrow=1
 - The [[#Virtual memory terminology|MMU]] configuration can be changed *at any time*
 - ~ Typically
 	- Access to [[#Virtual memory terminology|MMU]] restricted to **OS**
-	- When operating system runs, *no mapping* is performed
+	- When operating system runs, *no [[#Address translation (address mapping)|remapping]]* is performed
 	- [[Processor]] only changes to [[#Virtual memory|virtual memory]] mode when running an *application*
 
 ## Technologies for address space creation
@@ -1359,8 +1358,8 @@ flexGrow=1
 ### Base-round registers
 
 - Requires *two* special hardware [[Processor#Registers|registers]] (part of the [[#Virtual memory terminology|MMU]])
-- Base [[Processor#Registers|register]] specifies starting *address*
-- Bound [[Processor#Registers|register]] specifies size of **address space**
+- **Base** [[Processor#Registers|register]] specifies starting **address**
+- **Bound** [[Processor#Registers|register]] specifies size of [[#Memory size and address space|address space]]
 - Values changed by *operating system*
 	- *Set before* application runs
 	- Changed by *operating system* when *switching* to another application
@@ -1385,7 +1384,7 @@ flexGrow=1
 ===
 
 > - Illustration of a [[#Virtual memory|virtual memory]] that uses a **base-bound** mechanism. 
-> - The *base* [[Processor#Registers|register]] specifies the *location* of the [[#Virtual memory terminology|virtual address space]], and the bound [[Processor#Registers|register]] specifies the *size*.
+> - The *base* [[Processor#Registers|register]] specifies the *location* of the [[#Memory size and address space|address space]], and the bound [[Processor#Registers|register]] specifies the *size*.
 
 ```` 
 `````
@@ -1401,7 +1400,115 @@ flexGrow=1
 
 ### Segmentation
 
+> [!definition] 
+> 
+> - Alternative to [[#Base-round registers|base-bound registers]]
+> - Provides **fine-granularity** [[#Address translation (address mapping)|mapping]]
+> 	- Divides program into *segments* (typical segment corresponds to *one procedure*)
+> 	- Maps each *segment* to [[#Physical memory|physical memory]]
+
+- @ Key idea
+	- When *segment* is no longer needed, **OS** moves it to [[#I/O Devices|disk]]
+
+#### Problems with segmentation
+
+- Need <u>hardware support</u> to make *moving segments* **efficient**
+- Two choices
+	- **Variable-size** *segments* cause [[Memory|memory]] #c/red*fragmentation*
+	- **Fixed-size** *segments* may be *too small* or *too large*
+- @ Consequence: segmentation is *rarely used*
+
 ### Demand paging
+
+> [!definition] 
+> 
+> - Alternative to [[#Segmentation|segmentation]] and [[#Base-round registers|base-bound registers]]
+> - Divides program into *fixed-size pieces* called **pages**
+> - No attempt is made to *align* page boundaries with *functions*, *objects*, or large *data structures*
+
+- $ Currently, the *most popular* [[#Virtual memory|virtual memory]] technology
+- @ Typical page size **4K** [[Data representation#Byte|bytes]] (4 [[#Memory size|kilobytes]])
+- Only some **pages** of a given *application* are in [[Memory|memory]] at any time; Others are kept on [[#I/O Devices|disk]] and *fetched when needed*
+	- Allows the [[#Physical memory|physical memory]] allocated to a process to *change over time*
+	- **Hardware** is needed to handle [[#Address translation (address mapping)|address mapping]] and detect *missing* **pages**
+	- **Software** is needed to move **pages** between *external store* and [[#Physical memory|physical memory]]
+
+#### Paging terminology
+
+- **Page**: fixed-size piece of program’s [[#Memory size and address space|address space]]
+- **Frame**: *slot* in [[Memory|memory]] exactly the size of one **page**
+- **Resident**: a **page** that is currently in [[Memory|memory]]
+- **Resident set**: **pages** from a given *application* that are present in [[Memory|memory]]
+
+#### Paging hardware
+
+- Part of [[#Virtual memory terminology|MMU]]
+- Intercepts each [[Memory|memory]] reference
+- If *referenced* [[#Demand paging|page]] is present in [[Memory|memory]], *translate* address and *perform* the operation
+- If *referenced* [[#Demand paging|page]] not present in [[Memory|memory]], *generate* a page #c/red*fault* (i.e., an error condition)
+	- **Record** the details and allow *operating system* to handle the #c/red*fault*
+
+#### Paging software
+
+- Part of the *operating system*
+- Works closely with **hardware**
+- *Responsible* for overall [[Memory|memory]] management
+- **Determines** which pages of each application to keep in [[Memory|memory]] and which to keep on [[#I/O Devices|disk]]
+- **Records** location of *all* [[#Demand paging|pages]]
+- **Fetches** pages *on demand* (when an application *references* an address that is not in [[Memory|memory]])
+- **Configures** the [[#Virtual memory terminology|MMU]]
+
+#### Page replacement
+
+- When a *computer starts*
+	- Applications run and reference [[#Demand paging|pages]]
+	- Each referenced [[#Demand paging|page]] is placed in [[#Physical memory|physical memory]]
+- ~ Eventually
+	- [[Memory]] is completely **full**
+	- An existing [[#Demand paging|page]] must be *written* to [[#I/O Devices|disk]] before [[Memory|memory]] can be used for *new* [[#Demand paging|page]]
+- Choosing a [[#Demand paging|page]] to *expel* is known as **page replacement**
+- @ Optimization: replace a [[#Demand paging|page]] that will not be *needed soon*
+
+#### Paging data structure (page table)
+
+> [!definition] 
+> 
+> - One [[#Demand paging|page]] **table** *per process*
+> - *Created* and *managed* by the **OS**
+> - Used by the [[#Virtual memory terminology|MMU]] when [[#Address translation (address mapping)|translating an address]]
+
+- Think of a [[#Demand paging|page]] **table** as a *one-dimensional array*
+	- Indexed by [[#Demand paging|page]] number
+	- Entry stores a *pointer* to the location of the page in [[Memory|memory]] (or a [[Data representation#Bit (Binary digit)|bit]] that indicates the [[#Demand paging|page]] is currently on [[#I/O Devices|disk]])
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[page-table.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+Each [[#Demand paging|page]] **table** entry points to a [[#Paging terminology|frame]] in [[Memory|memory]] or **null**
+
+> - Illustration of an active [[#Demand paging|page]] **table** with some entrics pointing to [[#Paging terminology|frames]] in [[Memory|memory]]
+> - A **null** *pointer* in a [[#Demand paging|page]] table entry (denoted by **A**) means the **page** is not currently [[#Paging terminology|resident]] in [[Memory|memory]]
+
+
+```` 
+`````
+
+
 
 --- 
 <br>

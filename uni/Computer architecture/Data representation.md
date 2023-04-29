@@ -343,7 +343,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 ## Order of bits and bytes
 
 - @ Need to choose order for
-	- **Storage** in physical memory system
+	- **Storage** in [[#Physical memory|physical memory]] system
 	- **Transmission** over a network
 
 1. [[#Bit (Binary digit)|Bit]] order 
@@ -386,11 +386,11 @@ width:100%
 
 #### Little endian
 
-> <u>Least</u> significant byte of integer is in lowest memory location
+> <u>Least</u> *significant* [[#Data representation#Byte|byte]] of integer is in lowest [[Memory|memory]] location
 
 #### Big Endian
 
-> <u>Most</u> significant byte of integer is in lowest memory location
+> <u>Most</u> *significant* [[#Data representation#Byte|byte]] of integer is in lowest [[Memory|memory]] location
 
 
 ## Binary coded decimal (BCD)

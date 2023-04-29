@@ -36,9 +36,6 @@ flexGrow=1
 ===
 
 ```dot 
----
-preset:math-graph
----
 digraph neato { 
 
 bgcolor="transparent" 
@@ -103,13 +100,13 @@ b:f1 -> a:f1 [label="external\nconnection", fontcolor=white]
 ### Full-duplex
 
 - Simulation, **bidirectional** transfer
-- & Example: disk drive supports simultaneous *read* and *write* operations
+- & Example: [[#I/O Devices|disk]] drive supports simultaneous *read* and *write* operations
 
 ### Half-duplex
 
 - Transfer in **one direction** at a time
 - Interfaces must *negotiate* access before transmitting
-- & Example: [[Processor|processor]] can *read* or *write* to disk, but can only perform one operation at a time
+- & Example: [[Processor|processor]] can *read* or *write* to [[#I/O Devices|disk]], but can only perform one operation at a time
 
 --- 
 <br>
@@ -257,9 +254,9 @@ width:100%
 ### Unification of memory and devices
 
 - Single [[#Buses|bus]] can attach
-	- Multiple [[Memory#Memory hierarchy|memories]]
+	- Multiple [[Memory|memories]]
 	- Multiple [[#I/O Devices]]
-- @ Bus **address space** includes *all units*
+- @ Bus [[Memory#Memory size and address space|address space]] includes *all units*
 
 > Illustration of a computer architecture that uses a single [[#Buses|bus]]
 > The [[#Buses|bus]] connects *memories* as well as *devices*
@@ -309,7 +306,7 @@ width:100%
 > ===
 > 
 > - Two memories of 1 **megabyte** each
-> - Two devices use 12 [[Data representation#Byte|bytes]] of *address space*
+> - Two devices use 12 [[Data representation#Byte|bytes]] of [[Memory#Memory size and address space|address space]]
 > 
 > > [!note] 
 > > - Memories occupy *many* addresses, devices occupy a *few*
@@ -336,18 +333,18 @@ flexGrow=1
 ===
 
 > - One possible **address map** for a sixteen-[[Data representation#Bit (Binary digit)|bit]] bus
-> - Two areas are available for *memory*, and one area is available for *devices*
+> - Two areas are available for [[Memory|memory]], and one area is available for *devices*
 
 > [!note] 
-> Address maps can contain *holes* (areas of memory not mapped to anything)
+> Address maps can contain *holes* (areas of [[Memory|memory]] not mapped to anything)
 
 ```` 
 `````
 
 * & In a typical system
-	- A device only requires *a few bytes* of address space
+	- A device only requires *a few bytes* of [[Memory#Memory size and address space|address space]]
 	- Designers *leave room* for *many devices*
-	- @ Consequence: **address space** available for devices is *sparsely populated*
+	- @ Consequence: [[Memory#Memory size and address space|address space]] available for devices is *sparsely populated*
 
 > [!seealso] 
 > [[Memory#Address space continuity]]
@@ -403,7 +400,7 @@ flexGrow=1
 
 > [!example] 
 > 
-> Software such as an **OS** that has *access* to the [[#Buses|bus]] address space, can *fetch* or *store* from/to a device
+> Software such as an **OS** that has *access* to the [[#Buses|bus]] [[Memory#Memory size and address space|address space]], can *fetch* or *store* from/to a device
 > 
 > ```c
 > int *p;          // declare p to be a pointer to an integer
@@ -415,9 +412,9 @@ flexGrow=1
 
 - [[#Buses|Bus]] provides path between [[Processor|processor]] and [[Memory|memory]]
 - [[Memory]] hardware includes *bus controller*
-- Each **memory** module responds to a *set of addresses*
+- Each [[Memory|memory]] module responds to a *set of addresses*
 
-> Physical interconnections of a [[Processor|processor]] and [[Memory|memory]] using a *memory* [[#Buses|bus]]. 
+> Physical interconnections of a [[Processor|processor]] and [[Memory|memory]] using a [[Memory|memory]] [[#Buses|bus]]. 
 > A *controller* circuit in each device *handles the details* of [[#Buses|bus]] access 
 ```dynamic-svg
 ---
@@ -479,8 +476,8 @@ width:100%
 flexGrow=3
 ===
 
-> Illustration of a *mapping* that a **bridge** can provide between the *address space* of an *auxiliary* [[#Buses|bus]] and the *address space* of a main [[#Buses|bus]]
-> Only some [[#Buses|bus]] addresses need to be *mapped*
+> - Illustration of a *mapping* that a **bridge** can provide between the [[Memory#Memory size and address space|address space]] of an *auxiliary* [[#Buses|bus]] and the [[Memory#Memory size and address space|address space]] of a main [[#Buses|bus]]
+> - Only some [[#Buses|bus]] addresses need to be *mapped*
 
 
 ```dynamic-svg
@@ -574,7 +571,7 @@ flexGrow=1
 
 * ? Motivation: increase performance by eliminating polling loops
 + @ Technique
-	- **Add** *special hardware* to processor and devices
+	- **Add** *special hardware* to [[Processor|processor]] and devices
 	- **Allow** [[Processor|processor]] to start operation on a device
 	- **Arrange** for device to *interrupt* the [[Processor|processor]] when the operation *completes*
 
@@ -684,7 +681,7 @@ flexGrow=1
 - $ Widely used
 - Works well for **high-speed** I/O and streaming
 - **Requires** *smart device* that can *move data* across the [[#Buses|bus]] *to/from* [[Memory|memory]] <u>without</u> using [[Processor|processor]]
-+ & Example: Wi-Fi network interface can read an *entire packet* and place the packet in a *specified buffer* in memory
++ & Example: Wi-Fi network interface can read an *entire packet* and place the packet in a *specified buffer* in [[Memory|memory]]
 + @ Basic idea
 	- **CPU** tells device *location* of buffer
 	- **Device** *fills* buffer and then *interrupts*
@@ -696,7 +693,7 @@ flexGrow=1
 - **Device** hardware *uses* next *buffer* on list *automatically*
 
 > Illustration of **buffer chaining**. 
-> A [[Processor|processor]] passes a list of buffers to a *smart I/O device*, and the device fills each *buffer* on the list without waiting for the [[Processor|processor]]
+> A [[Processor|processor]] passes a list of buffers to a *smart [[#I/O Devices|I/O device]], and the device fills each *buffer* on the list without waiting for the [[Processor|processor]]
 ```dynamic-svg
 ---
 invert-shade
@@ -711,8 +708,8 @@ width:100%
 - [[Processor]] passes a *list* of *commands* to the device
 - **Device** *carries out* successive commands *automatically*
 
-> Illustration of **operation chaining** for a *smart disk device*. 
-> Each **node** specifies an operation (**R** or **W**), a disk *block number*, and a *buffer* in [[Memory|memory]].
+> Illustration of **operation chaining** for a *smart [[#I/O Devices|disk]] device*. 
+> Each **node** specifies an operation (**R** or **W**), a [[#I/O Devices|disk]] **block** *number*, and a *buffer* in [[Memory|memory]].
 ```dynamic-svg
 ---
 invert-shade

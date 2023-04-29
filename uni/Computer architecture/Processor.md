@@ -101,10 +101,10 @@ dm -> {cpu, io}
 
 ## Programmable device
 
-- ? To a software engineer programming means
-	- **Writing**, compiling and loading code into memory
-	- **Executing** the resulting memory image
-- ? To a hardware engineer a programmable device
+- ? To a software engineer *programming* means
+	- **Writing**, compiling and loading code into [[Memory|memory]]
+	- **Executing** the resulting [[Memory|memory]] image
+- ? To a hardware engineer a *programmable* device
 	- Has a [[#Processor Terminology|processor]] separate from the program it runs
 	- May have the program *burned onto a chip*
 
@@ -124,7 +124,7 @@ dm -> {cpu, io}
 - [[#Programmable device]]
 - *Dedicated* to control a *physical system*
 	- & Example: control an automobile engine or grocery store door
-- ! Drawback: extremely limited (slow [[#Processor Terminology|processor]] and tiny memory)
+- ! Drawback: extremely limited (slow [[#Processor Terminology|processor]] and tiny [[Memory|memory]])
 - $ Advantage: very low power consumption
 
 ### Embedded system processors
@@ -176,7 +176,7 @@ dm -> {cpu, io}
 ### Local data storage ([[#Instructions|instruction]] and *data* memory)
 
 - *Holds data* values for operations
-- Values must be inserted (e.g., loaded from memory) before the operation can be performed
+- Values must be inserted (e.g., loaded from [[Memory|memory]]) before the operation can be performed
 
 ### Internal interconnects (data paths)
 
@@ -185,7 +185,7 @@ dm -> {cpu, io}
 ### External interfaces (I/O [[IO#Buses|buses]])
 
 - *Handle communication* between **CPU** and rest of the computer system
-- *Provides interaction* with *external* memory as well as external [[IO#I/O Devices|I/O devices]]
+- *Provides interaction* with *external* [[Memory|memory]] as well as external [[IO#I/O Devices|I/O devices]]
 
 > [!seealso] 
 > [[IO#Interfaces]]
@@ -229,7 +229,7 @@ dm -> {cpu, io}
 - Fetch the next [[#Instructions|instruction]]
 - Decode the [[#Instructions|instruction]] and fetch [[#Parts of an instruction|operands]] from [[#Registers|registers]]
 - Perform the *operation* specified by the [[#Parts of an instruction|opcode]] 
-- Perform memory **read** or **write**, if needed
+- Perform [[Memory|memory]] **read** or **write**, if needed
 - Store the result back to the [[#Registers|registers]]
 
 ### Program counter
@@ -282,7 +282,7 @@ dm -> {cpu, io}
 			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
 	- **Pipeline** stall can also occur on
 		- [[IO|I/O]] access
-		- External storage access (memory reference)
+		- External storage access ([[Memory|memory]] reference)
 		- [[#Roles|Coprocessor]] invocation
 
 ### Maximizing pipeline speed
@@ -352,7 +352,7 @@ dm -> {cpu, io}
 - May seem useless
 - Has *no effect* on 
 	- [[#Registers|Registers]]
-	- Memory
+	- [[Memory]]
 	- [[#Program counter]]
 	- Computation
 - $ Can be inserted to avoid *stalls*
@@ -429,7 +429,7 @@ flexGrow=1
 ===
 
 - Processors require a program to be
-	- In memory
+	- In [[Memory|memory]]
 	- Represented in *binary*
 - Programmers prefer a program to be
 	- Readable by humans
@@ -482,7 +482,7 @@ graph TB;
 
 - [[#Processor Terminology|Processor's]] *hardware* includes a *reset line* that stops the [[#Fetch-execute cycle|fetch-execute cycle]]
 - For *power-down*: reset line is *asserted* (pulled high)
-- During *power-up*, logic holds the reset until the [[#Processor Terminology|processor]] and *memory* are initialized
+- During *power-up*, logic holds the reset until the [[#Processor Terminology|processor]] and [[Memory|memory]] are initialized
 - *Power-up* steps are known as *bootstrapping*
 
 --- 
@@ -529,7 +529,7 @@ graph TB;
 - $ Result location
 	- Specifies *where result* is to be *placed*
 
-- Instruction is represented as a sequence of [[Data representation#Bit (Binary digit)|bits]] in memory (usually multiple of [[Data representation#Byte|bytes]])
+- Instruction is represented as a sequence of [[Data representation#Bit (Binary digit)|bits]] in [[Memory|memory]] (usually multiple of [[Data representation#Byte|bytes]])
 	- Typically
 		- **Opcode** at the beginning of instruction
 		- **Operands** follow **opcode**
@@ -565,11 +565,11 @@ graph TB;
 	- A [[Data representation#Signed integers|signed]] constant
 	- An [[Data representation#Unsigned integers|unsigned]] constant
 	- Contents of a [[#Registers|register]]
-	- A value in memory
+	- A value in [[Memory|memory]]
 - **Destination** [[#Parts of an instruction|operand]] can specify
 	- A single [[#Registers|register]]
 	- A pair of contiguous [[#Registers|registers]]
-	- A memory location
+	- A [[Memory|memory]] location
 
 ### Types of operands
 
@@ -578,25 +578,25 @@ graph TB;
 > [!definition] 
 > An [[#Parts of an instruction|operand]] that gives a [[Data representation#Signed integers|signed]] or [[Data representation#Unsigned integers|unsigned]] constant is called an **immediate operand**
 
-- Less expensive than *memory references*, and thus preferred on [[#Von Neumann]] architecture
+- Less expensive than *[[Memory|memory]] references*, and thus preferred on [[#Von Neumann]] architecture
 
 #### In-memory operand
 
 - [[#Parts of an instruction|Operand]] can specify
-	- **Value** *in memory* (*memory reference*)
-	- **Location** *in memory* that contains the address of the operand (*indirect reference*)
-- @ Note: accessing memory is relatively expensive
+	- **Value** *in [[Memory|memory]]* (*[[Memory|memory]] reference*)
+	- **Location** *in [[Memory|memory]]* that contains the address of the operand (*indirect reference*)
+- @ Note: accessing [[Memory|memory]] is relatively expensive
 
 ##### Types of indirection
 
 1. Indirection through a [[#Registers|register]]
 	- [[#Parts of an instruction|Operand]] specifies [[#Registers|register]] number *R*
 	- Obtain *A* (value from *R*)
-	- Interpret *A* as a memory address, and fetch the [[#Parts of an instruction|operand]] from memory location *A*
-2. Indirection through a *memory location*
-	- [[#Parts of an instruction|Operand]] specifies *memory address A*
+	- Interpret *A* as a [[Memory|memory]] address, and fetch the [[#Parts of an instruction|operand]] from [[Memory|memory]] location *A*
+2. Indirection through a *[[Memory|memory]] location*
+	- [[#Parts of an instruction|Operand]] specifies *[[Memory|memory]] address A*
 	- Obtain *M* (value from *A*)
-	- Interpret *M* as a memory address, and fetch the [[#Parts of an instruction|operand]] from memory location *A*
+	- Interpret *M* as a [[Memory|memory]] address, and fetch the [[#Parts of an instruction|operand]] from [[Memory|memory]] location *A*
 
 #### Multiple-type operand
 
@@ -686,7 +686,7 @@ graph TB;
 - Multiple methods are used
 - Choice depends on *language/compiler* and *hardware*
 - & Examples:
-	- Store arguments *in memory*
+	- Store arguments *in [[Memory|memory]]*
 	- Store arguments *in special-purpose hardware [[#Registers|registers]]
 	- Store arguments *in [[#General-purpose registers|general purpose registers]]*
 - Many techniques are also used for *returning result* from function 
@@ -720,7 +720,7 @@ graph TB;
 - & Example: Intel/AMD (x86/x64) or IBM [[#Instructions|instruction set]]
 - @ Typical complex [[#Instructions|instructions]]:
 	- Move graphical item on bitmapped display
-	- Copy or clear a region of memory
+	- Copy or clear a region of [[Memory|memory]]
 	- Perform a [[Data representation#Floating point|floating point]] computation
 
 ### RISC
@@ -764,10 +764,10 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - **Stack-based** architecture
 - **No** explicit [[#Parts of an instruction|operands]] in the [[#Instruction sets|instruction]]
 - @ Program:
-	- Pushes [[#Parts of an instruction|operands]] onto a stack in memory
+	- Pushes [[#Parts of an instruction|operands]] onto a stack in [[Memory|memory]]
 	- Executes [[#Instruction sets|instruction]]
-		- *Removes* top *N* items from the stack
-		- *Leaves result* on the top of the stack
+		- *Removes* top *N* items from the *stack*
+		- *Leaves result* on the top of the *stack*
 
 > [!example]
 >
@@ -794,7 +794,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - **Two** explicit [[#Parts of an instruction|operands]] per [[#Instruction sets|instruction]]
 - *Result overwrites* one of the [[#Parts of an instruction|operands]]
 - [[#Parts of an instruction|Operands]] are known as *source* and *destination*
-- $ Works well for [[#Instruction sets|instructions]] such as *memory copy*
+- $ Works well for [[#Instruction sets|instructions]] such as *[[Memory|memory]] copy*
 
 > [!example] 
 > - add 7 X - add *7* to *X* and store in *X*
@@ -815,7 +815,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > Example of programming with **registers**
 > - ? Task:
 > 	- Start with variables *X* and *Y*
-> 	- Add *X* and *Y* and place the result in *Z* (also in memory)
+> 	- Add *X* and *Y* and place the result in *Z* (also in [[Memory|memory]])
 > - $ Steps:
 > 	- *Load* a copy of *X* into register *1*
 > 	- *Load* a copy of *Y* into register *2*
@@ -856,8 +856,8 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 
 - Occurs when *a [[#Registers|register]] is* needed for a computation and *all registers are occupied*
 - General idea:
-	- **Save** current contents of [[#Registers|register]](s) *into memory*
-	- **Load** [[#Registers|register]](s) from memory *when values are needed*
+	- **Save** current contents of [[#Registers|register]](s) *into [[Memory|memory]]*
+	- **Load** [[#Registers|register]](s) from [[Memory|memory]] *when values are needed*
 
 ### Register allocation
 
@@ -989,7 +989,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - At any time, CPU operates in **one mode**
 - Mode dictates:
 	- [[#Instructions|Instructions]] that are valid
-	- Regions of memory that are accessible
+	- Regions of [[Memory|memory]] that are accessible
 	- Amount of **privilege**
 	- Backward compatibility
 - CPU behavior *can vary widely* between modes
@@ -1076,7 +1076,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - **Micro** instructions can access
 	- [[#Arithmetic Logic Unit (ALU)|ALU]]
 	- Macro [[#General-purpose registers|general-purpose registers]]
-	- Memory
+	- [[Memory]]
 	- [[#External interfaces (I/O IO Buses buses )|I/O buses]]
 
 - $ Advantages:

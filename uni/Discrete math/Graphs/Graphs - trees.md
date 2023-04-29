@@ -1261,10 +1261,10 @@ edge [color = darkgrey]
 5. Search for the first *1* in the table (it's in the column **1**)
 6. Subtract *1* from the selected elements
 
-| Vertex       | 0   | #c/green **1** | 2   | 3   | 4   | #c/red **5** | 6   | 7   | 8   | 9   |
+| Vertex       | 0   | #c/green**1** | 2   | 3   | 4   | #c/red**5** | 6   | 7   | 8   | 9   |
 | ------------ | --- | -------------- | --- | --- | --- | ------------ | --- | --- | --- | --- |
 | Number       | *2* | 0              | 0   | 0   | *3* | *1*          | *2* | 0   | 0   | 0   |
-| #c/red **5** | 3   | #c/green **1** | 1   | 1   | 4   | #c/red **2** | 3   | 1   | 1   | 1   |
+| #c/red**5** | 3   | #c/green**1** | 1   | 1   | 4   | #c/red**2** | 3   | 1   | 1   | 1   |
 |              | 3   | #c/green *0*            | 1   | 1   | 4   | #c/red *1*           | 3   | 1   | 1   | 1   | 
 
 6. Construct corresponding [[Graphs - basics#Undirected graph|edge]] $\{5, 1\}$

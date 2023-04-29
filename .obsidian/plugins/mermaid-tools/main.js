@@ -1323,7 +1323,11 @@ var _MermaidToolbarView = class extends import_obsidian5.ItemView {
     super(leaf);
     this.topRowButtons = [
       new MermaidToolbarButton("insert Mermaid code block with sample diagram", "code-2", () => this.insertTextAtCursor(this._plugin._mermaidElementService.getSampleDiagram(this._plugin.settings.selectedCategory))),
-      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid-js.github.io/mermaid/#/"))
+      new MermaidToolbarButton("open Mermaid.js documentation web page", "external-link", () => window.open("https://mermaid-js.github.io/mermaid/#/")),
+      new MermaidToolbarButton("open settings", "settings", () => {
+        this.app.setting.open();
+        this.app.setting.openTabById("mermaid-tools");
+      })
     ];
     this._plugin = plugin;
     this.items = plugin.settings.elements;

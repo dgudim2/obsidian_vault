@@ -33,7 +33,7 @@ div:not(.cm-active) > span.cm-tag-cpurple
 }
 
 /* -- cyan --  */
-.cm-tag-ccyan ~ span.cm-highlight{
+.cm-tag-ccyan ~ span.cm-highlight {
 	background-color: var(--g-color-light-cyan) !important;
 }
 
@@ -69,7 +69,7 @@ div:not(.cm-active) > span.cm-tag-cpurple
 }
 
 /* -- yellow --  */
-.cm-tag-cyellow ~ span.cm-highlight{
+.cm-tag-cyellow ~ span.cm-highlight {
 	background-color: var(--g-color-light-yellow) !important;
 }
 
@@ -78,7 +78,7 @@ div:not(.cm-active) > span.cm-tag-cpurple
 }
 
 /* -- blue --  */
-.cm-tag-cblue ~ span.cm-highlight{
+.cm-tag-cblue ~ span.cm-highlight {
 	background-color: var(--g-color-light-blue) !important;
 }
 
@@ -87,7 +87,7 @@ div:not(.cm-active) > span.cm-tag-cpurple
 }
 
 /* -- gray --  */
-.cm-tag-cgray ~ span.cm-highlight{
+.cm-tag-cgray ~ span.cm-highlight {
 	background-color: var(--g-color-gray) !important;
 }
 

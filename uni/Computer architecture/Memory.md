@@ -99,8 +99,8 @@
 #### Harvard architecture
 
 - Two separate **memories** known as
-	- *Instruction* store
-	- *Data* store
+	1. *Instruction* store
+	2. *Data* store
 - % One memory holds programs and the other holds data
 - Used on *early computers* and some *embedded* systems
 
@@ -127,8 +127,8 @@
 
 - Access paradigm used by [[Memory|memory]]
 - Hardware only supports *two operations*
-	- **Fetch** (read) a value from a specified location
-	- **Store** (write) a value into a specified location
+	1. **Fetch** (read) a value from a specified location
+	2. **Store** (write) a value into a specified location
 
 ## Measures of memory
 
@@ -163,8 +163,8 @@
 
 - More accurate measure than [[#Latency|latency]]
 - Two separate measures
-	- **Read** cycle time (t**RC**)
-	- **Write** cycle time (t**WC**)
+	1. **Read** cycle time (t**RC**)
+	2. **Write** cycle time (t**WC**)
 
 ### Memory size
 
@@ -194,8 +194,8 @@
 	- Known by the term **RAM** ([[#Random access memory]])
 - Usually [[#Volatile memory|volatile]]
 - Two basic technologies available
-	- **S**tatic [[#Random access memory|RAM]] ([[#SRAM]])
-	- **D**ynamic [[#Random access memory|RAM]] ([[#DRAM]])
+	1. **S**tatic [[#Random access memory|RAM]] ([[#SRAM]])
+	2. **D**ynamic [[#Random access memory|RAM]] ([[#DRAM]])
 
 ### SRAM
 
@@ -454,14 +454,14 @@ Architect usually designs *all data paths* in a computer to use **one size**
 
 - Let **N** be the number of [[Data representation#Byte|bytes]] per [[#Words|word]], **B** - our [[Data representation#Byte|byte]] address
 - The *physical address* of the [[#Words|word]] containing the [[Data representation#Byte|byte]] is $$W=\frac{B}{N}$$
-- The [[Data representation#Byte|byte]] offset within the word is $$O=B\ mod\ N$$
+- The [[Data representation#Byte|byte]] offset within the [[#Words|word]] is $$O=B\ mod\ N$$
 
-#### Efficient translation
+#### Efficient address translation
 
 - Think *binary* and choose [[#Words|word]] size **N** to be a *power of* **2**
-	- **Avoids** arithmetic calculations, especially *division* and *remainder*
-	- [[#Words|Word]] address computed by extracting *high-order* bits
-	- **Offset** computed by extracting *low-order* bits
+	- **Avoids** arithmetic calculations, especially *division* and [[Divisors, multiples, primes#Division with remainder|remainder]]
+	- [[#Words|Word]] address computed by extracting *high-order* [[Data representation#Bit (Binary digit)|bits]]
+	- **Offset** computed by extracting *low-order* [[Data representation#Bit (Binary digit)|bits]]
 
 > [!example] 
 > 
@@ -482,8 +482,8 @@ Architect usually designs *all data paths* in a computer to use **one size**
 > Refers to storing **multibyte** values (e.g., [[Data representation#Integer representation in binary|integers]]) in [[Memory|memory]]
 
 - Two designs have been used
-	- Access must correspond to [[#Words|word]] boundary in underlying [[#Physical memory|physical memory]]
-	- Access can be *unaligned*, [[#Memory controller (organization)|memory controller]] handles details, but [[#Fetch-store paradigm|fetch and store]] operations are slower (common)
+	1. Access must correspond to [[#Words|word]] boundary in underlying [[#Physical memory|physical memory]]
+	2. Access can be *unaligned*, [[#Memory controller (organization)|memory controller]] handles details, but [[#Fetch-store paradigm|fetch and store]] operations are slower (common)
 
 - @ Consequences for programmers
 	- Performance may be improved *by aligning* [[Data representation#Integer representation in binary|integers]]
@@ -517,8 +517,8 @@ Architect usually designs *all data paths* in a computer to use **one size**
 ## Increasing memory performance
 
 - Two major techniques
-	- [[#Memory banks]]
-	- [[#Interleaving]]
+	1. [[#Memory banks]]
+	2. [[#Interleaving]]
 - Both employ **parallel hardware**
 
 ### Memory banks
@@ -604,8 +604,8 @@ flexGrow=1
 ## Content-addressable memory (CAM)
 
 > - Blends two key ideas
-> 	- [[Memory]] **technology**
-> 	- [[#Memory controller (organization)|Memory organization]]
+> 	1. [[Memory]] **technology**
+> 	2. [[#Memory controller (organization)|Memory organization]]
 > - ~ Includes *parallel hardware* for *high-speed search*
 
 > [!definition] 
@@ -1047,7 +1047,7 @@ width:100%
 - For the example above (an unrealistically small cache)
 - [[#Cache blocks|Block]] size **B** is **8**, so use **3** [[Data representation#Bit (Binary digit)|bits]] of offset
 - [[#Cache]] size **C** is **4**, so use **2** [[Data representation#Bit (Binary digit)|bits]] of [[#Cache blocks|block]] number
-- [[#Cache tags|Tag]] is *remainder* of address (32 — 5 [[Data representation#Bit (Binary digit)|bits]])
+- [[#Cache tags|Tag]] is [[Divisors, multiples, primes#Division with remainder|remainder]] of address (32 — 5 [[Data representation#Bit (Binary digit)|bits]])
 
 `````col 
 ````col-md 
@@ -1414,8 +1414,8 @@ flexGrow=1
 
 - Need <u>hardware support</u> to make *moving segments* **efficient**
 - Two choices
-	- **Variable-size** *segments* cause [[Memory|memory]] #c/red*fragmentation*
-	- **Fixed-size** *segments* may be *too small* or *too large*
+	1. **Variable-size** *segments* cause [[Memory|memory]] #c/red*fragmentation*
+	2. **Fixed-size** *segments* may be *too small* or *too large*
 - @ Consequence: segmentation is *rarely used*
 
 ### Demand paging
@@ -1435,10 +1435,10 @@ flexGrow=1
 
 #### Paging terminology
 
-- **Page**: fixed-size piece of program’s [[#Memory size and address space|address space]]
-- **Frame**: *slot* in [[Memory|memory]] exactly the size of one **page**
-- **Resident**: a **page** that is currently in [[Memory|memory]]
-- **Resident set**: **pages** from a given *application* that are present in [[Memory|memory]]
+1. **Page**: fixed-size piece of program’s [[#Memory size and address space|address space]]
+2. **Frame**: *slot* in [[Memory|memory]] exactly the size of one **page**
+3. **Resident**: a **page** that is currently in [[Memory|memory]]
+4. **Resident set**: **pages** from a given *application* that are present in [[Memory|memory]]
 
 #### Paging hardware
 
@@ -1508,7 +1508,74 @@ Each [[#Demand paging|page]] **table** entry points to a [[#Paging terminology|f
 ```` 
 `````
 
+##### Address translation with a page table
 
+- Given [[#Virtual memory terminology|virtual address space]] **V**, find underlying [[Memory|memory]] *address* **P**
+- @ Three conceptual steps
+	1. Determine the *number* of the [[#Demand paging|page]] on which address **V** lies
+		- Computed by dividing the [[#Virtual memory terminology|virtual address]] but the number of [[Data representation#Byte|bytes]] per [[#Demand paging|page]], **K** 
+		- $N=\frac{V}{K}$
+	1. Use the [[#Demand paging|page]] *number* as an *index* into the process’s [[#Demand paging|page]] table to find the starting *address* of a frame in [[Memory|memory]] that contains the specified [[Data representation#Byte|byte]]
+	2. Determine *how far* into the [[#Demand paging|page]] address **V** lies, and convert to a *position* in the [[#Paging terminology|frame]] in [[Memory|memory]]
+		- **Offset** within the page, **O** is computed as the [[Divisors, multiples, primes#Division with remainder|remainder]] 
+		- $O=V\ mod\ K$
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[page-address-translation.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+Use **N** and **O** to translate [[#Virtual memory terminology|virtual address]] **V** to real [[Memory|memory]] address **A**
+$$A=pagetable[N]+O$$
+
+> Illustration of a [[#Virtual memory terminology|virtual address space]] divided into [[#Demand paging|pages]] of **K** [[Data representation#Byte|bytes]] per [[#Demand paging|page]]
+
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[page_table_MMU_translation.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+ 
+
+
+```` 
+`````
+
+> [!seealso] 
+> [[#Efficient address translation]]
+> 1. *low-order* [[Data representation#Bit (Binary digit)|bits]] - offset **O**
+> 2. *high-order* [[Data representation#Bit (Binary digit)|bits]] - [[#Demand paging|page]] number
+>
 
 --- 
 <br>

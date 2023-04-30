@@ -13,10 +13,10 @@
     "dialogs",
     "fix_highligh",
     "kanban",
-    "mermaid",
-    "slides-theme-colors",
     "list_padding",
+    "mermaid",
     "width-800px",
+    "slides-theme-colors",
     "mjx-colors"
   ],
   "showViewHeader": true,

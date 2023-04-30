@@ -529,7 +529,7 @@ graph TB;
 - $ Result location
 	- Specifies *where result* is to be *placed*
 
-- Instruction is represented as a sequence of [[Data representation#Bit (Binary digit)|bits]] in [[Memory|memory]] (usually multiple of [[Data representation#Byte|bytes]])
+- @ Instruction is represented as a sequence of [[Data representation#Bit (Binary digit)|bits]] in [[Memory|memory]] (usually multiple of [[Data representation#Byte|bytes]])
 	- Typically
 		- **Opcode** at the beginning of instruction
 		- **Operands** follow **opcode**

@@ -890,6 +890,30 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 - *Parallel hardware facilities* allow simultaneous access to both [[#Register banks|banks]]
 - Access takes *half as long* as using *a single* [[#Register banks|bank]]
 
+`````col 
+````col-md 
+flexGrow=2.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[parallel_register_banks.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Ilustration of **8** [[#Registers|registers]] divided into **2** [[#Register banks|banks]]
+> - Hardware allows the [[Processor|processor]] to *access both* [[#Register banks|banks]] simultaneously
+
+```` 
+`````
+
 #### Consequences of using register banks
 
 - <u>Some trivial programs cause problems</u>
@@ -925,7 +949,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 [cols="16*"]
 |===
 
-8+^| Registers 0-7
+8+^| [cyan-cell]#Registers 0-7#
 8+^| Unavailable
 
 ^| x1
@@ -956,7 +980,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 |===
 
 4+^| Unavailable
-8+^| Registers 0-7
+8+^| [cyan-cell]#Registers 0-7#
 4+^| Unavailable
 
 ^| x1
@@ -1101,29 +1125,12 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 > 
 > Consider the internal structure of a CPU
 > 
-> ```ditaa
+> ```dynamic-svg
 > ---
-> width:100%
 > invert-shade
+> width:100%
 > ---
-> 
->        +---------------+     +----------+----------+    +-----------------+ 
->        |               |     |          |          |    |      macro      | 
->        |      ALU      +---->+ result 1 | result 2 |    |  general purpose| 
->        |               |     |          |          |    |    registers    | 
->        +-+-----------+-+     +-------+--+--+-------+    +---------=+------+ 
->          ^           ^               |     |                       |
->          |           |               |     |        +--------------+--+
-> +--------+--+     +--+--------+      |     |        | register access |
-> | operand 1 |     | operand 1 |      |     |        +-----------------+
-> +-----+-----+     +-----+-----+      |     |                 ^
->       ^                 ^            |     |                 |
->       |                 |            v     v                 v
-> /-----+-----------------+------------+-----+-----------------+-----\
-> |                                                                  |
-> |                     data transfer mechanism                      |
-> |                                                                  |
-> \------------------------------------------------------------------/
+> [[data_transfer_mechanism.svg]]
 > ```
 > 
 >> Example hardware control commands
@@ -1300,7 +1307,7 @@ More info: [instruction set reference 1](https://www.dsi.unive.it/~gasparetto/ma
 	- Decides path to use when [[#Branching|branch]] direction is finally known
 4. @ Uses mechanisms:
 	- Scoreboards
-	- Re-Order Buffer (ROB)
+	- **R**e-**O**rder **B**uffer (**ROB**)
 
 ## Branch prediction
 

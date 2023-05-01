@@ -23,18 +23,6 @@ flexGrow=1
 flexGrow=1
 ===
 
-- ? Properties:
-	- Operates *independent* of [[Processor|processor]]
-	- May have *separate* power supply
-	- Digital signals used for control
-
-- & Example: panel lights
-
-````
-````col-md
-flexGrow=1
-===
-
 ```dot 
 digraph neato { 
 
@@ -60,6 +48,34 @@ b:f1 -> a:f1 [label="external\nconnection", fontcolor=white]
 ```
 - Controller is placed at each end of *physical connection*
 - Allows *arbitrary* voltages and signals to be used
+
+````
+`````
+
+`````col 
+````col-md 
+flexGrow=2
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[io_device_external.svg]]
+```
+
+```` 
+````col-md
+flexGrow=1
+===
+
+- ? Properties:
+	- Operates *independent* of [[Processor|processor]]
+	- May have *separate* power supply
+	- Digital signals used for control
+
+- & Example: panel lights
 
 ````
 `````

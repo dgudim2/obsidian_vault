@@ -257,10 +257,10 @@ flexGrow=1
 > **Additional hardware** known as a *refresh circuit* is used
 
 - Refresh circuit
-	+ **Steps** through each location **i** of **DRAM**
-	+ **Reads** the value from location **i**
-	+ Writes same value back into location i (i.e., recharges the memory)
 	- Runs in the *background* at *all times*
+	1. **Steps** through each location **i** of **DRAM**
+	2. **Reads** the value from location **i**
+	3. Writes same value back into location i (i.e., recharges the memory)
 
 `````col 
 ````col-md 
@@ -309,21 +309,21 @@ width:100%
 
 ### Steps taken to honor a memory request
 
-* [[Processor]]
+- [[Processor]]
 	- **Presents** *request* to controller
-	* **Waits** for response
-+ **Controller**
-	+ **Translates** request *into signals* for *physical memory* chips
+	- **Waits** for response
+- **Controller**
+	- **Translates** request *into signals* for *physical memory* chips
 	- **Returns** answer to [[Processor|processor]] as quickly as possible
 	- **Sends** signals [[#Consequence of memory reset|to reset]] physical memory for *next request*
 
 #### Consequence of memory reset
 
-+ Means next memory operation *may be delayed*
+- Means next memory operation *may be delayed*
 
-+ @ Conclusion
-	* [[#Latency]] of a single operation is an *insufficient measure* of performance
-	+ Must measure the **time** required for *successive operations* ([[#Memory cycle time]])
+- @ Conclusion
+	- [[#Latency]] of a single operation is an *insufficient measure* of performance
+	- Must measure the **time** required for *successive operations* ([[#Memory cycle time]])
 
 ### Parallel memory controller
 
@@ -574,7 +574,7 @@ flexGrow=1
 > 
 > **Hardware** places *consecutive* [[#Words|words]] (or consecutive [[Data representation#Byte|bytes]]) in separate [[#Physical memory|physical memories]]
 
-- @ Technique: use low-order bits of address to choose module
+- @ Technique: use *low-order* bits of address to choose module
 	- Known as **N**-*way* **interleaving**, where **N** is number of [[#Physical memory|physical memories]]
 
 `````col 
@@ -673,13 +673,13 @@ flexGrow=1
 
 ## Multiple data rate memory techniques
 
-+ Goals
-	+ *Improve* memory *performance*
-	* *Avoid mismatch* between **CPU** speed and memory *speed*
-+ @ Technique: memory hardware *runs at a multiple* of the **CPU** [[Processor#Clock rate|clock rate]]
+- Goals
+	- *Improve* memory *performance*
+	- *Avoid mismatch* between **CPU** speed and memory *speed*
+- @ Technique: memory hardware *runs at a multiple* of the **CPU** [[Processor#Clock rate|clock rate]]
 	- Available for both **SRAM** and [[#DRAM]]
-	+ Double Data Rate **SDRAM** (DDR-**S**[[#DRAM]])
-	* Quad Data Rate **SRAM** (QDR-[[#SRAM]])
+	- Double Data Rate **SDRAM** (DDR-**S**[[#DRAM]])
+	- Quad Data Rate **SRAM** (QDR-[[#SRAM]])
 
 ## Other memory techniques and technologies
 
@@ -754,9 +754,9 @@ width:100%
 
 ### Cache blocks
 
-+ Divide [[Memory|memory]] into **blocks** of size **B**
-+ *Blocks* are numbered *modulo* **C**, where **C** is *slots* in [[#Cache|cache]]
-+ & Example: **block** size of **B**=**8** [[Data representation#Byte|bytes]] and [[#Cache|cache]] size **C**=**4**
+- Divide [[Memory|memory]] into **blocks** of size **B**
+- *Blocks* are numbered *modulo* **C**, where **C** is *slots* in [[#Cache|cache]]
+- & Example: **block** size of **B**=**8** [[Data representation#Byte|bytes]] and [[#Cache|cache]] size **C**=**4**
 
 `````col 
 ````col-md 
@@ -852,7 +852,7 @@ $$Cost=r*C_{h}+(1-r)*C_{m}$$
 - Once [[#Cache|cache]] is full, existing item must be *ejected* before another can be *inserted*
 - **Replacement policy** chooses *item to eject*
 	- *Most popular* **replacement policy** known as **L**east **R**ecently **U**sed (**LRU**)
-		+ *Easy* to implement
+		- *Easy* to implement
 		- Tends to retain items that will be *requested again*
 		- *Works well* in practice
 
@@ -953,12 +953,14 @@ flexGrow=1
 - Using pins to access *external hardware* takes *much longer* than accessing functional units that are **internal** to the [[Processor|processor]] chip
 - Advances in technology have *made it possible* to increase the number of transistors per chip, which means a [[Processor|processor]] *chip can contain* a [[#Cache|cache]]
 
-- Level 1 [[#Cache|cache]] (**L1** cache)
-	- *Per core*
-- Level 2 [[#Cache|cache]] (**L2** cache)
-	- May be *per core*
-- Level 3 [[#Cache|cache]] (**L3** cache)
-	- *Shared* among all cores
+> [!definition] 
+> 
+> - Level 1 [[#Cache|cache]] (**L1** cache)
+> 	- *Per core*
+> - Level 2 [[#Cache|cache]] (**L2** cache)
+> 	- May be *per core*
+> - Level 3 [[#Cache|cache]] (**L3** cache)
+> 	- *Shared* among all cores
 
 - @ Historical note: definitions used to specify **L1** as *on-chip*, **L2** as *off-chip*, and **L3** as *part of* [[Memory|memory]]
 
@@ -983,9 +985,9 @@ flexGrow=1
 
 #### Direct mapped memory cache
 
-+ When [[Data representation#Byte|byte]] is referenced, always place *entire* [[#Cache blocks|block]] in the [[#Cache|cache]]
+- When [[Data representation#Byte|byte]] is referenced, always place *entire* [[#Cache blocks|block]] in the [[#Cache|cache]]
 - If *block number* is **n**, place the [[#Cache blocks|block]] in [[#Cache|cache]] slot **n**
-	* Use a [[#Cache tags|tag]] to specify which *actual addresses* are currently in slot **n**
+	- Use a [[#Cache tags|tag]] to specify which *actual addresses* are currently in slot **n**
 
 ##### Direct mapped memory cache lookup
 
@@ -1161,9 +1163,9 @@ flexGrow=1
 
 ## Virtual memory terminology
 
-+ **M**emory **M**anagement **U**nit (**MMU**)
+- **M**emory **M**anagement **U**nit (**MMU**)
 	- Hardware unit
-	- Provides *translation* between **virtual** and [[#Physical memory|physical memory]] schemes
+	- Provides [[#Address translation (address mapping)|translation]] between **virtual** and [[#Physical memory|physical memory]] schemes
 - **Virtual** address
 	- Generated by [[Processor|processor]] (either *instruction fetch* or *data fetch*)
 	- *Translated* into corresponding [[#Physical memory|physical memory]] address by **MMU**
@@ -1206,18 +1208,18 @@ flexGrow=1
 	- *Virtual addresses* from **0x40000000** to **0x7fffffff** correspond to [[Memory|memory]] **2**
 - @ Note
 	- **0x40000000** is **1** [[#Memory size|gigabyte]] or **1073741824** [[Data representation#Byte|bytes]]
-	+ For identical [[#Modules|module]], these are called [[Memory|memory]] [[#Memory banks|banks]]
+	- For identical [[#Modules|module]], these are called [[Memory|memory]] [[#Memory banks|banks]]
 
 ```` 
 `````
 
 ### Address translation (address mapping)
 
-+ Performed by [[#Virtual memory terminology|MMU]]
-+ & Example
-	+ To determine which [[#Physical memory|physical memory]], *test* if address is **0x40000000** or above
-	+ Both memory [[#Modules|module]] use addresses **0** through **0x3fffffff**
-	+ *Subtract* **0x40000000** from address when **forwarding** a request to [[Memory|memory]]
+- Performed by [[#Virtual memory terminology|MMU]]
+- & Example
+	- To determine which [[#Physical memory|physical memory]], *test* if address is **0x40000000** or above
+	- Both memory [[#Modules|module]] use addresses **0** through **0x3fffffff**
+	- *Subtract* **0x40000000** from address when **forwarding** a request to [[Memory|memory]]
 
 `````col 
 ````col-md 
@@ -1351,9 +1353,9 @@ flexGrow=1
 
 ## Technologies for address space creation
 
-- [[#Base-round registers]]
-- [[#Segmentation]]
-- [[#Demand paging]]
+- [[#Base-round registers]] (not used)
+- [[#Segmentation]] (used rarely)
+- [[#Demand paging]] (most popular)
 
 ### Base-round registers
 
@@ -1436,7 +1438,7 @@ flexGrow=1
 #### Paging terminology
 
 1. **Page**: fixed-size piece of program’s [[#Memory size and address space|address space]]
-2. **Frame**: *slot* in [[Memory|memory]] exactly the size of one **page**
+2. **Frame**: *slot* in [[#Physical memory|physical memory]] exactly the size of one **page**
 3. **Resident**: a **page** that is currently in [[Memory|memory]]
 4. **Resident set**: **pages** from a given *application* that are present in [[Memory|memory]]
 
@@ -1450,8 +1452,9 @@ flexGrow=1
 
 #### Paging software
 
-- Part of the *operating system*
-- Works closely with **hardware**
+> 1. Part of the *operating system*
+> 2. Works closely with **hardware**
+
 - *Responsible* for overall [[Memory|memory]] management
 - **Determines** which pages of each application to keep in [[Memory|memory]] and which to keep on [[#I/O Devices|disk]]
 - **Records** location of *all* [[#Demand paging|pages]]
@@ -1510,7 +1513,8 @@ Each [[#Demand paging|page]] **table** entry points to a [[#Paging terminology|f
 
 ##### Address translation with a page table
 
-- Given [[#Virtual memory terminology|virtual address space]] **V**, find underlying [[Memory|memory]] *address* **P**
+> Given [[#Virtual memory terminology|virtual address space]] **V**, find underlying [[Memory|memory]] *address* **P**
+
 - @ Three conceptual steps
 	1. Determine the *number* of the [[#Demand paging|page]] on which address **V** lies
 		- Computed by dividing the [[#Virtual memory terminology|virtual address]] but the number of [[Data representation#Byte|bytes]] per [[#Demand paging|page]], **K** 
@@ -1565,8 +1569,10 @@ width:100%
 flexGrow=1
 ===
 
- 
+> - Illustration of how an [[#Virtual memory terminology|MMU]] performs [[#Address translation (address mapping)|address translation]] on a [[#Demand paging|paging]] system
+> - Making the [[#Demand paging|page]] size a *power of two* eliminates the need for *division* and [[Divisors, multiples, primes#Division with remainder|remainder]] computation
 
+- @ Typical [[#Demand paging|paging]] system uses *12* [[Data representation#Bit (Binary digit)|bits]] of **offset** (**4K** [[Data representation#Byte|bytes]] (4 [[#Memory size|kilobytes]]))
 
 ```` 
 `````
@@ -1576,6 +1582,141 @@ flexGrow=1
 > 1. *low-order* [[Data representation#Bit (Binary digit)|bits]] - offset **O**
 > 2. *high-order* [[Data representation#Bit (Binary digit)|bits]] - [[#Demand paging|page]] number
 >
+
+#### Presence, use and modified bits
+
+> [!definition] 
+> 
+> - Found in most [[#Demand paging|paging]] hardware
+> - One set for each [[#Paging data structure (page table)|page table]] entry
+
+```asciidoc
+[cols="1,5"]
+|===
+
+^| Control bit
+^| Purpose
+
+>| **Presence** bit
+| **Tested** by hardware to determine if *page* is currently **resident** in memory
+
+>| **Use** bit
+| **Set** by hardware whenever *page* is **referenced**
+
+>| **Modified** bit
+| **Set** by hardware whenever *page* is **changed**
+
+|===
+```
+
+#### Page table storage
+
+> In some systems, the [[#Virtual memory terminology|MMU]] holds [[#Paging data structure (page table)|page tables]]
+> **Most** systems place the [[#Paging data structure (page table)|page tables]] in [[Memory|memory]]
+
+- @ Interesting idea:
+	- [[#Paging data structure (page table)|Page table]] entry only needs to store the address of a [[#Paging terminology|frame]]
+	- Each [[#Paging terminology|frame]] is a *power of two* [[Data representation#Byte|bytes]], so the starting address will have zero in the **k** *low-order* [[Data representation#Bit (Binary digit)|bits]]
+	- Instead of storing *zeros*, store the [[#Presence, use and modified bits|presence, use, and modify bits]]
+	- Allows [[#Paging data structure (page table)|page table]] entry to *remain aligned* on [[#Words|word]] *boundary*
+
+
+> - Illustration of how [[#Physical memory|physical memory]] might be *divided* in an architecture that stores [[#Paging data structure (page table)|page tables]] in [[Memory|memory]]
+> - A large area of [[#Physical memory|physical memory]] is reserved for [[#Paging terminology|frames]]
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[pages_in_memory.svg]]
+```
+
+#### Translation look-aside buffer (TLB)
+
+> [!definition] 
+> 
+> - Hardware mechanism used to optimize [[#Address translation (address mapping)|address translation]]
+> - Employs a form of [[#Content-addressable memory (CAM)]] 
+> - Hardware unit stores *pairs* of ([[#Virtual memory terminology|virtual address]], [[#Virtual memory terminology|physical address]])
+
+- @ If pair is in **TLB**
+	- [[#Virtual memory terminology|Virtual address]] can be translated without a [[#Paging data structure (page table)|page table]] *reference*
+	- [[#Virtual memory terminology|MMU]] returns the translation *much faster* than a [[#Paging data structure (page table)|page table]] *lookup*
+
+> [!note] 
+> 
+> - A [[#Virtual memory|virtual memory system]] without **TLB** is <u>unacceptable</u>
+> - The **TLB** approach works well because application programs tend to *reference* a given [[#Demand paging|page]] *many times*
+> 	- @ Principle known as [[#Cache terminology|locality of reference]]
+
+##### Consequences of using look-aside buffer
+
+- Programmer can *optimize program performance* by accommodating the [[#Demand paging|paging]] system
+- & Examples
+	- **Group** related data items on same [[#Demand paging|page]]
+	- [[#Array reference|Reference arrays]] in an order that accesses *contiguous* [[Memory|memory]] locations
+
+###### Array reference
+
+> Consider an *array* stored in **row-major** order
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[array.svg]]
+```
+
+- Location \[i,j\] is $location(A)+i*Q=j$ where *$Q$* - number of [[Data representation#Byte|bytes]] per row
+- @ Accessing items by *row* makes repeated accesses to the same [[#Demand paging|page]] before moving on
+
+## Virtual memory caching
+
+- Can build a system that [[#Cache|caches]]
+	- [[#Physical memory]] *address* and *contents*
+	- [[#Virtual memory]] *address* and *contents*
+- If [[#Virtual memory terminology|MMU]] is *off-chip*
+	- [[#Multilevel memory caches|L1 cache]] must use [[#Virtual memory terminology|virtual addresses]] (cache them)
+	- @ Key point: *multiple processes* have separate [[#Memory size and address space|address spaces]], but each uses the same set of [[#Virtual memory terminology|virtual addresses]]
+
+## Handling overlapping
+
+- Each application process uses [[#Virtual memory terminology|virtual addresses]] from **0** through **N**
+- System must ensure that an application does not receive data from another application’s [[Memory|memory]]
+- @ Two possible approaches
+	1. **OS** performs [[#Cache|cache]] *flush* operation when *changing applications*
+	2. [[#Cache]] includes [[#ID register|disambiguating tag]] with each entry (i.e., a **process ID**)
+
+### ID register
+
+- Assign each *running application* a unique **ID** (e.g., use a **process ID**)
+- **OS** places **ID** in a special hardware [[Processor#Registers|register]] when an application runs
+- [[Memory]] system *attaches* **ID** to each address in the [[#Cache|cache]]
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[id_register.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of an **ID register** used to *disambiguate* among a set of [[#Virtual memory terminology|virtual address space]] 
+> - Each [[#Memory size and address space|address space]] is assigned a *unique number*, which the **OS** loads into the **ID register**
+
+
+```` 
+`````
 
 --- 
 <br>

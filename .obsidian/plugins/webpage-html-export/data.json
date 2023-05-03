@@ -2,11 +2,10 @@
   "inlineCSS": false,
   "inlineJS": false,
   "inlineImages": false,
-  "includePluginCSS": "obsidian-columns\nobsidian-admonition\nobsidian-universal-renderer\nobsidian-list-callouts",
+  "includePluginCSS": "obsidian-columns\nobsidian-list-callouts\nobsidian-universal-renderer\nobsidian-admonition",
   "makeNamesWebStyle": true,
   "allowFoldingHeadings": true,
   "addFilenameTitle": true,
-  "exportInBackground": true,
   "beautifyHTML": false,
   "graphAttractionForce": 50,
   "graphLinkLength": 10,
@@ -21,5 +20,6 @@
   "customLineWidth": "800",
   "openAfterExport": false,
   "keepNestedFolderStructure": false,
-  "lastExportPath": "/mnt/personal_misc/_Danila/_Personal/markor/export/uni/computer-architecture/processor.html"
+  "lastExportPath": "/mnt/personal_misc/_Danila/_Personal/markor/export",
+  "exportInBackground": true
 }

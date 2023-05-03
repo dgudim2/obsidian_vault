@@ -91,8 +91,8 @@ $$
 \end{array} 
 $$
 
-2. We move the units from the adjacency matrix to the distance matrix 
-3. Simple graph is symmetric antireflective relation. We calculate $T*T$ (composition)
+2. We move the units from the [[Graphs - basics#Adjacency matrix|adjacency matrix]] to the **distance matrix**
+3. Simple graph is symmetric *antireflective* relation. We calculate $T*T$ (composition)
 
 $$ 
 
@@ -128,7 +128,7 @@ $$
 \end{array} 
 $$
 
-4. All newly formed *non-zero elements* show that the distance between the vertices is not greater than *2*. We write *2* in **distance matrix**
+4. All newly formed *non-zero elements* show that the **distance** between the vertices is not greater than *2*. We write *2* in **distance matrix**
 5. We calculate $T*T*T$ 
 
 $$ 

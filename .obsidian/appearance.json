@@ -15,9 +15,10 @@
     "kanban",
     "list_padding",
     "mermaid",
-    "width-800px",
+    "mjx-colors",
     "slides-theme-colors",
-    "mjx-colors"
+    "width-800px",
+    "custom-admonitions.b75f10"
   ],
   "showViewHeader": true,
   "theme": "system"

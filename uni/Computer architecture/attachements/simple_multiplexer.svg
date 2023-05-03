@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="86" height="47" version="1.1" viewBox="0 0 86 47">
+    <defs/>
+    <g fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width=".66667">
+        <path d="m1.9226 30.479h30.902"/>
+        <path d="m32.923 1.6787v18"/>
+        <path d="m32.926 18.998-.0032 25.88"/>
+        <path d="m32.923 44.878 20.102-9.3008"/>
+        <path d="m53.024 35.479v-24.402"/>
+        <path d="m53.024 10.979-20.102-9.3008"/>
+        <path d="m1.9383 16.077h30.887"/>
+        <path d="m53.162 23.577h30.887"/>
+    </g>
+    <g font-family="sans-serif" font-size="4.7703px" stroke-width=".11926">
+        <text x="1.7218266" y="13.738757" fill="#00ffff" style="line-height:1.25" xml:space="preserve">
+            <tspan x="1.7218266" y="13.738757" stroke-width=".11926">Input 1</tspan>
+        </text>
+        <text x="1.8550053" y="28.153149" fill="#007fff" style="line-height:1.25" xml:space="preserve">
+            <tspan x="1.8550053" y="28.153149" stroke-width=".11926">Input 2</tspan>
+        </text>
+        <text x="67.807571" y="21.477024" fill="#ff6600" style="line-height:1.25" xml:space="preserve">
+            <tspan x="67.807571" y="21.477024" stroke-width=".11926">Output</tspan>
+        </text>
+    </g>
+</svg>

@@ -91,10 +91,10 @@ dm -> {cpu, io}
 # General information
 
 - $ Mechanisms available
-	- Fixed logic
-	- Selectable logic
-	- Parameterized logic
-	- Programmable logic
+	- *Fixed* logic
+	- *Selectable* logic
+	- *Parameterized* logic
+	- *Programmable* logic
 
 - Most computer architectures follow a **hierarchical** approach  
 - Sub-parts of a large **CPU** are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
@@ -226,10 +226,42 @@ flexGrow=1
 - *Holds data* values for operations
 - Values must be inserted (e.g., loaded from [[Memory|memory]]) before the operation can be performed
 
-### Internal interconnects (data paths)
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[instruction_memory.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Illustration of an **instruction memory**, an *address* selects the [[#Instructions|instruction]]
+
+```` 
+`````
+
+### Internal interconnects (data paths/[[IO#Buses|buses]])
 
 - Allow *transfer of values* between units
- 
+
+> Illustration of **data paths** connecting various components
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[full_data_paths.svg]]
+```
+
 ### External interfaces (I/O [[IO#Buses|buses]])
 
 - *Handle communication* between **CPU** and rest of the computer system
@@ -243,12 +275,36 @@ flexGrow=1
 #### Multiplexer
 
 - Small hardware unit
-- Fits into [[#Internal interconnects (data paths)|data path]] (i.e., handles parallel data)
+- Fits into [[#Internal interconnects (data paths/ IO Buses buses )|data path]] (i.e., handles parallel data)
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[simple_multiplexer.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Schematic illustration of a **multiplexer**
+
 - Takes *multiple inputs*
 - Has *one output*
 - @ At any time:
 	- Forwards [[Data representation#Bit (Binary digit)|bits]] from *one input to the output*
-	- Selection is determined by a [[#Controller to coordinate operations|controller]]
+	- Selection is determined by a [[#Controller to coordinate operations|controller]] (not shown)
+
+```` 
+`````
 
 > [!seealso] 
 > [[IO#Data multiplexing]]
@@ -256,7 +312,31 @@ flexGrow=1
 #### Instruction decoder
 
 - Small hardware unit
-- Breaks out fields of the [[#Instructions|instruction]] into *separate data paths*
+- Breaks out **fields** of the [[#Instructions|instruction]] into *separate* [[#Internal interconnects (data paths/ IO Buses buses)|data paths]]
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[instruction_decoder.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Illustration of an **instruction decoder** connected to the output of the [[#Local data storage ( Instructions instruction and *data* memory)|instruction memory]]
+
+
+```` 
+`````
 
 --- 
 <br>
@@ -287,6 +367,29 @@ flexGrow=1
 > - Used during [[#Fetch-execute cycle|fetch-execute cycle]]
 > - Gives address of *next* [[#Instructions|instruction]] to execute
 > - ? Also known as *instruction pointer* or *instruction counter*
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[instruction_counter.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Hardware that increments a **program counter**
+
+```` 
+`````
 
 #### [[#Fetch-execute algorithm]] details
 

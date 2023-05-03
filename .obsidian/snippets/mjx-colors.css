@@ -2,31 +2,31 @@ mjx-mstyle {
     --stroke: 0.5px
 }
 
-mjx-mstyle[style="color: cyan;"] {
+mjx-mstyle[style*="color: cyan;"] {
     color: var(--g-color-light-blue) !important;
     -webkit-text-stroke-width: var(--stroke);
     -webkit-text-stroke-color: var(--g-color-light-blue);
 }
 
-mjx-mstyle[style="color: green;"], mjx-mstyle[style="color: lime;"]{
+mjx-mstyle[style*="color: green;"], mjx-mstyle[style*="color: lime;"]{
     color: var(--g-color-light-green) !important;
     -webkit-text-stroke-width: var(--stroke);
     -webkit-text-stroke-color: var(--g-color-light-green);
 }
 
-mjx-mstyle[style="color: red;"], mjx-mstyle[style="color: pink;"] {
+mjx-mstyle[style*="color: red;"], mjx-mstyle[style*="color: pink;"] {
     color: var(--g-color-light-red) !important;
     -webkit-text-stroke-width: var(--stroke);
     -webkit-text-stroke-color: var(--g-color-light-red);
 }
 
-mjx-mstyle[style="color: purple;"] {
+mjx-mstyle[style*="color: purple;"] {
     color: var(--g-color-light-purple) !important;
     -webkit-text-stroke-width: var(--stroke);
     -webkit-text-stroke-color: var(--g-color-light-purple);
 }
 
-mjx-mstyle[style="color: orange;"] {
+mjx-mstyle[style*="color: orange;"] {
     color: var(--g-color-light-orange) !important;
     -webkit-text-stroke-width: var(--stroke);
     -webkit-text-stroke-color: var(--g-color-light-orange);

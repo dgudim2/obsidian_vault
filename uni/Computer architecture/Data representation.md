@@ -121,9 +121,19 @@
 ##### Hexadecimal notation
 
 - Mathematically it's *base 16*
-- Each hex digit encodes *4* [[#Bit (Binary digit)|bits]]
+- Each *hex* digit encodes *4* [[#Bit (Binary digit)|bits]]
 - Typically syntax: starts with *0x*
-- Supported in some languages
+- Supported in *some languages*
+
+>  - Illustration of the relationship between *binary* and *hexadecimal*
+>  - Each *hex digit* represents *4* [[#Bit (Binary digit)|bits]]
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[bin_to_hex.svg]]
+```
 
 ##### Any system to decimal
 
@@ -222,23 +232,46 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 
 # Integer representation in binary
 
-- Each binary integer represented in *k* [[#Bit (Binary digit)|bits]]
+- Each binary **integer** represented in *k* [[#Bit (Binary digit)|bits]]
 - Computers have used $k=8,16,32,60,64$
-- Many computers support multiple integer sizes
+- Many computers support multiple **integer** sizes
 - [[#Binary weighted positional interpretation|Positional interpretation]] produces [[#Unsigned integers|unsigned]] integers
 
 ## Unsigned integers
 
 - Straightforward [[#Binary weighted positional interpretation|positional interpretation]]
 - Each successive [[#Bit (Binary digit)|bit]] represents <u>next power of 2</u>
-- No negative numbers (A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*)
-- Precision is fixed (size of integer is constant)
-- Arithmetic operations can produce [[#Overflow|overflow]]/underflow (result can't be represented in *k* bits)
-- [[#Overflow]] is handled with wraparound and carry bit
+- No *negative* numbers (A set of *k* [[#Bit (Binary digit)|bits]] can represent integers from *0* to *$2^k-1$*)
+- Precision is *fixed* (size of integer is constant)
+- Arithmetic operations can produce [[#Overflow|overflow]]/**underflow** (result can't be represented in *k* [[#Bit (Binary digit)|bits]])
+- [[#Overflow]] is handled with *wraparound* and *carry* bit
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[carry_bit.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> Example of binary addition using **carry** [[Data representation#Bit (Binary digit)|bits]] 
+
+```` 
+`````
 
 ## Overflow
 
-- Values wrap around address space
+- Values *wrap* around **address space**
 - Hardware records **overflow** in a separate <u>carry indicator</u>
 	- Software must check it after operations
 	- Can be used to [[Processor#Condition codes|raise an exception]]
@@ -254,7 +287,7 @@ $B43_{16} = 1011 \ 0100 \ 0011_{2}$
 	- [[#Sign magnitude]]
 	- [[#One's complement]]
 	- [[#Two's complement]]
-- Some [[#Bit (Binary digit)|bit]] patters are used for negative values
+- Some [[#Bit (Binary digit)|bit]] patters are used for *negative* values
 - ! Trade-off: [[#Unsigned integers|unsigned]] representation can store integers twice as large
 
 | Binary | [[#Unsigned integers\|Unsigned]] | [[#Sign magnitude]] | [[#One's complement]] | [[#Two's complement]] |
@@ -410,7 +443,7 @@ width:100%
 
 - ! Disadvantages
 	- Takes up more space
-	- Hardware is slower than integer or floating point
+	- Hardware is slower than integer or [[#Floating point|floating point]]
 - $ Advantages
 	- Gives results humans expect 
 	- Avoids repeating binary value for *.01*

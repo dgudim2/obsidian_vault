@@ -888,8 +888,11 @@ width:100%
 - Several [[Memory|memory]] mechanisms operate as a [[#Cache|cache]]
 - & Examples
 	- [[#Physical memory caches]]
-	- TLB in a virtual memory system
-	- Pages in a demand paging system ==#TODO== link to topics
+	- [[#Translation look-aside buffer (TLB)|TLB]] in a [[#Virtual memory|virtual memory system]]
+	- [[#Demand paging|Pages]] in a [[#Demand paging|demand paging system]]
+
+> [!seealso] 
+> [[#Virtual memory caching]]
 
 ### Physical memory caches
 

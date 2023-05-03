@@ -97,7 +97,31 @@ dm -> {cpu, io}
 	- Programmable logic
 
 - Most computer architectures follow a **hierarchical** approach  
-- Sub-parts of a large CPU are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
+- Sub-parts of a large **CPU** are sophisticated enough to meet the definition of a [[#Processor Terminology|processor]], sometimes they are called *computational engines*
+
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[processor_hierarchy.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - An example of a **CPU** that includes [[#Major components|multiple components]]
+> - The large arrow in the *center of the figure* indicates a *central interconnect* mechanism that the components use to *coordinate* (a [[IO#Buses|bus]])
+
+```` 
+`````
 
 ## Programmable device
 
@@ -144,9 +168,33 @@ dm -> {cpu, io}
 
 ## Major components
 
+`````col 
+````col-md 
+flexGrow=1.5
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[processor_components.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - The *five major* units found in a conventional **processor**
+> - The *external interface* connects to the *rest of the computer* system
+
+```` 
+`````
+
 ### Controller to coordinate operations 
 
-> often omitted from architecture diagrams
+> Often omitted from architecture diagrams
 
 - *Overall responsibility* for execution
 - *Moves through sequence* of steps
@@ -282,7 +330,7 @@ dm -> {cpu, io}
 			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
 	- **Pipeline** stall can also occur on
 		- [[IO|I/O]] access
-		- External storage access ([[Memory|memory]] reference)
+		- External storage access ([[Memory|memory]] reference) #TODO ==TODO== link to reference
 		- [[#Roles|Coprocessor]] invocation
 
 ### Maximizing pipeline speed
@@ -573,6 +621,22 @@ graph TB;
 
 ### Types of operands
 
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[types_of_mem_refs.svg]]
+```
+> - Illustration of the hardware units accessed when *fetching* an [[#Parts of an instruction|operand]] in various *addressing modes*
+> - **Indirect** references take *longer* than **direct** references
+
+1. [[#Immediate operand]] (in the instruction)
+2. [[#In-memory operand|Direct register reference]]
+3. [[#In-memory operand|Direct memory reference]]
+4. [[#In-memory operand|Indirect through a register]]
+5. [[#In-memory operand|Indirect through a memory location]]
+
 #### Immediate operand
 
 > [!definition] 
@@ -640,6 +704,16 @@ graph TB;
 - Each [[#Parts of an instruction|operand]] has extra [[Data representation#Bit (Binary digit)|bits]] that specify a type
 - $ Fewer [[#Parts of an instruction|opcodes]] needed
 - & Example: [[#Parts of an instruction|opcode]] is **add** and the two [[#Parts of an instruction|operands]] specify the types *signed_immediate* and *register* 
+
+> - Examples of **operands** on an architecture that uses **explicit encoding**
+> - Each **operand** specifies a *type* as well as a *value*
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[explicit_encoding.svg]]
+```
 
 ### Operand trade-offs 
 
@@ -1051,12 +1125,37 @@ flexGrow=1
 	- ? Macro instructions and micro instructions **may differ completely**
 		- Size of registers may differ (**16-[[Data representation#Bit (Binary digit)|bit]]** for *micro*, **32-[[Data representation#Bit (Binary digit)|bit]]** for *macro*)
 
+`````col 
+````col-md 
+flexGrow=2
+===
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[micro_macro_code.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> - Illustration of a [[Processor|CPU]] implemented with a [[#Microcontroller|microcontroller]]
+> - The *macro* [[#Types of Instruction sets|instruction set]] that the [[Processor|CPU]] provides is implemented with [[#Microcode|microcode]]
+
+
+```` 
+`````
+
 ## Variations
 
-- <font color="#d83931">Restricted</font> or <font color="#92d050">full scope</font>
+- #c/red**Restricted** or #c/green**full-scope**
 	- **Special-purpose** instructions only
 	- $ **All** instructions
-- <font color="#d83931">Partial</font> or <font color="#92d050">complete</font> use
+- #c/red**Partial** or #c/green**complete** use
 	- $ Entire [[#Fetch-execute cycle|fetch-execute cycle]]
 	- Instruction fetch and decode
 	- [[#Parts of an instruction|Opcode]] processing
@@ -1118,90 +1217,91 @@ flexGrow=1
 - Controls functional units and data movement
 - ! *Extremely* difficult to program
 - @ Paradigm:
-	- Each **micro** instruction controls a set of hardware units
+	- Each **micro** instruction controls a *set* of *hardware units*
 	- An instruction specifies *which hardware* units to operate and *how data is transferred* among them
+
+> Consider the internal structure of a CPU
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[data_transfer_mechanism.svg]]
+```
+
+> Example hardware control commands
+
+```asciidoc
+[frame=none]
+[cols="1,3,15"]
+|===
+^| Unit
+^| Command
+^| Meaning
+.8+^.^| **ALU**
+^| *0 0 0*
+| No operation
+^| *0 0 1*
+| Add
+^| *0 1 0*
+| Subtract
+^| *0 1 1*
+| Multiply
+^| *1 0 0*
+| Divide
+^| *1 0 1*
+| Left shift
+^| *1 1 0*
+| Right shift
+^| *1 1 1*
+| Continue previous operation
+.2+^.^| **operand 1**
+^| *0*
+| No operation
+^| *1*
+| Load value from data transfer mechanism
+.2+^.^| **operand 2**
+^| *0*
+| No operation
+^| *1*
+| Load value from data transfer mechanism
+.2+^.^| **result 1**
+^| *0*
+| No operation
+^| *1*
+| Send value to data transfer mechanism
+.2+^.^| **result 2**
+^| *0*
+| No operation
+^| *1*
+| Send value to data transfer mechanism
+.4+^.^| **register interface**
+^| *0 0 x x x x*
+| No operation
+^| *0 1 x x x x*
+| Move register *xxxx* to data transfer mechanism
+^| *1 0 x x x x*
+| Move data from data transfer mechanism to register *x x x x*
+^| *1 1 x x x x*
+| No operation
+|===
+```
+
+> - Illustration of thirteen [[Data representation#Bit (Binary digit)|bits]] in a **horizontal microcode** [[#Instructions|instruction]] that correspond to commands for the *six functional units*
+> - Diagram shows how *groups* of [[Data representation#Bit (Binary digit)|bits]] in an [[#Instructions|instruction]] are *interpreted*
+> - Each set of [[Data representation#Bit (Binary digit)|bits]] controls *one hardware unit*
+
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[horizontal_microcode.svg]]
+```
 
 > [!example] 
 > 
-> Consider the internal structure of a CPU
-> 
-> ```dynamic-svg
-> ---
-> invert-shade
-> width:100%
-> ---
-> [[data_transfer_mechanism.svg]]
-> ```
-> 
->> Example hardware control commands
-> 
-> ```asciidoc
-> [frame=none]
-> [cols="1,3,15"]
-> |===
-> 
-> ^| Unit
-> ^| Command
-> ^| Meaning
-> 
-> .8+^.^| **ALU**
-> 
-> ^| *0 0 0*
-> | No operation
-> ^| *0 0 1*
-> | Add
-> ^| *0 1 0*
-> | Subtract
-> ^| *0 1 1*
-> | Multiply
-> ^| *1 0 0*
-> | Divide
-> ^| *1 0 1*
-> | Left shift
-> ^| *1 1 0*
-> | Right shift
-> ^| *1 1 1*
-> | Continue previous operation
-> 
-> .2+^.^| **operand 1**
-> ^| *0*
-> | No operation
-> ^| *1*
-> | Load value from data transfer mechanism
-> 
-> .2+^.^| **operand 2**
-> ^| *0*
-> | No operation
-> ^| *1*
-> | Load value from data transfer mechanism
-> 
-> .2+^.^| **result 1**
-> ^| *0*
-> | No operation
-> ^| *1*
-> | Send value to data transfer mechanism
-> 
-> .2+^.^| **result 2**
-> ^| *0*
-> | No operation
-> ^| *1*
-> | Send value to data transfer mechanism
-> 
-> .4+^.^| **register interface**
-> ^| *0 0 x x x x*
-> | No operation
-> ^| *0 1 x x x x*
-> | Move register *xxxx* to data transfer mechanism
-> ^| *1 0 x x x x*
-> | Move data from data transfer mechanism to register *x x x x*
-> ^| *1 1 x x x x*
-> | No operation
-> 
-> |===
-> ```
-> 
->> Microcode [[#Instructions|instruction]] for our example
-> 
+>> Example microcode steps
 > 
 > 1. Move the *value* from [[#Registers|register]] **4** to the hardware unit for [[#Parts of an instruction|operand]] **1**
 > 2. Move the *value* from [[#Registers|register]] **13** to the hardware unit for [[#Parts of an instruction|operand]] **2**
@@ -1291,8 +1391,8 @@ flexGrow=1
 #### Horizontal microcode timing
 
 - Each [[#Microcode|microcode]] [[#Instructions|instruction]] takes *one* **micro cycle**
-- Given functional unit may require more than *one* cycle to complete an operation
-- Programmer must accommodate hardware timing
+- Given functional unit may require more than *one cycle* to complete an operation
+- Programmer must *accommodate* hardware timing
 - To wait for functional unit, insert [[#Microcode|microcode]] instruction that continues the operation (similar to [[#No-op instruction]])
 
 --- 

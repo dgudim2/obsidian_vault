@@ -23,7 +23,8 @@
       "right": 4,
       "bottom": 0,
       "left": -1
-    }
+    },
+    "iconInTabsEnabled": false
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

@@ -31,5 +31,5 @@
 + Магический индекс
 + Шарлотта
 +  Oshi no Ko, (звёздное дитя, или Ребёнок идола)
-+ Mashle magic and 
++ Mashle magic and muscles
 

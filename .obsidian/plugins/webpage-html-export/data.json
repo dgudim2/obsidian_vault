@@ -14,7 +14,7 @@
   "includeGraphView": false,
   "includeVaultOutline": true,
   "exportPreset": "website",
-  "customLineWidth": "800",
+  "customLineWidth": "",
   "openAfterExport": false,
   "keepNestedFolderStructure": false,
   "graphAttractionForce": 50,
@@ -24,6 +24,6 @@
   "graphEdgePruning": 100,
   "graphMinNodeSize": 5,
   "graphMaxNodeSize": 10,
-  "lastExportPath": "/mnt/personal_misc/_Danila/_Personal/markor/export",
+  "lastExportPath": "/mnt/personal_misc/_Danila/_Personal/markor/export/index.html",
   "exportInBackground": true
 }

@@ -48,6 +48,11 @@ memory -> {processor, "I/O facilities"}
 }
 ```
 
+### Von Neumann bottleneck
+
+- The *shared* [[IO#Buses|bus]] leads to the **von Neumann bottleneck**, the limited *throughput* between the **CPU** and [[Memory|memory]] compared to the *amount* of [[Memory|memory]]
+- Because the single [[IO#Buses|bus]] can only access *one of the two* classes of [[Memory|memory]] at a time, *throughput* is *lower* than the *rate* at which the **CPU** can work.
+
 ## Harward
 
 - *Instruction* and *data* [[Memory|memory]] are separate
@@ -433,7 +438,7 @@ flexGrow=1
 			- ! $E-C \to D$ <-- This instruction must wait for *C* to be computed
 	- **Pipeline** stall can also occur on
 		- [[IO|I/O]] access
-		- External storage access ([[Memory|memory]] reference) #TODO ==TODO== link to reference
+		- External storage access ([[Memory|memory]] reference)
 		- [[#Roles|Coprocessor]] invocation
 
 ### Maximizing pipeline speed

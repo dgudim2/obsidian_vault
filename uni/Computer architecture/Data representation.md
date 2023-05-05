@@ -7,7 +7,7 @@
 	- **asserted** and *not asserted*
 
 > [!note] 
-> Underneath it's all electrons and wires
+> Underneath it's all *electrons* and *wires*
 
 ## Data representation
 
@@ -19,12 +19,12 @@
 	- addresses
 
 > [!note] 
-> Underneath it's all just bits
+> Underneath it's all just [[#Bit (Binary digit)|bits]]
 
 ### Bit (Binary digit)
 
 > [!definition] 
-> Direct representation of digital logic values
+> **Direct** representation of *digital logic* values
 
 - Can be *0* or *1*
 - Multiple **bits** are used to represent complex data items

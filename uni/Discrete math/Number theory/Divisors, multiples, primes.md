@@ -68,7 +68,7 @@ $$r_{2}=r_{3}q_{4}+r_{4} \ \ \ \ \ 0\leq r_{4} \leq r_{3}$$
 	- *$b=gcd(a;b)$*, if *$s=0$*
 
 > [!example] 
-> Find $gcd({\color{cyan}203};{\color{lime}91})$
+> Find $gcd({\color{cyan}203};{\color{green}91})$
 > 
 > ````col
 > ```col-md

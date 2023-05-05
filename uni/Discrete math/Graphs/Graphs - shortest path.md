@@ -749,9 +749,6 @@ b6 -- a
 	- Route will not end too early
 
 ```dot 
----
-preset:math-graph
----
 graph neato { 
 
 bgcolor="transparent" 
@@ -985,9 +982,6 @@ flexGrow=1
 3. If all [[Graphs - basics#Directed graphs|vertices]] are *visited*, return home (to the start)
 
 ```dot 
----
-preset:math-graph
----
 graph neato { 
 
 bgcolor="transparent" 

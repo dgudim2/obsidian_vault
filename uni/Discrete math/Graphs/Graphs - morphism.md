@@ -659,12 +659,12 @@ $$
 D_{A}=
 
 \begin{pmatrix} 
-\color{lime}8 & 0 & 0 & 0 & 0 & 0 \\
+\color{green}8 & 0 & 0 & 0 & 0 & 0 \\
 0 & \color{cyan}7 & 0 & 0 & 0 & 0 \\
 0 & 0 & \color{cyan}7 & 0 & 0 & 0 \\
 0 & 0 & 0 & \color{cyan}7 & 0 & 0 \\
 0 & 0 & 0 & 0 & \color{cyan}7 & 0 \\
-0 & 0 & 0 & 0 & 0 & \color{lime}8
+0 & 0 & 0 & 0 & 0 & \color{green}8
 \end{pmatrix} 
 
 $$
@@ -679,8 +679,8 @@ $$
 D_{B}=
 
 \begin{pmatrix} 
-\color{lime}8 & 0 & 0 & 0 & 0 & 0 \\
-0 & \color{lime}8 & 0 & 0 & 0 & 0 \\
+\color{green}8 & 0 & 0 & 0 & 0 & 0 \\
+0 & \color{green}8 & 0 & 0 & 0 & 0 \\
 0 & 0 & \color{cyan}7 & 0 & 0 & 0 \\
 0 & 0 & 0 & \color{cyan}7 & 0 & 0 \\
 0 & 0 & 0 & 0 & \color{cyan}7 & 0 \\
@@ -704,12 +704,12 @@ $$
 A = 
 
 \begin{pmatrix} 
-\color{lime}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 &* \\
+\color{green}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 &* \\
 \color{orange}1 & \color{cyan}7 & \color{orange}1 & * & * & \color{orange}1 \\
 \color{orange}1 & \color{orange}1 & \color{cyan}7 & * & * & \color{orange}1 \\
 \color{orange}1 & * & * & \color{cyan}7 & \color{orange}1 & \color{orange}1 \\
 \color{orange}1 & * & * & \color{orange}1 & \color{cyan}7 & \color{orange}1 \\
-* & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{lime}8
+* & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{green}8
 \end{pmatrix} 
 
 $$
@@ -724,8 +724,8 @@ $$
 B = 
 
 \begin{pmatrix} 
-\color{lime}8 & * & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
-* & \color{lime}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+\color{green}8 & * & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
+* & \color{green}8 & \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{orange}1 \\
 \color{orange}1 & \color{orange}1 & \color{cyan}7 & \color{orange}1 & * & * \\
 \color{orange}1 & \color{orange}1 & \color{orange}1 & \color{cyan}7 & * & * \\
 \color{orange}1 & \color{orange}1 & * & * & \color{cyan}7 & \color{orange}1 \\

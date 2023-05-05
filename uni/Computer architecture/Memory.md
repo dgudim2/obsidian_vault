@@ -743,7 +743,7 @@ width:100%
 
 - *Key concept* in computing (*one of the most important* optimization techniques available)
 - Used in *hardware* and *software*
-- @ Note: [[#Memory caches|Memory cache]] is essential to reduce the Von Neumann bottleneck ==#TODO==: Link to bottleneck
+- @ Note: [[#Memory caches|Memory cache]] is essential to reduce the [[Processor#Von Neumann bottleneck|Von Neumann bottleneck]]
 
 > [!note] 
 > 

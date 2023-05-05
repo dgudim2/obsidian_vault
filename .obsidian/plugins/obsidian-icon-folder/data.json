@@ -6,6 +6,9 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "IbStackVertical",
+      "⬆",
+      "↗",
       "FasMemory",
       "IbArrowSwitch",
       "FasSolidDiceD20",
@@ -41,8 +44,9 @@
   "uni/Computer architecture/Processor.md": "LiCpu",
   "uni/Presentations": "SiArtifacthub",
   "uni/Presentations/Git presentation.md": "SiGit",
-  "uni/Management": "FasArrow-trend-up",
+  "uni/Management": "⬆",
   "uni/Computer architecture/IO.md": "IbArrowSwitch",
   "uni/Discrete math/Number theory": "FasSolidDiceD20",
-  "uni/Computer architecture/Memory.md": "FasMemory"
+  "uni/Computer architecture/Memory.md": "FasMemory",
+  "uni/Index.md": "IbStackVertical"
 }

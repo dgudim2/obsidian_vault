@@ -18,7 +18,8 @@
     "mjx-colors",
     "slides-theme-colors",
     "width-800px",
-    "custom-admonitions.b75f10"
+    "custom-admonitions.b75f10",
+    "custom_callouts"
   ],
   "showViewHeader": true,
   "theme": "system"

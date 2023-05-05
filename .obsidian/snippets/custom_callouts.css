@@ -1,0 +1,3 @@
+.callout[data-callout="definition"] { --callout-color: 142, 192, 124; --callout-icon: lucide-chevrons-left-right; }
+
+.callout[data-callout="theorem"] { --callout-color: 254, 128, 25; --callout-icon: lucide-align-start-vertical; }

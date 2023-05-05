@@ -129,10 +129,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix} 
-\color{orange}1 & \color{lime}1 & \color{lime}- & \color{orange}-  \\ 
-\color{orange}1 & \color{lime}- & \color{lime}1 & \color{orange}1  \\ 
-\color{orange}- & \color{lime}- & \color{lime}1 & \color{orange}-  \\ 
-\color{orange}- & \color{lime}1 & \color{lime}- & \color{orange}1     
+\color{orange}1 & \color{green}1 & \color{green}- & \color{orange}-  \\ 
+\color{orange}1 & \color{green}- & \color{green}1 & \color{orange}1  \\ 
+\color{orange}- & \color{green}- & \color{green}1 & \color{orange}-  \\ 
+\color{orange}- & \color{green}1 & \color{green}- & \color{orange}1     
 \end{pmatrix}
 
 \end{array}
@@ -150,10 +150,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix}
-\color{lime}1 & \color{lime}- & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}1  \\
-\color{lime}1 & \color{lime}- & \color{cyan}1 
+\color{green}1 & \color{green}- & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}1  \\
+\color{green}1 & \color{green}- & \color{cyan}1 
 \end{pmatrix}
 
 \end{array}
@@ -171,10 +171,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix}
-\color{lime}1 & \color{lime}-  \\
-\color{lime}- & \color{lime}1  \\
-\color{lime}- & \color{lime}1  \\
-\color{lime}1 & \color{lime}- 
+\color{green}1 & \color{green}-  \\
+\color{green}- & \color{green}1  \\
+\color{green}- & \color{green}1  \\
+\color{green}1 & \color{green}- 
 \end{pmatrix}
 
 \end{array}
@@ -318,10 +318,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix} 
-\color{orange}1 & \color{lime}1 & \color{lime}- & \color{orange}-  \\ 
-\color{orange}1 & \color{lime}- & \color{lime}1 & \color{orange}1  \\ 
-\color{orange}- & \color{lime}- & \color{lime}1 & \color{orange}-  \\ 
-\color{orange}- & \color{lime}1 & \color{lime}- & \color{orange}1     
+\color{orange}1 & \color{green}1 & \color{green}- & \color{orange}-  \\ 
+\color{orange}1 & \color{green}- & \color{green}1 & \color{orange}1  \\ 
+\color{orange}- & \color{green}- & \color{green}1 & \color{orange}-  \\ 
+\color{orange}- & \color{green}1 & \color{green}- & \color{orange}1     
 \end{pmatrix}
 
 \end{array}
@@ -339,10 +339,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix}
-\color{lime}1 & \color{lime}- & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}1  \\
-\color{lime}1 & \color{lime}- & \color{cyan}1 
+\color{green}1 & \color{green}- & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}1  \\
+\color{green}1 & \color{green}- & \color{cyan}1 
 \end{pmatrix}
 
 \end{array}
@@ -360,10 +360,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix} 
-\color{orange}1 & \color{lime}1 & \color{lime}- & \color{orange}- & \color{cyan}- \\ 
-\color{orange}1 & \color{lime}- & \color{lime}1 & \color{orange}1 & \color{cyan}- \\ 
-\color{orange}- & \color{lime}- & \color{lime}1 & \color{orange}- & \color{cyan}1 \\ 
-\color{orange}- & \color{lime}1 & \color{lime}- & \color{orange}1 & \color{cyan}1   
+\color{orange}1 & \color{green}1 & \color{green}- & \color{orange}- & \color{cyan}- \\ 
+\color{orange}1 & \color{green}- & \color{green}1 & \color{orange}1 & \color{cyan}- \\ 
+\color{orange}- & \color{green}- & \color{green}1 & \color{orange}- & \color{cyan}1 \\ 
+\color{orange}- & \color{green}1 & \color{green}- & \color{orange}1 & \color{cyan}1   
 \end{pmatrix}
 
 \end{array}
@@ -508,10 +508,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix} 
-\color{orange}1 & \color{lime}1 & \color{lime}- & \color{orange}-  \\ 
-\color{orange}1 & \color{lime}- & \color{lime}1 & \color{orange}1  \\ 
-\color{orange}- & \color{lime}- & \color{lime}1 & \color{orange}-  \\ 
-\color{orange}- & \color{lime}1 & \color{lime}- & \color{orange}1     
+\color{orange}1 & \color{green}1 & \color{green}- & \color{orange}-  \\ 
+\color{orange}1 & \color{green}- & \color{green}1 & \color{orange}1  \\ 
+\color{orange}- & \color{green}- & \color{green}1 & \color{orange}-  \\ 
+\color{orange}- & \color{green}1 & \color{green}- & \color{orange}1     
 \end{pmatrix}
 
 \end{array}
@@ -529,10 +529,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix}
-\color{lime}1 & \color{lime}- & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}1  \\
-\color{lime}1 & \color{lime}- & \color{cyan}1 
+\color{green}1 & \color{green}- & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}1  \\
+\color{green}1 & \color{green}- & \color{cyan}1 
 \end{pmatrix}
 
 \end{array}
@@ -777,10 +777,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix} 
-\color{orange}1 & \color{lime}1 & \color{lime}- & \color{orange}-  \\ 
-\color{orange}1 & \color{lime}- & \color{lime}1 & \color{orange}1  \\ 
-\color{orange}- & \color{lime}- & \color{lime}1 & \color{orange}-  \\ 
-\color{orange}- & \color{lime}1 & \color{lime}- & \color{orange}1     
+\color{orange}1 & \color{green}1 & \color{green}- & \color{orange}-  \\ 
+\color{orange}1 & \color{green}- & \color{green}1 & \color{orange}1  \\ 
+\color{orange}- & \color{green}- & \color{green}1 & \color{orange}-  \\ 
+\color{orange}- & \color{green}1 & \color{green}- & \color{orange}1     
 \end{pmatrix}
 
 \end{array}
@@ -798,10 +798,10 @@ $$
 \begin{array}{c c c c c} a\\b\\c\\d \end{array} &
 
 \begin{pmatrix}
-\color{lime}1 & \color{lime}- & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}-  \\
-\color{lime}- & \color{lime}1 & \color{cyan}1  \\
-\color{lime}1 & \color{lime}- & \color{cyan}1 
+\color{green}1 & \color{green}- & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}-  \\
+\color{green}- & \color{green}1 & \color{cyan}1  \\
+\color{green}1 & \color{green}- & \color{cyan}1 
 \end{pmatrix}
 
 \end{array}

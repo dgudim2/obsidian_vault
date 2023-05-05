@@ -207,9 +207,9 @@ flexGrow=1.2
 
 $$
 \begin{matrix}
-\color{LimeGreen}\{a,d\}-1 & \color{LimeGreen}\{h,f\}-1 & \color{LimeGreen}\{b,c\}-2 & \color{LimeGreen}\{g,h\}-2 \\
-\color{LimeGreen}\{a,b\}-3 & \color{LimeGreen}\{d,e\}-3 & \color{LimeGreen}\{f,i\}-3 & \color{red}\{a,e\}-4 \\
-\color{LimeGreen}\{e,h\}-4 & \{h,i\}-4 & \{b,e\}-5 & \{c,f\}-6 \\
+\color{green}\{a,d\}-1 & \color{green}\{h,f\}-1 & \color{green}\{b,c\}-2 & \color{green}\{g,h\}-2 \\
+\color{green}\{a,b\}-3 & \color{green}\{d,e\}-3 & \color{green}\{f,i\}-3 & \color{red}\{a,e\}-4 \\
+\color{green}\{e,h\}-4 & \{h,i\}-4 & \{b,e\}-5 & \{c,f\}-6 \\
 \{d,h\}-6 & \{e,c\}-8 & \{d,g\}-8
 \end{matrix}
 $$
@@ -267,26 +267,26 @@ f -- i
 	- Add [[Graphs - basics#Undirected graph|edge]] to the [[#Tree|tree]] edge set and it’s [[Graphs - basics#Properties|incident]] vertex to $S$ if it *won't* make a [[Graphs - connectivity#Cycle|cycle]]
 4. Repeat until all vertices are connected
 	1. Select [[Graphs - basics#Directed graphs|vertex]] *a* | $S = \{a\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,b\}-3,\ \{a,e\}-4,\ \color{LimeGreen}\{a,d\}-1$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,b\}-3,\ \{a,e\}-4,\ \color{green}\{a,d\}-1$
 		- @ $\{a,d\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	2. $S = \{a,d\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: ${\color{LimeGreen}\{a,b\}-3},\ \{a,e\}-4,\ \{d,e\}-3,\ \{d,h\}-6,\ \{d,g\}-8$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: ${\color{green}\{a,b\}-3},\ \{a,e\}-4,\ \{d,e\}-3,\ \{d,h\}-6,\ \{d,g\}-8$
 		- @ $\{a,b\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	3. $S = \{a,b,d\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,e\}-4,\ \{d,e\}-3,\ \{d,h\}-6,\ \{d,g\}-8,\ {\color{LimeGreen}\{b,c\}-2},\ \{b,e\}-5$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,e\}-4,\ \{d,e\}-3,\ \{d,h\}-6,\ \{d,g\}-8,\ {\color{green}\{b,c\}-2},\ \{b,e\}-5$
 		- @ $\{b,c\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	4. $S = \{a,b,c,d\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,e\}-4,\ {\color{LimeGreen}\{d,e\}-3},\ \{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,e\}-4,\ {\color{green}\{d,e\}-3},\ \{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6$
 		- @ $\{d,e\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	5. $S = \{a,b,c,d,e\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: ${\color{red}\{a,e\}-4},\ \{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ \color{LimeGreen}\{e,h\}-4$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: ${\color{red}\{a,e\}-4},\ \{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ \color{green}\{e,h\}-4$
 		- ! $\{a,e\}$ has minimal *weight* but will make a [[Graphs - connectivity#Cycle|cycle]], delete it
 		- @ $\{e,h\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	6. $S = \{a,b,c,d,e,h\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{LimeGreen}\{h,f\}-1},\ \{h,g\}-2,\ \{h,i\}-4$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{green}\{h,f\}-1},\ \{h,g\}-2,\ \{h,i\}-4$
 		- @ $\{h,f\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	7. $S = \{a,b,c,d,e,f,h\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{LimeGreen}\{h,g\}-2},\ \{h,i\}-4,\ {\color{lightgreen}\{f,i\}-3}$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{green}\{h,g\}-2},\ \{h,i\}-4,\ {\color{lightgreen}\{f,i\}-3}$
 		- @ $\{h,g\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 		- @ $\{h,i\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 

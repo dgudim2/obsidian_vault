@@ -1,1 +1,9 @@
-/annex/objects/SHA256E-s209--feba8340d5aa9e766890c192114b02ff146e8b013d34396b0fa1f1c663fb9101.json
+{
+	"id": "3d-graph",
+	"name": "3D Graph",
+	"version": "1.0.3",
+	"description": "A 3D Graph for Obsidian",
+	"author": "Alexander Weichart",
+	"authorUrl": "https://github.com/AlexW00",
+	"isDesktopOnly": false
+}

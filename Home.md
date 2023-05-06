@@ -1,1 +1,38 @@
-/annex/objects/SHA256E-s345--65cc3f10e3f561e7c5af12a73fa9a33df02887010fd6301083fb2a29973c6e90.md
+---
+banner: "![[home-banner.jpg]]"
+banner_y: 1
+banner_icon: 🏠
+---
+
+`````col 
+````col-md 
+
+# Discrete Math
+
+``` dataview
+list from "uni/Discrete math"
+```
+
+
+```` 
+````col-md 
+
+# English
+
+``` dataview
+list from "uni/English" 
+```
+
+
+```` 
+`````
+
+# Scheduler TODO
+
+```dataview
+TASK 
+FROM "Scheduler"
+WHERE !completed
+SORT ASC
+GROUP BY header
+```

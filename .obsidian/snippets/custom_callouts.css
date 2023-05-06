@@ -1,1 +1,3 @@
-/annex/objects/SHA256E-s230--62710bb8db46253e38c53564d7bf04a49765a9cf4986dbb74a4345e7c692345e.css
+.callout[data-callout="definition"] { --callout-color: 142, 192, 124; --callout-icon: lucide-chevrons-left-right; }
+
+.callout[data-callout="theorem"] { --callout-color: 254, 128, 25; --callout-icon: lucide-align-start-vertical; }

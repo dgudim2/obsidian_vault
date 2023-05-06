@@ -1,1 +1,15 @@
-/annex/objects/SHA256E-s359--98a8ac28985a4e4aebfe2b0ed73f2d54f3df8a84754e907b631713000e9f5f13.json
+{
+  "showCLICommands": false,
+  "addExtensionsToInternalLinks": "html",
+  "injectAppCSS": "current",
+  "injectThemeCSS": false,
+  "customCSSFile": null,
+  "displayYAMLFrontmatter": false,
+  "linkStrippingBehaviour": "link",
+  "highDPIDiagrams": true,
+  "pandoc": null,
+  "pdflatex": null,
+  "outputFolder": "",
+  "extraArguments": "",
+  "exportFrom": "html"
+}

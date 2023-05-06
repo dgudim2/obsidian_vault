@@ -1,1 +1,11 @@
-/annex/objects/SHA256E-s363--ca3497c3c5a612492b3875ada2984997e442f5a19518a84e5e56ada2d240fe54.json
+{
+	"id": "advanced-paste",
+	"name": "Advanced Paste",
+	"version": "2.0.3",
+	"minAppVersion": "0.15.0",
+	"description": "This plugin provides advanced paste commands and enables you to create custom transforms for pasting.",
+	"author": "kxxt",
+	"authorUrl": "https://www.kxxt.dev",
+	"fundingUrl": "https://www.paypal.com/paypalme/tokxxt",
+	"isDesktopOnly": false
+}

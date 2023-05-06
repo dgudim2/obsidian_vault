@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s334--ecb367f579e0ac56dc86f0b022493121ed143b7cbc7dd9f64ace9720f46bfb70.json
+{
+    "id": "obsidian-completr",
+    "name": "Completr",
+    "version": "3.1.3",
+    "minAppVersion": "1.0.0",
+    "description": "This plugin provides advanced auto-completion functionality for LaTeX, Frontmatter and standard writing.",
+    "author": "tth05",
+    "authorUrl": "https://github.com/tth05",
+    "isDesktopOnly": true
+}

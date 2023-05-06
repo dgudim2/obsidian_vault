@@ -1,1 +1,12 @@
-/annex/objects/SHA256E-s245--94ab69fb418289f3e96b451711e1fcdf7c9b3f3c29062d223d63be8c53c34dc4.lua
+
+return {
+    {
+        Math = function (elem)
+            if elem.text:find("^%s*\\begin{") ~= nil then
+                return pandoc.RawInline('tex', elem.text)
+            else
+                return elem
+            end
+        end,
+    }
+}

@@ -1,1 +1,52 @@
-/annex/objects/SHA256E-s1492--d4d780ffdf2f67d65071c0ac3e5fc0cd94cf2f5f9ed62061af33c455b383c5e7.json
+{
+  "settings": {
+    "migrated": true,
+    "iconPacksPath": ".obsidian/icons/obsidian-icon-folder/",
+    "fontSize": 16,
+    "emojiStyle": "native",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "IbStackVertical",
+      "⬆",
+      "↗",
+      "FasMemory",
+      "IbArrowSwitch",
+      "FasSolidDiceD20",
+      "FasArrow-right-arrow-left",
+      "FasArrow-trend-up",
+      "FabGit-alt",
+      "😀",
+      "SiGit",
+      "FasDesktop"
+    ],
+    "recentlyUsedIconsSize": 15,
+    "rules": [],
+    "extraMargin": {
+      "top": -1,
+      "right": 4,
+      "bottom": 0,
+      "left": -1
+    },
+    "iconInTabsEnabled": false
+  },
+  "uni/Discrete math": "RiCalculatorLine",
+  "uni/English": "FasLanguage",
+  "CodeIdeas.md": "FarLightbulb",
+  "Random.md": "FasDiceSix",
+  "uni": "LiBook",
+  "Reference.md": "RiFullscreenExitLine",
+  "uni/Discrete math/Graphs/Graph tasks.pdf": "SiDiagramsdotnetWhite",
+  "uni/Discrete math/Graphs": "SiGraphql",
+  "Scheduler.md": "RiTodoLine",
+  "Home.md": "LiHome",
+  "uni/Computer architecture": "FasDesktop",
+  "uni/Computer architecture/Data representation.md": "LiBinary",
+  "uni/Computer architecture/Processor.md": "LiCpu",
+  "uni/Presentations": "SiArtifacthub",
+  "uni/Presentations/Git presentation.md": "SiGit",
+  "uni/Management": "⬆",
+  "uni/Computer architecture/IO.md": "IbArrowSwitch",
+  "uni/Discrete math/Number theory": "FasSolidDiceD20",
+  "uni/Computer architecture/Memory.md": "FasMemory",
+  "uni/Index.md": "IbStackVertical"
+}

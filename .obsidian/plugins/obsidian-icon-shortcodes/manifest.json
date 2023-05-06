@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s277--3ee9e871823188e47caa361a0f7ddd05d21a6f3989b93cf8fdefd25e9e938582.json
+{
+  "id": "obsidian-icon-shortcodes",
+  "name": "Icon Shortcodes",
+  "version": "0.9.7",
+  "minAppVersion": "1.0.0",
+  "description": "Insert emoji and custom icons with shortcodes",
+  "author": "AidenLx",
+  "authorUrl": "https://github.com/aidenlx",
+  "isDesktopOnly": false
+}

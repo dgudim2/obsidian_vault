@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s292--1a89fc92a1a5431d59e76be930913fdbb6d3903aaf3517c82ea0d38eda39845f.json
+{
+  "id": "obsidian-kanban",
+  "name": "Kanban",
+  "version": "1.5.2",
+  "minAppVersion": "1.0.0",
+  "description": "Create markdown-backed Kanban boards in Obsidian.",
+  "author": "mgmeyers",
+  "authorUrl": "https://github.com/mgmeyers/obsidian-kanban",
+  "isDesktopOnly": false
+}

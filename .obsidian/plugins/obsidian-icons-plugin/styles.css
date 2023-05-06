@@ -1,1 +1,16 @@
-/annex/objects/SHA256E-s292--f1842de567f7b634c907844e13ef9ea73e9bb354aa0b0cb67a28012493069b49.css
+.obsidian-icon {
+  font-size: inherit;
+  display: inline-block;
+  width: 2rem !important;
+  text-align: center;
+  /* margin-right: -0.5rem !important; */
+}
+
+p .obsidian-icon {
+  width: 1.75rem !important;
+}
+
+.obsidian-icon.react-icon > svg {
+  vertical-align: middle;
+  margin-bottom: 3px;
+}

@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s402--2c1b21c61afd8ebeacd365774553e42d317f372a8c45f07b930909e451f787a3.json
+{
+  "id": "highlightr-plugin",
+  "name": "Highlightr",
+  "version": "1.2.2",
+  "minAppVersion": "0.12.8",
+  "description": "A minimal and aesthetically pleasing highlighting menu that makes color-coded highlighting much easier with a configurable assortment of highlight colors 🎨.",
+  "author": "chetachi",
+  "authorUrl": "https://github.com/chetachiezikeuzor",
+  "isDesktopOnly": false
+}

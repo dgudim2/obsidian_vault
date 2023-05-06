@@ -1,1 +1,21 @@
-/annex/objects/SHA256E-s641--b6445046a92ef91d54fa6e2ced43f11b4b8b26b7fc5c4cd415f0c08065268eba.json
+{
+  "characterRegex": "a-zA-ZöäüÖÄÜß",
+  "maxLookBackDistance": 50,
+  "autoFocus": false,
+  "autoTrigger": true,
+  "minWordLength": 4,
+  "minWordTriggerLength": 3,
+  "wordInsertionMode": "Ignore-Case & Append",
+  "ignoreDiacriticsWhenFiltering": false,
+  "latexProviderEnabled": true,
+  "latexTriggerInCodeBlocks": true,
+  "latexMinWordTriggerLength": 2,
+  "latexIgnoreCase": false,
+  "fileScannerProviderEnabled": true,
+  "fileScannerScanCurrent": true,
+  "wordListProviderEnabled": true,
+  "frontMatterProviderEnabled": true,
+  "frontMatterTagAppendSuffix": true,
+  "frontMatterIgnoreCase": true,
+  "calloutProviderEnabled": false
+}

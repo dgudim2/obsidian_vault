@@ -1,1 +1,8 @@
-/annex/objects/SHA256E-s151--388461a6b99221d5a07ac332a086160a2f66aa54c2b84e720fb8b04cc6d6759d.json
+{
+  "code2emoji": true,
+  "suggester": true,
+  "disabledPacks": [],
+  "triggerWithTrailingSpace": true,
+  "spaceAfterSC": true,
+  "isMigrated": false
+}

@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s291--8581755aac908b9d17e469c30ce7d5381af9c48aaba5b1d1ce9e2b14e184fe19.json
+{
+  "id": "dataview",
+  "name": "Dataview",
+  "version": "0.5.55",
+  "minAppVersion": "0.13.11",
+  "description": "Complex data views for the data-obsessed.",
+  "author": "Michael Brenan <blacksmithgu@gmail.com>",
+  "authorUrl": "https://github.com/blacksmithgu",
+  "isDesktopOnly": false
+}

@@ -1,1 +1,27 @@
-/annex/objects/SHA256E-s545--e2dab5a7155371896d43f8110d4825409a7d7d1a4a8861a5e1d807e236a41245.json
+{
+  "userAdmonitions": {},
+  "syntaxHighlight": false,
+  "copyButton": false,
+  "version": "9.2.3",
+  "autoCollapse": true,
+  "defaultCollapseType": "open",
+  "injectColor": true,
+  "parseTitles": true,
+  "dropShadow": true,
+  "hideEmpty": false,
+  "open": {
+    "admonitions": true,
+    "icons": true,
+    "other": true,
+    "advanced": false
+  },
+  "icons": [
+    "octicons",
+    "rpg"
+  ],
+  "useFontAwesome": true,
+  "rpgDownloadedOnce": false,
+  "msDocConverted": false,
+  "useSnippet": false,
+  "snippetPath": "custom-admonitions.b75f10"
+}

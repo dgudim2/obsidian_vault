@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s311--7e807daa8561fa5c3e0c7ea60d8a4a6010fda123819e35b53ef50f526d671fa0.json
+{
+	"id": "obsidian-markmind",
+	"name": "obsidian markmind",
+	"version": "1.6.8",
+	"minAppVersion": "0.9.12",
+	"description": "This is a mindmap，outline and pdf annotate tool for obsidian.",
+	"author": "Mark",
+	"authorUrl": "https://github.com/MarkMindCkm/obsidian-markmind",
+	"isDesktopOnly": false
+}

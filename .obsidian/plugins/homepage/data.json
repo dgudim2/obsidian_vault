@@ -1,1 +1,22 @@
-/annex/objects/SHA256E-s480--022d63d2f8573bce7ed0afda07bd2b9fddc240e5d51717500316d705299b0014.json
+{
+  "version": 3,
+  "homepages": {
+    "Main Homepage": {
+      "version": 2,
+      "openOnStartup": true,
+      "hasRibbonIcon": true,
+      "openMode": "Keep open notes",
+      "manualOpenMode": "Keep open notes",
+      "view": "Default view",
+      "revertView": true,
+      "refreshDataview": false,
+      "autoCreate": true,
+      "autoScroll": false,
+      "pin": true,
+      "value": "Home",
+      "kind": "File",
+      "commands": []
+    }
+  },
+  "separateMobile": false
+}

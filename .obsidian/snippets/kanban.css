@@ -1,1 +1,14 @@
-/annex/objects/SHA256E-s274--acfc82b68906fb2efa3bb24c145324fbb06a7981cfa8d2327ee7407a32b6b3f0.css
+.kanban-plugin__board > div {
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.kanban-plugin__scroll-container.kanban-plugin__horizontal {
+  overflow-y: auto;
+}
+.kanban-plugin__lane {
+  max-height: 500px;
+}
+.kanban-plugin__lane-wrapper {
+  margin-bottom: 10px;
+  width: 30%;
+}

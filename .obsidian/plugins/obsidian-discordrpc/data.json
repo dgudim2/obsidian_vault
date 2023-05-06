@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s214--4604523cbd1f03a563205133bc26be9411a2b1033b04d4f2e977c3c2f80bcd36.json
+{
+  "showVaultName": true,
+  "showCurrentFileName": true,
+  "showPopups": true,
+  "customVaultName": "",
+  "showFileExtension": true,
+  "useLoadedTime": true,
+  "connectOnStart": true,
+  "autoHideStatusBar": true
+}

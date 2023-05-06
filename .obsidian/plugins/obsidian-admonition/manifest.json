@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s255--14eed7dd59bf0a9e7429279a8210fb8cb5c618fa3a528cf60f02dce0d9cacc94.json
+{
+    "id": "obsidian-admonition",
+    "name": "Admonition",
+    "version": "9.2.3",
+    "minAppVersion": "1.1.0",
+    "description": "Enhanced callouts for Obsidian.md",
+    "author": "Jeremy Valentine",
+    "authorUrl": "",
+    "isDesktopOnly": false
+}

@@ -1,1 +1,6 @@
-/annex/objects/SHA256E-s94--6525d5e0734cc16cc753d3cddc9e2385890506c462ca33b48cc24ce804587b7a.json
+{
+  "formatType": "normal",
+  "showRibbonIcon": true,
+  "bindEnter": true,
+  "bindTab": true
+}

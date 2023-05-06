@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s306--9999024901c09a0534ca56969d199fca9c9844c78a02ea90c50f80aa18210e12.json
+{
+	"id": "mermaid-tools",
+	"name": "Mermaid Tools",
+	"version": "0.2.1",
+	"minAppVersion": "1.1.0",
+	"description": "Improved Mermaid.js experience for Obsidian: visual toolbar with common elements & more",
+	"author": "dartungar",
+	"authorUrl": "https://dartungar.com",
+	"isDesktopOnly": false
+}

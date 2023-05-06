@@ -1,1 +1,10 @@
-/annex/objects/SHA256E-s259--4516dc87245bd25159bbd81677efd958e1d9a0dd13e44c51acdfdd6e26138a17.json
+{
+	"id": "obsidian-icons-plugin",
+	"name": "Icons",
+	"version": "0.3.0",
+	"minAppVersion": "0.10.7",
+	"description": "Add icons to your Obsidian notes.",
+	"author": "Camillo Visini",
+	"authorUrl": "https://github.com/visini",
+	"isDesktopOnly": true
+}

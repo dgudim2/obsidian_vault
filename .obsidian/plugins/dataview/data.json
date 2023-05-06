@@ -1,1 +1,26 @@
-/annex/objects/SHA256E-s816--6191639ea032eb249b1720b63d89918a5a6f80dabd24349d2547b759a3fc7c19.json
+{
+  "renderNullAs": "\\-",
+  "taskCompletionTracking": true,
+  "taskCompletionUseEmojiShorthand": false,
+  "taskCompletionText": "completion",
+  "taskCompletionDateFormat": "dd MMM, yyyy (hh:mm)",
+  "recursiveSubTaskCompletion": true,
+  "warnOnEmptyResult": true,
+  "refreshEnabled": true,
+  "refreshInterval": 100,
+  "defaultDateFormat": "dd MMM, yyyy",
+  "defaultDateTimeFormat": "hh:mm  - dd MMM, yyyy",
+  "maxRecursiveRenderDepth": 4,
+  "tableIdColumnName": "File",
+  "tableGroupColumnName": "Group",
+  "showResultCount": true,
+  "allowHtml": true,
+  "inlineQueryPrefix": "=",
+  "inlineJsQueryPrefix": "$=",
+  "inlineQueriesInCodeblocks": true,
+  "enableInlineDataview": true,
+  "enableDataviewJs": true,
+  "enableInlineDataviewJs": true,
+  "prettyRenderInlineFields": true,
+  "dataviewJsKeyword": "dataviewjs"
+}

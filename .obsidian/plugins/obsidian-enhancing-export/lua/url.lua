@@ -1,18 +1,1 @@
-local function encode (str)
-  str = string.gsub (str, "([^0-9a-zA-Z !'()*._~-])", -- locale independent
-    function (c) return string.format ("%%%02X", string.byte(c)) end)
-  str = string.gsub (str, " ", "%%20")
-  return str
- end
-
-
-local function decode (str)
-  str = string.gsub (str, "%%20", " ")
-  str = string.gsub (str, "%%(%x%x)", function(h) return string.char(tonumber(h,16)) end)
-  return str
-end
-
-return {
-  encode = encode,
-  decode = decode
-}
+/annex/objects/SHA256E-s455--95d4a1c64367b39b394788295e5e8a7565e387291cab9c9d1347d53832ed2f60.lua

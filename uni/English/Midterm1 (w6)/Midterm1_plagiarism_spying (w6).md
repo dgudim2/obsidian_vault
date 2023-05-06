@@ -3,7 +3,7 @@ Previous lesson: [[Networks 2 (w5)]]
 Danila Gudim
 ITfuc-22
 
-# [[text1.png|Text 1]]
+# [[text1|Text 1]]
 1. As the Turnitin database expands, it becomes more robust at detecting plagiarism, because as it grows, it obtains more samples of essays and papers, so it will be more difficult for subsequent submissions to be plagiarized, especially if those new papers take content from the papers already in the database.
 
 2. While you may certainly get away with writing a paper with plagiarized content and then fine tuning it using the Turnitin service to make it pass the plagiarism checks. In this case you are not doing yourself any good, you are basically fooling yourself.

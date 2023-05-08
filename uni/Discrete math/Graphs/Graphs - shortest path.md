@@ -1,5 +1,4 @@
 
-
 # Shortest path problem
 
 > [!definition] 

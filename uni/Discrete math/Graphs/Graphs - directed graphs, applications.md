@@ -390,10 +390,10 @@ flexGrow=1
 [cols=6*]
 |===
 
-^| [yellow-cell]#5#  ^| 8 ^| 13 ^| 6  ^| 17 ^| 31
-^| [yellow-cell]#28# ^| [yellow-cell]#4# ^| [yellow-cell]#12# ^| [yellow-cell]#3#  ^| 9  ^| 11
-^| 3  ^| 2 ^| 42 ^| [yellow-cell]#16# ^| [yellow-cell]#8#  ^| 6
-^| 15 ^| 1 ^| 7  ^| 11 ^| [yellow-cell]#14# ^| [yellow-cell]#26#
+^| [d-yellow-cell]#5#  ^| 8 ^| 13 ^| 6  ^| 17 ^| 31
+^| [d-yellow-cell]#28# ^| [d-yellow-cell]#4# ^| [d-yellow-cell]#12# ^| [d-yellow-cell]#3#  ^| 9  ^| 11
+^| 3  ^| 2 ^| 42 ^| [d-yellow-cell]#16# ^| [d-yellow-cell]#8#  ^| 6
+^| 15 ^| 1 ^| 7  ^| 11 ^| [d-yellow-cell]#14# ^| [d-yellow-cell]#26#
 
 |===
 ```
@@ -407,10 +407,10 @@ flexGrow=1
 [cols=6*]
 |===
 
-^| [green-cell]#5#  ^| [green-cell]#8# ^| [green-cell]#13# ^| [green-cell]#6#  ^| [green-cell]#17# ^| 31
-^| 28 ^| 4 ^| 12 ^| 3  ^| [green-cell]#9#  ^| 11
-^| 3  ^| 2 ^| 42 ^| 16 ^| [green-cell]#8#  ^| [green-cell]#6#
-^| 15 ^| 1 ^| 7  ^| 11 ^| 14 ^| [green-cell]#26#
+^| [d-green-cell]#5#  ^| [d-green-cell]#8# ^| [d-green-cell]#13# ^| [d-green-cell]#6#  ^| [d-green-cell]#17# ^| 31
+^| 28 ^| 4 ^| 12 ^| 3  ^| [d-green-cell]#9#  ^| 11
+^| 3  ^| 2 ^| 42 ^| 16 ^| [d-green-cell]#8#  ^| [d-green-cell]#6#
+^| 15 ^| 1 ^| 7  ^| 11 ^| 14 ^| [d-green-cell]#26#
 
 |===
 ```
@@ -434,7 +434,7 @@ If we are at the *target cell*, the weitgh *doesn't change*
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
-^| - ^| - ^| - ^| - ^| - ^| [blue-cell]#26#
+^| - ^| - ^| - ^| - ^| - ^| [d-blue-cell]#26#
 
 |===
 ```
@@ -453,7 +453,7 @@ Going from *left adjacent* cell, we add it's value: *14 + 26 = 40*
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
-^| - ^| - ^| - ^| - ^| [blue-cell]#40# ^| [cyan-cell]#26#
+^| - ^| - ^| - ^| - ^| [d-blue-cell]#40# ^| [d-cyan-cell]#26#
 
 |===
 ```
@@ -472,7 +472,7 @@ Going from 2nd *left adjacent* cell, we add it's value: *40 + 11 = 51*
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
 ^|   ^|   ^|   ^|   ^|   ^| -
-^| - ^| - ^| - ^| [blue-cell]#51# ^| [cyan-cell]#40# ^| [green-cell]#26#
+^| - ^| - ^| - ^| [d-blue-cell]#51# ^| [d-cyan-cell]#40# ^| [d-green-cell]#26#
 
 |===
 ```
@@ -512,8 +512,8 @@ For central cells we have *2* options, choose minimum
 
 ^|   ^|   ^|   ^|   ^|   ^| [d-green-cell]#74#
 ^|   ^|   ^|   ^|   ^|   ^| [d-green-cell]#43#
-^|   ^|   ^|   ^|   ^| [blue-cell]#40# ^| [cyan-cell]#32#
-^| [d-green-cell]#74# ^| [d-green-cell]#59# ^| [d-green-cell]#58# ^| [d-green-cell]#51# ^| [cyan-cell]#40# ^| [d-green-cell]#26#
+^|   ^|   ^|   ^|   ^| [d-blue-cell]#40# ^| [d-cyan-cell]#32#
+^| [d-green-cell]#74# ^| [d-green-cell]#59# ^| [d-green-cell]#58# ^| [d-green-cell]#51# ^| [d-cyan-cell]#40# ^| [d-green-cell]#26#
 
 |===
 ```
@@ -557,10 +557,10 @@ flexGrow=1
 [cols=6*]
 |===
 
-^| [blue-cell]#5#  ^| [blue-cell]#8# ^| 13 ^| 6  ^| 17 ^| 31
-^| 28 ^| [blue-cell]#4# ^| 12 ^| 3  ^| 9  ^| 11
-^| 3  ^| [blue-cell]#2# ^| 42 ^| 16 ^| 8  ^| 6
-^| 15 ^| [blue-cell]#1# ^| [blue-cell]#7#  ^| [blue-cell]#11# ^| [blue-cell]#14# ^| [blue-cell]#26#
+^| [d-blue-cell]#5#  ^| [d-blue-cell]#8# ^| 13 ^| 6  ^| 17 ^| 31
+^| 28 ^| [d-blue-cell]#4# ^| 12 ^| 3  ^| 9  ^| 11
+^| 3  ^| [d-blue-cell]#2# ^| 42 ^| 16 ^| 8  ^| 6
+^| 15 ^| [d-blue-cell]#1# ^| [d-blue-cell]#7#  ^| [d-blue-cell]#11# ^| [d-blue-cell]#14# ^| [d-blue-cell]#26#
 
 |===
 ```
@@ -573,10 +573,10 @@ flexGrow=1
 ```asciidoc
 [cols=6*]
 |===
-^| [blue-cell]#78# ^| [blue-cell]#73# ^| 71 ^| 58 ^| 66 ^| 74
-^| 92 ^| [blue-cell]#65# ^| 64 ^| 52 ^| 49 ^| 43
-^| 64 ^| [blue-cell]#61# ^| 98 ^| 56 ^| 40 ^| 32
-^| 74 ^| [blue-cell]#59# ^| [blue-cell]#58# ^| [blue-cell]#51# ^| [blue-cell]#40# ^| [blue-cell]#26#
+^| [d-blue-cell]#78# ^| [d-blue-cell]#73# ^| 71 ^| 58 ^| 66 ^| 74
+^| 92 ^| [d-blue-cell]#65# ^| 64 ^| 52 ^| 49 ^| 43
+^| 64 ^| [d-blue-cell]#61# ^| 98 ^| 56 ^| 40 ^| 32
+^| 74 ^| [d-blue-cell]#59# ^| [d-blue-cell]#58# ^| [d-blue-cell]#51# ^| [d-blue-cell]#40# ^| [d-blue-cell]#26#
 |===
 ```
 

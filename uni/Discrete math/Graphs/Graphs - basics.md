@@ -290,6 +290,8 @@ $$
 \end{array}
 $$
 
+> [!note] 
+> *Adjacency weight matrix* or *edge weight matrix* is the same matrix, but instead of *1*s there are **weights**
 
 ### Incidence matrix
 

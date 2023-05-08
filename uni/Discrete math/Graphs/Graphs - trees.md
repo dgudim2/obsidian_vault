@@ -128,7 +128,7 @@ f -- g [label="3"]
 ```
 
 > [!definition] 
-> 1. **Weight** of the [[#Tree|tree]]: sum of weights of it’s edges
+> 1. **Weight** of the [[#Tree|tree]]: sum of *weights* of it’s edges
 > 2. **Minimal** [[#Tree|tree]]: tree with smallest possible **weight**
 
 ### Constructing the tree

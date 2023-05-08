@@ -381,7 +381,7 @@ Can be written in 2 ways:
 
 ### Length of the path
 
-> **Length of the [[#Path|path]]** is amount of it's [[Graphs - basics#Undirected graph|edges]] 
+> **Length of the [[#Path|path]]** is amount of it's [[Graphs - basics#Undirected graph|edges]] (or sum of their *weights*)
 
 ### Euler path
 

@@ -20,6 +20,7 @@ kanban-plugin: basic
 - [ ] **An option to put "global" in front of event**<br><br>Currently (Global) is added only to the back<br><br>@{2023-04-01}
 - [ ] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}
 - [ ] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
+- [ ] **Option to archive entries for faster loading**<br><br>Add an option to put completed entries into a separate list<br><br>@{2023-05-08}
 
 
 ## Fixed bugs

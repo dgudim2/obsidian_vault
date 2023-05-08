@@ -958,7 +958,7 @@ edge [color = darkgrey]
 } 
 ```
 
-1. Enumerate all vertices, get a list of [[Graphs - connectivity#Special vertices|rising]] vertices is: *[1, 2, 3, 7, 8, 9]* (marked <font color="#ff0000">red</font>)
+1. Enumerate all vertices, get a list of [[Graphs - connectivity#Special vertices|rising]] vertices is: *[1, 2, 3, 7, 8, 9]* (marked #c/red**red**)
 2. Find a [[Graphs - connectivity#Special vertices|rising]] vertex with *smallest* index (in our case it's *1*). It is connected to [[Graphs - basics#Directed graphs|vertex]] *5*, so we add *5* to our array: (*Tree[0] = 5*) and remove vertex *1*
 3. Repeat until *2* vertices are left
 	- Remove vertex *2*, add *6* to array: *[5, 6]*
@@ -1257,9 +1257,9 @@ edge [color = darkgrey]
 
 2. Add one to every number
 3. Take *first* element of the array (**5**)
-4. Mark element in column for this array element (column **5**)
-5. Search for the first *1* in the table (it's in the column **1**)
-6. Subtract *1* from the selected elements
+4. Mark element in column for **this** array element (column **5**)
+5. Search for the *first* *1* in the table (it's in the column **1**)
+6. Subtract *1* from the *selected* elements
 
 | Vertex       | 0   | #c/green**1** | 2   | 3   | 4   | #c/red**5** | 6   | 7   | 8   | 9   |
 | ------------ | --- | -------------- | --- | --- | --- | ------------ | --- | --- | --- | --- |

@@ -25,74 +25,74 @@ div:not(.cm-active) > span.cm-tag-cpurple
 
 /* -- red --  */
 .cm-tag-cred ~ span.cm-highlight {
-	background-color: var(--g-color-light-red) !important;
+	background-color: var(--g-light-red) !important;
 }
 
 .cm-tag-cred ~ span.cm-strong, .cm-tag-cred ~ span.cm-em {
-	color: var(--g-color-light-red) !important;
+	color: var(--g-light-red) !important;
 }
 
 /* -- cyan --  */
 .cm-tag-ccyan ~ span.cm-highlight {
-	background-color: var(--g-color-light-cyan) !important;
+	background-color: var(--g-light-cyan) !important;
 }
 
 .cm-tag-ccyan ~ span.cm-strong, .cm-tag-ccyan ~ span.cm-em {
-	color: var(--g-color-light-cyan) !important;
+	color: var(--g-light-cyan) !important;
 }
 
 /* -- purple --  */
 .cm-tag-cpurple ~ span.cm-highlight {
-	background-color: var(--g-color-light-purple) !important;
+	background-color: var(--g-light-purple) !important;
 }
 
 .cm-tag-cpurple ~ span.cm-strong, .cm-tag-cpurple ~ span.cm-em {
-	color: var(--g-color-light-purple) !important;
+	color: var(--g-light-purple) !important;
 }
 
 /* -- orange --  */
 .cm-tag-corange ~ span.cm-highlight {
-	background-color: var(--g-color-light-orange) !important;
+	background-color: var(--g-light-orange) !important;
 }
 
 .cm-tag-corange ~ span.cm-strong, .cm-tag-corange ~ span.cm-em {
-	color: var(--g-color-light-orange) !important;
+	color: var(--g-light-orange) !important;
 }
 
 /* -- green --  */
 .cm-tag-cgreen ~ span.cm-highlight {
-	background-color: var(--g-color-light-green) !important;
+	background-color: var(--g-light-green) !important;
 }
 
 .cm-tag-cgreen ~ span.cm-strong, .cm-tag-cgreen ~ span.cm-em {
-	color: var(--g-color-light-green) !important;
+	color: var(--g-light-green) !important;
 }
 
 /* -- yellow --  */
 .cm-tag-cyellow ~ span.cm-highlight {
-	background-color: var(--g-color-light-yellow) !important;
+	background-color: var(--g-light-yellow) !important;
 }
 
 .cm-tag-cyellow ~ span.cm-strong, .cm-tag-cyellow ~ span.cm-em {
-	color: var(--g-color-light-yellow) !important;
+	color: var(--g-light-yellow) !important;
 }
 
 /* -- blue --  */
 .cm-tag-cblue ~ span.cm-highlight {
-	background-color: var(--g-color-light-blue) !important;
+	background-color: var(--g-light-blue) !important;
 }
 
 .cm-tag-cblue ~ span.cm-strong, .cm-tag-cblue ~ span.cm-em {
-	color: var(--g-color-light-blue) !important;
+	color: var(--g-light-blue) !important;
 }
 
 /* -- gray --  */
 .cm-tag-cgray ~ span.cm-highlight {
-	background-color: var(--g-color-gray) !important;
+	background-color: var(--g-gray) !important;
 }
 
 .cm-tag-cgray ~ span.cm-strong, .cm-tag-cgray ~ span.cm-em {
-	color: var(--g-color-gray) !important;
+	color: var(--g-gray) !important;
 }
 
 /*----------------------- Preview mode ------------------------ */
@@ -103,65 +103,65 @@ a[href^="#c/"]{
 
 /* -- red --  */
 a[href^="#c/red"] + mark {
-	background-color: var(--g-color-light-red) !important;
+	background-color: var(--g-light-red) !important;
 }
 
 a[href^="#c/red"] + strong, a[href^="#c/red"] + em {
-	color: var(--g-color-light-red);
+	color: var(--g-light-red);
 }
 
 /* -- aqua --  */
 a[href^="#c/cyan"] + mark {
-	background-color: var(--g-color-light-cyan) !important;
+	background-color: var(--g-light-cyan) !important;
 }
 
 a[href^="#c/cyan"] + strong, a[href^="#c/cyan"] + em  {
-	color: var(--g-color-light-cyan);
+	color: var(--g-light-cyan);
 }
 
 /* -- purple --  */
 a[href^="#c/purple"] + mark {
-	background-color: var(--g-color-light-purple) !important;
+	background-color: var(--g-light-purple) !important;
 }
 
 a[href^="#c/purple"] + strong, a[href^="#c/purple"] + em {
-	color: var(--g-color-light-purple);
+	color: var(--g-light-purple);
 }
 
 /* -- green --  */
 a[href^="#c/green"] + mark {
-	background-color: var(--g-color-light-green) !important;
+	background-color: var(--g-light-green) !important;
 }
 
 a[href^="#c/green"] + strong, a[href^="#c/green"] + em {
-	color: var(--g-color-light-green);
+	color: var(--g-light-green);
 }
 
 /* -- yellow --  */
 a[href^="#c/yellow"] + mark {
-	background-color: var(--g-color-light-yellow) !important;
+	background-color: var(--g-light-yellow) !important;
     color: black !important;
 }
 
 a[href^="#c/yellow"] + strong, a[href^="#c/yellow"] + em {
-	color: var(--g-color-light-yellow);
+	color: var(--g-light-yellow);
 }
 
 /* -- blue --  */
 a[href^="#c/blue"] + mark {
-	background-color: var(--g-color-light-blue) !important;
+	background-color: var(--g-light-blue) !important;
 }
 
 a[href^="#c/blue"] + strong, a[href^="#c/blue"] + em {
-	color: var(--g-color-light-blue);
+	color: var(--g-light-blue);
 }
 
 /* -- gray --  */
 a[href^="#c/gray"] + mark {
-	background-color: var(--g-color-gray) !important;
+	background-color: var(--g-gray) !important;
 }
 
 a[href^="#c/gray"] + strong, a[href^="#c/gray"] + em {
-	color: var(--g-color-gray);
+	color: var(--g-gray);
 }
 

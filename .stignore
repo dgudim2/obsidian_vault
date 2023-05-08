@@ -1,0 +1,7 @@
+!*.pdf
+!*.doc
+!*.docx
+!*.pptx
+!*.ppt
+!/LaTeX docs
+*

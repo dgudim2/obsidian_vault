@@ -999,7 +999,7 @@ flexGrow=1
 - ? Find
 	The **data** [[Data representation#Byte|byte]] at that *address*
 - @ Method
-	- **Extract** the [[#Cache tags|tag]] number, **t**, [[#Cache blocks|block]] number, **b**, and offset, **o**, from the *address*.
+	- **Extract** the [[#Cache tags|tag]] number, **t**, [[#Cache blocks|block]] number, **b**, and **offset**, **o**, from the *address*.
 	- **Examine** the [[#Cache tags|tag]] in slot **b** of the [[#Cache|cache]]. If the [[#Cache tags|tag]] matches **t**, extract the value from slot **b** of the [[#Cache|cache]]
 	- If the tag in slot b of the [[#Cache|cache]] does not match **t**, use the [[Memory|memory]] *address* to extract the [[#Cache blocks|block]] from [[Memory|memory]], place a copy in slot **b** of the [[#Cache|cache]], replace the [[#Cache tags|tag]] with **t**, and use **o** to select the appropriate [[Data representation#Byte|byte]] from the value
 
@@ -1050,7 +1050,7 @@ width:100%
 
 - Think *binary*: if all values are *powers of two*, [[Data representation#Bit (Binary digit)|bits]] of an *address* can be used to specify a [[#Cache tags|tag]], [[#Cache blocks|block]], and **offset**
 - For the example above (an unrealistically small cache)
-- [[#Cache blocks|Block]] size **B** is **8**, so use **3** [[Data representation#Bit (Binary digit)|bits]] of offset
+- [[#Cache blocks|Block]] size **B** is **8**, so use **3** [[Data representation#Bit (Binary digit)|bits]] of **offset**
 - [[#Cache]] size **C** is **4**, so use **2** [[Data representation#Bit (Binary digit)|bits]] of [[#Cache blocks|block]] number
 - [[#Cache tags|Tag]] is [[Divisors, multiples, primes#Division with remainder|remainder]] of address (32 — 5 [[Data representation#Bit (Binary digit)|bits]])
 

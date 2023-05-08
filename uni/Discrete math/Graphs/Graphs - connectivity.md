@@ -309,7 +309,7 @@ b -- {c d}
 # Closure
 
 > [!definition] 
-> If $G(V,E)$ has $n$ [[Graphs - basics#Directed graphs|vertices]], then it’s **closure** $cl(G)$ is a graph obtained from $G$ by adding [[Graphs - basics#Undirected graph|edges]]: if sum of [[Graphs - basics#Order (degree) of vertices|degrees]] of 2 vertices $p(u)+p(v) \geq n$, then [[Graphs - basics#Undirected graph|edge]] $\{u,v\}$ is added. 
+> If $G(V,E)$ has *$n$* [[Graphs - basics#Directed graphs|vertices]], then it’s **closure** $cl(G)$ is a graph obtained from $G$ by adding [[Graphs - basics#Undirected graph|edges]]: if sum of [[Graphs - basics#Order (degree) of vertices|degrees]] of 2 vertices *$p(u)+p(v) \geq n$*, then [[Graphs - basics#Undirected graph|edge]] $\{u,v\}$ is added. 
 > 
 > - This procedure is done until no more edges can be added.
 
@@ -433,7 +433,7 @@ Can be written in 2 ways:
 > 
 > <u>This leads to the following:</u>
 > 
-> $G(V,E)$ is **Hamiltonian** *if and only if* it’s [[#Closure]] is **Hamiltonian**
+> $G(V,E)$ is **Hamiltonian** *if and only if* it’s [[#Closure|closure]] is **Hamiltonian**
  
 > [!note] 
 > [[Graphs - metrics2#Edge graph|Edge graph]] of a **Hamiltonian graph** is also **Hamiltonian graph**

@@ -7,7 +7,6 @@
   "monospaceFontFamily": "FiraCode Nerd Font Mono",
   "nativeMenus": false,
   "enabledCssSnippets": [
-    "8 + 8 highlight colors",
     "big-math",
     "Combine Nested tag colors and Highlight colors ",
     "dialogs",
@@ -17,7 +16,8 @@
     "mermaid",
     "slides-theme-colors",
     "width-800px",
-    "custom_callouts"
+    "custom_callouts",
+    "8 + 8 highlight colors"
   ],
   "showViewHeader": true,
   "theme": "system"

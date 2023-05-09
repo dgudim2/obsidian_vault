@@ -6,4 +6,5 @@
 !*.odt
 !*.odp
 !/LaTeX docs
+!/uni/Extra
 *

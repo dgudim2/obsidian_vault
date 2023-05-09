@@ -6,21 +6,21 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiExternalLink",
+      "FasMemory",
+      "FasDice",
+      "RiCalculatorLine",
+      "FasDesktop",
+      "SiGit",
+      "SiArtifacthub",
+      "FasLanguage",
+      "RiEnglishInput",
       "LiCpu",
       "RiArrowUpDownLine",
       "LiBinary",
       "SiDiagramsdotnet",
       "SiGraphql",
-      "FasDiceD20",
-      "IbStackVertical",
-      "⬆",
-      "↗",
-      "FasMemory",
-      "IbArrowSwitch",
-      "FasSolidDiceD20",
-      "FasArrow-right-arrow-left",
-      "FasArrow-trend-up",
-      "FabGit-alt"
+      "FasDiceD20"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [],
@@ -49,7 +49,8 @@
   "uni/Presentations/Git presentation.md": "SiGit",
   "uni/Management": "⬆",
   "uni/Computer architecture/IO.md": "RiArrowUpDownLine",
-  "uni/Discrete math/Number theory": "FasDiceD20",
+  "uni/Discrete math/Number theory": "FasDice",
   "uni/Computer architecture/Memory.md": "FasMemory",
-  "uni/Index.md": "IbStackVertical"
+  "uni/Index.md": "IbStackVertical",
+  "uni/Extra": "LiExternalLink"
 }

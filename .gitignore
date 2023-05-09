@@ -16,4 +16,5 @@ export
 *.ppt
 *.odt
 *.odp
-LaTeX docs
+/LaTeX docs
+/uni/Extra

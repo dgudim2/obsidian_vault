@@ -286,7 +286,7 @@ f -- i
 		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{green}\{h,f\}-1},\ \{h,g\}-2,\ \{h,i\}-4$
 		- @ $\{h,f\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 	7. $S = \{a,b,c,d,e,f,h\}$
-		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{green}\{h,g\}-2},\ \{h,i\}-4,\ {\color{lightgreen}\{f,i\}-3}$
+		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{d,h\}-6,\ \{d,g\}-8,\ \{b,e\}-5,\ \{c,e\}-8,\ \{c,f\}-6,\ {\color{green}\{h,g\}-2},\ \{h,i\}-4,\ {\color{green}\{f,i\}-3}$
 		- @ $\{h,g\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 		- @ $\{h,i\}$ has minimal *weight*, add it to the [[#Tree|tree]]
 

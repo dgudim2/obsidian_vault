@@ -211,7 +211,6 @@ width:100%
 	- Determines which device can use the **bus** at any time
 	- All attached devices *follow the protocol*
 - ~ It is possible to have *multiple* **buses** in one computer
-
 ```dynamic-svg
 ---
 invert-shade

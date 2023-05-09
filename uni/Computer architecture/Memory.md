@@ -1,5 +1,4 @@
 # Key aspects and characteristics of memory
-
 - **Technology**
 	- The type of the underlying *hardware*
 	- Choice determines *cost*, *persistence*, *performance* ([[#Measures of memory]])

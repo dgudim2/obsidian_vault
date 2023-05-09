@@ -14,4 +14,6 @@ export
 *.docx
 *.pptx
 *.ppt
+*.odt
+*.odp
 LaTeX docs

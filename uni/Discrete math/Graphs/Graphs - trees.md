@@ -265,7 +265,7 @@ f -- i
 	- Add $v_2$ to $S$ and edge $\{v_1 ,v_2\}$ to [[#Tree|tree]] [[Graphs - basics#Undirected graph|edge]] set.
 3. Find an [[Graphs - basics#Undirected graph|edge]] of *minimal weight* [[Graphs - basics#Properties|incident]] to *any* [[Graphs - basics#Directed graphs|vertex]] from set $S$. 
 	- Add [[Graphs - basics#Undirected graph|edge]] to the [[#Tree|tree]] edge set and it’s [[Graphs - basics#Properties|incident]] vertex to $S$ if it *won't* make a [[Graphs - connectivity#Cycle|cycle]]
-4. Repeat until all vertices are connected
+4. Repeat from step *3* until all vertices are connected
 	1. Select [[Graphs - basics#Directed graphs|vertex]] *a* | $S = \{a\}$
 		- Incident [[Graphs - basics#Undirected graph|edges]]: $\{a,b\}-3,\ \{a,e\}-4,\ \color{green}\{a,d\}-1$
 		- @ $\{a,d\}$ has minimal *weight*, add it to the [[#Tree|tree]]

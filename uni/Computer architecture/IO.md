@@ -206,17 +206,32 @@ width:100%
 	- *Control* (e.g: input or output)
 - **Bus** way have many wires (32, 64) ([[#Bus width]])
 	- This facilitates *parallel* data transfer ([[#Parallel interface]])
-	- Different sets of wires may be used for *different purposes*
+	- Different sets of wires may be used for *different purposes* ([[#Conceptual lines in a bus]])
 - $ Needs an access *protocol*
 	- Determines which device can use the **bus** at any time
 	- All attached devices *follow the protocol*
+- $ Controller is *required*
 - ~ It is possible to have *multiple* **buses** in one computer
-
 ```dynamic-svg
 ---
 invert-shade
 ---
 [[Computer_system_bus.svg]]
+```
+
+### Conceptual lines in a bus
+
+- Early [[#Buses|bus]] design did indeed use *separate wires*
+- To lower cost, many [[#Buses|bus]] designers now arrange to [[#Multiplexor|multiplex]] **address** and **data** over the save *wires* (in a request, use the wires to send an *address*; in a *response*, use the same wires to *send data*)
+- [[#Serial interface|Serial bus]] multiplexes all communication over **one wire**
+
+> Conceptual division of *wires* that comprise a [[#Buses|bus]] into *lines* for *control*, *addresses* and *data*
+```dynamic-svg
+---
+invert-shade
+width:100%
+---
+[[data_lines.svg]]
 ```
 
 ### Bus implementation

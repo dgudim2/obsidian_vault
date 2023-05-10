@@ -17,4 +17,4 @@ export
 *.odt
 *.odp
 /LaTeX docs
-/uni/Extra
+**/Extra

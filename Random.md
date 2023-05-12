@@ -22,6 +22,7 @@ Matrix
 Git
 Webdav
 Whoogle
+Lastfm discord RPC
 
 MOJO (python)
 

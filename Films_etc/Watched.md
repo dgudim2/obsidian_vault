@@ -11,6 +11,7 @@
 ## Series
 
 1. The EXPANSE (8.5/10)
+2. Silicon valley (9.5/10)
 
 ## Anime
 

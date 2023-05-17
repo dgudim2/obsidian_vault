@@ -21,6 +21,7 @@ kanban-plugin: basic
 - [ ] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}
 - [ ] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
 - [ ] **Option to archive entries for faster loading**<br><br>Add an option to put completed entries into a separate list<br><br>@{2023-05-08}
+- [ ] **Menu for editing groups**<br><br>Add a menu to edit group parameters (better than re-saving groups)<br><br>@{2023-05-12}
 
 
 ## Fixed bugs

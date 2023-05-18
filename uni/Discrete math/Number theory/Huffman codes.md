@@ -197,4 +197,41 @@ flexGrow=1
 
 ```` 
 `````
+6. Build the [[Graphs - trees|tree]]
 
+ ```dot 
+---
+preset: math-graph
+---
+graph neato { 
+
+bgcolor="transparent" 
+
+graph [layout = dot] 
+
+node [shape = circle, 
+      style = filled, 
+      width=0.3, 
+      height=0.3, 
+      color=green, 
+      fillcolor = white] 
+
+TEIFHARSMNVYUW[label=""]
+IFHARSMNVYUW[label=""]
+RSMNVYUW[label=""]
+IFHA[label=""]
+FHA[label=""]
+FH[label=""]
+TE[label=""]
+
+edge [color=lightgray] 
+
+TEIFHARSMNVYUW -- { TE IFHARSMNVYUW }
+IFHARSMNVYUW -- { IFHA RSMNVYUW }
+IFHA -- { FHA I }
+FHA -- { A FH }
+FH -- { H F }
+TE -- { E T }
+
+} 
+```

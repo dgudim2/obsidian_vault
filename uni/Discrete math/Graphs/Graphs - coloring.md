@@ -330,6 +330,157 @@ Let's have *$\lambda$* colors. For this graph there will be *$\lambda(\lambda-1)
 > > If graph $G$ can be colored using **K** colors, then some [[Graphs - connectivity#Connected components|connected component]] of it can be colored using **K** colors
 > 
 
+> [!note] 
+> 
+> > Maximum [[Graphs - metrics2#Clique|clique]] method (If graph's maximum **clique** is any of those, then it takes the same number of colors to color it)
+> `````col 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **2** colors to color
+> 
+> ```dot 
+> ---
+> preset:math-graph
+> ---
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> edge [color = lightgrey] 
+> 
+> a -- b
+> 
+> } 
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **3** colors to color
+> 
+> ```dot 
+> ---
+> preset:math-graph
+> ---
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> a [pos="0,0!"] 
+> b [pos="0.5,0.8!"] 
+> c [pos="1,0!"] 
+> 
+> edge [color = lightgrey] 
+> 
+> a -- c
+> a -- {b} 
+> c -- {b} 
+> } 
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **4** colors to color
+> 
+> ```dot 
+> ---
+> preset:math-graph
+> ---
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> a [pos="1,0!"] 
+> b [pos="0,1!"] 
+> c [pos="0,0!"] 
+> d [pos="1,1!"] 
+> 
+> edge [color = lightgrey] 
+>  
+> a -- {b d c} 
+> c -- {d b} 
+> d -- {b} 
+> } 
+> ```
+> 
+> ```` 
+> ````col-md 
+> flexGrow=1
+> ===
+> 
+> **5** colors to color
+> 
+> ```dot 
+> ---
+> preset:math-graph
+> ---
+> graph neato { 
+> 
+> bgcolor="transparent" 
+> 
+> graph [layout = neato] 
+> 
+> node [shape = circle, 
+>       style = filled, 
+>       width=0.3, 
+>       height=0.3, 
+>       color=green, 
+>       fillcolor = white] 
+> 
+> a [pos="0.1,-0.1!"] 
+> b [pos="0.4,0.9!"] 
+> c [pos="1.6,0.9!"] 
+> d [pos="1.9,-0.1!"] 
+> e [pos="1,-0.8!"] 
+> 
+> edge [color = lightgrey] 
+>  
+> a -- {b c d e} 
+> b -- {c d e} 
+> c -- {d e} 
+> d -- e 
+> 
+> } 
+> ```
+> 
+> ```` 
+> `````
+> 
+
 > [!theorem] 
 > $$C_{G\hat{e}}=C_{G}(\lambda)+C_{G/e}(\lambda)$$
 > 

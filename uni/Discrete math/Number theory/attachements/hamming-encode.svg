@@ -1,0 +1,18 @@
+<svg width="175" height="165" version="1.1" viewBox="-.5 -.5 175 165" xmlns="http://www.w3.org/2000/svg">
+ <g fill-opacity="0" stroke="#000" stroke-miterlimit="0" stroke-width=".85">
+  <circle cx="86.779" cy="57.196" r="55.435"/>
+  <circle cx="116.86" cy="107.5" r="55.435"/>
+  <circle cx="56.796" cy="107.38" r="55.435"/>
+ </g>
+ <g font-family="sans-serif" font-size="40px">
+  <text x="74.918289" y="41.051365" fill="#00ffff" style="line-height:1.25" xml:space="preserve"><tspan x="74.918289" y="41.051365" fill="#00ffff"><tspan font-size="24px">C</tspan><tspan font-size="12px">5</tspan></tspan></text>
+  <text x="125.26995" y="128.28053" fill="#ff6600" style="line-height:1.25" xml:space="preserve"><tspan x="125.26995" y="128.28053" fill="#ff6600"><tspan font-size="24px">C</tspan><tspan font-size="12px">6</tspan></tspan></text>
+  <text x="27.153389" y="127.63448" fill="#00ff00" style="line-height:1.25" xml:space="preserve"><tspan x="27.153389" y="127.63448" fill="#00ff00"><tspan font-size="24px">C</tspan><tspan font-size="12px">7</tspan></tspan></text>
+ </g>
+ <g fill="#000000" font-family="sans-serif" font-size="40px">
+  <text x="107.37163" y="77.181808" style="line-height:1.25" xml:space="preserve"><tspan x="107.37163" y="77.181808"><tspan font-size="24px">M</tspan><tspan font-size="12px">2</tspan></tspan></text>
+  <text x="73.616989" y="100.69412" style="line-height:1.25" xml:space="preserve"><tspan x="73.616989" y="100.69412"><tspan font-size="24px">M</tspan><tspan font-size="12px">3</tspan></tspan></text>
+  <text x="38.705849" y="77.83857" style="line-height:1.25" xml:space="preserve"><tspan x="38.705849" y="77.83857"><tspan font-size="24px">M</tspan><tspan font-size="12px">1</tspan></tspan></text>
+  <text x="72.777489" y="135.3942" style="line-height:1.25" xml:space="preserve"><tspan x="72.777489" y="135.3942"><tspan font-size="24px">M</tspan><tspan font-size="12px">4</tspan></tspan></text>
+ </g>
+</svg>

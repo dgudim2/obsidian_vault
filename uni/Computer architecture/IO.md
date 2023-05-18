@@ -182,14 +182,19 @@ width:100%
 
 ## Why use a bus?
 
-- Cannot afford to have a *separate* physical interconnect *per device*
-	- ! Too many physical wires
-	- ! Not enough pins on a [[Processor|processor]] chip
-- Solution is a shared **bus**
-	- $ Allows *multiple devices* to use a given interconnection to transfer data
-	- & Typical use: connect [[Processor|processor]] to
-		- [[Memory]]
-		- [[#I/O Devices]]
+> [!problem]
+> 
+> - Cannot afford to have a *separate* physical interconnect *per device*
+>	- ! Too many physical wires
+>	- ! Not enough pins on a [[Processor|processor]] chip
+
+> [!solution]
+> 
+> - A shared **bus**
+> 	- $ Allows *multiple devices* to use a given interconnection to transfer data
+> 	- & Typical use: connect [[Processor|processor]] to
+> 		- [[Memory]]
+> 		- [[#I/O Devices]]
 
 ## Bus characteristics
 

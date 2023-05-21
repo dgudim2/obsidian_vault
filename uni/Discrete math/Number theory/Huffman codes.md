@@ -38,6 +38,9 @@
 - Optimal alphabetic binary trees (Hu–Tucker coding)
 - The canonical Huffman code
 
+--- 
+<br>
+
 # Huffman coding
 
 > [!definition] 
@@ -64,7 +67,7 @@
 |===
 ```
 
-4. Join two leftmost elements to a *group*
+4. Join two leftmost elements to a *group*, first symbol will get a **0**, second **1**
 
 `````col 
 ````col-md 
@@ -80,6 +83,16 @@ flexGrow=1
 
 |===
 ```
+
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    |          | A    |          |
+| N    |          | V    |          |
+| R    |          | I    |          |
+| S    |          | T    |          |
+| U    |          | E    |          |
 
 ```` 
 ````col-md 
@@ -116,6 +129,16 @@ flexGrow=1
 |===
 ```
 
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    |          | A    |          |
+| N    |          | V    |          |
+| R    |          | I    |          |
+| S    |          | T    |          |
+| U    |          | E    |          |
+
 ```asciidoc
 [cols=12*]
 |===
@@ -126,6 +149,16 @@ flexGrow=1
 |===
 ```
 
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    |          | I    |          |
+| S    |          | T    |          |
+| U    |          | E    |          |
+
 ```asciidoc
 [cols=11*]
 |===
@@ -135,6 +168,35 @@ flexGrow=1
 
 |===
 ```
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    | 0        | I    |          |
+| S    | 1        | T    |          |
+| U    |          | E    |          |
+
+```asciidoc
+[cols=10*]
+|===
+
+^|[orange-cell]#Y# ^|[orange-cell]#UW# ^|[blue-cell]#RS# ^|[cyan-cell]#MN# ^|[green-cell]#FH# ^|A ^|V ^|I ^|T ^|E 
+^|1                ^|2                 ^|2             ^|2               ^|2                ^|2 ^|2 ^|3 ^|5 ^|6
+
+|===
+```
+
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    | 1        |
+| H    | 1        | Y    |          |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    | 0        | I    |          |
+| S    | 1        | T    |          |
+| U    | 0        | E    |          |
 
 ......
 
@@ -147,7 +209,6 @@ flexGrow=1
 
 |===
 ```
-
 
 ```` 
 ````col-md 
@@ -164,6 +225,16 @@ flexGrow=1
 |===
 ```
 
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    | **0**    | A    |          |
+| N    | **1**    | V    |          |
+| R    |          | I    |          |
+| S    |          | T    |          |
+| U    |          | E    |          |
+
 ```asciidoc
 [cols=11*]
 |===
@@ -174,6 +245,16 @@ flexGrow=1
 |===
 ```
 
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    |          |
+| H    | 1        | Y    |          |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    | **0**    | I    |          |
+| S    | **1**    | T    |          |
+| U    |          | E    |          |
+
 ```asciidoc
 [cols=10*]
 |===
@@ -183,6 +264,37 @@ flexGrow=1
 
 |===
 ```
+
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    | **1**    |
+| H    | 1        | Y    |          |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    | 0        | I    |          |
+| S    | 1        | T    |          |
+| U    | **0**    | E    |          |
+
+```asciidoc
+[cols=9*]
+|===
+
+^|[blue-cell]#RS# ^|[cyan-cell]#MN# ^|[green-cell]#FH# ^|A ^|V ^|[orange-cell]#YUW# ^|I ^|T ^|E 
+^|2               ^|2               ^|2                ^|2 ^|2 ^|3                  ^|3 ^|5 ^|6
+
+|===
+```
+
+| Symb | sequence | Symb | sequence |
+| ---- | -------- | ---- | -------- |
+| F    | 0        | W    | **1**1   |
+| H    | 1        | Y    | **0**    |
+| M    | 0        | A    |          |
+| N    | 1        | V    |          |
+| R    | 0        | I    |          |
+| S    | 1        | T    |          |
+| U    | **1**0   | E    |          |
+
 ......
 
 ```asciidoc
@@ -197,7 +309,9 @@ flexGrow=1
 
 ```` 
 `````
+
 6. Build the [[Graphs - trees|tree]]
+	- Every arrow to the **left** is *zero*, and arrow to the **right** - *one*
 
  ```dot 
 ---
@@ -211,16 +325,34 @@ graph [layout = dot]
 
 node [shape = circle, 
       style = filled, 
-      width=0.3, 
-      height=0.3, 
+      width=0.4, 
+      height=0.4, 
       color=green, 
-      fillcolor = white] 
-
+      fillcolor = white, fixedsize=true] 
+T
+TE
+E
 TEIFHARSMNVYUW[label=""]
-IFHARSMNVYUW[label=""]
-RSMNVYUW[label=""]
-IFHA[label=""]
+I
+F
+FH[label=""]
 FHA[label=""]
+H
+R
+RS[label=""]
+S
+M
+MN[label=""]
+N
+IFHA[label=""]
+RSMNVYUW[label=""]
+IFHARSMNVYUW[label=""]
+RSMN[label=""]
+V
+Y
+YUW[label=""]
+VYUW[label=""]
+UW[label=""]
 FH[label=""]
 TE[label=""]
 
@@ -228,10 +360,26 @@ edge [color=lightgray]
 
 TEIFHARSMNVYUW -- { TE IFHARSMNVYUW }
 IFHARSMNVYUW -- { IFHA RSMNVYUW }
+RSMNVYUW -- { RSMN VYUW }
+VYUW -- { V YUW }
+YUW -- { Y UW }
+UW -- { U W }
+RSMN -- { RS MN }
+RS -- { R S }
+MN -- { M N }
 IFHA -- { FHA I }
 FHA -- { A FH }
 FH -- { H F }
 TE -- { E T }
 
+
 } 
+```
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
 ```

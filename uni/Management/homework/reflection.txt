@@ -1,0 +1,14 @@
+Reflection on the course project (case study on the purchase of twitter)
+To begin with, I can say that our project overall was a success, however some areas could definitely be improved.
+
+Choosing a topic was not hard, we did it almost instantly, same goes for the division of responsibilities, I would rate our cooperation efficiency at 9, it was close to perfect.
+
+For the data collection part, we all took part in finding some information, including stocks data, general information and deal-specific data. We didn't have much prior experience in collecting this specific type of data, but we had experience in collecting data in general, so this part was not hard. However, if we need to collect data for another case study, this process will definitely be faster and easier.
+
+Analyzing the data was easy because the topic we chose mostly required quantitative data and analyzing such data is not hard, we all took part in analysis and did great in my opinion.
+
+Making a presentation was not hard either, we all did plenty of presentation before, so this was quick and easy.
+
+Presenting, on the other hand was a different story. The only person in out group who likes presenting and does it great is Nurtay, as for me and Mykola, we still need to get more confident and clear while presenting. I would rate our presentation at about 7.7, definitely could be improved.
+
+To sum up, the only problematic part was presenting, as for all other parts, they will probably be done better and faster the next time we do a similar project because of the gained experience while doing this project.

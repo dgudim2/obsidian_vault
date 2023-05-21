@@ -17,7 +17,7 @@
 > [!theorem] 
 > 1. If *${\color{green}a} \equiv {\color{orange}b}(mod\ \ {\color{red}n})$* and *${\color{blue}c} \equiv {\color{yellow}d}(mod\ \ {\color{red}n})$*, 
 > then *${\color{green}a}+{\color{blue}c} \equiv {\color{orange}b}+{\color{yellow}d}(mod\ \ {\color{red}n})$* and *${\color{green}a}{\color{blue}c} \equiv {\color{orange}b}{\color{yellow}d}(mod\ \ {\color{red}n})$* 
-> 2. If *${\color{green}a}{\color{blue}c} \equiv {\color{orange}b}{\color{blue}c}(mod\ \ {\color{red}n})$*, and *$gcd({\color{blue}c};{\color{red}n})=1$* (See [[Divisors, multiples, primes#Greatest common divisor|GCD]]), then *${\color{green}a} \equiv {\color{orange}b}(mod\ \ {\color{red}n})$*
+> 2. If *${\color{green}a}{\color{blue}c} \equiv {\color{orange}b}{\color{blue}c}(mod\ \ {\color{red}n})$*. (See [[Divisors, multiples, primes#Greatest common divisor|GCD]]), then *${\color{green}a} \equiv {\color{orange}b}\left( mod\ \ {\frac{\color{red}n}{gcd({\color{blue}c};{\color{red}n})}} \right)$*
 > 
 >> [!example] 
 >> Let's *$n=3$*
@@ -36,5 +36,24 @@
 >> From the theorem we have
 >> - $7^3=1^3(mod\ \ 6)$
 
+--- 
+<br>
+
 # Equations and systems
 
+
+
+--- 
+<br>
+
+# Indicators of divisibility
+
+
+
+--- 
+<br>
+
+# Go to other topics
+``` dataview
+list from "uni/Discrete math"
+```

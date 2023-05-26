@@ -2756,10 +2756,10 @@ var require_lodash = __commonJS({
             return result2;
           };
         }
-        function getView(start, end, transforms2) {
-          var index = -1, length = transforms2.length;
+        function getView(start, end, transforms) {
+          var index = -1, length = transforms.length;
           while (++index < length) {
-            var data = transforms2[index], size2 = data.size;
+            var data = transforms[index], size2 = data.size;
             switch (data.type) {
               case "drop":
                 start += size2;
@@ -3908,13 +3908,13 @@ var require_lodash = __commonJS({
         function once(func) {
           return before(2, func);
         }
-        var overArgs = castRest(function(func, transforms2) {
-          transforms2 = transforms2.length == 1 && isArray(transforms2[0]) ? arrayMap(transforms2[0], baseUnary(getIteratee())) : arrayMap(baseFlatten(transforms2, 1), baseUnary(getIteratee()));
-          var funcsLength = transforms2.length;
+        var overArgs = castRest(function(func, transforms) {
+          transforms = transforms.length == 1 && isArray(transforms[0]) ? arrayMap(transforms[0], baseUnary(getIteratee())) : arrayMap(baseFlatten(transforms, 1), baseUnary(getIteratee()));
+          var funcsLength = transforms.length;
           return baseRest(function(args) {
             var index = -1, length = nativeMin(args.length, funcsLength);
             while (++index < length) {
-              args[index] = transforms2[index].call(this, args[index]);
+              args[index] = transforms[index].call(this, args[index]);
             }
             return apply(func, this, args);
           });
@@ -19305,7 +19305,7 @@ __export(main_exports, {
   default: () => AdvancedPastePlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian2 = require("obsidian");
+var import_obsidian3 = require("obsidian");
 
 // src/transform.ts
 function ok(value) {
@@ -19316,63 +19316,86 @@ function err(value) {
 }
 
 // src/transforms.ts
-var transforms = {
-  smartJoin: {
-    type: "text",
-    transform(text) {
-      return ok(text.split("\n").map((x) => x.trim()).reduce((acc, cur, idx) => {
-        return acc.endsWith("-") ? `${acc.slice(0, -1)}${cur}` : cur !== "" ? `${acc} ${cur}` : `${acc}
+function privilegedWrapper({ vault }) {
+  return {
+    smartJoin: {
+      type: "text",
+      transform(text) {
+        return ok(text.split("\n").map((x) => x.trim()).reduce((acc, cur, idx) => {
+          return acc.endsWith("-") ? `${acc.slice(0, -1)}${cur}` : cur !== "" ? `${acc} ${cur}` : `${acc}
 `;
-      }));
-    }
-  },
-  joinLines: {
-    type: "text",
-    transform(text) {
-      return ok(text.split("\n").join(""));
-    }
-  },
-  removeBlankLines: {
-    type: "text",
-    transform(text) {
-      return ok(text.split("\n").filter((x) => x.trim() !== "").join("\n"));
-    }
-  },
-  rawHTML: {
-    type: "blob",
-    async transform(input) {
-      if (!input.types.includes("text/html")) {
-        return err("No html found in clipboard!");
+        }));
       }
-      const html = await input.getType("text/html");
-      return ok(await html.text());
-    }
-  },
-  default: {
-    type: "blob",
-    async transform(input, { turndown, saveAttachment, mime: mime2, moment: moment2 }) {
-      for (const type of input.types) {
-        if (type.startsWith("image/")) {
-          const blob = await input.getType(type);
-          const ext = mime2.extension(type);
-          if (!ext) {
-            return err(`Failed to save attachment: Could not determine extension for mime type ${type}`);
-          }
-          const name = `Pasted Image ${moment2().format("YYYYMMDDHHmmss")}`;
-          await saveAttachment(name, ext, await blob.arrayBuffer());
-          return ok(`![[${name}.${ext}]]`);
+    },
+    joinLines: {
+      type: "text",
+      transform(text) {
+        return ok(text.split("\n").join(""));
+      }
+    },
+    removeBlankLines: {
+      type: "text",
+      transform(text) {
+        return ok(text.split("\n").filter((x) => x.trim() !== "").join("\n"));
+      }
+    },
+    rawHTML: {
+      type: "blob",
+      async transform(input) {
+        if (!input.types.includes("text/html")) {
+          return err("No html found in clipboard!");
         }
-      }
-      if (input.types.includes("text/html")) {
         const html = await input.getType("text/html");
-        return ok(turndown.turndown(await html.text()));
+        return ok(await html.text());
       }
-      const text = await input.getType("text/plain");
-      return ok(await text.text());
+    },
+    default: {
+      type: "blob",
+      async transform(input, { turndown, saveAttachment, mime: mime2, moment: moment2 }, { shouldHandleImagePasting }) {
+        for (const type of input.types) {
+          if (type.startsWith("image/") && shouldHandleImagePasting) {
+            const blob = await input.getType(type);
+            const ext = mime2.extension(type);
+            if (!ext) {
+              return err(`Failed to save attachment: Could not determine extension for mime type ${type}`);
+            }
+            const name = `Pasted Image ${moment2().format("YYYYMMDDHHmmss")}`;
+            await saveAttachment(name, ext, await blob.arrayBuffer());
+            return ok(`![[${name}.${ext}]]`);
+          } else if (type == "text/plain") {
+            const blob = await input.getType(type);
+            const text2 = await blob.text();
+            if (text2.match(/^file:\/\/.+$/) && shouldHandleImagePasting) {
+              try {
+                const fs = require("fs").promises;
+                const path = decodeURIComponent(text2).replace(/^file:\/\//, "");
+                const mimeType = mime2.lookup(path);
+                if (!mimeType || !mimeType.startsWith("image/"))
+                  throw new Error("Not an image file!");
+                const buffer = await fs.readFile(path);
+                const attachmentName = `Pasted Image ${moment2().format("YYYYMMDDHHmmss")}`;
+                const ext = mime2.extension(mimeType);
+                if (!ext)
+                  throw new Error(`No extension for mime type ${mimeType}`);
+                await saveAttachment(attachmentName, ext, buffer);
+                return ok(`![[${attachmentName}.${ext}]]`);
+              } catch (e) {
+                console.log(`Advanced paste: can't interpret ${text2} as an image`, e);
+              }
+            }
+          }
+        }
+        if (input.types.includes("text/html")) {
+          const html = await input.getType("text/html");
+          return ok(turndown.turndown(await html.text()));
+        }
+        const text = await input.getType("text/plain");
+        return ok(await text.text());
+      }
     }
-  }
-};
-var transforms_default = transforms;
+  };
+}
+var transforms_default = privilegedWrapper;
 
 // src/main.ts
 var _ = __toESM(require_lodash());
@@ -20096,7 +20119,9 @@ function getAvailablePathForAttachments(fileName, format, sourceFile) {
 // src/main.ts
 var import_mime_types = __toESM(require_mime_types());
 var import_moment = __toESM(require_moment());
-var { gfm } = require_turndown_plugin_gfm_cjs();
+
+// src/settings.ts
+var import_obsidian2 = require("obsidian");
 var DEFAULT_SETTINGS = {
   scriptDir: "advpaste",
   turndown: {
@@ -20109,108 +20134,8 @@ var DEFAULT_SETTINGS = {
     strongDelimiter: "**",
     linkStyle: "inlined",
     linkReferenceStyle: "full"
-  }
-};
-function initTurnDown(options) {
-  const turndown = new turndown_browser_es_default(options);
-  turndown.use(gfm);
-  return turndown;
-}
-async function executePaste(transform, utilsBase, vault, editor, view) {
-  var _a;
-  let result;
-  const utils = {
-    ...utilsBase,
-    async saveAttachment(name, ext, data) {
-      const path = await getAvailablePathForAttachments(name, ext, view.file);
-      return vault.createBinary(path, data);
-    }
-  };
-  if (transform.type == "text") {
-    const input = await navigator.clipboard.readText();
-    result = transform.transform(input, utils);
-  } else if (transform.type == "blob") {
-    const inputs = await navigator.clipboard.read();
-    if (inputs.length > 0) {
-      result = transform.transform(inputs[0], utils);
-    } else
-      new import_obsidian2.Notice("Nothing to paste!");
-  } else {
-    throw new Error("Unsupported input type");
-  }
-  result = await Promise.resolve(result);
-  if (typeof result == "string")
-    editor.replaceSelection(result);
-  else if ((result == null ? void 0 : result.kind) == "ok") {
-    editor.replaceSelection(result.value);
-  } else {
-    new import_obsidian2.Notice((_a = result == null ? void 0 : result.value) != null ? _a : "An error occurred in Advanced Paste.");
-  }
-}
-var AdvancedPastePlugin = class extends import_obsidian2.Plugin {
-  registerTransform(transformId, transform, transformName = null) {
-    this.addCommand({
-      id: transformId,
-      name: transformName != null ? transformName : _.startCase(transformId),
-      editorCallback: _.partial(executePaste, transform, this.utils, this.app.vault)
-    });
-  }
-  async onload() {
-    await this.loadSettings();
-    this.utils = {
-      turndown: initTurnDown(this.settings.turndown),
-      mime: import_mime_types.default,
-      _,
-      moment: import_moment.default
-    };
-    for (const transformId in transforms_default) {
-      const transform = transforms_default[transformId];
-      this.registerTransform(transformId, transform);
-    }
-    const vault = this.app.vault;
-    const { scriptDir = DEFAULT_SETTINGS.scriptDir } = this.settings;
-    this.app.workspace.onLayoutReady(async () => {
-      const fileOrFolder = vault.getAbstractFileByPath(scriptDir);
-      if (fileOrFolder instanceof import_obsidian2.TFolder) {
-        const scriptFolder = fileOrFolder;
-        const entries = await scriptFolder.children;
-        for (const entry of entries) {
-          let module2;
-          if (entry instanceof import_obsidian2.TFile && (entry.name.endsWith(".js") || entry.name.endsWith(".mjs"))) {
-            console.log(`Advanced Paste: Loading script ${entry.name}`);
-            try {
-              module2 = await import("data:text/javascript," + await vault.read(entry));
-            } catch (e) {
-              new import_obsidian2.Notice(`Advanced Paste failed to load script: ${entry}
-Please check your script!`);
-              console.error("Advanced Paste Script Error:", e);
-            }
-          }
-          if (!module2)
-            continue;
-          for (const prop of Object.getOwnPropertyNames(module2)) {
-            const obj = module2[prop];
-            if (typeof obj == "function") {
-              const { type = "text" } = obj;
-              const transform = { type, transform: obj };
-              this.registerTransform(`custom-${prop}`, transform, _.startCase(prop));
-            }
-          }
-        }
-      }
-    });
-    this.addSettingTab(new AdvancedPasteSettingTab(this.app, this));
-    console.info("obsidian-advanced-pasted loaded!");
-  }
-  onunload() {
-  }
-  async loadSettings() {
-    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-  }
-  async saveSettings() {
-    this.utils.turndown = initTurnDown(this.settings.turndown);
-    await this.saveData(this.settings);
-  }
+  },
+  enhanceDefaultPaste: true
 };
 var AdvancedPasteSettingTab = class extends import_obsidian2.PluginSettingTab {
   constructor(app2, plugin) {
@@ -20226,6 +20151,17 @@ var AdvancedPasteSettingTab = class extends import_obsidian2.PluginSettingTab {
     warning.style.color = "red";
     containerEl.createEl("h2", {
       text: "You need to disable and re-enable this plugin in order to apply the changes to the script directory"
+    });
+    const hint = containerEl.createEl("h2", {
+      text: "Please unbind Ctrl+V if you previously bind it to advanced paste's default paste command. Use the `Enhanced Ctrl+V` setting instead."
+    });
+    hint.style.color = "orange";
+    new import_obsidian2.Setting(containerEl).setName("Enhanced Ctrl+V").setDesc("Enhance the default Ctrl+V behavior. You need to restart Obsidian for the changes to take effect.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.enhanceDefaultPaste);
+      toggle.onChange(async (value) => {
+        this.plugin.settings.enhanceDefaultPaste = value;
+        await this.plugin.saveSettings();
+      });
     });
     new import_obsidian2.Setting(containerEl).setName("Script Directory").setDesc("Directory for custom transforms.").addText((text) => text.setPlaceholder("advpaste").setValue(this.plugin.settings.scriptDir).onChange(async (value) => {
       this.plugin.settings.scriptDir = value;
@@ -20322,6 +20258,162 @@ var AdvancedPasteSettingTab = class extends import_obsidian2.PluginSettingTab {
         await this.plugin.saveSettings();
       });
     });
+  }
+};
+
+// src/main.ts
+var { gfm } = require_turndown_plugin_gfm_cjs();
+var AUTO_LINK_TITLE_REGEX = /^(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})$/i;
+function initTurnDown(options) {
+  const turndown = new turndown_browser_es_default(options);
+  turndown.use(gfm);
+  return turndown;
+}
+async function executePaste(transform, utilsBase, vault, withinEvent, editor, view) {
+  var _a;
+  let result;
+  const file = view.file;
+  if (file == null) {
+    new import_obsidian3.Notice("Advanced paste: Can't determine active file!");
+    console.log(view);
+    throw new Error("Advanced paste: Can't determine active file!, view is");
+  }
+  const utils = {
+    ...utilsBase,
+    async saveAttachment(name, ext, data) {
+      const path = await getAvailablePathForAttachments(name, ext, file);
+      return vault.createBinary(path, data);
+    }
+  };
+  const internalParams = { shouldHandleImagePasting: !withinEvent };
+  try {
+    if (transform.type == "text") {
+      const input = await navigator.clipboard.readText();
+      result = transform.transform(input, utils, internalParams);
+    } else if (transform.type == "blob") {
+      const inputs = await navigator.clipboard.read();
+      if (inputs.length > 0) {
+        result = transform.transform(inputs[0], utils, internalParams);
+      } else
+        new import_obsidian3.Notice("Nothing to paste!");
+    } else {
+      throw new Error("Unsupported input type");
+    }
+  } catch (e) {
+    if (e instanceof DOMException && e.message == "No valid data on clipboard.") {
+      return null;
+    }
+    throw e;
+  }
+  const resultStringHandler = (str) => {
+    if (!withinEvent)
+      editor.replaceSelection(str);
+    return str;
+  };
+  result = await Promise.resolve(result);
+  if (typeof result == "string")
+    return resultStringHandler(result);
+  else if ((result == null ? void 0 : result.kind) == "ok") {
+    return resultStringHandler(result.value);
+  } else {
+    new import_obsidian3.Notice((_a = result == null ? void 0 : result.value) != null ? _a : "An error occurred in Advanced Paste.");
+  }
+  return null;
+}
+var AdvancedPastePlugin = class extends import_obsidian3.Plugin {
+  registerTransform(transformId, transform, transformName = null) {
+    this.addCommand({
+      id: transformId,
+      name: transformName != null ? transformName : _.startCase(transformId),
+      editorCallback: _.partial(executePaste, transform, this.utils, this.app.vault, false)
+    });
+  }
+  async onload() {
+    await this.loadSettings();
+    this.utils = {
+      turndown: initTurnDown(this.settings.turndown),
+      mime: import_mime_types.default,
+      _,
+      moment: import_moment.default
+    };
+    const transforms = transforms_default({ vault: this.app.vault });
+    for (const transformId in transforms) {
+      const transform = transforms[transformId];
+      this.registerTransform(transformId, transform);
+    }
+    const vault = this.app.vault;
+    const { scriptDir = DEFAULT_SETTINGS.scriptDir } = this.settings;
+    this.app.workspace.onLayoutReady(async () => {
+      const fileOrFolder = vault.getAbstractFileByPath(scriptDir);
+      if (fileOrFolder instanceof import_obsidian3.TFolder) {
+        const scriptFolder = fileOrFolder;
+        const entries = await scriptFolder.children;
+        for (const entry of entries) {
+          let module2;
+          if (entry instanceof import_obsidian3.TFile && (entry.name.endsWith(".js") || entry.name.endsWith(".mjs"))) {
+            console.log(`Advanced Paste: Loading script ${entry.name}`);
+            try {
+              module2 = await import("data:text/javascript," + await vault.read(entry));
+            } catch (e) {
+              new import_obsidian3.Notice(`Advanced Paste failed to load script: ${entry}
+Please check your script!`);
+              console.error("Advanced Paste Script Error:", e);
+            }
+          }
+          if (!module2)
+            continue;
+          for (const prop of Object.getOwnPropertyNames(module2)) {
+            const obj = module2[prop];
+            if (typeof obj == "function") {
+              const { type = "text" } = obj;
+              const transform = { type, transform: obj };
+              this.registerTransform(`custom-${prop}`, transform, _.startCase(prop));
+            }
+          }
+        }
+      }
+      if (this.settings.enhanceDefaultPaste) {
+        this.app.workspace.on("editor-paste", (evt, editor, info) => {
+          var _a, _b, _c, _d;
+          if (((_a = evt.clipboardData) == null ? void 0 : _a.getData("application/x-advpaste-tag")) == "tag" || AUTO_LINK_TITLE_REGEX.test((_c = (_b = evt.clipboardData) == null ? void 0 : _b.getData("text/plain")) != null ? _c : "")) {
+            return;
+          }
+          const html = (_d = evt.clipboardData) == null ? void 0 : _d.getData("text/html");
+          if (html) {
+            evt.preventDefault();
+            evt.stopPropagation();
+            const md = this.utils.turndown.turndown(html);
+            const dat = new DataTransfer();
+            dat.setData("text/html", `<pre>${md}</pre>`);
+            dat.setData("application/x-advpaste-tag", "tag");
+            const e = new ClipboardEvent("paste", {
+              clipboardData: dat
+            });
+            const clipboardMgr = this.app.workspace.activeEditor._children[0].clipboardManager;
+            clipboardMgr.handlePaste(e, editor, info);
+          }
+        });
+      }
+    });
+    this.addCommand({
+      id: `advpaste-debug`,
+      name: "Dump Clipboard to Console",
+      editorCallback: async (editor, view) => {
+        const contents = await navigator.clipboard.read();
+        console.log(contents);
+      }
+    });
+    this.addSettingTab(new AdvancedPasteSettingTab(this.app, this));
+    console.info("obsidian-advanced-pasted loaded!");
+  }
+  onunload() {
+  }
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
+  async saveSettings() {
+    this.utils.turndown = initTurnDown(this.settings.turndown);
+    await this.saveData(this.settings);
   }
 };
 /*!

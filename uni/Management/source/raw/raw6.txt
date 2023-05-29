@@ -1,0 +1,944 @@
+Controlling and Accounting
+Controlling function. Accounting. Types of accounting. Budget control. Balanced scorecard.
+6
+Lecture
+What is control?
+What is the essence of the controlling function?
+What does the controlling process consist of?
+What are the methods of obtaining information for control purposes?
+What are control actions and when do they occur?
+What is the purpose of accounting?
+What are financial, statistical, and operational accounting and who are they intended for?
+What is budget control and how is it performed?
+What is the balanced scorecard and what is its purpose?
+Questions
+What comes to mind when you hear the word "control"?
+What is control?
+Verification action
+Comparison of actual and anticipated states, identification of discrepancies
+Control can take various forms, depending on the context (engineering, biology, social situations, etc.)
+The essence of the controlling function
+Controlling
+Management function that involves 
+monitoring activities 
+to ensure they are carried out as planned and 
+correcting 
+any significant deviations
+Only through it that one can know whether the organization's 
+goals are achieved and, if not, why
+Integral, constantly performed, regardless of whether the organization's activities are 
+successful or not
+In implementing control, two main questions are raised: 
+what needs to be controlled
+ and 
+how to control it
+2 controlling principles: Continuous improvement and management by exception
+Continuous improvement 
+Management by exception 
+Definition
+Continuous improvement is a method of ongoing business process analysis, evaluation, and enhancement, aiming to increase efficiency.
+The management principle where the primary focus is on identifying and addressing deviations from expected performance rather than on every detail of the process. 
+Methods
+It involves the use of various improvement methods, including Lean, Six Sigma, and Kaizen, to identify areas of improvement and systematically eliminate waste and inefficiency. 
+This approach involves setting specific performance standards or criteria, evaluating performance against those standards, and taking corrective actions if any deviations are found.
+Focus
+This approach includes a focus on continuous learning and growth, as well as collaboration between employees and management to pinpoint areas for improvement and develop solutions.
+According to this principle, managers do not need to be involved in making every decision or process detail. Instead, they can concentrate their attention on areas where business results do not meet expectations and take actions to address these problems. 
+Goals
+The goal is to achieve long-term sustainable improvements in an organization's or process's performance, rather than just short-term fixes.
+The principle aims to determine the priorities of managers' time and resources and use them as efficiently as possible. It is based on the idea that most processes will operate within a normal range of variability, and deviations from this range are exceptions rather than the rule.
+What
+ 
+does
+ 
+the
+ 
+controlling
+ 
+process
+ 
+consist
+ 
+of
+?
+In
+ 
+the
+ 
+control
+ 
+process
+ 
+model
+, it 
+is
+ 
+assumed
+ 
+that
+ 
+performance
+ 
+standards
+ 
+already
+ 
+exist
+.
+This
+ 
+can
+ be 
+achieved
+ 
+if
+ 
+they
+ are 
+created
+ 
+as
+ 
+specific
+ 
+goals
+ 
+during
+ 
+the
+ 
+planning
+ 
+process
+.
+“You can't control what you can't measure or evaluate”
+How do managers measure or evaluate performance?
+To determine the actual outcome or evaluate it, a manager first needs 
+to obtain information about it
+. 
+There are four 
+common sources of information 
+that are often used:
+Personal observation ("Management by walking around")
+Statistical reports
+Verbal reports (annual reviews, morning stand-up meetings, etc.)
+Written reports (employee surveys, regular emails about the current situation, etc.)
+Management by walking around – MBWA
+Management by walking around (MBWA)
+When the manager is in the work area, they communicate with employees and exchange information about what is happening
+What are Key Performance Indicators (KPIs)?
+KPIs are 
+specific metrics 
+used to 
+evaluate results against established goals 
+or objectives. 
+KPIs can be both 
+quantitative
+ and 
+qualitative
+. 
+Examples of KPIs may include sales revenue, customer satisfaction, production efficiency, financial results, and so on. 
+KPIs 
+should be carefully selected 
+based on the goals and objectives of the organization or process, and should be specific, measurable, and significant. 
+The use of KPIs can help organizations establish clear performance expectations, identify areas for improvement, monitor progress, better coordinate different functions and departments, and cultivate a culture of continuous improvement.
+How is a comparison performed?
+Range of variation
+Acceptable range of dispersion between actual performance and standard parameters
+It is necessary to pay attention to deviations beyond the boundaries of this range.
+What control actions can be taken?
+Managers can choose one of three possible directions for action:
+do nothing
+take corrective action
+review standards (goals)
+What could be corrective actions?
+Immediate corrective actions 
+are those that immediately address the problems so that the results are once again acceptable. They eliminate symptoms but not the root cause.
+Fundamental corrective actions 
+are corrective actions in which, before correcting the deviation source, a review is made of how and why the results deviated.
+Types of control
+Feedforward control
+Control that takes place before performing work activities
+Concurrent control
+Control that is performed while work activities are being carried out
+Feedback control
+Control that is performed after work activities are completed.
+Accounting function
+The essence of the accounting function
+Accounting
+The process of identifying, measuring, and presenting information about an organization's activities, enabling users of the information to make informed decisions.
+Accounting Elements
+Documentation - recording of business operations
+Inventory - physical verification of material and intangible assets against accounting data or preparation of a list of such assets
+Ledgers - a list of an organization's financial accounts, usually maintained by an accountant, that can be used to record transactions in the organization's general journal.
+Double-entry bookkeeping - a method of recording business transactions and events in which the value of each transaction or event is entered in the debit column of one or more accounts and an equal value is entered in the credit column of one or more other accounts.
+Valuation - the process of measuring the value of certain accounting tools.
+Cost accounting - determining the costs associated with each unit of production.
+Balance sheet - an accounting document used to show an organization's assets and liabilities.
+Reporting - the periodic preparation of financial data about the financial position, operating results, cash flows, and their explanation in a specified format.
+Types of accounting
+According to the accounting results, the following types of information users are distinguished:
+Bookeeping
+ – external and internal users
+Financial
+Tax
+Statistical
+ – statistical institutions
+Operational
+ – organization employees
+Accounting policy
+A combination of certain accounting principles, methods, and rules
+Each organization establishes its own policy taking into account various internal and environmental factors, including legal requirements
+Components are distinguished: methodological, technical, organizational
+Bookkeeping
+Bookkeeping
+A system for recording, grouping, and summarizing economic transactions and events expressed in monetary terms, used to obtain information for making economic decisions and/or preparing financial statements. 
+Its distinctive feature is strict regulation.
+The bookkeeping cycle
+Statistical accounting 
+Statistical accounting 
+System for registering, collecting, and managing data about economic, social, and public objects and phenomena. 
+Organizations are elements of this system and the main source of statistical data.
+Operational accounting
+Operational accounting (management accounting)
+Collection, systematization, evaluation, and provision of information necessary for managing an economic entity
+Its purpose is to create an objective information base reflecting the state of managed objects and to ensure focused dissemination of this information
+The information collected during this process is necessary for making management decisions and is used from operational control to strategic management
+It is not publicly regulated by state laws.
+Budget, its preparation and control
+What role does 
+budgeting
+ play in your personal financial management strategy?
+What is a budget?
+Budget is:
+A financial plan
+A tool for controlling operations
+An instrument for evaluating performance
+A means of informing stakeholders about goals and objectives
+Common budgeting methods
+Incremental budgeting
+Using the previous year's budget as a starting point, a percentage is added or subtracted to determine the current budget.
+Activity-based budgeting
+Created by considering how much an organization will need to spend on activities necessary to achieve its goals.
+Value-based budgeting
+Every expense would yield a certain return on investment or generate tangible value.
+Zero-based budgeting
+Starting from scratch. Each expenditure must be justified based on current needs, rather than relying on past budgets.
+What is budget control?
+Budget control
+It is the process of monitoring how an organization's activities align with its budget (preventing overspending, collecting expected revenues).
+It can be applied at various levels of the organization.
+It allows tracking of expenses and operations over a reporting period to avoid overspending.
+It helps cope with constant organizational changes.
+The Balanced Scorecard
+The balanced scorecard
+Balanced Scorecard 
+is a tool for monitoring and measuring the ongoing performance of a company, which takes into account 
+not only the financial perspective
+, but also customers, internal processes, employees, and more.
+Benefits include:
+Clearly identifying and communicating strategic goals and objectives of the organization
+Helping to translate strategy implementation into day-to-day activities
+Control is a fundamental management function that involves monitoring an organization's performance results to ensure the achievement of its goals. Key performance indicators, or KPIs, are important tools for evaluating and measuring an organization's performance, used to compare actual results with planned targets.
+Accounting involves the process of measuring, recording, and communicating information about an organization's business activities.
+Budget control is the process of monitoring and managing an organization's performance results in comparison with the budget. It is an essential tool for managing an organization's finances and making informed decisions about future investments and expenses.
+The Balanced Scorecard system is a strategic planning and management tool that goes beyond the limits of the financial perspective and takes into account various aspects of an organization's activities, including customers, internal processes, employees, and others.
+Key takeaways
+Control mechanisms, methods, and tools
+Policies and Procedures
+Performance Metrics
+Feedback Mechanisms
+Budgeting
+Quality Control
+Benchmarking
+Balance Scorecard
+Internal Audits
+Standard Operating Procedures (SOPs)
+Management by Objectives (MBO)
+Statistical Process Control (SPC)
+Key Performance Indicators (KPIs)
+Critical Path Analysis
+Financial Reporting
+Risk Management
+Change Control
+Project Management Tools
+Root Cause Analysis
+Business Process Management
+Inventory Control Systems
+Technology and Data Analytics as Management Control
+Big Data
+A massive repository of terabytes of data, generated 
+each day 
+from modern information systems and digital technologies such as the Internet of Things (IoT), whish a system of computers, sensors and other digital machines that are connected to an internet service provider, and 
+cloud computing
+Requires a lot of effort at multiple levels to extract knowledge for decision-making (
+Data Analytics
+).
+Unstructured versus Structured data
+Data Analytics applications
+Decision making
+Organization culture and change
+Strategic management and planning
+Communication
+Financial ratios for control function
+Liquidity ratios 
+measure an organization’s ability to meet its current ( short –term ) debt obligations
+Leverage ratios 
+examine the organization’s use of debt to finance its assets and whether it’s able to meet the interest payments on the debt
+Activity ratios 
+assess how efficiently a company is using its assets. 
+Profitability ratios 
+measure how efficiently and effectively the company is using its assets to generate profit
+1
+2
+3
+In general, control is a fundamental concept that plays a role in many areas of human activity. It involves monitoring and adjusting activities or processes to ensure they conform to established standards or criteria.
+Control can take various forms depending on the context and the goals to be achieved. For example, in engineering, control may refer to the regulation of a physical system to maintain stability and performance. In biology, control may refer to the manipulation of experimental conditions to isolate and test the effects of certain variables.
+In social sciences, control can refer to the use of authority, influence, or power to shape or manage 
+behavior
+. For example, parents may use various forms of control to shape the 
+behavior
+ of their children, such as setting rules, using rewards and punishments, and 
+modeling
+ appropriate 
+behavior
+. 
+In organizations, control can refer to the use of formal and informal systems to ensure that activities align with the goals and values of the organization.
+4
+In the context of management, control refers to the process of regulating activities, directing them towards a desired outcome or goal. This includes monitoring and adjusting activities to ensure they align with the organization's objectives and standards.
+Control can take various forms, such as policies, procedures, rules, feedback mechanisms, performance metrics, and incentives. Managers use control to maintain order and consistency in their operations, as well as to detect and correct deviations from the established plan.
+The controlling function is crucial to an organization's success, as it provides the opportunity to monitor and assess whether the organization's activities are moving towards achieving the set goals. This function is an integral part of effective management and should be continuously implemented, regardless of the organization's level of success.
+In implementing control, managers must consider two main questions: what needs to be controlled (the object) and how to control it (methods, tools). The answer to the first question is determined by the organization's goals and objectives, as well as the standards and criteria set for measuring success. The answer to the second question involves selecting and implementing appropriate control mechanisms, methods, tools, such as policies, procedures, rules, feedback mechanisms, performance indicators, and incentives, budgeting, quality control, comparative analysis, internal audits, and so on.
+In general, control is an essential component of effective management and ensures that an organization's resources are used efficiently to achieve its objectives. Control is used in conjunction with other management functions, such as planning, organizing, and directing, to create a successful and sustainable organization.
+---
+Controlling is the management function through which managers:
+Gather information that measures recent performance within the organization.
+Compare present performance to pre-established performance standards.
+From this comparison, determine whether the organization should be modified to meet pre-established standards.
+Controlling is an ongoing process. Managers continually gather information, make their comparisons, and then try to find new ways of improving production through organizational modification.
+5
+Continuous improvement is a control principle that involves the ongoing analysis, evaluation, and improvement of business processes to optimize performance and increase efficiency. This approach focuses on continuous learning and growth, as well as collaboration between employees and managers to identify areas of improvement and create solutions. Continuous improvement involves the use of various improvement methods, such as Lean, Six Sigma, and Kaizen, to identify areas for improvement and systematically eliminate waste and inefficiency. The goal of continuous improvement is to achieve long-term sustainable improvements in an organization or process, rather than just short-term fixes.
+Management by exception is a principle in which the primary focus is on identifying and addressing deviations from expected performance, rather than every detail of a process. This method involves setting specific performance standards or criteria, evaluating performance against those standards, and taking corrective actions if any deviations are found. According to this principle, managers do not need to be involved in making every decision or process detail. Instead, they can focus their attention on areas where the results of the operation do not meet expectations and take action to address these problems. The principle of management by exception is based on the idea that most processes will operate within a normal range of variability, and deviations from this range are exceptions rather than the rule.
+Both continuous improvement and management by exception are important control principles and can help organizations achieve long-term sustainable results. The choice of which principle to apply depends on the specific goals, objectives, and context of the organization or process. Continuous improvement is useful for identifying and addressing improvement opportunities that may not be immediately obvious, while management by exception can help managers focus on areas that require attention to meet specific performance standards or criteria. Ultimately, the most effective approach is tailored to the needs of the organization and its specific goals and objectives.
+Example of continuous improvement principle:
+A manufacturing company wants to improve the efficiency of its assembly line. They begin collecting data on the current process, such as cycle time and defect frequency. They then use Lean tools, such as Value Stream Mapping, to identify waste, waiting time, unnecessary movement, and excess production.
+Based on this analysis, they implement several process changes, such as rearranging workstations to reduce movement, changing the sequence of operations to shorten waiting time, and installing visual controls to reduce errors.
+After making the changes, the company continues to monitor the performance of the assembly line using performance indicators, such as cycle time and defect frequency. They identify new improvement opportunities and make further process changes.
+Over time, the company notices that the efficiency of its assembly line has significantly improved, resulting in lower costs, increased throughput, and better quality.
+Example of management by exception:
+A sales manager sets a goal for the team to increase sales by 10% compared to the previous quarter. The manager establishes specific performance criteria, such as the number of calls per day, the number of meetings scheduled, and the conversion rate of meetings to sales.
+The manager continually monitors the team's performance, looking for deviations from the expected performance criteria. If a team member consistently fails to meet the expected number of calls per day or scheduled meetings, the manager intervenes by providing coaching, training, or other resources to help the employee improve.
+If the entire team is not meeting the performance criteria, the manager takes corrective actions, such as adjusting the sales strategy or increasing the level of support provided to the team.
+By focusing on deviations from expected performance rather than every detail of the process, the manager can prioritize their time and resources most effectively. This principle allows the manager to identify areas where the results of the operation do not meet expectations and take action to address these problems.
+6
+A control process is a systematic and ongoing approach used by managers to ensure that organizational goals and objectives are being met effectively and efficiently. It involves setting standards or criteria for performance, measuring actual performance against those standards, and taking corrective action if there are any deviations. The control process is typically divided into four steps:
+Establishing Standards: In this step, managers establish performance standards or criteria that reflect the goals and objectives of the organization. These standards may be based on industry benchmarks, historical data, or other sources.
+Measuring Performance: In this step, managers measure actual performance against the established standards. This may involve gathering data, conducting surveys, or other methods of performance measurement.
+Comparing Performance to Standards: In this step, managers compare actual performance to the established standards. This helps them to identify any deviations from the expected performance.
+Analysis of Deviation Causes: In this step, managers 
+analyze
+ the causes of any deviations from the established standards. This may include root cause analysis or other methods that help identify the primary reasons for the deviation.
+Taking Corrective Action: In this step, managers take corrective action if there are any deviations from the expected performance. This may involve adjusting the process, providing additional training or resources, or other methods of corrective action.
+The control process is a continuous and ongoing process that allows managers to monitor the performance of the organization or process and take action as needed to ensure that goals and objectives are being met. It is an important part of management and helps to ensure that resources are being used effectively and efficiently to achieve the desired outcomes.
+7
+This is a common saying in management and emphasizes the importance of measurement and evaluation for effective control. The idea behind this phrase is that in order to improve performance or achieve the desired outcome, one must first understand where the organization or process currently stands in terms of business results. This requires measuring and evaluating key performance indicators, which can then be used to identify areas for improvement and monitor progress towards goals.
+Without measurement and evaluation, it may be difficult to identify areas for improvement or determine whether changes to a process or strategy had the desired impact. By measuring and evaluating performance, managers can better understand the factors contributing to success and can make data-driven decisions to optimize performance and achieve better results.
+In general, measurement and evaluation are essential components of effective management because they provide the information needed to make informed decisions and foster continuous improvement.
+9
+The four common sources of information often used to evaluate actual work are personal observations, statistical reports, verbal reports, and written reports. Each of them has certain strengths and weaknesses. However, combining them increases both the number of input sources and the likelihood of obtaining reliable information.
+10
+Management by walking around (MBWA) is a phrase used to describe when a manager is in the work area, directly and informally interacting with employees and exchanging information about what is happening. Management by walking around can observe facts missed, facial expressions, and voice tones that cannot be detected when gathering information from other sources. The goal of MBWA is to establish connections with employees, collect information, and identify opportunities for improvement.
+Management guru Tom Peters popularized MBWA in the 1990s, believing that managers should be visible and accessible to their employees, rather than isolated in their offices. By walking and interacting with employees, managers can better understand the work being done, the challenges employees face, and opportunities for improvement.
+MBWA involves several key principles:
+Regular, informal communication: Managers should regularly walk around the workplace, interact with employees, and ask questions informally and non-threateningly.
+Active listening: Managers should actively listen to employees, be receptive to their ideas and feedback, and take action based on their input.
+Relationship building: MBWA is an opportunity for managers to establish connections with employees, show interest in their work, and demonstrate that they care about their success.
+Information gathering: MBWA is also a way for managers to collect information about the workplace, identify opportunities for improvement, and gain insights into employee perspectives.
+MBWA can be an effective way for managers to maintain a connection with their employees, build relationships, and identify opportunities for improvement. By walking and interacting with employees informally and non-threateningly, managers can gain valuable insights and create a culture of open communication and collaboration.
+11
+Key Performance Indicators (KPIs) are specific metrics used to evaluate performance based on established goals or objectives. KPIs can be used at various levels within an organization - from individual employees to teams, departments, or the entire organization. KPIs can be quantitative or qualitative and can be based on factors such as productivity, quality, customer satisfaction, or financial results.
+The purpose of KPIs is to provide a clear and measurable way to assess business performance and progress towards goals. By monitoring KPIs, managers can identify areas for improvement and make data-driven decisions to enhance performance.
+Here are some examples of KPIs that can be used in various areas of an organization:
+Sales: sales revenue, customer acquisition rate, customer retention rate, sales conversion rate, average order value.
+Marketing: website traffic, conversion rate, social media engagement, email open rate, cost per lead.
+Customer service: customer satisfaction index, first-call resolution rate, average handling time, customer churn rate.
+Production: production efficiency, defect rate, on-time delivery rate, inventory turnover.
+Finance: revenue growth rate, gross profit margin, return on investment, cash flow.
+KPIs should be carefully selected, taking into account the goals and objectives of the organization or process. They should be specific, measurable, and relevant to the area being measured. KPIs should also be regularly monitored and tracked, with adjustments made as needed to ensure they deliver the desired results.
+In summary, KPIs are an essential performance measurement and evaluation tool that can be used for continuous improvement and achieving organizational goals.
+12
+In the control process, actual results are compared to a set standard, measuring the result based on an acceptable range of dispersion parameters. This acceptable range of variation is considered acceptable and normal.
+The acceptable range of variation is determined based on the goals and objectives of the organization or process and may be based on historical data, industry standards, or other important factors. It is important to establish this range in advance as it serves as a clear benchmark against which results can be evaluated.
+During the monitoring process, managers assess the actual result and compare it to the acceptable range of variation. If the actual result falls within this range, it is considered acceptable and no further action is necessary. However, if the actual result falls outside this range, it is considered a deviation and needs to be addressed.
+Deviation from the acceptable range of variation can indicate a problem that requires further investigation and corrective action. By identifying these deviations and 
+analyzing
+ their causes, managers can identify areas for improvement and take action to address operational issues.
+13
+When a manager receives information about a deviation in performance from the established standard, they can choose from three possible actions:
+Do nothing: If the deviation falls within an acceptable range of variation, the manager can choose to do nothing and continue monitoring performance to ensure it stays within the acceptable range. This choice may be appropriate if the deviation is small and poses little risk to the organization or process.
+Take corrective action: If the deviation falls outside the acceptable range of variation, the manager can choose to take corrective action to resolve the problem and bring performance back in line with the established standard. Corrective actions may involve process changes, retraining employees, or other interventions aimed at addressing the root cause of the deviation.
+Review standards: If the deviation repeats itself or is outside the acceptable range of variation, the manager can choose to review the established standard (or goal) to determine whether it is still appropriate or needs to be adjusted. This may involve reviewing the standard to reflect changing business conditions or adjusting the performance goal based on new information.
+Overall, the choice of action to take depends on the specific circumstances and severity of the deviation. It is important for managers to carefully assess the situation and choose a course of action that is most likely to achieve the desired result. By taking the right actions, managers can ensure that performance results align with the organization's goals and objectives, and the organization continues to pursue its long-term vision.
+14
+Immediate corrective actions: immediate corrective actions are taken to resolve problems immediately and achieve results as quickly as possible. This type of corrective action is designed to eliminate symptoms of deviation immediately, rather than addressing the root cause. Immediate corrective actions are usually short-term and may involve quick fixes, such as restarting equipment or changing work routes.
+Example:
+Imagine that during the production process, defective products are being produced at a higher rate than usual. In this case, an immediate corrective action would be to stop production and identify the source of the problem. Once the problem source is identified, immediate corrective actions may include quick equipment repairs, rearrangement of the production line, or other short-term actions to restart the production process and avoid further defects.
+In case the problem is related to a machine that is producing defects, an immediate corrective action may involve cleaning or replacing a certain component of the machine or adjusting its settings to prevent defects from occurring. These types of immediate corrective actions are designed to quickly restore production.
+Fundamental corrective actions: these actions are more comprehensive and involve a review of why and how results deviated before correcting the source of deviation. This type of corrective action is designed to identify and eliminate the root cause of deviation so that it does not recur in the future. Fundamental corrective actions are typically long-term and may involve process changes, employee retraining, or other interventions aimed at eliminating the underlying cause of deviation.
+Example:
+Suppose a company receives a high number of customer complaints about a particular product. In this case, the fundamental corrective action would be to identify the root cause of the problem and take action to address it. This may involve a detailed analysis of product design, production processes, and quality control procedures to identify the specific source of defects.
+Once the root cause is identified, fundamental corrective actions may involve redesigning the product to eliminate the deficiency, improving quality control procedures, or providing additional training to employees involved in the production process. If it is determined that the root cause of customer complaints is a design flaw in the product, fundamental corrective actions may involve redesigning the product to eliminate the flaw and testing the new design to ensure it meets customer expectations. These types of actions are designed not only to solve the current problem but also to prevent similar problems from occurring in the future by eliminating the underlying cause.
+It is important for managers to carefully evaluate the situation and choose the appropriate type of corrective action based on the severity and nature of the deviation. While immediate corrective actions may help restore performance quickly, fundamental corrective actions are necessary to prevent deviations from recurring and to achieve sustainable improvement. By taking appropriate corrective actions, managers can ensure that the organization remains aligned with its goals and objectives and continues to make progress towards them.
+15
+Feedforward control: This is the most desirable type of control because it is proactive and aims to prevent problems before they occur. Control is performed before actual activity begins and includes identifying possible problems and taking measures to prevent them. For example, a manufacturing company can use this type of control by performing quality checks on raw materials before they enter the production process to ensure that they meet the required standards and to avoid defects.
+Concurrent control: Control is performed simultaneously when the work activity is carried out. This type of control includes monitoring the ongoing activity to ensure that it is carried out properly and meets established standards. For example, a restaurant manager can use concurrent control by monitoring the quality of food being prepared to ensure that it meets required taste, temperature, and presentation standards.
+Feedback control: This type of control is the most popular and involves corrective action after the activity is completed. It relies on 
+analyzing
+ the results of the activity and comparing them with established standards. All deviations are identified, and corrective action is taken to ensure that the results meet the established standards again. For example, a sales manager can use this type of control by 
+analyzing
+ the team's sales results and identifying areas for improvement, such as additional training or sales incentives, to help the team achieve better results in the future.
+Overall, the choice of which type of control mechanism to use depends on the specific goals, objectives, and context of the organization or process. Each type of control has its strengths and weaknesses, and managers can use a combination of them to achieve optimal results.
+16
+Accounting is an important business function that involves the process of measuring, recording, and communicating financial information about an organization's economic activities. This information is used by managers and other stakeholders to make informed decisions about the organization's operations, financial position, and future prospects.
+One of the main links between accounting and controlling functions is that accounting provides a means of evaluating an organization's performance. By recording financial transactions and preparing financial statements, accounting allows managers to compare actual results against established standards or budgets and identify areas where performance deviates from expectations. This information can be used to inform corrective actions and encourage continuous improvement.
+Furthermore, accounting provides an opportunity to control an organization's resources and ensure that they are used efficiently. By using financial statements and analysis, managers can identify areas where resources are being wasted or misused and take corrective action to address these issues. This helps to reduce waste and maximize the rational use of an organization's resources.
+Finally, accounting is a means of communicating information about an organization's activities to stakeholders such as investors, creditors, and regulatory agencies. By providing timely and accurate financial information, confidence in the organization is increased, and stakeholders are provided with the information needed to make informed control decisions.
+Overall, accounting can be considered a part of the control function, as it provides a means of measuring, evaluating, and reporting on an organization's activities and resource utilization.
+18
+Documentation: The documentation element of accounting refers to the recording of business transactions. This involves capturing information about financial activities, such as sales, purchases, and payments, and entering that information into the organization's accounting system. Proper documentation is critical for accurate financial reporting and analysis.
+Inventory: Inventory refers to the physical verification of tangible and intangible values with accounting data or making a list of such values. This includes the tracking of items such as raw materials, work-in-progress, and finished goods, as well as intangible assets such as patents, copyrights, and trademarks. Accurate inventory tracking is important for determining the value of an organization's assets and for ensuring that inventory levels are accurately reflected in financial statements.
+Ledgers: Ledgers are a list of an organization's financial accounts, usually prepared by an accountant, that the accountant can use to record transactions in the organization's general ledger. Accounts can include asset accounts, liability accounts, and equity accounts, among others.
+Binary entry: Binary entry refers to a method of recording economic transactions and events, when the value of each economic transaction or each economic event is recorded in the debit of an account (accounts), and an equal amount is recorded in the credit of another account (accounts). This double-entry bookkeeping system is used to ensure that all transactions are recorded accurately and that the books are always in balance.
+Valuation: Valuation is the measurement of the value of certain accounting instruments, such as assets, liabilities, and equity. This involves determining the fair market value of these instruments and accurately reflecting their value in financial statements.
+Costing: Costing is the determination of the costs assigned to each unit of production. This involves tracking the costs associated with producing goods or services, including materials, 
+labor
+, and overhead, and allocating those costs to individual units of output. Accurate costing is important for determining the profitability of products or services and for making informed decisions about pricing and production.
+Balance sheet: A balance sheet is an accounting document used to show an organization's assets and their ownership. It provides a snapshot of the organization's financial position at a given point in time and includes information on assets, liabilities, and equity.
+Accountability: Accountability refers to the periodic preparation of financial data on financial status, performance, cash flows and their interpretation in a prescribed form. This involves reporting on financial status, performance, and cash flows, and interpreting this information in a meaningful way for stakeholders. Accurate and transparent financial reporting is essential for maintaining trust and confidence in an organization and for making informed business decisions.
+19
+The accounting results prepared by an organization are used by various types of users, including internal and external stakeholders. External accounting users may include financial institutions, investors, creditors, and regulatory agencies such as tax authorities. Internal accounting users may include managers, employees, and other interested parties.
+The types of information required by these users may differ depending on their specific needs and objectives. For example, external stakeholders use financial information to evaluate the organization's financial position and performance, while employees may use operational information to make informed decisions about day-to-day activities.
+To ensure consistency and accuracy in accounting practices, each organization develops an accounting policy. This policy includes a combination of accounting principles, methods, and rules that guide the organization's accounting practices. These policies take into account various internal and environmental factors, including legal requirements, industry standards, and specific organizational needs.
+Accounting policy can be divided into three separate parts: methodological, technical, and organizational. The methodological component includes the principles and methods used to record and present financial information. The technical component includes the tools and methods used to support accounting activities, such as accounting software and other technologies. The organizational component includes the procedures and structures that regulate accounting activities, such as internal controls and reporting structures.
+Overall, the accounting function plays a crucial role in ensuring the accuracy and reliability of financial information and helping stakeholders make effective decisions. Accounting policy provides a foundation for consistent and reliable accounting practices, helping to ensure that financial information is accurate, comprehensive, and meets the needs of various users.
+20
+Bookkeeping is a system of registering, grouping, and summarizing economic transactions and events involving money. Its main purpose is to provide information necessary for making informed economic decisions and preparing accurate financial statements.
+One of the main characteristics of accounting is its strict regulation. This regulation helps to ensure that accounting practices are consistent and reliable, and that financial information is accurate, comprehensive, and transparent. Rules and standards governing accounting practices are typically set by government agencies or professional accounting organizations, and are designed to promote financial transparency and accountability.
+Bookkeeping typically involves the use of various accounting tools and methods, including recording financial transactions, preparing financial statements, and 
+analyzing
+ financial data. The data is often categorized into various categories, such as revenue, expenses, assets, liabilities, and equity, which form the basis for understanding an organization's financial position and performance.
+Overall, bookkeeping plays a crucial role in making economic decisions and providing financial reporting, and it is essential for ensuring the accuracy and reliability of financial information. Its strict regulation helps to ensure that accounting practices are consistent and reliable, and that financial information is accurate, comprehensive, and transparent.
+21
+The bookkeeping cycle is a sequence of actions usually performed to process financial transactions and prepare financial statements. The cycle typically begins with recording transactions and ends with the preparation of financial statements, spanning one calendar year.
+The bookkeeping cycle typically includes the following steps:
+Recording transactions: This step involves systematically recording financial transactions, such as sales, purchases, and payments, in a journal or ledger. Transactions are usually recorded in chronological order.
+Posting to accounts: When performing this step, recorded transactions are posted to individual accounts such as cash, accounts receivable, and accounts payable.
+Preparing a trial balance: The trial balance is a summary of all account balances in the ledger. The purpose of this step is to ensure that the total debits and credits in the ledger are equal.
+Making adjusting entries: Adjusting entries are made at the end of the reporting period to update accounts and ensure that financial statements are accurate. Adjusting entries may include recognizing accrued expenses or revenues, depreciation, and other adjustments.
+Preparing an adjusted trial balance: After making adjusting entries, a new trial balance is prepared to ensure that accounts are still in balance.
+Preparing financial statements: Financial statements, such as the income statement, balance sheet, and cash flow statement, are prepared using information from the trial balance and adjusted trial balance.
+Making closing entries: Closing entries are made at the end of the reporting period to transfer temporary account balances such as revenues and expenses to permanent accounts, such as retained earnings.
+Preparing a post-closing trial balance: After making closing entries, a final trial balance is prepared to ensure that accounts are still in balance and that income statement accounts have been closed.
+The bookkeeping cycle is typically repeated at the end of each reporting period, which may be monthly, quarterly, or annually, depending on the organization's reporting requirements. Adhering to the bookkeeping cycle helps ensure that financial transactions are accurately recorded and financial statements are reliable and consistent.
+22
+Statistical accounting is a system that involves the registration, collection, and management of data on economic, social, and public objects and phenomena. This system is designed to provide accurate and reliable statistical information that can be used for various purposes, including policy formation, research, and analysis.
+The elements of statistical accounting systems are organizations that collect and provide statistical data. These organizations can be government agencies, research institutions, and private companies. The data collected by these organizations are typically used to generate various economic, social, and public phenomena statistics, such as population growth, employment levels, and economic indicators.
+The most important source of statistical data is often the organizations themselves. This is because organizations typically maintain detailed records of their activities and operations, which can be used for valuable statistical information generation. Other sources of statistical data can include surveys, censuses, and other forms of data collection.
+Statistical accounting plays an important role in informing policy formation and decision-making in various fields, including economics, business, public policy, and social sciences. By providing accurate and reliable statistical information, the system helps support evidence-based decision-making and contributes to the development of effective policies and strategies.
+Overall, statistical accounting is an important tool for collecting and managing data on various economic, social, and public phenomena. Its role in providing information for decision-making and evidence-based policy makes it an essential component of modern governance and research.
+23
+Operational accounting, or management accounting, is the collection, systemization, evaluation, and presentation of information necessary for managing a business entity. Its main goal is to create an objective information base that reflects the state of managed objects and to ensure targeted dissemination of this information.
+The information collected during operational accounting is necessary for preparing and making management decisions, and it is used from operational control to strategic management. The collected data may include information about financial transactions, production processes, human resources, inventory levels, and other aspects of organizational activities.
+Operational accounting plays an extremely important role in ensuring effective and efficient management of a business entity. By providing accurate and timely information, it helps managers make informed decisions and take actions that correspond to the organization's strategic goals and objectives.
+Unlike financial accounting, which is regulated by state laws and is primarily concerned with providing accurate and reliable financial information to external stakeholders, operational accounting is oriented towards providing information necessary for effective internal management.
+Overall, management accounting is an important component of an organization's management system. Its goal is to create an objective information base that reflects the state of managed objects and to ensure targeted dissemination of this information. By providing managers with the data necessary for making informed decisions, it helps ensure effective and efficient management of a business entity.
+24
+26
+A budget is a financial plan that outlines projected revenues and expenses for a certain period of time. It is a forecast of the resources that an organization will need to achieve its goals and objectives and is typically prepared annually.
+The budgeting process involves identifying the organization's goals and objectives, calculating the resources needed to achieve them, and developing a detailed plan for allocating those resources to various activities and departments. The budget typically includes forecasts of revenues, expenses, and cash flows, as well as a detailed plan for how those resources will be allocated.
+Budgets can be created for various purposes, including:
+Planning: Budgets are often used as a tool for planning future activities and determining the resources needed to achieve an organization's goals.
+Control: Budgets are used as a tool for controlling organizational activities by setting spending limits and ensuring that resources are used efficiently and effectively.
+Evaluation: Budgets can be used as a tool for evaluating organizational performance by comparing actual results to budgeted amounts and identifying areas for improvement.
+Communication: Budgets are often used as a tool for communicating an organization's goals and objectives to stakeholders, including investors, employees, and other interested parties.
+Overall, budgets play a critical role in managing an organization's finances, as they form a system of planning, control, and evaluation. By helping organizations allocate their resources efficiently and effectively, budgets can contribute to the achievement of organizational goals and objectives.
+27
+Incremental budgeting is a budgeting method in which the starting point is the previous year's budget, and a percentage is added or subtracted from this number to determine the current budget. This method is often used by organizations that want to maintain a consistent level of spending each year while also making certain changes to account for changing conditions or priorities.
+Activity-based budgeting is a budgeting method that begins by evaluating how much an organization will need to spend on the activities necessary to achieve its goals. This method is often used by organizations that want to ensure their budgets are aligned with strategic objectives and that resources are allocated in a way that supports the pursuit of those objectives.
+Value-based budgeting involves creating a budget that ensures all expenses will yield a certain return on investment and tangible value. This method is often used by organizations that want to ensure their resources are being used in the most effective and efficient way possible and that all expenses are directly tied to organizational goals and objectives.
+Zero-based budgeting is a method in which every dollar spent must be justified not by reference to the previous level of spending, but by a critical assessment of current needs and priorities. This method is often used by organizations that want to challenge assumptions and eliminate waste while ensuring their resources are being used in the most effective and efficient way possible.
+Each of these budgeting methods has its strengths and weaknesses, and the choice of which method to use will depend on various factors, including organizational goals, resources, and priorities. Ultimately, the goal of any budgeting method is to ensure that resources are being used in the most effective and efficient way possible and that the organization can sustainably achieve its goals and objectives.
+28
+Budget control is an important process during which an organization monitors how its operations align with its budget, ensuring that actual results match the expected outcomes outlined in the budget. By comparing actual results with budgeted expectations, organizations can 
+analyze
+ the differences and take corrective action when necessary to ensure they continue to pursue their financial goals.
+Budget control can be applied at various levels within an organization, from individual departments to the entire organization. This process is typically conducted regularly, such as on a monthly or quarterly basis, to ensure that the organization does not stray from its financial goals.
+A significant aspect of budget control is the scope of budget utilization to monitor expenses and operations over a reporting period. This helps organizations identify areas where they may be overspending or where cost-saving adjustments can be made.
+Ultimately, budget control helps organizations manage financial resources, ensuring that they efficiently utilize their resources and make informed decisions regarding future investments and expenditures. By monitoring their financial results and adjusting budgets when necessary, organizations can adapt to changing circumstances and remain competitive in their respective fields.
+Overall, budget control is an essential tool in managing finances, ensuring that organizations effectively use their resources, and making informed decisions about future investments and expenses.
+29
+The Balanced Scorecard is a strategic management tool used to monitor an organization's performance. It provides a comprehensive view of the organization and allows for an evaluation of progress towards strategic goals.
+One of the main advantages of the Balanced Scorecard is that it encompasses not only financial indicators but also factors such as customer satisfaction, internal processes, employee learning and growth. This holistic approach ensures that the organization considers all factors contributing to its success, rather than solely focusing on financial results.
+Another important aspect of the Balanced Scorecard is that it clearly defines and communicates the organization's goals and objectives. This helps to ensure that all members of the organization work towards the same goals, and that all activities and initiatives are aligned with the overall organizational strategy.
+31
+Balanced
+ 
+Scorecard
+ 
+is
+ a 
+strategic
+ 
+management
+ 
+tool
+ 
+that
+ 
+helps
+ 
+organizations
+ 
+align
+ 
+their
+ 
+strategy
+ 
+with
+ 
+their
+ 
+daily
+ 
+activities
+. It 
+provides
+ a 
+comprehensive
+ 
+view
+ 
+of
+ 
+the
+ 
+organization's
+ 
+goals
+ 
+and
+ 
+allows
+ 
+for
+ 
+the
+ 
+evaluation
+ 
+of
+ 
+progress
+ 
+towards
+ 
+these
+ 
+goals
+.
+The
+ 
+Balanced
+ 
+Scorecard
+ 
+is
+ 
+typically
+ 
+presented
+ 
+as
+ a 
+dashboard
+ 
+that
+ 
+visually
+ 
+displays
+ 
+the
+ 
+organization's
+ 
+performance
+ 
+across
+ 
+four
+ 
+perspectives
+. 
+By
+ 
+using
+ 
+this
+ 
+system
+, 
+organizations
+ 
+can
+ 
+align
+ 
+their
+ 
+strategy
+ 
+with
+ 
+their
+ 
+daily
+ 
+activities
+, 
+improve
+ 
+decision-making
+, 
+and
+ 
+achieve
+ 
+sustainable
+ 
+growth
+.
+The
+ 
+four
+ 
+main
+ 
+Balanced
+ 
+Scorecard
+ 
+perspectives
+ are 
+typically
+:
+Financial 
+perspective
+ - 
+measures
+ 
+financial
+ 
+results
+ 
+and
+ 
+includes
+ 
+indicators
+ 
+such
+ 
+as
+ 
+revenue
+ 
+growth
+, 
+profit
+ margin, 
+and
+ 
+return
+ 
+on
+ 
+investment
+, 
+among
+ 
+others
+.
+Customer
+ 
+perspective
+ - 
+measures
+ 
+customer
+ 
+satisfaction
+ 
+and
+ 
+loyalty
+ 
+and
+ 
+includes
+ 
+indicators
+ 
+such
+ 
+as
+ 
+customer
+ 
+retention
+ 
+rates
+ 
+and
+ 
+customer
+ 
+satisfaction
+ 
+scores
+, 
+among
+ 
+others
+.
+Internal
+ 
+business
+ 
+processes
+ 
+perspective
+ - 
+measures
+ 
+the
+ 
+efficiency
+ 
+and
+ 
+effectiveness
+ 
+of
+ 
+internal
+ 
+business
+ 
+processes
+ 
+and
+ 
+includes
+ 
+indicators
+ 
+such
+ 
+as
+ 
+process
+ 
+cycle
+ 
+time
+ 
+and
+ 
+defect
+ 
+frequency
+, 
+among
+ 
+others
+.
+Learning
+ 
+and
+ 
+growth
+ 
+perspective
+ - 
+measures
+ 
+the
+ 
+organization's
+ 
+ability
+ to 
+learn
+ 
+and
+ 
+innovate
+ 
+and
+ 
+includes
+ 
+indicators
+ 
+such
+ 
+as
+ 
+employee
+ 
+training
+ 
+and
+ 
+development
+, 
+employee
+ 
+satisfaction
+, 
+and
+ 
+others
+.
+The
+ 
+development
+ 
+of
+ a 
+Balanced
+ 
+Scorecard
+ 
+typically
+ 
+involves
+ 
+several
+ 
+steps
+, 
+such
+ 
+as
+:
+Formulating
+ 
+and
+ 
+linking
+ 
+the
+ 
+organization's
+ 
+strategic
+ 
+goals
+ 
+and
+ 
+objectives
+.
+Identifying
+ 
+key
+ 
+performance
+ 
+indicators
+ (
+KPIs
+) 
+for
+ 
+each
+ 
+of
+ 
+the
+ 
+chosen
+ 
+perspectives
+.
+Establishing
+ 
+goals
+ 
+or
+ 
+standards
+ 
+for
+ 
+each
+ KPI.
+Creating
+ 
+action
+ 
+plans
+ to 
+achieve
+ 
+the
+ 
+goals
+.
+Assigning
+ 
+responsibility
+ 
+for
+ 
+each
+ 
+action
+ 
+plan
+ to 
+specific
+ 
+individuals
+ 
+or
+ 
+teams
+.
+Regularly
+ 
+monitoring
+ 
+progress
+ 
+towards
+ 
+the
+ 
+goals
+.
+32
+Some examples of control mechanisms, methods, and tools that managers can use to implement control in their organizations:
+Policies and Procedures: These are formal documents that outline the rules and guidelines for how specific tasks or activities should be performed in the organization. Policies and procedures can help ensure consistency and standardization in work processes.
+Performance Metrics: These are measurements or indicators that are used to assess progress towards achieving specific goals or objectives. Examples of performance metrics include key performance indicators (KPIs), customer satisfaction ratings, and employee productivity measures.
+Feedback Mechanisms: These are processes for providing information to employees about their performance, and can take various forms such as performance reviews, 360-degree feedback, and employee surveys. Feedback mechanisms can help identify areas for improvement and provide motivation for achieving goals.
+Budgeting: This is the process of allocating financial resources to different departments or activities within the organization. Budgets can help ensure that resources are used effectively and efficiently, and can also serve as a performance metric for financial performance.
+Quality Control: This is the process of monitoring and assessing the quality of products or services produced by the organization. Quality control methods can include statistical process control, Six Sigma, and Total Quality Management.
+Benchmarking: This is the process of comparing the organization's performance against that of other organizations in the same industry or market. Benchmarking can help identify areas for improvement and provide motivation for achieving goals.
+Balance Scorecard: This is a strategic planning and management tool that helps managers align their activities with the organization's strategic goals. The balanced scorecard includes performance metrics for financial, customer, internal processes, and learning and growth perspectives.
+Internal Audits: These are independent assessments of the organization's internal controls and processes to ensure compliance with regulations, policies, and procedures.
+Overall, these control mechanisms, methods, and tools can help managers monitor and assess organizational performance, identify areas for improvement, and take corrective action as needed to achieve the organization's goals.
+34

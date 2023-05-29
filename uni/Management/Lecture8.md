@@ -38,8 +38,6 @@ Intrinsic and extrinsic motivation
 
 ![](img/Lecture%208%20-%20Motivating1.jpg)
 
-![](img/Lecture%208%20-%20Motivating2.png)
-
 # What is motivation from a management perspective?
 
 * Employee motivation

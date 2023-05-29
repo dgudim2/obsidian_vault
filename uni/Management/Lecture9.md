@@ -188,8 +188,6 @@ Work remuneration \(compensation\) system
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation13.jpg)
 
-![](img/Lecture%209%20-%20Performance%20Evaluation14.png)
-
 # Compensation system
 
 * Compensation system __ __
@@ -215,17 +213,11 @@ Reduce employee turnover
 
 and etc\.
 
-![](img/Lecture%209%20-%20Performance%20Evaluation18.png)
-
 # What influences compensation decisions?
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation19.jpg)
 
-![](img/Lecture%209%20-%20Performance%20Evaluation20.png)
-
 # A reward structure
-
-![](img/Lecture%209%20-%20Performance%20Evaluation21.png)
 
 # A payroll system
 
@@ -235,17 +227,11 @@ and etc\.
   * is for everything related to employee salaries and related taxes
   * designed to monitor hours worked\, calculate wages\, deduct taxes and other deductions\, make transfers to employee accounts\, etc\.
 
-![](img/Lecture%209%20-%20Performance%20Evaluation23.png)
-
 # Factors affecting financial reward (How to earn more?)
 
 Individual increase
 
 Competence\, qualification
-
-![](img/Lecture%209%20-%20Performance%20Evaluation24.png)
-
-![](img/Lecture%209%20-%20Performance%20Evaluation25.png)
 
 Requirements for the main tools or equipment used
 
@@ -270,8 +256,6 @@ The selection of employee evaluation methods and the development of reward syste
 ![](img/Lecture%209%20-%20Performance%20Evaluation27.png)
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation28.png)
-
-![](img/Lecture%209%20-%20Performance%20Evaluation29.png)
 
 # Darbuotojų vertinimo procesas
 

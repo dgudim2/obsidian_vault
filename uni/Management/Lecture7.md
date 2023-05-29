@@ -59,11 +59,7 @@ __Leader:__  Encompasses relationships with subordinates\, including motivation\
 
 __Liaison:__  Pertains to developing information sources both inside and outside the organization\.
 
-![](img/Lecture%207%20-%20Directing1.jpg)
-
 _Involving people \(subordinates and persons outside the organization\) and performing duties that are ceremonial and symbolic in nature _
-
-![](img/Lecture%207%20-%20Directing2.png)
 
 # Informational Roles
 

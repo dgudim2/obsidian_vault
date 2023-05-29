@@ -1,20 +1,13 @@
 # Organizational Culture. The concept of organizational culture, its constituent elements, classification. Creativity in organizations and individuals. Encouragement of creative activity.
 
-What is organizational culture and what are its characteristics?
-
-What are the elements that make up organizational culture?
-
-What is organizational climate and how does it differ from organizational culture?
-
-How to distinguish strong and weak organizational culture?
-
-How are organizational cultures classified?
-
-How do regional organizational cultures differ?
-
-How is creativity understood in organizations and why is it important?
-
-How can organizations encourage employee creativity?
+- What is organizational culture and what are its characteristics?
+- What are the elements that make up organizational culture?
+- What is organizational climate and how does it differ from organizational culture?
+- How to distinguish strong and weak organizational culture?
+- How are organizational cultures classified?
+- How do regional organizational cultures differ?
+- How is creativity understood in organizations and why is it important?
+- How can organizations encourage employee creativity?
 
 # What is organizational culture?
 

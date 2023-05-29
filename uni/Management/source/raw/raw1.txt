@@ -1,0 +1,383 @@
+Essential Concepts of Management. Management Methods.
+1
+Lecture
+What is the definition of management?
+What does the study of management encompass?
+Who requires management skills?
+What are the four primary functions of management?
+What is an organization?
+What are the historical stages of management theory evolution?
+What are the contemporary theories of management?
+What are the primary categories of management methods?
+Questions
+What is management?
+Why study management?
+Practical Management
+Professional activity
+As an art: the idea of a combination of both scientific principles and creative problem-solving abilities
+Management as a Science
+Management as a science can be understood as a branch of study focused on the 
+management of organizations
+.
+What is Management?
+Managing
+Directional activity, when the managing entity (subject) makes decisions and transfers them to the managed entity (object) for execution.
+Organizational Management
+the process of achieving the goals of an organization by using the necessary resources and applying the primary management functions – planning, organizing, influencing (leading, motivation) and controlling.
+What does the word ‘Manage‘ implies?
+6 fundamental elements of 
+management process
+In the function approach proposed by the French industrialist Henri Fayol, all managers perform certain activities or functions
+The four main management functions or activities that make up the management process are 
+planning
+, 
+organizing
+, 
+influencing
+, and 
+controlling
+Management Process: 
+Primary Management Functions
+Four Primary Management Functions
+Planning
+ 
+Defining the organizational purpose and ways to achieve it
+Organizing
+ 
+Arranging and structuring work to accomplish organizational goals
+Influencing (leading, directing)
+ 
+Directing the work activities of others
+Controlling
+ 
+Monitoring, comparing, and correcting work performance
+Primary management functions are integrally related and therefore cannot be separated in practice.
+Decision-making
+ is a part of all management functions.
+Management process in practice
+What is an organization?
+Organization
+A deliberate arrangement of people brought together to accomplish a specific purpose. 
+Common Characteristics of Organizations
+Distinct purpose
+People (group) working together
+A deliberate systematic structure
+Organisation can also refer to a system of arrangement or order, or a structure for classifying things.
+An organization is not just a business entity. Organizations and their goals can be very diverse!
+Goals
+People
+Structure
+A
+B
+Welcome to a world made up of organizations!
+What is a theory?
+A theory is an explanation of a set of phenomena that has been repeatedly tested and confirmed through scientific experimentation and observation. 
+It is a well-substantiated explanation of some aspect of the natural world that is acquired through the scientific method and repeatedly tested and confirmed through observation and experimentation. 
+Theories provide a framework for understanding how things work and make predictions about future events. They can also serve as a basis for further scientific investigation and discovery. 
+Some examples of well-established scientific theories include the theory of evolution, the theory of gravity, and the theory of relativity.
+Development approaches and theories in management
+The practice of management dates back thousands of years.
+Individuals in positions of responsibility have been tasked with planning, organizing, leading, and controlling organized endeavours.
+Management theories have evolved along with changes in society, including economic, political, social, cultural, technological, legal, and psychological factors.
+The study of management and development of management theories are ongoing and continue to be shaped by the dynamic and ever-changing landscape of society.
+A 
+Brief
+ 
+History
+ 
+of
+ 
+Management’s
+ 
+Roots
+Scientific Management
+Frederick W. Taylor described scientific management as a method of scientifically finding the “one best way to do a job”
+Classical Approaches
+General Administrative Theory
+focused on what constituted good management
+Max Weber (pictured) described the bureaucracy as an ideal rational form of organization
+Henri Fayol identified 5 management functions and 14 management principles
+Other
+ 
+Classic
+ 
+Approaches
+Behavioural approaches: Key principles
+Employee involvement and empowerment
+: Encouraging employees to participate in decision-making and to take on more responsibility for their work can increase their motivation and job satisfaction.
+Communication and feedback: 
+Encouraging open and honest communication between employees and managers can promote trust, understanding, and cooperation.
+Employee recognition and rewards: 
+Recognizing and rewarding employees for their contributions can increase motivation and job satisfaction.
+Team building: 
+Encouraging employees to work together as a team can increase cooperation, coordination, and productivity.
+Job design: 
+Designing jobs to be challenging, meaningful, and satisfying can increase motivation and job satisfaction.
+Quantitative approaches
+Used quantitative techniques to improve decision making
+Evolved from mathematical and statistical solutions developed for military problems during World War II
+Key ideas applied in practice:
+Operations research: 
+Using mathematical models and statistical analysis to optimize the design and operation of systems and processes within organizations.
+Decision science: 
+Using mathematical models and statistical analysis to support decision-making and problem-solving within organizations.
+Performance measurement: 
+Using quantitative metrics and data analysis to measure and improve organizational performance.
+Resource allocation: 
+Using mathematical models and statistical analysis to optimize the allocation of resources within organizations.
+Contemporary approaches
+Management Science Approach:
+1940s-1950s: Operations Research – This approach applied mathematical and statistical techniques to management problems. Notable figures include George Dantzig and 
+Tjalling
+ Koopmans.
+1950s-1960s: Linear Programming – This approach focused on optimizing resources and minimizing costs. Notable figures include George Dantzig and John von Neumann.
+Systems Approach:
+1960s: General Systems Theory – This approach emphasized the importance of understanding organizations as complex systems with interdependent components. Notable figures include Ludwig von 
+Bertalanffy
+ and Kenneth Boulding.
+1970s: Cybernetics – This approach applied the principles of control systems theory to management. Notable figures include Norbert Wiener and Stafford Beer.
+Contingency Approach:
+1960s-1970s: Contingency Theory – This approach proposed that there is no one-size-fits-all approach to management and that the best approach depends on the specific circumstances. Notable figures include Joan Woodward and Paul Lawrence.
+What are management methods?
+Management methods (techniques, practical toolkits)
+The ways in which managers influence collective and individual employees' behaviour to achieve organizational goals
+Groups of management methods
+Administrative
+Economical
+Social psychological
+Administrative methods are based on the authority and discipline, when the manager directly tells subordinates what they must do by means of orders, decrees, instructions, directives and other acts
+Administrative methods 
+Economic management methods are based on the material promotion of employees with work results by linking the system of work payment, bonuses and bonuses, providing various goods and services to employees for free or at discounted prices, allocating investments and resources to organizational units, other economic incentives
+Economic methods
+Social psychological methods in management involve educating employees through personal example, persuasion, praise, promotion of initiative, involving employees in decision-making, creating a comfortable work environment, forming teams, fostering a favourable organizational culture, regulating relationships, promoting competition, organizing leisure activities, and preserving traditions.
+Social-Psychological Methods
+1
+2
+Why to study management?
+Career opportunities: A strong understanding of management theory can lead to many career opportunities in various industries, such as business, government, and non-profit organizations. This knowledge is highly valued by employers and can help students stand out in a competitive job market.
+Problem-solving skills: Management theory teaches students how to 
+analyze
+ complex problems and develop effective solutions. These skills are applicable to a wide range of real-world scenarios, making students well-equipped to tackle a variety of challenges in their future careers.
+More effective decision-making: Management theory equips students with the knowledge and tools needed to make informed decisions. By understanding different management styles and approaches, students can better assess which strategies are best suited for different situations and make decisions that have a positive impact on their organizations.
+Improved communication: Management theory also helps students develop effective communication skills, which are essential in any professional setting. By learning how to articulate complex ideas and negotiate effectively, students will be better equipped to build strong relationships with colleagues and stakeholders.
+Personal growth: Studying management theory can also help students grow as individuals. By gaining a deeper understanding of how organizations work and how people behave in groups, students can develop a better sense of their own strengths and weaknesses and work towards personal growth and improvement.
+3
+Management is both a practical activity and a branch of science. As a practical activity, management involves leading and directing people and resources in an organization to achieve specific goals. This aspect of management involves the application of practical skills and techniques, such as planning, organizing, motivating, and controlling, to achieve organizational objectives. On the other hand, management is also a branch of science that involves the systematic study and analysis of the principles, theories, and practices of organizational leadership and management.
+Management can be defined as a field of study that focuses on how to effectively manage organizations. The knowledge base of management theory includes various concepts and theoretical frameworks that are related to other fields of science, such as mathematics, statistics, economics, psychology, anthropology, and more. However, there are also specific terms that are unique to the field of management.
+Different management theories and concepts are developed through ongoing observations of real-world organizational management practices. The practical experience of managers provides valuable insights and feedback for the development of management theory, while the scientific study of management helps to inform the practical application of management techniques and practices. The interplay between these two aspects of management is what makes it a dynamic and constantly evolving field.
+In the realm of practical management, managerial skills and qualifications are of paramount importance. It is not sufficient for a manager to possess solely the necessary knowledge of management. Rather, specific skills, aptitudes, talent, and accumulated personal experience are required.
+The concept of management as an art refers to the idea that effective management involves a combination of both scientific principles and creative problem-solving abilities. Management is considered an art because it involves using personal skills, intuition, and experience to achieve goals and solve problems, in addition to using established techniques and principles. The art of practical management involves a combination of technical skills and creative problem-solving abilities, and it requires a balance of science and art to be truly effective.
+Overall, the relationship between the practical and scientific aspects of management is often described as a two-way street, with each informing and shaping the other. The scientific study of management informs practical management techniques and practices, and practical experience provides valuable feedback for the development of management theory.
+4
+The word "manage" comes from the Latin word "
+manu
+ 
+agere
+," which means "to handle" or "to direct."  To manage means to execute directional activity, and it is a term that is closely related to the field of cybernetics. Cybernetics is a branch of science that studies control and communication in complex systems, providing a framework for understanding control and feedback mechanisms that are crucial in effective management.
+When we manage an organization, we engage in a directional activity to coordinate people, resources, and systems to create an efficient and effective work environment. This requires a combination of technical skills, interpersonal skills, and strategic decision-making to achieve the organization's goals and objectives. Effective management also requires the ability to adapt to changing circumstances and ensure that the organization operates in a sustainable and ethical manner.
+Organizational management involves a range of tasks and responsibilities, including planning, organizing, leading, and controlling. These activities are necessary to create an effective and efficient work environment that aligns with the organization's goals and stakeholders' needs. The goal of organizational management is to balance competing demands and trade-offs while ensuring that the organization operates in a sustainable and ethical manner.
+Effective organizational management requires a range of skills, including leadership, communication, problem-solving, and decision-making. Managers must be able to adapt to changing circumstances and align the goals of the organization with the needs and expectations of its stakeholders, including employees, customers, shareholders, and society as a whole. By effectively managing an organization, managers can help to ensure that the organization remains competitive, achieves its goals, and makes a positive impact on the world.
+5
+The six fundamental elements of management, which are commonly referred to as the "management process". They are:
+Subject - This refers to the entity or person that is responsible for managing or leading the organization or team. It could be an individual or a group of individuals.
+Object - This refers to the goals or objectives that the manager or leader is trying to achieve through their actions. It could be a product, service, project, or any other deliverable that the organization is aiming to produce.
+Purpose - This refers to the reason or motivation for the management or leadership actions being taken. It could be to increase profits, improve efficiency, or achieve a specific mission or vision.
+Tools - This refers to the resources, materials, and equipment that the manager or leader uses to accomplish their objectives. It could be physical tools like computers, machinery, and equipment or non-physical tools like software, frameworks, or methodologies.
+Methods - This refers to the specific techniques or strategies that the manager or leader uses to achieve their objectives. It could include planning, organizing, staffing, leading, or controlling.
+Activities - These are the specific functions or processes that the manager or leader uses to achieve their objectives. They are often referred to as the "management functions" and include activities such as setting objectives, planning, organizing, leading, and controlling. These activities are often interrelated and interdependent and form the basis for effective management and leadership.
+6
+Management Process: Management is the process of planning, organizing, influencing (directing), and controlling an organization's resources to achieve its goals and objectives. This process involves the use of various tools and techniques to ensure that the organization is operating effectively and efficiently.
+Primary Management Functions: The primary management functions include planning, organizing, influencing (directing), and controlling. These functions are interrelated and must be performed in a coordinated manner to achieve the goals of the organization.
+Henri Fayol: Henri Fayol is a French engineer and management theorist who is best known for his contributions to the field of management. He proposed the five primary management functions and is considered one of the pioneers of modern management theory. Fayol believed that these functions were universal and could be applied to any type of organization, regardless of its size or industry.
+It's important to note that Henri Fayol's work has been widely studied and has had a significant impact on the field of management. His ideas have been used to develop many of the management concepts and practices that are widely used today, making him an important figure in the history of management theory.
+7
+8
+To be effective, a manager must understand how the four management functions 
+are practiced
+, not simply how they are defined and related. 
+The primary management functions of planning, organizing, directing, and controlling are integrally related in practice, meaning that they are interdependent and cannot be separated. Each of these functions plays a critical role in ensuring that an organization operates effectively and efficiently, and each function affects the others in a reciprocal manner.
+For example, consider the following scenario:
+A company is planning to launch a new product and has set a goal to increase sales by 20% in the next quarter. To achieve this goal, the company's manager will engage in the following primary management functions:
+Planning: The manager will plan the launch of the new product by determining the target market, setting a budget, and developing a marketing plan.
+Organizing: The manager will organize the resources needed to launch the new product, such as employees, equipment, and materials. This includes assigning tasks, determining the timeline, and establishing procedures.
+Directing: The manager will direct the employees by communicating the plan and expectations, providing guidance, and monitoring progress.
+Controlling: The manager will control the process by regularly assessing the progress towards the goal of increasing sales by 20%. If necessary, the manager will make adjustments to the plan to ensure that the goal is achieved.
+In this scenario, each of the primary management functions is integrally related to the others and cannot be separated. The planning function sets the framework for the launch, the organizing function ensures that the necessary resources are in place, the directing function provides the guidance and motivation needed to carry out the plan, and the controlling function assesses progress and makes adjustments as needed. Without the integration of these functions, the goal of increasing sales by 20% is unlikely to be achieved.
+Decision-making is closely related to all of the primary management functions in the sense that it is a critical component of each function. Decision-making is the process of choosing the best course of action from among several alternatives, and it is a key responsibility of managers in all organizations.
+Planning: Effective planning requires decision-making at every stage, from setting goals and objectives to determining the best strategies for achieving those goals. Managers must make decisions about what to do, when to do it, and how to allocate resources to achieve their goals.
+Organizing: Organizing also requires decision-making, as managers must determine the most effective way to allocate resources and structure the organization to achieve its goals. This involves making decisions about the type of structure to adopt, the distribution of authority and responsibility, and the allocation of resources.
+Directing: The directing function also involves decision-making, as managers must make decisions about how to motivate and guide employees towards achieving the organization's goals. This includes decisions about how to provide feedback, rewards and incentives, and how to manage conflict.
+Controlling: The controlling function also requires decision-making, as managers must make decisions about how to monitor performance, assess progress towards goals, and make any necessary adjustments. This involves making decisions about how to measure performance, what metrics to use, and what actions to take to correct any deviations from the plan.
+In conclusion, decision-making is a critical component of all primary management functions and is essential for effective management. Good decision-making requires a thorough understanding of the organization's goals and objectives, a comprehensive assessment of the alternatives, and a careful evaluation of the potential risks and benefits of each alternative.
+9
+In management theory, an organization is a social unit of people that is structured and managed to meet a common goal or set of goals. An organization can be for-profit, non-profit, or government-run, and can be of any size, from a small business to a large multinational corporation.
+An organization is a complex system that involves various elements, including people, technology, processes, and structure. Effective management of an organization requires an understanding of how these elements interact and how to manage them effectively to achieve the organization's goals.
+In management theory, the structure of an organization is often described as a hierarchy, with different levels of authority and responsibility. This structure is used to ensure that the organization is efficient, with clear lines of communication and accountability.
+The goal of management in an organization is to effectively utilize the resources at its disposal to achieve its goals and objectives. This requires the use of various management functions, including planning, organizing, directing, and controlling, to ensure that the organization is operating effectively and efficiently.
+In conclusion, an organization as understood in management theory is a social unit of people structured and managed to meet a common goal or set of goals. Effective management of an organization requires an understanding of its structure and the interplay between its various elements, as well as the use of various management functions to achieve its goals and objectives.
+10
+11
+It is accurate to say that we are living in a world made up of organizations. Organizations play a critical role in modern society and are an integral part of our daily lives. They are responsible for providing goods and services, creating jobs, and contributing to economic growth and development.
+Organizations can be found in almost every aspect of our lives, from the businesses we work for, to the schools we attend, to the government agencies that provide essential services. They are also involved in important societal issues, such as healthcare, the environment, and social justice.
+In today's globalized world, organizations are also becoming increasingly interdependent, forming complex networks of relationships and partnerships. This has led to an increased focus on the role of organizations in shaping the world and addressing major global challenges.
+In conclusion, organizations are a fundamental part of modern society and play a critical role in our daily lives. They are responsible for providing goods and services, creating jobs, and contributing to economic growth and development, as well as addressing important societal issues.
+12
+13
+The practice of management has a long and rich history, dating back thousands of years. Throughout the centuries, individuals in positions of responsibility have been tasked with the planning, organizing, leading, and controlling of organized endeavours. As society has evolved and undergone various changes, so too have the theories of management reflected these developments. This includes changes in economic, political, social, cultural, technological, legal, and psychological factors. The study of management and the development of management theories continue to be shaped by the dynamic and ever-changing landscape of society.
+14
+The history of management theory can be traced back to ancient civilizations, where individuals in positions of responsibility were tasked with the planning, organizing, leading, and controlling of organized 
+endeavors
+. However, it wasn't until the late 19th and early 20th centuries that management theory as a discipline began to take shape.
+Some of the most important management theories and their relationships with important historical events and periods include:
+Scientific Management (1900s): Developed by Frederick Winslow Taylor, this theory aimed to increase efficiency by breaking down tasks into smaller, simpler components. This theory was popular during the Industrial Revolution, as businesses sought to increase productivity.
+Administrative Management (1920s): Developed by Henri Fayol, this theory emphasized the importance of effective management practices and introduced the five primary management functions (planning, organizing, commanding, coordinating, and controlling). This theory was influenced by the growing popularity of bureaucracy in government and business during this period.
+Human Relations Movement (1930s-1940s): This theory, led by Elton Mayo, focused on the importance of understanding the social and psychological aspects of work. It emphasized the importance of employee satisfaction and motivation in improving productivity.
+Contingency Theory (1960s-1970s): This theory recognized that there is no one-size-fits-all approach to management and that the best course of action depends on the specific situation. It influenced the development of situational leadership, which emphasizes the importance of adapting one's leadership style to the needs of individual employees.
+When discussing modern approaches in management theory, it is important to highlight the following:
+Evidence-Based Management: This approach emphasizes the importance of data and research in making informed decisions. It encourages managers to use data and research to make evidence-based decisions, rather than relying on intuition or experience alone.
+Agile Management: This approach is designed for organizations operating in rapidly changing environments, such as technology companies. It emphasizes flexibility, collaboration, and continuous improvement, and is often used in software development.
+Servant Leadership: This approach focuses on the leader as a servant to their employees, rather than a traditional hierarchical leader. It emphasizes the importance of empowering employees and creating a positive work environment.
+Holistic Management: This approach recognizes that organizations are made up of multiple interconnected systems, and that success depends on managing these systems in a holistic manner. It emphasizes sustainability, balance, and a long-term perspective.
+System Thinking: This approach recognizes that organizations are complex systems and that decisions and actions in one part of the organization can have a ripple effect throughout the entire system. It emphasizes the importance of considering the larger system when making decisions.
+These are just a few examples of modern approaches in management theory. Each approach offers unique insights and perspectives on the role of management in organizations and the ways in which managers can create effective and efficient organizations.
+In conclusion, the history of management theory is rich and diverse, reflecting the changing landscape of society and the evolving needs of businesses and organizations. These theories continue to shape the field of management and inform modern practices and approaches to management.
+15
+Scientific management is a management theory that was first introduced by Frederick Winslow Taylor in the late 19th century. The main focus of scientific management was to increase efficiency by breaking down tasks into smaller, simpler components and optimizing each component for maximum productivity.
+The key elements of scientific management include:
+Time and Motion Studies: Taylor believed that the best way to increase efficiency was to study each task in detail and determine the most efficient way to perform it. This involved 
+analyzing
+ the time and motion involved in each task to identify areas for improvement.
+Division of 
+Labor
+: Taylor believed that dividing tasks into smaller, specialized components would allow each worker to become more efficient and productive. He argued that this would allow workers to focus on a specific aspect of the task and become experts in that area.
+Standardization of Work: Taylor believed that standardizing the way tasks were performed would increase efficiency and reduce variability. This involved establishing clear procedures for each task and training workers to perform the task in the most efficient manner.
+Scientific Selection and Training of Workers: Taylor believed that workers should be selected and trained based on their ability to perform specific tasks. He argued that this would ensure that the right person was in the right job and that they would be able to perform the task to the best of their ability.
+While scientific management had a profound impact on the field of management and was widely adopted in the late 19th and early 20th centuries, it has since been criticized for its narrow focus on efficiency and its disregard for the social and psychological aspects of work. Nevertheless, many of the concepts and techniques introduced by Taylor continue to be used and applied in modern management practices.
+16
+General Administrative Theory is a management theory that was developed by Henri Fayol in the early 20th century. It is considered one of the earliest management theories and is widely recognized as the foundation of modern management thought.
+Max Weber was a German sociologist and political economist who is best known for his work on the theory of bureaucracy. He developed the concept of bureaucracy as a means of describing the structure and functioning of organizations in a systematic and rational manner.
+According to Weber, a bureaucracy is a hierarchical organization that is characterized by a clear division of 
+labor
+, a formal system of rules and regulations, and a system of impersonal relationships between employees. He believed that a bureaucracy was the most efficient and effective type of organization, and that it offered several key advantages over other forms of organization, including:
+Predictability and Consistency: Weber believed that a bureaucracy would operate in a predictable and consistent manner, with each employee following a set of clear rules and procedures.
+Expertise: Weber believed that a bureaucracy would attract and retain experts in their respective fields, allowing organizations to make use of the most knowledgeable and experienced employees.
+Impartiality: Weber believed that the impersonal relationships within a bureaucracy would promote impartial decision-making and reduce the influence of personal biases and prejudices.
+Efficiency: Weber believed that the clear division of 
+labor
+ and standardized procedures within a bureaucracy would increase efficiency and reduce waste.
+However, Weber also recognized the potential drawbacks of bureaucracy, including the potential for excessive bureaucracy and the stifling of creativity and innovation. Despite these limitations, bureaucracy remains an important concept in the field of management and is widely studied and applied in modern organizations.
+Fayol identified five primary functions of management: planning, organizing, commanding, coordinating, and controlling. He believed that these functions were universal and applied to all organizations, regardless of size or type.
+Fayol also introduced the concept of "14 principles of management", which outline the key principles that managers should follow in order to be effective. These principles include: division of work, authority, discipline, unity of direction, unity of command, subordination of individual interests to the general interest, remuneration, centralization, scalar chain, order, equity, stability of tenure, initiative, and esprit de corps.
+In addition to the primary functions and principles of management, Fayol also emphasized the importance of effective communication, both within the organization and between the organization and its stakeholders. He believed that clear and effective communication was essential for promoting cooperation and coordination among employees and for achieving organizational goals.
+Overall, General Administrative Theory has had a lasting impact on the field of management, and many of Fayol's ideas and concepts continue to be widely taught and applied in modern management practices.
+17
+Behavioral
+ approaches in management are a group of management theories that focus on understanding and improving the 
+behavior
+ of individuals and groups within organizations. This approach to management emerged in the mid-20th century, as a response to the more traditional, formalist approach to management that focused on structural and technical aspects of organizations.
+Behavioral
+ approaches in management recognize that people are not simply resources to be managed, but that they have their own needs, motivations, and perceptions that can influence their 
+behavior
+ at work. As a result, 
+behavioral
+ approaches in management aim to create a work environment that is supportive, motivating, and responsive to the needs of employees.
+Some key ideas and practices that are associated with 
+behavioral
+ approaches in management include:
+Employee involvement and empowerment: Encouraging employees to participate in decision-making and to take on more responsibility for their work can increase their motivation and job satisfaction.
+Communication and feedback: Encouraging open and honest communication between employees and managers can promote trust, understanding, and cooperation.
+Employee recognition and rewards: Recognizing and rewarding employees for their contributions can increase motivation and job satisfaction.
+Team building: Encouraging employees to work together as a team can increase cooperation, coordination, and productivity.
+Job design: Designing jobs to be challenging, meaningful, and satisfying can increase motivation and job satisfaction.
+Here are some key theoretical developments in 
+behavioral
+ approaches in management theory, displayed by years and mentioning important persons:
+1930s: Hawthorne Studies – Conducted by Elton Mayo and his colleagues at the Western Electric Company's Hawthorne plant, these studies revealed that employees' attitudes, 
+behaviors
+, and productivity were influenced by a range of social and psychological factors beyond their working conditions.
+1940s: Maslow's Hierarchy of Needs – Proposed by Abraham Maslow, this theory describes a hierarchy of human needs, from basic physiological needs to self-actualization, and suggests that individuals are motivated by the 
+fulfillment
+ of these needs.
+1950s: McGregor's Theory X and Theory Y – Developed by Douglas McGregor, this theory proposed two contrasting approaches to management: Theory X assumes that employees are inherently lazy and require strict control and supervision, while Theory Y assumes that employees are self-motivated and can be trusted to work independently.
+1960s: Herzberg's Two-Factor Theory – Proposed by Frederick Herzberg, this theory suggests that employee satisfaction and motivation are influenced by two types of factors: hygiene factors (such as working conditions and pay) and motivators (such as recognition and opportunities for advancement).
+1970s: Equity Theory – Developed by J. Stacy Adams, this theory proposes that employees are motivated by perceptions of fairness and equity in their treatment relative to others in the organization.
+1980s: Social Learning Theory – This theory, developed by Albert Bandura, emphasizes the role of observation and imitation in the learning of 
+behavior
+, suggesting that individuals can learn by observing the 
+behaviors
+ of others and the consequences of those 
+behaviors
+.
+Overall, the 
+behavioral
+ approach in management theory has emphasized the importance of understanding the complex and dynamic nature of human 
+behavior
+ in the workplace. These key theoretical developments have contributed to the development of more effective management practices that take into account the social and psychological factors that influence employee attitudes, 
+behaviors
+, and motivation.
+18
+Quantitative approaches in management are a group of management theories that focus on using mathematical and statistical methods to 
+analyze
+ and improve organizational performance. This approach emerged in the mid-20th century, as a response to the more qualitative and subjective approach to management that was prevalent at the time.
+Quantitative approaches in management aim to bring a scientific and objective perspective to decision-making and problem-solving within organizations. This is achieved by using mathematical models and statistical analysis to quantify relationships between variables and to make predictions about future outcomes.
+Some key ideas and practices that are associated with quantitative approaches in management include:
+Operations research: Using mathematical models and statistical analysis to optimize the design and operation of systems and processes within organizations.
+Decision science: Using mathematical models and statistical analysis to support decision-making and problem-solving within organizations.
+Performance measurement: Using quantitative metrics and data analysis to measure and improve organizational performance.
+Resource allocation: Using mathematical models and statistical analysis to optimize the allocation of resources within organizations.
+Quantitative approaches in management have been influential in shaping the modern workplace and continue to be widely used in organizations around the world. They offer a valuable tool for decision-makers and managers to make more informed and objective decisions and to continuously improve organizational performance.
+19
+Contemporary approaches in management theory include Management Science, Systems, and Contingency theory. These approaches have a rich history and continue to influence modern management practices.
+Here are some key theoretical developments for each approach, displayed by years and mentioning important persons:
+Management Science Approach:
+1940s-1950s: Operations Research – This approach applied mathematical and statistical techniques to management problems. Notable figures include George Dantzig and 
+Tjalling
+ Koopmans.
+1950s-1960s: Linear Programming – This approach focused on optimizing resources and minimizing costs. Notable figures include George Dantzig and John von Neumann.
+George Dantzig: Developed the simplex method for solving linear programming problems, which became a key tool in operations research.
+Tjalling
+ Koopmans: Developed the theory of optimal allocation of resources and won the Nobel Prize in Economics in 1975.
+W. Edwards Deming: Developed statistical quality control methods and emphasized the importance of a focus on continuous improvement.
+Systems Approach:
+1960s: General Systems Theory – This approach emphasized the importance of understanding organizations as complex systems with interdependent components. Notable figures include Ludwig von 
+Bertalanffy
+ and Kenneth Boulding.
+1970s: Cybernetics – This approach applied the principles of control systems theory to management. Notable figures include Norbert Wiener and Stafford Beer.
+Ludwig von 
+Bertalanffy
+: Developed general systems theory and emphasized the importance of understanding the interdependencies and feedback loops that exist within complex systems.
+Kenneth Boulding: Proposed that organizations could be seen as open systems, constantly interacting with their environment, and suggested that management should be concerned with the overall system rather than just its components.
+Stafford Beer: Developed the Viable System Model (VSM), which is a framework for understanding the structure and dynamics of complex organizations.
+Contingency Approach:
+1960s-1970s: Contingency Theory – This approach proposed that there is no one-size-fits-all approach to management and that the best approach depends on the specific circumstances. Notable figures include Joan Woodward and Paul Lawrence.
+Joan Woodward: Conducted research on the relationship between technology and organizational structure, and proposed that the best organizational structure depends on the type of technology being used.
+Paul Lawrence: Developed the contingency theory of organizational design, which proposes that the most effective organizational structure depends on the specific circumstances and context in which it operates.
+Jay Galbraith: Developed the STAR model of organizational design, which emphasizes the importance of aligning strategy, structure, processes, and rewards.
+Overall, management science, systems, and contingency approaches are all important contemporary approaches in management theory that have contributed to the development of more effective management practices in today's rapidly changing world.
+20
+Management methods are techniques and approaches used by managers and leaders to effectively plan, organize, lead, and control the activities of an organization. These methods are typically based on management theories and principles, and are designed to support decision-making and problem-solving, to improve organizational performance, and to achieve organizational goals.
+The grouping of management methods into economical, social-psychological, and administrative methods is a way of categorizing different approaches to management, based on the dominant focus or emphasis of each method.
+Economical methods: These methods are primarily focused on the efficient use of resources and maximizing economic returns. Examples of economical methods include cost-benefit analysis, return on investment (ROI) analysis, and break-even analysis.
+Social-psychological methods: These methods are focused on improving the motivation and engagement of employees, and on creating a positive work environment. Examples of social-psychological methods include employee empowerment, participative management, and job enrichment.
+Administrative methods: These methods are focused on the design and structure of organizations, and on the systems and processes used to manage and control organizational activities. Examples of administrative methods include organizational design, operational planning and control, and performance management.
+This categorization of management methods provides a useful framework for understanding the different approaches that are available to managers and leaders, and for selecting the most appropriate methods for a given context. It should be noted, however, that these categories are not mutually exclusive, and many management methods may have elements of each category.
+21
+Administrative methods in management refer to the systems and processes used to manage and control organizational activities. They are focused on the design and structure of organizations and how they operate. 
+Some of the key elements of administrative methods include:
+Organizational design: This refers to the way in which an organization is structured and how the various parts and functions are related to one another. It is concerned with issues such as departmentalization, chain of command, and span of control.
+Operational planning and control: This involves the development of plans and budgets for achieving organizational goals, and the ongoing monitoring and control of performance to ensure that these goals are being met.
+Performance management: This is a process for evaluating the effectiveness and efficiency of organizational activities, and for making improvements where necessary. It may include the use of metrics and other performance indicators to monitor performance, and the implementation of corrective actions where necessary.
+Decision-making: Effective decision-making is a critical component of administrative methods, and involves the identification and analysis of problems, the generation of alternative solutions, and the selection of the most appropriate course of action.
+Overall, administrative methods are focused on ensuring that an organization is well-structured, efficient, and effective in achieving its goals and objectives. Effective use of these methods requires a good understanding of the organization, its goals and objectives, and the broader context in which it operates.
+Administrative-legal management methods refer to a set of techniques and practices that are used to manage organizations and ensure compliance with relevant laws and regulations. These methods often involve the development and implementation of policies, procedures, and systems designed to promote efficiency, accountability, and legal compliance. They play a crucial role in helping organizations operate within the bounds of the law and ensure that their operations are in line with established ethical and legal standards.
+Administrative-legal management methods are particularly important in heavily regulated industries, such as healthcare, finance, and government, where strict adherence to laws and regulations is essential. They can also help organizations avoid potential legal problems and minimize the risk of lawsuits or other legal action. Additionally, they can provide organizations with a clear understanding of their responsibilities and obligations, and help to establish transparency and accountability in their operations.
+Overall, administrative-legal management methods are a critical component of effective organizational management, helping organizations to operate efficiently, comply with the law, and protect their stakeholders.
+22
+Economic management methods refer to the techniques and practices used to manage an organization's financial resources and optimize its financial performance. These methods are designed to ensure that an organization's resources are used effectively and efficiently, with the goal of maximizing profits and minimizing costs. Economic management methods are critical to the success of an organization, as they help to ensure that the organization has the resources it needs to achieve its objectives and grow over time.
+Some of the key techniques used in economic management include financial planning and analysis, budgeting, cost control, and investment management. Financial planning and analysis involve forecasting future financial performance, assessing risks, and developing strategies for optimizing the use of resources. Budgeting involves developing a detailed plan for how an organization will allocate its resources over a specific period of time. Cost control involves identifying ways to reduce costs and maximize the return on investment, while investment management involves making informed decisions about investments in order to maximize returns and minimize risks.
+Overall, economic management methods play a vital role in the success of organizations by helping to ensure that resources are used effectively, costs are minimized, and performance is optimized. They are an essential component of effective organizational management, and organizations must continually monitor and adjust their economic management practices to stay ahead of the competition and achieve their goals.
+23
+Social psychological methods of management refer to techniques and practices aimed at enhancing the social and psychological well-being of employees within an organization. These methods are designed to promote a positive work environment and improve employee morale and motivation. They help to create a supportive and inclusive culture, foster teamwork and collaboration, and improve overall job satisfaction.
+Some of the key social psychological methods used in management include education and training, persuasion, praise and recognition, promotion of personal initiative, team-building activities, and the creation of a supportive organizational culture. Education and training help employees develop new skills and knowledge, while persuasion and recognition help to foster motivation and engagement. Promoting personal initiative encourages employees to take ownership of their work and fosters a sense of responsibility, while team-building activities and the creation of a supportive organizational culture help to build strong relationships and foster collaboration.
+Overall, social psychological methods play a crucial role in the success of organizations by promoting employee well-being and engagement. By fostering a positive work environment and improving employee morale, these methods help organizations to attract and retain talent, improve productivity, and achieve their goals.
+24

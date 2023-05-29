@@ -1,0 +1,673 @@
+Components of strategic planning typically include:
+Analysis of the current situation: This involves assessing the organization&apos;s current situation, strengths, weaknesses, opportunities, and threats (SWOT analysis). Other tools used in this stage may include PEST (PESTEL) analysis (analyzing political, economic, social, and technological factors) and competitor analysis.
+Setting objectives and goals: This involves identifying the organization&apos;s mission, vision, and values and translating them into specific, measurable, achievable, relevant, and time-bound (SMART) goals.
+Developing strategies: This involves identifying and evaluating different strategies to achieve the organization&apos;s goals. Strategies may include market penetration, market development, product development, diversification, and acquisition.
+Implementation: This involves creating action plans to implement the chosen strategies. This may include assigning responsibilities, setting timelines, and establishing metrics for measuring progress.
+Monitoring and evaluation: This involves monitoring progress towards goals and evaluating the effectiveness of the strategies. It may include revising the strategies if necessary.
+Here is a list of methods commonly used in strategic planning:
+SWOT analysis: a structured approach to evaluate an organization&apos;s strengths, weaknesses, opportunities, and threats.
+PEST analysis: a framework used to analyze the external macro-environmental factors that may affect an organization.
+Scenario planning: a method of creating multiple plausible future scenarios and exploring the implications of each scenario.
+Competitive analysis: an assessment of an organization&apos;s competitors and the competitive landscape in which it operates.
+Benchmarking: a process of comparing an organization&apos;s performance metrics against those of industry peers or best-in-class companies.
+Gap analysis: a technique used to identify the gap between an organization&apos;s current state and its desired future state.
+Key performance indicators (KPIs): metrics used to measure progress towards achieving strategic goals.
+Balanced scorecard: a strategic planning and management system that aligns an organization&apos;s strategy with its objectives, measures, targets, and initiatives.
+Porter&apos;s Five Forces: a framework used to analyze an industry&apos;s competitiveness and attractiveness.
+Value chain analysis: a method of analyzing an organization&apos;s internal operations to identify opportunities for improving efficiency and effectiveness.
+These methods can be used individually or in combination to inform the development of a strategic plan.
+&lt;number&gt;
+The levels of strategic planning refer to the different areas of an organization where strategic planning takes place. Generally, there are three levels of strategic planning: organizational, operational, and functional.
+Organizational-level strategic planning involves establishing the overall goals and direction for the entire organization. This level of planning is typically done by top-level executives and focuses on the big picture of the organization, such as its mission, vision, and values.
+Operational-level strategic planning takes place within independent units of an organization, such as departments or business units. This level of planning involves developing strategies that align with the organization&apos;s overall goals, but are specific to the needs and goals of each unit. Operational-level planning is typically done by mid-level managers and focuses on implementing the strategies established at the organizational level.
+Functional-level strategic planning involves developing strategies specific to the different functions within an organization, such as finance, marketing, production, and human resources. This level of planning is typically done by functional managers and focuses on how each function can contribute to the overall goals of the organization.
+Each level of strategic planning is important and interconnected, with the higher-level plans informing and guiding the lower-level plans. By establishing clear goals and strategies at each level, an organization can ensure that everyone is working towards a common purpose and that resources are being used effectively.
+&lt;number&gt;
+Assumptions are essential components of the planning process as they help to provide a basis for decision-making in the face of uncertainty. When planning, it is important to recognize that there is always a degree of uncertainty and ambiguity surrounding the future. Therefore, assumptions are used to create a framework for decision-making that can help managers to navigate this uncertainty.
+Assumptions are statements about the future that are made based on current knowledge, experience, and judgment. They are used to fill in the gaps where there is a lack of concrete data or information. Assumptions can be based on trends, forecasts, past experience, expert opinions, or any other relevant information that is available.
+Assumptions can be explicit or implicit, and they can be positive or negative. Positive assumptions are those that assume the best-case scenario, while negative assumptions are those that assume the worst-case scenario. It is important to consider both positive and negative assumptions when planning, as this can help to identify potential risks and opportunities.
+Assumptions should also be evaluated for their validity and reliability. This involves assessing the likelihood of the assumption being true and the potential impact it could have on the planning process. If an assumption is found to be invalid or unreliable, it may need to be revised or discarded.
+Examples of assumptions in planning include assumptions about future market conditions, assumptions about the availability of resources, assumptions about the effectiveness of proposed strategies, and assumptions about the behavior of competitors. By making assumptions explicit and evaluating their validity, managers can make more informed decisions and develop more effective plans.
+The practical implications of assumptions in planning are significant. If the assumptions are incorrect or unrealistic, the entire planning process may be flawed, and the resulting plans may not be effective in achieving the desired goals. This can result in wasted resources, missed opportunities, and ultimately, failure to achieve the desired outcomes.
+One practical implication of assumptions is the need for regular review and monitoring of the assumptions made during the planning process. As new information becomes available, the assumptions should be re-evaluated and updated to ensure that they are still accurate and relevant.
+Another practical implication is the need for contingency planning. Contingency planning involves preparing for unexpected events or changes in assumptions that could impact the success of the plan. By developing contingency plans, organizations can be better prepared to respond to unexpected events and adjust their plans accordingly.
+Assumptions can also impact the allocation of resources. If the assumptions made during planning are inaccurate, resources may be allocated incorrectly, resulting in inefficiencies and missed opportunities. By ensuring that the assumptions are realistic and accurate, organizations can allocate resources more effectively and efficiently.
+Finally, assumptions can impact communication and collaboration within an organization. If there are different assumptions or understandings among team members, it can lead to confusion, conflict, and miscommunication. Clear and open communication about the assumptions underlying the planning process can help to ensure that everyone is working towards the same goals and objectives.
+&lt;number&gt;
+Operational planning is a management process that focuses on day-to-day activities necessary to accomplish the objectives and strategies laid out in the tactical and strategic plans. Operational planning is necessary to ensure that the organization is functioning effectively and efficiently on a daily basis. It involves breaking down long-term goals into specific, measurable actions and targets that can be achieved in the short-term.
+Operational planning can include activities such as scheduling, budgeting, resource allocation, and performance management. It often involves creating detailed plans for the specific tasks and activities that need to be completed by individuals or teams within the organization. These plans may be revised regularly to reflect changes in the organization&apos;s goals or the external environment.
+For example, a retail store might develop an operational plan that outlines the activities required to meet sales targets, such as ordering inventory, staffing the sales floor, and implementing promotional activities. The operational plan would detail specific tasks and timelines for each activity, as well as the resources needed to accomplish them.
+Similarly, a manufacturing company might develop an operational plan to ensure efficient production processes and timely delivery of products to customers. This might include scheduling production runs, managing inventory levels, and coordinating shipping and logistics.
+The key features of operational planning include:
+Defining specific, measurable, achievable, relevant, and time-bound objectives
+Allocating resources and assigning tasks to specific individuals or teams
+Developing timelines and schedules for completing tasks and achieving objectives
+Monitoring progress and making adjustments as necessary to ensure that objectives are met on time and within budget.
+&lt;number&gt;
+A hierarchy of goals refers to the way in which different types of goals are related to each other within an organization. It is a structure that helps to prioritize efforts and resources, and enables the organization to assess its success and progress towards its mission and vision.
+At the top of the hierarchy are the long-term strategic goals, which provide the overall direction and strategy for the organization. These goals are usually set for a period of five years or more and are aligned with the organization&apos;s mission and vision. Strategic goals are broad and ambitious and are designed to guide decision-making at all levels of the organization.
+The mid-level tactical goals are the next step down in the hierarchy. They are aimed at achieving specific objectives that will help the organization achieve its strategic goals. Tactical goals usually cover a period of one to five years and provide a detailed plan of action for implementing the strategic goals. Tactical goals are more specific than strategic goals and help to clarify the steps that need to be taken to achieve the organization&apos;s overall objectives.
+At the bottom of the hierarchy are the short-term operational goals, which focus on the day-to-day activities of the organization. They are usually tied to specific tasks and activities that are necessary for achieving tactical goals. Operational goals are short-term and focused on the near future, covering a period of less than one year. They are often very specific and measurable and are designed to keep the organization on track towards achieving its tactical and strategic goals.
+The hierarchy of goals is important because it helps to ensure that everyone in the organization is working towards the same objectives. It provides a structure for decision-making and resource allocation, and helps to ensure that efforts are focused on the most important priorities. By aligning goals at all levels of the organization, the hierarchy of goals helps to create a sense of purpose and direction for the organization as a whole.
+&lt;number&gt;
+Quantitative forecasting methods play a vital role in management by providing valuable information to decision-makers. These methods involve the use of statistical and mathematical models to analyze historical data and project future trends. They can be used in a wide range of applications, including production planning, inventory management, sales forecasting, and financial analysis.
+One of the most common quantitative forecasting methods used in management is time-series analysis. This involves analyzing historical data to identify patterns and trends over time. Once these patterns have been identified, statistical models can be used to project future values. For example, a company might use time-series analysis to forecast future sales based on historical sales data.
+Another commonly used quantitative forecasting method is regression analysis. This involves identifying the relationship between two or more variables and using this relationship to predict future outcomes. For example, a company might use regression analysis to predict future sales based on variables such as advertising expenditures, promotional campaigns, or changes in market conditions.
+Other quantitative forecasting methods used in management include moving averages, exponential smoothing, and trend analysis. Moving averages involve calculating the average of a specific number of past values and using this average to forecast future values. Exponential smoothing is similar to moving averages but gives more weight to more recent data. Trend analysis involves analyzing the direction and strength of a trend over time and projecting it into the future.
+There are various types of quantitative forecasting methods that could be used for forecasting:
+Time Series Methods:
+Moving Averages
+Exponential Smoothing
+Holt-Winters Methods
+ARIMA (Autoregressive Integrated Moving Average) Models
+State-Space Models
+Vector Autoregression (VAR) and Vector Error Correction (VEC) Models
+Seasonal Decomposition of Time Series (STL)
+Kalman Filters
+Bayesian Structural Time Series (BSTS) Models
+Regression Methods:
+Simple Linear Regression
+Multiple Linear Regression
+Nonlinear Regression
+Poisson Regression
+Logistic Regression
+Generalized Linear Models (GLMs)
+Time Series Regression
+Artificial Intelligence and Machine Learning Methods:
+Neural Networks (NNs)
+Support Vector Machines (SVMs)
+Decision Trees
+Random Forests
+Gradient Boosting
+Deep Learning (Convolutional Neural Networks, Recurrent Neural Networks)
+Clustering (K-Means, Hierarchical)
+Association Rules (Apriori Algorithm)
+Other Quantitative Methods:
+Markov Chain Models
+Monte Carlo Simulation
+Econometric Models
+Input-Output Models
+Game Theory Models
+Queueing Models
+Decision Analysis Models
+Bayesian Networks
+It&apos;s important to note that different methods may be more appropriate for different types of data and contexts, and that the choice of method should be based on careful consideration of the data, the assumptions of the method, and the goals of the forecasting exercise.
+&lt;number&gt;
+Organizational core values are fundamental beliefs and principles that serve as the foundation of a company and its employees, often referred to as &quot;cultural cornerstones.&quot; They define the way a company interacts with customers, partnerships, and stakeholders. These values are the beliefs behind the organization&apos;s vision and mission, and a worthy vision is guided by worthy values.
+Values give direction and dignity to an organization&apos;s mission and serve as the moral compass for expected behaviors during the quest to achieve the vision. A values statement typically includes elements such as integrity in all actions, commitment to employees, quality of products, protection of the environment, innovative business ideas, and continual learning.
+When considering an organization&apos;s core values, questions such as &quot;what draws you to this organization?&quot;, &quot;what makes our workplace culture unique?&quot;, &quot;what do we do better than anybody else?&quot; and &quot;what should we do better than anybody else?&quot; can provide insight into what the organization stands for and values.
+A values statement is used to inform and guide the decisions and behaviors of the people within the organization, as well as signal to external stakeholders what&apos;s important to the company. It highlights the organization&apos;s core principles and philosophical ideals, shaping daily culture and establishing standards of conduct by which actions and decisions can be assessed. The values statement should be memorable, actionable, and timeless, and may take the form of one, two, or three words, or a short phrase. When drafting a values statement, it&apos;s essential to consider questions such as what the organization stands for, what behaviors it values, and how it will conduct its activities to achieve its mission and vision, as well as how it treats its members and the community.
+&lt;number&gt;
+The critical path analysis (CPA) method is a project management technique used to identify the longest path of planned activities in a project and determine the minimum time required to complete the project. The method involves identifying all the tasks involved in a project, estimating their duration, and establishing their sequence of execution.
+To create a plan using the CPA method, the following steps are typically taken:
+Identify all the tasks involved in the project and list them in a table.
+Determine the duration of each task.
+Determine the dependencies between the tasks, i.e., which tasks must be completed before others can start.
+Construct a network diagram showing the tasks and their dependencies.
+Identify the critical path, which is the sequence of tasks that take the longest time to complete and, therefore, determines the overall project duration.
+Determine the earliest start time and earliest finish time for each task.
+Determine the latest start time and latest finish time for each task.
+Calculate the float or slack time for each task, which is the amount of time by which a task&apos;s start or finish can be delayed without delaying the overall project.
+Use the information gathered in the previous steps to create a schedule that shows the start and end dates for each task and the overall project duration.
+The CPA method helps project managers to identify the critical tasks in a project, which enables them to allocate resources and manage the project more effectively. It also helps to identify potential bottlenecks and allows project managers to focus on those tasks that are critical to the project&apos;s success.
+&lt;number&gt;
+Strategic planning is an essential process for any organization that wants to succeed in the long term. It is a set of actions aimed at developing a program or plan for the implementation of the strategy. The strategy itself is a set of decisions that identify the most important future goals, actions, and measures to achieve those goals. The purpose of strategic planning is to ensure the implementation of innovations and changes in the organization that will help it achieve its long-term objectives.
+In the context of strategic planning, the strategy is treated as a comprehensive plan for achieving the organization&apos;s mission and goals. It is essential to have a clear understanding of the organization&apos;s mission and objectives before developing a strategy. This involves analyzing the internal and external environment to identify strengths, weaknesses, opportunities, and threats. Based on this analysis, the organization can develop a strategy that addresses the most critical issues and opportunities.
+The strategic plan should include specific objectives, goals, and measures that will guide the organization&apos;s decision-making process. It should also identify the resources needed to achieve these objectives and establish a timeline for their achievement. The strategic plan should be regularly reviewed and updated to ensure that it remains relevant and effective in achieving the organization&apos;s objectives.
+Effective strategic planning requires the involvement of key stakeholders, including senior management, employees, customers, suppliers, and other stakeholders. By involving these stakeholders in the strategic planning process, the organization can build support for the plan and increase the likelihood of its successful implementation.
+In summary, strategic planning is a critical process for organizations that want to succeed in the long term. It involves developing a comprehensive plan for achieving the organization&apos;s mission and objectives, identifying the resources needed to achieve those objectives, and regularly reviewing and updating the plan to ensure its continued effectiveness. By involving key stakeholders in the process, organizations can build support for the plan and increase the likelihood of its successful implementation.
+&lt;number&gt;
+&lt;number&gt;
+Here are some examples of planning objects in different areas of an organization:
+Financial planning objects:
+Sales revenue targets
+Profit margins
+Budgets for specific departments or projects
+Cash flow projections
+Capital investment plans
+Marketing planning objects:
+Marketing budgets
+Target market segmentation and positioning
+Product or service launch plans
+Promotional campaigns
+Digital marketing strategies
+Human resource planning objects:
+Staffing plans
+Employee training and development programs
+Succession plans
+Performance management processes
+Employee engagement initiatives
+Production planning objects:
+Production schedules
+Inventory management plans
+Quality control processes
+Equipment maintenance schedules
+Lean manufacturing initiatives
+Project management planning objects:
+Project timelines and milestones
+Resource allocation plans
+Risk management strategies
+Communication plans
+Change management processes
+Supply chain planning objects:
+Supplier relationship management plans
+Logistics and transportation plans
+Inventory management strategies
+Procurement processes
+Cost reduction initiatives
+In summary, the objects of planning can vary depending on the area of the organization and the specific goals and objectives that need to be achieved. By setting clear planning objects, organizations can align their efforts, allocate resources effectively, and achieve the desired outcomes.
+&lt;number&gt;
+&lt;number&gt;
+Some key characteristics of planning:
+Priority management function: planning is considered a priority management function as it helps to establish the direction of the organization and ensure that resources are used efficiently to achieve desired results. This provides a foundation for other management functions such as organizing, leading, and controlling.
+Goal-oriented: planning is goal-oriented and involves the identification of specific objectives and results that the organization wants to achieve. These goals can be short-term or long-term and help to create an action plan for the organization.
+Required at all management levels: planning is required at all management levels, including top-level strategic planning, mid-level tactical planning, and lower-level operational planning. Each level of planning helps to support the goals and objectives of the level above it.
+Continuous process: planning is a continuous process that needs to be regularly reviewed and adjusted as circumstances change. This helps to ensure that the organization continues to work towards its goals and objectives.
+Intellectual activity: planning is an intellectual activity that involves critical thinking, analysis, and decision-making. It requires managers to assess the strengths and weaknesses of the organization, analyze the external environment, and evaluate potential risks and opportunities.
+Future-oriented: planning involves looking ahead to anticipate future trends and opportunities. This is a necessary condition for the success and growth of the organization.
+Decision-making: planning involves making decisions about what actions are necessary to achieve desired goals or results. These decisions can include resource allocation, prioritization of activities, and identification of potential risks, threats, and opportunities.
+&lt;number&gt;
+&lt;number&gt;
+The planning process typically involves the following steps:
+Establish Goals and Objectives: The planning process begins by establishing the goals and objectives that the organization wants to achieve. These goals should be specific, measurable, achievable, relevant, and time-bound.
+Analyze the Current Situation: The next step is to analyze the current situation of the organization, including its strengths, weaknesses, opportunities, and threats. This can involve reviewing financial data, market research, customer feedback, and other relevant information.
+Develop Alternative Courses of Action: Based on the analysis of the current situation, the next step is to develop alternative courses of action. These options should be evaluated based on their feasibility, potential risks, and alignment with the organization&apos;s goals and objectives.
+Evaluate Alternatives and Select the Best Alternative: Once the alternative courses of action have been identified, the next step is to evaluate them based on their strengths, weaknesses, opportunities, and threats. This can involve a cost-benefit analysis, a risk analysis, and other evaluation criteria. Based on the evaluation of the alternatives, the next step is to select the best course of action. This decision should be based on a thorough evaluation of the alternatives and a consideration of the organization&apos;s goals and objectives.
+Develop an Action Plan: Once the best alternative has been selected, the next step is to develop an action plan. This plan should outline the specific steps that need to be taken to achieve the organization&apos;s goals and objectives, including timelines, budgets, and resource allocation.
+Present a plan for implementation: When the action plan is developed, the next step is its implementation. Prior to this, the plan should be presented to relevant stakeholders to ensure that everyone is aware of the plan and their role in implementing it, and obtain the necessary approvals for its execution.
+&lt;number&gt;
+Planning is essential for organizations for a number of reasons. Here are some of the main reasons why planning is important:
+Establishes direction: Planning helps to establish a clear direction for the organization. By setting goals and objectives, the organization can focus its resources and efforts towards achieving specific outcomes. Planning provides a roadmap for the organization to follow. It helps to identify the steps that need to be taken to achieve the desired outcomes, and helps to ensure that everyone is working towards the same goals.
+Resource allocation: Planning helps to allocate resources effectively, including people, time, and money. This helps to ensure that resources are used efficiently and that the organization is positioned for long-term success.
+Prioritizes activities: Planning helps to prioritize activities and resources. By identifying the most important tasks and allocating resources accordingly, the organization can ensure that it is making the best use of its resources.
+Reduces uncertainty, improves adaptability: Planning helps to reduce uncertainty by anticipating potential problems and identifying ways to overcome them. This helps the organization to be better prepared to deal with unexpected events and to minimize the impact of those events. Planning helps to identify potential risks and opportunities, allowing managers to make informed decisions and mitigate potential risks. This helps to minimize the impact of potential setbacks and improve the organization&apos;s resilience and adaptability. 
+Facilitates communication, coordination: Planning helps to facilitate communication within the organization. By setting clear goals and objectives, everyone knows what is expected of them and can work together more effectively to achieve the desired outcomes. In this sense planning helps to coordinate the efforts of different teams and departments within the organization. This helps to improve communication and collaboration, reduce duplication of effort, and ensure that everyone is working towards a common goal.
+&lt;number&gt;
+Mission, vision, and values are essential components of an organization&apos;s core strength or target orientation (goal orientation). They provide a clear understanding of the purpose and direction of the organization. The mission statement defines the organization&apos;s core purpose and reason for existence. It outlines what the organization aims to achieve, who its target audience is, and how it plans to do so. The vision statement, on the other hand, provides a future-oriented perspective of where the organization wants to be in the long term. It describes the desired future state and sets a direction for the organization&apos;s growth and development.
+Values, meanwhile, serve as guiding principles that define an organization&apos;s culture and behavior. They are the beliefs and principles that the organization upholds, and they drive decision-making, behavior, and relationships within the organization. When these three statements are developed and implemented effectively, they establish the direction of the organization and help to align and motivate its employees towards achieving its goals.
+Moreover, mission, vision, and values statements also inform stakeholders about the organization&apos;s current and future strategies. Stakeholders include employees, customers, investors, partners, and the wider community. These statements help stakeholders understand the organization&apos;s priorities, goals, and values, and how it plans to achieve them. By doing so, they create a sense of transparency and trust between the organization and its stakeholders, which is crucial for its long-term success.
+Finally, mission, vision, and values statements allow for the formulation of measurable goals and objectives. By providing a clear direction and purpose for the organization, they make it possible to set specific, measurable, achievable, relevant, and time-bound (SMART) goals that can be used to assess the success of the organization. By regularly reviewing and adjusting these goals, organizations can monitor their progress and make necessary adjustments to achieve their desired outcomes.
+&lt;number&gt;
+&lt;number&gt;
+Plans can differ based on a variety of characteristics. Different types of plans serve different purposes and are used in various situations depending on the specific needs of the organization or individual. Here is a list of criteria for classifying plans:
+Nature: Strategic plan, tactical plan, operational plan, contingency plan, standing plan, and single-use plan.
+Objectives: Production plan, marketing plan, financial plan, and human resources plan.
+Time frame: Long-term plan, medium-term plan, and short-term plan.
+Formality: Informal plan and formal plan.
+Scope: Comprehensive plan and functional plan.
+Frequency of use: Standing plan and single-use plan.
+Flexibility: Rigid plan and flexible plan.
+Degree of detail: Specific plan and general plan.
+Level of management: Top-level plan, middle-level plan, and lower-level plan.
+Degree of integration: Consolidated plan and departmental plan.
+Etc.
+&lt;number&gt;
+The formulation of a vision statement is a critical component of an organization&apos;s long-term success. While setting realistic long-term goals is important, having a bigger and further-reaching vision is equally necessary to inspire and motivate both internal and external stakeholders. An effective vision statement should be forward-looking, motivating, reflective of the organization&apos;s culture and values, aimed at bringing benefits and improvements to the organization in the future, and define the company&apos;s reason for existence and where it is heading.
+A well-crafted vision statement provides direction and serves as a guide for making decisions and taking action, both in the present and future. It should be concise, unambiguous, realistic, aspirational, and inspirational, rather than a generic statement that could apply to any organization.
+To create a strong vision statement, organizations should ask themselves what they are trying to accomplish, what impact they want to achieve, where they are going moving forward, what they want to achieve in the future, and what kind of future society they envision. By answering these questions, an organization can create a compelling and effective vision statement that inspires and guides its future success.
+&lt;number&gt;
+Forecasting is the process of predicting future events or conditions based on past and present information. It is a crucial tool for decision-making in many fields, including business, economics, and politics. Forecasting enables managers to anticipate changes and prepare for potential challenges or opportunities. By understanding what may happen in the future, organizations can make informed decisions and take strategic actions to achieve their goals.
+However, it is important to note that forecasting is not an exact science, and there is always a degree of uncertainty involved. Even the most sophisticated forecasting methods cannot predict the future with 100% accuracy. If everything in the world were predictable in advance, there would be no uncertainty, and therefore, no need for forecasting. But this is not the case, and uncertainty is a fundamental aspect of the world we live in.
+Despite the inherent limitations of forecasting, it is still a valuable tool for planning as a management function. Planning involves setting goals and objectives, determining the resources needed to achieve them, and developing strategies and tactics to accomplish them. By forecasting potential outcomes, managers can better plan for the future and allocate resources more effectively. Forecasting helps managers to identify potential risks and opportunities and make informed decisions about how to respond to them.
+In addition to supporting planning, forecasting can also be used to evaluate performance. By comparing actual results to predicted outcomes, managers can assess the effectiveness of their decisions and make adjustments as needed. This helps to ensure that organizations are operating efficiently and achieving their goals.
+While forecasting cannot eliminate uncertainty, it can help to reduce risk and provide a clearer understanding of what may happen in the future. By using forecasting as a tool in the planning process, managers can better prepare for potential challenges and capitalize on emerging opportunities, ultimately leading to more effective decision-making and successful outcomes.
+&lt;number&gt;
+The Gantt Chart is a graphical representation of a project schedule that shows the planned start and end dates of project activities or tasks. It is a useful tool for project managers to plan and track the progress of a project.
+To create a Gantt Chart, the project manager lists all the tasks that need to be completed for the project and estimates the time needed to complete each task. The tasks are then entered into a chart with a horizontal axis representing time and a vertical axis representing the tasks.
+Each task is represented by a horizontal bar on the chart that spans the duration of the task. The bar begins at the planned start date of the task and ends at the planned completion date. The length of the bar indicates the duration of the task.
+The Gantt Chart allows the project manager to see how long each task will take and the dependencies between tasks. Dependencies can be indicated by linking the bars of dependent tasks. This enables the project manager to identify any potential delays or issues that could affect the project timeline.
+The Gantt Chart is a popular method for creating project plans as it provides a visual representation of the project schedule that is easy to understand and communicate to stakeholders. The chart can be updated as the project progresses to track the actual start and end dates of each task and adjust the schedule as necessary.
+&lt;number&gt;
+Compilation of tables is a common method used to create a plan, particularly in operational planning. Tables are an effective way to present data in a structured and organized manner, making it easy to read and understand. Typically, tables are used to list the various tasks that need to be completed, along with relevant information about each task.
+For example, a production plan may include a table that lists the various products that need to be manufactured, the quantity of each product, the resources required, and the deadlines for completion. This allows the production team to quickly and easily see what needs to be done, when it needs to be done, and what resources are required.
+Tables can also be used to track progress and monitor performance. By updating the table with actual results, the team can quickly see if they are on track to meet their goals or if adjustments need to be made to the plan.
+Overall, tables are an effective tool for planning because they provide a clear and concise way to present information, making it easier to create a plan and monitor progress.
+&lt;number&gt;
+&lt;number&gt;
+Tactical and operational plans are critical components of any successful organization. They provide a roadmap for achieving specific objectives and goals. The process of creating these plans involves several stages and the use of various methods and information.
+The typical stages of the plan development process include the collection of information, analysis, optimization, and application. During the information collection stage, data is gathered to identify what needs to be done, how much is needed, where it needs to be done, who will perform the tasks, when they will be performed, what resources are required, and what the desired result should be.
+Once the information is collected, the analysis stage begins. This involves examining the information to identify patterns, trends, and potential roadblocks to success. During the optimization stage, adjustments are made to the plan to ensure that it is as effective and efficient as possible. This may involve reallocating resources, adjusting timelines, or redefining specific goals.
+After optimization, the plan is ready for application. This involves putting the plan into action and monitoring progress towards the desired result. Regular evaluation and adjustments may be necessary to ensure that the plan remains effective and aligned with changing circumstances.
+A variety of methods are used to develop tactical and operational plans. These include the compilation of tables, text descriptions, Gantt charts, and critical path analysis. Gantt charts and critical path analysis are particularly useful for scheduling and resource allocation. A Gantt chart displays the timeline of the project, including milestones and dependencies. Critical path analysis identifies the most critical tasks in the project and helps to ensure that resources are allocated appropriately.
+In summary, creating tactical and operational plans is a detailed process that involves collecting and analyzing information, optimizing the plan, and putting it into action. The use of various methods and information is necessary to ensure that the plan is effective and aligned with the organization&apos;s objectives and goals.
+&lt;number&gt;
+&lt;number&gt;
+The formulation of a mission statement is an important part of an organization&apos;s strategic planning process. It provides a clear and concise statement of the organization&apos;s purpose, guiding principles and the key markets it serves.
+A mission statement should be specific, actionable, and relevant to the organization&apos;s current operations. It should also be focused on the needs of the organization&apos;s customers, stakeholders, and employees. An effective mission statement should provide a clear direction for the organization, as well as inspiration and motivation for its employees.
+To create a good mission statement, it is important to answer three key questions: what does the organization do, who does it serve, and how does it do it? The answers to these questions should be incorporated into a brief, clear, and easy-to-understand statement that reflects the organization&apos;s unique identity and values. A well-crafted mission statement can help guide decision-making, foster employee engagement, and establish a strong brand identity.
+&lt;number&gt;
+orecasting is a method used to obtain information about potential future events, changes in objects, or possible situations. It is often used to gain insights and make decisions related to business planning, investment, and risk management. Forecasting is always related to the future, and can be used to predict events that may occur in the near-term, as well as more distant future events.
+The most important characteristic of forecasting is reliability. The reliability of a forecast is determined by the time horizon, the forecasting methods used, and the information used. A forecast with a longer time horizon is generally less reliable than one with a shorter time horizon, as there are more variables that can change over a longer period of time. The forecasting methods used, such as statistical models or expert judgment, also play a role in the reliability of a forecast. The accuracy of the information used to make the forecast is also important in determining its reliability.
+Uncertainty is the lack or insufficiency of information about something. The less information available, the greater the uncertainty, and the more difficult it is to make decisions. Uncertainty can arise from a variety of factors, such as incomplete data, lack of knowledge, or unexpected events. Uncertainty can lead to risk, as decision makers may need to take action based on incomplete or uncertain information.
+Risk is the potential deviation of actual results from expected ones. It is often associated with the probability of an unwanted, worthless, or harmful outcome, error, or loss. Risk can be managed through risk management strategies, such as hedging or diversification. Effective risk management requires an understanding of the potential risks involved, as well as the potential rewards. This involves using forecasting and other analytical tools to identify and evaluate potential risks, and then taking appropriate action to manage those risks.
+In summary, forecasting is a method used to obtain information about potential future events, changes in objects, or possible situations. Uncertainty arises from the lack of information, while risk is the potential deviation of actual results from expected ones. By using forecasting and other analytical tools, decision makers can better manage risk and uncertainty, and make informed decisions to achieve their goals.
+&lt;number&gt;
+Organizational goals are the specific outcomes that drive the actions and decisions of an organization. These goals should be aligned with the organization&apos;s mission and vision, developed in a way that motivates and guides employees, and categorized based on the length of time they cover. There are three types of organizational goals: long-term, medium-term, and short-term. Long-term goals are planned for a period of more than five years, medium-term goals are planned for one to five years, and short-term goals are planned for less than a year.
+Goals must be well-defined, measurable, challenging but achievable, realistic, and aligned with the organization&apos;s resources and capabilities. They should also be effectively communicated across the organization to ensure everyone understands what is expected of them in achieving the goals. Organizational goals provide direction, focus, and motivation to an organization, and help prioritize its efforts and resources.
+Strategic, tactical, and operational goals are different types of organizational goals that contribute to achieving the overall mission of the organization. Strategic goals are long-term goals that guide the organization&apos;s direction and overall strategy. Tactical goals are mid-term goals that focus on specific areas of the organization and support the achievement of strategic goals. Operational goals are short-term goals that focus on day-to-day activities necessary to achieve tactical goals.
+While the classification by period of goals and the classification into strategic, tactical, and operational goals are related, they are not exactly the same. The former categorizes goals based on the length of time they cover, while the latter is based on the level of the organization they are focused on and their role in achieving the overall mission of the organization. A long-term goal could be both strategic and tactical in nature, and a short-term goal could be operational or tactical, depending on the specific activities it is focused on and the level of the organization it is relevant to.
+&lt;number&gt;
+Tactical planning is the process of developing one to three years plans or actions to support the implementation of an organization&apos;s strategic plan. It typically covers a period of one to three years and focuses on specific departments or units within the organization. The purpose of tactical planning is to translate the broad goals and objectives outlined in the strategic plan into concrete actions and milestones that can be accomplished in the near term.
+Tactical planning involves developing a detailed action plan that specifies the steps to be taken, the resources required, the timeline for completion, and the individuals or teams responsible for each task. This plan is usually broken down into smaller, more manageable tasks or projects that can be monitored and adjusted as needed to ensure progress towards the overall strategic goals.
+Examples of tactical planning activities include developing marketing campaigns, setting sales targets, creating budgets and financial plans, establishing employee training programs, and implementing new processes or procedures. For example, a marketing department may use tactical planning to develop a promotional campaign for a specific product or service, with the objective of increasing sales within the next year. The tactical plan may include specific actions such as creating advertisements, organizing events, and offering promotions to customers. Another example could be a production department using tactical planning to improve efficiency in their manufacturing process. The tactical plan may include actions such as optimizing machine usage, improving inventory management, and implementing new quality control measures, all with the objective of increasing productivity within the next year.
+Tactical planning is typically conducted by mid-level managers or department heads who are responsible for executing the day-to-day operations of the organization and ensuring that the strategic plan is being implemented effectively.
+Overall, tactical planning is a critical component of the strategic planning process as it provides a roadmap for achieving the organization&apos;s goals and objectives in the short term. By aligning tactical plans with the larger strategic plan, organizations can ensure that they are making progress towards their long-term vision while also being responsive to the changing needs of the marketplace and the business environment.
+&lt;number&gt;
+&lt;number&gt;
+Properly formulating goals is an essential part of an organization&apos;s success. Goals provide direction, focus, and motivation for employees to work towards achieving the organization&apos;s mission and vision. To ensure that goals are effective, there are some key practices that should be followed.
+One important practice is to use action verbs in the formulation of goals. Action verbs help to clearly define the intended outcome of the goal and provide a clear understanding of what needs to be accomplished. For example, instead of saying &quot;improve customer satisfaction,&quot; it would be better to say &quot;increase customer satisfaction ratings by 10% within the next six months.&quot; Using action verbs helps to make goals more specific, measurable, and achievable.
+Another practice that can be useful when formulating goals is to structure them hierarchically. When there are many goals, it can be challenging to keep track of them all and ensure that they are all aligned with the organization&apos;s mission and vision. Hierarchizing goals involves creating a tree of goals, also known as a Goal Tree. This allows goals to be organized into a logical hierarchy, with the most important goals at the top and the more specific goals below. This helps to ensure that all goals are aligned with the overall mission and vision of the organization and that they are all contributing to its success.
+Finally, applying the SMART method is an essential practice when formulating goals. SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound. This means that goals should be specific and clearly defined, measurable so that progress can be tracked and evaluated, achievable with the resources and capabilities of the organization, relevant to the overall mission and vision, and time-bound with a specific deadline for completion. Applying the SMART method helps to ensure that goals are well-defined, achievable, and aligned with the organization&apos;s mission and vision.
+&lt;number&gt;
+It is common for plans to deviate significantly from their initial form after implementation. This is understandable as planning is a continuous process. The question then arises: what constitutes a good plan?
+A good plan is one that serves as a useful guide for achieving the desired goals and objectives, while also allowing for flexibility and adaptation to changing circumstances. It should be based on a thorough understanding of the situation and the available resources, as well as realistic assumptions about the future.
+A good plan should also be well-organized, clear, and easily understood by all stakeholders involved in its implementation. It should specify the tasks to be performed, the resources required, the timelines involved, and the expected outcomes.
+However, as you noted, it is important to recognize that plans are not set in stone and are subject to change based on unforeseen circumstances, new information, and shifting priorities. A good plan should be flexible enough to accommodate these changes and allow for ongoing monitoring and adjustment as needed.
+Ultimately, the success of a plan is not determined solely by how closely it aligns with the original vision, but rather by how well it enables the organization to adapt and respond to changing circumstances in a way that achieves its goals and objectives.
+&lt;number&gt;
+Qualitative forecasting methods are widely used in management to predict future trends, identify potential opportunities and threats, and make informed decisions. Qualitative forecasting methods rely on expert opinion, judgment, and subjective evaluation to predict future events. These methods and are especially useful in situations where historical data is limited or unreliable. 
+One of the most common qualitative forecasting methods used in management is market research. This involves gathering information from customers, stakeholders, and competitors to better understand market trends and customer preferences. Market research can take many forms, including surveys, focus groups, and customer feedback. By analyzing this information, managers can make informed decisions about product development, marketing strategies, and business expansion.
+Another qualitative forecasting method used in management is the Delphi method. This involves gathering opinions from a group of experts, who answer a series of questions in multiple rounds until a consensus is reached. The Delphi method is particularly useful for forecasting in complex or uncertain environments, where traditional quantitative forecasting methods may not be effective.
+Scenario planning is another qualitative forecasting method used in management. This involves developing multiple scenarios of potential future events and their impact on the organization. Scenario planning can help managers anticipate and prepare for future events, and identify potential risks and opportunities. It can also help organizations develop contingency plans and adapt to changing market conditions.
+Expert opinion-based methods, such as jury of executive opinion and sales force composite, are also commonly used in management. These methods rely on the expertise and experience of individuals within the organization to make informed decisions about future trends and developments.
+Here is an extensive list of qualitative forecasting methods grouped by category:
+Market Research-Based Methods:
+Focus groups: Small groups of people provide their opinions on a specific topic or product.
+Surveys: Large groups of people provide their opinions on a specific topic or product.
+Delphi method: Experts answer a series of questions in multiple rounds until a consensus is reached.
+Expert Opinion-Based Methods:
+Jury of executive opinion: A group of executives provides their opinions on a specific topic or product.
+Sales force composite: Sales representatives provide their individual forecasts, which are combined to produce a total forecast.
+Analogies: Historical data is used to compare and predict future events.
+Scenario-Based Methods:
+Environmental scanning: An analysis of the external environment is used to identify potential future events.
+Scenario planning: A process of developing multiple scenarios of potential future events and their impact on the organization.
+Judgmental-Based Methods:
+Intuitive judgment: A subjective assessment of the future based on intuition and experience.
+Expert panels: A group of experts provides their opinions on a specific topic or product.
+Historical analogy: Past events are used to predict future events.
+Overall, qualitative forecasting methods can be valuable in situations where data is limited or nonexistent. They can also be useful in complementing quantitative methods by providing insights and expert opinions that cannot be captured by data alone. However, they can be subject to biases and errors, so it is important to use them in conjunction with other methods and to be aware of their limitations.
+&lt;number&gt;
+Objectives are specific and measurable statements that outline what needs to be achieved and the timeline for achieving it. To ensure that objectives are effective, they should be SMART - Specific, Measurable, Achievable, Relevant, and Time-bound.
+Goals, on the other hand, provide the direction for an organization and tell them where they want to go. Objectives provide the specific steps or actions needed to achieve those goals.
+An objective is essentially a target that helps to measure whether a goal has been achieved or not. The targets outlined in objectives are commonly known as metrics or Key Performance Indicators (KPIs). By tracking these metrics, an organization can monitor progress towards their goals and make adjustments to their strategy if necessary.
+Objectives can also include tasks that need to be completed to achieve the desired outcome. The degree to which tasks are defined and clear to the employee who has to perform them is referred to as task structure. The higher the level of task structure, the more defined and detailed the job descriptions and procedures are. This can help employees better understand their role in achieving the objectives and make it easier to measure progress towards those objectives.
+&lt;number&gt;
+A plan is a broad and comprehensive document that outlines a course of action for achieving a specific goal or objective. It includes various details such as the goals to be achieved, the resources needed, the timelines, the roles and responsibilities of team members, and the potential risks and challenges. A plan is a high-level strategic document that provides an overall direction for an organization or project.
+On the other hand, a schedule is a detailed timeline that outlines specific tasks or activities that need to be completed in order to achieve the goals outlined in the plan. It breaks down the plan into smaller, more manageable components and assigns specific deadlines to each task. A schedule is a more detailed and tactical document that outlines the specific steps that need to be taken to achieve the goals outlined in the plan.
+Overrall, a plan is the result of planning activities, and a schedule is a calendar plan.
+&lt;number&gt;
+The SMART method is a popular framework used for setting effective goals and objectives. The acronym SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound.
+Specific: Goals and objectives should be clear and specific, leaving no room for ambiguity or confusion. The more specific they are, the better.
+Measurable: Goals and objectives should be quantifiable in some way, so progress towards them can be tracked and evaluated. This also helps to identify when the goal has been achieved.
+Achievable: Goals and objectives should be realistic and achievable within the given resources, time frame, and capabilities of the organization.
+Relevant: Goals and objectives should be relevant to the overall mission and vision of the organization. They should be aligned with the organization&apos;s strategic priorities and contribute to its long-term success.
+Time-bound: Goals and objectives should have a specific timeline or deadline for completion. This helps to create a sense of urgency and accountability, and makes it easier to track progress towards the goal.
+&lt;number&gt;
+The hierarchy of plans refers to the different levels of plans within an organization, each of which serves a distinct purpose and guides decision-making at a different level. Generally, there are three main levels of plans in an organization: strategic plans, tactical plans, and operational plans.
+At the highest level, strategic plans are developed to guide the long-term direction and goals of an organization. These plans typically cover a period of three to five years and are focused on achieving the overall mission and vision of the organization. Strategic plans consider external factors such as market trends, competition, and technological advancements, as well as internal factors such as organizational strengths and weaknesses. Examples of strategic plans include business plans, corporate plans, and vision and mission statements.
+At the middle level, tactical plans are developed to support the strategic plans and guide decision-making at the departmental or functional level. These plans cover a shorter time horizon, typically one to three years, and are focused on specific actions and initiatives to achieve the strategic objectives. Tactical plans consider the resources, capabilities, and constraints of the organization and are designed to address specific issues or opportunities. Examples of tactical plans include marketing plans, production plans, and departmental plans.
+At the lowest level, operational plans are developed to guide the day-to-day activities of the organization. These plans are typically short-term, covering a period of weeks or months, and are focused on the specific tasks and actions required to implement the tactical plans. Operational plans are highly detailed and provide specific instructions and guidelines for employees to follow. Examples of operational plans include work schedules, production schedules, and task lists.
+The hierarchy of plans and the hierarchy of goals are separate but interdependent concepts. The hierarchy of plans refers to the different levels of planning within an organization, from strategic to operational. The hierarchy of goals refers to the way goals are organized and prioritized based on their level of importance and their relationship to other goals.
+In order to achieve strategic goals, an organization must first achieve its operational goals. This is because operational goals are the specific, measurable targets that support the broader strategic goals. For example, a strategic goal might be to increase revenue by 20% over the next three years. The operational goals that support this objective might include increasing sales by 10% in the first year, improving customer retention by 15%, and reducing expenses by 5%.
+In order to prioritize goals within this hierarchy, an organization must determine which goals are most critical to achieving the broader strategic objectives. This may involve evaluating the relative importance of different goals, as well as considering their feasibility and the resources required to achieve them. By prioritizing goals in this way, an organization can ensure that its efforts are focused on the most important objectives and that it is making progress towards its strategic goals.
+&lt;number&gt;
+S
+(specific) – states exactly what you need to achieve. Make your goals specific and narrow for more effective planning.
+M
+(measurable) – includes a quality or quantity measure. Define what evidence will prove you’re making progress and re-evaluate when necessary.
+A
+(attainable) – can be challenging but must be achievable. Make sure you can reasonably accomplish your goal within a certain timeframe.
+R
+(relevant) – make sense and are meaningful to you. Your goals should align with your values and long-term aims.
+T
+(time-bound) – with a clear end date or timescale – they may be short or longer term. Set a realistic, ambitious end-date for task prioritisation and motivation.
+I will obtain a job as a junior programmer within three months after graduating with my Bachelor Degree.
+Specific: The goal of becoming a junior programmer is well-defined
+Measurable: Success can be measured by the number of applications, interviews and job offers.
+Achievable: The goal setter will have the appropriate degree for the job.
+Relevant: The goal setter is planning to get a job in the ITC industry after getting an education degree.
+Time-based: The goal setter has set a deadline to achieve their objective within the three months following graduation.
+SMART method
+Hierarchy of plans
+Plans are classified into a hierarchy based on their level of detail, scope, and time frame
+Each level of planning is interconnected and the success of the higher levels is dependent on the successful implementation of the lower levels
+The hierarchy of plans provides a framework for aligning the goals and objectives of an organization with the resources and actions required to achieve them
+Objectives and tasks
+Objectives are specific, measurable statements that outline what needs to be achieved and when. They should be SMART.
+Goals provide direction for an organization, while objectives provide the specific steps needed to achieve those goals.
+Objectives include targets, or metrics/KPIs, used to measure progress towards the goal.
+Objectives can also include tasks with varying degrees of task structure, which refers to the level of detail in job descriptions and procedures.
+What is the difference between a plan and a schedule?
+Classification of plans
+Time frame:
+Short-term plan: A plan that covers a period of up to one year, such as a monthly sales plan or a daily production plan.
+Long-term plan: A plan that covers a period of more than one year, such as a five-year strategic plan or a ten-year capital investment plan.
+Frequency of use:
+Standing plan: A plan that is used repeatedly, such as a standard operating procedure or a quality control checklist.
+Single-use plan: A plan that is developed for a specific, one-time purpose, such as a project plan for a new product launch or a crisis management plan.
+Formality:
+Informal plan: A plan that is not written down and may not be well-defined, such as a verbal agreement between colleagues or a mental checklist of tasks.
+Formal plan: A plan that is clearly defined and documented, such as a written policy or a detailed project plan.
+Information presentation forms:
+Verbal plan: A plan that is presented through spoken communication, such as a verbal agreement or a meeting agenda.
+Written plan: A plan that is presented through written communication, such as a business plan or a project proposal.
+Visual plan: A plan that is presented through visual aids, such as a flowchart or a Gantt chart.
+Planning
+Definition of planning. Hierarchy of goals. Types of planning.
+4
+Lecture
+Types of planning
+How to formulate goals properly?
+Using action verbs 
+in formulation
+When there are many goals, it is necessary to structure them (hierarchize), i.e. create a tree of goals (Goal Tree).
+Apply the SMART method
+Definition of a plan
+Plan
+It is the outcome of planning activities.
+A pre-determined course of action that indicates the direction of activity for members of the organization.
+Expected outcome, the direction of action to be implemented, stages to be passed, tasks to be performed.
+The sum of information about planned measures and actions, interconnected by object and time characteristics.
+Role of assumptions in planning
+Due to the uncertainty of the future, it is necessary to use 
+assumptions
+ or 
+predetermined conditions 
+when preparing a plan.
+Example:
+Goal: to double the company&apos;s profit.
+Alternatives:
+Increase the current product sales volume. 
+Assumption: the organization has the ability to capture a larger market share with the existing product.
+Create and sell a completely new product. 
+Assumption: There is sufficient market share for a new product.
+Planning is a priority management function that involves identifying goals, objectives, and tasks, as well as forecasting future events to develop a roadmap for achieving those goals.
+To be effective, planning should be characterized by clarity, specificity, and flexibility. Properly formulated goals and objectives, and assumptions play a significant role in creating a good plan.
+Various things can be planned, including production, finance, marketing, personnel, and so on. Both quantitative and qualitative forecasting methods can be used to forecast future events and plan accordingly.
+There are three types of planning: strategic, tactical, and operational. Each type focuses on a different time horizon and requires different methods to be developed. The hierarchy of plans helps to ensure that all plans are aligned with the organization&apos;s goals and objectives. 
+Final takeaways
+Plans
+Target orientation statements must be:
+Established in the organizational culture
+Understood by different levels of the organizational hierarchy
+Regularly reviewed and adjusted
+Written down to ensure clarity and understanding of what and why things are done
+Qualitative forecasting methods
+Market Research-Based Methods
+Focus groups: Small groups of people provide their opinions on a specific topic or product.
+Surveys: Large groups of people provide their opinions on a specific topic or product.
+Delphi method: Experts answer a series of questions in multiple rounds until a consensus is reached.
+Expert Opinion-Based Methods
+Jury of executive opinion: A group of executives provides their opinions on a specific topic or product.
+Sales force composite: Sales representatives provide their individual forecasts, which are combined to produce a total forecast.
+Analogies: Historical data is used to compare and predict future events.
+Scenario-Based Methods
+Environmental scanning: An analysis of the external environment is used to identify potential future events.
+Scenario planning: A process of developing multiple scenarios of potential future events and their impact on the organization.
+Judgmental-Based Methods
+Intuitive judgment: A subjective assessment of the future based on intuition and experience.
+Expert panels: A group of experts provides their opinions on a specific topic or product.
+Historical analogy: Past events are used to predict future events.
+What is a good plan?
+Hierarchy of goals
+Target orientation
+Mission, Vision, Values
+Organizational Goals
+Strategic
+Tactical
+Operational
+Objectives
+Tasks
+Actions
+Operational planning
+Operational planning is a detailed planning process that focuses on the day-to-day activities.
+The primary goal of operational planning is to ensure that the organization&apos;s resources are used efficiently and effectively to achieve its goals.
+It includes setting measurable targets, allocating resources, and developing detailed action plans that outline the steps required to achieve each objective.
+Operational planning is typically done on a shorter-term basis than strategic or tactical planning, often covering a period of one year or less.
+It is important to note that...
+Planning is a management function that 
+links goals
+, 
+resources
+, and 
+results
+, and is closely related to 
+the function of controlling
+From a practical management perspective, planning involves two important aspects – 
+goals
+ and 
+plans
+ 
+Planning is a 
+priority function
+ among other management functions
+The planning process is 
+dynamic, iterative, ongoing, and constantly reviewed
+What can be planned?
+Financial planning objects:
+Sales revenue targets
+Profit margins
+Budgets for specific departments or projects
+Cash flow projections
+Capital investment plans
+Marketing planning objects:
+Marketing budgets
+Target market segmentation and positioning
+Product or service launch plans
+Promotional campaigns
+Digital marketing strategies
+Human resource planning objects:
+Staffing plans
+Employee training and development programs
+Succession plans
+Performance management processes
+Employee engagement initiatives
+Production planning objects:
+Production schedules
+Inventory management plans
+Quality control processes
+Equipment maintenance schedules
+Lean manufacturing initiatives
+Project management planning objects:
+Project timelines and milestones
+Resource allocation plans
+Risk management strategies
+Communication plans
+Change management processes
+Supply chain planning objects:
+Supplier relationship management plans
+Logistics and transportation plans
+Inventory management strategies
+Procurement processes
+Cost reduction initiatives
+Characteristics of planning
+Components of strategic planning
+Creation of tactical and operational plans
+Typical stages of the plan development process
+Collection of information
+Analysis
+Optimization
+Application
+Typical information used
+What, how much, where needs to be done
+Who has to perform
+When to perform
+What resources, how much and when are needed
+What should be the result
+Methods used
+Compilation of tables
+Text description
+Gantt chart
+Critical path analysis
+Why is planning necessary?
+Establishes direction
+Prioritizes activities
+Resource allocation is more effective
+Reduces uncertainty, improves adaptability
+Facilitates communication, coordination
+Etc.
+Stages of the planning process
+Where do organizational goals come from?
+You SEE a Vision
+a verbal image of what we ultimately want to achieve
+You HAVE a Mission
+your business purpose and market sector
+You BELIEVE in Values
+your moral compass and expected behaviours
+You PURSUE Goals
+the results we choose to accomplish
+You ACHIEVE Objectives
+measurable targets along the path to our goals
+Forecasting
+VILNIUS TECH strategy 2021–2030
+https://vilniustech.lt/files/4385/219/10/19_0/VILNIUS%20TECH%20strategija%202021-2030.pdf
+ 
+Compilation of tables
+Gantt Chart
+Relationship between target orientation and organizational goals
+What is planning as a management function?
+Planning
+is the definition of goals, the selection of measures to achieve those goals, and the creation of a rational sequence of actions to achieve them
+is the anticipation of goals, measures, and actions required to achieve those goals
+ 
+is the systematic development of action programs aimed at reaching agreed-upon business objectives by the process of analyzing, evaluating, and selecting among the opportunities which are foreseen
+Main characteristics of strategic planning
+A wide range of objects and activities
+Relatively long period of time (2-5 years)
+Extending the time horizon reduces the detail of the strategic plan
+It requires aggregation, creativity, foresight and ingenuity.
+Levels of strategic planning: 1) organizational, 2) operational (i.e. independent units), 3) functional (e.g. finance, marketing, production, etc.)
+Organizational target orientation
+Mission
+The main purpose or reason for which the organization exists
+The formulation of the mission statement is important because it helps to focus the attention and efforts of organization members on a common purpose
+Vision
+An inspiring, emotional statement about the organization in the future, conveying what the organization would like to be in its ideal form
+The formulation of the vision statement helps to understand what the organization hopes to become in the future
+Values
+Reflect the core principles and ethics of the organization
+Define planning as a management function and identify its key characteristics.
+Understand what can be planned in an organization and why planning is necessary.
+Explain the relationship between target orientation and organizational goals, including the formulation of a vision, mission, core values.
+Formulate goals properly, including objectives and tasks, using the SMART method.
+Understand the importance of forecasting and identify the key terms associated with it, including quantitative and qualitative forecasting methods, and the role of assumptions in planning.
+Describe the different types of planning, including strategic, tactical, and operational planning.
+Identify the main characteristics and components of strategic planning, as well as the methods used to create tactical and operational plans, such as compilation of tables, Gantt Chart, and Critical Path Analysis.
+Understand the classification and hierarchy of goals and plans.
+Learning outcomes
+Strategical planning
+Strategy
+It is a set of decisions that identify the most important future goals, actions, and measures to achieve those goals.
+Strategic planning
+It is a set of actions aimed at developing a program (plan) for the implementation of the strategy. 
+The purpose of strategic planning is to ensure the implementation of 
+innovations and changes 
+in the organization. 
+In the context of strategic planning, the strategy is treated as a comprehensive plan for achieving the organization&apos;s mission and goals.
+What defines the direction of the organization?
+Mission, vision, and values are components of an organization&apos;s 
+core strength or target orientation
+These statements together:
+establish the direction of the organization
+inform stakeholders about current and future strategies
+allow for the formulation of measurable goals and objectives that can be used to assess the success of the organization.
+Formulation of a vision
+A good vision statement is:
+Looking forward (3, 5, or even 10 years)
+Motivating and inspiring
+Reflecting the company culture and core values
+Anticipating organizational growth
+Easily communicable
+What are we trying to achieve?
+What impact do we want to make?
+What makes us unique?
+Who is the vision statement intended for?
+Forecasting
+If everything in the world were predictable in advance, there would be no uncertainty.
+At the same time, there would be no risk in human actions.
+Formulation of a mission
+A good mission statement should reflect:
+A targeted customer segment
+Value provided by the organization (product or service)
+The uniqueness of the organization
+Additionally, a well-formulated mission statement explains how the vision will be realized.
+What do we do [today]?
+Who do we serve?
+How do we do it?
+Key terms to know
+Forecasting
+A method of obtaining information about future events, changes in objects, or potential situations. 
+It is always related to the future - near, distant, or very distant. 
+The most important characteristic of forecasting is reliability, which is determined by the time horizon, the forecasting methods used, and the information used.
+Uncertainty
+The lack or insufficiency of information about something. 
+The less information available, the greater the uncertainty, and the more difficult it is to make decisions.
+Risk
+Possible deviations of actual results from expected ones. 
+It is often associated with the probability of an unwanted, worthless, or harmful outcome, error, or loss.
+Organizational goals
+Organizational goals
+These are the focus of an open management system. The inputs, processes, and outputs all exist to achieve organizational goals.
+Well-developed organizational goals reflect the purpose of the organization, i.e. they naturally flow from the organization&apos;s mission.
+They must be harmonized with each other, constructive, specific, and sufficiently challenging to demand focus but realistically achievable.
+Tactical planning
+Tactical planning focuses on specific actions, initiatives, and programs that will achieve the overall strategic goals.
+It is typically for a period of one to three years.
+It is carried out by middle management who have the responsibility for implementing the strategies and tactics set by the senior management.
+Tactical plans are specific and measurable, and include details such as budgets, timelines, and resources required.
+It involves making decisions on how to allocate resources, assign tasks, and monitor progress towards goals.
+The outcome of tactical planning is a set of action plans that guide day-to-day activities to achieve strategic objectives.
+Core values of an organization
+Values are beliefs that underlie the vision and mission. 
+They serve as a moral compass and guide the expected behavior in achieving the vision and mission. 
+The statements of values may include elements such as 
+honesty in business
+commitment to employees
+product quality
+environmental protection
+innovative ideas
+continuous learning
+What do we support?
+What attracts people to this organization?
+What makes our work culture unique?
+What do we do better and need to improve better than anyone else?
+How will we conduct our operations to achieve our mission and vision?
+Quantitative forecasting methods
+Time Series Methods
+Moving Averages
+Exponential Smoothing
+Holt-Winters Methods
+ARIMA (Autoregressive Integrated Moving Average) Models
+State-Space Models
+Vector Autoregression (VAR) and Vector Error Correction (VEC) Models
+Seasonal Decomposition of Time Series (STL)
+Kalman Filters
+Bayesian Structural Time Series (BSTS) Models
+Regression Methods
+Simple Linear Regression
+Multiple Linear Regression
+Nonlinear Regression
+Poisson Regression
+Logistic Regression
+Generalized Linear Models (GLMs)
+Time Series Regression
+Artificial Intelligence and Machine Learning Methods
+Neural Networks (NNs)
+Support Vector Machines (SVMs)
+Decision Trees
+Random Forests
+Gradient Boosting
+Deep Learning (Convolutional Neural Networks, Recurrent Neural Networks)
+Clustering (K-Means, Hierarchical)
+Association Rules (Apriori Algorithm)
+Other Quantitative Methods
+Markov Chain Models
+Monte Carlo Simulation
+Econometric Models
+Input-Output Models
+Game Theory Models
+Queueing Models
+Decision Analysis Models
+Bayesian Networks
+Critical Path Analysis

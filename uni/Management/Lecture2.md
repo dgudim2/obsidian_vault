@@ -94,12 +94,11 @@
 
 ![[open-system-model.png]]
 
-- An open system is a system that interacts with its environment, meaning that it exchanges matter, energy, and information with the outside world. Examples of open systems include living organisms, social systems, and many industrial and ecological systems. Open systems are influenced by their environment and can adapt and evolve in response to changes in the environment.
+- An open system is a system that *interacts with its environment*, meaning that it *exchanges* matter, energy, and information with the *outside world*. Examples of open systems include **living organisms**, **social systems**, and many **industrial and ecological systems**. Open systems are influenced by their environment and can adapt and evolve in response to changes in the environment.
 
-- In contrast, a closed system is a system that does not interact with its environment, meaning that it does not exchange matter, energy, or information with the outside world. An example of a closed system is a sealed container, where nothing can enter or exit the container. Closed systems are typically theoretical constructs that are useful for scientific analysis or modeling.
+- In contrast, a *closed system* is a system that *does not interact with its environment*, meaning that it does not exchange matter, energy, or information with the outside world. An example of a closed system is a sealed container, where nothing can enter or exit the container. Closed systems are typically theoretical constructs that are useful for scientific analysis or modeling.
 
-- It's important to note that most real-world systems are not purely open or closed, but exist on a spectrum between the two. Even seemingly closed systems like a sealed container may still exchange heat with the environment or experience small leaks over time. Additionally, many systems can be viewed as open or closed depending on the level of analysis being used. For example, a cell can be viewed as an open system in the context of the nutrients and energy it absorbs from the environment, but as a closed system in terms of its genetic material and organelles.
-
+- It's important to note that most **real-world systems are not purely open or closed**, but exist on a spectrum between the two. Even seemingly closed systems like a sealed container may still exchange heat with the environment or experience small leaks over time. Additionally, many systems can be viewed as open or closed depending on the level of analysis being used. For example, a cell can be viewed as an open system in the context of the nutrients and energy it absorbs from the environment, but as a closed system in terms of its genetic material and organelles.
 
 - With the help of a systemic approach, any **object** or process can be analyzed as __a whole__
 
@@ -149,19 +148,15 @@ Recall from previous lecture – [[Lecture1#6 fundamental elements of management
 
 # Organization as a management object
 
-According to the systemic approach, organizations are rational systems that can be managed.
+- According to the systemic approach, *organizations are rational systems that can be managed*
 
-If organizations can be managed, they are considered as objects of management.
+- If organizations can be managed, they are considered as objects of management.
 
-As a management object, organizations can be understood as a set of various sub-systems: resources, existing relationships, ongoing processes, and tools used to achieve goals and objectives.
+- As a management object, organizations can be understood as a set of various sub-systems: resources, existing relationships, ongoing processes, and tools used to achieve goals and objectives.
 
-When applying a systemic approach to organizational management, a significant emphasis is placed on the analysis of the organization's internal and external environments.
+- When applying a systemic approach to organizational management, a significant emphasis is placed on the analysis of the organization's internal and external environments.
 
-If an organization is viewed as a management object, it means that it is seen as a rational system that can be analyzed and managed using standardized tools and methods.
-
-# Welcome to a world made up of organizations!
-
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management5.jpg)
+- If an organization is viewed as a management object, it means that it is seen as a rational system that can be analyzed and managed using standardized tools and methods.
 
 # Classifation of organizations
 
@@ -178,33 +173,25 @@ If an organization is viewed as a management object, it means that it is seen as
 # Technology in organizations
 
 * _Technology_
-  * In the context of organizational management, technology is a specific way of operating an organization, in which the object of work is transformed into a product using tools.
-  * It includes both physical and organizational technologies.
+  * In the context of organizational management, technology is a *specific way of operating* an organization, in which the object of work is transformed into a product using tools.
+  * It includes *both physical and organizational* technologies.
   * Both the variety of organizations and the technologies they use are very diverse.
 
 # Classification of technology
 
-Technologies are diverse and constantly evolving, reflecting the wide range of human activities and the need for innovative solutions to various challenges.
+- Technologies are diverse and constantly evolving, reflecting the wide range of human activities and the need for innovative solutions to various challenges.
 
-Technologies are often classified according to their purpose (information and communication technologies, production technologies, energy technologies, environmental technologies, transportation technologies, construction technologies, bioengineering technologies, etc.).
+- Technologies are often classified according to their purpose (information and communication technologies, production technologies, energy technologies, environmental technologies, transportation technologies, construction technologies, bioengineering technologies, etc.).
 
-Other proposals for classification include categorizing technologies:
-
-Information technology (IT) vs. operational technology (OT)
-
-Emerging vs. established technology
-
-Hard vs. soft technology
-
-General-purpose vs. specialized technology
-
-Process vs. product technology
-
-Green Technology vs Conventional Technology
-
-Core Technology vs Support Technology
-
-Disruptive Technology vs Sustaining Technology
+- Other proposals for classification include categorizing technologies:
+	- Information technology (IT) vs. operational technology (OT)
+	- Emerging vs. established technology
+	- Hard vs. soft technology
+	- General-purpose vs. specialized technology
+	- Process vs. product technology
+	- Green Technology vs Conventional Technology
+	- Core Technology vs Support Technology
+	- Disruptive Technology vs Sustaining Technology
 
 # The importance of technology in organizational management
 
@@ -220,127 +207,81 @@ __Improved Customer Experience:__ Technology can enable companies to deliver bet
 
 # What is the organizational environment?
 
-What is the external environment of an organization?
+## What is the external environment of an organization?
 
 * _External environment_
   * The external environment includes factors that are beyond the control of the organization and have an impact on its activities and results. The organization cannot do much to avoid the influence of these factors. It simply has to adapt to them.
 * _External environmental factors:_
   * PESTLE: political, economic, socio-cultural, technological, legal, and environmental factors.
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management6.png)
-
-What is the internal environment of an organization?
+## What is the internal environment of an organization?
 
 * _Internal environment_
   * The internal environment consists of elements that have an impact on the organization's activities and decision-making. The organization can control these elements. In other words, these elements have an effect, but the organization can change their quality so that their impact is desirable.
 * _Internal environmental factors_
   * Material, financial, human, informational, technological resources, organizational culture, organizational structure, goal system, processes, policies, and so on.
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management7.png)
-
 # Impact of micro and macro environment Marketing view
 
 ![[micro-macro.png]]
-__Macro environment__
 
-Demographic forces
+- From a *marketing point of view*, the **micro** and **macro** environment of an organization are important factors to consider when developing marketing strategies. The **micro** environment refers to the *factors within the organization's immediate environment* that can affect its operations, while the **macro** environment refers to the *broader societal and economic forces* that can impact the organization.
 
-__Micro environment__
+- The **micro** environment includes factors such as the *organization's employees*, *suppliers*, *customers*, *competitors*, and *other stakeholders* who have a direct impact on the organization's operations. Understanding the needs and preferences of these stakeholders is critical to developing effective marketing strategies. For example, a marketing strategy that focuses on customer retention may be more effective than one that focuses solely on acquiring new customers.
 
-Economic factors
+- **On the other hand**, the **macro** environment includes factors such as *economic conditions*, *demographic changes*, *technological advancements*, *political* and *legal* factors, and cultural and social values that can impact the organization in more indirect ways. These factors can affect the organization's ability to meet the needs of its customers and compete in the market.
 
-Technological factors
+- <u>For example</u>, changes in consumer preferences and attitudes towards sustainability can create opportunities for companies that offer eco-friendly products or services. Similarly, economic downturns can have a significant impact on consumer spending, which can affect the organization's sales and revenue.
 
-Political and legal factors
+- **In order to succeed** in a competitive market, *organizations need to analyze* both their **micro** and *macro* environments in order to identify *opportunities* and *threats*, and develop marketing strategies that take these factors into account. By understanding the needs and preferences of their customers, as well as the broader societal and economic forces that can impact their operations, organizations can **develop marketing strategies** that are more effective, efficient, and responsive to the needs of the market.
 
-Social and cultural forces
 
 # Characteristics of the environment
 
-__Complexity__ : The environment is complex and constantly changing, making it difficult for organizations to predict and respond to changes.
+__Complexity__: The environment is complex and constantly changing, making it difficult for organizations to predict and respond to changes.
 
-__Dynamism__ : The environment is dynamic and in a state of constant flux. It is subject to sudden and unexpected changes that can have a significant impact on an organization's operations.
+__Dynamism__: The environment is dynamic and in a state of constant flux. It is subject to sudden and unexpected changes that can have a significant impact on an organization's operations.
 
-__Uncertainty__ : The environment is uncertain, and there is always a degree of risk associated with the decisions that organizations make.
+__Uncertainty__: The environment is uncertain, and there is always a degree of risk associated with the decisions that organizations make.
 
-__Interdependence__ : The environment is interdependent, with different factors and variables influencing one another in complex ways.
+__Interdependence__: The environment is interdependent, with different factors and variables influencing one another in complex ways.
 
-__Diversity__ : The environment is diverse, with a wide range of factors and variables that can influence an organization's operations and performance.
+__Diversity__: The environment is diverse, with a wide range of factors and variables that can influence an organization's operations and performance.
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management8.jpg)
+# Environmental analysis: How to do it?
 
-# Environmental analysis:How to do it?
+Performing an analysis of an organization's external and internal environments can be done through several methods. Here are some common steps to follow:
 
-_Methods for analysing the _  _environment.pdf_  (see Moodle)
+- **Identify the relevant factors**: Begin by identifying the most important factors that can affect the organization, both internally and externally. This can be done through various methods, including conducting market research, reviewing industry reports and news articles, and interviewing key stakeholders.
+- **Categorize the factors**: Once you have identified the relevant factors, categorize them into external and internal factors. External factors can include economic conditions, competition, legal and regulatory issues, and technological changes, while internal factors can include organizational structure, employee capabilities, and financial resources.
+- **Analyze the factors**: Once you have categorized the factors, analyze them to understand their impact on the organization. This can be done using various tools such as **SWOT** analysis, **PESTEL** analysis, and Porter's Five Forces analysis.
+- **Prioritize the factors**: After analyzing the factors, prioritize them based on their *level of importance* and *impact on the organization*. This will help the organization to focus on the most critical issues that need to be addressed.
+- **Develop a plan of action**: Based on the results of the analysis, develop a plan of action to address the issues identified. This could involve making changes to the organizational structure, improving employee skills and training, investing in new technology, or entering new markets.
+- **Monitor and evaluate**: Finally, it is important to **monitor** and **evaluate** the *results* of the plan of action to ensure that the changes made are having the desired impact. This can be done through *regular performance evaluations*, *market research*, and *customer feedback*. Adjustments can be made as needed to ensure ongoing success.
 
-Environmental analysis:
+- _1 condition_
+	- Apply systemic approach
 
-How to do it?
+- _2 condition_
+	- Choose an appropriate analysis method
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management9.png)
+## What are analysis methods for external environment analysis?
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management10.png)
+- **PESTEL analysis**: analyzes the *Political*, *Economic*, *Socio-cultural*, *Technological*, *Environmental*, and *Legal* factors that impact the organization.
 
-_2 condition_
+- **Porter's Five Forces**: analyzes the competitive forces in the industry including bargaining power of suppliers, bargaining power of buyers, threat of new entrants, threat of substitutes, and intensity of rivalry.
 
-Choose an appropriate analysis method
+- **Competitor analysis**: identifies and analyzes the *strengths* and *weaknesses* of the organization's *competitors*.
 
-_1 condition_
+- **Market research**: collects and analyzes *data about the market*, customers, and industry trends.
 
-Apply systemic approach
+- **Customer analysis**: examines the *needs, wants, and preferences* of customers.
 
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management11.png)
+- **Supplier analysis**: assesses the **strengths** and **weaknesses** of the organization's *suppliers*.
 
-What are analysis methods for external environment analysis?
+- **Environmental scanning**: monitors and evaluates the organization's external environment on an ongoing basis.
 
-PESTEL analysis: analyzes the Political, Economic, Sociocultural, Technological, Environmental, and Legal factors that impact the organization.
-
-Porter's Five Forces: analyzes the competitive forces in the industry including bargaining power of suppliers, bargaining power of buyers, threat of new entrants, threat of substitutes, and intensity of rivalry.
-
-Competitor analysis: identifies and analyzes the strengths and weaknesses of the organization's competitors.
-
-Market research: collects and analyzes data about the market, customers, and industry trends.
-
-Customer analysis: examines the needs, wants, and preferences of customers.
-
-Supplier analysis: assesses the strengths and weaknesses of the organization's suppliers.
-
-Environmental scanning: monitors and evaluates the organization's external environment on an ongoing basis.
-
-and other methods.
-
-![](img/Lecture%202%20-%20Systemic%20Approach%20in%20Management12.png)
-
-# What are analysis methods for internal environment analysis?
-
-- SWOT analysis (Strengths, Weaknesses, Opportunities, Threats)
-
-- Resource analysis, including identifying and assessing the availability, quality, and utility of an organization's resources and capabilities
-
-- Value chain analysis, which involves examining an organization's activities and processes to identify areas where it can add value and improve efficiency
-
-- Financial analysis, including examining an organization's financial statements and performance to identify strengths and weaknesses
-
-- Organizational culture analysis, including understanding an organization's values, beliefs, and assumptions, and how they affect its operations and performance
-
-- Employee surveys and feedback, which can help to identify issues and opportunities within the organization's internal environment
-
-- Management information systems (MIS) and information technology (IT) analysis, including assessing the efficiency and effectiveness of the organization's IT systems and processes, and identifying opportunities for improvement.
-
-It's worth noting that some of these methods can also be used for external environment analysis, and that different organizations may choose to focus on different methods depending on their specific needs and goals.
-
-The organisation cannot resolve the problems that exist in the external environment. It can create a strategy to use these problems as an opportunity or neutralise them as a threat.
-
-For finding a solution for these type of problems, the SWOT analysis tool is usually used.
-
-> SWOT matrix
-
-|  | Positive Factors | Negative Factors |
-| :-: | :-: | :-: |
-| Internal Origin | Strengths | Weaknesses |
-| External Origin | Opportunities | Threats |
-
-# PESTEL analysis method
+### PESTEL analysis method
 
 * PESTEL stands for Political, Economic, Sociocultural, Technological, Environmental, and Legal factors.
 * It's a strategic analysis tool that helps to identify and analyze the external factors that can affect an organization's business environment.
@@ -352,9 +293,83 @@ For finding a solution for these type of problems, the SWOT analysis tool is usu
   * __Legal__  factors include employment laws, consumer laws, and regulatory compliance.
 * PESTEL analysis is useful in developing business strategies, assessing market opportunities, and identifying potential threats to the organization.
 
-# Finding and applying methods suitable for the analysis of environments
+> [!definition] 
+> 
+> **PESTEL** analysis is a method used for *analyzing the external environment* of an organization. The acronym stands for **Political**, **Economic**, **Social**, **Technological**, **Environmental**, and **Legal** factors.
 
-* Quick search on the internet (using relevant keywords in English, it is recommended to use a VPN) related to external and internal environmental analysis (reliable sources such as academic articles, government websites, organizations' public reports, etc.)
+- **Political factors**: These include government policies, regulations, and laws that can impact the organization's operations. For example, changes in taxation policies, trade restrictions, and political stability can all have an effect.
+- **Economic factors**: These refer to macroeconomic conditions such as inflation, unemployment rates, interest rates, and economic growth that can impact the organization's financial performance.
+- **Social factors**: These include demographic trends, cultural attitudes and beliefs, and lifestyle choices that can influence consumer behavior and demand for products or services.
+- **Technological factors**: These refer to advances in technology, research and development, and innovations that can impact the organization's ability to compete in the market.
+- **Environmental factors**: These include climate change, environmental regulations, and sustainability concerns that can affect an organization's operations and reputation.
+- **Legal factors**: These include laws and regulations related to employment, health and safety, intellectual property, and other legal issues that can impact the organization's operations and strategy.
+
+- The **PESTEL** analysis method can be applied in a few steps:
+	- **Identify the relevant factors** that are likely to impact the organization's operations and strategy.
+	- **Collect data and information** related to each of the factors.
+	- **Analyze the data** to identify potential opportunities and threats that the organization may face.
+	- **Use the analysis** to develop strategic plans and make informed business decisions.
+
+> Overall, the PESTEL analysis method is a useful tool for organizations to understand the external environment and adapt their strategy accordingly.
+
+## What are analysis methods for internal environment analysis?
+
+- **SWOT analysis** (Strengths, Weaknesses, Opportunities, Threats)
+
+- **Resource analysis**, including identifying and assessing the availability, quality, and utility of an organization's resources and capabilities
+
+- **Value chain analysis**, which involves examining an organization's activities and processes to identify areas where it can add value and improve efficiency
+
+- **Financial analysis**, including examining an organization's financial statements and performance to identify strengths and weaknesses
+
+- **Organizational culture analysis**, including understanding an organization's values, beliefs, and assumptions, and how they affect its operations and performance
+
+- **Employee surveys and feedback**, which can help to identify issues and opportunities within the organization's internal environment
+
+- **Management information systems (MIS) and information technology (IT) analysis**, including assessing the efficiency and effectiveness of the organization's IT systems and processes, and identifying opportunities for improvement.
+
+> It's worth noting that some of these methods can also be used for external environment analysis, and that different organizations may choose to focus on different methods depending on their specific needs and goals.
+
+### SWOT analysis
+
+The organisation cannot resolve the problems that exist in the external environment. It can create **a strategy** to use these problems as an opportunity or neutralize them as a threat.
+
+For finding a solution for these type of problems, the **SWOT** analysis tool is usually used.
+
+> [!definition] 
+> 
+> **SWOT** analysis is a tool used to evaluate the *strengths*, *weaknesses*, *opportunities*, and *threats* of an organization. It involves the identification and analysis of the internal and external factors that affect the performance and competitiveness of an organization.
+
+- The SWOT acronym stands for:
+
+	- **Strengths**: Internal attributes and resources that contribute positively to the success of the organization.
+	- **Weaknesses**: Internal factors that hinder the organization's success or prevent it from achieving its full potential.
+	- **Opportunities**: External factors that the organization can leverage to gain a competitive advantage.
+	- **Threats**: External factors that pose a risk or challenge to the organization's performance or survival.
+
+- The **SWOT** analysis is typically conducted by a team of individuals *with diverse perspectives*, such as managers, employees, and stakeholders. The team reviews various aspects of the organization, including its products or services, customers, competitors, market trends, financial performance, and internal processes.
+
+- The process of SWOT analysis usually involves the following steps:
+
+	- Defining the objective and scope of the analysis.
+	- Identifying the internal strengths and weaknesses of the organization by conducting an internal analysis.
+	- Identifying the external opportunities and threats by conducting an external analysis.
+	- Combining the internal and external factors to develop a SWOT matrix.
+	- Identifying strategic options based on the SWOT analysis and selecting the most suitable course of action.
+	- Implementing and monitoring the selected strategies.
+
+**SWOT** analysis is a popular and widely used method due to its *simplicity and applicability* to a variety of industries and situations. It helps organizations to identify their competitive advantages and weaknesses, and develop strategic plans to improve their performance and market position.
+
+#### SWOT matrix
+
+|  | Positive Factors | Negative Factors |
+| :-: | :-: | :-: |
+| Internal Origin | Strengths | Weaknesses |
+| External Origin | Opportunities | Threats |
+
+## Finding and applying methods suitable for the analysis of environments
+
+* Quick search on the internet related to external and internal environmental analysis (reliable sources such as academic articles, government websites, organizations' public reports, etc.)
 * Examples of case studies in academic journals, business publications, consulting firms, and research organization websites
 * Collections of management methods (published books, aka ‘manager’s toolkit’ or ‘manager’s handbook’)
 * Once you find the methods that seem appropriate for your task:

@@ -1,8 +1,5 @@
-Lecture
 
-# PlanningDefinition of planning. Hierarchy of goals. Types of planning.
-
-4
+# Planning. Definition of planning. Hierarchy of goals. Types of planning.
 
 __Learning outcomes__
 

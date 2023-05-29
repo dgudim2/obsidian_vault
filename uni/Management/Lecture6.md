@@ -1,6 +1,3 @@
-Lecture
-
-6
 
 # Controlling and AccountingControlling function. Accounting. Types of accounting. Budget control. Balanced scorecard.
 

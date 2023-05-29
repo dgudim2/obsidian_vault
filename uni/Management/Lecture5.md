@@ -1,8 +1,5 @@
-Lecture
 
-# Organizing Organizing principles. Organizational structures.
-
-5
+# Organizing. Organizing principles. Organizational structures.
 
 What is organizing as a function of management?
 

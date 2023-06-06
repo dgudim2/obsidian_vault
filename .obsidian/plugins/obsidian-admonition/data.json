@@ -1,5 +1,55 @@
 {
-  "userAdmonitions": {},
+  "userAdmonitions": {
+    "definition": {
+      "type": "definition",
+      "color": "142, 192, 124",
+      "icon": {
+        "type": "obsidian",
+        "name": "lucide-chevrons-left-right"
+      },
+      "command": false,
+      "title": "Definition",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": false
+    },
+    "theorem": {
+      "type": "theorem",
+      "color": "254, 128, 25",
+      "icon": {
+        "type": "obsidian",
+        "name": "lucide-align-start-vertical"
+      },
+      "command": false,
+      "title": "Theorem",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "problem": {
+      "type": "problem",
+      "color": "251, 73, 52",
+      "icon": {
+        "type": "octicons",
+        "name": "issue-opened"
+      },
+      "command": false,
+      "title": "Problem",
+      "injectColor": true,
+      "noTitle": false
+    },
+    "solution": {
+      "type": "solution",
+      "color": "184, 187, 38",
+      "icon": {
+        "type": "octicons",
+        "name": "issue-closed"
+      },
+      "command": false,
+      "title": "Solution",
+      "injectColor": true,
+      "noTitle": false
+    }
+  },
   "syntaxHighlight": false,
   "copyButton": false,
   "version": "9.3.1",

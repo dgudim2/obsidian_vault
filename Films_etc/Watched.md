@@ -29,4 +29,4 @@
 11. Cyberpunk: Edgerunners (9/10)
 12. Goblin slayer (6/10)
 13. Summertime rendering (9/10)
-14. Lick click (9/10)
+14. Link click (9/10)

@@ -142,44 +142,6 @@ From an organizational perspective\, uniqueness and novelty alone are not enough
   * Encouragement of self\-reflection
   * Risk tolerance
 
-![](img/Lecture%2010%20-%20Organizational%20Culture12.jpg)
-
-# 1.	An inclusive team environment
-
-![](img/Lecture%2010%20-%20Organizational%20Culture13.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture14.png)
-
-# 2.	An inspirational office interior as a workplace environment
-
-![](img/Lecture%2010%20-%20Organizational%20Culture15.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture16.png)
-
-# 3.	Freedom and flexibility
-
-![](img/Lecture%2010%20-%20Organizational%20Culture17.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture18.png)
-
-# 4. Knowledge sharing
-
-![](img/Lecture%2010%20-%20Organizational%20Culture19.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture20.png)
-
-# 5. Encouraging self-reflection
-
-![](img/Lecture%2010%20-%20Organizational%20Culture21.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture22.png)
-
-# 6. Risk tolerance
-
-![](img/Lecture%2010%20-%20Organizational%20Culture23.jpg)
-
-![](img/Lecture%2010%20-%20Organizational%20Culture24.png)
-
 Organizational culture refers to shared values\, beliefs\, and practices that shape people's behavior in an organization\, while organizational climate refers to the prevailing atmosphere or tone that characterizes the work environment of an organization\.Organizational culture is relatively stable and long\-lasting\, while organizational climate is more dynamic and can change over time\.
 
 The elements of organizational culture include three layers consisting of artifacts and symbols\, supported by values and underlying assumptions\. While the artifacts and symbols layer is quite visible\, and the underlying assumptions layer is completely invisible\, the elements of all three layers are interrelated and influence each other\.

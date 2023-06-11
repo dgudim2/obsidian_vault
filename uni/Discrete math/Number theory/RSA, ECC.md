@@ -1,7 +1,29 @@
 
 # RSA coding
 
+## Preparation
 
+1. Chose different (and big!) prime numbers *$p$*, *$q$*, calculate _$n=p*q$_. Then _$\varphi (n) = (p-1)*(q-1)$_ (Note: see [[Residue classes, divisibility#Euler's function|Euler's function]])
+2. Choose *$E$*, [[Divisors, multiples, primes#Coprime numbers|coprime]] with *$\varphi (n)$*
+3. Calculate *$D$*, such that _$E*D \equiv 1(mod\ \varphi (n))$_
+
+## Encoding and decoding
+
+1. Let *$x \in Z_{n}$*. Sender calculates $y=e(x)$, it means that *$y \equiv x^E(mod\ n)$* and sends it to the receiver
+2. Receiver calculates *$x=d(y)$*, so $x \equiv y^D(mod\ n)$
+
+> [!example] 
+> - _$n=23*29=667$_, 
+> - $\varphi(667)=\varphi(23)*\varphi(29)=22*28=616$ (See: [[Residue classes, divisibility#Properties of euler's function|Properties of euler's function]])
+> - *$E=19$*
+> - Solve $19x=1(mod\ 616)$ (See: [[Residue classes, divisibility#Equations and systems|Equations]])
+> 	- From $x=227(mod\ 616)$ obtain *$D=227$* (take smallest positive)
+
+> [!example] 
+> Encode *$\overline{93}$*
+> 
+> 1. Calculate $e(\overline{93}) = 93^{19}(mod\ 667) = \overline{323}$
+> 2. Receiver decodes $d(\overline{323})=323^{227}(mod\ 667) = \overline{93}$
 
 # Error correcting codes
 
@@ -88,7 +110,7 @@ flexGrow=1
 
 > [!definition] 
 > 
-> $$m_{k+1}=\left( \sum_{i=1}^{k}m_{i} \right)mod\ 2= \begin{cases} {\color{green}0},\ if\ sum\ of\ vector's\ elements\ is\ \color{green}even \\{\color{yellow}1},\ if\ sum\ of\ vector's\ elements\ is\ \color{yellow}odd \end{cases}$$
+> $$m_{k+1}=\left( \sum_{i=1}^{k}m_{i} \right)mod\ 2= \begin{cases} {\color{green}0},\ \text{if sum of vector's elements is}\ \color{green}even \\{\color{yellow}1},\ \text{if sum of vector's elements is}\ \color{yellow}odd \end{cases}$$
 
 > [!note] 
 > This code does not *corrects* errors, only **detects**

@@ -175,8 +175,6 @@ Work remuneration \(compensation\) system
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation10.png)
 
-![](img/Lecture%209%20-%20Performance%20Evaluation11.png)
-
 # Forms of reward
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation12.jpg)
@@ -194,8 +192,6 @@ Work remuneration \(compensation\) system
   * is a set of reward measures\, including fixed salary\, periodic or one\-time payments\, designed not only to reward the work done\, but also to attract\, retain and motivate the employee\.
 
 ![](img/Lecture%209%20-%20Performance%20Evaluation15.png)
-
-![](img/Lecture%209%20-%20Performance%20Evaluation16.png)
 
 # Objectives of the compensation system
 

@@ -6,6 +6,10 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "TiAdjustmentsCode",
+      "TiBoxMultiple",
+      "FabCodepen",
+      "LiDivideSquare",
       "RiLoader3Line",
       "LiExternalLink",
       "FasMemory",
@@ -16,22 +20,18 @@
       "SiArtifacthub",
       "FasLanguage",
       "RiEnglishInput",
-      "LiCpu",
-      "RiArrowUpDownLine",
-      "LiBinary",
-      "SiDiagramsdotnet",
-      "SiGraphql"
+      "LiCpu"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [
       {
-        "rule": "Graphs - .*",
-        "icon": "FasDiagramProject",
+        "rule": "attachements",
+        "icon": "TiLink",
         "for": "everything"
       },
       {
-        "rule": "attachements",
-        "icon": "TiLink",
+        "rule": "Graphs - .*",
+        "icon": "FasDiagramProject",
         "for": "everything"
       },
       {
@@ -69,5 +69,9 @@
   "uni/Computer architecture/Memory.md": "FasMemory",
   "uni/Index.md": "IbStackVertical",
   "uni/Extra": "LiExternalLink",
-  "uni/Philosophy": "RiLoader3Line"
+  "uni/Philosophy": "RiLoader3Line",
+  "uni/Discrete math/Number theory/Residue classes, divisibility.md": "LiDivideSquare",
+  "uni/Discrete math/Number theory/Huffman codes.md": "FabCodepen",
+  "uni/Discrete math/Number theory/Divisors, multiples, primes.md": "TiBoxMultiple",
+  "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustmentsCode"
 }

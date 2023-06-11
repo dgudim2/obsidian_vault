@@ -35,11 +35,11 @@ d -> {q r s t u v}
 ```
 
 $$
-V = \{V_{1}, V_{2}, V_{3}, ... V_{n}\} - vertices \\
+V = \{V_{1}, V_{2}, V_{3}, ... V_{n}\} - \text{vertices} \\
 $$
 
 $$
-L = (L_{1}, L_{2}, L_{3}, ... L_{n}) - lines
+L = (L_{1}, L_{2}, L_{3}, ... L_{n}) - \text{lines}
 $$
 
 > Two lines are **parallel**, if their initial and final vertices coincide

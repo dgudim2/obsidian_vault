@@ -15,7 +15,8 @@
       "pin": true,
       "value": "Home",
       "kind": "File",
-      "commands": []
+      "commands": [],
+      "openWhenEmpty": true
     }
   },
   "separateMobile": false

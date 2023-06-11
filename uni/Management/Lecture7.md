@@ -49,8 +49,6 @@ _Employee development_
   * A person holding a management position in an organization\, who performs the main management functions defined by their position\.
   * Managers also play various roles in coordinating individuals and teams' efforts within the organization \(H\. Mintzberg's theory of managerial roles\)\.
 
-![](img/Lecture%207%20-%20Directing0.jpg)
-
 # Interpersonal Roles
 
 __Figurehead:__  Involves handling ceremonial and symbolic activities\, representing the organization in their formal managerial capacity as the head of the unit\.
@@ -267,8 +265,6 @@ Physical barriers
 Psychological barriers
 
 # The importance of technology in communication
-
-![](img/Lecture%207%20-%20Directing13.jpg)
 
 Technology has transformed communication by enabling remote work
 

@@ -53,7 +53,7 @@
 > *Common* divisors of **1540** and **294** are *1*, *2*, *7*, *14*
 > $gcd(1540,294)=14$; (2|14, 7|14)
 
-## Euclid's algorithm
+### Euclid's algorithm
 
 If *$a$* and *$b$* are natural numbers, and
 
@@ -94,7 +94,7 @@ $$r_{2}=r_{3}q_{4}+r_{4} \ \ \ \ \ 0\leq r_{4} \leq r_{3}$$
 > *$s=2$*
 > $gcd(203;91)=r_{s-1}=r_{1}={\color{purple}7}$
 
-## UV form
+### UV form
 
 > [!theorem] 
 > if *$d$* and *$c$* are [[#Greatest common divisor|greatest common divisors]] of numbers *$a$* and *$b$*, then *$d=c$*
@@ -109,7 +109,7 @@ $$r_{2}=r_{3}q_{4}+r_{4} \ \ \ \ \ 0\leq r_{4} \leq r_{3}$$
 > > $gcd({\color{cyan}85};{\color{green}34})$ in form ${\color{cyan}85}u+{\color{green}34}v$
 > > $gcd({\color{cyan}85};{\color{green}34}) = 17 = {\color{cyan}85} * 1 + {\color{green}34}*(-2)$
 
-## Matrix form
+### Matrix method
 
 ````col
 ```col-md
@@ -246,10 +246,10 @@ $d(n)=(\alpha_{1}+1)*(\alpha_{2}+1)*\dots*(\alpha_{k}+1)$
 --- 
 <br>
 
-# Equations
+# ax+by=c equation
 
 > [!theorem] 
-> Say *$a$*, *$b$* and *$c$* are integers. Solution $(x;y)$ of equation $$ax+by=c$$ is pair of integers if, and only if *$c$* is *divisible* by *$gcd(a;b)$*
+> Say *$a$*, *$b$* and *$c$* are integers. Solution $(x;y)$ of equation $$ax+by=c$$ is pair of integers if, and only if *$c$* is *divisible* by *$gcd(a;b)$* (See: [[#Greatest common divisor]])
 > Then $$x_{0}=\frac{uc}{gcd(a;b)},\ \ \ y_{0}=\frac{vc}{gcd(a;b)}$$
 > Other solutions: $$x = x_{0}=+\frac{bt}{gcd(a;b)},\ \ \ y = y_{0}-\frac{at}{gcd(a;b)}$$
 > Where 

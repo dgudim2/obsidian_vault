@@ -30,8 +30,6 @@ Understand the classification and hierarchy of goals and plans.
 
 ![](img/Lecture%204%20-%20Planning0.jpg)
 
-![](img/Lecture%204%20-%20Planning1.png)
-
 # It is important to note that...
 
 Planning is a management function that links goals, resources, and results, and is closely related to the function of controlling
@@ -131,12 +129,6 @@ Where do organizational goals come from?
 * You ACHIEVE Objectives
   * measurable targets along the path to our goals
 
-# 
-
-![](img/Lecture%204%20-%20Planning2.jpg)
-
-![](img/Lecture%204%20-%20Planning3.png)
-
 # Formulation of a vision
 
 _What are we trying to achieve?_
@@ -159,14 +151,6 @@ Anticipating organizational growth
 
 Easily communicable
 
-![](img/Lecture%204%20-%20Planning4.png)
-
-![](img/Lecture%204%20-%20Planning5.png)
-
-![](img/Lecture%204%20-%20Planning6.jpg)
-
-![](img/Lecture%204%20-%20Planning7.png)
-
 _What do we do [today]?_
 
 _Who do we serve?_
@@ -182,14 +166,6 @@ Value provided by the organization (product or service)
 The uniqueness of the organization
 
 Additionally, a well-formulated mission statement explains how the vision will be realized.
-
-![](img/Lecture%204%20-%20Planning8.png)
-
-![](img/Lecture%204%20-%20Planning9.png)
-
-![](img/Lecture%204%20-%20Planning10.jpg)
-
-![](img/Lecture%204%20-%20Planning11.png)
 
 # Core values of an organization
 
@@ -212,10 +188,6 @@ _How will we conduct our operations to achieve our mission and vision?_
   * environmental protection
   * innovative ideas
   * continuous learning
-
-![](img/Lecture%204%20-%20Planning12.png)
-
-![](img/Lecture%204%20-%20Planning13.png)
 
 Target orientation statements must be:
 
@@ -272,8 +244,6 @@ When there are many goals, it is necessary to structure them (hierarchize), i.e.
 
 Apply the SMART method
 
-![](img/Lecture%204%20-%20Planning21.png)
-
 # Objectives and tasks
 
 Objectives are specific, measurable statements that outline what needs to be achieved and when. They should be SMART.
@@ -283,12 +253,6 @@ Goals provide direction for an organization, while objectives provide the specif
 Objectives include targets, or metrics/KPIs, used to measure progress towards the goal.
 
 Objectives can also include tasks with varying degrees of task structure, which refers to the level of detail in job descriptions and procedures.
-
-![](img/Lecture%204%20-%20Planning22.png)
-
-![](img/Lecture%204%20-%20Planning23.jpg)
-
-![](img/Lecture%204%20-%20Planning24.png)
 
 __I will obtain a job as a junior programmer within three months after graduating with my Bachelor Degree.__
 
@@ -311,8 +275,6 @@ __A__ (attainable) – can be challenging but must be achievable. Make sure you 
 __R__ (relevant) – make sense and are meaningful to you. Your goals should align with your values and long-term aims.
 
 __T__ (time-bound) – with a clear end date or timescale – they may be short or longer term. Set a realistic, ambitious end-date for task prioritisation and motivation.
-
-![](img/Lecture%204%20-%20Planning25.png)
 
 Forecasting
 
@@ -516,11 +478,7 @@ The hierarchy of plans provides a framework for aligning the goals and objective
 
 # Gantt Chart
 
-![](img/Lecture%204%20-%20Planning28.tiff)
-
 # Critical Path Analysis
-
-![](img/Lecture%204%20-%20Planning29.tiff)
 
 # What is a good plan?
 

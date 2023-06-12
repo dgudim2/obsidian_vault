@@ -109,7 +109,7 @@ $$r_{2}=r_{3}q_{4}+r_{4} \ \ \ \ \ 0\leq r_{4} \leq r_{3}$$
 > > $gcd({\color{cyan}85};{\color{green}34})$ in form ${\color{cyan}85}u+{\color{green}34}v$
 > > $gcd({\color{cyan}85};{\color{green}34}) = 17 = {\color{cyan}85} * 1 + {\color{green}34}*(-2)$
 
-### Matrix method
+#### Matrix method
 
 ````col
 ```col-md
@@ -170,6 +170,9 @@ $$
 
 ```
 ````
+
+> [!seealso] 
+> [[#ax+by=c equation]]
 
 --- 
 <br>

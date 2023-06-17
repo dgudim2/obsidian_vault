@@ -1,4 +1,4 @@
-# This is the source of my obsidian notes
+# These are the source files of my obsidian notes
 
 Exported notes and additional info: **[here](https://github.com/dgudim/uni-math-notes)**
 

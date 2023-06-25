@@ -5,7 +5,6 @@
 
 ## Random 
 + They see
-+ Free guy
 + Altered carbon
 + Gattaca
 + Падение луны

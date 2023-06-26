@@ -33,3 +33,4 @@
 + Mashle magic and muscles
 + восхождение в тени
 + sonny boy
++ trigun stampede

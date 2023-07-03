@@ -11,6 +11,7 @@ kanban-plugin: basic
 - [ ] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
 - [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
+- [ ] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
 
 
 ## Features

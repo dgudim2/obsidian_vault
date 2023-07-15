@@ -548,7 +548,6 @@ flexGrow=1
 ![[Pasted image 20230402184812.png]]
 
 ```` 
-````col-md
 ````col-md 
 flexGrow=1
 ===

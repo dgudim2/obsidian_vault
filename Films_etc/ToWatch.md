@@ -40,3 +40,5 @@
 + восхождение в тени
 + sonny boy
 + trigun stampede
++ kiznavier
++ 

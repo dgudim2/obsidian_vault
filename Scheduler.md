@@ -23,6 +23,10 @@ kanban-plugin: basic
 - [ ] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
 - [ ] **Option to archive entries for faster loading**<br><br>Add an option to put completed entries into a separate list<br><br>@{2023-05-08}
 - [ ] **Menu for editing groups**<br><br>Add a menu to edit group parameters (better than re-saving groups)<br><br>@{2023-05-12}
+- [ ] **Add a toast when the even is added**<br><br>Display "Event was added" toast<br><br>@{2023-08-01}
+- [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
+- [ ] **download readme**<br>Add obtanium to scheduler readme<br><br>@{2023-08-01}
+- [ ] **More group options**<br>- Option to choose default group<br>- Option to collapse events by groups<br><br>@{2023-08-01}
 
 
 ## Fixed bugs

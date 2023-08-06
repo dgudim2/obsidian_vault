@@ -32,3 +32,4 @@
 12. Goblin slayer (6/10)
 13. Summertime rendering (9/10)
 14. Link click (9/10)
+15. Serial experiments, Lain (9.5/10)

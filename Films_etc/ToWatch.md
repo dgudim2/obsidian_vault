@@ -10,7 +10,6 @@
 + Падение луны
 + black mirror
 + Навстречу шторму
-+ The menu
 + Everything Everywhere all at once
 + Knives out, glass onion
 + bullet train

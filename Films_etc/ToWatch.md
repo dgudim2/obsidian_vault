@@ -35,7 +35,6 @@
 + Шарлотта
 +  Oshi no Ko, (звёздное дитя, или Ребёнок идола)
 + Mashle magic and muscles
-+ восхождение в тени
 + sonny boy
 + trigun stampede
 + kiznavier

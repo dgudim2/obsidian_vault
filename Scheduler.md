@@ -11,7 +11,6 @@ kanban-plugin: basic
 - [ ] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
 - [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
-- [ ] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
 
 
 ## Features
@@ -27,10 +26,12 @@ kanban-plugin: basic
 - [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
 - [ ] **download readme**<br>Add obtanium to scheduler readme<br><br>@{2023-08-01}
 - [ ] **More group options**<br>- Option to choose default group<br>- Option to collapse events by groups<br><br>@{2023-08-01}
+- [ ] **Per event backgrounds**<br>Ability to set backgrounds if some event happens<br>@{2023-08-31}
 
 
 ## Fixed bugs
 
+- [ ] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
 
 
 ## Implemented features

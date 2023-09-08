@@ -1,8 +1,5 @@
 {
-  "spellcheckLanguages": [
-    "en-US",
-    "ru"
-  ],
+  "spellcheckLanguages": null,
   "trashOption": "none",
   "newFileLocation": "current",
   "showUnsupportedFiles": true,

@@ -10,11 +10,14 @@
 6. Free guy (8/10)
 7. Ловушка времени (6/10)
 8. Аватар 2 (не досмотрел, бяка)
+9. Menu 2020 (6/10)
 
 ## Series
 
 1. The EXPANSE (8.5/10)
 2. Silicon valley (9.5/10)
+3. Dr. Who (9.7/10) 12й сезон и дальше бяка
+4. Обломки(Debris) (7/10)
 
 ## Anime
 
@@ -32,4 +35,7 @@
 12. Goblin slayer (6/10)
 13. Summertime rendering (9/10)
 14. Link click (9/10)
-15. Serial experiments, Lain (9.5/10)
+15. Приключения Элейны (7/10)
+16. Serial experiments, Lain (9.5/10)
+17. восхождение в тени  (7.8/10)
+18. Паразит (9/10)

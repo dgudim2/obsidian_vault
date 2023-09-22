@@ -19,6 +19,7 @@
 2. Silicon valley (9.5/10)
 3. Dr. Who (9.7/10) 12й сезон и дальше бяка
 4. Обломки(Debris) (7/10)
+5. Silicon valley (9.8/10)
 
 ## Anime
 

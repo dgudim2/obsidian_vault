@@ -15,6 +15,7 @@
 + bullet train
 + top gun 
 + the prestige
++ ghost in the shell
 + it croud
 
 ## Anime

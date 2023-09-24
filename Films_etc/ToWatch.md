@@ -14,6 +14,7 @@
 + Knives out, glass onion
 + bullet train
 + top gun 
++ the prestige
 + it croud
 
 ## Anime

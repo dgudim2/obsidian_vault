@@ -24,7 +24,7 @@
 ## There are three cards of one suit and three of another suit
 
 - Number of cards in a suit: **13**
-- _Probability_: $$\frac{C_{13}^3*C_{13}^3}{C_{52}^6}=\frac{286*286}{20358520}=0.00401778$$
+- _Probability_: $$\frac{C_{4}^2*C_{13}^3*C_{13}^3}{C_{52}^6}=\frac{286*286*6}{20358520}=0.0241067$$
 
 # Task 2
 
@@ -96,7 +96,7 @@ $$\frac{26!}{(26-10)!} = 19275223968000$$
 
 - We basically need *2* strings, one from **5** distinct letters, another from **5** distinct numbers. Order does matter, we will use **Variations without repetition**
 
-$$V_{26}^5*V_{10}^5=65780*252=5012751744000$$
+$$2*V_{26}^5*V_{10}^5=65780*252*2=10025503488000$$
 
 ## The word can only contain the upper case letters A and B
 
@@ -134,4 +134,4 @@ $$P_{8}=8! = 40320$$
 
 - **8** ways to select a **president**, then **7** ways to select a **vice-president** or *vice-versa*
 
-$$8*7*2=112$$
+$$A_{8}^2=56$$

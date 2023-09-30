@@ -16,6 +16,7 @@
 + top gun 
 + the prestige
 + ghost in the shell
++ whoami
 + it croud
 
 ## Anime

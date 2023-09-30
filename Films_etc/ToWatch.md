@@ -18,6 +18,7 @@
 + ghost in the shell
 + whoami
 + it croud
++ машина времени в джакузи
 
 ## Anime
 + Стальной алхимик 2008

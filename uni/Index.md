@@ -1,7 +1,7 @@
 # Index
 
 ``` dataviewjs
-const folderlist = ['Computer architecture', 'Discrete math', 'Presentations']
+const folderlist = ['Computer architecture', 'Discrete math', 'Presentations', 'Probability theory']
 
 for (let folder of folderlist) {
     dv.header(2, folder);

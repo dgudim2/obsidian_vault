@@ -24,6 +24,7 @@ kanban-plugin: basic
 - [ ] **Per event backgrounds**<br>Ability to set backgrounds if some event happens<br>@{2023-08-31}
 - [ ] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
 - [ ] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
+- [ ] **Cache view for dialogs in a ViewModel**<br><br>Recreate on config change (bind to lifetime)<br><br>@{2023-10-01}
 
 
 ## Fixed bugs

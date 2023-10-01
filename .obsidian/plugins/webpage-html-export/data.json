@@ -31,6 +31,29 @@
   "graphMaxNodeSize": 7,
   "exportPath": "/home/kloud/Documents/obsidian_vault/export",
   "filesToExport": [
-    []
+    [
+      "uni/Computer architecture/Data representation.md",
+      "uni/Computer architecture/IO.md",
+      "uni/Computer architecture/Memory.md",
+      "uni/Computer architecture/Processor.md",
+      "uni/Discrete math/Graphs/Graphs - basics.md",
+      "uni/Discrete math/Graphs/Graphs - coloring.md",
+      "uni/Discrete math/Graphs/Graphs - connectivity.md",
+      "uni/Discrete math/Graphs/Graphs - directed graphs, applications.md",
+      "uni/Discrete math/Graphs/Graphs - metrics.md",
+      "uni/Discrete math/Graphs/Graphs - metrics2.md",
+      "uni/Discrete math/Graphs/Graphs - morphism.md",
+      "uni/Discrete math/Graphs/Graphs - operations.md",
+      "uni/Discrete math/Graphs/Graphs - planarity.md",
+      "uni/Discrete math/Graphs/Graphs - shortest path.md",
+      "uni/Discrete math/Graphs/Graphs - trees.md",
+      "uni/Discrete math/Number theory/Divisors, multiples, primes.md",
+      "uni/Discrete math/Number theory/Huffman codes.md",
+      "uni/Discrete math/Number theory/Residue classes, divisibility.md",
+      "uni/Discrete math/Number theory/RSA, ECC.md",
+      "uni/Presentations/Git presentation.md",
+      "uni/Probability theory/homeworks/Homework1.md",
+      "uni/Index.md"
+    ]
   ]
 }

@@ -1,17 +1,23 @@
 
 # Definitions
 
+## Experiment
+
 > [!definition] 
 > **An experiment**
 > 
 > An *experiment* is any procedure that can be *infinitely repeated* and has a <u>well 
 > defined set of outcomes</u>.
 
+## Random experiment
+
 > [!definition] 
 > 
 > A **random experiment**
 > 
 > A *random experiment* is an experiment that produces **random outcomes**.
+
+## Trial
 
 > [!definition] 
 > 
@@ -20,11 +26,15 @@
 > A **trial** is a single moment of a *random experiment*.
 > > (If a die is thrown ten times, there would be ten trials. The key concept to note here is that each trial produces exactly one outcome.)
 
+## Elementary event
+
 > [!definition] 
 > 
 > An **elementary event**
 > 
 > **Elementary event** is a result of **experiment**, which *can not be split* in to separate events.
+
+## Space of elementary events
 
 > [!definition] 
 > 
@@ -94,7 +104,6 @@ Also see [[Graphs - operations#Union (OR/$ cup$)|Union in graphs]]
 ---
 preset:default-tikz
 width:450px
-mix-multiplier:0
 ---
 
 \begin{tikzpicture}[thick,
@@ -218,5 +227,5 @@ width:450px
 
 # Go to other topics
 ``` dataview
-list from "uni/Discrete math"
+list from "uni/Probability theory"
 ```

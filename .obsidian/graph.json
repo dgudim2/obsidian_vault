@@ -29,10 +29,10 @@
       }
     },
     {
-      "query": "path:/",
+      "query": "path:\"uni/Probability theory\"  ",
       "color": {
         "a": 1,
-        "rgb": 6084188
+        "rgb": 11492566
       }
     }
   ],
@@ -46,6 +46,6 @@
   "repelStrength": 8.90625,
   "linkStrength": 0.4921875,
   "linkDistance": 298,
-  "scale": 0.32896944439909637,
-  "close": true
+  "scale": 0.32896944439909614,
+  "close": false
 }

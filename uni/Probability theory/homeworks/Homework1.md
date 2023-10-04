@@ -14,17 +14,23 @@
 - All Combinations of **6 hearts** from all the hearts: $C_{13}^{6}$ 
 - All combinations of **6 cards**: $C_{52}^{6}$
 - _Probability_: $$\frac{C_{13}^{6}}{C_{52}^{6}}=\frac{1716}{20358520} \approx 8.4289*10^{-5}$$
+
+> See: [[Probability measure#Classical definition of probability]]
+
 ## There are three aces, two kings, and one queen
 
 - Total number of aces: **4**
 - Total number of queens: **4**
 - Total number of kings: **4**
 - *Probability*: $$\frac{C_{4}^3*C_{4}^2*C_{4}^1}{C_{52}^6}=\frac{4*6*4}{20358520}\approx 4.71547*10^{-6}$$
+> See: [[Probability measure#Classical definition of probability]]
 
 ## There are three cards of one suit and three of another suit
 
 - Number of cards in a suit: **13**
 - _Probability_: $$\frac{C_{4}^2*C_{13}^3*C_{13}^3}{C_{52}^6}=\frac{286*286*6}{20358520}=0.0241067$$
+
+> See: [[Probability measure#Classical definition of probability]]
 
 # Task 2
 
@@ -40,17 +46,23 @@
 
 $$C_{15}^{11}=1365$$
 
+> See: [[Random events#Combination]]
+
 ## A particular player is always chosen
 
 - In this case we only need to pick **10** people from 14
 
 $$C_{14}^{10}=1001$$
 
+> See: [[Random events#Combination]]
+
 ## A particular player is never chosen
 
 - In this case we only have **14** players to choose from
 
 $$C_{14}^{11}=364$$
+
+> See: [[Random events#Combination]]
 
 # Task 3
 
@@ -66,6 +78,8 @@ $$C_{14}^{11}=364$$
 - father: $P_{1,1,1,1,1,1}=6! = 720$
 - allele: $P_{1,3,2}=\frac{6!}{1!3!2!}=60$
 - Mississippi: $P_{1,4,4,2}=\frac{11!}{1!4!4!2!}=34650$
+
+> See: [[Random events#Permutation]]
 
 # Task 4
 
@@ -86,11 +100,15 @@ $$C_{14}^{11}=364$$
 
 $$26^{10}=141167095653376$$
 
+> See: [[Random events#Arrangement]]
+
 ## All characters must be lower case letters and distinct
 
 - Same as the last one, but *without repetition*, we choose **Variations without repetition**
 
 $$\frac{26!}{(26-10)!} = 19275223968000$$
+
+> See: [[Random events#Arrangement]]
 
 ## Letters and digits must alternate and be distinct
 
@@ -98,11 +116,15 @@ $$\frac{26!}{(26-10)!} = 19275223968000$$
 
 $$2*V_{26}^5*V_{10}^5=65780*252*2=10025503488000$$
 
+> See: [[Random events#Arrangement]]
+
 ## The word can only contain the upper case letters A and B
 
 - There can be **repetition**, order does matter, so we use **Variations with repetition**
 
 $$2^{10}=1024$$
+
+> See: [[Random events#Arrangement]]
 
 ## The word can only contain the upper case letters A and B, and must contain each of these letters
 
@@ -117,6 +139,8 @@ Answer is **1022**
 
 $$\frac{(5+5)!}{5!*5!}=252$$
 
+> See: [[Random events#Permutation]]
+
 # Task 5
 
 > [!info]
@@ -129,6 +153,8 @@ $$\frac{(5+5)!}{5!*5!}=252$$
 - Basically **permutations without repetition**
 
 $$P_{8}=8! = 40320$$
+
+> See: [[Random events#Permutation]]
 
 ## How many ways can a president and a vice-president be elected from the 8 students?
 

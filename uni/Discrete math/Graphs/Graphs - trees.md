@@ -1529,9 +1529,6 @@ width:65%
    \draw[color=black, fill=white] (c) circle (0.4) node {\Huge c};
    \draw[color=black, fill=white] (s) circle (0.4) node {\Huge s};
 
-\end{tikzpicture}
-
-\end{document}
 ```
 
 ```` 

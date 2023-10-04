@@ -10,7 +10,7 @@ print(v)
 
 
 
-v2 <- v <- map_vec((1:10), \(i) log(exp(i + 3)), .progress = FALSE)
+v2 <- map_vec((1:10), \(i) log(exp(i + 3)), .progress = FALSE)
 print(v2)
 
 

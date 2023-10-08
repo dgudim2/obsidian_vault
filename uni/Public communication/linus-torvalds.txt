@@ -1,0 +1,13 @@
+I want to talk about a truly revolutionary person in the world of technology, a man whose contributions have shaped the way we use computers and the internet - Linus Torvalds.
+
+Imagine a world without open-source software, where proprietary systems dominate our digital life. A software dystopia I might say. It's a world that Linus refused to accept.
+
+Torvalds was born in Helsinki, Finland. Even though he connected his life with tech, his parents were not techy at all, they were journalists.
+
+In the early 1990s, Linus was a young student with a vision. He believed a collaborative approach to software development is the way forward, where anyone, anywhere could contribute to building an operating system. This vision became a reality when he created Linux, an open-source kernel that revolutionized the tech industry.
+
+He attracted a lot of like-minded people, a community of developers, all working together, collaborating, to improve the code. This spirit of cooperation has led to the creation of the most powerful and versatile operating systems in the world, powering everything from embedded devices to smartphones to supercomputers.
+
+But he isn't just a technical person, he's also an advocate for freedom. He released Linux under the GNU General Public License, ensuring that it would always remain open and accessible to everyone. In doing so, he inspired a global movement of open-source enthusiasts who continue to shape our digital world today.
+
+In conclusion, Linus Torvalds is more than just a software developer, he's a symbol of what can be achieved when we collaborate and share knowledge, a force that has transformed the tech industry and the lives of countless individuals worldwide.

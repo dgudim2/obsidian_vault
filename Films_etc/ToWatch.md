@@ -19,6 +19,7 @@
 + whoami
 + it croud
 + машина времени в джакузи
++ The electric state
 
 ## Anime
 + Стальной алхимик 2008

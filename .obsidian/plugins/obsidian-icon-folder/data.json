@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "RiMoneyEuroBoxLine",
       "TiArrowsRandom",
       "TiAdjustmentsCode",
       "TiBoxMultiple",
@@ -19,8 +20,7 @@
       "FasDesktop",
       "SiGit",
       "SiArtifacthub",
-      "FasLanguage",
-      "RiEnglishInput"
+      "FasLanguage"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [
@@ -49,7 +49,8 @@
       "bottom": 0,
       "left": -1
     },
-    "iconInTabsEnabled": false
+    "iconInTabsEnabled": false,
+    "iconsBackgroundCheckEnabled": false
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",
@@ -77,5 +78,6 @@
   "uni/Discrete math/Number theory/Huffman codes.md": "FabCodepen",
   "uni/Discrete math/Number theory/Divisors, multiples, primes.md": "TiBoxMultiple",
   "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustmentsCode",
-  "uni/Probability theory": "FasDice"
+  "uni/Probability theory": "FasDice",
+  "uni/Economics": "RiMoneyEuroBoxLine"
 }

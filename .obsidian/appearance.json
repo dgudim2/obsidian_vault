@@ -9,14 +9,14 @@
   "enabledCssSnippets": [
     "Combine Nested tag colors and Highlight colors ",
     "dialogs",
-    "fix_highligh",
     "kanban",
     "list_padding",
     "mermaid",
-    "slides-theme-colors",
     "width-800px",
     "8 + 8 highlight colors",
-    "big-math"
+    "big-math",
+    "slides-theme-colors",
+    "fix_highligh"
   ],
   "showViewHeader": true,
   "theme": "system"

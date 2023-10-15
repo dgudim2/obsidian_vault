@@ -43,4 +43,4 @@
 + sonny boy
 + trigun stampede
 + kiznavier
-+ 
++ Крутой учитель Онидзука

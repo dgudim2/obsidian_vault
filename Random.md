@@ -11,18 +11,6 @@ JQKA
 
 # Misc
 
-Battery-ftp
-
 Hey guys! If someday you would like to find a job in Lithuania join this linkedin group! https://www.linkedin.com/groups/13661534
 
-Nextcloud
-Piped 
-Etsync
-Matrix
-Git
-Webdav
-Whoogle
-Lastfm discord RPC
-
-MOJO (python)
 

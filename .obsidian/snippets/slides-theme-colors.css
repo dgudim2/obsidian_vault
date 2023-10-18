@@ -1,46 +1,40 @@
 .reveal .slide-background-content {
-   background-color: var(--background-primary);
+  background-color: var(--background-primary);
 }
 
-.reveal p,.reveal ul {
-    color: var(--text-normal);
+.reveal p,
+.reveal ul {
+  color: var(--text-normal);
 }
 
 .reveal h1 {
-    color: var(--h1-color);
+  color: var(--h1-color);
 }
 
 .reveal h2 {
-    color: var(--h2-color);
+  color: var(--h2-color);
 }
 
 .reveal h3 {
-    color: var(--h3-color);
+  color: var(--h3-color);
 }
 
 .reveal h4 {
-    color: var(--h4-color);
+  color: var(--h4-color);
 }
 
 .reveal h5 {
-    color: var(--h5-color);
+  color: var(--h5-color);
 }
 
 .reveal h6 {
-    color: var(--h6-color);
+  color: var(--h6-color);
 }
-
-
-
-
-
 
 .slides {
   /* height: 100% !important;*/
   width: 60% !important;
 }
-
-
 
 /* font size */
 .reveal {
@@ -52,7 +46,6 @@
     zoom: 0.7 !important;
   }
 }*/
-
 
 /* ---------------------------------------------------- */
 
@@ -69,15 +62,12 @@
   display: none !important;
 }*/
 
-
 /* ---------------------------------------------------- */
 
 /* code styles */
 .reveal code {
   max-height: fit-content !important; /* disable this if you want scrollable code blocks */
 }
-
-
 
 /* code blocks */
 .reveal pre {
@@ -89,14 +79,10 @@
   /* max-width: 70%; */
 }
 
-
-
 /* move copy button to top right corner */
 .slide .copy-code-button {
   display: none !important;
 }
-
-
 
 /* ---------------------------------------------------- */
 
@@ -107,7 +93,7 @@
   font-size: 0.9em;
 }
 
-.reveal blockquote>p {
+.reveal blockquote > p {
   margin: 0.5em 0;
 }
 
@@ -115,16 +101,23 @@
 
 /* adds border to table */
 
-.reveal table>thead>tr>th {
+.reveal table > thead > tr > th {
   font-weight: 500;
   border: 1px solid hsl(0, 0%, 18%);
 }
 
-.reveal table>tbody>tr>td {
+.reveal table > tbody > tr > td {
   border: 1px solid hsl(0, 0%, 18%);
 }
 
-.reveal table, th, td {
+.reveal table,
+th,
+td {
   border: 1px solid hsl(0, 0%, 18%);
 }
 
+/* Text alignment in columns */
+
+.block-language-col p {
+  text-align: left;
+}

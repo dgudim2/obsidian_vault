@@ -50,7 +50,8 @@
       "left": -1
     },
     "iconInTabsEnabled": false,
-    "iconsBackgroundCheckEnabled": false
+    "iconsBackgroundCheckEnabled": false,
+    "iconInTitleEnabled": false
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

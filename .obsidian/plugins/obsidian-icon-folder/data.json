@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiScreenShare",
       "RiMoneyEuroBoxLine",
       "TiArrowsRandom",
       "TiAdjustmentsCode",
@@ -19,8 +20,7 @@
       "RiCalculatorLine",
       "FasDesktop",
       "SiGit",
-      "SiArtifacthub",
-      "FasLanguage"
+      "SiArtifacthub"
     ],
     "recentlyUsedIconsSize": 15,
     "rules": [
@@ -80,5 +80,6 @@
   "uni/Discrete math/Number theory/Divisors, multiples, primes.md": "TiBoxMultiple",
   "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustmentsCode",
   "uni/Probability theory": "FasDice",
-  "uni/Economics": "RiMoneyEuroBoxLine"
+  "uni/Economics": "RiMoneyEuroBoxLine",
+  "uni/Economics/Presentation - Nigeria.md": "LiScreenShare"
 }

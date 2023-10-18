@@ -179,3 +179,27 @@ flexGrow=1
 `````
  ---
 
+# Circular economy
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```dynamic-svg
+---
+invert-shade
+---
+[[6338890.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```` 
+`````
+
+
+

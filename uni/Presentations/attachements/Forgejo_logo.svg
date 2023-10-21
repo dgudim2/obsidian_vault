@@ -1,36 +1,11 @@
-<svg viewBox="0 0 212 212" xmlns="http://www.w3.org/2000/svg">
-  <metadata xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
-    <rdf:RDF>
-      <cc:Work rdf:about="https://codeberg.org/forgejo/meta/src/branch/readme/branding#logo">
-        <dc:title>Forgejo logo</dc:title>
-        <cc:creator rdf:resource="https://caesarschinas.com/"><cc:attributionName>Caesar Schinas</cc:attributionName></cc:creator>
-        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <style type="text/css">
-    circle {
-      fill: none;
-      stroke: #000;
-      stroke-width: 15;
-    }
-    path {
-      fill: none;
-      stroke: #000;
-      stroke-width: 25;
-    }
-    .orange {
-      stroke:#ff6600;
-    }
-    .red {
-      stroke:#d40000;
-    }
-  </style>
-  <g transform="translate(6,6)">
-    <path d="M58 168 v-98 a50 50 0 0 1 50-50 h20" class="orange"/>
-    <path d="M58 168 v-30 a50 50 0 0 1 50-50 h20" class="red"/>
-    <circle cx="142" cy="20" r="18" class="orange"/>
-    <circle cx="142" cy="88" r="18" class="red"/>
-    <circle cx="58" cy="180" r="18" class="red"/>
+<svg version="1.1" viewBox="0 0 212 212" xmlns="http://www.w3.org/2000/svg">
+ <g transform="translate(6,6)" fill="none">
+  <path class="forgejo" d="m58 168v-98a50 50 0 0150-50h20" stroke="#f60" stroke-width="25"/>
+  <path class="forgejo" d="m58 168v-30a50 50 0 0150-50h20" stroke="#d40000" stroke-width="25"/>
+  <g stroke-width="15">
+   <circle class="forgejo" cx="142" cy="20" r="18" stroke="#f60"/>
+   <circle class="forgejo" cx="142" cy="88" r="18" stroke="#d40000"/>
+   <circle class="forgejo" cx="58" cy="180" r="18" stroke="#d40000"/>
   </g>
+ </g>
 </svg>

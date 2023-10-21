@@ -31,7 +31,14 @@ flexGrow=1
 
 ### Git
 
-![[Git_icon.svg|150]]
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[Git_icon.svg]]
+```
+
 
 ````
 ````col-md
@@ -57,7 +64,13 @@ flexGrow=1
 
 ### Subversion
 
-![[Apache_Subversion_logo.svg|150]]
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[Apache_Subversion_logo.svg]]
+```
 
 ````
 ````col-md
@@ -66,7 +79,13 @@ flexGrow=1
 
 ### Bazaar
 
-![[Bazaar_logo_(software_product).svg|150]]
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[Bazaar_logo_(software_product).svg]]
+```
 
 ````
 `````
@@ -80,40 +99,64 @@ flexGrow=1
 
 > But **github** is not the only one, here are some more examples
 
-````col
-```col-md
+`````col
+````col-md
 flexGrow=1
 ===
 ### Bitbucket
 
-![[bitbucket_logo_logos_icon.svg|150]]
-
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[bitbucket_logo_logos_icon.svg]]
 ```
-```col-md
+
+````
+````col-md
 flexGrow=1
 ===
 ### GitLab
 
-![[GitLab-2022-New-Logomark.svg|150]]
-
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[GitLab-2022-New-Logomark.svg]]
 ```
-```col-md
+
+````
+````col-md
 flexGrow=1
 ===
 ### Gitea
 
-![[Gitea_Logo.svg|150]]
-
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[Gitea_Logo.svg]]
 ```
-```col-md
+
+````
+````col-md
 flexGrow=1
 ===
 ### Forgejo
 
-![[Forgejo_logo.svg|150]]
-
+```dynamic-svg
+---
+inline
+width:150px
+---
+[[Forgejo_logo.svg]]
 ```
+
 ````
+`````
 
 > You can even self-host your own server or set up a local repo with users on the same file system
 

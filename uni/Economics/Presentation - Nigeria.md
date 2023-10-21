@@ -72,7 +72,7 @@ transparency: 1
 ```
 
 ---
-# GDP comparison
+## GDP comparison
   
 ```dataviewjs
 const data = dv.current()
@@ -94,13 +94,30 @@ transparency: 1.0
 
 ---
 
-# Unemployment
+## Unemployment and poverty rate
 
+```dataviewjs
+const data = dv.current()
 
+dv.paragraph(`\`\`\`chart
+type: line
+labels: [Q1 2016,Q2 2016,Q3 2016,Q4 2016,Q1 2017,Q2 2017,Q3 2017,Q4 2017,Q1 2018,Q2 2018,Q3 2018,Q2 2020,Q4 2020,Q4 2022,Q1 2023]
+series:
+    - title: Uneployment rate
+	  data: [12.1,13.3,13.9,14.2,14.4,16.2,18.8,20.4,21.8,22.7,23.1,27.1,33.3,5.3,4.1]
+    - title: Povery rate
+	  data: [32.3,31.4,31.5,30.8,30.6,30.6,31.8,30.8,30.9,34.8,34.1,35.1,38.6,40.1]
+tension: 0.3
+transparency: 1.0
+\`\`\``)
+```
+
+- 5th worst poverty rate. 
+- Big difference between states (Lagos - 4.5, Sokoto - 87.7)
 
 ---
 
-# Inflation
+## Inflation
 
 ```dataviewjs
 const data = dv.current()
@@ -118,7 +135,7 @@ transparency: 1.0
 
 ---
 
-# Inflation
+## Inflation comparison
 
 ```dataviewjs
 const data = dv.current()
@@ -185,7 +202,7 @@ flexGrow=1
 
 `````col 
 ````col-md 
-flexGrow=0.5
+flexGrow=0.4
 ===
 
 ![[6338890.svg]]
@@ -252,6 +269,44 @@ flexGrow=1
 **Bayelsa State** has recently signed a memorandum of understanding with a European consortium known as the *African Atlantic Gulf of Guinea Fisheries* to develop a <u>massive aquaculture project</u> that includes setting up a <u>300-hectare offshore aquaculture farm</u>, a <u>20,000-metric-tonne capacity fish processing plant</u> and a <u>boatbuilding yard</u> across the state’s three senatorial districts
 
 ---
+
+## Green economy
+
+`````col 
+````col-md 
+flexGrow=0.4
+===
+
+```dynamic-svg
+---
+invert-shade
+---
+[[leaf-svgrepo-com.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+- There is a conflict between **Nigeria’s** *dependence on oil* for its economic wellbeing, and the sustainable development the nation strives to achieve.
+
+<hr>
+
+- The country is the *largest oil and gas producer in Africa* and the *fourth largest gas producer in the world*. Resource extraction is the most important sector of the economy.
+
+<hr>
+
+- Major renewable energy resources include *solar*, *wind*, *hydropower*, *biomass*, and *tidal waves*. However there is lack of access to affordable and reliable energy services.
+
+<hr>
+
+- There are numerous unexplored sectors in Nigeria where Green Economy initiatives can be adopted, including *transportation*, *housing*, *food processing*, *fashion*, and in various *manufacturing sectors*.
+
+```` 
+`````
+
+---
 ## Defense economy
 
 `````col 
@@ -288,6 +343,50 @@ beginAtZero: true
 
 ---
 ## Monetary economy
+
+`````col 
+````col-md 
+flexGrow=0.4
+===
+
+```dynamic-svg
+---
+invert-shade
+---
+[[bank-svgrepo-com.svg]]
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+Central bank - **Central Bank of Nigeria** is responsible for the country's monetary policy.
+
+Interest rates are a **key tool** in monetary policy. The bank uses interest rates to control the *money supply* and *influence inflation rates*.
+
+```dataviewjs
+const data = dv.current()
+
+dv.paragraph(`\`\`\`chart
+type: line
+labels: [2002,2003,2004,2005,2006,207,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
+series:
+    - title: Lending interest rate (%)
+	  data: [24.7708333333333,20.7141666666667,19.1808333333333,17.9483333333333,16.8933333333333,16.9391666666667,15.1358333333333,18.9908333333333,17.585,16.02,16.7916666666667,16.7225,16.5483333333333,16.8491666666667,16.8680157641191,17.5533333333333,16.9038969646886,15.3765869808333,13.6420216718796,11.4831327947137,12.3345442352326]
+tension: 0.3
+transparency: 1.0
+\`\`\``)
+```
+
+```` 
+`````
+
+---
+
+## Political economy
+
+
 
 ---
 

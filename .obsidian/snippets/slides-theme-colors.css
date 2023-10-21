@@ -3,7 +3,8 @@
 }
 
 .reveal p,
-.reveal ul {
+.reveal ul,
+.reveal li {
   color: var(--text-normal);
 }
 
@@ -38,7 +39,21 @@
 
 /* font size */
 .reveal {
-  font-size: 1.5em; /* for mobile use 1.5em */
+  font-size: 1.3em; /* for mobile use 1.5em */
+}
+
+/* alignment tweaks */
+.reveal .block-language-col-md > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.reveal .block-language-col-md > div > h2 {
+  margin-top: 20px;
+}
+
+.reveal .block-language-col p {
+  text-align: left;
 }
 
 /*@media screen and (orientation:landscape) {
@@ -114,10 +129,4 @@
 th,
 td {
   border: 1px solid hsl(0, 0%, 18%);
-}
-
-/* Text alignment in columns */
-
-.block-language-col p {
-  text-align: left;
 }

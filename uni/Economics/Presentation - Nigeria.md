@@ -13,13 +13,14 @@ flexGrow=1.5
 flexGrow=1
 ===
 
-## Key facts
+### Key facts
 
+- A country in West Africa
+- Federal republic comprising **36** states
 - 923,769 square kilometres
 - 230 million people
 - Most populous country in Africa
 - \> **250** ethnic groups speaking **500** distinct languages
-- Federal republic comprising **36** states
 - Capital - **Abuja**
 - Largest city - **Lagos**
 
@@ -28,14 +29,17 @@ flexGrow=1
 ```` 
 `````
 
+---
+
+# Macroeconomic measures
 
 ---
 
-# GDP
+## GDP
 ```dataviewjs
 const data = dv.current()
 
-dv.paragraph(`\`\`\`chart
+p = dv.paragraph(`\`\`\`chart
 type: line
 labels: [1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
 series:
@@ -43,7 +47,6 @@ series:
 	  data: [44062465417.9421,51075815092.5,54457835603.1357,54604050168.1818,59372679433.1746,69448962760.8787,74030562269.9655,95054094655.3277,104738980156.958,135764715375.206,175670536601.006,238454952231.572,278260808841.03,339476215683.592,295008767295.038,366990528103.078,414466540786.738,463971000388.612,520117163617.721,574183825592.358,493026782401.561,404649048648.026,375745732274.676,421739210176.152,474517470742.749,432198936002.177,440833583992.485,477386120635.845]
 tension: 0.5
 transparency: 1
-width: 90%
 \`\`\``)
 ```
 
@@ -52,7 +55,7 @@ width: 90%
 
 ---
 
-# GDP GROWTH
+## GDP growth
 
 ```dataviewjs
 const data = dv.current()
@@ -69,7 +72,7 @@ transparency: 1
 ```
 
 ---
-# GDP
+# GDP comparison
   
 ```dataviewjs
 const data = dv.current()
@@ -141,7 +144,7 @@ transparency: 1.0
 
 ---
 
-# Composition
+# Economic sectors
 
 `````col 
 ````col-md 
@@ -156,8 +159,7 @@ type: pie
 labels: [Agriculture, Information and telecommunication, Manufacturing, Trade, Construction, Mining, Other]
 series:
   - title: Composition in 2022
-    data: [21, 15, 15, 13, 9.5, 6.5, 20]
-width: 80%
+    data: [25, 15, 15, 13, 9.5, 6.5, 16]
 labelColors: true
 \`\`\``)
 ```
@@ -167,30 +169,66 @@ labelColors: true
 flexGrow=1
 ===
 
-<font color="#d3869b">Agriculture</font>: 21%
+<font color="#d3869b">Agriculture</font>: 25%
 <font color="#b8bb26">Information and telecommunication</font>: 15%
 <font color="#fe8019">Manufacturing</font>: 15%
 <font color="#8ec07c">Trade</font>: 13%
 <font color="#fabd2f">Construction</font>: 9.5%
 <font color="#83a598">Mining</font>: 6.5%
-<font color="#fb4934">Other</font>: 20%
+<font color="#fb4934">Other</font>: 16%
 
 ```` 
 `````
- ---
 
-# Circular economy
+---
+## Circular economy
 
 `````col 
 ````col-md 
+flexGrow=0.5
+===
+
+![[6338890.svg]]
+
+```` 
+````col-md 
 flexGrow=1
+===
+
+**Nigeria**, with a population of over **200 million people** generates huge quantities of
+solid waste as a result of the **take-use-dispose approach**, which has been
+estimated to be more than **32 million tonnes** yearly
+
+### Waste composition:
+43.43% - food waste, 
+15.27% - plastic
+7.76% - paper
+1.39% - textile
+3.36% - wood
+0.081% - rubber and leather
+2.02% - metal
+2.39% - glass 
+24.18% - others
+
+```` 
+`````
+
+> Recent surveys indicate that **< 20%** of the waste is collected through the **formal system** while **< 10%** is **recycled**.
+
+---
+
+## Blue economy
+
+`````col 
+````col-md 
+flexGrow=0.4
 ===
 
 ```dynamic-svg
 ---
 invert-shade
 ---
-[[6338890.svg]]
+[[waves-thin-svgrepo-com.svg]]
 ```
 
 ```` 
@@ -198,8 +236,123 @@ invert-shade
 flexGrow=1
 ===
 
+- More than **853km** of coastline
+- Access to **Atlantic ocean**
+
+### BUT
+
+- Oil spills 
+- Piracy
+
+> **Ecological damage** to the ocean and rivers is *one of the main challenges* facing the development of a sustainable blue economy in **Nigeria**
+
 ```` 
 `````
 
+**Bayelsa State** has recently signed a memorandum of understanding with a European consortium known as the *African Atlantic Gulf of Guinea Fisheries* to develop a <u>massive aquaculture project</u> that includes setting up a <u>300-hectare offshore aquaculture farm</u>, a <u>20,000-metric-tonne capacity fish processing plant</u> and a <u>boatbuilding yard</u> across the state’s three senatorial districts
+
+---
+## Defense economy
+
+`````col 
+````col-md 
+flexGrow=0.4
+===
+
+![[Pasted image 20231021135407.png]]
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+- 42nd out of 138 countries in global military strength
+
+```dataviewjs
+const data = dv.current()
+
+dv.paragraph(`\`\`\`chart
+type: bar
+labels: [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022]
+series:
+    - title: Ratio of military spending to GDP
+	  data: [0.5,0.47,0.41,0.42,0.43,0.43,0.51,0.46,0.63,1.01,0.64]
+tension: 0.3
+transparency: 1.0
+beginAtZero: true
+\`\`\``)
+```
+
+```` 
+`````
+
+---
+## Monetary economy
+
+---
+
+# Economic issues and possible solutions
+
+---
+
+## Issues
+
+`````col 
+````col-md 
+flexGrow=1
+===
 
 
+1. **Limited opportunities** to most of the citizens 
+	- A Nigerian born in 2020 was expected to be **36% as productive as they could have been** if they had **full access to education and health**
+
+<hr>
+
+2. The **poverty rate** is very high, with an estimated **84 million** Nigerians living **below the poverty line**
+
+<hr>
+
+3. **Spatial inequality**
+	- Best-performing regions of Nigeria comparing favorably to **middle-income countries**
+	- Worst performing states fall **below the average** for low-income
+
+<hr>
+
+4. **Wide infrastructure gaps** constrain access to *electricity* and *hinder the domestic economic integration* 
+
+<hr>
+
+5. In most areas of Nigeria **service delivery** is *limited* and *insecurity* and *violence* are widespread
+
+````
+`````
+
+---
+
+## Solutions
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+
+- Focus on the tradable services sector
+	- (**80** percent of workers are employed in sectors with *low levels of productivity* - **agriculture** and **non-tradable services**)
+
+<hr>
+
+- Implement some kind of programs to upskill young people to take full advantage of this sector
+
+<hr>
+
+- Expand the manufacturing sector
+	- The sector has a **much higher productivity level** than *agriculture* and can accommodate the kind of *labor that is abundant* in the country
+
+
+```` 
+`````
+
+---
+
+# Thanks for your attention!

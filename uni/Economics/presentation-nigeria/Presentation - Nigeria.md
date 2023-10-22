@@ -161,7 +161,48 @@ transparency: 1.0
 
 ---
 
-# Economic sectors
+## National debt
+
+```dataviewjs
+const data = dv.current()
+
+dv.paragraph(`\`\`\`chart
+type: bar
+labels: [2018,2019,2020,2021,2022,2023***]
+series:
+    - title: National debt in billion $
+	  data: [46.81,55.64,69.67,84.19,105.08,124.3]
+tension: 0.3
+transparency: 1.0
+beginAtZero: true
+\`\`\``)
+```
+
+---
+
+## Budget surplus and deficit
+
+```dataviewjs
+const data = dv.current()
+
+dv.paragraph(`\`\`\`chart
+type: bar
+labels: [2018,2019,2020,2021,2022,2023***]
+series:
+    - title: Budget balance in relation to GDP
+	  data: [-4.23,-4.69,-5.58,-6.03,-5.6,-5.35]
+tension: 0.3
+transparency: 1.0
+beginAtZero: true
+\`\`\``)
+```
+
+---
+
+# Economic dynamics and issues
+
+---
+## Economic sectors
 
 `````col 
 ````col-md 
@@ -381,12 +422,6 @@ transparency: 1.0
 
 ```` 
 `````
-
----
-
-## Political economy
-
-
 
 ---
 

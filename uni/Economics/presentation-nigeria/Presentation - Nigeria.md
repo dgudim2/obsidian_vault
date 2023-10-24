@@ -117,6 +117,12 @@ transparency: 1.0
 
 ---
 
+## Poverty in 2018/2019
+
+![[2019-Poverty-Headcount-Rate.webp|800]]
+
+---
+
 ## Inflation
 
 ```dataviewjs
@@ -241,15 +247,15 @@ flexGrow=1
 ---
 ## Circular economy
 
-`````col 
-````col-md 
+```````col 
+``````col-md 
 flexGrow=0.4
 ===
 
 ![[6338890.svg]]
 
-```` 
-````col-md 
+``````
+``````col-md 
 flexGrow=1
 ===
 
@@ -257,6 +263,9 @@ flexGrow=1
 solid waste as a result of the **take-use-dispose approach**, which has been
 estimated to be more than **32 million tonnes** yearly
 
+`````col
+
+````col-md
 ### Waste composition:
 43.43% - food waste, 
 15.27% - plastic
@@ -267,9 +276,29 @@ estimated to be more than **32 million tonnes** yearly
 2.02% - metal
 2.39% - glass 
 24.18% - others
+````
 
-```` 
+````col-md
+```dataviewjs
+const data = dv.current()
+
+dv.paragraph(`\`\`\`chart
+type: pie
+labels: [Food,Plastic,Paper,Other]
+series:
+  - title: Composition in 2022
+    data: [43.34,15.27,7.76,33.63]
+labelColors: true
+\`\`\``)
+```
+````
+
 `````
+
+
+
+``````
+```````
 
 > Recent surveys indicate that **< 20%** of the waste is collected through the **formal system** while **< 10%** is **recycled**.
 
@@ -442,12 +471,12 @@ flexGrow=1
 
 <hr>
 
-2. The **poverty rate** is very high, with an estimated **84 million** Nigerians living **below the poverty line**
+2. The **poverty rate** is very high, with an estimated **84 million** Nigerians living **below the national poverty line**
 
 <hr>
 
 3. **Spatial inequality**
-	- Best-performing regions of Nigeria comparing favorably to **middle-income countries**
+	- Best-performing regions of Nigeria compares to **middle-income countries**
 	- Worst performing states fall **below the average** for low-income
 
 <hr>
@@ -476,13 +505,12 @@ flexGrow=1
 
 <hr>
 
-- Implement some kind of programs to upskill young people to take full advantage of this sector
-
-<hr>
-
 - Expand the manufacturing sector
 	- The sector has a **much higher productivity level** than *agriculture* and can accommodate the kind of *labor that is abundant* in the country
 
+<hr>
+
+- Implement some kind of programs to upskill young people to take full advantage of this sector (manufacturing)
 
 ```` 
 `````

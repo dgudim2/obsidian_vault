@@ -32,6 +32,14 @@
   color: var(--h6-color);
 }
 
+.reveal .progress {
+  color: var(--link-url);
+}
+
+.reveal .controls {
+  display: none !important;
+}
+
 .slides {
   /* height: 100% !important;*/
   width: 60% !important;

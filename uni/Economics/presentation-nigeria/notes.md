@@ -23,11 +23,11 @@
 
 # GDP - 1st slide
 
-It is 31st place in the world by the GDP
-in 2022 the GDP was 477 billion dollars
-There was a dip in 2009, 2014 - 2017, 2020
-2009 - armed rebellion against the government
-2020 - COVID
+- It is 31st place in the world by the GDP
+- In 2022 the GDP was 477 billion dollars
+- There was a dip in 2009, 2014 - 2017, 2020
+- 2009 - armed rebellion against the government
+- 2020 - COVID
 
 But per capita, the GDP is just 2184 because of the number of people living there
 In comparison, in Lithuania, GDP per capita is 24826 (move than 10 times more)
@@ -58,6 +58,7 @@ https://nairametrics.com/2023/08/25/nigerias-unemployment-rate-fell-from-33-3-to
 Inflation is pretty good, this data is from 1998, so overall, the trend is almost linear
 Although, in recent years from 2019 it's been growing
 Overall I would say that it's fine reaching just 18%
+However, as we discussed in the previous lecture, inflation can be different and this one is bad because it's not the government controlling it and it also influences food prices
 
 # Inflation comparison
 
@@ -159,7 +160,7 @@ The cumulative amount of resources devoted to security in Nigeria, remains large
 As at present, Nigerians hold the view that insecurity ranks very high in their daily and general concerns.
 For the amount of money, the Federal and State governments devote to security, most Nigerians
 think that national security architecture is not as effective as it should be. This thinking comes on
-the basis of very tangible realities: kidnapping, piracy, banditry, armed robbery and more
+the basis of very tangible realities: kidnapping, piracy, banditry, armed robbery and more.
 Today Nigeria is ranked 42nd out of 138 countries in global military strength. Yet the
 Nigerian defence sector is not a wealth generation sphere.
 

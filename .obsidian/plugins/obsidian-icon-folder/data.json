@@ -49,9 +49,9 @@
       "bottom": 0,
       "left": -1
     },
-    "iconInTabsEnabled": false,
-    "iconsBackgroundCheckEnabled": false,
-    "iconInTitleEnabled": false
+    "iconInTabsEnabled": true,
+    "iconsBackgroundCheckEnabled": true,
+    "iconInTitleEnabled": true
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

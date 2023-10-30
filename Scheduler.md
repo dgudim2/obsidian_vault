@@ -22,7 +22,6 @@ kanban-plugin: basic
 - [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
 - [ ] **More group options**<br>- Option to choose default group<br>- Option to collapse events by groups<br><br>@{2023-08-01}
 - [ ] **Per event backgrounds**<br>Ability to set backgrounds if some event happens<br>@{2023-08-31}
-- [ ] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
 - [ ] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
 - [ ] **Cache view for dialogs in a ViewModel**<br><br>Recreate on config change (bind to lifetime)<br><br>@{2023-10-01}
 - [ ] **Collapse events hidden by content**<br><br>Optionally show an expand button<br><br>@{2023-10-15}
@@ -30,16 +29,17 @@ kanban-plugin: basic
 
 ## Fixed bugs
 
-- [ ] **Dialog fragment**<br><br>Broken gestures in event settings<br><br>@{2023-03-12}
-- [ ] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
+- [x] **Dialog fragment**<br><br>Broken gestures in event settings<br><br>@{2023-03-12}
+- [x] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
 
 
 ## Implemented features
 
-- [ ] **An option to sort calendar entries separately**<br><br>@{2023-03-12}
-- [ ] **Add a toast when the even is added**<br><br>Display "Event was added" toast<br><br>@{2023-08-01}
-- [ ] **download readme**<br>Add obtanium to scheduler readme<br><br>@{2023-08-01}
-- [ ] **An option to put "global" in front of event**<br><br>Currently (Global) is added only to the back<br><br>@{2023-04-01}
+- [x] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
+- [x] **An option to sort calendar entries separately**<br><br>@{2023-03-12}
+- [x] **Add a toast when the even is added**<br><br>Display "Event was added" toast<br><br>@{2023-08-01}
+- [x] **download readme**<br>Add obtanium to scheduler readme<br><br>@{2023-08-01}
+- [x] **An option to put "global" in front of event**<br><br>Currently (Global) is added only to the back<br><br>@{2023-04-01}
 
 
 ## Archive

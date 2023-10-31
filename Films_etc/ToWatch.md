@@ -38,7 +38,6 @@
 + Gunsmith cats
 + Магический индекс
 + Шарлотта
-+  Oshi no Ko, (звёздное дитя, или Ребёнок идола)
 + Mashle magic and muscles
 + sonny boy
 + trigun stampede

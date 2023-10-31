@@ -17,7 +17,6 @@ Historically, shopping locally in Nigeria meant higher prices, sitting in traffi
 
 
 
-
 # Predicting airplane arrivals more accurately
 
 1. Do you think that satellite-based navigation will meet resistance among air traffic controllers? Why or why not?

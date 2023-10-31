@@ -34,5 +34,3 @@ Expanding from the previous answers. I think that overall response will be posit
 4. What is the relationship between analytics and smart assistant for pilots?
 
 Analytics is just data for pilots to base decisions on, smart assistant on the other hand use that analytics to make decisions by themselves so the pilot can compare their decision with that of a smart assistant.
-
-

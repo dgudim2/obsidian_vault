@@ -19,3 +19,4 @@ Compiled from “Turnitin Spring Webcasts Focus on Strategies for Educators to I
 1. As the Turnitin database expands rapidly by incorporating a growing number of papers and essays, what will be the impact on subsequent papers submitted to it?
 
 2. Discuss the ethical implications of writing a paper yourself that you know contains some plagiarized material and then using Turnitin’s service yourself.
+

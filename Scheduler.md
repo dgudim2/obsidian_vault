@@ -20,10 +20,10 @@ kanban-plugin: basic
 - [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
 - [ ] **More group options**<br>- Option to choose default group<br>- Option to collapse events by groups<br><br>@{2023-08-01}
 - [ ] **Per event backgrounds**<br>Ability to set backgrounds if some event happens<br>@{2023-08-31}
-- [ ] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
 - [ ] **Cache view for dialogs in a ViewModel**<br><br>Recreate on config change (bind to lifetime)<br><br>@{2023-10-01}
 - [ ] **Collapse events hidden by content**<br><br>Optionally show an expand button<br><br>@{2023-10-15}
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
+- [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 
 
 ## Fixed bugs
@@ -34,6 +34,7 @@ kanban-plugin: basic
 
 ## Implemented features
 
+- [x] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
 - [x] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}
 - [x] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
 - [x] **An option to sort calendar entries separately**<br><br>@{2023-03-12}

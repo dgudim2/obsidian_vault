@@ -30353,7 +30353,10 @@ var ForceGraph2 = class {
       }
     };
     this.doShowNode = (node) => {
-      return this.plugin.getSettings().filters.doShowOrphans || node.links.length > 0;
+      return (this.plugin.getSettings().filters.doShowOrphans || node.links.length > 0) && (this.plugin.getSettings().filters.doShowAttachments || !node.isAttachment);
+    };
+    this.doShowLink = (link) => {
+      return this.plugin.getSettings().filters.doShowAttachments || !link.linksAnAttachment;
     };
     this.onNodeHover = (node) => {
       if (!node && !this.highlightedNodes.size || node && this.hoveredNode === node)
@@ -30376,7 +30379,7 @@ var ForceGraph2 = class {
       return this.highlightedNodes.has(node.id);
     };
     this.createLinks = () => {
-      this.instance.linkWidth((link) => this.isHighlightedLink(link) ? this.plugin.getSettings().display.linkThickness * 1.5 : this.plugin.getSettings().display.linkThickness).linkDirectionalParticles((link) => this.isHighlightedLink(link) ? this.plugin.getSettings().display.particleCount : 0).linkDirectionalParticleWidth(this.plugin.getSettings().display.particleSize).onLinkHover(this.onLinkHover).linkColor((link) => this.isHighlightedLink(link) ? this.plugin.theme.textAccent : this.plugin.theme.textMuted);
+      this.instance.linkWidth((link) => this.isHighlightedLink(link) ? this.plugin.getSettings().display.linkThickness * 1.5 : this.plugin.getSettings().display.linkThickness).linkDirectionalParticles((link) => this.isHighlightedLink(link) ? this.plugin.getSettings().display.particleCount : 0).linkDirectionalParticleWidth(this.plugin.getSettings().display.particleSize).linkVisibility(this.doShowLink).onLinkHover(this.onLinkHover).linkColor((link) => this.isHighlightedLink(link) ? this.plugin.theme.textAccent : this.plugin.theme.textMuted);
     };
     this.onLinkHover = (link) => {
       this.clearHighlights();
@@ -30541,16 +30544,19 @@ var DisplaySettingsView_default = DisplaySettingsView;
 
 // src/settings/categories/FilterSettings.ts
 var FilterSettings = class {
-  constructor(doShowOrphans) {
+  constructor(doShowOrphans, doShowAttachments) {
     this.doShowOrphans = true;
+    this.doShowAttachments = false;
     this.doShowOrphans = doShowOrphans != null ? doShowOrphans : this.doShowOrphans;
+    this.doShowAttachments = doShowAttachments != null ? doShowAttachments : this.doShowAttachments;
   }
   static fromStore(store) {
-    return new FilterSettings(store == null ? void 0 : store.doShowOrphans);
+    return new FilterSettings(store == null ? void 0 : store.doShowOrphans, store == null ? void 0 : store.doShowAttachments);
   }
   toObject() {
     return {
-      doShowOrphans: this.doShowOrphans
+      doShowOrphans: this.doShowOrphans,
+      doShowAttachments: this.doShowAttachments
     };
   }
 };
@@ -30744,6 +30750,11 @@ var FilterSettingsView = (filterSettings, containerEl) => {
       filterSettings.value.doShowOrphans = value;
     });
   });
+  new import_obsidian4.Setting(containerEl).setName("Show Attachments").addToggle((toggle) => {
+    toggle.setValue(filterSettings.value.doShowAttachments || false).onChange(async (value) => {
+      filterSettings.value.doShowAttachments = value;
+    });
+  });
 };
 var FilterSettingsView_default = FilterSettingsView;
 
@@ -30896,9 +30907,10 @@ var GraphSettings = class {
 
 // src/graph/Link.ts
 var Link = class {
-  constructor(sourceId, targetId) {
+  constructor(sourceId, targetId, linksAnAttachment) {
     this.source = sourceId;
     this.target = targetId;
+    this.linksAnAttachment = linksAnAttachment;
   }
   static createLinkIndex(links) {
     const linkIndex = /* @__PURE__ */ new Map();
@@ -30931,10 +30943,11 @@ var Link = class {
 // src/graph/Node.ts
 var import_obsidian7 = require("obsidian");
 var Node = class {
-  constructor(name, path, val = 10, neighbors = [], links = [], tags = []) {
+  constructor(name, path, isAttachment, val = 10, neighbors = [], links = [], tags = []) {
     this.id = path;
     this.name = name;
     this.path = path;
+    this.isAttachment = isAttachment;
     this.val = val;
     this.neighbors = neighbors;
     this.links = links;
@@ -30944,7 +30957,7 @@ var Node = class {
     const nodeMap = /* @__PURE__ */ new Map();
     return [
       files.map((file, index5) => {
-        const node = new Node(file.name, file.path);
+        const node = new Node(file.name, file.path, file.extension == "md" ? false : true);
         const cache = app.metadataCache.getFileCache(file), tags = cache ? (0, import_obsidian7.getAllTags)(cache) : null;
         if (tags != null) {
           tags.forEach((tag) => node.tags.push(tag.substring(1)));
@@ -30960,7 +30973,7 @@ var Node = class {
   }
   addNeighbor(neighbor) {
     if (!this.isNeighborOf(neighbor)) {
-      const link = new Link(this.id, neighbor.id);
+      const link = new Link(this.id, neighbor.id, this.isAttachment || neighbor.isAttachment);
       this.neighbors.push(neighbor);
       this.addLink(link);
       neighbor.neighbors.push(this);

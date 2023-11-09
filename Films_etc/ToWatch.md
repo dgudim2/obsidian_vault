@@ -42,3 +42,4 @@
 + trigun stampede
 + kiznavier
 + Крутой учитель Онидзука
++ ghost in the shell

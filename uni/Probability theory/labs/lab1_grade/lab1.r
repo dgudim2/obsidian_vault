@@ -119,15 +119,14 @@ y <- sample(k_dices_vec, n_times, replace = TRUE, prob = k_dices_prob)
 table(y) / n_times
 # GRAPHS
 par(mfrow = c(1, 2))
-barplot(k_dices_prob)
-barplot(table(y) / n_times)
+barplot(k_dices_prob, names.arg = k_dices_vec, main = "Theoretical") # Theoretical
+barplot(table(y) / n_times, main = "Empirical") # Empirical
 # MEAN and Variance from exp.
 print(mean(y))
 print(var(y))
 # MEAN and Variance before exp.
-n4 <- k_dices
-n4 * prob_ge_4
-n4 * prob_ge_4 * (1 - prob_ge_4)
+k_dices * prob_ge_4 # n * p
+k_dices * prob_ge_4 * (1 - prob_ge_4) # n * p * q
 
 #*****************************
 #*     Task 5

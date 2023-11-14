@@ -19,6 +19,7 @@
 + whoami
 + машина времени в джакузи
 + The electric state
++ дивергент
 
 ## Anime
 + Стальной алхимик 2008
@@ -42,3 +43,5 @@
 + trigun stampede
 + kiznavier
 + Крутой учитель Онидзука
++ ghost in the shell
++ frieren beyond journey's end

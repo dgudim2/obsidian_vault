@@ -46,3 +46,7 @@
 + Крутой учитель Онидзука
 + frieren beyond journey's end
 + food wars
+
+# Stuff to read
+
+1. The lost fleet

@@ -5,7 +5,9 @@
 !*.ppt
 !*.odt
 !*.odp
+!*.ods
 !/LaTeX docs
+!/uni/Computer networks/GNS3
 !**/Extra
 !*_ng_
 export

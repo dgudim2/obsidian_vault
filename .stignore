@@ -7,7 +7,7 @@
 !*.odp
 !*.ods
 !/LaTeX docs
-!/uni/Computer networks/GNS3
+!/uni/Computer\ networks/GNS3
 !**/Extra
 !*_ng_
 export

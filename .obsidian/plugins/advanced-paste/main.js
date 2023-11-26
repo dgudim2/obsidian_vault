@@ -24184,7 +24184,8 @@ async function executePaste(transform, utilsBase, vault, withinEvent, editor, vi
     async saveAttachment(name, ext, data) {
       const path3 = await getAvailablePathForAttachments(name, ext, file);
       return vault.createBinary(path3, data);
-    }
+    },
+    editor
   };
   const internalParams = { shouldHandleImagePasting: !withinEvent };
   try {

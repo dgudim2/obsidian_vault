@@ -47,6 +47,7 @@
 + Крутой учитель Онидзука
 + frieren beyond journey's end
 + food wars
++ Скотт Пилигрим жмёт на газ (после фильма)
 
 # Stuff to read
 

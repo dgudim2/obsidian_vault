@@ -25,6 +25,7 @@ kanban-plugin: basic
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
 - [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [ ] **Add settings to view types (rectangle, rounded, etc)**<br><br>Also make the dialog more clear with selection, graying-out of not selected views<br><br>@{2023-11-09}
+- [ ] **Event length**<br>Add an option to display event length in brackets for regular events<br><br>@{2023-12-05}
 
 
 ## Fixed bugs

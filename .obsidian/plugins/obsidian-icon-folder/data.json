@@ -52,7 +52,8 @@
     "iconInTabsEnabled": true,
     "iconsBackgroundCheckEnabled": true,
     "iconInTitleEnabled": true,
-    "iconInFrontmatterEnabled": false
+    "iconInFrontmatterEnabled": false,
+    "iconsInNotesEnabled": true
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

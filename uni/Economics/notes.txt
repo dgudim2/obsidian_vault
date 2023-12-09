@@ -1,0 +1,198 @@
+# MOST CARS TRADED WILL BE LEMONS
+
+The article talks about a guy named George Akerlof who was studying the second markets in 1960s
+Akerlof stated that buyers and sellers have different amounts of information,
+and these differences, or asymmetries, can have disastrous consequences for the workings of markets.
+The existence of undetectable lemons (cars with undetectable defects) in the market creates uncertainty in the mind of the buyer
+
+I partially disagree with this. Let's read the flowchart
+
+- The buyer of a second-hand car has less information about its quality than the seller.
+
+Sure, yes, but what about test drives? The customer can just visit the seller and test the car himself.
+Although, this requires the customer to be knowledgeable about cars and ideally the seller needs to be near the customer.
+Also, what about quality guarantees?
+
+- This inequality of information creates uncertainty for the buyer...
+
+Yes, if the buyer can't do the above things, however, he can still make some assumptions based on the age and mileage of the car.
+This also requires some things though, the seller must be honest about the car's specs, at least the basics
+
+- ... who becomes reluctant to pay a high price for any car on the market.
+
+What are the options then, buy a new car? That might be a LOT more expensive
+And besides, if the buyer is on a limited budget, he will have no real choice.
+
+- Sellers with good cars therefore withdraw their cars from the market.
+
+Do they though? Why would they do that? They still need to sell the car. If the seller is trustworthy, I see no reason, his cars will still be bought.
+
+- The market begins to collapse because...
+
+I don't think so
+
+... most cars traded will be inferior - lemons.
+
+In some cases, yes, but not most. Maybe I am not understanding something
+
+############################################################################
+############################################################################
+############################################################################
+
+
+# THE GOVERNMENT’S PROMISES ARE INCREDIBLE
+
+Following World War 2 economics was dominated by Keynesian thinking.
+This claimed that governments could maintain high employment through
+two types of discretionary policies: fiscal (government spending and taxation) and monetary (interest rates and the money supply)
+
+In 1977, two economists - Finn Kydland and Edward Prescott published a
+paper entitled "Rules Rather than Discretion", which argued that discretionary
+policy was in fact self-defeating.
+
+US economist John Muth argued that since having incorrect beliefs about prices is costly,
+people seek to minimize their errors by planning ahead.
+
+Before this, macroeconomic models had operated on the
+assumption that individuals only look backward, expecting
+the future to look the same.
+
+The new model predicted that if people collect information and are rational,
+they can and will anticipate government interventions.
+They then adapt their actions to the government policy they expect, and
+that policy is in turn rendered less effective.
+
+Discretionary policy can only work when individuals are taken by surprise,
+and it is hard to surprise rational individuals.
+
+Kydland and Prescott proposed that instead of having a
+free reign to set economic policy, governments should use clear rules.
+In macroeconomic policy independent
+central banks, can place less weight on employment and more
+weight on low inflation than the government does. Their control
+of monetary policy allows the government to credibly commit to low inflation.
+
+
+If governments can act at their discretion, they can break their promises, therefore...
+
+... the government’s promises are not credible.
+
+Rational individuals forecast this breaking of promises,
+and change their own behavior to suit.
+
+This prevents discretionary government policy from working.
+
+Governments should credibly commit to following
+simple rules, not use discretionary policy.
+
+############################################################################
+############################################################################
+############################################################################
+
+
+# THE ECONOMY IS CHAOTIC EVEN WHEN INDIVIDUALS ARE NOT
+
+Standard economics builds its large-scale predictions - the equilibrium
+that an economy will arrive at from the combined effect of the behavior of rational individuals reacting to prices.
+Most economic theory is modeled on the laws of motion developed in the 1680s:
+every action leads to an outcome, and every event is linked in a causal chain
+backward and forward in time in what is called a “linear” process.
+But the real world does not behave like that at all.
+
+Austrian economist Friedrich Hayek believed that economics
+is far too complex to model. One response to such doubts is complexity theory
+Unlike standard economics, this approach recognizes that predictable,
+regular actions by individuals do not necessarily lead to a stable, predictable economy.
+
+In 1975, French economists Jean-Michel Grandmont and Alan Kirman argued that
+economies are “complex systems.”
+In standard economic models with perfect competition individuals do not interact directly, they just respond to prices,
+constantly changing their behavior and prices to achieve the best outcome
+and don't always use rational calculations, sometimes using “rules of thumb”.
+
+- Economists assume that individuals act rationally
+and that all events are determined by cause and effect.
+
+This is a weird thing to assume, people are not robots and the world is not a computer simulation (probably),
+there are a LOT of variables to take into account
+
+- This means that the economy should be predictable.
+
+It is predictable if you take all the variables into account
+This is simply not feasible
+
+- But economies are complex systems, and individuals may each act
+slightly differently to any given event.
+
+Yes, that's true
+
+- These small differences can lead to a myriad of different outcomes.
+
+Yes they do)
+
+- The economy is chaotic even when individuals are not.
+
+I have 2 examples.
+Take 1 pendulum, it's motion will be predictable
+Take 3 and chain them together, their combiner motion will be very chaotic and very hard to predict
+
+Or
+
+Shoot a pinball in physical pinball game, it's very hard to predict the ball
+
+############################################################################
+############################################################################
+############################################################################
+
+SOCIAL NETWORKS ARE A KIND OF CAPITAL
+
+Let's be clear, we are not talking about facebook or twitter here, or any of that stuff really
+
+The word "capital" refers to different things:
+Machinery used in production: physical capital.
+Skills of the labor force: human capital.
+
+The efficient use of physical and human capital has
+long been recognized as key to an economy,
+
+But in the 1990s US political scientist Robert Putnam suggested
+a less tangible form of capital, made up of social connections.
+He argued that social networks are also important to
+economic performance.
+
+The interactions between people at work, in their community, and in
+their leisure time, can be considered “social capital.”
+
+Social networks help individuals improve their skills, advance their
+careers, and increase overall productivity by encouraging
+cooperation and information sharing. Conversely, when these
+connections dwindle, economic performance suffers.
+
+Putnam pointed out that people in developed countries have
+become more isolated, living in urban areas
+with little sense of community.
+
+
+
+
+Yeah, the guy has a point
+
+
+############################################################################
+############################################################################
+############################################################################
+
+EDUCATION IS ONLY A SIGNAL OF ABILITY
+
+
+Michael Spence said, if Person 1 has more information than Person 2
+in a transaction, Person 1 is likely to send a signal to allow Person 2 to
+make a more informed decision.
+
+The example Spence gave was that of the job interview, where an
+employer has less information than the applicant about his or her
+potential productivity. The applicant provides a resume detailing educational
+achievements, which may have no relevance to the post applied for but
+do signal a willingness for hard work and application.
+In Spence’s view higher education, unlike vocational training,
+mostly has a signaling function

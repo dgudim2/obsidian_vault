@@ -3,7 +3,15 @@
 The article talks about a guy named George Akerlof who was studying the second markets in 1960s
 Akerlof stated that buyers and sellers have different amounts of information,
 and these differences, or asymmetries, can have disastrous consequences for the workings of markets.
+The buyer of a second-hand car has less information about its
+quality than the seller who already owns the car. The seller will have
+been able to assess whether the car is worse than an average
+similar car, whether it is a “lemon”
+Any buyer that ends up with a lemon feels cheated
 The existence of undetectable lemons (cars with undetectable defects) in the market creates uncertainty in the mind of the buyer
+In theory this could lead to such low prices that the market
+would collapse, and trade would not occur at any price, even if
+there are traders willing to buy and sell.
 
 I partially disagree with this. Let's read the flowchart
 

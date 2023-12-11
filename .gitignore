@@ -5,6 +5,8 @@ workspace-mobile.json
 scanned_words.txt
 export
 
+.stversions
+
 # Ignore Smart Connections folder because embeddings file is large and updated frequently
 .smart-connections
 
@@ -18,6 +20,6 @@ export
 *.odp
 *.ods
 /LaTeX docs
-/uni/Computer networks/GNS3
 **/Extra
 *_ng_
+/uni/Computer networks/GNS3

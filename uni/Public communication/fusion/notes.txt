@@ -1,0 +1,110 @@
+# Nuclear fusion / slide 0
+
+Today I am going talk about the energy sector, specifically, about nuclear fusion
+
+
+# Slide 1
+
+I doubt that every one of you know what nuclear fusion is though.
+Some of you may think it's some kind of technology from the future of from sci-fi films.
+But no! It's a technology being developed right now as we speak.
+
+Then it must be very new, right?
+No! If we look at the development timeline, we see that the development has started in 1958, in USSR
+and in that year we got our first prototype.
+
+Ok, then why are we not using it today?
+ah, that's a good question, I'll talk about it in a bit.
+
+
+# Slide 2
+
+But first let me explain about an adjacent technology that we ARE using nowadays
+The technology is nuclear fission, not fusion
+And the idea is very simple
+Step 1: Take angry green rocks (Usually uranium)
+Step 2: Put them together
+They get even more angry and heat up
+We collect that heat and use it to heat up the water
+Then we can spin the turbine with the produced steam (or if you are a nuclear scientist, make some tea with the hot water)
+This is the technology that is used in all commercial nuclear reactors
+And nowadays the reactors are very safe
+
+# Slide 3
+
+Ok, back to fusion
+How does it differ from fission?
+Well, instead of taking uranium, we take deuterium and tritium
+They are both isotopes oh hydrogen
+These are the smallest atoms, therefore the easiest to put close together.
+And oh boy we need to put them close together, not just at any distance,
+we need to put them so close, that the atoms themselves start to merge,
+and when they merge, they release a neutrino, helium and also, some mass is lost.
+Where does the mass go? Into heat energy! And that's what we are after.
+We collect that heat energy and again, spin a turbine or make some tea.
+
+# Slide 4
+
+Now, I want to talk about a project called "ITER"
+The project is to build a huge fusion reactor.
+But the reactor won't produce any energy, it's only for research purposes.
+Nice research I might say...
+The project was started in 2007 and is funded by multiple governments
+It is 4.2km2 in area and weights 23000 tonnes
+The total invested money so far is 22B$
+
+
+# Slide 5
+
+This is the reactor type which they are using, it's called a tokamak
+and is a doughnut-shaped thing
+It uses really strong electro-magnets to confine the plasma and spin it around
+The plasma is heated to about 25x the suns temperature
+
+
+# Slide 6
+
+This is how it looks
+(This is a real video)
+
+
+# Slide 7
+
+Ok, now let's talk about positives and negatives
+For the positives, we have a few things
+The energy gains in theory can be up to 1Million times as much as from fossil fuels
+When the technology is developed enough it should be cheap and green
+That's about it for the pluses really
+
+But if we look at the minuses we start to see why we don't use the tech today
+First of all: to sustain fusion, the plasma needs to be SUPER hot, literally hotter than the surface of the sun
+The tech is still in early stages, so one needs large investment to prototype anything
+The fusion reaction are really fast and violent in their nature, so it's hard to capture them efficiently
+Not to mention that you need to start the reaction somehow in the first place
+Then you need to keep the plasma steady by constantly changing the magnetic fields
+Then there is the problem of fuel
+Deuterium can be easily extracted from water, but tritium is much more rare
+only a bit in the upper atmosphere and a byproduct of regular nuclear reactors
+
+
+# Slide 8
+
+But what about startups? Everything starts with startups, right?
+Yes, there are a lot of private companies who want to develop small reactor and output the energy to the grid.
+And actually many of them are sponsored by millionaires such as Bill Gates and Jeff Bezos
+Majority of people in the business think that fusion is close to being commercial relevant
+and that the plants will be able to deliver energy somewhere in 2035
+
+# Slide 9
+
+4.8B $ have been invested into startups up to 2022, 2.8B $ arrived in the 2022 alone (> 50%)
+These numbers pale in comparison to ITER, but have a different purpose.
+While ITER lays the scientific groundwork, those startups want to produce the energy already
+
+# Conclusion
+
+None of the startups have produces net power, they are not even close
+In my opinion we should not stupid as Germany and focus more on regular nuclear reactors for now,
+because even though the fusion technology is very promising, it's still far from being ready,
+but the world is already in dire need of clean energy.
+

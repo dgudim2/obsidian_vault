@@ -55,6 +55,7 @@
 + food wars
 + Скотт Пилигрим жмёт на газ (после фильма)
 + darker than black
++ Ergo proxy
 
 # Stuff to read
 

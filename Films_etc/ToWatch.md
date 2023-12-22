@@ -21,7 +21,6 @@
 + The electric state
 + дивергент
 + создатель (the creator)
-+ Ocean's Eleven
 + The Three Body Problem
 + Sunshine
 + Когерентность (Связь) 2013

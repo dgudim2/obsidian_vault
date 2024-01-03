@@ -18,6 +18,8 @@
 14. Primer (Детонатор) (8/10)
 15. Ocean's Eleven (8/10)
 16. Elysium (8/10)
+17. Aqua man (7/10)
+18. Aqua man 2 (6/10)
 
 ## Series
 

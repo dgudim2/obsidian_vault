@@ -8,7 +8,7 @@ kanban-plugin: basic
 
 - [ ] **Broken calendar name updates**<br><br>When the calendar is renamed in Google calendar it's not renamed in the app<br><br>@{2023-03-12}
 - [ ] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
-- [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
+- [ ] **Differently sized icons in sorting settings**<br><br>Icons in the sorting settings have different sizes<br>@{2024-01-05}
 
 
 ## Features
@@ -25,7 +25,11 @@ kanban-plugin: basic
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
 - [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [ ] **Add settings to view types (rectangle, rounded, etc)**<br><br>Also make the dialog more clear with selection, graying-out of not selected views<br><br>@{2023-11-09}
+- [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
 - [ ] **Event length**<br>Add an option to display event length in brackets for regular events<br><br>@{2023-12-05}
+- [ ] **Bottom menu**<br>Add a bottom menu (switcher)?<br><br>@{2024-01-05}
+- [ ] **DB stats in the debug menu**<br><br>Display stats for the vents in the debug menu<br>@{2024-01-05}
+- [ ] **Granular time reminders**<br><br>Add an option for granular reminders (i.e. in 2 hours)<br>@{2024-01-05}
 
 
 ## Fixed bugs

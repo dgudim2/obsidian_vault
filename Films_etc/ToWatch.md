@@ -5,7 +5,6 @@
 
 ## Random 
 + They see
-+ Altered carbon
 + Gattaca
 + Падение луны
 + black mirror

@@ -29,6 +29,7 @@
 4. Обломки(Debris) (7/10)
 5. Silicon valley (9.8/10)
 6. it croud (7/10)
+7. Altered carbon (8/10)
 
 ## Anime
 

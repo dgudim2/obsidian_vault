@@ -6,15 +6,11 @@ kanban-plugin: basic
 
 ## Bugs
 
-- [ ] **Broken calendar name updates**<br><br>When the calendar is renamed in Google calendar it's not renamed in the app<br><br>@{2023-03-12}
-- [ ] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
-- [ ] **Differently sized icons in sorting settings**<br><br>Icons in the sorting settings have different sizes<br>@{2024-01-05}
 
 
 ## Features
 
 - [ ] **Contribution section**<br><br>Add contribution section with translators, open when clicking the "version" text<br><br>@{2023-03-12}
-- [ ] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
 - [ ] **Option to archive entries for faster loading**<br><br>Add an option to put completed entries into a separate list<br><br>@{2023-05-08}
 - [ ] **Menu for editing groups**<br><br>Add a menu to edit group parameters (better than re-saving groups)<br><br>@{2023-05-12}
 - [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
@@ -23,23 +19,26 @@ kanban-plugin: basic
 - [ ] **Cache view for dialogs in a ViewModel**<br><br>Recreate on config change (bind to lifetime)<br><br>@{2023-10-01}
 - [ ] **Collapse events hidden by content**<br><br>Optionally show an expand button<br><br>@{2023-10-15}
 - [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
-- [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [ ] **Add settings to view types (rectangle, rounded, etc)**<br><br>Also make the dialog more clear with selection, graying-out of not selected views<br><br>@{2023-11-09}
 - [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
 - [ ] **Event length**<br>Add an option to display event length in brackets for regular events<br><br>@{2023-12-05}
 - [ ] **Bottom menu**<br>Add a bottom menu (switcher)?<br><br>@{2024-01-05}
+- [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [ ] **DB stats in the debug menu**<br><br>Display stats for the vents in the debug menu<br>@{2024-01-05}
 - [ ] **Granular time reminders**<br><br>Add an option for granular reminders (i.e. in 2 hours)<br>@{2024-01-05}
 
 
 ## Fixed bugs
 
+- [x] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
+- [x] **Differently sized icons in sorting settings**<br><br>Icons in the sorting settings have different sizes<br>@{2024-01-05}
 - [x] **Dialog fragment**<br><br>Broken gestures in event settings<br><br>@{2023-03-12}
 - [x] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
 
 
 ## Implemented features
 
+- [x] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
 - [x] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
 - [x] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}
 - [x] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
@@ -51,6 +50,7 @@ kanban-plugin: basic
 
 ## Archive
 
+- [ ] **Broken calendar name updates**<br><br>When the calendar is renamed in Google calendar it's not renamed in the app<br><br>@{2023-03-12}
 
 
 

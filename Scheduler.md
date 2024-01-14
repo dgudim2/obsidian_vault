@@ -23,7 +23,6 @@ kanban-plugin: basic
 - [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
 - [ ] **Event length**<br>Add an option to display event length in brackets for regular events<br><br>@{2023-12-05}
 - [ ] **Bottom menu**<br>Add a bottom menu (switcher)?<br><br>@{2024-01-05}
-- [ ] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [ ] **DB stats in the debug menu**<br><br>Display stats for the vents in the debug menu<br>@{2024-01-05}
 - [ ] **Granular time reminders**<br><br>Add an option for granular reminders (i.e. in 2 hours)<br>@{2024-01-05}
 
@@ -38,6 +37,7 @@ kanban-plugin: basic
 
 ## Implemented features
 
+- [x] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
 - [x] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
 - [x] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
 - [x] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}

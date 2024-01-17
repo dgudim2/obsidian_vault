@@ -23,5 +23,6 @@
   "userIgnoreFilters": [
     "export/"
   ],
-  "rightToLeft": false
+  "rightToLeft": false,
+  "useTab": false
 }

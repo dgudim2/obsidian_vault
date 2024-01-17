@@ -52,23 +52,27 @@ Relative cumulative frequency table:
 ```` 
 `````
 
-Mean: $\frac{0*3}{18} + \frac{1*2}{18} + \frac{2*3}{18} + \frac{3*5}{18} + \frac{4*5}{18} = 2.389$
+- Mean: $\frac{0*3}{18} + \frac{1*2}{18} + \frac{2*3}{18} + \frac{3*5}{18} + \frac{4*5}{18} = 2.389$
 
-```python
-import matplotlib.pyplot as plt
+- Variance: $(0 - \text{mean})^2 * \frac{3}{18} + (1 - \text{mean})^2 * \frac{2}{18} + (2 - \text{mean})^2 * \frac{3}{18} + (3 - \text{mean})^2 * \frac{5}{18} + (4 - \text{mean})^2 * \frac{5}{18}$
 
-fig, ax = plt.subplots()
+- Mode: 3 or 4
+- Median: 3 $P(X\leq x_{m})\geq 0.5$ and $P(X \geq x_{m})\geq 0.5$
 
-fruits = ['apple', 'blueberry', 'cherry', 'orange']
-counts = [40, 100, 30, 55]
-bar_labels = ['red', 'blue', '_red', 'orange']
-bar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']
 
-ax.bar(fruits, counts, label=bar_labels, color=bar_colors)
 
-ax.set_ylabel('fruit supply')
-ax.set_title('Fruit supply by kind and color')
-ax.legend(title='Fruit color')
+- 95% confidence interval of the mean: 
+- Sample mean is significantly different from 2 at 0.1 significance level:
 
-plt.show()
-```
+
+
+### Task 5
+
+| Systolic BP  | 140 | 170 | 141 | 171 | 158 | 175 | 150 |
+| ------------ | --- | --- | --- | --- | --- | --- | --- |
+| Diastolic BP | 78  | 101 | 84  | 92  | 80  | 91  | 80  | 
+
+- Corellation coef:
+
+$$r=\frac{n*\sum(xy)-\sum(x)\sum(y)}{\sqrt{ (n\sum(x^2)-\sum(x)^2)*(n\sum(y^2)-\sum(y)^2) }}$$
+

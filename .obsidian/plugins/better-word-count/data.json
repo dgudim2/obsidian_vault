@@ -10,7 +10,7 @@
     },
     {
       "prefix": " ",
-      "suffix": " chars",
+      "suffix": " characters",
       "metric": {
         "type": 0,
         "counter": 1
@@ -20,5 +20,6 @@
   "altBar": [],
   "countComments": true,
   "collectStats": false,
+  "displaySectionCounts": true,
   "pageWords": 300
 }

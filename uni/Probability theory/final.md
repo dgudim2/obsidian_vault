@@ -61,8 +61,25 @@ Relative cumulative frequency table:
 
 
 
-- 95% confidence interval of the mean: 
-- Sample mean is significantly different from 2 at 0.1 significance level:
+### 95% confidence interval of the mean: 
+
+$$CI=\hat{x}\pm z \frac{s}{\sqrt{ n }}$$
+
+Where:
+- CI - confidence interval
+- $\hat{x}$ - sample mean
+- z - confidence level value (The Z value for 95% confidence is Z=1.96)
+- s - sample standard deviation
+- n - sample size
+
+$$\text{Standard deviation for sample: }S=\sqrt{ \frac{\sum{(x_{i}-\hat{x})^2}}{n-1}}$$
+
+Where:
+- $\hat{x}$ - sample mean
+- $x_{i}$ - individual value
+- n - total number of samples
+
+### Sample mean is significantly different from 2 at 0.1 significance level:
 
 
 

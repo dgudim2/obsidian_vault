@@ -11,8 +11,7 @@
 + Навстречу шторму
 + Everything Everywhere all at once
 + Knives out, glass onion
-+ bullet train
-+ top gun 
++ bullet train 
 + the prestige
 + ghost in the shell
 + whoami

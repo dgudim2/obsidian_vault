@@ -1,0 +1,1525 @@
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator, img.Wirisformula {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #202020;
+   --darkreader-neutral-text: #e1c88a;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #ebdbb2;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #282828 !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #282828;
+}
+html, body {
+    border-color: #a6842b;
+    color: #ebdbb2;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #595959;
+}
+::placeholder {
+    color: #d9ba6b;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #4f5400 !important;
+    color: #ebdbb2 !important;
+}
+::-webkit-scrollbar {
+    background-color: #2f2f2f;
+    color: #d6b663;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #4e4e4e;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5e5e5e;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #4d4d4d;
+}
+::-webkit-scrollbar-corner {
+    background-color: #282828;
+}
+* {
+    scrollbar-color: #4e4e4e #2f2f2f;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}</style>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="Generator" content="Corel WordPerfect 8">
+   <meta name="GENERATOR" content="Mozilla/4.05 [en] (Win95; I) [Netscape]">
+   <title>Tests of Statistical Significance</title>
+<meta name="darkreader" content="0bdd7641f6ed499d8d2a4eb0de44cf67"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #032029 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #0a0a0a !important;
+}
+.tou-uknfeu {
+    background-color: #231603 !important;
+}
+.tou-6i3zyv {
+    background-color: #19576c !important;
+}
+div.mermaid-viewer-control-panel .btn {
+  fill: var(--darkreader-neutral-text);
+  background-color: var(--darkreader-neutral-background);
+}
+svg g rect.er {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+  fill-opacity: 0.8 !important;
+  fill: var(--darkreader-selection-background);
+}
+svg rect.er.relationshipLabelBox {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect, svg g g.nodes polygon {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+  fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0, svg line.messageLine1 {
+  stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+  fill: var(--darkreader-neutral-background) !important;
+}
+.google-material-icons {
+    font-family: 'Google Material Icons' !important;
+}
+.google-symbols {
+    font-family: 'Google Symbols' !important;
+}
+.material-icons-extended {
+    font-family: 'Material Icons Extended' !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    padding-top: 1rem;
+    background-color: white !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style></head>
+<body text="#000000" bgcolor="#C0C0C0" link="#0000FF" vlink="#551A8B" alink="#FF0000" style="--darkreader-inline-bgcolor: #474747;" data-darkreader-inline-bgcolor="">
+
+<h3>
+<a name="Tests for Significance"></a>PPA 696 RESEARCH METHODS</h3>
+
+<h3>
+TESTS FOR SIGNIFICANCE</h3>
+<a href="#WHAT ARE TESTS FOR">What are Tests for Significance</a>
+<br><a href="#STEPS IN TESTING FOR STATISTICAL">Steps in Testing for Statistical
+Significance</a>
+<br><a href="#1) State the Research">1) State the Research Hypothesis</a>
+<br><a href="#2) State the Null">2) State the Null Hypothesis</a>
+<br><a href="#3) TYPE I AND TYPE II">3) Type I and Type II Errors</a>
+<br><a href="#SELECT A PROBABILITY OF ERROR LEVEL (ALPHA">Select a probability
+of error level (alpha level)</a>
+<br><a href="#4) The Chi Square Test">4) Chi Square Test</a>
+<br><a href="#Calculate Chi">Calculate Chi Square</a>
+<br><a href="#DEGREES OF">Degrees of freedom</a>
+<br><a href="#DISTRIBUTION of Chi">Distribution Tables</a>
+<br><a href="#INTERPRET THE Chi">Interpret the results</a>
+<br><a href="#Using t">5) T-Test</a>
+<br><a href="#To calculate a value of t,">Calculate T-Test</a>
+<br><a href="#Degrees of freedom for t">Degrees of freedom</a>
+<br><a href="#Distribution of T">Distribution Tables</a>
+<br><a href="#Interpret the value of t">Interpret the results</a>
+<br><a href="#REPORTING TESTS OF STATISTICAL">Reporting Tests of Statistical
+Significance</a>
+<br><a href="#Final Comments">Final Comments</a>
+<h4>
+<a name="WHAT ARE TESTS FOR"></a><b>What Are Tests for Significance</b></h4>
+
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; Two questions arise about any hypothesized relationship
+between two variables:</dt>
+</dl>
+
+<dl>
+<dd>
+1) what is the probability that the relationship exists;</dd>
+
+<dd>
+2) if it does, how strong is the relationship</dd>
+</dl>
+&nbsp;&nbsp;&nbsp; There are two types of tools that are used to address
+these questions: the first is addressed by tests for statistical significance;
+and the second is addressed by Measures of Association.
+
+<p>&nbsp;&nbsp;&nbsp; Tests for statistical significance are used to address
+the question: what is the probability that what we think is a relationship
+between two variables is really just a chance occurrence?
+
+</p><p>&nbsp;&nbsp;&nbsp; If we selected many samples from the same population,
+would we still find the same relationship between these two variables in
+every sample? If we could do a census of the population, would we also
+find that this relationship exists in the population from which the sample
+was drawn? Or is our finding due only to random chance?
+
+</p><p>&nbsp;&nbsp;&nbsp; Tests for statistical significance tell us what the
+probability is that the relationship we think we have found is due only
+to random chance. They tell us what the probability is that we would be
+making an error if we assume that we have found that a relationship exists.
+
+</p><p>&nbsp;&nbsp;&nbsp; We can never be completely 100% certain that a relationship
+exists between two variables. There are too many sources of error to be
+controlled, for example, sampling error, researcher bias, problems with
+reliability and validity, simple mistakes, etc.
+
+</p><p>&nbsp;&nbsp;&nbsp; But using probability theory and the normal curve,
+we can estimate the probability of being wrong, if we assume that our finding
+a relationship is true. If the probability of being wrong is small, then
+we say that our observation of the relationship is a statistically significant
+finding.
+
+</p><p>&nbsp;&nbsp;&nbsp; Statistical significance means that there is a good
+chance that we are right in finding that a relationship exists between
+two variables. But statistical significance is not the same as practical
+significance. We can have a statistically significant finding, but the
+implications of that finding may have no practical application. The researcher
+must always examine both the statistical and the practical significance
+of any research finding.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, we may find that there is a statistically
+significant relationship between a citizen's age and satisfaction with
+city recreation services. It may be that older citizens are 5% less satisfied
+than younger citizens with city recreation services. But is 5% a large
+enough difference to be concerned about?
+
+</p><p>&nbsp;&nbsp;&nbsp; Often times, when differences are small but statistically
+significant, it is due to a very large sample size; in a sample of a smaller
+size, the differences would not be enough to be statistically significant.
+<br>&nbsp;
+</p><h4>
+<a name="STEPS IN TESTING FOR STATISTICAL"></a><b>Steps in Testing for
+Statistical Significance</b></h4>
+1) State the Research Hypothesis
+<br>2) State the Null Hypothesis
+<br>3) Select a probability of error level (alpha level)
+<br>4) Select and compute the test for statistical significance
+<br>5) Interpret the results
+<br>&nbsp;
+<h4>
+<a name="1) State the Research"></a><b>1) State the Research Hypothesis</b></h4>
+
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; A research hypothesis states the expected relationship
+between two variables. It may be stated in general terms, or it may include
+dimensions of direction and magnitude. For example,</dt>
+
+<dd>
+General: The length of the job training program is related to the rate
+of job placement of trainees.</dd>
+
+<dd>
+Direction: The longer the training program, the higher the rate of job
+placement of trainees.</dd>
+
+<dd>
+Magnitude: Longer training programs will place twice as many trainees into
+jobs as shorter programs.</dd>
+
+<dd>
+</dd>
+
+<dd>
+General: Graduate Assistant pay is influenced by gender.</dd>
+
+<dd>
+Direction: Male graduate assistants are paid more than female graduate
+assistants.</dd>
+
+<dd>
+Magnitude: Female graduate assistants are paid less than 75% of what male
+graduate assistants are paid.</dd>
+
+<dd>
+</dd>
+</dl>
+
+<h4>
+<a name="2) State the Null"></a>2) State the Null Hypothesis</h4>
+
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; A null hypothesis usually states that there is no relationship
+between the two variables. For example,</dt>
+</dl>
+
+<dl>
+<dd>
+There is no relationship between the length of the job training program
+and the rate of job placement of trainees.</dd>
+
+<dd>
+</dd>
+
+<dd>
+Graduate assistant pay is not influenced by gender.</dd>
+
+<dd>
+</dd>
+
+<dt>
+&nbsp;&nbsp;&nbsp; A null hypothesis may also state that the relationship
+proposed in the research hypothesis is not true. For example,</dt>
+</dl>
+
+<dl>
+<dd>
+Longer training programs will place the same number or fewer trainees into
+jobs as shorter programs.</dd>
+
+<dd>
+</dd>
+
+<dd>
+Female graduate assistants are paid at least 75% or more of what male graduate
+assistants are paid.</dd>
+</dl>
+&nbsp;&nbsp;&nbsp; Researchers use a null hypothesis in research because
+it is easier to disprove a null hypothesis than it is to prove a research
+hypothesis. The null hypothesis is the researcher's "straw man." That is,
+it is easier to show that something is false once than to show that something
+is always true. It is easier to find disconfirming evidence against the
+null hypothesis than to find confirming evidence for the research hypothesis.
+<br>&nbsp;
+<h4>
+<a name="3) TYPE I AND TYPE II"></a>3) TYPE I AND TYPE II ERRORS</h4>
+&nbsp;&nbsp;&nbsp; Even in the best research project, there is always a
+possibility (hopefully a small one) that the researcher will make a mistake
+regarding the relationship between the two variables. There are two possible
+mistakes or errors.
+
+<p>&nbsp;&nbsp;&nbsp; The first is called a Type I error. This occurs when
+the researcher assumes that a relationship exists when in fact the evidence
+is that it does not. In a Type I error, the researcher should accept the
+null hypothesis and reject the research hypothesis, but the opposite occurs.
+The probability of committing a Type I error is called alpha.
+
+</p><p>&nbsp;&nbsp;&nbsp; The second is called a Type II error. This occurs
+when the researcher assumes that a relationship does not exist when in
+fact the evidence is that it does. In a Type II error, the researcher should
+reject the null hypothesis and accept the research hypothesis, but the
+opposite occurs. The probability of committing a Type II error is called
+beta.
+
+</p><p>&nbsp;&nbsp;&nbsp; Generally, reducing the possibility of committing
+a Type I error increases the possibility of committing a Type II error
+and vice versa, reducing the possibility of committing a Type II error
+increases the possibility of committing a Type I error.
+
+</p><p>&nbsp;&nbsp;&nbsp; Researchers generally try to minimize Type I errors,
+because when a researcher assumes a relationship exists when one really
+does not, things may be worse off than before. In Type II errors, the researcher
+misses an opportunity to confirm that a relationship exists, but is no
+worse off than before.
+</p><dl>
+<dt>
+In this example, which type of error would you prefer to commit?</dt>
+
+<dd>
+Research Hypothesis: El Nino has reduced crop yields in County X, making
+it eligible for government disaster relief.</dd>
+
+<dd>
+</dd>
+
+<dd>
+Null Hypothesis: El Nino has not reduced crop yields in County X, making
+it ineligible for government disaster relief.</dd>
+</dl>
+&nbsp;&nbsp;&nbsp; If a Type I error is committed, then the County is assumed
+to be eligible for disaster relief, when it really is not (the null hypothesis
+should be accepted, but it is rejected). The government may be spending
+disaster relief funds when it should not, and taxes may be raised.
+
+<p>&nbsp;&nbsp;&nbsp; If a Type II error is committed, then the County
+is assumed to be ineligible for disaster relief, when it really is eligible
+(the null hypothesis should be accepted, but it is rejected). The government
+may not spend disaster relief funds when it should, and farmers may go
+into bankruptcy.
+</p><dl>
+<dt>
+In this example, which type of error would you prefer to commit?</dt>
+
+<dt>
+</dt>
+
+<dd>
+Research Hypothesis: The new drug is better at treating heart attacks than
+the old drug</dd>
+
+<dd>
+</dd>
+
+<dd>
+Null Hypothesis: The new drug is no better at treating heart attacks than
+the old drug</dd>
+</dl>
+&nbsp;&nbsp;&nbsp; If a Type I error is committed, then the new drug is
+assumed to be better when it really is not (the null hypothesis should
+be accepted, but it is rejected). People may be treated with the new drug,
+when they would have been better off with the old one.
+
+<p>&nbsp;&nbsp;&nbsp; If a Type II error is committed, then the new drug
+is assumed to be no better when it really is better (the null hypothesis
+should be rejected, but it is accepted). People may not be treated with
+the new drug, although they would be better off than with the old one.
+<br>&nbsp;
+</p><h4>
+<a name="SELECT A PROBABILITY OF ERROR LEVEL (ALPHA"></a>SELECT A PROBABILITY
+OF ERROR LEVEL (ALPHA LEVEL)</h4>
+&nbsp;&nbsp;&nbsp; Researchers generally specify the probability of committing
+a Type I error that they are willing to accept, i.e., the value of alpha.
+In the social sciences, most researchers select an alpha=.05. This means
+that they are willing to accept a probability of 5% of making a Type I
+error, of assuming a relationship between two variables exists when it
+really does not. In research involving public health, however, an alpha
+of .01 is not unusual. Researchers do not want to have a probability of
+being wrong more than 0.1% of the time, or one time in a thousand.
+
+<p>&nbsp;&nbsp;&nbsp; If the relationship between the two variables is
+strong (as assessed by a Measure of Association), and the level chosen
+for alpha is .05, then moderate or small sample sizes will detect it. As
+relationships get weaker, however, and/or as the level of alpha gets smaller,
+larger sample sizes will be needed for the research to reach statistical
+significance.
+<br>&nbsp;
+</p><h4>
+<a name="4) The Chi Square Test"></a>4) The Chi Square Test</h4>
+&nbsp;&nbsp;&nbsp; For nominal and ordinal data, Chi Square is used as
+a test for statistical significance. For example, we hypothesize that there
+is a relationship between the type of training program attended and the
+job placement success of trainees. We gather the following data:
+<br>&nbsp;
+<br>&nbsp;
+<table border="" cols="2" width="75%">
+<tbody><tr>
+<td>Type of Training Attended:</td>
+
+<td>Number attending Training</td>
+</tr>
+
+<tr>
+<td>Vocational Education</td>
+
+<td>200</td>
+</tr>
+
+<tr>
+<td>Work Skills Training</td>
+
+<td>250</td>
+</tr>
+
+<tr>
+<td>Total</td>
+
+<td>450</td>
+</tr>
+</tbody></table>
+&nbsp;
+<br>&nbsp;
+<table border="" cols="2" width="75%">
+<tbody><tr>
+<td>Placed in a Job?</td>
+
+<td>Number of Trainees</td>
+</tr>
+
+<tr>
+<td>Yes</td>
+
+<td>300</td>
+</tr>
+
+<tr>
+<td>No</td>
+
+<td>150</td>
+</tr>
+
+<tr>
+<td>Total</td>
+
+<td>450</td>
+</tr>
+</tbody></table>
+
+
+<p>&nbsp;&nbsp;&nbsp; To compute Chi Square, a table showing the joint
+distribution of the two variables is needed:
+
+</p><p>Table 1. Job Placement by Type of Training (Observed Frequencies)
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td rowspan="2">
+
+<p>Placed in a Job?</p></td>
+
+<td align="CENTER" colspan="2">Type of Training</td>
+
+<td align="CENTER"></td>
+</tr>
+
+<tr valign="TOP">
+<td align="CENTER">Vocational
+<br>Education</td>
+
+<td align="CENTER">Work Skills
+<br>Training</td>
+
+<td align="CENTER">Total</td>
+</tr>
+
+<tr valign="TOP">
+<td>Yes</td>
+
+<td align="CENTER">175</td>
+
+<td align="CENTER">125</td>
+
+<td align="CENTER">300</td>
+</tr>
+
+<tr valign="TOP">
+<td>No</td>
+
+<td align="CENTER">25</td>
+
+<td align="CENTER">125</td>
+
+<td align="CENTER">150</td>
+</tr>
+
+<tr valign="TOP">
+<td>Total</td>
+
+<td align="CENTER">200</td>
+
+<td align="CENTER">250</td>
+
+<td align="CENTER">450</td>
+</tr>
+</tbody></table>
+
+
+</p><p>&nbsp;&nbsp;&nbsp; Chi Square is computed by looking at the different
+parts of the table. The "cells" of the table are the squares in the middle
+of the table containing numbers that are completely enclosed. The cells
+contain the frequencies that occur in the joint distribution of the two
+variables. The frequencies that we actually find in the data are called
+the "observed" frequencies.
+
+</p><p>&nbsp;&nbsp;&nbsp; In this table, the cells contain the frequencies
+for vocational education trainees who got a job (n=175) and who didn't
+get a job (n=25), and the frequencies for work skills trainees who got
+a job (n=125) and who didn't get a job (n=125).
+
+</p><p>&nbsp;&nbsp;&nbsp; The "Total" columns and rows of the table show the
+marginal frequencies. The marginal frequencies are the frequencies that
+we would find if we looked at each variable separately by itself. For example,
+we can see in the "Total" column that there were 300 people who got a job
+and 150 people who didn't. We can see in the "Total" row that there were
+200 people in vocational education training and 250 people in job skills
+training.
+
+</p><p>&nbsp;&nbsp;&nbsp; Finally, there is the total number of observations
+in the whole table, called N. In this table, N=450.
+<br>&nbsp;
+</p><h4>
+<a name="Calculate Chi"></a>Calculate Chi Square</h4>
+1) display observed frequencies for each cell
+<br>2) calculate expected frequencies for each cell
+<br>3) calculate, for each cell, the expected minus observed frequency
+squared, divided by the expected frequency
+<br>4) all up the results for all the cells
+
+<p>&nbsp;&nbsp;&nbsp; To find the value of Chi Square, we first assume
+that there is no relationship between the type of training program attended
+and whether the trainee was placed in a job. If we look at the column total,
+we can see that 300 of 450 people found a job, or 66.7% of the total people
+in training found a job. We can also see that 150 of 450 people did not
+find a job, or 33.3% of the total people in training did not find a job.
+
+</p><p>&nbsp;&nbsp;&nbsp; If there was no relationship between the type of
+program attended and success in finding a job, then we would expect 66.7%
+of trainees of both types of training programs to get a job, and 33.3%
+of both types of training programs to not get a job.
+
+</p><p>&nbsp;&nbsp;&nbsp; The first thing that Chi Square does is to calculate
+"expected" frequencies for each cell. The expected frequency is the frequency
+that we would have expected to appear in each cell if there was no relationship
+between type of training program and job placement.
+
+</p><p>&nbsp;&nbsp;&nbsp; The way to calculate the expected cell frequency
+is to multiply the column total for that cell, by the row total for that
+cell, and divide by the total number of observations for the whole table.
+
+</p><p>For the upper left hand corner cell, multiply 200 by 300 and divide
+by 450=133.3
+<br>For the lower left hand corner cell, multiply 200 by 150 and divide
+by 450=66.7
+<br>For the upper right hand corner cell, multiply 250 by 300 and divide
+by 450=166.7
+<br>For the lower right hand corner cell, multiply 250 by 150 and divide
+by 450=83.3
+
+</p><p>Table 2. Job Placement by Type of Training (Expected Frequencies)
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td rowspan="2">
+
+<p>Placed in a Job?</p></td>
+
+<td align="CENTER" colspan="2">Type of Training</td>
+
+<td align="CENTER"></td>
+</tr>
+
+<tr valign="TOP">
+<td align="CENTER">Vocational
+<br>Education</td>
+
+<td align="CENTER">Work Skills
+<br>Training</td>
+
+<td align="CENTER">Total</td>
+</tr>
+
+<tr valign="TOP">
+<td>Yes</td>
+
+<td align="CENTER">133.3</td>
+
+<td align="CENTER">166.7</td>
+
+<td align="CENTER">300</td>
+</tr>
+
+<tr valign="TOP">
+<td>No</td>
+
+<td align="CENTER">66.7</td>
+
+<td align="CENTER">83.3</td>
+
+<td align="CENTER">150</td>
+</tr>
+
+<tr valign="TOP">
+<td>Total</td>
+
+<td align="CENTER">200</td>
+
+<td align="CENTER">250</td>
+
+<td align="CENTER">450</td>
+</tr>
+</tbody></table>
+
+
+</p><p>&nbsp;&nbsp;&nbsp; This table shows the distribution of "expected" frequencies,
+that is, the cell frequencies we would expect to find if there was no relationship
+between type of training and job placement.
+
+</p><p>&nbsp;&nbsp;&nbsp; Note that Chi Square is not reliable if any cell
+in the contingency table has an expected frequency of less than 5.
+
+</p><p>&nbsp;&nbsp;&nbsp; To calculate Chi Square, we need to compare the original,
+observed frequencies with the new, expected frequencies. For each cell,
+we perform the following calculations:
+<br>a) Subtract the value of the observed frequency from the value of the
+expected frequency
+<br>b) square the result
+<br>c) divide the result by the value of the expected frequency
+
+</p><p>For each cell above,
+<br><u><font size="+1"></font></u>&nbsp;
+<table border="" width="100%">
+<tbody><tr>
+<td><u><font size="+1">f<sub>e</sub> - f<sub>o</sub></font></u></td>
+
+<td><u><font size="+1">(f<sub>e</sub> - f<sub>o</sub>)<sup>2</sup></font></u></td>
+
+<td><u><font size="+1"><sub>&nbsp;</sub> [(f<sub>e</sub> - f<sub>o</sub>)<sup>2</sup>]
+/ f<sub>e</sub></font>&nbsp;</u></td>
+
+<td><b><u>Result</u></b></td>
+</tr>
+
+<tr>
+<td>(133.3 - 175)</td>
+
+<td>(133.3 - 175)<sup>2</sup></td>
+
+<td>[(133.3 - 175)<sup>2</sup>] / 133.3</td>
+
+<td>&nbsp;13.04</td>
+</tr>
+
+<tr>
+<td>(66.7 - 25)&nbsp;</td>
+
+<td>(66.7 - 25)<sup>2</sup></td>
+
+<td>&nbsp;[(66.7 - 25)<sup>2</sup>] / 66.7</td>
+
+<td>26.07</td>
+</tr>
+
+<tr>
+<td>(166.7 - 125)</td>
+
+<td>(166.7 - 125)<sup>2</sup>&nbsp;</td>
+
+<td>&nbsp;[(166.7 - 125)<sup>2</sup>] / 166.7</td>
+
+<td>10.43</td>
+</tr>
+
+<tr>
+<td>(83.3 - 125)</td>
+
+<td>(83.3 - 125)<sup>2</sup></td>
+
+<td>[(83.3 - 135)<sup>2</sup>] / 83.3</td>
+
+<td>&nbsp;20.88</td>
+</tr>
+</tbody></table>
+<u></u>
+
+</p><p>To calculate the value of Chi Square, add up the results for each cell--Total=70.42
+<br>&nbsp;
+</p><h4>
+<a name="DEGREES OF"></a>DEGREES OF FREEDOM</h4>
+&nbsp;&nbsp;&nbsp; We cannot interpret the value of the Chi Square statistics
+by itself. Instead, we must put it into a context.
+
+<p>&nbsp;&nbsp;&nbsp; In theory, the value of the Chi Square statistic
+is normally distributed; that is, the value of the Chi Square statistics
+looks like a normal (bell-shaped) curve. Thus we can use the properties
+of the normal curve to interpret the value obtained from our calculation
+of the Chi Square statistic.
+
+</p><p>&nbsp;&nbsp;&nbsp; If the value we obtain for Chi Square is large enough,
+then we can say that it indicates the level of statistical significance
+at which the relationship between the two variables can be presumed to
+exist.
+
+</p><p>&nbsp;&nbsp;&nbsp; However, whether the value is large enough depends
+on two things: the size of the contingency table from which the Chi Square
+statistic has been computed; and the level of alpha that we have selected.
+
+</p><p>&nbsp;&nbsp;&nbsp; The larger the size of the contingency table, the
+larger the value of Chi Square will need to be in order to reach statistical
+significance, if other things are equal. Similarly, the more stringent
+the level of alpha, the larger the value of Chi Square will need to be,
+in order to reach statistical significance, if other things are equal.
+
+</p><p>&nbsp;&nbsp;&nbsp; The term "degrees of freedom" is used to refer to
+the size of the contingency table on which the value of the Chi Square
+statistic has been computed. The degrees of freedom is calculated as the
+product of (the number of rows in the table minus 1) times (the number
+of columns in the table minus ).
+<br>&nbsp;
+</p><dl>
+<dt>
+For a table with two rows of cells and two columns of cells, the formula
+is:</dt>
+
+<dd>
+df = (2 - 1) x (2 - 1) = (1) x (1) = 1</dd>
+
+<dd>
+</dd>
+
+<dt>
+For a table with two rows of cells and three columns of cells, the formula
+is:</dt>
+
+<dd>
+df = (3 - 1) x (2 - 1) = (2) x (1) = 2</dd>
+
+<dd>
+</dd>
+
+<dt>
+For a table with three rows of cells and three columns of cells, the formula
+is:</dt>
+
+<dd>
+df = (3 - 1) x (3 - 1) = (2) x (2) = 4</dd>
+</dl>
+&nbsp;&nbsp;&nbsp; The level of alpha can vary, but the smaller the value,
+the more stringent the requirement for reaching statistical significance
+becomes. Alpha levels are often written as the "p-value", or "p=.05." Usual
+levels are p=.05 (or the chance of one in 20 of making an error), or p=.01
+(or the chance of one in 100 of making an error), or p=.001 (or the chance
+of one in 1,000 of making an error).
+
+<p>&nbsp;&nbsp;&nbsp; When reporting the level of alpha, it is usually
+reported as being "less than" some level, using the "less than" sign or
+&lt;.&nbsp; Thus, it is reported as p&lt;.05, or p&lt;.01; unless you are
+reporting the exact p-value, such as p=.04 or p=.22.
+<br>&nbsp;
+</p><h4>
+<a name="DISTRIBUTION of Chi"></a>DISTRIBUTION TABLES</h4>
+&nbsp;&nbsp;&nbsp; Once we have the calculated value of the Chi Square
+statistic, and the degrees of freedom for the contingency table, and the
+desired level for alpha, we can look up the normal distribution for Chi
+Square in a table. There are many tables available in statistics texts
+for this purpose.
+
+<p>&nbsp;&nbsp;&nbsp; In the table, find the degrees of freedom (usually
+listed in a column down the side of the page). Next find the desired level
+of alpha (usually listed in a row across the top of the page). Find the
+intersection of the degrees of freedom and the level of alpha, and that
+is the value which the computed Chi Square must equal or exceed to reach
+statistical significance.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, for df=2 and p=.05, Chi Square must
+equal or exceed 5.99 to indicate that the relationship between the two
+variables is probably not due to chance. For df=4 and p=.05, Chi Square
+must equal or exceed 9.49.
+<br>&nbsp;
+</p><h4>
+<a name="INTERPRET THE Chi"></a>INTERPRET THE RESULTS</h4>
+&nbsp;&nbsp;&nbsp; If the computed value for Chi Square equals or exceeds
+the value indicated in the table for the given level of alpha and degrees
+of freedom, then the researcher can assume that the observed relationship
+between the two variables exists (at the specified level of probability
+of error, or alpha), and reject the null hypothesis. This gives support
+to the research hypothesis.
+
+<p>&nbsp;&nbsp;&nbsp; The computed value of Chi Square, at a given level
+of alpha and with a given degree of freedom, is a type of "pass-fail" measurement.
+It is not like a measure of association, which can vary from 0.0 to (plus
+or minus) 1.0, and which can be interpreted at every point along the distribution.
+Either the computed value of Chi Square reaches the required level for
+statistical significance or it does not.
+<br>&nbsp;
+</p><dl>
+<dt>
+It is important to note that Chi Square, like other tests for statistical
+significance:</dt>
+
+<dd>
+1) does not indicate the strength of an association between two variables</dd>
+
+<dd>
+2) does not indicate the direction of an association between two variables</dd>
+
+<dd>
+3) does not indicate the probability of a Type I error</dd>
+
+<dd>
+4) does not take into account the reliability and validity of the research</dd>
+
+<dd>
+5) does not provide absolute, conclusive proof of a relationship</dd>
+
+<dd>
+</dd>
+
+<br>To recap, for the example above:
+<dt>
+1) state the research hypothesis:</dt>
+
+<dd>
+There is a relationship between the type of training program attended and
+the job placement success of trainees</dd>
+
+<dt>
+2) state the null hypothesis:</dt>
+
+<dd>
+There is no relationship between the type of training program attended
+and the job placement success of trainees</dd>
+
+<dt>
+3) calculate the test for statistical significance</dt>
+
+<dd>
+Chi Square=70.42</dd>
+
+<dt>
+4) calculate the degrees of freedom of the contingency table</dt>
+
+<dd>
+df=1</dd>
+
+<dt>
+5) select the level of alpha</dt>
+
+<dd>
+p=.05</dd>
+
+<dt>
+6) look up the Chi Square value in the table at p=.05 and df=1</dt>
+
+<dd>
+Chi Square=3.84</dd>
+
+<dt>
+7) interpret the result</dt>
+
+<dd>
+The computed value of Chi Square (70.42) exceeds the value in the table
+for p=.05 and df=1 (Chi Square=3.84). Therefore, we can reject the null
+hypothesis (with a 5% probability of error) and accept the research hypothesis
+that a relationship exists between type of training program attended and
+the job placement success of trainees.</dd>
+</dl>
+
+<h4>
+<a name="Using t"></a>Using T-Tests</h4>
+
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; T-Tests are tests for statistical significance that
+are used with interval and ratio level data. T-tests can be used in several
+different types of statistical tests:</dt>
+
+<dd>
+</dd>
+
+<dd>
+1) to test whether there are differences between two groups on the same
+variable, based on the mean (average) value of that variable for each group;
+for example, do students at private schools score higher on the SAT test
+than students at public schools?</dd>
+
+<dd>
+</dd>
+
+<dd>
+2) to test whether a group's mean (average) value is greater or less than
+some standard; for example, is the average speed of cars on freeways in
+California higher than 65 mph?</dd>
+
+<dd>
+</dd>
+
+<dd>
+3) to test whether the same group has different mean (average) scores on
+different variables; for example, are the same clerks more productive on
+IBM or Macintosh computers?</dd>
+</dl>
+
+<h4>
+<a name="To calculate a value of t,"></a>To calculate a value of t,</h4>
+a) state the research hypothesis;
+<br>b) state the null hypothesis;
+<br>c) stipulate whether the t-test will be a one-tailed test or a two-tailed
+test for significance
+<br>d) select the level of alpha
+<br>e) calculate t
+
+<p>To calculate a value of t,
+</p><dl>
+<dt>
+a) state the research hypothesis;</dt>
+
+<dd>
+The average salary of male graduate assistants is higher than the average
+salary of female graduate assistants at CSULB.</dd>
+</dl>
+
+<dl>
+<dt>
+b) state the null hypothesis;</dt>
+
+<dd>
+There is no difference in the average salary of male and female graduate
+assistants at CSULB.</dd>
+
+<dd>
+</dd>
+
+<dt>
+c) select the level of alpha</dt>
+
+<dd>
+select a value for alpha, such as p=.05, p=.01, or p=.001</dd>
+</dl>
+d) stipulate whether the t-test will be a one-tailed test or a two-tailed
+test for significance
+
+<p>&nbsp;&nbsp;&nbsp; Like other statistics, the t-test has a distribution
+that approaches the normal distribution, especially if the sample size
+is greater than 30. Since we know the properties of the normal curve, we
+can it to tell us how far away from the mean of the distribution our calculated
+t-score is.
+
+</p><p>&nbsp;&nbsp;&nbsp; The normal curve is distributed about a mean of zero,
+with a standard deviation of one. A t-score can fall along the normal curve
+either above or below the mean; that is, either plus or minus some standard
+deviation units from the mean.
+
+</p><p>&nbsp;&nbsp;&nbsp; A t-score must fall far from the mean in order to
+achieve statistical significance. That is, it must be quite different from
+the value of the mean of the distribution, something that has only a low
+probability of occurring by chance if there is no relationship between
+the two variables. If we have chosen a value of p=.05 for alpha, we look
+for a value of t that falls into the extreme 5% of the distribution.
+
+</p><p>&nbsp;&nbsp;&nbsp; If we have a hypothesis that states the expected
+direction of the results, e.g., that male graduate assistant salaries are
+higher than female graduate assistant salaries, then we expect the calculated
+t-score to fall into only one end of the normal distribution. We expect
+the calculated t-score to fall into the extreme 5% of the distribution.
+
+</p><p>&nbsp;&nbsp;&nbsp; If we have a hypothesis, however, that only states
+that there is some difference between two groups, but does not state which
+group is expected to have the higher score, then the calculated t-score
+can fall into either end of the normal distribution. For example, our hypothesis
+could be that we expect to find a difference between the average salaries
+of male and female graduate assistant members (but we do not know which
+is going to be higher, or which is going to be lower).
+
+</p><p>&nbsp;&nbsp;&nbsp; For a hypothesis which states no direction, we need
+to use a "two-tailed" t-test. That is, we must look for a value of t that
+falls into either one of the extreme ends ("tails") of the distribution.
+But since t can fall into either tail, if we select p=.05 for alpha, we
+must divide the 5% into two parts of 2-1/2% each. So a two-tailed test
+requires t to take on a more extreme value to reach statistical significance
+than a one-tailed test of t.
+
+</p><p>e) calculate t
+
+</p><p>&nbsp;&nbsp;&nbsp; A t-score is calculated by comparing the average
+value on some variable obtained for two groups; the calculation also involves
+the variance of each group and the number of observations in each group.&nbsp;
+For example,
+
+</p><p>Table 3. Male and Female Graduate Assistant Salaries at CSULB
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td></td>
+
+<td align="CENTER">MaleGraduate Assistants</td>
+
+<td align="CENTER">Female Graduate Assistants</td>
+</tr>
+
+<tr valign="TOP">
+<td>Number of&nbsp;
+<br>observations</td>
+
+<td align="CENTER">
+
+<p>403</p></td>
+
+<td align="CENTER">
+
+<p>132</p></td>
+</tr>
+
+<tr valign="TOP">
+<td>Mean</td>
+
+<td align="CENTER">$17,095</td>
+
+<td align="CENTER">$14,885</td>
+</tr>
+
+<tr valign="TOP">
+<td>Standard&nbsp;
+<br>Deviation</td>
+
+<td align="CENTER">
+
+<p>6329</p></td>
+
+<td align="CENTER">
+
+<p>4676</p></td>
+</tr>
+
+<tr valign="TOP">
+<td>Variance</td>
+
+<td align="CENTER">40045241</td>
+
+<td align="CENTER">21864976</td>
+</tr>
+</tbody></table>
+
+
+</p><p>To calculate t,
+<br>1) subtract the mean of the second group from the mean of the first
+group
+<br>2) calculate, for each group, the variance divided by the number of
+observations minus 1
+<br>3) add the results obtained for each group in step two together
+<br>4) take the square root of the results of step three
+<br>5) divide the results of step one by the results of step four
+
+</p><p>For example,
+</p><dl>
+<dt>
+1) subtract the mean of the second group from the mean of the first group</dt>
+
+<dd>
+17095-14885=2210</dd>
+
+<dt>
+2) calculate, for each group, the variance divided by the number of observations
+minus 1</dt>
+
+<dd>
+Male graduate assistants:</dd>
+
+<dd>
+[40056241 / (403-1)] = [40056241 / (402)] = 99642</dd>
+
+<dd>
+Female graduate assistants:</dd>
+
+<dd>
+[21864976 / (132-1)] = [21864976 / (131)] = 166908</dd>
+
+<dt>
+3) add the results obtained for each group in step two together</dt>
+
+<dd>
+99642+166908=266550</dd>
+
+<dt>
+4) take the square root of the results of step three</dt>
+
+<dd>
+square root of 266550=516.28</dd>
+
+<dt>
+5) divide the results of step one by the results of step four</dt>
+
+<dd>
+2210/516.28=4.28</dd>
+</dl>
+To interpret the results,
+<br>f) calculate the degrees of freedom
+<br>g) look up the value in the table
+<br>h) interpret the value of t
+<dl>
+<h4>
+<a name="Degrees of freedom for t"></a>Degrees of freedom</h4>
+</dl>
+
+<dl>
+<dd>
+&nbsp;The degrees of freedom for the t-test is calculated by adding up
+the number of observations for each group, and then subtracting the number
+two (because there are two groups).&nbsp; For example, (403 + 132 - 2)
+= 533</dd>
+</dl>
+
+<h4>
+<a name="Distribution of T"></a>Distribution of T</h4>
+&nbsp;&nbsp;&nbsp; The values of t are printed in tables in most statistics
+texts. The values of the degrees of freedom are listed in a column down
+the side, and the values of alpha (p-value) are listed in a row across
+the top. There are different tables for one-tailed and two-tailed tests
+of t.
+<br>&nbsp;
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; Find the correct table for the number of tails. Then
+find the intersection of the degrees of freedom and the value of alpha
+in the table. That value is the value that the calculated t-score must
+equal or exceed to indicate statistical significance.</dt>
+</dl>
+
+<dl>
+<dd>
+For a one-tailed test of t, with df=533 and p=.05, t must equal or exceed
+1.645.</dd>
+
+<dd>
+For a two-tailed test of t, with df=533 and p=.05, t must equal or exceed
+1.960.</dd>
+</dl>
+
+<h4>
+<a name="Interpret the value of t"></a>Interpret the value of t</h4>
+&nbsp;&nbsp;&nbsp; If the computed t-score equals or exceeds the value
+of t indicated in the table, then the researcher can conclude that there
+is a statistically significant probability that the relationship between
+the two variables exists and is not due to chance, and reject the null
+hypothesis. This lends support to the research hypothesis.
+
+<p>&nbsp;&nbsp;&nbsp; In this example, the computed t-score of 4.28 exceeds
+the table value of t, so we can reject the null hypothesis of no relationship
+between graduate assistant gender and graduate assistant pay, and instead
+accept the research hypothesis and conclude that there is a relationship
+between graduate assistant gender and graduate assistant pay.
+
+</p><p>&nbsp;&nbsp;&nbsp; Remember, however, that this is only one statistic,
+based on just one sample, at one point in time, from one research project.
+It is not absolute, conclusive proof that a relationship exists, but rather
+support for the research hypothesis. It is only one piece of evidence,
+that must be considered along with many other pieces of evidence on the
+same subject.
+<br>&nbsp;
+</p><h4>
+<a name="REPORTING TESTS OF STATISTICAL"></a>REPORTING TESTS OF STATISTICAL
+SIGNIFICANCE</h4>
+
+<dl>
+<dt>
+&nbsp;&nbsp;&nbsp; In research reports, tests of statistical significance
+are reported in three ways. First, the results of the test may be reported
+in the textual discussion of the results. Include:</dt>
+
+<dd>
+1) the hypothesis</dd>
+
+<dd>
+2) the test statistic used and its value</dd>
+
+<dd>
+3) the degrees of freedom</dd>
+
+<dd>
+4) the value for alpha (p-value)</dd>
+
+<dd>
+</dd>
+
+<dt>
+For example,</dt>
+
+<dd>
+&nbsp;&nbsp;&nbsp; Workers in organizations with non-authoritarian management
+styles were found to have higher levels of job satisfaction than workers
+in organizations with authoritarian management styles (Chi Square=50.57,
+df=4, p&lt;.05).</dd>
+
+<dd>
+</dd>
+
+<dd>
+The average salary of male graduate assistants is higher than that for
+female graduate assistants (t=4.28, df=533, p&lt;.05).</dd>
+
+<dd>
+</dd>
+
+<dd>
+No differences were found in job placement rates between vocational education
+programs and work skills programs (Chi Square=1.2, df=1, p&gt;.05).</dd>
+</dl>
+
+
+<p>&nbsp;&nbsp;&nbsp; A second method of reporting the results of tests
+for statistical significance is to report the test and its value, the degrees
+of freedom, and the p-value at the bottom of the contingency table or printout
+showing the data on which the calculations were based.
+
+</p><p>Table 1. Job Placement by Type of Training (Observed Frequencies)
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td rowspan="2">
+
+<p>Placed in a Job?</p></td>
+
+<td align="CENTER" colspan="2">Type of Training</td>
+
+<td align="CENTER"></td>
+</tr>
+
+<tr valign="TOP">
+<td align="CENTER">Vocational
+<br>Education</td>
+
+<td align="CENTER">Work Skills
+<br>Training</td>
+
+<td align="CENTER">Total</td>
+</tr>
+
+<tr valign="TOP">
+<td>Yes</td>
+
+<td align="CENTER">175</td>
+
+<td align="CENTER">125</td>
+
+<td align="CENTER">300</td>
+</tr>
+
+<tr valign="TOP">
+<td>No</td>
+
+<td align="CENTER">25</td>
+
+<td align="CENTER">125</td>
+
+<td align="CENTER">150</td>
+</tr>
+
+<tr valign="TOP">
+<td>Total</td>
+
+<td align="CENTER">200</td>
+
+<td align="CENTER">250</td>
+
+<td align="CENTER">450</td>
+</tr>
+</tbody></table>
+Chi Square=70.42, df=1, p&lt;.05
+
+</p><p>Table 3. Male and Female Graduate Assistant Salaries at CSULB
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td></td>
+
+<td align="CENTER">Male Graduate Assistants</td>
+
+<td align="CENTER">Female Graduate Assistants</td>
+</tr>
+
+<tr valign="TOP">
+<td>Number of&nbsp;
+<br>observations</td>
+
+<td align="CENTER">
+
+<p>403</p></td>
+
+<td align="CENTER">
+
+<p>132</p></td>
+</tr>
+
+<tr valign="TOP">
+<td>Mean</td>
+
+<td align="CENTER">$17,095</td>
+
+<td align="CENTER">$14,885</td>
+</tr>
+
+<tr valign="TOP">
+<td>Standard&nbsp;
+<br>Deviation</td>
+
+<td align="CENTER">
+
+<p>6329</p></td>
+
+<td align="CENTER">
+
+<p>4676</p></td>
+</tr>
+
+<tr valign="TOP">
+<td>Variance</td>
+
+<td align="CENTER">40045241</td>
+
+<td align="CENTER">21864976</td>
+</tr>
+</tbody></table>
+t=4.28, df=533, p&lt;.05
+
+</p><p>&nbsp;&nbsp;&nbsp; The third way to report tests of statistical significance
+is to include them in tables showing the results of an extended analysis
+of the data, including a number of variables. For example, here are some
+results from a study of older Hispanic women in El Paso, TX, and Long Beach,
+CA.
+
+</p><p>Table 4. Characteristics of Workshop Participants Age 40 and Older
+<br>&nbsp;
+<table border="" width="75%">
+<tbody><tr valign="TOP">
+<td>Characteristics</td>
+
+<td align="CENTER">El Paso
+<br>(N=83)</td>
+
+<td align="CENTER">Long Beach
+<br>(N=131)</td>
+
+<td align="CENTER">value of
+<br>t</td>
+</tr>
+
+<tr valign="TOP">
+<td>Mean age</td>
+
+<td align="CENTER">60.5 years</td>
+
+<td align="CENTER">68.7 years</td>
+
+<td align="CENTER">2.1*</td>
+</tr>
+
+<tr valign="TOP">
+<td>Ethnic self-identification&nbsp;
+<br>Mexican-American</td>
+
+<td align="CENTER">
+
+<p>97.2</p></td>
+
+<td align="CENTER">
+
+<p>89.7</p></td>
+
+<td align="CENTER">
+
+<p>0.9</p></td>
+</tr>
+
+<tr valign="TOP">
+<td>Language preference
+<br>Spanish only</td>
+
+<td align="CENTER">
+
+<p>68.5</p></td>
+
+<td align="CENTER">
+
+<p>52.3</p></td>
+
+<td align="CENTER">
+
+<p>3.2**</p></td>
+</tr>
+</tbody></table>
+*t significant at p&lt;.05
+<br>**t significant at p&lt;.01
+<br>&nbsp;
+</p><h4>
+<a name="Final Comments"></a>Final Comments</h4>
+&nbsp;&nbsp;&nbsp; Tests for statistical significance are used to estimate
+the probability that a relationship observed in the data occurred only
+by chance; the probability that the variables are really unrelated in the
+population. They can be used to filter out unpromising hypotheses.
+
+<p>&nbsp;&nbsp;&nbsp; Tests for statistical significance are used because
+they constitute a common yardstick that can be understood by a great many
+people, and they communicate essential information about a research project
+that can be compared to the findings of other projects.
+
+</p><p>&nbsp;&nbsp;&nbsp; However, they do not assure that the research has
+been carefully designed and executed. In fact, tests for statistical significance
+may be misleading, because they are precise numbers. But they have no relationship
+to the practical significance of the findings of the research.
+
+</p><p>&nbsp;&nbsp;&nbsp; Finally, one must always use measures of association
+along with tests for statistical significance. The latter estimate the
+probability that the relationship exists; while the former estimate the
+strength (and sometimes the direction) of the relationship. Each has its
+use, and they are best when used together.
+
+
+</p><div id="ptc-notification" data-v-app=""><div data-v-6c5cd1="" id="ptc-notification-container"><div data-v-6c5cd1="" id="ptc-notification-sepia-search"></div><button data-v-6c5cd1="" title="Close" type="button" class="ptc-notification-close"> x </button><a data-v-6c5cd1="" id="ptc-notification-watch">Watch on PeerTube</a><div data-v-6c5cd1="" id="ptc-notification-sepia-running"></div></div></div></body></html>

@@ -54,6 +54,8 @@
 + Скотт Пилигрим жмёт на газ (после фильма)
 + darker than black
 + Ergo proxy
++ Solo leveling
+
 
 # Stuff to read
 

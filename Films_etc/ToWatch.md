@@ -21,7 +21,6 @@
 + создатель (the creator)
 + The Three Body Problem
 + Sunshine
-+ Когерентность (Связь) 2013
 + Baby driver
 + Slice of life (2019)
 + Fanboys

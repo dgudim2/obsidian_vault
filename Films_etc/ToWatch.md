@@ -5,15 +5,13 @@
 
 ## Random 
 + They see
-+ Altered carbon
 + Gattaca
 + Падение луны
 + black mirror
 + Навстречу шторму
 + Everything Everywhere all at once
 + Knives out, glass onion
-+ bullet train
-+ top gun 
++ bullet train 
 + the prestige
 + ghost in the shell
 + whoami
@@ -23,11 +21,11 @@
 + создатель (the creator)
 + The Three Body Problem
 + Sunshine
-+ Когерентность (Связь) 2013
 + Baby driver
 + Slice of life (2019)
 + Fanboys
 + austin powers
++ Офис
 
 ## Anime
 + Стальной алхимик 2008
@@ -56,6 +54,8 @@
 + Скотт Пилигрим жмёт на газ (после фильма)
 + darker than black
 + Ergo proxy
++ Solo leveling
+
 
 # Stuff to read
 

@@ -1,6 +1,6 @@
 {
   "settings": {
-    "migrated": 3,
+    "migrated": 4,
     "iconPacksPath": ".obsidian/icons/obsidian-icon-folder/",
     "fontSize": 16,
     "emojiStyle": "native",
@@ -22,7 +22,7 @@
       "SiGit",
       "SiArtifacthub"
     ],
-    "recentlyUsedIconsSize": 15,
+    "recentlyUsedIconsSize": 20,
     "rules": [
       {
         "rule": "attachements",
@@ -53,7 +53,8 @@
     "iconsBackgroundCheckEnabled": true,
     "iconInTitleEnabled": true,
     "iconInFrontmatterEnabled": false,
-    "iconsInNotesEnabled": true
+    "iconsInNotesEnabled": true,
+    "iconIdentifier": ":"
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

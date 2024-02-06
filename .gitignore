@@ -19,7 +19,10 @@ export
 *.odt
 *.odp
 *.ods
+*.odg
 /LaTeX docs
 **/Extra
 *_ng_
 /uni/Computer networks/GNS3
+
+python_venv

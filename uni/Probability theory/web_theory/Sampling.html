@@ -1,0 +1,782 @@
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator, img.Wirisformula {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #202020;
+   --darkreader-neutral-text: #e1c88a;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #ebdbb2;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #282828 !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #282828;
+}
+html, body {
+    border-color: #a6842b;
+    color: #ebdbb2;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #595959;
+}
+::placeholder {
+    color: #d9ba6b;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #4f5400 !important;
+    color: #ebdbb2 !important;
+}
+::-webkit-scrollbar {
+    background-color: #2f2f2f;
+    color: #d6b663;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #4e4e4e;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #5e5e5e;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #4d4d4d;
+}
+::-webkit-scrollbar-corner {
+    background-color: #282828;
+}
+* {
+    scrollbar-color: #4e4e4e #2f2f2f;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}</style>
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <meta name="GENERATOR" content="Mozilla/4.01 [en] (Win95; I) [Netscape]">
+   <title>Sampling</title>
+<meta name="darkreader" content="531ac4f64894427db596b64c955ed6b8"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #032029 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #0a0a0a !important;
+}
+.tou-uknfeu {
+    background-color: #231603 !important;
+}
+.tou-6i3zyv {
+    background-color: #19576c !important;
+}
+div.mermaid-viewer-control-panel .btn {
+  fill: var(--darkreader-neutral-text);
+  background-color: var(--darkreader-neutral-background);
+}
+svg g rect.er {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+  fill-opacity: 0.8 !important;
+  fill: var(--darkreader-selection-background);
+}
+svg rect.er.relationshipLabelBox {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect, svg g g.nodes polygon {
+  fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+  fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0, svg line.messageLine1 {
+  stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+  fill: var(--darkreader-neutral-background) !important;
+}
+.google-material-icons {
+    font-family: 'Google Material Icons' !important;
+}
+.google-symbols {
+    font-family: 'Google Symbols' !important;
+}
+.material-icons-extended {
+    font-family: 'Material Icons Extended' !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    padding-top: 1rem;
+    background-color: white !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style></head>
+<body text="#000000" bgcolor="#C0C0C0" link="#0000FF" vlink="#551A8B" alink="#FF0000" style="--darkreader-inline-bgcolor: #474747;" data-darkreader-inline-bgcolor="">
+
+<h3>
+<a name="sampling"></a>PPA 696 :&nbsp; SAMPLING</h3>
+<a href="#Why sample">Why Sample?</a>
+<br><a href="#Types of Samples">Types of Samples</a>
+<br><a href="#Simple random sample">Simple Random Sample</a>
+<br><a href="#Systematic random sample">Systematic Random Sample</a>
+<br><a href="#Stratified random sample">Stratified Random Sample</a>
+<br><a href="#Cluster sample">Cluster Sample</a>
+<br><a href="#How Big a Sample Do I Need">How Big a Sample Do I Need?</a>
+<br><a href="#Sample size formula">Sample size formula</a>
+<br><a href="#Sample Size Table">Sample size table</a>
+<br><a href="#Sample Quality">Sample Quality</a>
+<br><a href="#Exercises">Exercises</a>
+<br>&nbsp;
+<dt>
+In the language of sampling:</dt>
+
+<br>&nbsp;
+<dd>
+-a <b>population</b> is the entire collection of people or things you are
+interested in;</dd>
+
+<dd>
+-a <b>census</b> is a measurement of all the units in the population;</dd>
+
+<dd>
+-a <b>population parameter</b> is a number that results from measuring
+all the units in the population;</dd>
+
+<dd>
+-a <b>sampling frame</b> is the specific data from which the sample is
+drawn, e.g., a telephone book;</dd>
+
+<dd>
+-a <b>unit of analysis</b> is the type of object of interest, e.g., arsons,
+fire departments, firefighters;</dd>
+
+<dd>
+-a <b>sample</b> is a subset of some of the units in the population;</dd>
+
+<dd>
+-a <b>statistic</b> is a number that results from measuring all the units
+in the sample;</dd>
+
+<dd>
+-statistics derived from samples are used to estimate population parameters.</dd>
+
+<br>&nbsp;
+<br>&nbsp;
+<dt>
+For example, to find out the average age of all motor vehicles in the state
+in 1997:</dt>
+
+<br>&nbsp;
+<dd>
+Population=all motor vehicles in the state in 1997</dd>
+
+<dd>
+Sampling frame=all motor vehicles registered with the DMV on July 1, 1997</dd>
+
+<dd>
+Design=probability sampling</dd>
+
+<dd>
+Unit of analysis=motor vehicle</dd>
+
+<dd>
+Sample=300 motor vehicles</dd>
+
+<dd>
+Data gathered=the age of each of the 300 motor vehicles selected in the
+sample</dd>
+
+<dd>
+Statistic=the average age of the 300 motor vehicles in the sample</dd>
+
+<dd>
+Parameter=the estimate of the average age of all motor vehicles in the
+state-1997</dd>
+
+<br>&nbsp;
+<h4>
+<a name="Why sample"></a>Why Sample?</h4>
+&nbsp;&nbsp;&nbsp; Sometimes "measuring" or "testing" something destroys
+it. The government requires automakers who want to sell cars in the U.S.
+to demonstrate that their cars can survive certain crash tests. Obviously,
+the company can't be expected to crash every car, to see if it survives!
+So the company crashes only a sample of cars.
+
+<p>&nbsp;&nbsp;&nbsp; Another reason for sampling is that not all units
+in the population can be identified, such as all the air molecules in the
+LA basin. So to measure air pollution, you take a sample of air molecules.
+Also, even if all those air molecules could be identified, it would be
+too expensive and too time consuming to measure them all.
+<br>&nbsp;
+</p><h4>
+<a name="Types of Samples"></a>Types of Samples:</h4>
+<b>Non-probability (non-random) samples:</b>
+
+<p>&nbsp;&nbsp;&nbsp; These samples focus on volunteers, easily available
+units, or those that just happen to be present when the research is done.
+Non-probability samples are useful for quick and cheap studies, for case
+studies, for qualitative research, for pilot studies, and for developing
+hypotheses for future research.
+
+</p><p><b>Convenience sample</b>: also called an "accidental" sample or "man-in-the-street"
+samples. The researcher selects units that are convenient, close at hand,
+easy to reach, etc.
+
+</p><p><b>Purposive sample</b>: the researcher selects the units with some
+purpose in mind, for example, students who live in dorms on campus, or
+experts on urban development.
+
+</p><p><b>Quota sample</b>: the researcher constructs quotas for different
+types of units. For example, to interview a fixed number of shoppers at
+a mall, half of whom are male and half of whom are female.
+
+</p><p>Other samples that are usually constructed with non-probability methods
+include library research, participant observation, marketing research,
+consulting with experts, and comparing organizations, nations, or governments.
+
+</p><p><b>Probability-based (random) samples:</b>
+
+</p><p>&nbsp;&nbsp;&nbsp; These samples are based on probability theory. Every
+unit of the population of interest must be identified, and all units must
+have a known, non-zero chance of being selected into the sample.
+
+</p><p><a name="Simple random sample"></a><b>Simple random sample</b>: Each
+unit in the population is identified, and each unit has an equal chance
+of being in the sample. The selection of each unit is independent of the
+selection of every other unit. Selection of one unit does not affect the
+chances of any other unit.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, to select a sample of 25 people who
+live in your college dorm, make a list of all the 250 people who live in
+the dorm. Assign each person a unique number, between 1 and 250. Then refer
+to a table of random numbers. Starting at any point in the table, read
+across or down and note every number that falls between 1 and 250. Use
+the numbers you have found to pull the names from the list that correspond
+to the 25 numbers you found. These 25 people are your sample. This is called
+the table of random numbers method.
+
+</p><p>&nbsp;&nbsp;&nbsp; Another way to select this simple random sample is
+to take 250 ping-pong balls and number then from 1 to 250. Put them into
+a large barrel and mix them up, and then grab 25 balls. Read off the numbers.
+Those are the 25 people in your sample. This is called the lottery method.
+
+</p><p><a name="Systematic random sample"></a><b>Systematic random sampling</b>:
+Each unit in the population is identified, and each unit has an equal chance
+of being in the sample.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, to select a sample of 25 dorm rooms
+in your college dorm, make a list of all the room numbers in the dorm.
+Say there are 100 rooms. Divide the total number of rooms (100) by the
+number of rooms you want in the sample (25). The answer is 4. This means
+that you are going to select every fourth dorm room from the list. But
+you must first consult a table of random numbers. Pick any point on the
+table, and read across or down until you come to a number between 1 and
+4. This is your random starting point. Say your random starting point is
+"3". This means you select dorm room 3 as your first room, and then every
+fourth room down the list (3, 7, 11, 15, 19, etc.) until you have 25 rooms
+selected.
+
+</p><p>&nbsp;&nbsp;&nbsp; This method is useful for selecting large samples,
+say 100 or more. It is less cumbersome than a simple random sample using
+either a table of random numbers or a lottery method. For example, you
+might have to sample files in a large filing cabinet. It is easier to select
+every 17th file than to pull out all the files and number them, etc.
+
+</p><p>&nbsp;&nbsp;&nbsp; However, you must be aware of problems that can arise
+in systematic random sampling. If the selection interval matches some pattern
+in the list (e.g., each 4th dorm room is a single unit, where all the others
+are doubles) you will introduce systematic bias into your sample.
+
+</p><p><a name="Stratified random sample"></a><b>Stratified random sampling</b>:
+Each unit in the population is identified, and each unit has a known, non-zero
+chance of being in the sample. This is used when the researcher knows that
+the population has sub-groups (strata) that are of interest.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, if you wanted to find out the attitudes
+of students on your campus about immigration, you may want to be sure to
+sample students who are from every region of the country as well as foreign
+students. Say your student body of 10,000 students is made up of 8,000
+- West; 1,000 - East; 500 - Midwest; 300 - South; 200 - Foreign.
+
+</p><p>&nbsp;&nbsp;&nbsp; If you select a simple random sample of 500 students,
+you might not get any from the Midwest, South, or Foreign. To make sure
+that you get some students from each group, you can divide the students
+into these five groups, and then select the same percentage of students
+from each group using a simple random sampling method. This is proportional
+stratified random sampling.
+
+</p><p>&nbsp;&nbsp;&nbsp; However, you may still have too few of some types
+of students. Instead, you may divide students into the five groups and
+then select the same number of students from each group using a simple
+random sampling method. This is disproportionate stratified random sampling.
+This allows you to have enough students in each sub-group so that you can
+perform some meaningful statistical analyses of the attitudes of students
+in each sub-group. In order to say something about the attitudes of the
+total student population of the university, however, you will have to apply
+weights to the findings for each sub-group, proportional to its presence
+in the total student body.
+
+</p><p><a name="Cluster sample"></a><b>Cluster sampling</b>: cluster sampling
+views the units in a population as not only being members of the total
+population but as members also of naturally-occurring in clusters within
+the population. For example, city residents are also residents of neighborhoods,
+blocks, and housing structures.
+
+</p><p>&nbsp;&nbsp;&nbsp; Cluster sampling is used in large geographic samples
+where no list is available of all the units in the population but the population
+boundaries can be well-defined. For example, to obtain information about
+the drug habits of all high school students in a state, you could obtain
+a list of all the school districts in the state and select a simple random
+sample of school districts. Then, within in each selected school district,
+list all the high schools and select a simple random sample of high schools.
+Within each selected high school, list all high school classes, and select
+a simple random sample of classes. Then use the high school students in
+those classes as your sample.
+
+</p><p>&nbsp;&nbsp;&nbsp; Cluster sampling must use a random sampling method
+at each stage. This may result in a somewhat larger sample than using a
+simple random sampling method, but it saves time and money. It is also
+cheaper to administer than a statewide sample of high school seniors, because
+there are many fewer sites to obtain information from.
+
+</p><p>The differences between Probability (Random) Sampling and Non-Probability
+(Non-Random) Sampling are summarized below.
+<br>&nbsp;
+<table border="" cellpadding="5" width="100%">
+<tbody><tr>
+<td valign="TOP" width="50%"><b>Probability (Random) Sampling</b></td>
+
+<td valign="TOP" width="50%"><b>Non-Probability (Non-Random) Sampling</b></td>
+</tr>
+
+<tr>
+<td valign="TOP">Allows use of statistics, tests hypotheses</td>
+
+<td valign="TOP">Exploratory research, generates hypotheses</td>
+</tr>
+
+<tr>
+<td valign="TOP">Can estimate population parameters</td>
+
+<td valign="TOP">Population parameters are not of interest</td>
+</tr>
+
+<tr>
+<td valign="TOP">Eliminates bias</td>
+
+<td valign="TOP">Adequacy of the sample can't be known</td>
+</tr>
+
+<tr>
+<td valign="TOP">Must have random selection of units</td>
+
+<td valign="TOP">Cheaper, easier, quicker to carry out</td>
+</tr>
+</tbody></table>
+&nbsp;
+<br>&nbsp;
+</p><h4>
+<a name="How Big a Sample Do I Need"></a>How Big a Sample Do I Need?</h4>
+&nbsp;&nbsp;&nbsp; The size of the sample depends on the type of research
+design being used; the desired level of confidence in the results; the
+amount of accuracy wanted; and the characteristics of the population of
+interest. Sample size has little to do with the size of the population,
+however.
+
+<p>&nbsp;&nbsp;&nbsp; Random sampling procedures are based on probability
+theory; this is why they are also called probability sampling methods.
+Say we are interested in knowing what is the average monthly income of
+all the full-time students at our university. There are 5 full-time students
+each with a different monthly income as follows: $500; $650; $400; $700;
+$600. This is our population of students. Say we take a simple random sample
+of 2 students and figure the average for the sample.
+
+</p><p>&nbsp;&nbsp;&nbsp; It is entirely possible that we could take a simple
+random sample 2 students from the 5 students above and get an average as
+low as $450 per month. It is equally possible that we could take a different
+simple random sample of 2 students and get an average as high as $675 per
+month. Try it with the following figures. There are 10 possible samples
+of two students:
+
+</p><p>$500 + $650 = $575
+<br>$500 + $400 = $450
+<br>$500 + $700 = $600
+<br>$500 + $600 = $550
+<br>6500 + $400 = $525
+<br>$650 + $700 = $675
+<br>$650 + $600 = $625
+<br>$400 + $700 = $550
+<br>$400 + $600 = $500
+<br>$700 + $600 = $650
+
+</p><p>&nbsp;&nbsp;&nbsp; We know from probability theory that if we took all
+possible combinations of samples of 2 full-time students from our population
+of 5, found the average monthly wage for all possible samples, and took
+the average of all those averages, we would find the exact typical monthly
+income of all 5 students.
+
+</p><p>&nbsp;&nbsp;&nbsp; The average monthly wage of the 5 students in the
+population = $570.
+<br>&nbsp;&nbsp;&nbsp; The average of the 10 samples of 2 students each
+= $570.
+
+</p><p>&nbsp;&nbsp;&nbsp; Now in this example, of course it would be easier
+to just find the average monthly wage for all five students in the population.
+However, we can apply this same principle to much larger populations, where
+it would be nearly impossible to measure every unit in the population.
+
+</p><p>&nbsp;&nbsp;&nbsp; Say we wanted to find the average monthly wage of
+all 10,000 full-time students at our university. We can take a simple random
+sample of 150 students, find the average monthly wage for the 150 students
+in the sample, and then use that number (a sample statistic) to estimate
+the average monthly wage for the entire population of students (a population
+parameter).
+
+</p><p>&nbsp;&nbsp;&nbsp; We know from probability theory that if we took a
+very large number of simple random samples of 150 students from our student
+population, and found the average monthly wage for each sample, that those
+averages would tend to distribute themselves in the pattern of a "bell-shaped"
+curve, also called "the normal curve." That curve has well-established
+properties.
+
+</p><p>&nbsp;&nbsp;&nbsp; For example, approximately 68% of the sample averages
+would fall within plus or minus one standard deviation of the true population
+average. We also know that approximately 95% of the sample averages would
+fall within plus or minus two standard deviations of the true population
+average. And finally, we know that approximately 99% of the sample averages
+would fall within plus or minus three standard deviations of the true population
+average.
+
+</p><p>&nbsp;&nbsp;&nbsp; Using these established principles, we do not have
+to take repeated simple random samples (fortunately!). Instead, we can
+use these principles to estimate how well our sample statistic estimates
+the population parameter. We can also use these principles to select an
+adequate sample size for our research.
+
+</p><p>&nbsp;&nbsp;&nbsp; Say we want to know what proportion of the support
+of students at our university support the death penalty. To calculate sample
+size, we must make four decisions:
+
+</p><p>&nbsp;&nbsp;&nbsp; First, are we doing a true experimental design (e.g.,
+control-group, pretest-posttest design) or a non-experimental design (e.g.,
+a cross-sectional survey)? The former can use smaller sample sizes, while
+the latter require larger sample sizes. In this case we are doing a survey.
+
+</p><p>&nbsp;&nbsp;&nbsp; Second, how sure do we want to be that we could get
+the same results if we did the study multiple times? Do we want to be 50%
+sure, 90% sure, 95% sure, or 99% sure? This is called the confidence level.
+The more sure we want to be, the larger the sample size needs to be. In
+this case, we want a confidence level of 95%.
+
+</p><p>&nbsp;&nbsp;&nbsp; Third, how accurate do we want to be at estimating
+the population parameter? Will a margin of error of (plus or minus) 5%
+be acceptable, or 4%, 3%, 2%, or 1%? This is also called the confidence
+interval. In this case, we want an accuracy of plus or minus 4%.&nbsp;&nbsp;
+This means that if we find that 66% of the students oppose the death penalty,
+we really mean that we have found that 66% plus or minus 4% oppose the
+death penalty.
+
+</p><p>&nbsp;&nbsp;&nbsp; Fourth, how is the population distributed on the
+variable of interest? That is, in a yes/no situation, how many do we think
+will say yes? How many will say no? The most conservative way to approach
+this is to guess that the population is split 50/50 on the question. In
+this case we guess that 50% of the students will support the death penalty,
+and 50% will oppose it.
+
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;<a name="Sample size formula"></a>If we are
+doing a survey of a population, and are not interested in sub-samples within
+the population, and will accept a 95% confidence level, and a 4% margin
+of error, and assume a probability of .5 on the variable (.5 will say yes),
+then the formula for sample size is as follows:
+
+</p><p>the square root of&nbsp;&nbsp;&nbsp;&nbsp; =&nbsp;&nbsp;&nbsp;&nbsp;
+square root of&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp; confidence
+level divided
+<br>the sample size&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(p) x (1-p)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+by the margin of error
+
+</p><p>Solving for the sample size, we have
+
+</p><p>the square root of sample size = [the square root of (.5) x (1-.5)]
+x 1.96/.05 =
+<br>the square root of sample size = the square root of .25 x 1.96/.05
+=
+<br>the square root of sample size = the square root of (.5) x 49 =
+<br>the square root of sample size = the square root of 24.5
+<br>Squaring both sides, we have
+<br>the sample size = 24.5 squared =
+<br>the sample size = 600.25 (round off to 600)
+
+</p><p>&nbsp;&nbsp;&nbsp; As the margin of error decreases, the sample size
+will need to increase (and vice versa). If we wanted to change the margin
+of error to plus or minus 3%, (keeping the confidence level at 95%), the
+required sample size increases to 1,067. If we could afford to use a margin
+of error of plus or minus 5%, the sample size would decrease to 384.
+
+</p><p>&nbsp;&nbsp;&nbsp; Similarly, if the confidence level increases, the
+sample size will need to increase. If we increase the confidence level
+to 99%, the sample size increases to 1,036 (with the margin of error remaining
+at 4%). If the confidence level decreases to 90%, the sample size decreases
+to 413.
+
+</p><p>&nbsp;&nbsp;&nbsp; If you have a fixed sample size, you can increase
+the confidence level and decrease the accuracy, or you can increase the
+accuracy and decrease the confidence level, but you cannot do both.
+
+</p><p>&nbsp;&nbsp;&nbsp; As the variability in the population on the variable
+of interest increases, the sample size increases. A probability of 50/50
+demonstrates the greatest variability in the population. If the variability
+decreases to 60/40, or 70/30, then a smaller sample size will result.
+
+</p><p>&nbsp;&nbsp;&nbsp;&nbsp;<a name="Sample Size Table"></a>The following
+table summarizes the calculations for sample sizes for survey research,
+assuming a probability of 50/50 on a dichotomous question, and no sub-populations.
+<br>&nbsp;
+<table border="" cellpadding="5" width="100%">
+<tbody><tr>
+<td valign="TOP" rowspan="2" width="25%"><b>Accuracy (+/-)&nbsp;</b>&nbsp;
+
+<p><b>(Margin of error)</b></p></td>
+
+<td align="CENTER" valign="TOP" colspan="3" width="25%"><b>Confidence Level</b></td>
+</tr>
+
+<tr>
+<td align="CENTER" valign="TOP"><b>90%</b></td>
+
+<td align="CENTER" valign="TOP" width="25%"><b>95%</b></td>
+
+<td align="CENTER" valign="TOP" width="25%"><b>99%</b></td>
+</tr>
+
+<tr>
+<td valign="TOP"><b>1</b></td>
+
+<td align="CENTER" valign="TOP">6,765</td>
+
+<td align="CENTER" valign="TOP">9,604</td>
+
+<td align="CENTER" valign="TOP">16,576</td>
+</tr>
+
+<tr>
+<td valign="TOP">2</td>
+
+<td align="CENTER" valign="TOP">1,691</td>
+
+<td align="CENTER" valign="TOP">2,401</td>
+
+<td align="CENTER" valign="TOP">4,144</td>
+</tr>
+
+<tr>
+<td valign="TOP">3</td>
+
+<td align="CENTER" valign="TOP">752</td>
+
+<td align="CENTER" valign="TOP">1,067</td>
+
+<td align="CENTER" valign="TOP">1,848</td>
+</tr>
+
+<tr>
+<td valign="TOP">4</td>
+
+<td align="CENTER" valign="TOP">413</td>
+
+<td align="CENTER" valign="TOP">600</td>
+
+<td align="CENTER" valign="TOP">1,036</td>
+</tr>
+
+<tr>
+<td valign="TOP">5</td>
+
+<td align="CENTER" valign="TOP">271</td>
+
+<td align="CENTER" valign="TOP">384</td>
+
+<td align="CENTER" valign="TOP">663</td>
+</tr>
+
+<tr>
+<td valign="TOP">10</td>
+
+<td align="CENTER" valign="TOP">68</td>
+
+<td align="CENTER" valign="TOP">96</td>
+
+<td align="CENTER" valign="TOP">166</td>
+</tr>
+
+<tr>
+<td valign="TOP">20</td>
+
+<td align="CENTER" valign="TOP">17</td>
+
+<td align="CENTER" valign="TOP">24</td>
+
+<td align="CENTER" valign="TOP">41</td>
+</tr>
+</tbody></table>
+&nbsp;
+
+</p><p>&nbsp;&nbsp;&nbsp; If the researcher wants to study sub-populations
+as well as the whole population, then larger sample sizes will be needed.
+In addition, if more than one variable is being studied at the same time,
+then the rule of thumb is to have a total of at least 10 cases per variable.
+
+</p><p>&nbsp;&nbsp;&nbsp; If the research is to be a controlled experiment,
+then smaller sample sizes can be used. However, it is recommended to use
+samples of no smaller than 30 for each group in the experiment (e.g., experimental
+and control groups). Many common statistics are based on sample sizes of
+a minimum of 30; for sample sizes of less than 30, other special statistics
+must be used.
+<br>&nbsp;
+</p><h4>
+<a name="Sample Quality"></a>Sample Quality</h4>
+&nbsp;&nbsp;&nbsp; Sampling error arises from two principal sources: random
+error, and non-random error. Random error results from taking a sample
+from a population, instead of measuring the entire population. It is predictable,
+using probability theory. It is the reason that sample statistics only
+provide estimates of population parameters, but the amount of random error
+is known.
+
+<p>&nbsp;&nbsp;&nbsp; Non-random error results from bias being introduced
+into the sample from some flaw in the design or implementation of the sample.
+For example, using a telephone book as the sampling frame for all the residents
+of a city will result in some bias, because some people are not listed
+in the directory or do not have telephones. People who refuse to take part
+in a study (which is their right) also may introduce bias into the sample.
+Some people may provide erroneous information, which also biases the results.
+Finally, mistakes in computing the required sample size, in identifying
+the actual units to be included in the sample, or other errors can introduce
+bias into the sample.
+
+</p><p>&nbsp;&nbsp;&nbsp; To assess whether an adequate sample was used in
+a piece of research, ask the following questions:
+
+</p><p><b>Size</b>--was the size adequate for the purpose of the study, especially
+if there were many sub-groups included in the analysis, or many variables
+used simultaneously?
+
+</p><p><b>Representativeness</b>--was the sample selected randomly from the
+population, using probability theory?&nbsp; Was the sampling frame adequate?
+
+</p><p><b>Implementation</b>--was the sampling plan carried out carefully,
+was it adequately supervised, was there some quality control plan, did
+it result in a good response rate?
+<br>&nbsp;
+</p><h4>
+<a name="Exercises"></a>Exercises</h4>
+&nbsp;&nbsp;&nbsp; For each of the following, suggest an appropriate sampling
+design and sample size.
+
+<p>1. A public health official wants to estimate the number of babies who
+are being born infected with HIV.
+<br>&nbsp;
+<br>2. The City Manager wants to know, by next Monday, the extent of pothole
+damage in the city caused by the latest El Nino storms.
+<br>&nbsp;
+<br>3. The Chief County Librarian wants to know what the patrons think
+of the county's branch libraries, and whether they would be willing to
+support a tax increase for the libraries.
+<br>&nbsp;
+<br>4. The economic development analyst wants to know what reason people
+give for not attending the city's job readiness training, even though they
+are eligible to do so.
+<br>&nbsp;
+<br>5. Why do some residents in nursing homes get broken hips when they
+fall, while other residents fall but do not break their hips, and other
+residents do not fall at all?
+<br>&nbsp;
+<br>6. Do older Hispanic women who live in neighborhoods with higher proportions
+of Hispanic residents get fewer preventive health care checkups than older
+Hispanic women who live in neighborhoods with lower proportions of Hispanic
+residents?
+
+
+</p><div id="ptc-notification" data-v-app=""><div data-v-6c5cd1="" id="ptc-notification-container"><div data-v-6c5cd1="" id="ptc-notification-sepia-search"></div><button data-v-6c5cd1="" title="Close" type="button" class="ptc-notification-close"> x </button><a data-v-6c5cd1="" id="ptc-notification-watch">Watch on PeerTube</a><div data-v-6c5cd1="" id="ptc-notification-sepia-running"></div></div></div></body></html>

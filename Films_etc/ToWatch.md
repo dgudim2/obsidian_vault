@@ -20,7 +20,7 @@
 + дивергент
 + создатель (the creator)
 + The Three Body Problem
-+ Sunshine
++ Tenet
 + Baby driver
 + Slice of life (2019)
 + Fanboys

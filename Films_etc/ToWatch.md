@@ -55,7 +55,7 @@
 + darker than black
 + Ergo proxy
 + Solo leveling
-+ Cowboy be
++ Cowboy bebop
 
 
 # Stuff to read

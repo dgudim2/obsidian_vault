@@ -14,7 +14,7 @@ import java.util.List;
 
 public class Entrypoint {
 
-    public static void launch() throws IOException {
+    public static void launch(@NotNull String[] args) throws IOException {
         // Setup terminal and screen layers
         Screen screen = new TerminalScreen(new DefaultTerminalFactory().createTerminal());
         screen.startScreen();

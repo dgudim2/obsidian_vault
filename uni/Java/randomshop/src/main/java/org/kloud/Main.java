@@ -18,9 +18,9 @@ public class Main {
             Namespace res = parser.parseArgs(args);
             if (res.get("is_gui")) {
                 // TODO: handle gui part
-                org.kloud.module.gui.Entrypoint.launch();
-            } else {
                 org.kloud.module.cli.Entrypoint.launch();
+            } else {
+                org.kloud.module.gui.Entrypoint.launch();
             }
         } catch (ArgumentParserException e) {
             parser.handleError(e);

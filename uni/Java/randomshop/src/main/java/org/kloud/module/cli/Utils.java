@@ -1,9 +1,7 @@
 package org.kloud.module.cli;
 
-import com.googlecode.lanterna.gui2.BasicWindow;
-import com.googlecode.lanterna.gui2.Component;
-import com.googlecode.lanterna.gui2.Window;
-import com.googlecode.lanterna.gui2.WindowBasedTextGUI;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.gui2.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -16,7 +14,17 @@ public class Utils {
         return window;
     }
 
-    public static void showWindow(WindowBasedTextGUI gui, @NotNull Window toAdd) {
-        gui.addWindow(toAdd).moveToTop(toAdd);
+    public static Panel newVerticalPanel() {
+        Panel panel = new Panel();
+        panel.setLayoutManager(new LinearLayout(Direction.VERTICAL));
+        return panel;
+    }
+
+    public static void setupWithExitButton(@NotNull String text, @NotNull Panel panel, @NotNull Runnable action, @NotNull Component... components) {
+        panel.addComponent(new EmptySpace(new TerminalSize(0, 1)));
+        for(var component: components) {
+            panel.addComponent(component);
+        }
+        panel.addComponent(new Button(text, action));
     }
 }

@@ -1,9 +1,20 @@
 package org.kloud.module.gui;
 
-public class Entrypoint {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-    public static void launch() {
-        throw new RuntimeException();
+import java.io.IOException;
+
+public class Entrypoint extends Application {
+
+    @Override
+    public void start(Stage stage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
     }
-
 }

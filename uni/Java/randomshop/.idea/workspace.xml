@@ -27,6 +27,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.Cli.executor": "Run",
+    "Application.Gui.executor": "Run",
     "Application.Main.executor": "Run",
     "Downloaded.Files.Path.Enabled": "false",
     "Maven.randomshop [clean,compile...].executor": "Run",
@@ -41,15 +43,39 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="randomshop [clean,compile...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/org/kloud/module/gui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Gui">
+    <configuration name="Cli" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
+      <module name="randomshop" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Gui" type="Application" factoryName="Application">
+      <envs>
+        <env name="GTK_THEME" value="Breeze" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
+      <module name="randomshop" />
+      <option name="PROGRAM_PARAMETERS" value="--mode gui" />
+      <option name="VM_PARAMETERS" value="-Djdk.gtk.verbose=true -Djdk.gtk.version=3 -Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Build" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
         <option name="myRunnerSettings" />
@@ -81,11 +107,17 @@
       </MavenSettings>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Cli" />
+      <item itemvalue="Application.Gui" />
+      <item itemvalue="Maven.Build" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="jdk-17.0.10-corretto-17.0.10-4caba194b151-25a4bffe" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-78a6f59c" />
       </set>
     </attachedChunks>
   </component>
@@ -101,6 +133,8 @@
       <workItem from="1708427022641" duration="2571000" />
       <workItem from="1708522951172" duration="5000" />
       <workItem from="1708522973720" duration="5049000" />
+      <workItem from="1708541110037" duration="575000" />
+      <workItem from="1708541708227" duration="2180000" />
     </task>
     <servers />
   </component>

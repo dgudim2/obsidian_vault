@@ -12,15 +12,16 @@ public class Main {
         ArgumentParser parser = ArgumentParsers.newFor("randomshop")
                 .build()
                 .description("Launch the shop server/admin cli");
-        parser.addArgument("--gui").dest("is_gui").type(Boolean.class).setDefault(false);
+        parser.addArgument("--mode").dest("mode").type(String.class).choices("cli", "gui", "server").setDefault("cli");
 
         try {
             Namespace res = parser.parseArgs(args);
-            if (res.get("is_gui")) {
-                // TODO: handle gui part
-                org.kloud.module.cli.Entrypoint.launch();
-            } else {
-                org.kloud.module.gui.Entrypoint.launch();
+            String mode = res.get("mode");
+            switch (mode) {
+                case "cli" -> org.kloud.module.cli.Entrypoint.launch(args);
+                case "gui" -> org.kloud.module.gui.Entrypoint.launch(args);
+                //case "server" ->
+                default -> throw new UnsupportedOperationException(mode, null);
             }
         } catch (ArgumentParserException e) {
             parser.handleError(e);

@@ -1,3 +1,6 @@
+---
+icon: LiCpu
+---
 # Processor Terminology
 
 > [!definition] 

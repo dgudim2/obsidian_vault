@@ -1,3 +1,6 @@
+---
+icon: RiArrowUpDownLine
+---
 # I/O Devices
 
 > Third *major* component of a computer system

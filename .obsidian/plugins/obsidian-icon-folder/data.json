@@ -60,7 +60,10 @@
   "uni/English": "FasLanguage",
   "CodeIdeas.md": "FarLightbulb",
   "Random.md": "FasDiceSix",
-  "uni": "LiBook",
+  "uni": {
+    "iconName": "LiBook",
+    "iconColor": "#67fe85"
+  },
   "Reference.md": "RiFullscreenExitLine",
   "uni/Discrete math/Graphs/Graph tasks.pdf": "SiDiagramsdotnet",
   "uni/Discrete math/Graphs": "SiGraphql",

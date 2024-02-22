@@ -1,3 +1,6 @@
+---
+icon: FasMemory
+---
 # Key aspects and characteristics of memory
 - **Technology**
 	- The type of the underlying *hardware*

@@ -1,3 +1,6 @@
+---
+icon: LiDivideSquare
+---
 # Residue classes
 
 > [!definition] 

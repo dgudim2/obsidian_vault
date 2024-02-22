@@ -1,3 +1,6 @@
+---
+icon: SiGit
+---
 # GIT
 
 ![[Git_icon.svg|300]]

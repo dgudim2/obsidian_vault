@@ -1,3 +1,6 @@
+---
+icon: LiBinary
+---
 # Digital logic
 
 - Built on <u>two-valued</u> logic system

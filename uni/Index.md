@@ -1,3 +1,6 @@
+---
+icon: IbStackVertical
+---
 # Index
 
 ``` dataviewjs
@@ -15,3 +18,4 @@ for (let folder of folderlist) {
 	}
 }
 ```
+

@@ -1,3 +1,6 @@
+---
+icon: TiBoxMultiple
+---
 
 # Multiples, divisors
 

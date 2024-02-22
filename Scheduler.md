@@ -1,9 +1,13 @@
 ---
+
 kanban-plugin: basic
+
 ---
 
 ## Bugs
 
+- [ ] **Transparency is broken on 100%**<br><br>If the transparency slider is at 100%, the background is black<br><br>@{2024-02-22}
+- [ ] **Turn off predictive gesture**<br><br>@{2024-02-22}
 
 
 ## Features
@@ -23,6 +27,9 @@ kanban-plugin: basic
 - [ ] **Bottom menu**<br>Add a bottom menu (switcher)?<br><br>@{2024-01-05}
 - [ ] **DB stats in the debug menu**<br><br>Display stats for the vents in the debug menu<br>@{2024-01-05}
 - [ ] **Granular time reminders**<br><br>Add an option for granular reminders (i.e. in 2 hours)<br>@{2024-01-05}
+- [ ] **Display full date for todo events**<br><br>Display a full date for upcoming/expired todo events<br><br>@{2024-02-22}
+- [ ] **Expose saves via a file provider**<br><br>Self-explanatory<br><br>@{2024-02-22}
+- [ ] **Auto-updater**<br><br>Use the new UPDATE_PACKAGE_WITHOUT_USER_REACTION<br><br>@{2024-02-22}
 
 
 ## Fixed bugs

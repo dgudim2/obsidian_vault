@@ -17,7 +17,7 @@ public class Entrypoint extends Application {
         Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
 
         FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

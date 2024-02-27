@@ -1,5 +1,6 @@
 package org.kloud.model.product;
 
+import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.CpuArchitecture;
 import org.kloud.model.enums.CpuSocketType;
@@ -45,5 +46,10 @@ public class Cpu extends HardwarePart {
         superFields.add(hasIGpu);
         superFields.add(maxRamCapacityMb);
         return superFields;
+    }
+
+    @Override
+    protected @NotNull String toStringInternal() {
+        return NAME + ": " + name;
     }
 }

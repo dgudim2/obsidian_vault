@@ -1,5 +1,7 @@
 package org.kloud.utils;
 
+import javafx.css.PseudoClass;
+import javafx.scene.Node;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -9,6 +11,7 @@ public class Utils {
 
     public static boolean writeObject(@NotNull Object object, @NotNull String path) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
+            System.out.println("Object saved: " + object);
             oos.writeObject(object);
             return true;
         } catch (IOException e) {
@@ -20,7 +23,9 @@ public class Utils {
     @SuppressWarnings("unchecked")
     public static <T> T readObject(@NotNull String path, @Nullable T defaultValue) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
-            return (T) ois.readObject();
+            T obj = (T) ois.readObject();
+            System.out.println("Object loaded: " + obj);
+            return obj;
         } catch (FileNotFoundException e) {
             return defaultValue;
         } catch (IOException | ClassNotFoundException e) {
@@ -31,6 +36,10 @@ public class Utils {
 
     public static int clamp(int val, int min, int max) {
         return Math.max(min, Math.min(max, val));
+    }
+
+    public static void setDanger(@NotNull Node node, boolean active) {
+        node.pseudoClassStateChanged(PseudoClass.getPseudoClass("danger"), active);
     }
 
 }

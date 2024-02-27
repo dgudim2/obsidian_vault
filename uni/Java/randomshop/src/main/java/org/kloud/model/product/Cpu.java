@@ -6,7 +6,7 @@ import org.kloud.model.enums.CpuArchitecture;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.Manufacturer;
 
-import java.util.Set;
+import java.util.List;
 
 public class Cpu extends HardwarePart {
 
@@ -33,7 +33,7 @@ public class Cpu extends HardwarePart {
     protected final Field<Long> maxRamCapacityMb = new Field<>("Max ram capacity (mb)", true, Long.class, __ -> "");
 
     @Override
-    public Set<Field<?>> getFields() {
+    public List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(tdp);
         superFields.add(manufacturer);

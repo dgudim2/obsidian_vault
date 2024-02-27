@@ -1,13 +1,14 @@
 package org.kloud.model.product;
 
+import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.common.Field;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public abstract class Product implements Serializable {
 
@@ -19,8 +20,8 @@ public abstract class Product implements Serializable {
     protected final Field<LocalDate> warranty = new Field<>("Warranty", true, LocalDate.class, __ -> "");
     protected final Field<Float> rating = new Field<>("Rating", true, Float.class, __ -> "");
 
-    public Set<Field<?>> getFields() {
-        Set<Field<?>> fields = new HashSet<>(5);
+    public List<Field<?>> getFields() {
+        List<Field<?>> fields = new ArrayList<>(5);
         fields.add(name);
         fields.add(description);
         fields.add(price);
@@ -35,4 +36,16 @@ public abstract class Product implements Serializable {
     }
 
     protected abstract @NotNull String toStringInternal();
+
+    @Nullable
+    public Pair<String, Field<?>> getInvalidField() {
+        var fields = getFields();
+        for (var field : fields) {
+            var validationResult = field.validate();
+            if (validationResult != null) {
+                return new Pair<>(validationResult, field);
+            }
+        }
+        return null;
+    }
 }

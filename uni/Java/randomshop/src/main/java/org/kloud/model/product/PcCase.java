@@ -1,12 +1,12 @@
 package org.kloud.model.product;
 
+import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.MotherboardFormFactor;
 import org.kloud.model.enums.SidePanelType;
 
-import java.awt.*;
-import java.util.Set;
+import java.util.List;
 
 public class PcCase extends HardwarePart {
 
@@ -16,7 +16,7 @@ public class PcCase extends HardwarePart {
     protected final Field<SidePanelType> sidePanelType = new Field<>("Side-panel type", true, SidePanelType.class, __ -> "");
 
     @Override
-    public Set<Field<?>> getFields() {
+    public List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(color);
         superFields.add(motherboardFormFactor);

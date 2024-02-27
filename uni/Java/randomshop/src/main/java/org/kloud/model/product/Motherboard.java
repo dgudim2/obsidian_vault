@@ -7,6 +7,8 @@ import org.kloud.model.enums.MotherboardFormFactor;
 import java.util.Set;
 
 public class Motherboard extends HardwarePart {
+
+    public static String NAME = "Motherboard";
     protected final Field<MotherboardFormFactor> formFactor = new Field<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
     protected final Field<CpuSocketType> cpuSocketType = new Field<>("Socket type", true, CpuSocketType.class, __ -> "");
 

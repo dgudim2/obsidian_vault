@@ -13,13 +13,10 @@ public class Entrypoint extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
         Application.setUserAgentStylesheet(new Dracula().getUserAgentStylesheet());
-
-        FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("main-view.fxml"));
+        stage.setTitle("Randomshop");
+        stage.setScene(new Scene(fxmlLoader.load()));
         stage.show();
     }
 

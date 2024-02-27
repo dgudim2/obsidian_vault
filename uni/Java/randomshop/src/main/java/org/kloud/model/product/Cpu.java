@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class Cpu extends HardwarePart {
 
+    public static String NAME = "Cpu";
+
     protected final Field<Float> tdp = new Field<>("TDP", true, Float.class, __ -> "");
 
     protected final Field<Manufacturer> manufacturer = new Field<>("Manufacturer", true, Manufacturer.class, __ -> "");

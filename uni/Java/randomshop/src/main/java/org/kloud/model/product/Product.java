@@ -4,9 +4,12 @@ import org.kloud.common.Field;
 
 import java.time.Duration;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public abstract class Product {
+
+    public static final List<Class<? extends Product>> PRODUCTS = List.of(Cpu.class, Gpu.class, Motherboard.class, PcCase.class);
 
     protected final Field<String> name = new Field<>("Name", true, String.class, __ -> "");
     protected final Field<String> description = new Field<>("Description", true, String.class, __ -> "");

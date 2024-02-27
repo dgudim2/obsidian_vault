@@ -1,6 +1,9 @@
 package org.kloud.module.gui.controllers;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -12,12 +15,17 @@ import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.module.gui.components.BootstrapRow;
 import org.kloud.module.gui.components.Breakpoint;
 import org.kloud.utils.FileProductsDAO;
+import org.kloud.utils.ProductsDAO;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EntrypointController {
+
+    private final ObjectProperty<Product> selectedProduct = new SimpleObjectProperty<>(null);
+
     @FXML
     public ListView<Product> productList;
     @FXML
@@ -26,10 +34,15 @@ public class EntrypointController {
     public Button deleteProductButton;
     @FXML
     public Button addProductButton;
+    @FXML
+    public Button saveProductButton;
+
+    private void saveProducts(@NotNull ProductsDAO productsDAO) {
+        productsDAO.writeProducts(productList.getItems().stream().filter(product -> product.getInvalidField() == null).toList());
+    }
 
     @FXML
     public void initialize() {
-        BootstrapPane pane = new BootstrapPane();
 
         var productsDAO = new FileProductsDAO();
         var prods = productsDAO.readProducts();
@@ -37,15 +50,45 @@ public class EntrypointController {
             productList.getItems().addAll(prods);
         }
 
+        BootstrapPane pane = new BootstrapPane();
         pane.prefWidthProperty().bind(productEditArea.widthProperty());
         pane.prefHeightProperty().bind(productEditArea.heightProperty());
-
         productEditArea.getChildren().add(pane);
+        saveProductButton.setVisible(false);
 
         productList.setOnMouseClicked(mouseEvent -> {
-            var selectedItem = productList.getSelectionModel().getSelectedItem();
+            var selectedProduct = productList.getSelectionModel().getSelectedItem();
+            // Clear selection when the same item is selected / no item is selected
+            if (selectedProduct != null && Objects.equals(this.selectedProduct.get(), selectedProduct)) {
+                productList.getSelectionModel().clearSelection();
+                selectedProduct = null;
+            }
+            this.selectedProduct.set(selectedProduct);
+        });
+
+        productList.getItems().addListener((ListChangeListener<Product>) change -> saveProducts(productsDAO));
+
+        deleteProductButton.setDisable(true);
+        selectedProduct.addListener((observableValue, oldProduct, newProduct) -> {
+            deleteProductButton.setDisable(newProduct == null);
+            saveProductButton.setVisible(newProduct != null);
             pane.removeFirstRow();
-            pane.addRow(loadItemsForProduct(selectedItem));
+            if (newProduct != null) {
+                pane.addRow(loadItemsForProduct(newProduct));
+            }
+        });
+
+        deleteProductButton.setOnAction(actionEvent -> {
+            Alert productDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            productDialog.setTitle("Delete a product");
+            productDialog.setHeaderText("Delete '" + selectedProduct.get() + "'?");
+            productDialog.showAndWait().ifPresent(buttonType -> {
+                if (buttonType != ButtonType.OK) {
+                    return;
+                }
+                productList.getItems().remove(selectedProduct.get());
+                productList.getOnMouseClicked().handle(null);
+            });
         });
 
         addProductButton.setOnAction(actionEvent -> {
@@ -79,32 +122,45 @@ public class EntrypointController {
             productDialog.setGraphic(null);
 
             productDialog.showAndWait().ifPresent(buttonType -> {
-                if (buttonType == ButtonType.OK) {
-                    try {
-                        var product = Product.PRODUCTS.get(selectedProductIndex[0]).getDeclaredConstructor().newInstance();
-                        productList.getItems().add(product);
-                        productsDAO.writeProducts(productList.getItems().stream().toList());
-                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                             NoSuchMethodException e) {
-                        throw new RuntimeException(e);
-                    }
+                if (buttonType != ButtonType.OK) {
+                    return;
+                }
+                try {
+                    productList.getItems().add(Product.PRODUCTS.get(selectedProductIndex[0]).getDeclaredConstructor().newInstance());
+                } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                         NoSuchMethodException e) {
+                    throw new RuntimeException(e);
                 }
             });
         });
     }
 
-    private static BootstrapRow loadItemsForProduct(@NotNull Product product) {
+    private BootstrapRow loadItemsForProduct(@NotNull Product product) {
         BootstrapRow row = new BootstrapRow();
         var fields = product.getFields();
+        List<Control> fxControls = new ArrayList<>(fields.size());
 
         for(var field: fields) {
-            BootstrapColumn column = new BootstrapColumn(field.getJavaFxControl());
+            var fieldControl = field.getJavaFxControl();
+            fxControls.add((Control) fieldControl.lookup("input"));
+            BootstrapColumn column = new BootstrapColumn(fieldControl);
             column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
             column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
             column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
             column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
             row.addColumn(column);
         }
+
+        System.out.println("Loaded " + fields.size() + " fields for '" + product + "'");
+
+        saveProductButton.setOnAction(actionEvent -> {
+            for(var field: fields) {
+                var validationData = field.validate();
+                if(validationData != null) {
+
+                }
+            }
+        });
 
         return row;
     }

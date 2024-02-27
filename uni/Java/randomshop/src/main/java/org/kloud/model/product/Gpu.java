@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.GpuMemoryType;
 
-import java.util.Set;
+import java.util.List;
 
 public class Gpu extends HardwarePart {
 
@@ -18,7 +18,7 @@ public class Gpu extends HardwarePart {
     protected final Field<GpuMemoryType> memoryType = new Field<>("Memory type", true, GpuMemoryType.class, __ -> "");
 
     @Override
-    public Set<Field<?>> getFields() {
+    public List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(tdp);
         superFields.add(memoryMb);

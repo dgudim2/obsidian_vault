@@ -2,22 +2,24 @@ package org.kloud.module.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import org.jetbrains.annotations.NotNull;
 import org.kloud.model.product.Product;
 import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.module.gui.components.BootstrapRow;
 import org.kloud.module.gui.components.Breakpoint;
+import org.kloud.utils.FileProductsDAO;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EntrypointController {
     @FXML
-    public ListView<Product>productList;
+    public ListView<Product> productList;
     @FXML
     public Pane productEditArea;
     @FXML
@@ -28,19 +30,33 @@ public class EntrypointController {
     @FXML
     public void initialize() {
         BootstrapPane pane = new BootstrapPane();
-        pane.addRow(makeBootstrapRow());
+
+        var productsDAO = new FileProductsDAO();
+        var prods = productsDAO.readProducts();
+        if(prods != null) {
+            productList.getItems().addAll(prods);
+        }
 
         pane.prefWidthProperty().bind(productEditArea.widthProperty());
         pane.prefHeightProperty().bind(productEditArea.heightProperty());
 
         productEditArea.getChildren().add(pane);
 
+        productList.setOnMouseClicked(mouseEvent -> {
+            var selectedItem = productList.getSelectionModel().getSelectedItem();
+            pane.removeFirstRow();
+            pane.addRow(loadItemsForProduct(selectedItem));
+        });
+
         addProductButton.setOnAction(actionEvent -> {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert productDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            productDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
+
+            final int[] selectedProductIndex = {-1};
 
             ComboBox<String> productSelector = new ComboBox<>();
             List<String> productNames = new ArrayList<>(Product.PRODUCTS.size());
-            for(var product: Product.PRODUCTS) {
+            for (var product : Product.PRODUCTS) {
                 try {
                     productNames.add(String.valueOf(product.getField("NAME").get(null)));
                 } catch (NoSuchFieldException | IllegalAccessException e) {
@@ -48,61 +64,48 @@ public class EntrypointController {
                 }
             }
             productSelector.setItems(FXCollections.observableList(productNames));
+            productSelector.setOnAction(actionEvent1 -> {
+                selectedProductIndex[0] = productSelector.getSelectionModel().getSelectedIndex();
+                productDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
+            });
+            productSelector.setPrefWidth(300);
 
             var container = new HBox();
             container.getChildren().add(productSelector);
-            productSelector.prefWidthProperty().bind(container.prefWidthProperty());
-            container.setSpacing(5);
 
-            alert.setTitle("Add a product");
-            alert.setHeaderText("Select a product to add");
-            alert.getDialogPane().setContent(container);
+            productDialog.setTitle("Add a product");
+            productDialog.setHeaderText("Select a product to add");
+            productDialog.getDialogPane().setContent(container);
+            productDialog.setGraphic(null);
 
-            alert.showAndWait();
+            productDialog.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == ButtonType.OK) {
+                    try {
+                        var product = Product.PRODUCTS.get(selectedProductIndex[0]).getDeclaredConstructor().newInstance();
+                        productList.getItems().add(product);
+                        productsDAO.writeProducts(productList.getItems().stream().toList());
+                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                             NoSuchMethodException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
         });
     }
 
-    private static BootstrapRow makeBootstrapRow() {
+    private static BootstrapRow loadItemsForProduct(@NotNull Product product) {
         BootstrapRow row = new BootstrapRow();
+        var fields = product.getFields();
 
-        BootstrapColumn column0 = new BootstrapColumn(createColoredPane());
-        column0.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-        column0.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-        column0.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-        column0.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-        BootstrapColumn column1 = new BootstrapColumn(createColoredPane());
-        column1.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-        column1.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-        column1.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-        column1.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-        BootstrapColumn column2 = new BootstrapColumn(createColoredPane());
-        column2.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-        column2.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-        column2.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-        column2.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-        BootstrapColumn column3 = new BootstrapColumn(createColoredPane());
-        column3.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-        column3.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-        column3.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-        column3.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-
-        row.addColumn(column0);
-        row.addColumn(column1);
-        row.addColumn(column2);
-        row.addColumn(column3);
+        for(var field: fields) {
+            BootstrapColumn column = new BootstrapColumn(field.getJavaFxControl());
+            column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
+            column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
+            column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
+            column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
+            row.addColumn(column);
+        }
 
         return row;
-    }
-
-    private static HBox createColoredPane() {
-        var hbox = new HBox();
-        hbox.setPadding(new Insets(1));
-        var label = new Label("Test: ");
-        var text = new TextField();
-        text.prefWidthProperty().bind(hbox.prefWidthProperty());
-        label.prefHeightProperty().bind(text.heightProperty());
-        label.minWidth(70);
-        hbox.getChildren().addAll(List.of(label, text));
-        return hbox;
     }
 }

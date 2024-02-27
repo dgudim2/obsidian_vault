@@ -1,5 +1,6 @@
 package org.kloud.model.product;
 
+import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.MotherboardFormFactor;
 import org.kloud.model.enums.SidePanelType;
@@ -21,5 +22,10 @@ public class PcCase extends HardwarePart {
         superFields.add(motherboardFormFactor);
         superFields.add(sidePanelType);
         return superFields;
+    }
+
+    @Override
+    protected @NotNull String toStringInternal() {
+        return NAME + ": " + name;
     }
 }

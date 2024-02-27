@@ -85,4 +85,15 @@ public class BootstrapPane extends GridPane {
             getChildren().remove(column.getContent());
         }
     }
+
+    /**
+     * Remove the first BootstrapRow from the layout.
+     *
+     */
+    public void removeFirstRow() {
+        if (rows.isEmpty()) {
+            return;
+        }
+        removeRow(rows.get(0));
+    }
 }

@@ -1,5 +1,6 @@
 package org.kloud.model.product;
 
+import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.MotherboardFormFactor;
@@ -18,5 +19,10 @@ public class Motherboard extends HardwarePart {
         superFields.add(formFactor);
         superFields.add(cpuSocketType);
         return superFields;
+    }
+
+    @Override
+    protected @NotNull String toStringInternal() {
+        return NAME + ": " + name;
     }
 }

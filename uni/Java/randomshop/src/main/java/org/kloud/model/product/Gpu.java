@@ -1,5 +1,6 @@
 package org.kloud.model.product;
 
+import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.model.enums.GpuMemoryType;
 
@@ -26,5 +27,10 @@ public class Gpu extends HardwarePart {
         superFields.add(maxMemoryClockMhz);
         superFields.add(memoryType);
         return superFields;
+    }
+
+    @Override
+    protected @NotNull String toStringInternal() {
+        return NAME + ": " + name;
     }
 }

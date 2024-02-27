@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class PcCase extends HardwarePart {
 
+    public static String NAME = "Pc case";
     protected final Field<Color> color = new Field<>("Color", true, Color.class, __ -> "");
     protected final Field<MotherboardFormFactor> motherboardFormFactor = new Field<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
     protected final Field<SidePanelType> sidePanelType = new Field<>("Side-panel type", true, SidePanelType.class, __ -> "");

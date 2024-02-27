@@ -7,6 +7,8 @@ import java.util.Set;
 
 public class Gpu extends HardwarePart {
 
+    public static String NAME = "Gpu";
+
     protected final Field<Float> tdp = new Field<>("TDP", true, Float.class, __ -> "");
     protected final Field<Long> memoryMb = new Field<>("Memory (Mb)", true, Long.class, __ -> "");
     protected final Field<Integer> memoryBusWidthBytes = new Field<>("Memory bus width (bytes)", true, Integer.class, __ -> "");

@@ -4,16 +4,12 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogBuilder;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.model.product.*;
 import org.kloud.utils.ProductsDAO;
 
-import java.util.List;
-
+import static org.kloud.model.product.Product.PRODUCTS;
 import static org.kloud.module.cli.Utils.*;
 
 public class ProductsMenu {
-
-    private static final List<Class<? extends Product>> products = List.of(Cpu.class, Gpu.class, Motherboard.class, PcCase.class);
 
     public static void show(@NotNull WindowBasedTextGUI gui, @NotNull ProductsDAO productsDAO) {
         var products = productsDAO.readProducts();
@@ -48,7 +44,7 @@ public class ProductsMenu {
 
         panel.addComponent(new Label("Choose what to do").setLayoutData(BorderLayout.Location.CENTER));
 
-        setupWithExitButton("Back", panel, () -> gui.removeWindow(window), new ComboBox<>(products));
+        setupWithExitButton("Back", panel, () -> gui.removeWindow(window), new ComboBox<>(PRODUCTS));
 
         gui.addWindow(window);
     }

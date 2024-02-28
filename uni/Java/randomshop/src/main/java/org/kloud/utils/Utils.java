@@ -40,6 +40,23 @@ public class Utils {
 
     public static void setDanger(@NotNull Node node, boolean active) {
         node.pseudoClassStateChanged(PseudoClass.getPseudoClass("danger"), active);
+        if (active) {
+            if (!node.getStyleClass().contains("danger")) {
+                node.getStyleClass().add("danger");
+            }
+        } else {
+            node.getStyleClass().remove("danger");
+        }
+    }
+
+    public static String testLength(String val, int min, int max) {
+        if (val.length() < min) {
+            return "Length should be >= " + min;
+        }
+        if (val.length() > max) {
+            return "Length should be <= " + max;
+        }
+        return "";
     }
 
 }

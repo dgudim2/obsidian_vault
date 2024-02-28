@@ -20,7 +20,7 @@ import org.kloud.utils.ProductsDAO;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.function.Supplier;
 
 public class EntrypointController {
 
@@ -38,7 +38,7 @@ public class EntrypointController {
     public Button saveProductButton;
 
     private void saveProducts(@NotNull ProductsDAO productsDAO) {
-        productsDAO.writeProducts(productList.getItems().stream().filter(product -> product.getInvalidField() == null).toList());
+        productsDAO.writeProducts(productList.getItems().stream().filter(Product::isValid).toList());
     }
 
     @FXML
@@ -56,15 +56,7 @@ public class EntrypointController {
         productEditArea.getChildren().add(pane);
         saveProductButton.setVisible(false);
 
-        productList.setOnMouseClicked(mouseEvent -> {
-            var selectedProduct = productList.getSelectionModel().getSelectedItem();
-            // Clear selection when the same item is selected / no item is selected
-            if (selectedProduct != null && Objects.equals(this.selectedProduct.get(), selectedProduct)) {
-                productList.getSelectionModel().clearSelection();
-                selectedProduct = null;
-            }
-            this.selectedProduct.set(selectedProduct);
-        });
+        productList.getSelectionModel().selectedItemProperty().addListener((observableValue, product, newProduct) -> selectedProduct.set(newProduct));
 
         productList.getItems().addListener((ListChangeListener<Product>) change -> saveProducts(productsDAO));
 
@@ -87,7 +79,7 @@ public class EntrypointController {
                     return;
                 }
                 productList.getItems().remove(selectedProduct.get());
-                productList.getOnMouseClicked().handle(null);
+                productList.getSelectionModel().clearSelection();
             });
         });
 
@@ -107,8 +99,8 @@ public class EntrypointController {
                 }
             }
             productSelector.setItems(FXCollections.observableList(productNames));
-            productSelector.setOnAction(actionEvent1 -> {
-                selectedProductIndex[0] = productSelector.getSelectionModel().getSelectedIndex();
+            productSelector.getSelectionModel().selectedIndexProperty().addListener((observableValue, index, newIndex) -> {
+                selectedProductIndex[0] = (int) newIndex;
                 productDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
             });
             productSelector.setPrefWidth(300);
@@ -138,12 +130,12 @@ public class EntrypointController {
     private BootstrapRow loadItemsForProduct(@NotNull Product product) {
         BootstrapRow row = new BootstrapRow();
         var fields = product.getFields();
-        List<Control> fxControls = new ArrayList<>(fields.size());
+        List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
 
         for(var field: fields) {
             var fieldControl = field.getJavaFxControl();
-            fxControls.add((Control) fieldControl.lookup("input"));
-            BootstrapColumn column = new BootstrapColumn(fieldControl);
+            fxControlHandlers.add(fieldControl.getValue());
+            BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
             column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
             column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
             column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
@@ -154,11 +146,10 @@ public class EntrypointController {
         System.out.println("Loaded " + fields.size() + " fields for '" + product + "'");
 
         saveProductButton.setOnAction(actionEvent -> {
-            for(var field: fields) {
-                var validationData = field.validate();
-                if(validationData != null) {
-
-                }
+            boolean isValid = true;
+            for(var fxControlHandler: fxControlHandlers) {
+                boolean fieldValid = fxControlHandler.get();
+                isValid = isValid && fieldValid;
             }
         });
 

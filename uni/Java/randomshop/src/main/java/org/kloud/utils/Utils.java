@@ -3,7 +3,6 @@ package org.kloud.utils;
 import javafx.css.PseudoClass;
 import javafx.scene.Node;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 
@@ -21,7 +20,8 @@ public class Utils {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T readObject(@NotNull String path, @Nullable T defaultValue) {
+    @NotNull
+    public static <T> T readObject(@NotNull String path, @NotNull T defaultValue) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             T obj = (T) ois.readObject();
             System.out.println("Object loaded: " + obj);
@@ -30,7 +30,7 @@ public class Utils {
             return defaultValue;
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return defaultValue;
         }
     }
 

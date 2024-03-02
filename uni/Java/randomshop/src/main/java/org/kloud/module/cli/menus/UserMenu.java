@@ -17,11 +17,7 @@ public class UserMenu {
 
 
     public static void show(@NotNull WindowBasedTextGUI gui, @NotNull UserDAO userDAO) {
-        var users = userDAO.readUsers();
-        if (users == null) {
-            new MessageDialogBuilder().setTitle("An error occurred!").setText("Could not read users!").build().showDialog(gui);
-            return;
-        }
+        var users = userDAO.getUsers();
 
         Panel panel = newVerticalPanel();
         Window window = wrapIntoWindow(panel);
@@ -43,8 +39,8 @@ public class UserMenu {
         gui.addWindow(window);
     }
 
-    private static void trySaveUsers(@NotNull WindowBasedTextGUI gui, @NotNull Window calledFrom, @NotNull UserDAO userDAO, @NotNull List<User> users) {
-        if (!userDAO.writeUsers(users)) {
+    private static void trySaveUsers(@NotNull WindowBasedTextGUI gui, @NotNull Window calledFrom, boolean saveSuccess) {
+        if (saveSuccess) {
             new MessageDialogBuilder().setTitle("An error occurred!").setText("Failed saving users!").build().showDialog(gui);
         } else {
             gui.removeWindow(calledFrom);
@@ -70,10 +66,8 @@ public class UserMenu {
         panel.addComponent(new EmptySpace());
         panel.addComponent(new EmptySpace());
 
-        panel.addComponent(new Button("Add", () -> {
-            users.add(new User(nameInput.getText(), surnameInput.getText(), null));
-            trySaveUsers(gui, window, userDAO, users);
-        }));
+        panel.addComponent(new Button("Add", () ->
+                trySaveUsers(gui, window, userDAO.addUser(new User(nameInput.getText(), surnameInput.getText(), null)))));
         panel.addComponent(new Button("Cancel", () -> gui.removeWindow(window)));
 
         gui.addWindow(window);
@@ -94,8 +88,7 @@ public class UserMenu {
                         .addButton(MessageDialogButton.Yes)
                         .build().showDialog(gui);
                 if (result == MessageDialogButton.Yes) {
-                    users.remove(user);
-                    trySaveUsers(gui, window, userDAO, users);
+                    trySaveUsers(gui, window, users.remove(user));
                     deleteUser(gui, userDAO, users);
                 }
             });

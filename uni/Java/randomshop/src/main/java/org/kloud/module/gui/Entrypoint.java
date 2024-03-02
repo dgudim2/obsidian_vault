@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import org.kloud.module.gui.controllers.EntrypointController;
 
 import java.io.IOException;
 
@@ -17,6 +18,12 @@ public class Entrypoint extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("main-view.fxml"));
         stage.setTitle("Randomshop");
         stage.setScene(new Scene(fxmlLoader.load()));
+        stage.setOnCloseRequest(we -> {
+            EntrypointController controller = fxmlLoader.getController();
+            if (!controller.notifyCloseRequest()) {
+                we.consume();
+            }
+        });
         stage.show();
     }
 

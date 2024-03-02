@@ -8,6 +8,7 @@ kanban-plugin: basic
 
 - [ ] **Transparency is broken on 100%**<br><br>If the transparency slider is at 100%, the background is black<br><br>@{2024-02-22}
 - [ ] **Turn off predictive gesture**<br><br>@{2024-02-22}
+- [ ] **Lock screen not refreshing on bg change**<br><br>Setting a new per day bg in settings does not trigger a lockscreen update<br><br>@{2024-03-02}
 
 
 ## Features
@@ -30,6 +31,9 @@ kanban-plugin: basic
 - [ ] **Display full date for todo events**<br><br>Display a full date for upcoming/expired todo events<br><br>@{2024-02-22}
 - [ ] **Expose saves via a file provider**<br><br>Self-explanatory<br><br>@{2024-02-22}
 - [ ] **Auto-updater**<br><br>Use the new UPDATE_PACKAGE_WITHOUT_USER_REACTION<br><br>@{2024-02-22}
+- [ ] **Option to open links**<br><br>Search for links in todos, add a button/menu to  open them<br><br>@{2024-02-24}
+- [ ] **Add as a target in share menu**<br><br>Register with android's share menu (send from other apps)<br><br>@{2024-02-24}
+- [ ] **Cleanup database**<br><br>Remove invalid entries from deleted calendars periodically<br><br>@{2024-03-02}
 
 
 ## Fixed bugs

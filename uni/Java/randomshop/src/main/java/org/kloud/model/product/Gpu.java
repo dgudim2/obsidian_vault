@@ -1,21 +1,23 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.common.EnumField;
 import org.kloud.common.Field;
 import org.kloud.model.enums.GpuMemoryType;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Gpu extends HardwarePart {
 
     public static String NAME = "Gpu";
 
-    protected final Field<Float> tdp = new Field<>("TDP", true, Float.class, __ -> "");
+    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, __ -> "");
     protected final Field<Long> memoryMb = new Field<>("Memory (Mb)", true, Long.class, __ -> "");
     protected final Field<Integer> memoryBusWidthBytes = new Field<>("Memory bus width (bytes)", true, Integer.class, __ -> "");
     protected final Field<Integer> memoryClockMhz = new Field<>("Memory clock (MHz)", true, Integer.class, __ -> "");
     protected final Field<Integer> maxMemoryClockMhz = new Field<>("Max memory clock (MHz)", true, Integer.class, __ -> "");
-    protected final Field<GpuMemoryType> memoryType = new Field<>("Memory type", true, GpuMemoryType.class, __ -> "");
+    protected final EnumField<GpuMemoryType> memoryType = new EnumField<>("Memory type", true, GpuMemoryType.class, __ -> "");
 
     @Override
     public List<Field<?>> getFields() {
@@ -31,6 +33,19 @@ public class Gpu extends HardwarePart {
 
     @Override
     protected @NotNull String toStringInternal() {
-        return NAME + ": " + name;
+        return NAME + ": " + name + " (" + tdp + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Gpu gpu)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(tdp, gpu.tdp) && Objects.equals(memoryMb, gpu.memoryMb) && Objects.equals(memoryBusWidthBytes, gpu.memoryBusWidthBytes) && Objects.equals(memoryClockMhz, gpu.memoryClockMhz) && Objects.equals(maxMemoryClockMhz, gpu.maxMemoryClockMhz) && Objects.equals(memoryType, gpu.memoryType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), tdp, memoryMb, memoryBusWidthBytes, memoryClockMhz, maxMemoryClockMhz, memoryType);
     }
 }

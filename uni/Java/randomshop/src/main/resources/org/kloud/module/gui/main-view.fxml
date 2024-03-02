@@ -2,31 +2,50 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.EntrypointController">
-    <TabPane prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TabPane fx:id="tabs" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Shop">
+            <AnchorPane minHeight="0.0" minWidth="0.0">
+            <children>
+               <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Label>
+               <AnchorPane layoutX="156.0" layoutY="134.0" maxHeight="201.0" maxWidth="294.0" minHeight="201.0" minWidth="294.0" prefHeight="201.0" prefWidth="294.0" style="-fx-border-color: -color-accent-fg; -fx-border-radius: 5;" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="134.0">
+                  <children>
+                     <Label alignment="CENTER" layoutX="117.0" layoutY="68.0" text="Please login" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                     <VBox layoutX="97.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <children>
+                           <HBox prefHeight="100.0" prefWidth="200.0" />
+                           <HBox prefHeight="100.0" prefWidth="200.0" />
+                        </children>
+                     </VBox>
+                  </children>
+               </AnchorPane>
+            </children></AnchorPane>
+        </Tab>
+        <Tab fx:id="usersTab" text="Users">
             <AnchorPane minHeight="0.0" minWidth="0.0" />
         </Tab>
-        <Tab text="Users">
-            <AnchorPane minHeight="0.0" minWidth="0.0" />
-        </Tab>
-        <Tab text="Products">
+        <Tab fx:id="productsTab" text="Products">
             <AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <ListView fx:id="productList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
                     <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                        <Button fx:id="deleteProductButton" styleClass="danger" layoutX="10" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
+                        <Button fx:id="deleteProductButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
                         <Button fx:id="addProductButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </AnchorPane>
                 </AnchorPane>
                 <Pane fx:id="productEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                <Button text="Save" fx:id="saveProductButton" styleClass="success" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                <Button fx:id="saveProductButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
             </AnchorPane>
         </Tab>
-        <Tab text="Warehouses">
+        <Tab fx:id="warehousesTab" text="Warehouses">
             <AnchorPane minHeight="0.0" minWidth="0.0">
                 <ListView fx:id="warehousesList" layoutX="15.0" layoutY="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
             </AnchorPane>

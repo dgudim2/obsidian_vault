@@ -3,7 +3,6 @@ package org.kloud.module.gui.controllers;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -26,6 +25,7 @@ public class EntrypointController {
 
     private final ObjectProperty<Product> selectedProduct = new SimpleObjectProperty<>(null);
 
+    private final ProductsDAO productsDAO;
     @FXML
     public ListView<Product> productList;
     @FXML
@@ -36,19 +36,27 @@ public class EntrypointController {
     public Button addProductButton;
     @FXML
     public Button saveProductButton;
+    @FXML
+    public TabPane tabs;
+    @FXML
+    public Tab warehousesTab;
+    @FXML
+    public Tab productsTab;
+    @FXML
+    public Tab usersTab;
 
-    private void saveProducts(@NotNull ProductsDAO productsDAO) {
-        productsDAO.writeProducts(productList.getItems().stream().filter(Product::isValid).toList());
+    public EntrypointController() {
+        this.productsDAO = new FileProductsDAO();
     }
 
     @FXML
     public void initialize() {
 
-        var productsDAO = new FileProductsDAO();
-        var prods = productsDAO.readProducts();
-        if(prods != null) {
-            productList.getItems().addAll(prods);
-        }
+        warehousesTab.setDisable(true);
+        productsTab.setDisable(true);
+        usersTab.setDisable(true);
+
+        productList.getItems().addAll(productsDAO.getProducts());
 
         BootstrapPane pane = new BootstrapPane();
         pane.prefWidthProperty().bind(productEditArea.widthProperty());
@@ -58,15 +66,13 @@ public class EntrypointController {
 
         productList.getSelectionModel().selectedItemProperty().addListener((observableValue, product, newProduct) -> selectedProduct.set(newProduct));
 
-        productList.getItems().addListener((ListChangeListener<Product>) change -> saveProducts(productsDAO));
-
         deleteProductButton.setDisable(true);
         selectedProduct.addListener((observableValue, oldProduct, newProduct) -> {
             deleteProductButton.setDisable(newProduct == null);
             saveProductButton.setVisible(newProduct != null);
             pane.removeFirstRow();
             if (newProduct != null) {
-                pane.addRow(loadItemsForProduct(newProduct));
+                pane.addRow(loadItemsForProduct(newProduct, productsDAO));
             }
         });
 
@@ -78,7 +84,9 @@ public class EntrypointController {
                 if (buttonType != ButtonType.OK) {
                     return;
                 }
-                productList.getItems().remove(selectedProduct.get());
+                var prod = selectedProduct.get();
+                productsDAO.removeProduct(prod);
+                productList.getItems().remove(prod);
                 productList.getSelectionModel().clearSelection();
             });
         });
@@ -127,12 +135,12 @@ public class EntrypointController {
         });
     }
 
-    private BootstrapRow loadItemsForProduct(@NotNull Product product) {
+    private BootstrapRow loadItemsForProduct(@NotNull Product product, @NotNull ProductsDAO productsDAO) {
         BootstrapRow row = new BootstrapRow();
         var fields = product.getFields();
         List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
 
-        for(var field: fields) {
+        for (var field : fields) {
             var fieldControl = field.getJavaFxControl();
             fxControlHandlers.add(fieldControl.getValue());
             BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
@@ -147,12 +155,27 @@ public class EntrypointController {
 
         saveProductButton.setOnAction(actionEvent -> {
             boolean isValid = true;
-            for(var fxControlHandler: fxControlHandlers) {
+            for (var fxControlHandler : fxControlHandlers) {
                 boolean fieldValid = fxControlHandler.get();
                 isValid = isValid && fieldValid;
+            }
+            if (isValid) {
+                productsDAO.addProduct(product);
+                productList.refresh();
             }
         });
 
         return row;
+    }
+
+    public boolean notifyCloseRequest() {
+        if (productList.getItems().size() != productsDAO.getProducts().size() || !productsDAO.isLatestVersionSaved()) {
+            Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            closeDialog.setTitle("Exit");
+            closeDialog.setHeaderText("You have some unsaved products, exit?");
+            var result = closeDialog.showAndWait();
+            return result.isPresent() && result.get() == ButtonType.OK;
+        }
+        return true;
     }
 }

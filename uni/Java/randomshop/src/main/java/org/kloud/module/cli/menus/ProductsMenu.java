@@ -2,7 +2,6 @@ package org.kloud.module.cli.menus;
 
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
-import com.googlecode.lanterna.gui2.dialogs.MessageDialogBuilder;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.utils.ProductsDAO;
 
@@ -12,11 +11,7 @@ import static org.kloud.module.cli.Utils.*;
 public class ProductsMenu {
 
     public static void show(@NotNull WindowBasedTextGUI gui, @NotNull ProductsDAO productsDAO) {
-        var products = productsDAO.readProducts();
-        if (products == null) {
-            new MessageDialogBuilder().setTitle("An error occurred!").setText("Could not read products!").build().showDialog(gui);
-            return;
-        }
+        var products = productsDAO.getProducts();
 
         Panel panel = newVerticalPanel();
         Window window = wrapIntoWindow(panel);

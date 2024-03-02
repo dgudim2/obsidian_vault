@@ -14,12 +14,32 @@ public class FileUserDAO extends UserDAO {
     private static final String FILE_PATH = "users.dat";
 
     @Override
-    public List<User> readUsers() {
-        return readObject(FILE_PATH, new ArrayList<>());
+    protected @NotNull List<User> readUsers() {
+        List<User> users = readObject(FILE_PATH, new ArrayList<>());
+        lastSavedHash = users.hashCode();
+        return users;
     }
 
     @Override
-    public boolean writeUsers(@NotNull List<User> users) {
+    public boolean addUser(@NotNull User user) {
+        if(users.contains(user)) {
+            return false;
+        }
+        users.add(user);
+        return writeUsers();
+    }
+
+    @Override
+    public boolean removeUser(@NotNull User user) {
+        var removed = users.remove(user);
+        if(removed) {
+            return writeUsers();
+        }
+        return false;
+    }
+
+    private boolean writeUsers() {
+        lastSavedHash = users.hashCode();
         return writeObject(users, FILE_PATH);
     }
 }

@@ -1,24 +1,26 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.common.EnumField;
 import org.kloud.common.Field;
 import org.kloud.model.enums.CpuArchitecture;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.Manufacturer;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Cpu extends HardwarePart {
 
     public static String NAME = "Cpu";
 
-    protected final Field<Float> tdp = new Field<>("TDP", true, Float.class, __ -> "");
+    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, __ -> "");
 
-    protected final Field<Manufacturer> manufacturer = new Field<>("Manufacturer", true, Manufacturer.class, __ -> "");
+    protected final EnumField<Manufacturer> manufacturer = new EnumField<>("Manufacturer", true, Manufacturer.class, __ -> "");
 
-    protected final Field<CpuSocketType> socketType = new Field<>("Socket type", true, CpuSocketType.class, __ -> "");
+    protected final EnumField<CpuSocketType> socketType = new EnumField<>("Socket type", true, CpuSocketType.class, __ -> "");
 
-    protected final Field<CpuArchitecture> architecture = new Field<>("Architechture", true, CpuArchitecture.class, __ -> "");
+    protected final EnumField<CpuArchitecture> architecture = new EnumField<>("Architechture", true, CpuArchitecture.class, __ -> "");
 
     protected final Field<Long> clockFrequencyMhz = new Field<>("Clock (MHz)", true, Long.class, __ -> "");
 
@@ -50,6 +52,19 @@ public class Cpu extends HardwarePart {
 
     @Override
     protected @NotNull String toStringInternal() {
-        return NAME + ": " + name;
+        return NAME + ": " + name + " (" + socketType + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Cpu cpu)) return false;
+        if (!super.equals(o)) return false;
+        return Objects.equals(tdp, cpu.tdp) && Objects.equals(manufacturer, cpu.manufacturer) && Objects.equals(socketType, cpu.socketType) && Objects.equals(architecture, cpu.architecture) && Objects.equals(clockFrequencyMhz, cpu.clockFrequencyMhz) && Objects.equals(numCores, cpu.numCores) && Objects.equals(cacheSizeMb, cpu.cacheSizeMb) && Objects.equals(techProcessNm, cpu.techProcessNm) && Objects.equals(hasIGpu, cpu.hasIGpu) && Objects.equals(maxRamCapacityMb, cpu.maxRamCapacityMb);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), tdp, manufacturer, socketType, architecture, clockFrequencyMhz, numCores, cacheSizeMb, techProcessNm, hasIGpu, maxRamCapacityMb);
     }
 }

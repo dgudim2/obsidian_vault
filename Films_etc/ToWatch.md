@@ -55,6 +55,7 @@
 + Ergo proxy
 + Solo leveling
 + Cowboy bebop
++ Монолог фармацевта
 
 
 # Stuff to read

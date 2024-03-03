@@ -8,16 +8,18 @@ import org.kloud.model.enums.GpuMemoryType;
 import java.util.List;
 import java.util.Objects;
 
+import static org.kloud.utils.Utils.testBounds;
+
 public class Gpu extends HardwarePart {
 
     public static String NAME = "Gpu";
 
-    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, __ -> "");
-    protected final Field<Long> memoryMb = new Field<>("Memory (Mb)", true, Long.class, __ -> "");
-    protected final Field<Integer> memoryBusWidthBytes = new Field<>("Memory bus width (bytes)", true, Integer.class, __ -> "");
-    protected final Field<Integer> memoryClockMhz = new Field<>("Memory clock (MHz)", true, Integer.class, __ -> "");
-    protected final Field<Integer> maxMemoryClockMhz = new Field<>("Max memory clock (MHz)", true, Integer.class, __ -> "");
-    protected final EnumField<GpuMemoryType> memoryType = new EnumField<>("Memory type", true, GpuMemoryType.class, __ -> "");
+    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, v -> testBounds(v, 1, -1));
+    protected final Field<Long> memoryMb = new Field<>("Memory (Mb)", true, Long.class, v -> testBounds(v, 100, -1));
+    protected final Field<Integer> memoryBusWidthBytes = new Field<>("Memory bus width (bytes)", true, Integer.class, v -> testBounds(v, 100, -1));
+    protected final Field<Integer> memoryClockMhz = new Field<>("Memory clock (MHz)", true, Integer.class, v -> testBounds(v, 100, -1));
+    protected final Field<Integer> maxMemoryClockMhz = new Field<>("Max memory clock (MHz)", true, Integer.class, v -> testBounds(v, 100, -1));
+    protected final EnumField<GpuMemoryType> memoryType = new EnumField<>("Memory type", true, GpuMemoryType.class);
 
     @Override
     public List<Field<?>> getFields() {

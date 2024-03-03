@@ -10,29 +10,31 @@ import org.kloud.model.enums.Manufacturer;
 import java.util.List;
 import java.util.Objects;
 
+import static org.kloud.utils.Utils.testBounds;
+
 public class Cpu extends HardwarePart {
 
     public static String NAME = "Cpu";
 
-    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, __ -> "");
+    protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, v -> testBounds(v, 1, -1));
 
-    protected final EnumField<Manufacturer> manufacturer = new EnumField<>("Manufacturer", true, Manufacturer.class, __ -> "");
+    protected final EnumField<Manufacturer> manufacturer = new EnumField<>("Manufacturer", true, Manufacturer.class);
 
-    protected final EnumField<CpuSocketType> socketType = new EnumField<>("Socket type", true, CpuSocketType.class, __ -> "");
+    protected final EnumField<CpuSocketType> socketType = new EnumField<>("Socket type", true, CpuSocketType.class);
 
-    protected final EnumField<CpuArchitecture> architecture = new EnumField<>("Architechture", true, CpuArchitecture.class, __ -> "");
+    protected final EnumField<CpuArchitecture> architecture = new EnumField<>("Architechture", true, CpuArchitecture.class);
 
-    protected final Field<Long> clockFrequencyMhz = new Field<>("Clock (MHz)", true, Long.class, __ -> "");
+    protected final Field<Long> clockFrequencyMhz = new Field<>("Clock (MHz)", true, Long.class, v -> testBounds(v, 100, -1));
 
-    protected final Field<Integer> numCores = new Field<>("Cores", true, Integer.class, __ -> "");
+    protected final Field<Integer> numCores = new Field<>("Cores", true, Integer.class, v -> testBounds(v, 1, -1));
 
-    protected final Field<Integer> cacheSizeMb = new Field<>("Cache size (Mb)", true, Integer.class, __ -> "");
+    protected final Field<Float> cacheSizeMb = new Field<>("Cache size (Mb)", true, Float.class, v -> testBounds(v, 1, -1));
 
-    protected final Field<Integer> techProcessNm = new Field<>("Tech process (nm)", true, Integer.class, __ -> "");
+    protected final Field<Integer> techProcessNm = new Field<>("Tech process (nm)", true, Integer.class, v -> testBounds(v, 1, -1));
 
     protected final Field<Boolean> hasIGpu = new Field<>("Has IGpu", true, Boolean.class, __ -> "");
 
-    protected final Field<Long> maxRamCapacityMb = new Field<>("Max ram capacity (mb)", true, Long.class, __ -> "");
+    protected final Field<Long> maxRamCapacityMb = new Field<>("Max ram capacity (mb)", true, Long.class, v -> testBounds(v, 10, -1));
 
     @Override
     public List<Field<?>> getFields() {

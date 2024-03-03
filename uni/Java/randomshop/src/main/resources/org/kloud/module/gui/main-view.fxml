@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
@@ -8,24 +9,38 @@
     <TabPane fx:id="tabs" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab text="Shop">
             <AnchorPane minHeight="0.0" minWidth="0.0">
-            <children>
-               <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+                <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <AnchorPane maxHeight="201.0" maxWidth="294.0" minHeight="201.0" minWidth="294.0" prefHeight="201.0" prefWidth="294.0" style="-fx-border-color: -color-accent-fg; -fx-border-radius: 5;" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="100.0">
+                    <Label fx:id="loginTitle" alignment="CENTER" layoutX="117.0" layoutY="68.0" text="Please login" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                    <VBox layoutX="97.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <Label alignment="CENTER_RIGHT" minWidth="80.0" prefHeight="109.0" prefWidth="60.0" text="User" />
+                            <TextField fx:id="userField" HBox.hgrow="ALWAYS">
+                                <HBox.margin>
+                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0" />
+                                </HBox.margin>
+                            </TextField>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="80.0" prefHeight="68.0" prefWidth="60.0" text="Password" />
+                            <PasswordField fx:id="passwordField" prefWidth="162.0" HBox.hgrow="ALWAYS">
+                                <HBox.margin>
+                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0" />
+                                </HBox.margin>
+                            </PasswordField>
+                        </HBox>
+                    </VBox>
+                    <Button fx:id="loginButton" layoutX="117.0" layoutY="161.0" mnemonicParsing="false" text="Login" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+               <Label fx:id="invalidUserLabel" visible="false" alignment="CENTER" layoutX="154.0" layoutY="129.0" prefHeight="23.0" prefWidth="320.0" styleClass="danger" text="Invalid username / password!" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                   <font>
-                     <Font size="18.0" />
-                  </font>
-               </Label>
-               <AnchorPane layoutX="156.0" layoutY="134.0" maxHeight="201.0" maxWidth="294.0" minHeight="201.0" minWidth="294.0" prefHeight="201.0" prefWidth="294.0" style="-fx-border-color: -color-accent-fg; -fx-border-radius: 5;" AnchorPane.bottomAnchor="134.0" AnchorPane.leftAnchor="156.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="134.0">
-                  <children>
-                     <Label alignment="CENTER" layoutX="117.0" layoutY="68.0" text="Please login" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                     <VBox layoutX="97.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                        <children>
-                           <HBox prefHeight="100.0" prefWidth="200.0" />
-                           <HBox prefHeight="100.0" prefWidth="200.0" />
-                        </children>
-                     </VBox>
-                  </children>
-               </AnchorPane>
-            </children></AnchorPane>
+                     <Font size="12.0" />
+                  </font></Label>
+                </AnchorPane>
+            </AnchorPane>
         </Tab>
         <Tab fx:id="usersTab" text="Users">
             <AnchorPane minHeight="0.0" minWidth="0.0" />

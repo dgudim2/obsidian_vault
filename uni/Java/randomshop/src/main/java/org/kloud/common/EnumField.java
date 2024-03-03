@@ -12,12 +12,11 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class EnumField<T extends Enum<T>> extends Field<T> {
-    public EnumField(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
-        super(name, required, klass, validator);
+    public EnumField(@NotNull String name, boolean required, @NotNull Class<T> klass) {
+        super(name, required, klass, __ -> "");
     }
 
     @Override

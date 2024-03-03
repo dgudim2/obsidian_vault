@@ -56,6 +56,7 @@
 + Solo leveling
 + Cowboy bebop
 + Монолог фармацевта
++ Синдуальность: Нуар
 
 
 # Stuff to read

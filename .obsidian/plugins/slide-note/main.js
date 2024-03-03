@@ -24073,7 +24073,7 @@ var import_obsidian8 = require("obsidian");
 // src/pdfblock/cache.ts
 var import_obsidian = require("obsidian");
 
-// node_modules/lru-cache/dist/mjs/index.js
+// node_modules/lru-cache/dist/esm/index.js
 var perf = typeof performance === "object" && performance && typeof performance.now === "function" ? performance : Date;
 var warned = /* @__PURE__ */ new Set();
 var PROCESS = typeof process === "object" && !!process ? process : {};
@@ -24101,7 +24101,7 @@ if (typeof AC === "undefined") {
       warnACPolyfill();
     }
     abort(reason) {
-      var _a2, _b;
+      var _a3, _b;
       if (this.signal.aborted)
         return;
       this.signal.reason = reason;
@@ -24109,7 +24109,7 @@ if (typeof AC === "undefined") {
       for (const fn of this.signal._onabort) {
         fn(reason);
       }
-      (_b = (_a2 = this.signal).onabort) == null ? void 0 : _b.call(_a2, reason);
+      (_b = (_a3 = this.signal).onabort) == null ? void 0 : _b.call(_a3, reason);
     }
   };
   let printACPolyfillWarning = ((_a = PROCESS.env) == null ? void 0 : _a.LRU_CACHE_IGNORE_AC_WARNING) !== "1";
@@ -24161,7 +24161,7 @@ var Stack = _Stack;
 _constructing = new WeakMap();
 // private constructor
 __privateAdd(Stack, _constructing, false);
-var _max, _maxSize, _dispose, _disposeAfter, _fetchMethod, _size, _calculatedSize, _keyMap, _keyList, _valList, _next, _prev, _head, _tail, _free, _disposed, _sizes, _starts, _ttls, _hasDispose, _hasFetchMethod, _hasDisposeAfter, _initializeTTLTracking, initializeTTLTracking_fn, _updateItemAge, _statusTTL, _setItemTTL, _isStale, _initializeSizeTracking, initializeSizeTracking_fn, _removeItemSize, _addItemSize, _requireSize, _indexes, indexes_fn, _rindexes, rindexes_fn, _isValidIndex, isValidIndex_fn, _evict, evict_fn, _backgroundFetch, backgroundFetch_fn, _isBackgroundFetch, isBackgroundFetch_fn, _connect, connect_fn, _moveToTail, moveToTail_fn;
+var _max, _maxSize, _dispose, _disposeAfter, _fetchMethod, _size, _calculatedSize, _keyMap, _keyList, _valList, _next, _prev, _head, _tail, _free, _disposed, _sizes, _starts, _ttls, _hasDispose, _hasFetchMethod, _hasDisposeAfter, _initializeTTLTracking, initializeTTLTracking_fn, _updateItemAge, _statusTTL, _setItemTTL, _isStale, _initializeSizeTracking, initializeSizeTracking_fn, _removeItemSize, _addItemSize, _requireSize, _indexes, indexes_fn, _rindexes, rindexes_fn, _isValidIndex, isValidIndex_fn, _a2, _evict, evict_fn, _backgroundFetch, backgroundFetch_fn, _isBackgroundFetch, isBackgroundFetch_fn, _connect, connect_fn, _moveToTail, moveToTail_fn;
 var _LRUCache = class {
   constructor(options) {
     __privateAdd(this, _initializeTTLTracking);
@@ -24279,6 +24279,11 @@ var _LRUCache = class {
       }
       return 0;
     });
+    /**
+     * A String value that is used in the creation of the default string description of an object.
+     * Called by the built-in method Object.prototype.toString.
+     */
+    __publicField(this, _a2, "LRUCache");
     const { max = 0, ttl, ttlResolution = 1, ttlAutopurge, updateAgeOnGet, updateAgeOnHas, allowStale, dispose, disposeAfter, noDisposeOnSet, noUpdateTTL, maxSize = 0, maxEntrySize = 0, sizeCalculation, fetchMethod, noDeleteOnFetchRejection, noDeleteOnStaleGet, allowStaleOnFetchRejection, allowStaleOnFetchAbort, ignoreFetchAbort } = options;
     if (max !== 0 && !isPosInt(max)) {
       throw new TypeError("max option must be a nonnegative integer");
@@ -24397,28 +24402,28 @@ var _LRUCache = class {
       free: __privateGet(c, _free),
       // methods
       isBackgroundFetch: (p) => {
-        var _a2;
-        return __privateMethod(_a2 = c, _isBackgroundFetch, isBackgroundFetch_fn).call(_a2, p);
+        var _a3;
+        return __privateMethod(_a3 = c, _isBackgroundFetch, isBackgroundFetch_fn).call(_a3, p);
       },
       backgroundFetch: (k, index, options, context) => {
-        var _a2;
-        return __privateMethod(_a2 = c, _backgroundFetch, backgroundFetch_fn).call(_a2, k, index, options, context);
+        var _a3;
+        return __privateMethod(_a3 = c, _backgroundFetch, backgroundFetch_fn).call(_a3, k, index, options, context);
       },
       moveToTail: (index) => {
-        var _a2;
-        return __privateMethod(_a2 = c, _moveToTail, moveToTail_fn).call(_a2, index);
+        var _a3;
+        return __privateMethod(_a3 = c, _moveToTail, moveToTail_fn).call(_a3, index);
       },
       indexes: (options) => {
-        var _a2;
-        return __privateMethod(_a2 = c, _indexes, indexes_fn).call(_a2, options);
+        var _a3;
+        return __privateMethod(_a3 = c, _indexes, indexes_fn).call(_a3, options);
       },
       rindexes: (options) => {
-        var _a2;
-        return __privateMethod(_a2 = c, _rindexes, rindexes_fn).call(_a2, options);
+        var _a3;
+        return __privateMethod(_a3 = c, _rindexes, rindexes_fn).call(_a3, options);
       },
       isStale: (index) => {
-        var _a2;
-        return __privateGet(_a2 = c, _isStale).call(_a2, index);
+        var _a3;
+        return __privateGet(_a3 = c, _isStale).call(_a3, index);
       }
     };
   }
@@ -24612,6 +24617,35 @@ var _LRUCache = class {
     return deleted;
   }
   /**
+   * Get the extended info about a given entry, to get its value, size, and
+   * TTL info simultaneously. Like {@link LRUCache#dump}, but just for a
+   * single key. Always returns stale values, if their info is found in the
+   * cache, so be sure to check for expired TTLs if relevant.
+   */
+  info(key) {
+    const i = __privateGet(this, _keyMap).get(key);
+    if (i === void 0)
+      return void 0;
+    const v = __privateGet(this, _valList)[i];
+    const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+    if (value === void 0)
+      return void 0;
+    const entry = { value };
+    if (__privateGet(this, _ttls) && __privateGet(this, _starts)) {
+      const ttl = __privateGet(this, _ttls)[i];
+      const start = __privateGet(this, _starts)[i];
+      if (ttl && start) {
+        const remain = ttl - (perf.now() - start);
+        entry.ttl = remain;
+        entry.start = Date.now();
+      }
+    }
+    if (__privateGet(this, _sizes)) {
+      entry.size = __privateGet(this, _sizes)[i];
+    }
+    return entry;
+  }
+  /**
    * Return an array of [key, {@link LRUCache.Entry}] tuples which can be
    * passed to cache.load()
    */
@@ -24658,7 +24692,7 @@ var _LRUCache = class {
    * {@link LRUCache#delete}
    */
   set(k, v, setOptions = {}) {
-    var _a2, _b, _c;
+    var _a3, _b, _c, _d, _e;
     if (v === void 0) {
       this.delete(k);
       return this;
@@ -24694,12 +24728,21 @@ var _LRUCache = class {
       if (v !== oldVal) {
         if (__privateGet(this, _hasFetchMethod) && __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, oldVal)) {
           oldVal.__abortController.abort(new Error("replaced"));
+          const { __staleWhileFetching: s } = oldVal;
+          if (s !== void 0 && !noDisposeOnSet) {
+            if (__privateGet(this, _hasDispose)) {
+              (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, s, k, "set");
+            }
+            if (__privateGet(this, _hasDisposeAfter)) {
+              (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([s, k, "set"]);
+            }
+          }
         } else if (!noDisposeOnSet) {
           if (__privateGet(this, _hasDispose)) {
-            (_a2 = __privateGet(this, _dispose)) == null ? void 0 : _a2.call(this, oldVal, k, "set");
+            (_c = __privateGet(this, _dispose)) == null ? void 0 : _c.call(this, oldVal, k, "set");
           }
           if (__privateGet(this, _hasDisposeAfter)) {
-            (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([oldVal, k, "set"]);
+            (_d = __privateGet(this, _disposed)) == null ? void 0 : _d.push([oldVal, k, "set"]);
           }
         }
         __privateGet(this, _removeItemSize).call(this, index);
@@ -24729,7 +24772,7 @@ var _LRUCache = class {
       const dt = __privateGet(this, _disposed);
       let task;
       while (task = dt == null ? void 0 : dt.shift()) {
-        (_c = __privateGet(this, _disposeAfter)) == null ? void 0 : _c.call(this, ...task);
+        (_e = __privateGet(this, _disposeAfter)) == null ? void 0 : _e.call(this, ...task);
       }
     }
     return this;
@@ -24739,7 +24782,7 @@ var _LRUCache = class {
    * `undefined` if cache is empty.
    */
   pop() {
-    var _a2;
+    var _a3;
     try {
       while (__privateGet(this, _size)) {
         const val = __privateGet(this, _valList)[__privateGet(this, _head)];
@@ -24757,7 +24800,7 @@ var _LRUCache = class {
         const dt = __privateGet(this, _disposed);
         let task;
         while (task = dt == null ? void 0 : dt.shift()) {
-          (_a2 = __privateGet(this, _disposeAfter)) == null ? void 0 : _a2.call(this, ...task);
+          (_a3 = __privateGet(this, _disposeAfter)) == null ? void 0 : _a3.call(this, ...task);
         }
       }
     }
@@ -24806,10 +24849,11 @@ var _LRUCache = class {
   peek(k, peekOptions = {}) {
     const { allowStale = this.allowStale } = peekOptions;
     const index = __privateGet(this, _keyMap).get(k);
-    if (index !== void 0 && (allowStale || !__privateGet(this, _isStale).call(this, index))) {
-      const v = __privateGet(this, _valList)[index];
-      return __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+    if (index === void 0 || !allowStale && __privateGet(this, _isStale).call(this, index)) {
+      return;
     }
+    const v = __privateGet(this, _valList)[index];
+    return __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
   }
   async fetch(k, fetchOptions = {}) {
     const {
@@ -24950,7 +24994,7 @@ var _LRUCache = class {
    * Returns true if the key was deleted, false otherwise.
    */
   delete(k) {
-    var _a2, _b, _c, _d;
+    var _a3, _b, _c, _d;
     let deleted = false;
     if (__privateGet(this, _size) !== 0) {
       const index = __privateGet(this, _keyMap).get(k);
@@ -24965,7 +25009,7 @@ var _LRUCache = class {
             v.__abortController.abort(new Error("deleted"));
           } else if (__privateGet(this, _hasDispose) || __privateGet(this, _hasDisposeAfter)) {
             if (__privateGet(this, _hasDispose)) {
-              (_a2 = __privateGet(this, _dispose)) == null ? void 0 : _a2.call(this, v, k, "delete");
+              (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "delete");
             }
             if (__privateGet(this, _hasDisposeAfter)) {
               (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "delete"]);
@@ -24979,8 +25023,10 @@ var _LRUCache = class {
           } else if (index === __privateGet(this, _head)) {
             __privateSet(this, _head, __privateGet(this, _next)[index]);
           } else {
-            __privateGet(this, _next)[__privateGet(this, _prev)[index]] = __privateGet(this, _next)[index];
-            __privateGet(this, _prev)[__privateGet(this, _next)[index]] = __privateGet(this, _prev)[index];
+            const pi = __privateGet(this, _prev)[index];
+            __privateGet(this, _next)[pi] = __privateGet(this, _next)[index];
+            const ni = __privateGet(this, _next)[index];
+            __privateGet(this, _prev)[ni] = __privateGet(this, _prev)[index];
           }
           __privateWrapper(this, _size)._--;
           __privateGet(this, _free).push(index);
@@ -25000,7 +25046,7 @@ var _LRUCache = class {
    * Clear the cache entirely, throwing away all values.
    */
   clear() {
-    var _a2, _b, _c;
+    var _a3, _b, _c;
     for (const index of __privateMethod(this, _rindexes, rindexes_fn).call(this, { allowStale: true })) {
       const v = __privateGet(this, _valList)[index];
       if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
@@ -25008,7 +25054,7 @@ var _LRUCache = class {
       } else {
         const k = __privateGet(this, _keyList)[index];
         if (__privateGet(this, _hasDispose)) {
-          (_a2 = __privateGet(this, _dispose)) == null ? void 0 : _a2.call(this, v, k, "delete");
+          (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "delete");
         }
         if (__privateGet(this, _hasDisposeAfter)) {
           (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "delete"]);
@@ -25040,6 +25086,7 @@ var _LRUCache = class {
   }
 };
 var LRUCache = _LRUCache;
+_a2 = Symbol.toStringTag;
 _max = new WeakMap();
 _maxSize = new WeakMap();
 _dispose = new WeakMap();
@@ -25089,6 +25136,8 @@ initializeTTLTracking_fn = function() {
     if (ttls[index]) {
       const ttl = ttls[index];
       const start = starts[index];
+      if (!ttl || !start)
+        return;
       status.ttl = ttl;
       status.start = start;
       status.now = cachedNow || getNow();
@@ -25115,14 +25164,16 @@ initializeTTLTracking_fn = function() {
     }
     const ttl = ttls[index];
     const start = starts[index];
-    if (ttl === 0 || start === 0) {
+    if (!ttl || !start) {
       return Infinity;
     }
     const age = (cachedNow || getNow()) - start;
     return ttl - age;
   };
   __privateSet(this, _isStale, (index) => {
-    return ttls[index] !== 0 && starts[index] !== 0 && (cachedNow || getNow()) - starts[index] > ttls[index];
+    const s = starts[index];
+    const t = ttls[index];
+    return !!t && !!s && (cachedNow || getNow()) - s > t;
   });
 };
 _updateItemAge = new WeakMap();
@@ -25217,7 +25268,7 @@ isValidIndex_fn = function(index) {
 };
 _evict = new WeakSet();
 evict_fn = function(free) {
-  var _a2, _b;
+  var _a3, _b;
   const head = __privateGet(this, _head);
   const k = __privateGet(this, _keyList)[head];
   const v = __privateGet(this, _valList)[head];
@@ -25225,7 +25276,7 @@ evict_fn = function(free) {
     v.__abortController.abort(new Error("evicted"));
   } else if (__privateGet(this, _hasDispose) || __privateGet(this, _hasDisposeAfter)) {
     if (__privateGet(this, _hasDispose)) {
-      (_a2 = __privateGet(this, _dispose)) == null ? void 0 : _a2.call(this, v, k, "evict");
+      (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "evict");
     }
     if (__privateGet(this, _hasDisposeAfter)) {
       (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "evict"]);
@@ -25326,14 +25377,14 @@ backgroundFetch_fn = function(k, index, options, context) {
     }
   };
   const pcall = (res, rej) => {
-    var _a2;
-    const fmp = (_a2 = __privateGet(this, _fetchMethod)) == null ? void 0 : _a2.call(this, k, v, fetchOpts);
+    var _a3;
+    const fmp = (_a3 = __privateGet(this, _fetchMethod)) == null ? void 0 : _a3.call(this, k, v, fetchOpts);
     if (fmp && fmp instanceof Promise) {
-      fmp.then((v2) => res(v2), rej);
+      fmp.then((v2) => res(v2 === void 0 ? void 0 : v2), rej);
     }
     ac.signal.addEventListener("abort", () => {
       if (!options.ignoreFetchAbort || options.allowStaleOnFetchAbort) {
-        res();
+        res(void 0);
         if (options.allowStaleOnFetchAbort) {
           res = (v2) => cb(v2, true);
         }
@@ -25408,9 +25459,9 @@ var FileCache = class {
   }
   async readLocalFile(path) {
     const buffer = (0, import_fs.readFileSync)(path);
-    var arrayBuffer = new ArrayBuffer(buffer.length);
-    var typedArray = new Uint8Array(arrayBuffer);
-    for (var i = 0; i < buffer.length; ++i) {
+    const arrayBuffer = new ArrayBuffer(buffer.length);
+    const typedArray = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < buffer.length; ++i) {
       typedArray[i] = buffer[i];
     }
     return arrayBuffer;
@@ -25448,12 +25499,6 @@ var PDFBlockRenderer = class extends import_obsidian2.MarkdownRenderChild {
     if (pos != 0 && pos <= window.innerHeight) {
       this.render();
     } else {
-      let renderCallBcak = function() {
-        if (hook.getBoundingClientRect().bottom != 0) {
-          clearInterval(delay);
-          this.render();
-        }
-      };
       const delay = window.setInterval(
         () => {
           clearInterval(delay);
@@ -25461,8 +25506,14 @@ var PDFBlockRenderer = class extends import_obsidian2.MarkdownRenderChild {
         },
         (this.params.page[0] % 15 + 1) * 5e3
       );
-      document.addEventListener("wheel", renderCallBcak.bind(this));
-      document.addEventListener("touchmove", renderCallBcak.bind(this));
+      const renderCallBack = function() {
+        if (hook.getBoundingClientRect().bottom != 0) {
+          clearInterval(delay);
+          this.render();
+        }
+      };
+      document.addEventListener("wheel", renderCallBack.bind(this));
+      document.addEventListener("touchmove", renderCallBack.bind(this));
     }
   }
   async render() {
@@ -25505,9 +25556,6 @@ var PDFBlockRenderer = class extends import_obsidian2.MarkdownRenderChild {
             canvasContext: context,
             viewport: pageview
           };
-          canvas.addEventListener("dblclick", (event) => {
-            app.workspace.trigger("slidenote:dblclick", canvas);
-          });
           await page.render(renderContext).promise.then(
             () => {
               if (this.params.annot != "" && this.settings.allow_annotations) {
@@ -25537,17 +25585,26 @@ var PDFBlockRenderer = class extends import_obsidian2.MarkdownRenderChild {
               }
             }
           );
-          if (this.params.text && this.params.rect[0] == -1 && this.params.rotat == 0) {
+          const has_text = this.params.text && this.params.rect[0] == -1 && this.params.rotat == 0;
+          const event_hover = has_text ? host.createEl("div") : canvas;
+          event_hover.addEventListener("dblclick", (event) => {
+            app.workspace.trigger("slidenote:dblclick", event, canvas);
+          });
+          event_hover.addEventListener("mouseup", (event) => {
+            if (event.button == 0) {
+            } else if (event.button == 1) {
+            } else if (event.button == 2) {
+              app.workspace.trigger("slidenote:rclick", event, this.el);
+            }
+          });
+          if (has_text) {
             await page.getTextContent().then((textContent) => {
               function resize2Canvas() {
                 text.style.setProperty("--scale-factor", (canvas.clientWidth / effectWidth * zoom).toString());
               }
-              const text = host.createEl("div");
+              const text = event_hover;
               text.addClass("slide-note-text-layer");
               text.style.setProperty("--scale-factor", zoom.toString());
-              text.addEventListener("dblclick", (event) => {
-                app.workspace.trigger("slidenote:dblclick", text.previousElementSibling);
-              });
               pdfjs.renderTextLayer({
                 textContentSource: textContent,
                 container: text,
@@ -25574,8 +25631,8 @@ var PDFBlockProcessor = class {
     this.parameterSyntax = parameterSyntax;
   }
   async codeProcessCallBack(src, el, ctx) {
-    var _a2;
-    const frontmatter = (_a2 = app.metadataCache.getCache(ctx.sourcePath)) == null ? void 0 : _a2.frontmatter;
+    var _a3;
+    const frontmatter = (_a3 = app.metadataCache.getCache(ctx.sourcePath)) == null ? void 0 : _a3.frontmatter;
     try {
       let params;
       if (this.parameterSyntax == "SlideNote" /* SlideNote */)
@@ -25593,7 +25650,7 @@ var PDFBlockProcessor = class {
     }
   }
   async parseParameters(src, frontmatter) {
-    var _a2, _b;
+    var _a3, _b;
     const lines = src.split("\n");
     const keywords = ["file", "page", "text", "scale", "rotat", "rect", "dpi"];
     const paramsRaw = {};
@@ -25625,7 +25682,7 @@ var PDFBlockProcessor = class {
     if (paramsRaw["file"] == void 0)
       paramsRaw["file"] = typeof frontmatter["default_file"] == "string" ? frontmatter["default_file"] : frontmatter["default_file"][0][0];
     const file_raw = paramsRaw["file"].contains("[[") ? paramsRaw["file"].replace("[[", "").replace("]]", "") : paramsRaw["file"];
-    params.file = (_b = (_a2 = app.metadataCache.getFirstLinkpathDest(file_raw, "")) == null ? void 0 : _a2.path) != null ? _b : file_raw;
+    params.file = (_b = (_a3 = app.metadataCache.getFirstLinkpathDest(file_raw, "")) == null ? void 0 : _a3.path) != null ? _b : file_raw;
     if (params.file == void 0)
       throw new Error(paramsRaw["file"] + ": No such file or directory");
     if (paramsRaw["page"] == void 0)
@@ -25678,7 +25735,7 @@ var PDFBlockProcessor = class {
     return params;
   }
   async parseBetterPdfParameters(src, frontmatter) {
-    var _a2;
+    var _a3;
     let left_brackets = /("url":.*\]\])(?!")/g;
     let right_brackets = /("url":[^",]*)(\[\[)/g;
     src = src.replace(left_brackets, '$1"');
@@ -25701,7 +25758,7 @@ var PDFBlockProcessor = class {
       if (params.file.match(url_regex))
         throw new Error(params.file + ": Urls are not supported");
       params.file = params.file.replace("[[", "").replace("]]", "");
-      params.file = (_a2 = app.metadataCache.getFirstLinkpathDest(params.file, "")) == null ? void 0 : _a2.path;
+      params.file = (_a3 = app.metadataCache.getFirstLinkpathDest(params.file, "")) == null ? void 0 : _a3.path;
       if (params.file == void 0)
         throw new Error(params.file + ": No such file or directory");
     }
@@ -25936,15 +25993,16 @@ var PDFCanvasView = class extends import_obsidian3.ItemView {
   }
 };
 
-// src/pdfcmd/generateor.ts
+// src/pdfcmd/generator.ts
 var import_obsidian5 = require("obsidian");
 
 // src/pdfcmd/utils.ts
 var import_obsidian4 = require("obsidian");
 var import_path2 = require("path");
-function getFileName(selected, absolute = false) {
-  var _a2, _b, _c, _d, _e;
-  const filePath = (_a2 = this.app.workspace.getActiveFile()) == null ? void 0 : _a2.path;
+function getFileName(view, absolute = false) {
+  var _a3, _b, _c, _d, _e;
+  const selected = view.editor.somethingSelected() ? view.editor.getSelection() : view.editor.getLine(view.editor.getCursor("anchor").line);
+  const filePath = (_a3 = this.app.workspace.getActiveFile()) == null ? void 0 : _a3.path;
   if (!filePath)
     return void 0;
   const frontmatter = (_c = (_b = app.metadataCache.getCache(filePath)) == null ? void 0 : _b.frontmatter) != null ? _c : {};
@@ -25961,6 +26019,7 @@ function getFileName(selected, absolute = false) {
   if (fileName) {
     if (absolute) {
       fileName = import_obsidian4.Platform.isDesktop && (0, import_path2.isAbsolute)(fileName) ? fileName : (0, import_obsidian4.normalizePath)(
+        // @ts-ignore
         app.vault.adapter.getBasePath() + "/" + ((_d = app.metadataCache.getFirstLinkpathDest(
           fileName.replace("[[", "").replace("]]", ""),
           ""
@@ -25976,16 +26035,16 @@ function getFileName(selected, absolute = false) {
   return fileName;
 }
 
-// src/pdfcmd/generateor.ts
+// src/pdfcmd/generator.ts
 var SlideNoteCMDModal = class extends import_obsidian5.Modal {
   constructor(app2) {
     super(app2);
   }
   onOpen() {
-    var _a2;
+    var _a3;
     const container = this.contentEl.createEl("div");
     container.createEl("h2", { text: "SlideNote Block Generator" });
-    container.createEl("p", { text: `Current Active File: ${(_a2 = this.app.workspace.getActiveFile()) == null ? void 0 : _a2.path}` });
+    container.createEl("p", { text: `Current Active File: ${(_a3 = this.app.workspace.getActiveFile()) == null ? void 0 : _a3.path}` });
     const view = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
     if (view == null) {
       container.createEl("p", {
@@ -25994,7 +26053,7 @@ var SlideNoteCMDModal = class extends import_obsidian5.Modal {
       });
       return;
     }
-    const fileName = getFileName(view.editor.getSelection());
+    const fileName = getFileName(view);
     if (fileName == void 0) {
       container.createEl("p", {
         text: "Please select a Slide Note block, or specify a `default_file` in the frontmatter",
@@ -26097,8 +26156,7 @@ var import_obsidian7 = require("obsidian");
 var import_child_process = require("child_process");
 function openPDFwithLocal(view) {
   try {
-    const selected = view.editor.somethingSelected() ? view.editor.getSelection() : view.editor.getLine(view.editor.getCursor("anchor").line);
-    const fileName = getFileName(selected, true);
+    const fileName = getFileName(view, true);
     if (fileName) {
       const openCommand = import_obsidian7.Platform.isWin ? 'start ""' : import_obsidian7.Platform.isLinux ? "xdg-open" : "open";
       const cmd = `${openCommand} "${fileName}"`;
@@ -26123,9 +26181,10 @@ var SlideNotePlugin = class extends import_obsidian8.Plugin {
     await this.loadSettings();
     this.addSettingTab(new SlideNoteSettingsTab(this.app, this));
     this.registerPDFProcessor();
+    this.registerPDFCanvas();
+    this.registerPDFMenu();
     if (this.settings.support_better_pdf)
       this.registerBetterPdfProcessor();
-    this.registerPDFCanvas();
     this.addRibbonIcon("star-list", "Slide Note Block Generator", (evt) => {
       new SlideNoteCMDModal(this.app).open();
     });
@@ -26136,18 +26195,6 @@ var SlideNotePlugin = class extends import_obsidian8.Plugin {
         new SlideNoteCMDModal(this.app).open();
       }
     });
-    this.registerEvent(this.app.workspace.on(
-      "editor-menu",
-      (menu, _, view) => {
-        if (import_obsidian8.Platform.isDesktop) {
-          menu.addItem((item) => {
-            item.setTitle("Slide Note: open with local application").setIcon("book-open").onClick((_2) => {
-              openPDFwithLocal(view);
-            });
-          });
-        }
-      }
-    ));
   }
   registerPDFProcessor() {
     const cache = new FileCache(3);
@@ -26168,13 +26215,44 @@ var SlideNotePlugin = class extends import_obsidian8.Plugin {
     handler.sortOrder = -100;
   }
   registerPDFCanvas() {
-    this.registerEvent(this.app.workspace.on("slidenote:dblclick", (canvas) => {
+    this.registerEvent(this.app.workspace.on("slidenote:dblclick", (event, canvas) => {
       this.activeCanvas(canvas.toDataURL());
     }));
     this.registerView(
       PDFCANVAS_VIEW,
       (leaf) => new PDFCanvasView(leaf)
     );
+  }
+  registerPDFMenu() {
+    this.registerEvent(this.app.workspace.on("slidenote:rclick", (event, block) => {
+      const menu = new import_obsidian8.Menu();
+      menu.addItem((item) => {
+        item.setTitle("Edit").setIcon("pencil").onClick((_) => {
+          var _a3;
+          (_a3 = block.nextSibling) == null ? void 0 : _a3.click();
+        });
+      });
+      if (import_obsidian8.Platform.isDesktop) {
+        menu.addItem((item) => {
+          item.setTitle("Open PDF with local APP").setIcon("book-open").onClick((_) => {
+            openPDFwithLocal(this.app.workspace.getActiveViewOfType(import_obsidian8.MarkdownView));
+          });
+        });
+      }
+      menu.showAtMouseEvent(event);
+    }));
+    this.registerEvent(this.app.workspace.on(
+      "editor-menu",
+      (menu, _, view) => {
+        if (import_obsidian8.Platform.isDesktop && getFileName(view) != void 0) {
+          menu.addItem((item) => {
+            item.setTitle("Slide Note: Open PDF with local APP").setIcon("book-open").onClick((_2) => {
+              openPDFwithLocal(view);
+            });
+          });
+        }
+      }
+    ));
   }
   onunload() {
     console.log("SlideNote unloading ...");
@@ -26189,11 +26267,12 @@ var SlideNotePlugin = class extends import_obsidian8.Plugin {
       this.registerBetterPdfProcessor();
   }
   async activeCanvas(src) {
+    var _a3;
     this.app.workspace.detachLeavesOfType(PDFCANVAS_VIEW);
-    await this.app.workspace.getRightLeaf(false).setViewState({
+    await ((_a3 = this.app.workspace.getRightLeaf(false)) == null ? void 0 : _a3.setViewState({
       type: PDFCANVAS_VIEW,
       active: true
-    });
+    }));
     const canvas = this.app.workspace.getLeavesOfType(PDFCANVAS_VIEW)[0];
     app.workspace.trigger("slidenote:newcanvas", src);
     this.app.workspace.revealLeaf(canvas);

@@ -19,7 +19,11 @@ import org.kloud.utils.ProductsDAO;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;
+
+import static org.kloud.utils.Utils.setDanger;
 
 public class EntrypointController {
 
@@ -44,6 +48,16 @@ public class EntrypointController {
     public Tab productsTab;
     @FXML
     public Tab usersTab;
+    @FXML
+    public Button loginButton;
+    @FXML
+    public TextField userField;
+    @FXML
+    public PasswordField passwordField;
+    @FXML
+    public Label loginTitle;
+    @FXML
+    public Label invalidUserLabel;
 
     public EntrypointController() {
         this.productsDAO = new FileProductsDAO();
@@ -56,6 +70,43 @@ public class EntrypointController {
         productsTab.setDisable(true);
         usersTab.setDisable(true);
 
+        initUserTab();
+        initProductsTab();
+    }
+
+    private void initUserTab() {
+
+        AtomicBoolean loggedIn = new AtomicBoolean(false);
+
+        loginButton.setOnAction(actionEvent -> {
+
+            var user = userField.getText();
+            var password = passwordField.getText();
+            boolean isLoggedIn = loggedIn.get();
+
+            if(!isLoggedIn && !Objects.equals(user, "admin") && !Objects.equals(password, "admin")) {
+                invalidUserLabel.setVisible(true);
+                return;
+            }
+
+            invalidUserLabel.setVisible(false);
+
+            userField.setDisable(!isLoggedIn);
+            passwordField.setDisable(!isLoggedIn);
+
+            warehousesTab.setDisable(isLoggedIn);
+            productsTab.setDisable(isLoggedIn);
+            usersTab.setDisable(isLoggedIn);
+
+            loggedIn.set(!isLoggedIn);
+
+            loginButton.setText(loggedIn.get() ? "Logout" : "Login");
+            loginTitle.setText(loggedIn.get() ? "Logged in as admin" : "Please login");
+            setDanger(loginButton, loggedIn.get());
+        });
+    }
+
+    private void initProductsTab() {
         productList.getItems().addAll(productsDAO.getProducts());
 
         BootstrapPane pane = new BootstrapPane();

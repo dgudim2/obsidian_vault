@@ -49,6 +49,36 @@ public class Utils {
         }
     }
 
+    public static String testBounds(int val, int min, int max) {
+        if (val < min) {
+            return "Value should be >= " + min;
+        }
+        if (max != -1 && val > max) {
+            return "Value should be <= " + max;
+        }
+        return "";
+    }
+
+    public static String testBounds(double val, double min, double max) {
+        if (val < min) {
+            return "Value should be >= " + min;
+        }
+        if (max != -1 && val > max) {
+            return "Value should be <= " + max;
+        }
+        return "";
+    }
+
+    public static String testBounds(long val, long min, long max) {
+        if (val < min) {
+            return "Value should be >= " + min;
+        }
+        if (max != -1 && val > max) {
+            return "Value should be <= " + max;
+        }
+        return "";
+    }
+
     public static String testLength(String val, int min, int max) {
         if (val.length() < min) {
             return "Length should be >= " + min;

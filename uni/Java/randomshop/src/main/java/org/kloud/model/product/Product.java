@@ -29,7 +29,7 @@ public abstract class Product implements Serializable {
         }
         return "";
     });
-    protected final Field<Float> rating = new Field<>("Rating", true, Float.class, __ -> "");
+    protected final Field<Float> rating = new Field<>("Rating", true, Float.class, v -> Utils.testBounds(v, 0, 10));
 
     protected Product() {
         id = System.nanoTime();

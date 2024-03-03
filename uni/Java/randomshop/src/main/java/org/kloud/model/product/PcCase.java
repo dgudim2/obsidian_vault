@@ -14,8 +14,8 @@ public class PcCase extends HardwarePart {
 
     public static String NAME = "Pc case";
     protected final Field<Color> color = new Field<>("Color", true, Color.class, __ -> "");
-    protected final EnumField<MotherboardFormFactor> motherboardFormFactor = new EnumField<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
-    protected final EnumField<SidePanelType> sidePanelType = new EnumField<>("Side-panel type", true, SidePanelType.class, __ -> "");
+    protected final EnumField<MotherboardFormFactor> motherboardFormFactor = new EnumField<>("Form-factor", true, MotherboardFormFactor.class);
+    protected final EnumField<SidePanelType> sidePanelType = new EnumField<>("Side-panel type", true, SidePanelType.class);
 
     @Override
     public List<Field<?>> getFields() {

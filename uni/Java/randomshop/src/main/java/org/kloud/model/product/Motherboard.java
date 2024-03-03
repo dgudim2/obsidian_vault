@@ -12,8 +12,8 @@ import java.util.Objects;
 public class Motherboard extends HardwarePart {
 
     public static String NAME = "Motherboard";
-    protected final EnumField<MotherboardFormFactor> formFactor = new EnumField<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
-    protected final EnumField<CpuSocketType> cpuSocketType = new EnumField<>("Socket type", true, CpuSocketType.class, __ -> "");
+    protected final EnumField<MotherboardFormFactor> formFactor = new EnumField<>("Form-factor", true, MotherboardFormFactor.class);
+    protected final EnumField<CpuSocketType> cpuSocketType = new EnumField<>("Socket type", true, CpuSocketType.class);
 
     @Override
     public List<Field<?>>getFields() {

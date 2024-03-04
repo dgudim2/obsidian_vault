@@ -18,7 +18,7 @@ public class PcCase extends HardwarePart {
     protected final EnumField<SidePanelType> sidePanelType = new EnumField<>("Side-panel type", true, SidePanelType.class);
 
     @Override
-    public List<Field<?>> getFields() {
+    public @NotNull List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(color);
         superFields.add(motherboardFormFactor);

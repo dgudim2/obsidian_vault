@@ -22,7 +22,7 @@ public class Gpu extends HardwarePart {
     protected final EnumField<GpuMemoryType> memoryType = new EnumField<>("Memory type", true, GpuMemoryType.class);
 
     @Override
-    public List<Field<?>> getFields() {
+    public @NotNull List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(tdp);
         superFields.add(memoryMb);

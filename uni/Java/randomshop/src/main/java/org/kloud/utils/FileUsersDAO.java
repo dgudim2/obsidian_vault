@@ -1,12 +1,13 @@
 package org.kloud.utils;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.model.product.Product;
+import org.kloud.model.user.User;
 
-public class FileProductsDAO extends BasicFileDAO<Product> {
+public class FileUsersDAO extends BasicFileDAO<User> {
+
     @Override
     @NotNull
     protected String getFilePath() {
-        return "products.dat";
+        return "users.dat";
     }
 }

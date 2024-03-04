@@ -37,7 +37,7 @@ public class Cpu extends HardwarePart {
     protected final Field<Long> maxRamCapacityMb = new Field<>("Max ram capacity (mb)", true, Long.class, v -> testBounds(v, 10, -1));
 
     @Override
-    public List<Field<?>> getFields() {
+    public @NotNull List<Field<?>> getFields() {
         var superFields = super.getFields();
         superFields.add(tdp);
         superFields.add(manufacturer);

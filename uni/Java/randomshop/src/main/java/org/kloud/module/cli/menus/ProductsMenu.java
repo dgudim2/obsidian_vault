@@ -3,15 +3,16 @@ package org.kloud.module.cli.menus;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.utils.ProductsDAO;
+import org.kloud.model.product.Product;
+import org.kloud.utils.BasicDAO;
 
 import static org.kloud.model.product.Product.PRODUCTS;
 import static org.kloud.module.cli.Utils.*;
 
 public class ProductsMenu {
 
-    public static void show(@NotNull WindowBasedTextGUI gui, @NotNull ProductsDAO productsDAO) {
-        var products = productsDAO.getProducts();
+    public static void show(@NotNull WindowBasedTextGUI gui, @NotNull BasicDAO<Product> productsDAO) {
+        var products = productsDAO.getObjects();
 
         Panel panel = newVerticalPanel();
         Window window = wrapIntoWindow(panel);

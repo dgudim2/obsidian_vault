@@ -5,8 +5,8 @@ import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogBuilder;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.model.User;
-import org.kloud.utils.UserDAO;
+import org.kloud.model.user.User;
+import org.kloud.utils.BasicDAO;
 
 import java.util.List;
 import java.util.regex.Pattern;
@@ -16,8 +16,8 @@ import static org.kloud.module.cli.Utils.*;
 public class UserMenu {
 
 
-    public static void show(@NotNull WindowBasedTextGUI gui, @NotNull UserDAO userDAO) {
-        var users = userDAO.getUsers();
+    public static void show(@NotNull WindowBasedTextGUI gui, @NotNull BasicDAO<User> userDAO) {
+        var users = userDAO.getObjects();
 
         Panel panel = newVerticalPanel();
         Window window = wrapIntoWindow(panel);
@@ -47,7 +47,7 @@ public class UserMenu {
         }
     }
 
-    private static void addUser(@NotNull WindowBasedTextGUI gui, @NotNull UserDAO userDAO, @NotNull List<User> users) {
+    private static void addUser(@NotNull WindowBasedTextGUI gui, @NotNull BasicDAO<User> userDAO, @NotNull List<User> users) {
         Panel panel = new Panel();
         Window window = wrapIntoWindow(panel);
 
@@ -66,14 +66,18 @@ public class UserMenu {
         panel.addComponent(new EmptySpace());
         panel.addComponent(new EmptySpace());
 
-        panel.addComponent(new Button("Add", () ->
-                trySaveUsers(gui, window, userDAO.addUser(new User(nameInput.getText(), surnameInput.getText(), null)))));
+        panel.addComponent(new Button("Add", () -> {
+//            var user = new User();
+//            user.name.set(nameInput.getText());
+//            user.surname.set(surnameInput.getText());
+//            trySaveUsers(gui, window, userDAO.addObject(user));
+        }));
         panel.addComponent(new Button("Cancel", () -> gui.removeWindow(window)));
 
         gui.addWindow(window);
     }
 
-    private static void deleteUser(@NotNull WindowBasedTextGUI gui, @NotNull UserDAO userDAO, @NotNull List<User> users) {
+    private static void deleteUser(@NotNull WindowBasedTextGUI gui, @NotNull BasicDAO<User> userDAO, @NotNull List<User> users) {
         var panel = newVerticalPanel();
         var window = wrapIntoWindow(panel);
 

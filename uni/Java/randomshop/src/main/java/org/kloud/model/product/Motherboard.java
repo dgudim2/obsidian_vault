@@ -16,7 +16,7 @@ public class Motherboard extends HardwarePart {
     protected final EnumField<CpuSocketType> cpuSocketType = new EnumField<>("Socket type", true, CpuSocketType.class);
 
     @Override
-    public List<Field<?>>getFields() {
+    public @NotNull List<Field<?>>getFields() {
         var superFields = super.getFields();
         superFields.add(formFactor);
         superFields.add(cpuSocketType);

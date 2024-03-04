@@ -41,7 +41,8 @@ public class Field<T extends Serializable> implements Serializable {
     }
 
     @SuppressWarnings("unchecked")
-    public void postDeserialize(@NotNull Field<?> cleanField) {
+    public void postRead(@NotNull Field<?> cleanField) {
+        System.out.println("postRead for " + name + " (" + value + ")");
         validator = (Function<T, String>) cleanField.validator;
     }
 
@@ -89,7 +90,30 @@ public class Field<T extends Serializable> implements Serializable {
         Control inputField;
         Supplier<Boolean> validationCallback;
 
-        if (klass.equals(Integer.class) || klass.equals(Long.class) || klass.equals(Float.class) || klass.equals(Double.class) || klass.equals(String.class)) {
+        if (klass.equals(HashedString.class)) {
+
+            if (value != null) {
+                inputField = new TextField();
+                inputField.setDisable(true);
+                ((TextField) inputField).setText("hidden");
+                return new Pair<>(inputField, () -> true);
+            }
+
+            inputField = new PasswordField();
+
+            validationCallback =
+                    () -> {
+                        var text = ((TextField) inputField).getText();
+                        if (text.isEmpty()) {
+                            return validationCallbackBase.apply(inputField, set(null));
+                        }
+                        var hashed = new HashedString();
+                        hashed.set(text);
+                        return validationCallbackBase.apply(inputField, set((T) hashed));
+                    };
+
+            ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.get());
+        } else if (klass.equals(Integer.class) || klass.equals(Long.class) || klass.equals(Float.class) || klass.equals(Double.class) || klass.equals(String.class)) {
             inputField = new TextField(klass.equals(String.class) ? "" : "0");
             if (value != null) {
                 ((TextField) inputField).setText("" + value);
@@ -259,7 +283,7 @@ public class Field<T extends Serializable> implements Serializable {
 
     @Override
     public String toString() {
-        return String.valueOf(value == null ? "uncompleted" : value);
+        return String.valueOf(value == null ? "-" : value);
     }
 
     @Override

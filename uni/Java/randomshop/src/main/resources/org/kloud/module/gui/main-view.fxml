@@ -35,7 +35,7 @@
                         </HBox>
                     </VBox>
                     <Button fx:id="loginButton" layoutX="117.0" layoutY="161.0" mnemonicParsing="false" text="Login" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-               <Label fx:id="invalidUserLabel" visible="false" alignment="CENTER" layoutX="154.0" layoutY="129.0" prefHeight="23.0" prefWidth="320.0" styleClass="danger" text="Invalid username / password!" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+               <Label fx:id="invalidUserLabel" alignment="CENTER" layoutX="154.0" layoutY="129.0" prefHeight="23.0" prefWidth="320.0" styleClass="danger" text="Invalid username / password!" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                   <font>
                      <Font size="12.0" />
                   </font></Label>
@@ -43,7 +43,20 @@
             </AnchorPane>
         </Tab>
         <Tab fx:id="usersTab" text="Users">
-            <AnchorPane minHeight="0.0" minWidth="0.0" />
+            <AnchorPane>
+                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ListView fx:id="userList" prefWidth="250" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+               <Button fx:id="changeUserPasswordButton" mnemonicParsing="false" text="Change password" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteUserButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
+                        <Button fx:id="addUserButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </AnchorPane>
+                </AnchorPane>
+                <Pane fx:id="userEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <Button fx:id="saveUserButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+
+                </Button>
+            </AnchorPane>
         </Tab>
         <Tab fx:id="productsTab" text="Products">
             <AnchorPane>
@@ -61,8 +74,18 @@
             </AnchorPane>
         </Tab>
         <Tab fx:id="warehousesTab" text="Warehouses">
-            <AnchorPane minHeight="0.0" minWidth="0.0">
-                <ListView fx:id="warehousesList" layoutX="15.0" layoutY="15.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <AnchorPane>
+                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ListView fx:id="warehousesList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteWarehouseButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
+                        <Button fx:id="addWarehouseButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </AnchorPane>
+                </AnchorPane>
+                <Pane fx:id="warehouseEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <Button fx:id="saveWarehouseButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+
+                </Button>
             </AnchorPane>
         </Tab>
     </TabPane>

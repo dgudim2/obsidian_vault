@@ -1,35 +1,24 @@
 package org.kloud.module.gui.controllers;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import org.jetbrains.annotations.NotNull;
+import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
-import org.kloud.module.gui.components.BootstrapColumn;
-import org.kloud.module.gui.components.BootstrapPane;
-import org.kloud.module.gui.components.BootstrapRow;
-import org.kloud.module.gui.components.Breakpoint;
+import org.kloud.model.user.User;
+import org.kloud.module.gui.TabWrapper;
 import org.kloud.utils.FileProductsDAO;
-import org.kloud.utils.ProductsDAO;
+import org.kloud.utils.FileUsersDAO;
+import org.kloud.utils.FileWarehousesDAO;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.function.Supplier;
 
 import static org.kloud.utils.Utils.setDanger;
 
 public class EntrypointController {
 
-    private final ObjectProperty<Product> selectedProduct = new SimpleObjectProperty<>(null);
-
-    private final ProductsDAO productsDAO;
     @FXML
     public ListView<Product> productList;
     @FXML
@@ -58,20 +47,79 @@ public class EntrypointController {
     public Label loginTitle;
     @FXML
     public Label invalidUserLabel;
+    @FXML
+    public ListView<User> userList;
+    @FXML
+    public Button deleteUserButton;
+    @FXML
+    public Button addUserButton;
+    @FXML
+    public Pane userEditArea;
+    @FXML
+    public Button saveUserButton;
+    @FXML
+    public Button changeUserPasswordButton;
+    @FXML
+    public ListView<Warehouse> warehousesList;
+    @FXML
+    public Button deleteWarehouseButton;
+    @FXML
+    public Button addWarehouseButton;
+    @FXML
+    public Pane warehouseEditArea;
+    @FXML
+    public Button saveWarehouseButton;
 
-    public EntrypointController() {
-        this.productsDAO = new FileProductsDAO();
-    }
+    private TabWrapper<Product> productTabWrapper;
+    private TabWrapper<User> userTabWrapper;
+    private TabWrapper<Warehouse> warehouseTabWrapper;
 
     @FXML
     public void initialize() {
-
         warehousesTab.setDisable(true);
         productsTab.setDisable(true);
         usersTab.setDisable(true);
 
+        productTabWrapper = new TabWrapper<>(
+                "product",
+                Product.PRODUCTS,
+                new FileProductsDAO(),
+                productEditArea,
+                productList,
+                deleteProductButton,
+                addProductButton,
+                saveProductButton
+        );
+
+        userTabWrapper = new TabWrapper<>(
+                "user",
+                User.USERS,
+                new FileUsersDAO(),
+                userEditArea,
+                userList,
+                deleteUserButton,
+                addUserButton,
+                saveUserButton
+        );
+
+        warehouseTabWrapper = new TabWrapper<>(
+                "warehouse",
+                List.of(Warehouse.class),
+                new FileWarehousesDAO(),
+                warehouseEditArea,
+                warehousesList,
+                deleteWarehouseButton,
+                addWarehouseButton,
+                saveWarehouseButton
+        );
+
+        changeUserPasswordButton.setDisable(true);
+        userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
+        changeUserPasswordButton.setOnAction(actionEvent -> {
+            // TODO: implement
+        });
+
         initUserTab();
-        initProductsTab();
     }
 
     private void initUserTab() {
@@ -84,7 +132,7 @@ public class EntrypointController {
             var password = passwordField.getText();
             boolean isLoggedIn = loggedIn.get();
 
-            if(!isLoggedIn && !Objects.equals(user, "admin") && !Objects.equals(password, "admin")) {
+            if (!isLoggedIn && !Objects.equals(user, "admin") && !Objects.equals(password, "admin")) {
                 invalidUserLabel.setVisible(true);
                 return;
             }
@@ -106,124 +154,17 @@ public class EntrypointController {
         });
     }
 
-    private void initProductsTab() {
-        productList.getItems().addAll(productsDAO.getProducts());
-
-        BootstrapPane pane = new BootstrapPane();
-        pane.prefWidthProperty().bind(productEditArea.widthProperty());
-        pane.prefHeightProperty().bind(productEditArea.heightProperty());
-        productEditArea.getChildren().add(pane);
-        saveProductButton.setVisible(false);
-
-        productList.getSelectionModel().selectedItemProperty().addListener((observableValue, product, newProduct) -> selectedProduct.set(newProduct));
-
-        deleteProductButton.setDisable(true);
-        selectedProduct.addListener((observableValue, oldProduct, newProduct) -> {
-            deleteProductButton.setDisable(newProduct == null);
-            saveProductButton.setVisible(newProduct != null);
-            pane.removeFirstRow();
-            if (newProduct != null) {
-                pane.addRow(loadItemsForProduct(newProduct, productsDAO));
-            }
-        });
-
-        deleteProductButton.setOnAction(actionEvent -> {
-            Alert productDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            productDialog.setTitle("Delete a product");
-            productDialog.setHeaderText("Delete '" + selectedProduct.get() + "'?");
-            productDialog.showAndWait().ifPresent(buttonType -> {
-                if (buttonType != ButtonType.OK) {
-                    return;
-                }
-                var prod = selectedProduct.get();
-                productsDAO.removeProduct(prod);
-                productList.getItems().remove(prod);
-                productList.getSelectionModel().clearSelection();
-            });
-        });
-
-        addProductButton.setOnAction(actionEvent -> {
-            Alert productDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            productDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
-
-            final int[] selectedProductIndex = {-1};
-
-            ComboBox<String> productSelector = new ComboBox<>();
-            List<String> productNames = new ArrayList<>(Product.PRODUCTS.size());
-            for (var product : Product.PRODUCTS) {
-                try {
-                    productNames.add(String.valueOf(product.getField("NAME").get(null)));
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                    productNames.add(String.valueOf(product));
-                }
-            }
-            productSelector.setItems(FXCollections.observableList(productNames));
-            productSelector.getSelectionModel().selectedIndexProperty().addListener((observableValue, index, newIndex) -> {
-                selectedProductIndex[0] = (int) newIndex;
-                productDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
-            });
-            productSelector.setPrefWidth(300);
-
-            var container = new HBox();
-            container.getChildren().add(productSelector);
-
-            productDialog.setTitle("Add a product");
-            productDialog.setHeaderText("Select a product to add");
-            productDialog.getDialogPane().setContent(container);
-            productDialog.setGraphic(null);
-
-            productDialog.showAndWait().ifPresent(buttonType -> {
-                if (buttonType != ButtonType.OK) {
-                    return;
-                }
-                try {
-                    productList.getItems().add(Product.PRODUCTS.get(selectedProductIndex[0]).getDeclaredConstructor().newInstance());
-                } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
-                         NoSuchMethodException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        });
-    }
-
-    private BootstrapRow loadItemsForProduct(@NotNull Product product, @NotNull ProductsDAO productsDAO) {
-        BootstrapRow row = new BootstrapRow();
-        var fields = product.getFields();
-        List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
-
-        for (var field : fields) {
-            var fieldControl = field.getJavaFxControl();
-            fxControlHandlers.add(fieldControl.getValue());
-            BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
-            column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-            column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-            column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-            column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-            row.addColumn(column);
-        }
-
-        System.out.println("Loaded " + fields.size() + " fields for '" + product + "'");
-
-        saveProductButton.setOnAction(actionEvent -> {
-            boolean isValid = true;
-            for (var fxControlHandler : fxControlHandlers) {
-                boolean fieldValid = fxControlHandler.get();
-                isValid = isValid && fieldValid;
-            }
-            if (isValid) {
-                productsDAO.addProduct(product);
-                productList.refresh();
-            }
-        });
-
-        return row;
-    }
-
     public boolean notifyCloseRequest() {
-        if (productList.getItems().size() != productsDAO.getProducts().size() || !productsDAO.isLatestVersionSaved()) {
+        String message = "";
+        if (productTabWrapper.hasUnsavedChanges()) {
+            message = "You have some unsaved products, exit?";
+        } else if (userTabWrapper.hasUnsavedChanges()) {
+            message = "You have some unsaved users, exit?";
+        }
+        if (!message.isEmpty()) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
             closeDialog.setTitle("Exit");
-            closeDialog.setHeaderText("You have some unsaved products, exit?");
+            closeDialog.setHeaderText(message);
             var result = closeDialog.showAndWait();
             return result.isPresent() && result.get() == ButtonType.OK;
         }

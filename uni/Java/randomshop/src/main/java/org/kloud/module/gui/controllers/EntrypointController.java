@@ -160,6 +160,8 @@ public class EntrypointController {
             message = "You have some unsaved products, exit?";
         } else if (userTabWrapper.hasUnsavedChanges()) {
             message = "You have some unsaved users, exit?";
+        } else if (warehouseTabWrapper.hasUnsavedChanges()) {
+            message = "You have some unsaved warehouses, exit?";
         }
         if (!message.isEmpty()) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);

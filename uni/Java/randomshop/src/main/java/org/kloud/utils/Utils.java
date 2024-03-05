@@ -83,7 +83,7 @@ public class Utils {
         if (val.length() < min) {
             return "Length should be >= " + min;
         }
-        if (val.length() > max) {
+        if (max != -1 && val.length() > max) {
             return "Length should be <= " + max;
         }
         return "";

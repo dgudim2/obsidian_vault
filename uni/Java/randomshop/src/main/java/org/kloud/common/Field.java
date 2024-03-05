@@ -27,14 +27,16 @@ import static org.kloud.utils.Utils.setDanger;
 public class Field<T extends Serializable> implements Serializable {
 
     public final String name;
+    protected final String columnName;
     @Nullable
     protected T value;
     public final boolean required;
-    private transient Function<T, String> validator;
+    protected transient Function<T, String> validator;
     public final Class<T> klass;
 
     public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
         this.name = name;
+        this.columnName = name.trim().toLowerCase().replace("-", " ").replace(" ", "_");
         this.klass = klass;
         this.required = required;
         this.validator = validator;

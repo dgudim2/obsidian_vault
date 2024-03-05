@@ -18,6 +18,14 @@ public class HashedString implements Serializable {
 
     private transient String rawValue;
 
+    public HashedString() {
+
+    }
+
+    public HashedString(@NotNull String newValue) {
+        set(newValue);
+    }
+
     private String byteToHex(byte num) {
         char[] hexDigits = new char[2];
         hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
@@ -63,7 +71,7 @@ public class HashedString implements Serializable {
     }
 
     public Pair<String, String> get() {
-        if(hashValue.isEmpty()) {
+        if (hashValue.isEmpty()) {
             return null;
         }
         return new Pair<>(hashValue, hashSalt);

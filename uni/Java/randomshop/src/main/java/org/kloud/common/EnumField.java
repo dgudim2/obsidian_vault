@@ -34,7 +34,7 @@ public class EnumField<T extends Enum<T>> extends Field<T> {
         comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.get());
         var enumConsts = klass.getEnumConstants();
         List<String> items = new ArrayList<>(enumConsts.length);
-        for (Object obj : enumConsts) {
+        for (T obj : enumConsts) {
             try {
                 Method m = klass.getMethod("toString", null);
                 items.add(String.valueOf(m.invoke(obj, null)));

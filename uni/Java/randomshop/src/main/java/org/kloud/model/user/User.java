@@ -13,16 +13,18 @@ import java.util.List;
 
 public abstract class User extends BaseModel {
 
+    public static long ADMIN_ID = 1000;
+
     public static final List<Class<? extends User>> USERS = List.of(Manager.class, Customer.class);
 
     public final Field<String> name = new Field<>("Name", true, String.class, v -> Utils.testLength(v, 1, 100));
     public final Field<String> surname = new Field<>("Surname", true, String.class, v -> Utils.testLength(v, 1, 100));
     public final Field<String> cardNumber = new Field<>("Card number", false, String.class, v -> {
-        CardValidationResult res = RegexCardValidator.isValid(v);
-        if (res.isValid()) {
+        if(v == null || v.isEmpty()) {
             return "";
         }
-        return res.getError();
+        CardValidationResult res = RegexCardValidator.isValid(v);
+        return res.isValid() ? "" : res.getError();
     });
 
     public final Field<String> login = new Field<>("Login", true, String.class, v -> Utils.testLength(v, 1, 100));

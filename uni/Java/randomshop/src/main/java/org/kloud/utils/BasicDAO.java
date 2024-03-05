@@ -35,7 +35,7 @@ public abstract class BasicDAO<T extends BaseModel> {
     public abstract boolean removeObject(@NotNull T product);
 
     public boolean isLatestVersionSaved() {
-        System.out.println("isLatestVersionSaved for ProductDAO: " + lastSavedHash + ", " + objects.hashCode());
+        System.out.println("isLatestVersionSaved for " + getClass().getSimpleName() + ": " + lastSavedHash + ", " + objects.hashCode());
         System.out.println(objects);
         return lastSavedHash == objects.hashCode();
     }

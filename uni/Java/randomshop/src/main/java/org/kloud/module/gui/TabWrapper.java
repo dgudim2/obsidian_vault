@@ -73,48 +73,59 @@ public class TabWrapper<T extends BaseModel> {
             });
         });
 
-        addButton.setOnAction(actionEvent -> {
-            Alert objectDialog = new Alert(Alert.AlertType.CONFIRMATION);
-            objectDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
-
-            final int[] selectedObjectIndex = {-1};
-
-            ComboBox<String> objectSelector = new ComboBox<>();
-            List<String> objectNames = new ArrayList<>(possibleObjects.size());
-            for (var object : possibleObjects) {
+        if (possibleObjects.size() == 1) {
+            addButton.setOnAction(actionEvent -> {
                 try {
-                    objectNames.add(String.valueOf(object.getField("NAME").get(null)));
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                    objectNames.add(String.valueOf(object));
-                }
-            }
-            objectSelector.setItems(FXCollections.observableList(objectNames));
-            objectSelector.getSelectionModel().selectedIndexProperty().addListener((observableValue, index, newIndex) -> {
-                selectedObjectIndex[0] = (int) newIndex;
-                objectDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
-            });
-            objectSelector.setPrefWidth(300);
-
-            var container = new HBox();
-            container.getChildren().add(objectSelector);
-
-            objectDialog.setTitle("Add a " + objectName);
-            objectDialog.setHeaderText("Select a " + objectName + " to add");
-            objectDialog.getDialogPane().setContent(container);
-            objectDialog.setGraphic(null);
-
-            objectDialog.showAndWait().ifPresent(buttonType -> {
-                if (buttonType != ButtonType.OK) {
-                    return;
-                }
-                try {
-                    objectList.getItems().add(possibleObjects.get(selectedObjectIndex[0]).getDeclaredConstructor().newInstance());
+                    objectList.getItems().add(possibleObjects.get(0).getDeclaredConstructor().newInstance());
                 } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
                          NoSuchMethodException e) {
                     throw new RuntimeException(e);
                 }
             });
-        });
+        } else {
+            addButton.setOnAction(actionEvent -> {
+                Alert objectDialog = new Alert(Alert.AlertType.CONFIRMATION);
+                objectDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(true);
+
+                final int[] selectedObjectIndex = {-1};
+
+                ComboBox<String> objectSelector = new ComboBox<>();
+                List<String> objectNames = new ArrayList<>(possibleObjects.size());
+                for (var object : possibleObjects) {
+                    try {
+                        objectNames.add(String.valueOf(object.getField("NAME").get(null)));
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        objectNames.add(String.valueOf(object));
+                    }
+                }
+                objectSelector.setItems(FXCollections.observableList(objectNames));
+                objectSelector.getSelectionModel().selectedIndexProperty().addListener((observableValue, index, newIndex) -> {
+                    selectedObjectIndex[0] = (int) newIndex;
+                    objectDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
+                });
+                objectSelector.setPrefWidth(300);
+
+                var container = new HBox();
+                container.getChildren().add(objectSelector);
+
+                objectDialog.setTitle("Add a " + objectName);
+                objectDialog.setHeaderText("Select a " + objectName + " to add");
+                objectDialog.getDialogPane().setContent(container);
+                objectDialog.setGraphic(null);
+
+                objectDialog.showAndWait().ifPresent(buttonType -> {
+                    if (buttonType != ButtonType.OK) {
+                        return;
+                    }
+                    try {
+                        objectList.getItems().add(possibleObjects.get(selectedObjectIndex[0]).getDeclaredConstructor().newInstance());
+                    } catch (InstantiationException | IllegalAccessException | InvocationTargetException |
+                             NoSuchMethodException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+            });
+        }
     }
 
     private BootstrapRow loadItemsForObject(@NotNull T object) {

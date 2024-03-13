@@ -1,19 +1,24 @@
 package org.kloud.module.gui.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import org.kloud.common.HashedString;
 import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
+import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.module.gui.TabWrapper;
-import org.kloud.utils.FileProductsDAO;
-import org.kloud.utils.FileUsersDAO;
-import org.kloud.utils.FileWarehousesDAO;
+import org.kloud.utils.DaoSingleton;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 import static org.kloud.utils.Utils.setDanger;
 
@@ -70,6 +75,8 @@ public class EntrypointController {
     @FXML
     public Button saveWarehouseButton;
 
+    AtomicReference<User> loggedInUser = new AtomicReference<>(null);
+
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
     private TabWrapper<Warehouse> warehouseTabWrapper;
@@ -83,7 +90,7 @@ public class EntrypointController {
         productTabWrapper = new TabWrapper<>(
                 "product",
                 Product.PRODUCTS,
-                new FileProductsDAO(),
+                DaoSingleton.getInstance().productStorage,
                 productEditArea,
                 productList,
                 deleteProductButton,
@@ -94,7 +101,7 @@ public class EntrypointController {
         userTabWrapper = new TabWrapper<>(
                 "user",
                 User.USERS,
-                new FileUsersDAO(),
+                DaoSingleton.getInstance().userStorage,
                 userEditArea,
                 userList,
                 deleteUserButton,
@@ -105,7 +112,7 @@ public class EntrypointController {
         warehouseTabWrapper = new TabWrapper<>(
                 "warehouse",
                 List.of(Warehouse.class),
-                new FileWarehousesDAO(),
+                DaoSingleton.getInstance().warehouseStorage,
                 warehouseEditArea,
                 warehousesList,
                 deleteWarehouseButton,
@@ -116,41 +123,123 @@ public class EntrypointController {
         changeUserPasswordButton.setDisable(true);
         userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
         changeUserPasswordButton.setOnAction(actionEvent -> {
-            // TODO: implement
+            boolean adminLoggedInOrCurrentUser =
+                    loggedInUser.get() instanceof Manager m && m.isAdmin.get()
+                            || Objects.equals(loggedInUser.get(), userTabWrapper.selectedObject.get());
+
+            Alert passwordDialog = new Alert(Alert.AlertType.CONFIRMATION);
+
+            var oldPassLabel = new Label("Old password: ");
+            var oldPassInput = new PasswordField();
+            var newPassLabel = new Label("New password: ");
+            var newPassInput = new PasswordField();
+
+            var oldPassContainer = new AnchorPane();
+            oldPassContainer.getChildren().addAll(oldPassLabel, oldPassInput);
+            AnchorPane.setBottomAnchor(oldPassLabel, 1.0);
+            AnchorPane.setTopAnchor(oldPassLabel, 1.0);
+            AnchorPane.setRightAnchor(oldPassLabel, 200.0);
+            AnchorPane.setRightAnchor(oldPassInput, 1.0);
+            oldPassContainer.setPadding(new Insets(0, 0, 3, 0));
+
+            var newPassContainer = new AnchorPane();
+            newPassContainer.getChildren().addAll(newPassLabel, newPassInput);
+            AnchorPane.setBottomAnchor(newPassLabel, 1.0);
+            AnchorPane.setTopAnchor(newPassLabel, 1.0);
+            AnchorPane.setRightAnchor(newPassLabel, 200.0);
+            AnchorPane.setRightAnchor(newPassInput, 1.0);
+            newPassContainer.setPadding(new Insets(3, 0, 0, 0));
+
+            var wrongPasswordLabel = new Label();
+            wrongPasswordLabel.setAlignment(Pos.CENTER);
+            wrongPasswordLabel.setPrefWidth(300);
+            wrongPasswordLabel.setVisible(false);
+            setDanger(wrongPasswordLabel, true);
+
+            var container = new VBox();
+            if (adminLoggedInOrCurrentUser) {
+                container.getChildren().addAll(newPassContainer, wrongPasswordLabel);
+            } else {
+                container.getChildren().addAll(oldPassContainer, newPassContainer, wrongPasswordLabel);
+            }
+
+            passwordDialog.setTitle("Change password");
+            passwordDialog.setHeaderText("Changing password for " + userTabWrapper.selectedObject.get().login.get());
+            passwordDialog.getDialogPane().setContent(container);
+            passwordDialog.setGraphic(null);
+
+            var positiveButton = passwordDialog.getDialogPane().lookupButton(ButtonType.OK);
+
+            positiveButton.addEventFilter(ActionEvent.ACTION, event -> {
+                var oldPass = oldPassInput.getText();
+                var newPass = newPassInput.getText();
+
+                if (adminLoggedInOrCurrentUser || loggedInUser.get().checkPassword(oldPass)) {
+                    var warn = loggedInUser.get().pass.set(new HashedString(newPass));
+                    if (warn == null || warn.isEmpty()) {
+                        wrongPasswordLabel.setVisible(false);
+                    } else {
+                        wrongPasswordLabel.setText(warn);
+                        wrongPasswordLabel.setVisible(true);
+                        event.consume();
+                    }
+                } else {
+                    wrongPasswordLabel.setText("Wrong password!");
+                    wrongPasswordLabel.setVisible(true);
+                    event.consume();
+                }
+            });
+
+            passwordDialog.showAndWait();
         });
 
         initUserTab();
     }
 
     private void initUserTab() {
-
-        AtomicBoolean loggedIn = new AtomicBoolean(false);
-
         loginButton.setOnAction(actionEvent -> {
 
-            var user = userField.getText();
-            var password = passwordField.getText();
-            boolean isLoggedIn = loggedIn.get();
+            User loggedInUserV = loggedInUser.get();
 
-            if (!isLoggedIn && !Objects.equals(user, "admin") && !Objects.equals(password, "admin")) {
-                invalidUserLabel.setVisible(true);
-                return;
+            if (loggedInUserV == null) {
+                var login = userField.getText();
+                var password = passwordField.getText();
+
+                for (var user : DaoSingleton.getInstance().userStorage.getObjects()) {
+                    if (user.login.get().equals(login)) {
+                        if (user.checkPassword(password)) {
+                            loggedInUserV = user;
+                            loggedInUser.set(loggedInUserV);
+                            System.out.println("LOGGED IN AS " + loggedInUserV);
+                            break;
+                        }
+                        invalidUserLabel.setVisible(true);
+                        return;
+                    }
+                }
+                if (loggedInUserV == null) {
+                    invalidUserLabel.setVisible(true);
+                    return;
+                }
+            } else {
+                loggedInUserV = null;
+                loggedInUser.set(null);
             }
 
             invalidUserLabel.setVisible(false);
 
-            userField.setDisable(!isLoggedIn);
-            passwordField.setDisable(!isLoggedIn);
+            boolean isLoggedIn = loggedInUserV != null;
 
-            warehousesTab.setDisable(isLoggedIn);
-            productsTab.setDisable(isLoggedIn);
-            usersTab.setDisable(isLoggedIn);
+            userField.setDisable(isLoggedIn);
+            passwordField.setDisable(isLoggedIn);
 
-            loggedIn.set(!isLoggedIn);
+            warehousesTab.setDisable(!isLoggedIn);
+            productsTab.setDisable(!isLoggedIn);
+            usersTab.setDisable(!isLoggedIn);
 
-            loginButton.setText(loggedIn.get() ? "Logout" : "Login");
-            loginTitle.setText(loggedIn.get() ? "Logged in as admin" : "Please login");
-            setDanger(loginButton, loggedIn.get());
+            loginButton.setText(isLoggedIn ? "Logout" : "Login");
+            loginTitle.setText(isLoggedIn ? "Logged in as " + loggedInUserV.login : "Please login");
+            setDanger(loginButton, isLoggedIn);
         });
     }
 

@@ -4,7 +4,12 @@ import javafx.css.PseudoClass;
 import javafx.scene.Node;
 import org.jetbrains.annotations.NotNull;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import java.io.*;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 
 public class Utils {
 
@@ -87,6 +92,40 @@ public class Utils {
             return "Length should be <= " + max;
         }
         return "";
+    }
+
+    private static String byteToHex(byte num) {
+        char[] hexDigits = new char[2];
+        hexDigits[0] = Character.forDigit((num >> 4) & 0xF, 16);
+        hexDigits[1] = Character.forDigit((num & 0xF), 16);
+        return new String(hexDigits);
+    }
+
+    public static String bytesToHexStr(byte[] bytes) {
+        StringBuilder hexStringBuffer = new StringBuilder();
+        for (byte b : bytes) {
+            hexStringBuffer.append(byteToHex(b));
+        }
+        return hexStringBuffer.toString();
+    }
+
+    public static String hashPass(String pass, String salt) {
+
+        String hashValue;
+
+        KeySpec spec = new PBEKeySpec(pass.toCharArray(), salt.getBytes(), 65536, 128);
+        SecretKeyFactory factory;
+        try {
+            factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            hashValue = bytesToHexStr(factory.generateSecret(spec).getEncoded());
+        } catch (InvalidKeySpecException e) {
+            throw new RuntimeException(e);
+        }
+        return hashValue;
     }
 
 }

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.common.ForeignKeyField;
 import org.kloud.model.user.Manager;
+import org.kloud.utils.DaoSingleton;
 import org.kloud.utils.Utils;
 
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ public class Warehouse extends BaseModel {
 
     public final Field<Integer> maxCapacity = new Field<>("Capacity", true, Integer.class, v -> Utils.testBounds(v, 100, -1));
 
-    public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false);
+    public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
+            () -> DaoSingleton.getInstance().userStorage.getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList());
     // public final Field<ArrayList<Long>> products = new Field<>();
 
 

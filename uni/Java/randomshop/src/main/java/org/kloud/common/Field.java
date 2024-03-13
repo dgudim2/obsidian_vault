@@ -34,12 +34,17 @@ public class Field<T extends Serializable> implements Serializable {
     protected transient Function<T, String> validator;
     public final Class<T> klass;
 
-    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
+    public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
         this.name = name;
+        value = defaultValue;
         this.columnName = name.trim().toLowerCase().replace("-", " ").replace(" ", "_");
         this.klass = klass;
         this.required = required;
         this.validator = validator;
+    }
+
+    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
+        this(name, null, required, klass, validator);
     }
 
     @SuppressWarnings("unchecked")

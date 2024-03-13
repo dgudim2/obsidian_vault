@@ -36,7 +36,6 @@ public abstract class Product extends BaseModel {
         fields.add(warranty);
         fields.add(rating);
         return fields;
-        // TODO: set validators here?
     }
 
     @Override

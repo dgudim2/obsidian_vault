@@ -10,6 +10,9 @@ import org.kloud.utils.card.RegexCardValidator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static org.kloud.utils.Utils.hashPass;
 
 public abstract class User extends BaseModel {
 
@@ -30,6 +33,18 @@ public abstract class User extends BaseModel {
     public final Field<String> login = new Field<>("Login", true, String.class, v -> Utils.testLength(v, 1, 100));
     public final Field<HashedString> pass = new Field<>("Password", true, HashedString.class, v -> Utils.testLength(v.getRaw(), 8, 100));
 
+    User() {
+
+    }
+    public User(long id) {
+        super(id);
+    }
+
+    public boolean checkPassword(@NotNull String inputPass) {
+        var actualPass = pass.get().get();
+        return hashPass(inputPass, actualPass.getValue()).equals(actualPass.getKey());
+    }
+
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {
@@ -40,5 +55,18 @@ public abstract class User extends BaseModel {
         fields.add(surname);
         fields.add(cardNumber);
         return fields;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        User user = (User) object;
+        return Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(cardNumber, user.cardNumber) && Objects.equals(login, user.login) && Objects.equals(pass, user.pass);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, surname, cardNumber, login, pass);
     }
 }

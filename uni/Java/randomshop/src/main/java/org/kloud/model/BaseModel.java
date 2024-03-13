@@ -13,6 +13,10 @@ public abstract class BaseModel implements Serializable {
 
     public final long id;
 
+    protected BaseModel(long id) {
+        this.id = id;
+    }
+
     protected BaseModel() {
         id = System.nanoTime();
     }

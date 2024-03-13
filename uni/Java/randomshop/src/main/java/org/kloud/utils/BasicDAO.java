@@ -12,10 +12,11 @@ public abstract class BasicDAO<T extends BaseModel> {
 
     protected int lastSavedHash = -1;
 
-    BasicDAO() {
+    protected BasicDAO() {
         objects = readObjects();
     }
 
+    // TODO: Lazy init
     @NotNull
     protected abstract List<T> readObjects();
 

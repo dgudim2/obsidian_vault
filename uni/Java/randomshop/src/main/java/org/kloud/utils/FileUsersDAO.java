@@ -29,10 +29,11 @@ public class FileUsersDAO extends BasicFileDAO<User> {
             }
         }
         if (!has_admin) {
-            var adminUser = new Manager();
+            var adminUser = new Manager(User.ADMIN_ID);
             adminUser.name.set("Default");
             adminUser.surname.set("User");
             adminUser.login.set("admin");
+            adminUser.isAdmin.set(true);
             adminUser.pass.set(new HashedString("admin123"));
             users.add(adminUser);
         }

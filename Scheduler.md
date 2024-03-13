@@ -34,6 +34,7 @@ kanban-plugin: basic
 - [ ] **Option to open links**<br><br>Search for links in todos, add a button/menu to  open them<br><br>@{2024-02-24}
 - [ ] **Add as a target in share menu**<br><br>Register with android's share menu (send from other apps)<br><br>@{2024-02-24}
 - [ ] **Cleanup database**<br><br>Remove invalid entries from deleted calendars periodically<br><br>@{2024-03-02}
+- [ ] **Indicator settings**<br><br>Add settings for calendar event indicators<br><br>@{2024-03-13}
 
 
 ## Fixed bugs

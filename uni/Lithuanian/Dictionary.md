@@ -1,0 +1,3 @@
+kambaris - room
+bendrabutis - dormitory
+

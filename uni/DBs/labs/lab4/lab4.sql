@@ -1,5 +1,5 @@
 -- Task 1
-select ENAME, sal * 1.5 as sal15 from emp;
+select ENAME, round(sal * 1.5) as sal15 from emp;
 
 -- Task 2
 select ENAME || '   ' || JOB as EMPLOYEE_AND_JOB from emp;
@@ -8,12 +8,11 @@ select ENAME || '   ' || JOB as EMPLOYEE_AND_JOB from emp;
 select ENAME, add_months(HIREDATE, 12) as REVIEW from emp order by REVIEW asc;
 
 -- Task 4
--- Note: this is incorrect
-select ENAME, HIREDATE, floor(INTERVL / 31 / 12)
+select ENAME, HIREDATE, floor(INTERVL / 12)
 || ' YEARS '
-|| floor(INTERVL / 31 - floor(INTERVL / 31 / 12) * 12)
+|| floor((INTERVL - floor(INTERVL / 12) * 12))
 || ' MONTHS' as LENGTH_OF_SERVICE  from (
-    select ENAME, HIREDATE, sysdate - HIREDATE as INTERVL from emp
+    select ENAME, HIREDATE, MONTHS_BETWEEN(sysdate, HIREDATE) as INTERVL from emp
 );
 
 -- Task 5

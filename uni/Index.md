@@ -18,4 +18,3 @@ for (let folder of folderlist) {
 	}
 }
 ```
-

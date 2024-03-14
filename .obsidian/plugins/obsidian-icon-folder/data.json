@@ -6,6 +6,9 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "IbMoneyNote",
+      "FabJava",
+      "🇱🇹",
       "LiScreenShare",
       "RiMoneyEuroBoxLine",
       "TiArrowsRandom",
@@ -87,5 +90,8 @@
   "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustmentsCode",
   "uni/Probability theory": "FasDice",
   "uni/Economics": "RiMoneyEuroBoxLine",
-  "uni/Economics/Presentation - Nigeria.md": "LiScreenShare"
+  "uni/Economics/Presentation - Nigeria.md": "LiScreenShare",
+  "uni/Lithuanian": "🇱🇹",
+  "uni/Java": "FabJava",
+  "uni/Finance": "IbMoneyNote"
 }

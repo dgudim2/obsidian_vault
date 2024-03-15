@@ -26,11 +26,6 @@
 
 ## Words
 
---- start-multi-column: DictRegion  
-```column-settings  
-number of columns: 2  
-```
-
 |                                                    Lit | Eng                                                    |
 | ------------------------------------------------------:|:------------------------------------------------------ |
 |                                               kambaris | room                                                   |
@@ -73,8 +68,6 @@ number of columns: 2
 |                                                  kalbu | speak                                                  |
 |                                                laimeti | to win                                                 |
 
---- end-column ---
-
 |      Lit | Eng    |
 | --------:|:------ |
 |  draugas | friend |
@@ -94,5 +87,3 @@ number of columns: 2
 | gintaras | amber  |
 |     alus | beer   |
 |          |        |
-
---- end-multi-column

@@ -7,7 +7,6 @@
 |      aš | I              |      |      mes | We                      |
 |      tu | You (informal) |      |      jūs | You (formal)            |
 | jis, ji | He, she        |      | jie, jos | They, they (only women) |
-|         |                |      |          |                         |
 
 ## Numbers
 
@@ -27,11 +26,73 @@
 
 ## Words
 
-|         Lit | Eng       | ____ |     Lit | Eng     |
-| ----------: | :-------- | ---- | ------: | :------ |
-|    kambaris | room      |      | draugas | friend  |
-| bendrabutis | dormitory |      |   puiku | great   |
-|      vardas | name      |      |  vakare | evening |
-|        arba | or        |      |    ryto | morning |
-|       dabar | now       |      |         |         |
-|          ir | and       |      |         |         |
+--- start-multi-column: DictRegion  
+```column-settings  
+number of columns: 2  
+```
+
+|                                                    Lit | Eng                                                    |
+| ------------------------------------------------------:|:------------------------------------------------------ |
+|                                               kambaris | room                                                   |
+|                                            bendrabutis | dormitory                                              |
+|                                                 vardas | name                                                   |
+|                                                      = | =                                                      |
+|                                                      = | =                                                      |
+|                                                    kas | what                                                   |
+|                                                  pilis | castle                                                 |
+|                                                bokštas | tower                                                  |
+|                                                 stotis | station                                                |
+|                                                   kita | next stop                                              |
+|                                                sostinė | capital                                                |
+|                                                      = | =                                                      |
+|                                                      = | =                                                      |
+|                                                  saule | sun                                                    |
+|                                                    upe | river                                                  |
+|                                                 užupis | in front of the river                                  |
+|                                              pertrauka | break (interval)                                       |
+|                                                      = | =                                                      |
+|                                                      = | =                                                      |
+| <font style="color: var(--neutral-green)">BASIC</font> | <font style="color: var(--neutral-green)">STUFF</font> |
+|                                                      = | =                                                      |
+|                                                  dabar | now                                                    |
+|                                                     Iš | from                                                   |
+|                                                    čia | here                                                   |
+|                                                  labas | hello                                                  |
+|                                                   ryto | morning                                                |
+|                                                 vakare | evening                                                |
+|                                                  dieną | day                                                    |
+|                                                 prašau | please                                                 |
+|                                               labanakt | good night                                             |
+|                                                  labai | very                                                   |
+|                                                   arba | or                                                     |
+|                                                  dabar | now                                                    |
+|                                                     ir | and                                                    |
+|                                                   taip | yes                                                    |
+|                                                     ne | no                                                     |
+|                                                   žodį | word                                                   |
+|                                                  kalbu | speak                                                  |
+|                                                laimeti | to win                                                 |
+
+--- end-column ---
+
+|      Lit | Eng    |
+| --------:|:------ |
+|  draugas | friend |
+|    puiku | great  |
+|        = | =      |
+|  geltona | yellow |
+|    žalia | green  |
+|  raudona | red    |
+|        = | =      |
+|        = | =      |
+|        = | =      |
+|        = | =      |
+|        = | =      |
+|  kraujas | blood  |
+|    gamta | nature |
+|        = | =      |
+| gintaras | amber  |
+|     alus | beer   |
+|          |        |
+
+--- end-multi-column

@@ -182,5 +182,13 @@
       "key": "F5"
     }
   ],
-  "workspace:next-tab": []
+  "workspace:next-tab": [],
+  "obsidian-completr:completr-open-suggestion-popup": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": " "
+    }
+  ]
 }

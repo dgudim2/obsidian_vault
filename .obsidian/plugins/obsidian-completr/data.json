@@ -17,5 +17,6 @@
   "frontMatterProviderEnabled": true,
   "frontMatterTagAppendSuffix": true,
   "frontMatterIgnoreCase": true,
-  "calloutProviderEnabled": false
+  "calloutProviderEnabled": false,
+  "calloutProviderSource": "Completr"
 }

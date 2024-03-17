@@ -2,20 +2,25 @@ package org.kloud.module.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import org.kloud.common.HashedString;
 import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
+import org.kloud.module.gui.Entrypoint;
 import org.kloud.module.gui.TabWrapper;
 import org.kloud.utils.DaoSingleton;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
@@ -74,6 +79,8 @@ public class EntrypointController {
     public Pane warehouseEditArea;
     @FXML
     public Button saveWarehouseButton;
+    @FXML
+    public Button settingsButton;
 
     AtomicReference<User> loggedInUser = new AtomicReference<>(null);
 
@@ -191,6 +198,20 @@ public class EntrypointController {
             });
 
             passwordDialog.showAndWait();
+        });
+
+        settingsButton.setOnAction(actionEvent -> {
+            try {
+                Stage settingsWindow = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("settings-view.fxml"));
+                settingsWindow.setTitle("Randomshop settings");
+
+                settingsWindow.setScene(new Scene(fxmlLoader.load()));
+
+                settingsWindow.show();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         });
 
         initUserTab();

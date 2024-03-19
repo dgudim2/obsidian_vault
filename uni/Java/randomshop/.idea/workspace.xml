@@ -52,10 +52,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -158,6 +158,8 @@
       <workItem from="1709659539622" duration="5267000" />
       <workItem from="1710350808559" duration="7289000" />
       <workItem from="1710697448973" duration="4519000" />
+      <workItem from="1710843919748" duration="4242000" />
+      <workItem from="1710851691639" duration="3386000" />
     </task>
     <servers />
   </component>

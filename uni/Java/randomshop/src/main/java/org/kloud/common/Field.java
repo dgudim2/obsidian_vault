@@ -31,10 +31,10 @@ public class Field<T extends Serializable> implements Serializable {
     @Nullable
     protected T value;
     public final boolean required;
-    protected transient Function<T, String> validator;
+    protected transient Function<T, @NotNull String> validator;
     public final Class<T> klass;
 
-    public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
+    public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
         this.name = name;
         value = defaultValue;
         this.columnName = name.trim().toLowerCase().replace("-", " ").replace(" ", "_");
@@ -43,7 +43,7 @@ public class Field<T extends Serializable> implements Serializable {
         this.validator = validator;
     }
 
-    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, String> validator) {
+    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
         this(name, null, required, klass, validator);
     }
 
@@ -57,22 +57,18 @@ public class Field<T extends Serializable> implements Serializable {
         return value;
     }
 
-    @Nullable
+    @NotNull
     private String validate(@Nullable T valueToValidate) {
         if ((valueToValidate == null || String.valueOf(valueToValidate).isEmpty()) && required) {
             return "This field is required";
         }
-        var validatorMessage = validator.apply(valueToValidate);
-        if (validatorMessage == null || !validatorMessage.isEmpty()) {
-            return validatorMessage;
-        }
-        return null;
+        return validator.apply(valueToValidate);
     }
 
-    @Nullable
+    @NotNull
     public String set(T value) {
         var validatorMessage = validate(value);
-        if (validatorMessage == null) {
+        if (validatorMessage.isEmpty()) {
             System.out.println("Set value for " + name + " to " + value);
             this.value = value;
         }

@@ -8,15 +8,10 @@ import java.util.Collections;
 import java.util.List;
 
 public abstract class BasicDAO<T extends BaseModel> {
-    protected final List<T> objects;
+    protected List<T> objects;
 
     protected int lastSavedHash = -1;
 
-    protected BasicDAO() {
-        objects = readObjects();
-    }
-
-    // TODO: Lazy init
     @NotNull
     protected abstract List<T> readObjects();
 
@@ -28,6 +23,9 @@ public abstract class BasicDAO<T extends BaseModel> {
 
     @NotNull
     public List<T> getObjects() {
+        if(objects == null) {
+            objects = readObjects();
+        }
         return Collections.unmodifiableList(objects);
     }
 

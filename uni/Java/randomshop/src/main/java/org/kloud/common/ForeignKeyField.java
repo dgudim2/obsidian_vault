@@ -17,10 +17,7 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
     private Supplier<List<T>> linkedObjectsProducer;
 
     public ForeignKeyField(@NotNull String name, boolean required, Supplier<List<T>> linkedObjectsProducer) {
-        // Ugly workaround with the validator, can't reference linkedObjects before calling super constructor
-        super(name, required, Long.class, __ -> "");
-        this.linkedObjectsProducer = linkedObjectsProducer;
-        validator = id -> {
+        super(name, required, Long.class, id -> {
             var linkedObjects = linkedObjectsProducer.get();
             if (linkedObjects != null && !linkedObjects.isEmpty()) {
                 for (var obj : linkedObjects) {
@@ -30,7 +27,8 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
                 }
             }
             return id != -1 ? "Invalid link" : "";
-        };
+        });
+        this.linkedObjectsProducer = linkedObjectsProducer;
     }
 
     @SuppressWarnings("unchecked")

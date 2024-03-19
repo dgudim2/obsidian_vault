@@ -18,7 +18,7 @@ import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.module.gui.Entrypoint;
 import org.kloud.module.gui.TabWrapper;
-import org.kloud.utils.DaoSingleton;
+import org.kloud.utils.ConfigurationSingleton;
 
 import java.io.IOException;
 import java.util.List;
@@ -82,7 +82,9 @@ public class EntrypointController {
     @FXML
     public Button settingsButton;
 
-    AtomicReference<User> loggedInUser = new AtomicReference<>(null);
+    private AtomicReference<User> loggedInUser = new AtomicReference<>(null);
+
+    private boolean settingsOpen = false;
 
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
@@ -90,6 +92,8 @@ public class EntrypointController {
 
     @FXML
     public void initialize() {
+        var conf = ConfigurationSingleton.getInstance();
+
         warehousesTab.setDisable(true);
         productsTab.setDisable(true);
         usersTab.setDisable(true);
@@ -97,7 +101,7 @@ public class EntrypointController {
         productTabWrapper = new TabWrapper<>(
                 "product",
                 Product.PRODUCTS,
-                DaoSingleton.getInstance().productStorage,
+                conf.storageBackend.get().getProductStorage(),
                 productEditArea,
                 productList,
                 deleteProductButton,
@@ -108,7 +112,7 @@ public class EntrypointController {
         userTabWrapper = new TabWrapper<>(
                 "user",
                 User.USERS,
-                DaoSingleton.getInstance().userStorage,
+                conf.storageBackend.get().getUserStorage(),
                 userEditArea,
                 userList,
                 deleteUserButton,
@@ -119,7 +123,7 @@ public class EntrypointController {
         warehouseTabWrapper = new TabWrapper<>(
                 "warehouse",
                 List.of(Warehouse.class),
-                DaoSingleton.getInstance().warehouseStorage,
+                conf.storageBackend.get().getWarehouseStorage(),
                 warehouseEditArea,
                 warehousesList,
                 deleteWarehouseButton,
@@ -202,13 +206,28 @@ public class EntrypointController {
 
         settingsButton.setOnAction(actionEvent -> {
             try {
+
+                if(settingsOpen) {
+                    return;
+                }
+
                 Stage settingsWindow = new Stage();
                 FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("settings-view.fxml"));
                 settingsWindow.setTitle("Randomshop settings");
+                settingsWindow.setResizable(false);
 
                 settingsWindow.setScene(new Scene(fxmlLoader.load()));
 
                 settingsWindow.show();
+                settingsOpen = true;
+                settingsWindow.setOnCloseRequest(windowEvent -> {
+                    try {
+                        ConfigurationSingleton.writeConfig();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    settingsOpen = false;
+                });
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -226,7 +245,7 @@ public class EntrypointController {
                 var login = userField.getText();
                 var password = passwordField.getText();
 
-                for (var user : DaoSingleton.getInstance().userStorage.getObjects()) {
+                for (var user : ConfigurationSingleton.getInstance().storageBackend.get().getUserStorage().getObjects()) {
                     if (user.login.get().equals(login)) {
                         if (user.checkPassword(password)) {
                             loggedInUserV = user;

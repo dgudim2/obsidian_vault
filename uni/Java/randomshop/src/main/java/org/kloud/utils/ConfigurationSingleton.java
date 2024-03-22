@@ -19,7 +19,8 @@ public class ConfigurationSingleton {
 
     private static final List<Class<? extends AbstractStorage>> storageBackends = List.of(LocalStorage.class);
 
-    private class Fields {
+    private class
+    Fields {
         static final String DB_ADDRESS = "db_address";
         static final String SERVER_ADDRESS = "server_address";
         static final String BACKEND_TYPE = "backend_type";

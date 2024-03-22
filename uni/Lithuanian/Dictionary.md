@@ -19,6 +19,11 @@
 ### Iš + genitive
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=10&rect=53,517,411,730|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.10]]
+
+> [!note] 
+> Iki + genitive
+
+
 ## Nominative (what?) to locative (where?)
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=10&rect=57,379,472,497|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.10]]
@@ -75,7 +80,11 @@
 |                                                   žodį | word                                                   |
 |                                                  kalbu | speak                                                  |
 |                                                laimeti | to win                                                 |
-|                                                 eikime | let's go                                               |
+|                                                   eime | let's go (on foot)                                     |
+|                                                  atgal | back                                                   |
+|                                              važiojame | let's go (by car)                                      |
+|                                               taip pat | also                                                   |
+|                                                  kartu | together                                               |
 |                                                        |                                                        |
 
 |      Lit | Eng    |
@@ -97,3 +106,7 @@
 | gintaras | amber  |
 |     alus | beer   |
 |          |        |
+### From Antra
+
+![[Antra paskaita.pdf#page=12&rect=334,44,717,341|Antra paskaita, p.12]]
+

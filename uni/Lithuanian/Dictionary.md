@@ -16,6 +16,9 @@
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=9&rect=50,51,467,167|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.9]]
 
+### Iš + genitive
+
+![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=10&rect=53,517,411,730|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.10]]
 ## Nominative (what?) to locative (where?)
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=10&rect=57,379,472,497|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.10]]
@@ -24,10 +27,15 @@
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=28&rect=45,513,479,660|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.28]]
 
+
+## Cases
+
+![[cases.jpg]]
+
 ## Words
 
 |                                                    Lit | Eng                                                    |
-| ------------------------------------------------------:|:------------------------------------------------------ |
+| -----------------------------------------------------: | :----------------------------------------------------- |
 |                                               kambaris | room                                                   |
 |                                            bendrabutis | dormitory                                              |
 |                                                 vardas | name                                                   |
@@ -67,6 +75,8 @@
 |                                                   žodį | word                                                   |
 |                                                  kalbu | speak                                                  |
 |                                                laimeti | to win                                                 |
+|                                                 eikime | let's go                                               |
+|                                                        |                                                        |
 
 |      Lit | Eng    |
 | --------:|:------ |

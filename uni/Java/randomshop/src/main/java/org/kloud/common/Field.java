@@ -11,6 +11,7 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kloud.utils.Logger;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -49,7 +50,7 @@ public class Field<T extends Serializable> implements Serializable {
 
     @SuppressWarnings("unchecked")
     public void postRead(@NotNull Field<?> cleanField) {
-        System.out.println("postRead for " + name + " (" + value + ")");
+        Logger.debug("postRead for " + name + " (" + value + ")");
         validator = (Function<T, String>) cleanField.validator;
     }
 
@@ -69,7 +70,7 @@ public class Field<T extends Serializable> implements Serializable {
     public String set(T value) {
         var validatorMessage = validate(value);
         if (validatorMessage.isEmpty()) {
-            System.out.println("Set value for " + name + " to " + value);
+            Logger.info("Set value for " + name + " to " + value);
             this.value = value;
         }
         return validatorMessage;
@@ -254,7 +255,7 @@ public class Field<T extends Serializable> implements Serializable {
         labelContainer.setPadding(new Insets(0, 5, 0, 5));
 
         final BiFunction<Node, String, Boolean> validationCallbackBase = (@NotNull Node input, @Nullable String validationData) -> {
-            System.out.println("Validated " + input + " (" + validationData + ")");
+            Logger.debug("Validated " + input + " (" + validationData + ")");
             if (validationData != null) {
                 setDanger(input, true);
                 errorLabel.setText(validationData);

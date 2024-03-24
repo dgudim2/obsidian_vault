@@ -153,7 +153,7 @@ public class TabWrapper<T extends BaseModel> {
                 isValid = isValid && fieldValid;
             }
             if (isValid) {
-                objectsDao.addObject(object);
+                objectsDao.addOrUpdateObject(object);
                 objectList.refresh();
             }
         });

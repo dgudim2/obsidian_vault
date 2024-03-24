@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" afterDir="false" />
-    </list>
+    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -66,7 +64,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -183,6 +181,8 @@
       <workItem from="1710871026775" duration="12000" />
       <workItem from="1710871043753" duration="219000" />
       <workItem from="1710871271300" duration="306000" />
+      <workItem from="1711288985573" duration="4067000" />
+      <workItem from="1711293059446" duration="3089000" />
     </task>
     <servers />
   </component>

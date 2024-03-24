@@ -15,11 +15,11 @@ public class Utils {
 
     public static boolean writeObject(@NotNull Object object, @NotNull String path) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
-            System.out.println("Object saved: " + object);
             oos.writeObject(object);
+            Logger.info("Object saved: " + object);
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            ErrorHandler.displayException(e).handleDefault();
             return false;
         }
     }
@@ -29,12 +29,12 @@ public class Utils {
     public static <T> T readObject(@NotNull String path, @NotNull T defaultValue) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
             T obj = (T) ois.readObject();
-            System.out.println("Object loaded: " + obj);
+            Logger.info("Object loaded: " + obj);
             return obj;
         } catch (FileNotFoundException e) {
             return defaultValue;
         } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
+            ErrorHandler.displayException(e).handleDefault();
             return defaultValue;
         }
     }

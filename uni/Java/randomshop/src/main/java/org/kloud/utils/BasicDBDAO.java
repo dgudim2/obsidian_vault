@@ -14,7 +14,7 @@ public class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
     }
 
     @Override
-    public boolean addObject(@NotNull T product) {
+    public boolean addOrUpdateObject(@NotNull T product) {
         return false;
     }
 

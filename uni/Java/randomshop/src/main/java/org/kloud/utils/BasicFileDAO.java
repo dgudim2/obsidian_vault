@@ -5,6 +5,7 @@ import org.kloud.model.BaseModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static org.kloud.utils.Utils.readObject;
 import static org.kloud.utils.Utils.writeObject;
@@ -23,10 +24,16 @@ public abstract class BasicFileDAO<T extends BaseModel> extends BasicDAO<T> {
     }
 
     @Override
-    public boolean addObject(@NotNull T object) {
-        if (!objects.contains(object)) {
-            objects.add(object);
+    public boolean addOrUpdateObject(@NotNull T object) {
+        var existingObject = objects.stream().filter(o -> o.id == object.id).findFirst();
+        if (existingObject.isPresent()) {
+            if(Objects.equals(existingObject.get(), object)) {
+                Logger.warn("Unnecessary call to addOrUpdateObject (the same object already exists)");
+                return true;
+            }
+            objects.remove(existingObject.get());
         }
+        objects.add(object);
         return writeObjects();
     }
 

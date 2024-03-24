@@ -19,6 +19,7 @@ import org.kloud.model.user.User;
 import org.kloud.module.gui.Entrypoint;
 import org.kloud.module.gui.TabWrapper;
 import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Logger;
 
 import java.io.IOException;
 import java.util.List;
@@ -205,32 +206,27 @@ public class EntrypointController {
         });
 
         settingsButton.setOnAction(actionEvent -> {
+            if (settingsOpen) {
+                return;
+            }
+
+            Stage settingsWindow = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("settings-view.fxml"));
+            settingsWindow.setTitle("Randomshop settings");
+            settingsWindow.setResizable(false);
+
             try {
-
-                if(settingsOpen) {
-                    return;
-                }
-
-                Stage settingsWindow = new Stage();
-                FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("settings-view.fxml"));
-                settingsWindow.setTitle("Randomshop settings");
-                settingsWindow.setResizable(false);
-
                 settingsWindow.setScene(new Scene(fxmlLoader.load()));
-
-                settingsWindow.show();
-                settingsOpen = true;
-                settingsWindow.setOnCloseRequest(windowEvent -> {
-                    try {
-                        ConfigurationSingleton.writeConfig();
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    settingsOpen = false;
-                });
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
+            settingsWindow.show();
+            settingsOpen = true;
+            settingsWindow.setOnCloseRequest(windowEvent -> {
+                ConfigurationSingleton.writeConfig();
+                settingsOpen = false;
+            });
         });
 
         initUserTab();
@@ -250,7 +246,7 @@ public class EntrypointController {
                         if (user.checkPassword(password)) {
                             loggedInUserV = user;
                             loggedInUser.set(loggedInUserV);
-                            System.out.println("LOGGED IN AS " + loggedInUserV);
+                            Logger.debug("LOGGED IN AS " + loggedInUserV);
                             break;
                         }
                         invalidUserLabel.setVisible(true);

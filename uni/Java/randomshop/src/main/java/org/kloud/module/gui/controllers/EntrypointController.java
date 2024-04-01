@@ -2,33 +2,32 @@ package org.kloud.module.gui.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.kloud.common.HashedString;
+import org.kloud.common.UserCapability;
 import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
-import org.kloud.module.gui.Entrypoint;
 import org.kloud.module.gui.TabWrapper;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Logger;
+import org.kloud.utils.Utils;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 import static org.kloud.utils.Utils.setDanger;
 
-public class EntrypointController {
+public class EntrypointController implements BaseController {
 
     @FXML
     public ListView<Product> productList;
@@ -41,7 +40,9 @@ public class EntrypointController {
     @FXML
     public Button saveProductButton;
     @FXML
-    public TabPane tabs;
+    public TabPane tabContainer;
+    @FXML
+    public Tab userLoginTab;
     @FXML
     public Tab warehousesTab;
     @FXML
@@ -82,10 +83,8 @@ public class EntrypointController {
     public Button saveWarehouseButton;
     @FXML
     public Button settingsButton;
-
-    private AtomicReference<User> loggedInUser = new AtomicReference<>(null);
-
-    private boolean settingsOpen = false;
+    @FXML
+    public AnchorPane root;
 
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
@@ -95,12 +94,9 @@ public class EntrypointController {
     public void initialize() {
         var conf = ConfigurationSingleton.getInstance();
 
-        warehousesTab.setDisable(true);
-        productsTab.setDisable(true);
-        usersTab.setDisable(true);
-
         productTabWrapper = new TabWrapper<>(
                 "product",
+                productsTab,
                 Product.PRODUCTS,
                 conf.storageBackend.get().getProductStorage(),
                 productEditArea,
@@ -112,6 +108,7 @@ public class EntrypointController {
 
         userTabWrapper = new TabWrapper<>(
                 "user",
+                usersTab,
                 User.USERS,
                 conf.storageBackend.get().getUserStorage(),
                 userEditArea,
@@ -123,6 +120,7 @@ public class EntrypointController {
 
         warehouseTabWrapper = new TabWrapper<>(
                 "warehouse",
+                warehousesTab,
                 List.of(Warehouse.class),
                 conf.storageBackend.get().getWarehouseStorage(),
                 warehouseEditArea,
@@ -132,12 +130,17 @@ public class EntrypointController {
                 saveWarehouseButton
         );
 
+        enableDisableTabs();
+
         changeUserPasswordButton.setDisable(true);
         userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
         changeUserPasswordButton.setOnAction(actionEvent -> {
+
+            User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+
             boolean adminLoggedInOrCurrentUser =
-                    loggedInUser.get() instanceof Manager m && m.isAdmin.get()
-                            || Objects.equals(loggedInUser.get(), userTabWrapper.selectedObject.get());
+                    loggedInUser instanceof Manager m && m.isAdmin.get()
+                            || Objects.equals(loggedInUser, userTabWrapper.selectedObject.get());
 
             Alert passwordDialog = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -186,9 +189,9 @@ public class EntrypointController {
                 var oldPass = oldPassInput.getText();
                 var newPass = newPassInput.getText();
 
-                if (adminLoggedInOrCurrentUser || loggedInUser.get().checkPassword(oldPass)) {
-                    var warn = loggedInUser.get().pass.set(new HashedString(newPass));
-                    if (warn == null || warn.isEmpty()) {
+                if (adminLoggedInOrCurrentUser || loggedInUser.checkPassword(oldPass)) {
+                    var warn = loggedInUser.pass.set(new HashedString(newPass));
+                    if (warn.isEmpty()) {
                         wrongPasswordLabel.setVisible(false);
                     } else {
                         wrongPasswordLabel.setText(warn);
@@ -206,79 +209,69 @@ public class EntrypointController {
         });
 
         settingsButton.setOnAction(actionEvent -> {
-            if (settingsOpen) {
-                return;
-            }
-
-            Stage settingsWindow = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource("settings-view.fxml"));
-            settingsWindow.setTitle("Randomshop settings");
-            settingsWindow.setResizable(false);
-
             try {
-                settingsWindow.setScene(new Scene(fxmlLoader.load()));
+                Utils.loadStage(new Stage(), "settings-view.fxml", "Randomshop settings", stage1 -> {
+                    stage1.setResizable(false);
+                    stage1.initOwner(root.getScene().getWindow());
+                    stage1.initModality(Modality.WINDOW_MODAL);
+                });
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                Logger.error("Error opening settings: " + e.getMessage());
             }
-
-            settingsWindow.show();
-            settingsOpen = true;
-            settingsWindow.setOnCloseRequest(windowEvent -> {
-                ConfigurationSingleton.writeConfig();
-                settingsOpen = false;
-            });
         });
 
-        initUserTab();
+        initUserLoginTab();
     }
 
-    private void initUserTab() {
+    private void enableDisableTabs() {
+        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+        if(loggedInUser == null) {
+            warehouseTabWrapper.setEnabled(false);
+            productTabWrapper.setEnabled(false);
+            userTabWrapper.setEnabled(false);
+            return;
+        }
+
+        var caps = loggedInUser.getUserCaps();
+
+        warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
+        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
+        userTabWrapper.setEnabled(true);
+    }
+
+    private void initUserLoginTab() {
         loginButton.setOnAction(actionEvent -> {
 
-            User loggedInUserV = loggedInUser.get();
+            var loginController = ConfigurationSingleton.getLoginController();
+            User loggedInUserV = loginController.loggedInUser.get();
 
             if (loggedInUserV == null) {
                 var login = userField.getText();
                 var password = passwordField.getText();
 
-                for (var user : ConfigurationSingleton.getInstance().storageBackend.get().getUserStorage().getObjects()) {
-                    if (user.login.get().equals(login)) {
-                        if (user.checkPassword(password)) {
-                            loggedInUserV = user;
-                            loggedInUser.set(loggedInUserV);
-                            Logger.debug("LOGGED IN AS " + loggedInUserV);
-                            break;
-                        }
-                        invalidUserLabel.setVisible(true);
-                        return;
-                    }
-                }
-                if (loggedInUserV == null) {
-                    invalidUserLabel.setVisible(true);
-                    return;
-                }
+                var loginResult = loginController.tryLogin(login, password);
+
+                invalidUserLabel.setVisible(!loginResult);
             } else {
-                loggedInUserV = null;
-                loggedInUser.set(null);
+                loginController.logout();
+                invalidUserLabel.setVisible(false);
             }
+        });
+        ConfigurationSingleton.getLoginController().loggedInUser.addListener((observable, oldValue, newValue) -> {
+            enableDisableTabs();
 
-            invalidUserLabel.setVisible(false);
-
-            boolean isLoggedIn = loggedInUserV != null;
+            boolean isLoggedIn = newValue != null;
 
             userField.setDisable(isLoggedIn);
             passwordField.setDisable(isLoggedIn);
 
-            warehousesTab.setDisable(!isLoggedIn);
-            productsTab.setDisable(!isLoggedIn);
-            usersTab.setDisable(!isLoggedIn);
-
             loginButton.setText(isLoggedIn ? "Logout" : "Login");
-            loginTitle.setText(isLoggedIn ? "Logged in as " + loggedInUserV.login : "Please login");
+            loginTitle.setText(isLoggedIn ? "Logged in as " + newValue.login : "Please login");
             setDanger(loginButton, isLoggedIn);
         });
     }
 
+    @Override
     public boolean notifyCloseRequest() {
         String message = "";
         if (productTabWrapper.hasUnsavedChanges()) {
@@ -288,13 +281,21 @@ public class EntrypointController {
         } else if (warehouseTabWrapper.hasUnsavedChanges()) {
             message = "You have some unsaved warehouses, exit?";
         }
+        boolean res = true;
         if (!message.isEmpty()) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
             closeDialog.setTitle("Exit");
             closeDialog.setHeaderText(message);
             var result = closeDialog.showAndWait();
-            return result.isPresent() && result.get() == ButtonType.OK;
+            res = result.isPresent() && result.get() == ButtonType.OK;
         }
-        return true;
+        if(res) {
+            try {
+                ConfigurationSingleton.getInstance().storageBackend.get().close();
+            } catch (Exception e) {
+                Logger.error("Exception while closing backend: " + e.getMessage());
+            }
+        }
+        return res;
     }
 }

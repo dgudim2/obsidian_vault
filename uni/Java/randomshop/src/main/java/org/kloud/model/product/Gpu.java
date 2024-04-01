@@ -1,7 +1,6 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.EnumField;
 import org.kloud.common.Field;
 import org.kloud.model.enums.GpuMemoryType;
 
@@ -19,7 +18,15 @@ public class Gpu extends HardwarePart {
     protected final Field<Integer> memoryBusWidthBytes = new Field<>("Memory bus width (bytes)", true, Integer.class, v -> testBounds(v, 100, -1));
     protected final Field<Integer> memoryClockMhz = new Field<>("Memory clock (MHz)", true, Integer.class, v -> testBounds(v, 100, -1));
     protected final Field<Integer> maxMemoryClockMhz = new Field<>("Max memory clock (MHz)", true, Integer.class, v -> testBounds(v, 100, -1));
-    protected final EnumField<GpuMemoryType> memoryType = new EnumField<>("Memory type", true, GpuMemoryType.class);
+    protected final Field<GpuMemoryType> memoryType = new Field<>("Memory type", true, GpuMemoryType.class, __ -> "");
+
+    public Gpu() {
+        super();
+    }
+
+    public Gpu(long id) {
+        super(id);
+    }
 
     @Override
     public @NotNull List<Field<?>> getFields() {

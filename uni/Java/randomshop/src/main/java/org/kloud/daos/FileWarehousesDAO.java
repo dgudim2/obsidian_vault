@@ -1,4 +1,4 @@
-package org.kloud.utils;
+package org.kloud.daos;
 
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.Warehouse;

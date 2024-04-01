@@ -1,7 +1,6 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.EnumField;
 import org.kloud.common.Field;
 import org.kloud.model.enums.CpuArchitecture;
 import org.kloud.model.enums.CpuSocketType;
@@ -18,11 +17,11 @@ public class Cpu extends HardwarePart {
 
     protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, v -> testBounds(v, 1, -1));
 
-    protected final EnumField<Manufacturer> manufacturer = new EnumField<>("Manufacturer", true, Manufacturer.class);
+    protected final Field<Manufacturer> manufacturer = new Field<>("Manufacturer", true, Manufacturer.class, __ -> "");
 
-    protected final EnumField<CpuSocketType> socketType = new EnumField<>("Socket type", true, CpuSocketType.class);
+    protected final Field<CpuSocketType> socketType = new Field<>("Socket type", true, CpuSocketType.class, __ -> "");
 
-    protected final EnumField<CpuArchitecture> architecture = new EnumField<>("Architechture", true, CpuArchitecture.class);
+    protected final Field<CpuArchitecture> architecture = new Field<>("Architechture", true, CpuArchitecture.class, __ -> "");
 
     protected final Field<Long> clockFrequencyMhz = new Field<>("Clock (MHz)", true, Long.class, v -> testBounds(v, 100, -1));
 
@@ -35,6 +34,14 @@ public class Cpu extends HardwarePart {
     protected final Field<Boolean> hasIGpu = new Field<>("Has IGpu", true, Boolean.class, __ -> "");
 
     protected final Field<Long> maxRamCapacityMb = new Field<>("Max ram capacity (mb)", true, Long.class, v -> testBounds(v, 10, -1));
+
+    public Cpu() {
+        super();
+    }
+
+    public Cpu(long id) {
+        super(id);
+    }
 
     @Override
     public @NotNull List<Field<?>> getFields() {

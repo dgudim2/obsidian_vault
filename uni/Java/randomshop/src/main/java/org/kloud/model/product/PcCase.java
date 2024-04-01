@@ -1,7 +1,6 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.EnumField;
 import org.kloud.common.Field;
 import org.kloud.model.enums.MotherboardFormFactor;
 import org.kloud.model.enums.SidePanelType;
@@ -14,8 +13,16 @@ public class PcCase extends HardwarePart {
 
     public static String NAME = "Pc case";
     protected final Field<Color> color = new Field<>("Color", true, Color.class, __ -> "");
-    protected final EnumField<MotherboardFormFactor> motherboardFormFactor = new EnumField<>("Form-factor", true, MotherboardFormFactor.class);
-    protected final EnumField<SidePanelType> sidePanelType = new EnumField<>("Side-panel type", true, SidePanelType.class);
+    protected final Field<MotherboardFormFactor> motherboardFormFactor = new Field<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
+    protected final Field<SidePanelType> sidePanelType = new Field<>("Side-panel type", true, SidePanelType.class, __ -> "");
+
+    public PcCase() {
+        super();
+    }
+
+    public PcCase(long id) {
+        super(id);
+    }
 
     @Override
     public @NotNull List<Field<?>> getFields() {

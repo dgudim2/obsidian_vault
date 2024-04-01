@@ -9,7 +9,7 @@ import org.kloud.utils.Logger;
 
 import java.util.List;
 
-public class SettingsController {
+public class SettingsController implements BaseController {
     @FXML
     public TextField serverAddressInput;
 
@@ -39,8 +39,15 @@ public class SettingsController {
         serverAddressInput.textProperty().bindBidirectional(config.serverAddress);
         dbAddressInput.textProperty().bindBidirectional(config.dbAddress);
 
+        logLevelSelector.setItems(FXCollections.observableList(List.of(Logger.Loglevel.values())));
         logLevelSelector.getSelectionModel().select(config.targetLogLevel.get());
         config.targetLogLevel.bind(logLevelSelector.getSelectionModel().selectedItemProperty());
-        logLevelSelector.setItems(FXCollections.observableList(List.of(Logger.Loglevel.values())));
+    }
+
+    @Override
+    public boolean notifyCloseRequest() {
+        ConfigurationSingleton.writeConfig();
+        // TODO: Test connection to db/etc
+        return true;
     }
 }

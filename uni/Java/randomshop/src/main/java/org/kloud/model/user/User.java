@@ -3,14 +3,13 @@ package org.kloud.model.user;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Field;
 import org.kloud.common.HashedString;
+import org.kloud.common.UserCapability;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.Utils;
 import org.kloud.utils.card.CardValidationResult;
 import org.kloud.utils.card.RegexCardValidator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static org.kloud.utils.Utils.hashPass;
 
@@ -31,13 +30,28 @@ public abstract class User extends BaseModel {
     });
 
     public final Field<String> login = new Field<>("Login", true, String.class, v -> Utils.testLength(v, 1, 100));
-    public final Field<HashedString> pass = new Field<>("Password", true, HashedString.class, v -> Utils.testLength(v.getRaw(), 8, 100));
+    public final Field<HashedString> pass = new Field<>("Password", true, HashedString.class, v -> {
+        // Raw is set when we start typing in the field, .get() is set when the field is loaded from backend or set successfully
+        var rawValue = v.getRaw();
+        if(rawValue != null) {
+            return Utils.testLength(rawValue, 8, 100);
+        }
+        return "";
+    });
 
     User() {
-
+        super();
     }
     public User(long id) {
         super(id);
+    }
+
+    public Set<UserCapability> getUserCaps() {
+        var caps = new HashSet<UserCapability>();
+        caps.add(UserCapability.CHANGE_SELF_PASSWORD);
+        caps.add(UserCapability.RW_SELF_PRODUCTS);
+        caps.add(UserCapability.RW_SELF_WAREHOUSES);
+        return caps;
     }
 
     public boolean checkPassword(@NotNull String inputPass) {

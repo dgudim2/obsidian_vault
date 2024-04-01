@@ -6,7 +6,7 @@ import com.googlecode.lanterna.gui2.dialogs.MessageDialogBuilder;
 import com.googlecode.lanterna.gui2.dialogs.MessageDialogButton;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.user.User;
-import org.kloud.utils.BasicDAO;
+import org.kloud.daos.BasicDAO;
 
 import java.util.List;
 import java.util.regex.Pattern;

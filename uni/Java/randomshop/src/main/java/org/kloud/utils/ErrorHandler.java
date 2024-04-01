@@ -20,7 +20,7 @@ public class ErrorHandler {
                 \n
                 Close = Ignore error
                 Finish = Exit app
-                Yes = Try to continue
+                Yes = Try to continue (retry where appropriate)
                 """);
         var res = errorDialog.showAndWait();
 

@@ -19,9 +19,17 @@ public class Warehouse extends BaseModel {
     public final Field<Integer> maxCapacity = new Field<>("Capacity", true, Integer.class, v -> Utils.testBounds(v, 100, -1));
 
     public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
-            () -> ConfigurationSingleton.getInstance().storageBackend.get().getUserStorage().getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList());
-    // public final Field<ArrayList<Long>> products = new Field<>();
+            () -> ConfigurationSingleton.getInstance().storageBackend.get()
+                    .getUserStorage().getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList());
 
+
+    public Warehouse() {
+        super();
+    }
+
+    public Warehouse(long id) {
+        super(id);
+    }
 
     @Override
     public @NotNull List<Field<?>> getFields() {

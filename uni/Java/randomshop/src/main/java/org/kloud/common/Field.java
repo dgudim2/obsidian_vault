@@ -1,5 +1,6 @@
 package org.kloud.common;
 
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -11,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kloud.model.ColumnDescriptor;
 import org.kloud.utils.Logger;
 
 import java.awt.*;
@@ -28,17 +30,17 @@ import static org.kloud.utils.Utils.setDanger;
 public class Field<T extends Serializable> implements Serializable {
 
     public final String name;
-    protected final String columnName;
     @Nullable
     protected T value;
     public final boolean required;
     protected transient Function<T, @NotNull String> validator;
     public final Class<T> klass;
 
+    private ColumnDescriptor<T> columnDescriptor;
+
     public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
         this.name = name;
         value = defaultValue;
-        this.columnName = name.trim().toLowerCase().replace("-", " ").replace(" ", "_");
         this.klass = klass;
         this.required = required;
         this.validator = validator;
@@ -52,6 +54,14 @@ public class Field<T extends Serializable> implements Serializable {
     public void postRead(@NotNull Field<?> cleanField) {
         Logger.debug("postRead for " + name + " (" + value + ")");
         validator = (Function<T, String>) cleanField.validator;
+    }
+
+    @NotNull
+    public ColumnDescriptor<T> getColumnDescriptor() {
+        if(columnDescriptor == null) {
+            columnDescriptor = new ColumnDescriptor<>(this);
+        }
+        return columnDescriptor;
     }
 
     public T get() {
@@ -108,12 +118,7 @@ public class Field<T extends Serializable> implements Serializable {
             validationCallback =
                     () -> {
                         var text = ((TextField) inputField).getText();
-                        if (text.isEmpty()) {
-                            return validationCallbackBase.apply(inputField, set(null));
-                        }
-                        var hashed = new HashedString();
-                        hashed.set(text);
-                        return validationCallbackBase.apply(inputField, set((T) hashed));
+                        return validationCallbackBase.apply(inputField, set((T) new HashedString(text)));
                     };
 
             ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.get());
@@ -143,6 +148,7 @@ public class Field<T extends Serializable> implements Serializable {
             }
         } else if (klass.equals(Boolean.class)) {
             inputField = new CheckBox(Boolean.toString(Objects.equals(Boolean.TRUE, value)));
+            ((CheckBox) inputField).selectedProperty().setValue(Objects.equals(Boolean.TRUE, value));
             validationCallback = () -> true;
             ((CheckBox) inputField).selectedProperty().addListener((observableValue, oldValue, newValue) -> {
                 ((CheckBox) inputField).setText(Boolean.toString(Objects.equals(Boolean.TRUE, newValue)));
@@ -228,6 +234,17 @@ public class Field<T extends Serializable> implements Serializable {
                                 (int) (fxColor.getOpacity() * 255)
                         )));
                     };
+        } else if (klass.isEnum()) {
+            var comboBox = new ComboBox<>(FXCollections.observableList(List.of(klass.getEnumConstants())));
+            inputField = comboBox;
+            validationCallback =
+                    () -> validationCallbackBase.apply(comboBox, set(comboBox.getValue()));
+            if (value != null) {
+                comboBox.getSelectionModel().select(value);
+            } else {
+                comboBox.getSelectionModel().selectFirst();
+            }
+            comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.get());
         } else {
             inputField = new Label(klass + " NOT IMPLEMENTED");
             validationCallback = null;
@@ -254,9 +271,9 @@ public class Field<T extends Serializable> implements Serializable {
         labelContainer.getChildren().addAll(label, errorLabel);
         labelContainer.setPadding(new Insets(0, 5, 0, 5));
 
-        final BiFunction<Node, String, Boolean> validationCallbackBase = (@NotNull Node input, @Nullable String validationData) -> {
+        final BiFunction<Node, String, Boolean> validationCallbackBase = (@NotNull Node input, @NotNull String validationData) -> {
             Logger.debug("Validated " + input + " (" + validationData + ")");
-            if (validationData != null) {
+            if (!validationData.isEmpty()) {
                 setDanger(input, true);
                 errorLabel.setText(validationData);
                 errorLabel.setVisible(true);

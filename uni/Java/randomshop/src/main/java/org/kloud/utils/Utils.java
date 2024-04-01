@@ -1,8 +1,16 @@
 package org.kloud.utils;
 
 import javafx.css.PseudoClass;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import org.kloud.common.HashedString;
+import org.kloud.model.user.Manager;
+import org.kloud.model.user.User;
+import org.kloud.module.gui.Entrypoint;
+import org.kloud.module.gui.controllers.BaseController;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -10,6 +18,8 @@ import java.io.*;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class Utils {
 
@@ -128,4 +138,46 @@ public class Utils {
         return hashValue;
     }
 
+    @NotNull
+    public static Stage loadStage(@NotNull Stage stage, String filename, String title, Consumer<Stage> initConsumer) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Entrypoint.class.getResource(filename));
+        stage.setTitle(title);
+        stage.setScene(new Scene(fxmlLoader.load()));
+        initConsumer.accept(stage);
+        stage.setOnCloseRequest(we -> {
+            BaseController controller = fxmlLoader.getController();
+            if (!controller.notifyCloseRequest()) {
+                we.consume();
+            }
+        });
+        stage.show();
+        return stage;
+    }
+
+    @NotNull
+    public static Stage loadStage(@NotNull Stage stage, String filename, String title) throws IOException {
+        return loadStage(stage, filename, title, stage1 -> {});
+    }
+
+    @NotNull
+    public static List<User> createDefaultUser(@NotNull List<User> users) {
+        boolean has_admin = false;
+        for (var user : users) {
+            has_admin = user.id == User.ADMIN_ID;
+            if (has_admin) {
+                break;
+            }
+        }
+        if (!has_admin) {
+            var adminUser = new Manager(User.ADMIN_ID);
+            adminUser.name.set("Default");
+            adminUser.surname.set("User");
+            adminUser.login.set("admin");
+            adminUser.isAdmin.set(true);
+            adminUser.isSuperAdmin.set(true);
+            adminUser.pass.set(new HashedString("admin123"));
+            users.add(adminUser);
+        }
+        return users;
+    }
 }

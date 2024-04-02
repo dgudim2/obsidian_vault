@@ -85,7 +85,7 @@
 |                                              važiojame | let's go (by car)                                      |
 |                                               taip pat | also                                                   |
 |                                                  kartu | together                                               |
-|                                                        |                                                        |
+|                                                  šeima | family                                                 |
 
 |      Lit | Eng    |
 | --------:|:------ |

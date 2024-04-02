@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="root" maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.EntrypointController">
+    <TabPane fx:id="tabContainer" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Tab fx:id="userLoginTab" text="Shop">
+            <AnchorPane minHeight="0.0" minWidth="0.0">
+                <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome! :)" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+            <Button fx:id="settingsButton" layoutX="510.0" layoutY="418.0" mnemonicParsing="false" text="⚙️" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+               <font>
+                  <Font size="35.0" />
+               </font>
+               <padding>
+                  <Insets bottom="-10.0" top="-10.0" />
+               </padding>
+            </Button>
+            <Label layoutX="169.0" layoutY="280.0" text="Didn't have time to convert to table, sorry :(" />
+            </AnchorPane>
+        </Tab>
+        <Tab fx:id="productsTab" text="Books">
+            <AnchorPane>
+                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ListView fx:id="productList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteProductButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
+                        <Button fx:id="addProductButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    </AnchorPane>
+               <Button fx:id="filterButton" layoutX="14.0" layoutY="1.0" mnemonicParsing="false" text="Filter data" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                </AnchorPane>
+                <Pane fx:id="productEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <Button fx:id="saveProductButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+
+                </Button>
+            </AnchorPane>
+        </Tab>
+    </TabPane>
+   <Label fx:id="lastMessageLabel" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+
+</AnchorPane>

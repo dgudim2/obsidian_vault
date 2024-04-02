@@ -6,7 +6,8 @@ public class Customer extends User {
 
     public static String NAME = "Customer";
 
-    protected Customer() {
+    public Customer() {
+        super();
     }
 
     public Customer(long id) {

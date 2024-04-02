@@ -1,7 +1,7 @@
 package org.kloud.common;
 
 import javafx.util.Pair;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
 import java.security.SecureRandom;
@@ -9,7 +9,7 @@ import java.security.SecureRandom;
 import static org.kloud.utils.Utils.bytesToHexStr;
 import static org.kloud.utils.Utils.hashPass;
 
-public class HashedString implements Serializable {
+public class HashedString extends CustomDatatype implements Serializable {
 
     private String hashValue;
     private String hashSalt;
@@ -20,25 +20,28 @@ public class HashedString implements Serializable {
 
     }
 
-    public HashedString(@NotNull String newValue) {
+    public HashedString(@Nullable String newValue) {
         set(newValue);
     }
 
-    @NotNull
+    @Nullable
     public String getRaw() {
-        return rawValue == null ? "" : rawValue;
+        return rawValue;
     }
 
-    public void set(@NotNull String newValue) {
+    public void set(@Nullable String newValue) {
         SecureRandom random = new SecureRandom();
         byte[] salt = new byte[16];
         random.nextBytes(salt);
 
         rawValue = newValue;
-        hashSalt = bytesToHexStr(salt);
-        hashValue = hashPass(newValue, hashSalt);
+        if (newValue != null) {
+            hashSalt = bytesToHexStr(salt);
+            hashValue = hashPass(newValue, hashSalt);
+        }
     }
 
+    @Nullable
     public Pair<String, String> get() {
         if (hashValue.isEmpty()) {
             return null;
@@ -46,4 +49,15 @@ public class HashedString implements Serializable {
         return new Pair<>(hashValue, hashSalt);
     }
 
+    @Override
+    public String serializeToString() {
+        return hashValue + "--" + hashSalt;
+    }
+
+    @Override
+    public void deserializeFromString(String data) {
+        var parts = data.split("--");
+        hashValue = parts[0];
+        hashSalt = parts[1];
+    }
 }

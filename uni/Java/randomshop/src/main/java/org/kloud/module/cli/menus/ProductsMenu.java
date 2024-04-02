@@ -4,7 +4,7 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.product.Product;
-import org.kloud.utils.BasicDAO;
+import org.kloud.daos.BasicDAO;
 
 import static org.kloud.model.product.Product.PRODUCTS;
 import static org.kloud.module.cli.Utils.*;

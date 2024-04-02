@@ -25,6 +25,7 @@
 + austin powers
 + Офис
 + Peeky blinders
++ Blade runner 2049
 
 ## Anime
 + Стальной алхимик 2008
@@ -57,6 +58,7 @@
 + Cowboy bebop
 + Монолог фармацевта
 + Синдуальность: Нуар
++ https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
 
 
 # Stuff to read

@@ -12,7 +12,8 @@ import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.module.gui.components.BootstrapRow;
 import org.kloud.module.gui.components.Breakpoint;
-import org.kloud.utils.BasicDAO;
+import org.kloud.daos.BasicDAO;
+import org.kloud.utils.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -21,12 +22,21 @@ import java.util.function.Supplier;
 
 public class TabWrapper<T extends BaseModel> {
 
+    @NotNull
     public final ObjectProperty<T> selectedObject = new SimpleObjectProperty<>(null);
+    @NotNull
     protected final BasicDAO<T> objectsDao;
+    @NotNull
     protected final ListView<T> objectList;
+    @NotNull
     protected final Button saveButton;
+    @NotNull
+    protected final Tab tab;
+
+    protected boolean isInitialized = false;
 
     public TabWrapper(@NotNull String objectName,
+                      @NotNull Tab tab,
                       @NotNull List<Class<? extends T>> possibleObjects,
                       @NotNull BasicDAO<T> objectsDao,
                       @NotNull Pane objectEditArea,
@@ -37,8 +47,16 @@ public class TabWrapper<T extends BaseModel> {
         this.objectsDao = objectsDao;
         this.objectList = objectList;
         this.saveButton = saveButton;
+        this.tab = tab;
 
-        objectList.getItems().addAll(objectsDao.getObjects());
+        setEnabled(true);
+        tab.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && objectList.getItems().isEmpty()) {
+                isInitialized = true;
+                Logger.debug(objectName + " tab is now active");
+                objectList.getItems().setAll(objectsDao.getObjects());
+            }
+        });
 
         BootstrapPane pane = new BootstrapPane();
         pane.prefWidthProperty().bind(objectEditArea.widthProperty());
@@ -68,8 +86,8 @@ public class TabWrapper<T extends BaseModel> {
                 }
                 var prod = selectedObject.get();
                 objectsDao.removeObject(prod);
-                objectList.getItems().remove(prod);
                 objectList.getSelectionModel().clearSelection();
+                objectList.getItems().remove(prod);
             });
         });
 
@@ -89,7 +107,6 @@ public class TabWrapper<T extends BaseModel> {
 
                 final int[] selectedObjectIndex = {-1};
 
-                ComboBox<String> objectSelector = new ComboBox<>();
                 List<String> objectNames = new ArrayList<>(possibleObjects.size());
                 for (var object : possibleObjects) {
                     try {
@@ -98,7 +115,8 @@ public class TabWrapper<T extends BaseModel> {
                         objectNames.add(String.valueOf(object));
                     }
                 }
-                objectSelector.setItems(FXCollections.observableList(objectNames));
+                ComboBox<String> objectSelector = new ComboBox<>(FXCollections.observableList(objectNames));
+
                 objectSelector.getSelectionModel().selectedIndexProperty().addListener((observableValue, index, newIndex) -> {
                     selectedObjectIndex[0] = (int) newIndex;
                     objectDialog.getDialogPane().lookupButton(ButtonType.OK).setDisable(false);
@@ -128,6 +146,10 @@ public class TabWrapper<T extends BaseModel> {
         }
     }
 
+    public void setEnabled(boolean enabled) {
+        tab.setDisable(!enabled);
+    }
+
     private BootstrapRow loadItemsForObject(@NotNull T object) {
         BootstrapRow row = new BootstrapRow();
         var fields = object.getFields();
@@ -144,7 +166,7 @@ public class TabWrapper<T extends BaseModel> {
             row.addColumn(column);
         }
 
-        System.out.println("Loaded " + fields.size() + " fields for '" + object + "'");
+        Logger.info("Loaded " + fields.size() + " fields for '" + object + "'");
 
         saveButton.setOnAction(actionEvent -> {
             boolean isValid = true;
@@ -153,8 +175,9 @@ public class TabWrapper<T extends BaseModel> {
                 isValid = isValid && fieldValid;
             }
             if (isValid) {
-                objectsDao.addObject(object);
-                objectList.refresh();
+                if (objectsDao.addOrUpdateObject(object)) {
+                    objectList.refresh();
+                }
             }
         });
 
@@ -162,6 +185,7 @@ public class TabWrapper<T extends BaseModel> {
     }
 
     public boolean hasUnsavedChanges() {
-        return objectList.getItems().size() != objectsDao.getObjects().size() || !objectsDao.isLatestVersionSaved();
+        return objectsDao.isInitialized() && isInitialized &&
+                (objectList.getItems().size() != objectsDao.getObjects().size() || !objectsDao.isLatestVersionSaved());
     }
 }

@@ -24,6 +24,10 @@ public abstract class BaseModel implements Serializable {
     @NotNull
     public abstract List<Field<?>> getFields();
 
+    public List<? extends ColumnDescriptor<?>> getColumnDescriptors() {
+        return getFields().stream().map(Field::getColumnDescriptor).toList();
+    }
+
     public void postRead() {
         BaseModel cleanInstance;
         try {

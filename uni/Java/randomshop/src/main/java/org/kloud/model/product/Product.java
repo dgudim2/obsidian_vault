@@ -26,6 +26,14 @@ public abstract class Product extends BaseModel {
     });
     protected final Field<Float> rating = new Field<>("Rating", true, Float.class, v -> Utils.testBounds(v, 0, 10));
 
+    public Product() {
+        super();
+    }
+
+    public Product(long id) {
+        super(id);
+    }
+
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {

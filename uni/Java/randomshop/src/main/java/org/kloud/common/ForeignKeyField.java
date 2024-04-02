@@ -6,6 +6,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.model.BaseModel;
 
 import java.util.List;
@@ -14,10 +15,12 @@ import java.util.function.Supplier;
 
 public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
+    protected transient T linkedValue;
+
     private Supplier<List<T>> linkedObjectsProducer;
 
     public ForeignKeyField(@NotNull String name, boolean required, Supplier<List<T>> linkedObjectsProducer) {
-        super(name, required, Long.class, id -> {
+        super(name, -1L, required, Long.class, id -> {
             var linkedObjects = linkedObjectsProducer.get();
             if (linkedObjects != null && !linkedObjects.isEmpty()) {
                 for (var obj : linkedObjects) {
@@ -29,6 +32,40 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
             return id != -1 ? "Invalid link" : "";
         });
         this.linkedObjectsProducer = linkedObjectsProducer;
+    }
+
+    @Nullable
+    public T getLinkedValue() {
+        if(linkedValue == null) {
+            var linkedObjects = linkedObjectsProducer.get();
+            if (linkedObjects != null && !linkedObjects.isEmpty()) {
+                for (var obj : linkedObjects) {
+                    if (obj.id == get()) {
+                        linkedValue = obj;
+                        break;
+                    }
+                }
+            }
+        }
+        return linkedValue;
+    }
+
+    public String setLinkedValue(@NotNull T newValue) {
+        var warn = set(newValue.id);
+        if (warn.isEmpty()) {
+            linkedValue = newValue;
+        }
+        return warn;
+    }
+
+    @Override
+    @NotNull
+    public String set(Long value) {
+        var warn = super.set(value);
+        if (warn.isEmpty()) {
+            linkedValue = null;
+        }
+        return warn;
     }
 
     @SuppressWarnings("unchecked")
@@ -43,21 +80,14 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
         var linkedObjects = linkedObjectsProducer.get();
 
-        var comboBox = new ComboBox<T>();
+        // TODO: auto-refresh
+        var comboBox = new ComboBox<>(FXCollections.observableList(linkedObjects));
         Supplier<Boolean> validationCallback = () -> validationCallbackBase.apply(comboBox, set(comboBox.getValue().id));
-        if (value != null) {
-            for (T obj : linkedObjects) {
-                if (value == obj.id) {
-                    comboBox.getSelectionModel().select(obj);
-                    break;
-                }
-            }
+        T linkedValue = getLinkedValue();
+        if (linkedValue != null) {
+            comboBox.getSelectionModel().select(linkedValue);
         }
         comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.get());
-
-        // TODO: autorefresh
-        comboBox.setItems(FXCollections.observableList(linkedObjects));
-
         return new Pair<>(comboBox, validationCallback);
     }
 }

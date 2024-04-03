@@ -1,8 +1,6 @@
 package org.kloud.common;
 
-import java.io.Serializable;
-
-public class Dimensions extends CustomDatatype implements Serializable {
+public class Dimensions extends CustomDatatype {
     protected float width;
     protected float height;
     protected float depth;

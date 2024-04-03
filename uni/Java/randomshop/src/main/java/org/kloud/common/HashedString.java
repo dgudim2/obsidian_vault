@@ -3,13 +3,12 @@ package org.kloud.common;
 import javafx.util.Pair;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.Serializable;
 import java.security.SecureRandom;
 
 import static org.kloud.utils.Utils.bytesToHexStr;
 import static org.kloud.utils.Utils.hashPass;
 
-public class HashedString extends CustomDatatype implements Serializable {
+public class HashedString extends CustomDatatype {
 
     private String hashValue;
     private String hashSalt;

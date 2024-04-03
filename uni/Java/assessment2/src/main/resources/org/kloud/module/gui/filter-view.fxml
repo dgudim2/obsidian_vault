@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="270.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox maxHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <CheckBox fx:id="startYearEnabled" prefHeight="300.0" prefWidth="140.0" text="Start year">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </CheckBox>
+                        <Separator prefHeight="250.0" prefWidth="20.0" />
+                        <TextField fx:id="startYear" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <CheckBox fx:id="endYearEnabled" prefHeight="300.0" prefWidth="140.0" text="End year">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </CheckBox>
+                        <Separator prefHeight="250.0" prefWidth="20.0" />
+                        <TextField fx:id="endYear" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                            </HBox.margin>
+                        </TextField>
+                    </children>
+                </HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <CheckBox fx:id="availabilityEnabled" prefHeight="300.0" prefWidth="140.0" text="Availability">
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </CheckBox>
+                        <Separator prefHeight="250.0" prefWidth="20.0" />
+                        <CheckBox fx:id="availability" prefWidth="200.0">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                            </HBox.margin>
+                        </CheckBox>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <CheckBox fx:id="genreEnabled" prefHeight="300.0" prefWidth="140.0" text="Genre">
+                            <HBox.margin>
+                                <Insets />
+                            </HBox.margin>
+                            <padding>
+                                <Insets left="10.0" />
+                            </padding>
+                        </CheckBox>
+                        <Separator prefHeight="691.0" prefWidth="20.0" />
+                        <ComboBox fx:id="genre" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                            <HBox.margin>
+                                <Insets bottom="5.0" left="10.0" top="5.0" />
+                            </HBox.margin></ComboBox>
+                    </children>
+                </HBox>
+            </children></VBox>
+        <Label alignment="CENTER" layoutX="284.0" layoutY="32.0" prefHeight="18.0" prefWidth="239.0" text="Edit the filtering and close the window" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
+        <Label fx:id="errorText" alignment="CENTER" layoutX="274.0" layoutY="368.0" textFill="#7c7c7c" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+    </children>
+</AnchorPane>

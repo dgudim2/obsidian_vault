@@ -16,9 +16,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -135,6 +135,13 @@
       <item itemvalue="Maven.Build" />
     </list>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-78a6f59c" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -185,7 +192,7 @@
       <workItem from="1711822807051" duration="1793000" />
       <workItem from="1711883605080" duration="11543000" />
       <workItem from="1711960455557" duration="31295000" />
-      <workItem from="1712043740524" duration="4613000" />
+      <workItem from="1712048876380" duration="6442000" />
     </task>
     <servers />
   </component>

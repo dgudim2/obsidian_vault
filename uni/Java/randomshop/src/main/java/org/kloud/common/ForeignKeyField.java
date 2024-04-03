@@ -11,6 +11,7 @@ import org.kloud.model.BaseModel;
 
 import java.util.List;
 import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
@@ -18,8 +19,9 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
     protected transient T linkedValue;
 
     private Supplier<List<T>> linkedObjectsProducer;
+    private final Consumer<T> onValueUpdated;
 
-    public ForeignKeyField(@NotNull String name, boolean required, Supplier<List<T>> linkedObjectsProducer) {
+    public ForeignKeyField(@NotNull String name, boolean required, Supplier<List<T>> linkedObjectsProducer, Consumer<T> onValueUpdated) {
         super(name, -1L, required, Long.class, id -> {
             var linkedObjects = linkedObjectsProducer.get();
             if (linkedObjects != null && !linkedObjects.isEmpty()) {
@@ -32,11 +34,12 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
             return id != -1 ? "Invalid link" : "";
         });
         this.linkedObjectsProducer = linkedObjectsProducer;
+        this.onValueUpdated = onValueUpdated;
     }
 
     @Nullable
     public T getLinkedValue() {
-        if(linkedValue == null) {
+        if (linkedValue == null) {
             var linkedObjects = linkedObjectsProducer.get();
             if (linkedObjects != null && !linkedObjects.isEmpty()) {
                 for (var obj : linkedObjects) {
@@ -87,7 +90,11 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
         if (linkedValue != null) {
             comboBox.getSelectionModel().select(linkedValue);
         }
-        comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.get());
+        comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (validationCallback.get()) {
+                onValueUpdated.accept(getLinkedValue());
+            }
+        });
         return new Pair<>(comboBox, validationCallback);
     }
 }

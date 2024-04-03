@@ -20,7 +20,7 @@ public class Warehouse extends BaseModel {
 
     public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
             () -> ConfigurationSingleton.getInstance().storageBackend.get()
-                    .getUserStorage().getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList());
+                    .getUserStorage().getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList(), manager -> {});
 
 
     public Warehouse() {

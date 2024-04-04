@@ -58,7 +58,8 @@
     "iconInTitleEnabled": true,
     "iconInFrontmatterEnabled": true,
     "iconsInNotesEnabled": true,
-    "iconIdentifier": ":"
+    "iconIdentifier": ":",
+    "iconsInLinksEnabled": true
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

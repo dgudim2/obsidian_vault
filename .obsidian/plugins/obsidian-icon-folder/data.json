@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "FasBook",
       "FasLinesLeaning",
       "IbMoneyNote",
       "FabJava",
@@ -100,5 +101,6 @@
   "uni/Lithuanian/14-03.march-2024.md": "FasLinesLeaning",
   "uni/Lithuanian/01-03.march-2024.md": "FasLinesLeaning",
   "uni/Lithuanian/22-03.march-2024.md": "FasLinesLeaning",
-  "uni/Lithuanian/29.03.march-2024.md": "FasLinesLeaning"
+  "uni/Lithuanian/29.03.march-2024.md": "FasLinesLeaning",
+  "uni/Lithuanian/Dictionary.md": "FasBook"
 }

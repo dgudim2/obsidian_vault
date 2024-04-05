@@ -1,3 +1,6 @@
+---
+icon: FasBook
+---
 ## To be / verbs / pronouns
 
 ![[Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive.pdf#page=9&rect=50,454,347,534|Nė dienos be lietuvių kalbos -- V. Stumbrienė, A. Kaškelevičienė -- 1, 2001 -- Gimtasis žodis -- 9789986453987 -- c2435831b01a749e874f33770f30952a -- Anna’s Archive, p.9]]

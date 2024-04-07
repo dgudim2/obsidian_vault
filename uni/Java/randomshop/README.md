@@ -11,3 +11,6 @@ git config --worktree core.sparseCheckoutCone false
 git sparse-checkout set uni/Java/randomshop
 
 > After this you should only have 1 folder (obsidian_vault/uni/Java/randomshop/) this is the project
+
+Default user: admin
+Default password: admin123

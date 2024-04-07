@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+// TODO: Exit application on backend change
 /**
  * A singleton class holding all application state and config
  */

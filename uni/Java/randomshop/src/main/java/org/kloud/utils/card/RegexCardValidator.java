@@ -1,6 +1,8 @@
 package org.kloud.utils.card;
 
-// All credit goes to https://gist.github.com/icchan/47d83bacc5113db59fbc
+/**
+ * @see <a href="https://gist.github.com/icchan/47d83bacc5113db59fbc">Source</a>
+ */
 public class RegexCardValidator {
     /**
      * Checks if the field is a valid credit card number.

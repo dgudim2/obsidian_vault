@@ -1,8 +1,10 @@
 package org.kloud.model;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Field;
-import org.kloud.common.ForeignKeyField;
+import org.kloud.common.Fields.Field;
+import org.kloud.common.Fields.ForeignKeyField;
+import org.kloud.common.Fields.ForeignKeyListField;
+import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
@@ -19,9 +21,38 @@ public class Warehouse extends BaseModel {
     public final Field<Integer> maxCapacity = new Field<>("Capacity", true, Integer.class, v -> Utils.testBounds(v, 100, -1));
 
     public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
-            () -> ConfigurationSingleton.getInstance().storageBackend.get()
-                    .getUserStorage().getObjects().stream().filter(user -> user instanceof Manager).map(user -> (Manager) user).toList(), manager -> {});
+            id -> {
+                var user = ConfigurationSingleton.getStorage()
+                        .getUserStorage().getById(id);
+                if (user instanceof Manager m) {
+                    return m;
+                }
+                return null;
+            },
+            () -> ConfigurationSingleton.getStorage()
+                    .getUserStorage().getObjects().stream()
+                    .filter(user -> user instanceof Manager)
+                    .map(user -> (Manager) user)
+                    .toList(), manager -> {
+    });
 
+    public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true,
+            ids -> ConfigurationSingleton.getStorage()
+                    .getProductStorage().getObjects()
+                    .stream()
+                    .filter(product -> product.assignedWarehouse.get() == id)
+                    .toList(),
+            () -> ConfigurationSingleton.getStorage()
+                    .getProductStorage().getObjects(),
+            (oldProducts, products) -> {
+                for (var oldProduct : oldProducts) {
+                    // NOTE: This is a dirty way to do it, should calculate difference instead
+                    oldProduct.assignedWarehouse.set((long) -1);
+                }
+                for (var product : products) {
+                    product.assignedWarehouse.set(id);
+                }
+            });
 
     public Warehouse() {
         super();
@@ -31,13 +62,27 @@ public class Warehouse extends BaseModel {
         super(id);
     }
 
+    public boolean isFullCapacity() {
+        return products.get().size() >= maxCapacity.get();
+    }
+
     @Override
     public @NotNull List<Field<?>> getFields() {
         List<Field<?>> fields = new ArrayList<>();
         fields.add(address);
         fields.add(maxCapacity);
         fields.add(assignedManager);
+        fields.add(products);
         return fields;
+    }
+
+    @Override
+    public String isSafeToDelete() {
+        var manager = assignedManager.getLinkedValue();
+        if (manager != null) {
+            return "Warehouse has a manager: " + manager.name;
+        }
+        return "";
     }
 
     @Override

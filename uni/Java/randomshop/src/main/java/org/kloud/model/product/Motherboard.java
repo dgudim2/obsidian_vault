@@ -1,7 +1,7 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Field;
+import org.kloud.common.Fields.Field;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.MotherboardFormFactor;
 

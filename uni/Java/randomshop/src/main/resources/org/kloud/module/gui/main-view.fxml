@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.EntrypointController">
-    <TabPane fx:id="tabContainer" prefHeight="500.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="root" maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.EntrypointController">
+    <TabPane prefHeight="800.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab fx:id="userLoginTab" text="Shop">
             <AnchorPane minHeight="0.0" minWidth="0.0">
                 <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
@@ -48,6 +48,14 @@
                   <Insets bottom="-10.0" top="-10.0" />
                </padding>
             </Button>
+                <ScrollPane layoutX="239.0" layoutY="720.0" minHeight="150.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0">
+                    <Label fx:id="lastMessageLabel">
+                        <font>
+                            <Font size="11.0" />
+                        </font>
+                    </Label>
+                </ScrollPane>
+
             </AnchorPane>
         </Tab>
         <Tab fx:id="usersTab" text="Users">
@@ -75,10 +83,11 @@
                         <Button fx:id="addProductButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                     </AnchorPane>
                 </AnchorPane>
-                <Pane fx:id="productEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <Pane fx:id="productEditArea" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                 <Button fx:id="saveProductButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
+            <Button fx:id="addToCartButton" layoutX="398.0" layoutY="418.0" mnemonicParsing="false" text="Add to cart" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
             </AnchorPane>
         </Tab>
         <Tab fx:id="warehousesTab" text="Warehouses">
@@ -96,7 +105,20 @@
                 </Button>
             </AnchorPane>
         </Tab>
+        <Tab fx:id="ordersTab" text="Cart/orders">
+            <AnchorPane>
+                <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <ListView fx:id="ordersList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteOrderButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+                    </AnchorPane>
+                </AnchorPane>
+                <Pane fx:id="orderEditArea" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                <Button fx:id="saveOrderButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+
+                </Button>
+            </AnchorPane>
+        </Tab>
     </TabPane>
-   <Label fx:id="lastMessageLabel" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
 
 </AnchorPane>

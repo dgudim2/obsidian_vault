@@ -1,13 +1,17 @@
-package org.kloud.common;
+package org.kloud.common.datatypes;
 
 import javafx.util.Pair;
 import org.jetbrains.annotations.Nullable;
+import org.kloud.utils.Logger;
 
 import java.security.SecureRandom;
 
 import static org.kloud.utils.Utils.bytesToHexStr;
 import static org.kloud.utils.Utils.hashPass;
 
+/**
+ * Custom datatype that represents a hashed string with salt (typically a password)
+ */
 public class HashedString extends CustomDatatype {
 
     private String hashValue;
@@ -54,7 +58,12 @@ public class HashedString extends CustomDatatype {
     }
 
     @Override
-    public void deserializeFromString(String data) {
+    public void deserializeFromString(@Nullable String data) {
+        if (data == null) {
+            set("");
+            Logger.warn("Data is null for hashed string: " + this);
+            return;
+        }
         var parts = data.split("--");
         hashValue = parts[0];
         hashSalt = parts[1];

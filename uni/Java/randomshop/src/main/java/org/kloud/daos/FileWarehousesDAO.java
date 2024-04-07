@@ -3,9 +3,12 @@ package org.kloud.daos;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.Warehouse;
 
+/**
+ * {@link BasicFileDAO} for {@link Warehouse Warehouses}
+ */
 public class FileWarehousesDAO extends BasicFileDAO<Warehouse> {
     @Override
-    protected @NotNull String getFilePath() {
+    protected @NotNull String getFileName() {
         return "warehouses.dat";
     }
 }

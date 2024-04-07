@@ -1,16 +1,19 @@
 package org.kloud.backends;
 
-import org.kloud.daos.FileProductsDAO;
-import org.kloud.daos.FileUsersDAO;
-import org.kloud.daos.FileWarehousesDAO;
+import org.kloud.daos.*;
 import org.kloud.flowcontrollers.LocalLoginController;
 
+/**
+ * Implementation of {@link AbstractBackend} that stores everything on the local drive
+ */
 public class LocalBackend extends AbstractBackend {
 
     public LocalBackend() {
         userStorage = new FileUsersDAO();
         productStorage = new FileProductsDAO();
+        orderedProductStorage = new FileOrderedProductsDAO();
         warehouseStorage = new FileWarehousesDAO();
+        ordersStorage = new FileOrdersDAO();
         loginController = new LocalLoginController(userStorage);
     }
 }

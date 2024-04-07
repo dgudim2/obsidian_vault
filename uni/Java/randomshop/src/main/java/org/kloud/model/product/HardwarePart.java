@@ -1,8 +1,8 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Dimensions;
-import org.kloud.common.Field;
+import org.kloud.common.datatypes.Dimensions;
+import org.kloud.common.Fields.Field;
 
 import java.util.List;
 

@@ -9,18 +9,31 @@ import java.util.List;
 import static org.kloud.utils.Utils.readObject;
 import static org.kloud.utils.Utils.writeObject;
 
+/**
+ * Implementation of {@link BasicDAO} for interaction with a file, just serializes
+ * @param <T> Type of objects stored
+ */
 public abstract class BasicFileDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @NotNull
-    protected abstract String getFilePath();
+    protected abstract String getFileName();
     @Override
     @NotNull
     protected List<T> readObjectsInternal() {
-        return readObject(getFilePath(), new ArrayList<>());
+        return readObject(getFileName(), new ArrayList<>());
     }
 
     protected boolean writeObjectsInternal() {
-        return writeObject(objects, getFilePath());
+        return writeObject(objects, getFileName());
+    }
+
+    @Override
+    protected @NotNull List<T> readObjects() {
+        var objects = super.readObjects();
+        for(var obj: objects) {
+            obj.postRead();
+        }
+        return objects;
     }
 
     @Override

@@ -13,9 +13,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * Implementation of {@link BasicDAO} for interaction with a database, handles migration, table creations, etc. automatically
+ * @param <T> Type of objects stored
+ */
 public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
-    private DbConnection conn;
+    @NotNull
+    private final DbConnection conn = new DbConnection();
 
     @NotNull
     protected abstract String getTableName();
@@ -35,10 +40,6 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
     }
 
     private boolean ensureSchema() {
-        if (conn == null) {
-            conn = new DbConnection();
-        }
-
         var targetTable = getTableName();
         var columnDescriptors = getAllColumnDescriptors();
         Boolean tableExists = conn.tableExists(targetTable);
@@ -80,7 +81,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
             var res = true;
             for (var desc : allColumnDescriptors) {
                 if (tableColumnDescriptors.contains(desc) && columnDescriptors.contains(desc)) {
-                    Logger.info(desc + " matches");
+                    Logger.debug(desc + " matches");
                     continue;
                 }
 
@@ -105,9 +106,9 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
     @SuppressWarnings("unchecked")
     @Override
     protected @NotNull List<T> readObjectsInternal() {
-        var objects = new ArrayList<T>();
+        var readObjects = new ArrayList<T>();
         if (!ensureSchema()) {
-            return objects;
+            return readObjects;
         }
         var columnDescriptors = getAllColumnDescriptors();
         StringBuilder sqlQuery = new StringBuilder("SELECT " + idColumn.columnName + "," + klassColumn.columnName);
@@ -123,8 +124,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
                     for (var field : object.getFields()) {
                         field.getColumnDescriptor().readFromDB(result);
                     }
-                    object.postRead();
-                    objects.add(object);
+                    readObjects.add(object);
                 }
             } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                      InvocationTargetException e) {
@@ -132,9 +132,9 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
             }
         } catch (SQLException e) {
             var res = ErrorHandler.displayException(e).handleWithAction(this::readObjectsInternal);
-            return res == null ? objects : res;
+            return res == null ? readObjects : res;
         }
-        return objects;
+        return readObjects;
     }
 
     @Override
@@ -164,6 +164,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
         boolean res;
         try {
             res = conn.executePreparedUpdate(sqlStatement.toString(), statement -> {
+                // Start from 3 because 1 and 2 are our id and klass fields
                 int index = 3;
                 statement.setLong(1, product.id);
                 statement.setString(2, product.getClass().getName());
@@ -202,7 +203,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         conn.close();
     }
 }

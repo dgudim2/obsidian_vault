@@ -9,6 +9,9 @@ import java.util.List;
 
 import static org.kloud.utils.Utils.createDefaultUser;
 
+/**
+ * {@link BasicDBDAO} for {@link User Users}
+ */
 public class DBUsersDAO extends BasicDBDAO<User> {
     @Override
     protected @NotNull String getTableName() {
@@ -17,7 +20,7 @@ public class DBUsersDAO extends BasicDBDAO<User> {
 
     @Override
     protected @NotNull List<? extends User> getStoredClasses() {
-        return List.of(new Manager(), new Customer());
+        return List.of(new Manager(-1), new Customer(-1));
     }
 
     @Override

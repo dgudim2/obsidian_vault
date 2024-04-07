@@ -7,6 +7,9 @@ import org.kloud.utils.Logger;
 
 import java.sql.*;
 
+/**
+ * Wrapper over a raw {@link Connection}
+ */
 public class DbConnection {
 
     @FunctionalInterface
@@ -15,22 +18,30 @@ public class DbConnection {
     }
 
     @NotNull
-    private final String address;
+    private String address = "";
     @NotNull
-    private final String pasword;
+    private String pasword = "";
     @NotNull
-    private final String user;
+    private String user = "";
 
     private Connection rawDbConnection;
 
-    public DbConnection() {
-        var conf = ConfigurationSingleton.getInstance();
-        this.address = conf.dbAddress.getValue();
-        this.user = conf.dbUser.getValue();
-        this.pasword = conf.dbPassword.getValue();
-    }
-
     public boolean ensureConnected() {
+
+        var conf = ConfigurationSingleton.getInstance();
+        var newAddress = conf.dbAddress.getValue();
+        var newUser = conf.dbUser.getValue();
+        var newPassword = conf.dbPassword.getValue();
+
+        if (rawDbConnection != null && (!newAddress.equals(address) || !newUser.equals(user) || !newPassword.equals(pasword))) {
+            Logger.info("Db connection " + address + " invalidated");
+            close();
+        }
+
+        address = newAddress;
+        pasword = newPassword;
+        user = newUser;
+
         try {
             if (rawDbConnection != null && rawDbConnection.isValid(7) && !rawDbConnection.isClosed()) {
                 Logger.info("Connection to " + address + " already established");
@@ -57,7 +68,7 @@ public class DbConnection {
         try {
             ResultSet rs = rawDbConnection.getMetaData().getTypeInfo();
             while (rs.next())
-                System.out.println(rs.getString("TYPE_NAME") + "\t" + JDBCType.valueOf(rs.getInt("DATA_TYPE")).getName());
+                Logger.debug(rs.getString("TYPE_NAME") + "\t" + JDBCType.valueOf(rs.getInt("DATA_TYPE")).getName());
         } catch (SQLException e) {
             ErrorHandler.displayException(e).handleDefault();
         }
@@ -111,9 +122,9 @@ public class DbConnection {
         String tableNameL = tableName.toLowerCase();
 
         try {
-            var resultSet = rawDbConnection.getMetaData().getTables(null, null, null, new String[] {"TABLE"});
+            var resultSet = rawDbConnection.getMetaData().getTables(null, null, null, new String[]{"TABLE"});
             while (resultSet.next()) {
-                if(resultSet.getString("TABLE_NAME").toLowerCase().equals(tableNameL)) {
+                if (resultSet.getString("TABLE_NAME").toLowerCase().equals(tableNameL)) {
                     return true;
                 }
             }
@@ -124,9 +135,14 @@ public class DbConnection {
         }
     }
 
-    public void close() throws SQLException {
+    public void close() {
         if (rawDbConnection != null) {
-            rawDbConnection.close();
+            try {
+                rawDbConnection.close();
+                Logger.info("Closed DB connection: " + address);
+            } catch (SQLException e) {
+                Logger.error("Error closing connection: " + address);
+            }
         }
         rawDbConnection = null;
     }

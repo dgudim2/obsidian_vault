@@ -10,6 +10,11 @@ public class Customer extends User {
         super();
     }
 
+    @Override
+    public String isSafeToDelete() {
+        return "";
+    }
+
     public Customer(long id) {
         super(id);
     }

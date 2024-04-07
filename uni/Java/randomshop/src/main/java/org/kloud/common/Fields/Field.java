@@ -1,4 +1,4 @@
-package org.kloud.common;
+package org.kloud.common.Fields;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
@@ -12,6 +12,8 @@ import javafx.scene.text.Font;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kloud.common.datatypes.Dimensions;
+import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.ColumnDescriptor;
 import org.kloud.utils.Logger;
 
@@ -27,6 +29,11 @@ import java.util.function.Supplier;
 
 import static org.kloud.utils.Utils.setDanger;
 
+/**
+ * Base class wrapping any value for usage in {@link org.kloud.model.BaseModel BaseModel} and derived classes
+ * Also provides matching ui components and utility methods
+ * @param <T> Datatype to wrap
+ */
 public class Field<T extends Serializable> implements Serializable {
 
     public final String name;
@@ -35,6 +42,8 @@ public class Field<T extends Serializable> implements Serializable {
     public final boolean required;
     protected transient Function<T, @NotNull String> validator;
     public final Class<T> klass;
+
+    private transient long latestVersionSavedHash = -1;
 
     private ColumnDescriptor<T> columnDescriptor;
 
@@ -54,14 +63,27 @@ public class Field<T extends Serializable> implements Serializable {
     public void postRead(@NotNull Field<?> cleanField) {
         Logger.debug("postRead for " + name + " (" + value + ")");
         validator = (Function<T, String>) cleanField.validator;
+        markLatestVersionSaved();
     }
 
     @NotNull
     public ColumnDescriptor<T> getColumnDescriptor() {
-        if(columnDescriptor == null) {
+        if (columnDescriptor == null) {
             columnDescriptor = new ColumnDescriptor<>(this);
         }
         return columnDescriptor;
+    }
+
+    private long getSavedValueHash() {
+        return value == null ? -1 : value.hashCode();
+    }
+
+    public void markLatestVersionSaved() {
+        latestVersionSavedHash = getSavedValueHash();
+    }
+
+    public boolean isLatestVersionSaved() {
+        return latestVersionSavedHash == getSavedValueHash();
     }
 
     public T get() {
@@ -84,6 +106,12 @@ public class Field<T extends Serializable> implements Serializable {
             this.value = value;
         }
         return validatorMessage;
+    }
+
+    public void setUnchecked(T value) {
+        Logger.info("Set value for " + name + " to " + value + " (unchecked)");
+        this.value = value;
+        markLatestVersionSaved();
     }
 
     private void setTextFieldNumberCallback(@NotNull TextField inputField, @NotNull Supplier<Boolean> validationCallback, boolean isWhole) {
@@ -207,9 +235,9 @@ public class Field<T extends Serializable> implements Serializable {
                     };
 
             if (value != null) {
-                wInput.setText("" + ((Dimensions) value).width);
-                hInput.setText("" + ((Dimensions) value).height);
-                dInput.setText("" + ((Dimensions) value).depth);
+                wInput.setText("" + ((Dimensions) value).getWidth());
+                hInput.setText("" + ((Dimensions) value).getHeight());
+                dInput.setText("" + ((Dimensions) value).getDepth());
             }
 
             setTextFieldNumberCallback(wInput, validationCallback, false);
@@ -253,7 +281,13 @@ public class Field<T extends Serializable> implements Serializable {
         return new Pair<>(inputField, validationCallback);
     }
 
-    public Pair<Node, Supplier<Boolean>> getJavaFxControl() {
+    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBaseReadonly() {
+        var textField = new Label();
+        textField.setText(value == null ? "" : value + "");
+        return new Pair<>(textField, () -> true);
+    }
+
+    public Pair<Node, Supplier<Boolean>> getJavaFxControl(boolean readonly, Runnable onItemUpdated) {
 
         var label = new Label(name + ": " + (required ? "*" : ""));
         AnchorPane.setLeftAnchor(label, 0.0);
@@ -273,6 +307,7 @@ public class Field<T extends Serializable> implements Serializable {
 
         final BiFunction<Node, String, Boolean> validationCallbackBase = (@NotNull Node input, @NotNull String validationData) -> {
             Logger.debug("Validated " + input + " (" + validationData + ")");
+            onItemUpdated.run();
             if (!validationData.isEmpty()) {
                 setDanger(input, true);
                 errorLabel.setText(validationData);
@@ -288,12 +323,12 @@ public class Field<T extends Serializable> implements Serializable {
             }
         };
 
-        var controlBase = getJavaFxControlBase(validationCallbackBase);
+        var controlBase = readonly ? getJavaFxControlBaseReadonly() : getJavaFxControlBase(validationCallbackBase);
         var inputField = controlBase.getKey();
 
         AnchorPane.setRightAnchor(inputField, 0.0);
-        inputField.setPrefWidth(150);
-        inputField.setMinWidth(150);
+        inputField.setPrefWidth(200);
+        inputField.setMinWidth(200);
         labelContainer.prefHeightProperty().bind(inputField.heightProperty());
 
         AnchorPane container = new AnchorPane();

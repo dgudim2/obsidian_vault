@@ -5,6 +5,9 @@ import org.kloud.model.Warehouse;
 
 import java.util.List;
 
+/**
+ * {@link BasicDBDAO} for {@link Warehouse Warehouses}
+ */
 public class DBWarehousesDAO extends BasicDBDAO<Warehouse> {
     @Override
     protected @NotNull String getTableName() {

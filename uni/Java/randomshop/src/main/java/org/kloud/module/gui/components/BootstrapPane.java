@@ -7,6 +7,9 @@ import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @see <a href="https://github.com/edencoding/javafx-layouts/tree/master/bootstrap-layout-pane/src/main/java/com/edencoding/layouts">Source</a>
+ */
 public class BootstrapPane extends GridPane {
     private final List<BootstrapRow> rows = new ArrayList<>();
     private Breakpoint currentWindowSize = Breakpoint.XSMALL;

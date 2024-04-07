@@ -8,6 +8,9 @@ import org.kloud.utils.Utils;
 
 import java.io.IOException;
 
+/**
+ * Main UI entrypoint
+ */
 public class Entrypoint extends Application {
 
     @Override

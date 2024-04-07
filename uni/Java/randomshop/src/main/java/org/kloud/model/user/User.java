@@ -1,8 +1,8 @@
 package org.kloud.model.user;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Field;
-import org.kloud.common.HashedString;
+import org.kloud.common.Fields.Field;
+import org.kloud.common.datatypes.HashedString;
 import org.kloud.common.UserCapability;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.Utils;

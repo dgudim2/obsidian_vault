@@ -10,8 +10,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.kloud.common.HashedString;
 import org.kloud.common.UserCapability;
+import org.kloud.common.datatypes.HashedString;
+import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
@@ -27,28 +28,17 @@ import java.util.Objects;
 
 import static org.kloud.utils.Utils.setDanger;
 
+/**
+ * Controller for main screen
+ */
 public class EntrypointController implements BaseController {
 
     @FXML
-    public ListView<Product> productList;
+    public AnchorPane root;
+
+    // Login page
     @FXML
-    public Pane productEditArea;
-    @FXML
-    public Button deleteProductButton;
-    @FXML
-    public Button addProductButton;
-    @FXML
-    public Button saveProductButton;
-    @FXML
-    public TabPane tabContainer;
-    @FXML
-    public Tab userLoginTab;
-    @FXML
-    public Tab warehousesTab;
-    @FXML
-    public Tab productsTab;
-    @FXML
-    public Tab usersTab;
+    public Button settingsButton;
     @FXML
     public Button loginButton;
     @FXML
@@ -60,31 +50,74 @@ public class EntrypointController implements BaseController {
     @FXML
     public Label invalidUserLabel;
     @FXML
-    public ListView<User> userList;
-    @FXML
-    public Button deleteUserButton;
-    @FXML
-    public Button addUserButton;
-    @FXML
-    public Pane userEditArea;
-    @FXML
-    public Button saveUserButton;
-    @FXML
     public Button changeUserPasswordButton;
-    @FXML
-    public ListView<Warehouse> warehousesList;
-    @FXML
-    public Button deleteWarehouseButton;
+
+
     @FXML
     public Button addWarehouseButton;
     @FXML
+    public Button addProductButton;
+    @FXML
+    public Button addUserButton;
+
+
+    @FXML
+    public Button deleteWarehouseButton;
+    @FXML
+    public Button deleteProductButton;
+    @FXML
+    public Button deleteUserButton;
+    @FXML
+    public Button deleteOrderButton;
+
+
+    @FXML
     public Pane warehouseEditArea;
+    @FXML
+    public Pane productEditArea;
+    @FXML
+    public Pane userEditArea;
+    @FXML
+    public Pane orderEditArea;
+
+
+    @FXML
+    public Tab userLoginTab;
+    @FXML
+    public Tab warehousesTab;
+    @FXML
+    public Tab productsTab;
+    @FXML
+    public Tab usersTab;
+    @FXML
+    public Tab ordersTab;
+
+
+    @FXML
+    public ListView<Warehouse> warehousesList;
+    @FXML
+    public ListView<Product> productList;
+    @FXML
+    public ListView<User> userList;
+    @FXML
+    public ListView<Order> ordersList;
+
+
     @FXML
     public Button saveWarehouseButton;
     @FXML
-    public Button settingsButton;
+    public Button saveProductButton;
     @FXML
-    public AnchorPane root;
+    public Button saveUserButton;
+    @FXML
+    public Button saveOrderButton;
+
+    // Orders pane
+    @FXML
+    public Button addToCartButton;
+    @FXML
+    public Label lastMessageLabel;
+
 
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
@@ -92,6 +125,8 @@ public class EntrypointController implements BaseController {
 
     @FXML
     public void initialize() {
+        lastMessageLabel.textProperty().bind(Logger.lastMessage);
+
         var conf = ConfigurationSingleton.getInstance();
 
         productTabWrapper = new TabWrapper<>(
@@ -132,8 +167,33 @@ public class EntrypointController implements BaseController {
 
         enableDisableTabs();
 
-        changeUserPasswordButton.setDisable(true);
         userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
+
+        addToCartButton.setVisible(false);
+        productTabWrapper.selectedObject.addListener((observable, oldValue, newProduct) -> addToCartButton.setVisible(newProduct != null));
+
+        initUserLoginTab();
+    }
+
+    private void enableDisableTabs() {
+        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+        if (loggedInUser == null) {
+            warehouseTabWrapper.setEnabled(false);
+            productTabWrapper.setEnabled(false);
+            userTabWrapper.setEnabled(false);
+            return;
+        }
+
+        var caps = loggedInUser.getUserCaps();
+
+        warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
+        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
+        userTabWrapper.setEnabled(true);
+    }
+
+    private void initUserLoginTab() {
+
+        changeUserPasswordButton.setDisable(true);
         changeUserPasswordButton.setOnAction(actionEvent -> {
 
             User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
@@ -220,26 +280,6 @@ public class EntrypointController implements BaseController {
             }
         });
 
-        initUserLoginTab();
-    }
-
-    private void enableDisableTabs() {
-        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
-        if(loggedInUser == null) {
-            warehouseTabWrapper.setEnabled(false);
-            productTabWrapper.setEnabled(false);
-            userTabWrapper.setEnabled(false);
-            return;
-        }
-
-        var caps = loggedInUser.getUserCaps();
-
-        warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
-        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
-        userTabWrapper.setEnabled(true);
-    }
-
-    private void initUserLoginTab() {
         loginButton.setOnAction(actionEvent -> {
 
             var loginController = ConfigurationSingleton.getLoginController();
@@ -257,20 +297,31 @@ public class EntrypointController implements BaseController {
                 invalidUserLabel.setVisible(false);
             }
         });
-        ConfigurationSingleton.getLoginController().loggedInUser.addListener((observable, oldValue, newValue) -> {
+
+        ConfigurationSingleton.getLoginController().loggedInUser.addListener((observable, oldValue, newUser) -> {
+            if(newUser == null) {
+                warehouseTabWrapper.reset();
+                productTabWrapper.reset();
+                userTabWrapper.reset();
+                ConfigurationSingleton.close();
+            }
+
             enableDisableTabs();
 
-            boolean isLoggedIn = newValue != null;
+            boolean isLoggedIn = newUser != null;
 
             userField.setDisable(isLoggedIn);
             passwordField.setDisable(isLoggedIn);
 
             loginButton.setText(isLoggedIn ? "Logout" : "Login");
-            loginTitle.setText(isLoggedIn ? "Logged in as " + newValue.login : "Please login");
+            loginTitle.setText(isLoggedIn ? "Logged in as " + newUser.login : "Please login");
+
+            settingsButton.setDisable(isLoggedIn);
+
             setDanger(loginButton, isLoggedIn);
         });
     }
-
+    
     @Override
     public boolean notifyCloseRequest() {
         String message = "";
@@ -289,12 +340,8 @@ public class EntrypointController implements BaseController {
             var result = closeDialog.showAndWait();
             res = result.isPresent() && result.get() == ButtonType.OK;
         }
-        if(res) {
-            try {
-                ConfigurationSingleton.getInstance().storageBackend.get().close();
-            } catch (Exception e) {
-                Logger.error("Exception while closing backend: " + e.getMessage());
-            }
+        if (res) {
+            ConfigurationSingleton.close();
         }
         return res;
     }

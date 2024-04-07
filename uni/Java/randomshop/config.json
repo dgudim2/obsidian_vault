@@ -1,1 +1,1 @@
-{"server_address":"localhost","db_address":"jdbc:postgresql://localhost/postgres","db_user":"postgres","db_password":"","backend_type":"org.kloud.backends.DBBackend","log_level":"DEBUG"}
+{"server_address":"localhost","db_address":"jdbc:postgresql://localhost/postgres","db_user":"postgres","db_password":"","backend_type":"org.kloud.backends.DBBackend","log_level":"INFO"}

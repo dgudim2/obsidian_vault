@@ -1,25 +1,27 @@
 package org.kloud.daos;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.Logger;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+/**
+ * Base class for interfacing with the stored data
+ * @param <T> Type of objects stored
+ */
 public abstract class BasicDAO<T extends BaseModel> {
     protected List<T> objects;
-
-    protected int lastSavedHash = -1;
+    protected HashMap<Long, T> idLookup;
 
     @NotNull
     protected List<T> readObjects() {
         List<T> r_objects = readObjectsInternal();
-        for (var product : r_objects) {
-            product.postRead();
+        idLookup = new HashMap<>();
+        for (var object : r_objects) {
+            idLookup.put(object.id, object);
         }
-        lastSavedHash = r_objects.hashCode();
         return r_objects;
     }
 
@@ -29,16 +31,39 @@ public abstract class BasicDAO<T extends BaseModel> {
     protected abstract boolean writeObjectsInternal();
 
     protected boolean writeObjects() {
-        lastSavedHash = objects.hashCode();
         return writeObjectsInternal();
+    }
+
+    private void ensureObjects() {
+        if(objects == null) {
+            objects = readObjects();
+        }
     }
 
     @NotNull
     public List<T> getObjects() {
-        if(objects == null) {
-            objects = readObjects();
-        }
+        ensureObjects();
         return Collections.unmodifiableList(objects);
+    }
+
+    @Nullable
+    public T getById(@Nullable Long id) {
+        ensureObjects();
+        return idLookup.get(id);
+    }
+
+    @NotNull
+    public List<T> getByIds(@NotNull List<Long> ids) {
+        List<T> lookedUp = new ArrayList<>();
+        for(var lid: ids) {
+            var obj = getById(lid);
+            if(obj == null) {
+                Logger.warn("Lookup by id: " + lid + " failed in " + this);
+                continue;
+            }
+            lookedUp.add(obj);
+        }
+        return lookedUp;
     }
 
     public boolean addOrUpdateObject(@NotNull T object) {
@@ -46,10 +71,11 @@ public abstract class BasicDAO<T extends BaseModel> {
         if (existingObject.isPresent()) {
             if(Objects.equals(existingObject.get(), object)) {
                 Logger.warn("Unnecessary call to addOrUpdateObject (the same object already exists)");
-                return false;
+                return true;
             }
             objects.remove(existingObject.get());
         }
+        idLookup.put(object.id, object);
         objects.add(object);
         return writeObjects();
     }
@@ -57,14 +83,19 @@ public abstract class BasicDAO<T extends BaseModel> {
     public boolean removeObject(@NotNull T object) {
         var removed = objects.remove(object);
         if (removed) {
+            idLookup.remove(object.id);
             return writeObjects();
         }
         return false;
     }
 
     public boolean isLatestVersionSaved() {
-        Logger.debug("isLatestVersionSaved for " + getClass().getSimpleName() + ": " + lastSavedHash + ", " + objects.hashCode() + " -- " + objects.toString());
-        return lastSavedHash == objects.hashCode();
+        for(var obj: objects) {
+            if(!obj.isLatestVestionSaved()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isInitialized() {
@@ -72,5 +103,5 @@ public abstract class BasicDAO<T extends BaseModel> {
     }
 
     public abstract boolean isValid();
-    public abstract void close() throws Exception;
+    public abstract void close();
 }

@@ -3,6 +3,9 @@ package org.kloud.module.gui.components;
 import javafx.scene.Node;
 import org.kloud.utils.Utils;
 
+/**
+ * @see <a href="https://github.com/edencoding/javafx-layouts/tree/master/bootstrap-layout-pane/src/main/java/com/edencoding/layouts">Source</a>
+ */
 public class BootstrapColumn {
     private final Node content;
 

@@ -1,5 +1,8 @@
 package org.kloud.common;
 
+/**
+ * {@link org.kloud.model.user.User User} permissions basically
+ */
 public enum UserCapability {
     CHANGE_SELF_PASSWORD, CHANGE_CUSTOMER_PASSWORD, CHANGE_ADMIN_PASSWORD,
     RW_SELF_PRODUCTS, READ_OTHER_PRODUCTS, WRITE_OTHER_PRODUCTS,

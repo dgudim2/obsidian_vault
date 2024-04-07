@@ -7,20 +7,27 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import org.jetbrains.annotations.NotNull;
+import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
 import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.module.gui.components.BootstrapRow;
 import org.kloud.module.gui.components.Breakpoint;
-import org.kloud.daos.BasicDAO;
 import org.kloud.utils.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+/**
+ * Wrapper over a tab (user/product/warehouse) handling deletion, creation, displaying and editing of the models
+ * @param <T> Objects to display
+ */
 public class TabWrapper<T extends BaseModel> {
+
+    private final String objectName;
 
     @NotNull
     public final ObjectProperty<T> selectedObject = new SimpleObjectProperty<>(null);
@@ -44,19 +51,11 @@ public class TabWrapper<T extends BaseModel> {
                       @NotNull Button deleteButton,
                       @NotNull Button addButton,
                       @NotNull Button saveButton) {
+        this.objectName = objectName;
         this.objectsDao = objectsDao;
         this.objectList = objectList;
         this.saveButton = saveButton;
         this.tab = tab;
-
-        setEnabled(true);
-        tab.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && objectList.getItems().isEmpty()) {
-                isInitialized = true;
-                Logger.debug(objectName + " tab is now active");
-                objectList.getItems().setAll(objectsDao.getObjects());
-            }
-        });
 
         BootstrapPane pane = new BootstrapPane();
         pane.prefWidthProperty().bind(objectEditArea.widthProperty());
@@ -64,22 +63,35 @@ public class TabWrapper<T extends BaseModel> {
         objectEditArea.getChildren().add(pane);
         saveButton.setVisible(false);
 
-        objectList.getSelectionModel().selectedItemProperty().addListener((observableValue, object, newObject) -> selectedObject.set(newObject));
-
-        deleteButton.setDisable(true);
-        selectedObject.addListener((observableValue, oldObject, newObject) -> {
+        Consumer<T> onSelectedObjectChanged = (newObject) -> {
             deleteButton.setDisable(newObject == null);
             saveButton.setVisible(newObject != null);
+            saveButton.setDisable(newObject != null && newObject.isLatestVestionSaved());
             pane.removeFirstRow();
             if (newObject != null) {
                 pane.addRow(loadItemsForObject(newObject));
             }
+        };
+
+        tab.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue && objectList.getItems().isEmpty()) {
+                isInitialized = true;
+                Logger.debug(objectName + " tab is now active");
+                objectList.getItems().setAll(objectsDao.getObjects());
+            }
+            // Refresh UI elements
+            onSelectedObjectChanged.accept(selectedObject.get());
         });
 
+        objectList.getSelectionModel().selectedItemProperty().addListener((observableValue, object, newObject) -> selectedObject.set(newObject));
+        selectedObject.addListener((__, ___, newObject) -> onSelectedObjectChanged.accept(newObject));
+
+        deleteButton.setDisable(true);
         deleteButton.setOnAction(actionEvent -> {
             Alert objectDialog = new Alert(Alert.AlertType.CONFIRMATION);
             objectDialog.setTitle("Delete a " + objectName);
             objectDialog.setHeaderText("Delete '" + selectedObject.get() + "'?");
+            objectDialog.setContentText(selectedObject.get().isSafeToDelete());
             objectDialog.showAndWait().ifPresent(buttonType -> {
                 if (buttonType != ButtonType.OK) {
                     return;
@@ -146,17 +158,13 @@ public class TabWrapper<T extends BaseModel> {
         }
     }
 
-    public void setEnabled(boolean enabled) {
-        tab.setDisable(!enabled);
-    }
-
     private BootstrapRow loadItemsForObject(@NotNull T object) {
         BootstrapRow row = new BootstrapRow();
         var fields = object.getFields();
         List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
 
         for (var field : fields) {
-            var fieldControl = field.getJavaFxControl();
+            var fieldControl = field.getJavaFxControl(false, () -> saveButton.setDisable(object.isLatestVestionSaved()));
             fxControlHandlers.add(fieldControl.getValue());
             BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
             column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
@@ -177,11 +185,23 @@ public class TabWrapper<T extends BaseModel> {
             if (isValid) {
                 if (objectsDao.addOrUpdateObject(object)) {
                     objectList.refresh();
+                    object.markLatestVersionSaved();
+                    saveButton.setDisable(true);
                 }
             }
         });
 
         return row;
+    }
+
+    public void reset() {
+        isInitialized = false;
+        objectList.getItems().clear();
+        Logger.info("Reset tab wrapper for " + objectName);
+    }
+
+    public void setEnabled(boolean enabled) {
+        tab.setDisable(!enabled);
     }
 
     public boolean hasUnsavedChanges() {

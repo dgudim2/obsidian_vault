@@ -5,6 +5,9 @@ import org.kloud.model.product.*;
 
 import java.util.List;
 
+/**
+ * {@link BasicDBDAO} for {@link Product Products}
+ */
 public class DBProductsDAO extends BasicDBDAO<Product> {
     @Override
     protected @NotNull String getTableName() {

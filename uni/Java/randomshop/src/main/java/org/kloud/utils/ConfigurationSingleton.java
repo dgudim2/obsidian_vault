@@ -21,6 +21,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+/**
+ * A singleton class holding all application state and config
+ */
 public class ConfigurationSingleton {
 
     public static final List<Class<? extends AbstractBackend>> storageBackends = List.of(LocalBackend.class, DBBackend.class);
@@ -66,7 +69,7 @@ public class ConfigurationSingleton {
             storageBackend = storageFromClass(Class.forName(getAsString(jsonObject, Fields.BACKEND_TYPE, LocalBackend.class.getName())));
         } catch (ClassNotFoundException e) {
             // Can't do this -> ErrorHandler.displayException(e).handleDefault();
-            // This causes a circular dependency in the case of en exception ErrorHandler -> Logger -> ConfigurationSingleton -> ErrorHandler
+            // This causes a circular dependency in the case of an exception: ErrorHandler -> Logger -> ConfigurationSingleton -> ErrorHandler
             e.printStackTrace();
         }
         this.storageBackend = new SimpleObjectProperty<>(storageBackend == null ? new LocalBackend() : storageBackend);
@@ -118,7 +121,19 @@ public class ConfigurationSingleton {
         return instance;
     }
 
+    public static AbstractBackend getStorage() {
+        return getInstance().storageBackend.get();
+    }
+
     public static LoginController getLoginController() {
-        return getInstance().storageBackend.get().getLoginController();
+        return getStorage().getLoginController();
+    }
+
+    public static boolean isValid() {
+        return getStorage().isValid();
+    }
+
+    public static void close() {
+        getStorage().close();
     }
 }

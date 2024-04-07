@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.HashedString;
+import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.module.gui.Entrypoint;
@@ -21,6 +21,9 @@ import java.security.spec.KeySpec;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * Utility methods
+ */
 public class Utils {
 
     public static boolean writeObject(@NotNull Object object, @NotNull String path) {

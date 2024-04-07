@@ -1,6 +1,8 @@
 package org.kloud.utils.card;
 
-// All credit goes to https://gist.github.com/icchan/47d83bacc5113db59fbc
+/**
+ * @see <a href="https://gist.github.com/icchan/47d83bacc5113db59fbc">Source</a>
+ */
 public enum CardCompany {
     VISA ("^4[0-9]{12}(?:[0-9]{3})?$", "VISA"),
     MASTERCARD ("^5[1-5][0-9]{14}$", "MASTER"),

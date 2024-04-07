@@ -9,6 +9,9 @@ import org.kloud.utils.Logger;
 
 import java.util.List;
 
+/**
+ * Controller for settings screen
+ */
 public class SettingsController implements BaseController {
     @FXML
     public TextField serverAddressInput;
@@ -18,6 +21,8 @@ public class SettingsController implements BaseController {
     @FXML
     public ComboBox<String> storageBackendSelector;
     public ComboBox<Logger.Loglevel> logLevelSelector;
+    public TextField dbUsername;
+    public TextField dbPass;
 
     @FXML
     public void initialize() {
@@ -38,6 +43,8 @@ public class SettingsController implements BaseController {
 
         serverAddressInput.textProperty().bindBidirectional(config.serverAddress);
         dbAddressInput.textProperty().bindBidirectional(config.dbAddress);
+        dbUsername.textProperty().bindBidirectional(config.dbUser);
+        dbPass.textProperty().bindBidirectional(config.dbPassword);
 
         logLevelSelector.setItems(FXCollections.observableList(List.of(Logger.Loglevel.values())));
         logLevelSelector.getSelectionModel().select(config.targetLogLevel.get());
@@ -47,7 +54,6 @@ public class SettingsController implements BaseController {
     @Override
     public boolean notifyCloseRequest() {
         ConfigurationSingleton.writeConfig();
-        // TODO: Test connection to db/etc
-        return true;
+        return ConfigurationSingleton.isValid();
     }
 }

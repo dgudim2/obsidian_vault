@@ -7,11 +7,14 @@ import java.util.List;
 
 import static org.kloud.utils.Utils.createDefaultUser;
 
+/**
+ * {@link BasicFileDAO} for {@link User Users}
+ */
 public class FileUsersDAO extends BasicFileDAO<User> {
 
     @Override
     @NotNull
-    protected String getFilePath() {
+    protected String getFileName() {
         return "users.dat";
     }
 

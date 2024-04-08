@@ -2,9 +2,10 @@ package org.kloud.model.user;
 
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Fields.Field;
-import org.kloud.common.datatypes.HashedString;
 import org.kloud.common.UserCapability;
+import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.BaseModel;
+import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
 import org.kloud.utils.card.CardValidationResult;
 import org.kloud.utils.card.RegexCardValidator;
@@ -22,18 +23,30 @@ public abstract class User extends BaseModel {
     public final Field<String> name = new Field<>("Name", true, String.class, v -> Utils.testLength(v, 1, 100));
     public final Field<String> surname = new Field<>("Surname", true, String.class, v -> Utils.testLength(v, 1, 100));
     public final Field<String> cardNumber = new Field<>("Card number", false, String.class, v -> {
-        if(v == null || v.isEmpty()) {
+        if (v == null || v.isEmpty()) {
             return "";
         }
         CardValidationResult res = RegexCardValidator.isValid(v);
         return res.isValid() ? "" : res.getError();
     });
 
-    public final Field<String> login = new Field<>("Login", true, String.class, v -> Utils.testLength(v, 1, 100));
+    public final Field<String> login = new Field<>("Login", true, String.class, v -> {
+        var lenWarning = Utils.testLength(v, 1, 100);
+        if (!lenWarning.isEmpty()) {
+            return lenWarning;
+        }
+        if (ConfigurationSingleton.getStorage()
+                .getUserStorage().getObjects()
+                .stream().anyMatch(user -> Objects.equals(user.login.get(), v))) {
+            // NOTE: This is inefficient, this will traverse and check every user in the worst case on each character typed
+            return "A user with the same login already exists";
+        }
+        return "";
+    });
     public final Field<HashedString> pass = new Field<>("Password", true, HashedString.class, v -> {
         // Raw is set when we start typing in the field, .get() is set when the field is loaded from backend or set successfully
         var rawValue = v.getRaw();
-        if(rawValue != null) {
+        if (rawValue != null) {
             return Utils.testLength(rawValue, 8, 100);
         }
         return "";
@@ -42,6 +55,7 @@ public abstract class User extends BaseModel {
     User() {
         super();
     }
+
     public User(long id) {
         super(id);
     }

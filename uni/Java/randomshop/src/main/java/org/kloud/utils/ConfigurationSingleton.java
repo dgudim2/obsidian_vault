@@ -8,6 +8,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.backends.AbstractBackend;
 import org.kloud.backends.DBBackend;
@@ -21,7 +22,6 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
-// TODO: Exit application on backend change
 /**
  * A singleton class holding all application state and config
  */
@@ -67,7 +67,7 @@ public class ConfigurationSingleton {
         this.dbPassword = new SimpleStringProperty(getAsString(jsonObject, Fields.DB_PASSWORD, ""));
         this.serverAddress = new SimpleStringProperty(getAsString(jsonObject, Fields.SERVER_ADDRESS, "localhost"));
         try {
-            storageBackend = storageFromClass(Class.forName(getAsString(jsonObject, Fields.BACKEND_TYPE, LocalBackend.class.getName())));
+            storageBackend = storageFromClass(Class.forName(getAsString(jsonObject, Fields.BACKEND_TYPE, storageBackends.get(0).getName())));
         } catch (ClassNotFoundException e) {
             // Can't do this -> ErrorHandler.displayException(e).handleDefault();
             // This causes a circular dependency in the case of an exception: ErrorHandler -> Logger -> ConfigurationSingleton -> ErrorHandler
@@ -94,6 +94,14 @@ public class ConfigurationSingleton {
             ErrorHandler.displayException(e).handleDefault();
             return null;
         }
+    }
+
+    public String getCurrentBackendName() {
+        return getBackendName(storageBackend.get().getClass());
+    }
+
+    public static String getBackendName(@NotNull Class<? extends AbstractBackend> backendClass) {
+        return backendClass.getSimpleName();
     }
 
     public static void writeConfig() {

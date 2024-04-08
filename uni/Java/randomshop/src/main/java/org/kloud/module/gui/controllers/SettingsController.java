@@ -2,12 +2,17 @@ package org.kloud.module.gui.controllers;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 /**
  * Controller for settings screen
@@ -24,22 +29,22 @@ public class SettingsController implements BaseController {
     public TextField dbUsername;
     public TextField dbPass;
 
+    private final AtomicReference<String> newSelectedBackend = new AtomicReference<>();
+    private final List<String> backendNames = new ArrayList<>();
+
     @FXML
     public void initialize() {
         var config = ConfigurationSingleton.getInstance();
 
-        storageBackendSelector.setItems(FXCollections.observableList(ConfigurationSingleton.storageBackends.stream().map(Class::getSimpleName).toList()));
+        backendNames.clear();
+        backendNames.addAll(ConfigurationSingleton.storageBackends
+                .stream().map(ConfigurationSingleton::getBackendName).toList());
 
-        var loadedBackendIndex = ConfigurationSingleton.storageBackends.indexOf(config.storageBackend.get().getClass());
+        var loadedBackendIndex = backendNames.indexOf(config.getCurrentBackendName());
 
+        storageBackendSelector.setItems(FXCollections.observableList(backendNames));
         storageBackendSelector.getSelectionModel().select(Math.max(loadedBackendIndex, 0));
-        storageBackendSelector.getSelectionModel().selectedIndexProperty().map(index ->
-                        ConfigurationSingleton.storageFromClass(ConfigurationSingleton.storageBackends.get(Math.max(index.intValue(), 0))))
-                .addListener((observable, oldValue, newValue) -> {
-                    if (newValue != null) {
-                        config.storageBackend.set(newValue);
-                    }
-                });
+        storageBackendSelector.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> newSelectedBackend.set(newValue));
 
         serverAddressInput.textProperty().bindBidirectional(config.serverAddress);
         dbAddressInput.textProperty().bindBidirectional(config.dbAddress);
@@ -54,6 +59,18 @@ public class SettingsController implements BaseController {
     @Override
     public boolean notifyCloseRequest() {
         ConfigurationSingleton.writeConfig();
+        if (newSelectedBackend.get() == null || !Objects.equals(newSelectedBackend.get(), ConfigurationSingleton.getInstance().getCurrentBackendName())) {
+            Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
+            closeDialog.setTitle("Confirm exit");
+            closeDialog.setHeaderText("Changing the backend requires app restart");
+            closeDialog.setContentText("The app is going to exit now");
+            var result = closeDialog.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                System.exit(0);
+            } else {
+                return false;
+            }
+        }
         return ConfigurationSingleton.isValid();
     }
 }

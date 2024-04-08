@@ -173,12 +173,12 @@ public class Utils {
         }
         if (!has_admin) {
             var adminUser = new Manager(User.ADMIN_ID);
-            adminUser.name.set("Default");
-            adminUser.surname.set("User");
-            adminUser.login.set("admin");
-            adminUser.isAdmin.set(true);
-            adminUser.isSuperAdmin.set(true);
-            adminUser.pass.set(new HashedString("admin123"));
+            adminUser.name.setUnchecked("Default");
+            adminUser.surname.setUnchecked("User");
+            adminUser.login.setUnchecked("admin");
+            adminUser.isAdmin.setUnchecked(true);
+            adminUser.isSuperAdmin.setUnchecked(true);
+            adminUser.pass.setUnchecked(new HashedString("admin123"));
             users.add(adminUser);
         }
         return users;

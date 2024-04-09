@@ -60,7 +60,8 @@
     "iconInFrontmatterEnabled": true,
     "iconsInNotesEnabled": true,
     "iconIdentifier": ":",
-    "iconsInLinksEnabled": true
+    "iconsInLinksEnabled": true,
+    "debugMode": false
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

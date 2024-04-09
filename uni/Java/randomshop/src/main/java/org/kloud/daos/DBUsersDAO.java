@@ -1,6 +1,7 @@
 package org.kloud.daos;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.model.BaseModel;
 import org.kloud.model.user.Customer;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
@@ -20,7 +21,7 @@ public class DBUsersDAO extends BasicDBDAO<User> {
 
     @Override
     protected @NotNull List<? extends User> getStoredClasses() {
-        return List.of(new Manager(-1), new Customer(-1));
+        return List.of(new Manager(BaseModel.DUMMY_ID), new Customer(BaseModel.DUMMY_ID));
     }
 
     @Override

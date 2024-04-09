@@ -17,6 +17,9 @@ import static java.lang.Math.min;
  */
 public abstract class BaseModel implements Serializable {
 
+    // Id used in getStoredClasses, a dummy id
+    public static final long DUMMY_ID = 333;
+
     public final long id;
 
     protected BaseModel(long id) {

@@ -27,6 +27,14 @@ public class Order extends BaseModel {
 
     });
 
+    public Order() {
+        super();
+    }
+
+    public Order(long id) {
+        super(id);
+    }
+
     @Override
     public @NotNull List<Field<?>> getFields() {
         return List.of(orderStatus, orderedByUser, orderedProducts);

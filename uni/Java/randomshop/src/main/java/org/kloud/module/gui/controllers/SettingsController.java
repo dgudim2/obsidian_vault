@@ -59,7 +59,7 @@ public class SettingsController implements BaseController {
     @Override
     public boolean notifyCloseRequest() {
         ConfigurationSingleton.writeConfig();
-        if (newSelectedBackend.get() == null || !Objects.equals(newSelectedBackend.get(), ConfigurationSingleton.getInstance().getCurrentBackendName())) {
+        if (!Objects.equals(newSelectedBackend.get(), ConfigurationSingleton.getInstance().getCurrentBackendName())) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
             closeDialog.setTitle("Confirm exit");
             closeDialog.setHeaderText("Changing the backend requires app restart");

@@ -67,7 +67,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "settings.editor.selected.configurable": "editor.preferences.completion",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -209,6 +209,7 @@
       <workItem from="1712512589071" duration="2068000" />
       <workItem from="1712576625713" duration="15000" />
       <workItem from="1712576692434" duration="1943000" />
+      <workItem from="1712652691249" duration="3663000" />
     </task>
     <servers />
   </component>

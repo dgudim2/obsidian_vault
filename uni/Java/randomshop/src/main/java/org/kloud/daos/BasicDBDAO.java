@@ -60,7 +60,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
             sqlQuery.append(",").append("PRIMARY KEY (").append(idColumn.columnName).append("))");
             try {
                 var res = conn.executeUpdate(sqlQuery.toString());
-                Logger.success("Schema created: " + targetTable);
+                Logger.success("Table created: " + targetTable);
                 return res;
             } catch (SQLException ex) {
                 return Boolean.TRUE.equals(ErrorHandler.displayException(ex).handleWithAction(this::ensureSchema));

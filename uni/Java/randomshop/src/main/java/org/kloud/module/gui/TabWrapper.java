@@ -32,6 +32,8 @@ public class TabWrapper<T extends BaseModel> {
     @NotNull
     public final ObjectProperty<T> selectedObject = new SimpleObjectProperty<>(null);
     @NotNull
+    final Consumer<T> onSelectedObjectChanged;
+    @NotNull
     protected final BasicDAO<T> objectsDao;
     @NotNull
     protected final ListView<T> objectList;
@@ -63,10 +65,10 @@ public class TabWrapper<T extends BaseModel> {
         objectEditArea.getChildren().add(pane);
         saveButton.setVisible(false);
 
-        Consumer<T> onSelectedObjectChanged = (newObject) -> {
+        onSelectedObjectChanged = (newObject) -> {
             deleteButton.setDisable(newObject == null);
             saveButton.setVisible(newObject != null);
-            saveButton.setDisable(newObject != null && newObject.isLatestVestionSaved());
+            saveButton.setDisable(newObject != null && !newObject.hasChanges());
             pane.removeFirstRow();
             if (newObject != null) {
                 pane.addRow(loadItemsForObject(newObject));
@@ -79,8 +81,7 @@ public class TabWrapper<T extends BaseModel> {
                 Logger.debug(objectName + " tab is now active");
                 objectList.getItems().setAll(objectsDao.getObjects());
             }
-            // Refresh UI elements
-            onSelectedObjectChanged.accept(selectedObject.get());
+            refreshUI();
         });
 
         objectList.getSelectionModel().selectedItemProperty().addListener((observableValue, object, newObject) -> selectedObject.set(newObject));
@@ -164,7 +165,7 @@ public class TabWrapper<T extends BaseModel> {
         List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
 
         for (var field : fields) {
-            var fieldControl = field.getJavaFxControl(false, () -> saveButton.setDisable(object.isLatestVestionSaved()));
+            var fieldControl = field.getJavaFxControl(false, () -> saveButton.setDisable(!object.hasChanges()));
             fxControlHandlers.add(fieldControl.getValue());
             BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
             column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
@@ -206,6 +207,11 @@ public class TabWrapper<T extends BaseModel> {
 
     public boolean hasUnsavedChanges() {
         return objectsDao.isInitialized() && isInitialized &&
-                (objectList.getItems().size() != objectsDao.getObjects().size() || !objectsDao.isLatestVersionSaved());
+                (objectList.getItems().size() != objectsDao.getObjects().size() || objectsDao.hasUnsavedChanges());
+    }
+
+    public void refreshUI() {
+        // Refresh UI elements
+        onSelectedObjectChanged.accept(selectedObject.get());
     }
 }

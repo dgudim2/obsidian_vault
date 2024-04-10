@@ -22,12 +22,13 @@ import java.util.function.Supplier;
  */
 public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
 
-    private final boolean virtual;
+    public final boolean virtual;
+    public final boolean hideInUI;
     private Function<List<Long>, List<T>> linkedObjectsProducer;
     private Supplier<List<T>> possibleObjectsSupplier;
     private BiConsumer<List<T>, List<T>> onValuesUpdated;
 
-    public ForeignKeyListField(@NotNull String name, boolean required, boolean virtual,
+    public ForeignKeyListField(@NotNull String name, boolean required, boolean virtual, boolean hideInUI,
                                @NotNull Function<List<Long>, List<T>> linkedObjectsProducer,
                                @NotNull Supplier<List<T>> possibleObjectsSupplier,
                                @NotNull BiConsumer<List<T>, List<T>> onValuesUpdated) {
@@ -36,18 +37,26 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
             return (required && linkedObjects.isEmpty()) ? "At least one value is required" : "";
         });
         this.virtual = virtual;
+        this.hideInUI = hideInUI;
         this.linkedObjectsProducer = linkedObjectsProducer;
         this.onValuesUpdated = onValuesUpdated;
         this.possibleObjectsSupplier = possibleObjectsSupplier;
     }
 
+    public ForeignKeyListField(@NotNull String name,
+                               @NotNull Function<List<Long>, List<T>> linkedObjectsProducer,
+                               @NotNull Supplier<List<T>> possibleObjectsSupplier,
+                               @NotNull BiConsumer<List<T>, List<T>> onValuesUpdated) {
+        this(name, false, false, false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
+    }
+
     @Override
-    public boolean isLatestVersionSaved() {
+    public boolean hasChanges() {
         if (virtual) {
             // Virtual fields don't need to be saved, all they do, is update some other non-virtual field via 'onValuesUpdated' callback
-            return true;
+            return false;
         }
-        return super.isLatestVersionSaved();
+        return super.hasChanges();
     }
 
     @Override

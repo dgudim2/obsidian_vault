@@ -1,6 +1,7 @@
-package org.kloud.daos;
+package org.kloud.daos.file;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
 
 import java.util.ArrayList;

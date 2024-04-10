@@ -89,13 +89,13 @@ public abstract class BasicDAO<T extends BaseModel> {
         return false;
     }
 
-    public boolean isLatestVersionSaved() {
+    public boolean hasUnsavedChanges() {
         for(var obj: objects) {
-            if(!obj.isLatestVestionSaved()) {
-                return false;
+            if(obj.hasChanges()) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean isInitialized() {

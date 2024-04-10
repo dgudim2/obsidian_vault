@@ -1,4 +1,4 @@
-package org.kloud.daos;
+package org.kloud.daos.file;
 
 import org.jetbrains.annotations.NotNull;
 

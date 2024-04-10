@@ -21,7 +21,7 @@ public class ErrorHandler {
 
         ((Button)errorDialog.getDialogPane().lookupButton(ButtonType.FINISH)).setText("Exit app");
         ((Button)errorDialog.getDialogPane().lookupButton(ButtonType.CLOSE)).setText("Ignore");
-        ((Button)errorDialog.getDialogPane().lookupButton(ButtonType.YES)).setText("Try to continue");
+        ((Button)errorDialog.getDialogPane().lookupButton(ButtonType.YES)).setText("Try to continue / retry");
 
         Utils.setDanger(errorDialog.getDialogPane().lookupButton(ButtonType.FINISH), true);
         errorDialog.setContentText("Error: " + e.getMessage());

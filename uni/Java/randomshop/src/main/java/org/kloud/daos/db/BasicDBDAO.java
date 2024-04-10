@@ -1,6 +1,7 @@
-package org.kloud.daos;
+package org.kloud.daos.db;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
 import org.kloud.model.ColumnDescriptor;
 import org.kloud.model.DbConnection;

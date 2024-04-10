@@ -1,6 +1,6 @@
 package org.kloud.backends;
 
-import org.kloud.daos.*;
+import org.kloud.daos.file.*;
 import org.kloud.flowcontrollers.LocalLoginController;
 
 /**
@@ -14,6 +14,7 @@ public class LocalBackend extends AbstractBackend {
         orderedProductStorage = new FileOrderedProductsDAO();
         warehouseStorage = new FileWarehousesDAO();
         ordersStorage = new FileOrdersDAO();
+        commentStorage = new FileCommentsDAO();
         loginController = new LocalLoginController(userStorage);
     }
 }

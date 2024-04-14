@@ -9,20 +9,17 @@ import javafx.scene.layout.Pane;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
-import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
-import org.kloud.module.gui.components.BootstrapRow;
-import org.kloud.module.gui.components.Breakpoint;
 import org.kloud.utils.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 /**
  * Wrapper over a tab (user/product/warehouse) handling deletion, creation, displaying and editing of the models
+ *
  * @param <T> Objects to display
  */
 public class TabWrapper<T extends BaseModel> {
@@ -68,10 +65,9 @@ public class TabWrapper<T extends BaseModel> {
         onSelectedObjectChanged = (newObject) -> {
             deleteButton.setDisable(newObject == null);
             saveButton.setVisible(newObject != null);
-            saveButton.setDisable(newObject != null && !newObject.hasChanges());
             pane.removeFirstRow();
             if (newObject != null) {
-                pane.addRow(loadItemsForObject(newObject));
+                pane.addRow(newObject.loadFulGui(false, saveButton, objectsDao, objectList::refresh));
             }
         };
 
@@ -157,42 +153,6 @@ public class TabWrapper<T extends BaseModel> {
                 });
             });
         }
-    }
-
-    private BootstrapRow loadItemsForObject(@NotNull T object) {
-        BootstrapRow row = new BootstrapRow();
-        var fields = object.getFields();
-        List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
-
-        for (var field : fields) {
-            var fieldControl = field.getJavaFxControl(false, () -> saveButton.setDisable(!object.hasChanges()));
-            fxControlHandlers.add(fieldControl.getValue());
-            BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
-            column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-            column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-            column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-            column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-            row.addColumn(column);
-        }
-
-        Logger.info("Loaded " + fields.size() + " fields for '" + object + "'");
-
-        saveButton.setOnAction(actionEvent -> {
-            boolean isValid = true;
-            for (var fxControlHandler : fxControlHandlers) {
-                boolean fieldValid = fxControlHandler.get();
-                isValid = isValid && fieldValid;
-            }
-            if (isValid) {
-                if (objectsDao.addOrUpdateObject(object)) {
-                    objectList.refresh();
-                    object.markLatestVersionSaved();
-                    saveButton.setDisable(true);
-                }
-            }
-        });
-
-        return row;
     }
 
     public void reset() {

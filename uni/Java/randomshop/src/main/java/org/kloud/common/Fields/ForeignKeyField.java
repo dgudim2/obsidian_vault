@@ -10,32 +10,38 @@ import org.jetbrains.annotations.Nullable;
 import org.kloud.model.BaseModel;
 
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 /**
  * A field that does not store the object directly, instead only stores its id and resolves the object in runtime
+ *
  * @param <T> Object to wrap
  */
 public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
     private Function<Long, T> linkedObjectProducer;
     private Supplier<List<T>> possibleObjectsSupplier;
-    private Consumer<T> onValueUpdated;
+    private BiConsumer<T, T> onValueUpdated;
 
-    public ForeignKeyField(@NotNull String name, boolean required,
+    public ForeignKeyField(@NotNull String name, boolean required, boolean hideInUI,
                            @NotNull Function<Long, T> linkedObjectProducer,
                            @NotNull Supplier<List<T>> possibleObjectsSupplier,
-                           @NotNull Consumer<T> onValueUpdated) {
+                           @NotNull BiConsumer<T, T> onValueUpdated) {
         super(name, -1L, required, Long.class, id -> {
             var linkedObject = linkedObjectProducer.apply(id);
             return (required && linkedObject == null) ? "Invalid link" : "";
         });
+        super.hideInUI = hideInUI;
         this.linkedObjectProducer = linkedObjectProducer;
         this.onValueUpdated = onValueUpdated;
         this.possibleObjectsSupplier = possibleObjectsSupplier;
+    }
+
+    public ForeignKeyField(@NotNull String name, boolean required,
+                           @NotNull Function<Long, T> linkedObjectsProducer,
+                           @NotNull Supplier<List<T>> possibleObjectsSupplier,
+                           @NotNull BiConsumer<T, T> onValuesUpdated) {
+        this(name, required, false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
     }
 
     @Override
@@ -72,7 +78,7 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
         comboBox.getSelectionModel().select(getLinkedValue());
         comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (validationCallback.get()) {
-                onValueUpdated.accept(getLinkedValue());
+                onValueUpdated.accept(oldValue, newValue);
             }
         });
         return new Pair<>(comboBox, validationCallback);

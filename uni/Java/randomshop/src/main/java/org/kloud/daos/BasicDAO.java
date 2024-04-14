@@ -9,6 +9,7 @@ import java.util.*;
 
 /**
  * Base class for interfacing with the stored data
+ *
  * @param <T> Type of objects stored
  */
 public abstract class BasicDAO<T extends BaseModel> {
@@ -30,12 +31,8 @@ public abstract class BasicDAO<T extends BaseModel> {
 
     protected abstract boolean writeObjectsInternal();
 
-    protected boolean writeObjects() {
-        return writeObjectsInternal();
-    }
-
-    private void ensureObjects() {
-        if(objects == null) {
+    protected void ensureObjects() {
+        if (objects == null) {
             objects = readObjects();
         }
     }
@@ -55,9 +52,9 @@ public abstract class BasicDAO<T extends BaseModel> {
     @NotNull
     public List<T> getByIds(@NotNull List<Long> ids) {
         List<T> lookedUp = new ArrayList<>();
-        for(var lid: ids) {
+        for (var lid : ids) {
             var obj = getById(lid);
-            if(obj == null) {
+            if (obj == null) {
                 Logger.warn("Lookup by id: " + lid + " failed in " + this);
                 continue;
             }
@@ -67,31 +64,44 @@ public abstract class BasicDAO<T extends BaseModel> {
     }
 
     public boolean addOrUpdateObject(@NotNull T object) {
+        ensureObjects();
         var existingObject = objects.stream().filter(o -> o.id == object.id).findFirst();
         if (existingObject.isPresent()) {
-            if(Objects.equals(existingObject.get(), object)) {
+            if (Objects.equals(existingObject.get(), object)) {
                 Logger.warn("Unnecessary call to addOrUpdateObject (the same object already exists)");
-                return true;
+                // Objects are also equal by content
+                object.markLatestVersionSaved();
+                var res = writeObjectsInternal();
+                if (res) {
+                    object.markLatestVersionSaved();
+                }
+                return res;
             }
             objects.remove(existingObject.get());
         }
         idLookup.put(object.id, object);
         objects.add(object);
-        return writeObjects();
+        var res = writeObjectsInternal();
+        if (res) {
+            object.markLatestVersionSaved();
+        }
+        return res;
     }
 
     public boolean removeObject(@NotNull T object) {
+        ensureObjects();
         var removed = objects.remove(object);
         if (removed) {
             idLookup.remove(object.id);
-            return writeObjects();
+            return writeObjectsInternal();
         }
         return false;
     }
 
     public boolean hasUnsavedChanges() {
-        for(var obj: objects) {
-            if(obj.hasChanges()) {
+        ensureObjects();
+        for (var obj : objects) {
+            if (obj.hasChanges()) {
                 return true;
             }
         }
@@ -103,5 +113,6 @@ public abstract class BasicDAO<T extends BaseModel> {
     }
 
     public abstract boolean isValid();
+
     public abstract void close();
 }

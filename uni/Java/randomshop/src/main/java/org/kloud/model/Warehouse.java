@@ -33,7 +33,7 @@ public class Warehouse extends BaseModel {
                     .getUserStorage().getObjects().stream()
                     .filter(user -> user instanceof Manager)
                     .map(user -> (Manager) user)
-                    .toList(), manager -> {
+                    .toList(), (manager, newManager) -> {
     });
 
     public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true, false,

@@ -5,53 +5,70 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="root" maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.EntrypointController">
-    <TabPane prefHeight="800.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane fx:id="root" maxHeight="Infinity" maxWidth="Infinity" minHeight="100" minWidth="100" prefHeight="800.0"
+            prefWidth="700.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.kloud.module.gui.controllers.EntrypointController">
+    <TabPane prefHeight="800.0" prefWidth="700.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0"
+             AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <Tab fx:id="userLoginTab" text="Shop">
             <AnchorPane minHeight="0.0" minWidth="0.0">
-                <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+                <Label alignment="CENTER" layoutX="153.0" layoutY="126.0" text="Welcome!" AnchorPane.leftAnchor="0.0"
+                       AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="18.0"/>
                     </font>
                 </Label>
-                <AnchorPane maxHeight="201.0" maxWidth="294.0" minHeight="201.0" minWidth="294.0" prefHeight="201.0" prefWidth="294.0" style="-fx-border-color: -color-accent-fg; -fx-border-radius: 5;" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="100.0">
-                    <Label fx:id="loginTitle" alignment="CENTER" layoutX="117.0" layoutY="68.0" text="Please login" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                    <VBox layoutX="97.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                <AnchorPane maxHeight="201.0" maxWidth="294.0" minHeight="201.0" minWidth="294.0" prefHeight="201.0"
+                            prefWidth="294.0" style="-fx-border-color: -color-accent-fg; -fx-border-radius: 5;"
+                            AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="100.0">
+                    <Label fx:id="loginTitle" alignment="CENTER" layoutX="117.0" layoutY="68.0" text="Please login"
+                           AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0"/>
+                    <VBox layoutX="97.0" layoutY="1.0" prefHeight="200.0" prefWidth="100.0"
+                          AnchorPane.bottomAnchor="87.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                          AnchorPane.topAnchor="30.0">
                         <HBox prefHeight="100.0" prefWidth="200.0">
-                            <Label alignment="CENTER_RIGHT" minWidth="80.0" prefHeight="109.0" prefWidth="60.0" text="User" />
+                            <Label alignment="CENTER_RIGHT" minWidth="80.0" prefHeight="109.0" prefWidth="60.0"
+                                   text="User"/>
                             <TextField fx:id="userField" HBox.hgrow="ALWAYS">
                                 <HBox.margin>
-                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0" />
+                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0"/>
                                 </HBox.margin>
                             </TextField>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
-                            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="80.0" prefHeight="68.0" prefWidth="60.0" text="Password" />
+                            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" minWidth="80.0" prefHeight="68.0"
+                                   prefWidth="60.0" text="Password"/>
                             <PasswordField fx:id="passwordField" prefWidth="162.0" HBox.hgrow="ALWAYS">
                                 <HBox.margin>
-                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0" />
+                                    <Insets bottom="8.0" left="5.0" right="10.0" top="8.0"/>
                                 </HBox.margin>
                             </PasswordField>
                         </HBox>
                     </VBox>
-                    <Button fx:id="loginButton" layoutX="117.0" layoutY="161.0" mnemonicParsing="false" text="Login" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-               <Label fx:id="invalidUserLabel" alignment="CENTER" layoutX="154.0" layoutY="129.0" prefHeight="23.0" prefWidth="320.0" styleClass="danger" text="Invalid username / password!" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-                  <font>
-                     <Font size="12.0" />
-                  </font></Label>
+                    <Button fx:id="loginButton" layoutX="117.0" layoutY="161.0" mnemonicParsing="false" text="Login"
+                            AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+                    <Label fx:id="invalidUserLabel" alignment="CENTER" layoutX="154.0" layoutY="129.0" prefHeight="23.0"
+                           prefWidth="320.0" styleClass="danger" text="Invalid username / password!" visible="false"
+                           AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                        <font>
+                            <Font size="12.0"/>
+                        </font>
+                    </Label>
                 </AnchorPane>
-            <Button fx:id="settingsButton" layoutX="510.0" layoutY="418.0" mnemonicParsing="false" text="⚙️" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
-               <font>
-                  <Font size="35.0" />
-               </font>
-               <padding>
-                  <Insets bottom="-10.0" top="-10.0" />
-               </padding>
-            </Button>
-                <ScrollPane layoutX="239.0" layoutY="720.0" maxHeight="150.0" minHeight="150.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0">
+                <Button fx:id="settingsButton" layoutX="510.0" layoutY="418.0" mnemonicParsing="false" text="⚙️"
+                        AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="25.0">
+                    <font>
+                        <Font size="35.0"/>
+                    </font>
+                    <padding>
+                        <Insets bottom="-10.0" top="-10.0"/>
+                    </padding>
+                </Button>
+                <ScrollPane layoutX="239.0" layoutY="720.0" maxHeight="150.0" minHeight="150.0"
+                            AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="70.0">
                     <Label fx:id="lastMessageLabel">
                         <font>
-                            <Font size="11.0" />
+                            <Font size="11.0"/>
                         </font>
                     </Label>
                 </ScrollPane>
@@ -61,18 +78,26 @@
         <Tab fx:id="usersTab" text="Users">
             <AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <ListView fx:id="userList" prefWidth="250" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-               <Button fx:id="changeUserPasswordButton" mnemonicParsing="false" text="Change password" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
-                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                        <Button fx:id="deleteUserButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
-                        <Button fx:id="addUserButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <ListView fx:id="userList" prefWidth="250" AnchorPane.bottomAnchor="85.0"
+                              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0"/>
+                    <Button fx:id="changeUserPasswordButton" mnemonicParsing="false" text="Change password"
+                            AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0"/>
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteUserButton" layoutX="10" styleClass="danger" text="Delete"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+                                AnchorPane.rightAnchor="130.0"/>
+                        <Button fx:id="addUserButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0"
+                                AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>
                 </AnchorPane>
-                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <Pane fx:id="userEditArea" />
+                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0"
+                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <Pane fx:id="userEditArea"/>
                 </ScrollPane>
 
-                <Button fx:id="saveUserButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                <Button fx:id="saveUserButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0"
+                        AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
             </AnchorPane>
@@ -80,41 +105,69 @@
         <Tab fx:id="productsTab" text="Products">
             <AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <ListView fx:id="productList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                        <Button fx:id="deleteProductButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
-                        <Button fx:id="addProductButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <ListView fx:id="productList" prefWidth="250" AnchorPane.bottomAnchor="45.0"
+                              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0"/>
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteProductButton" layoutX="10" styleClass="danger" text="Delete"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+                                AnchorPane.rightAnchor="130.0"/>
+                        <Button fx:id="addProductButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0"
+                                AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>
                 </AnchorPane>
-                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <Pane fx:id="productEditArea" />
+                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="260.0"
+                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <Pane fx:id="productEditArea"/>
                 </ScrollPane>
-                <Button fx:id="saveProductButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                <Button fx:id="saveProductButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0"
+                        AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
-            <Button fx:id="addToCartButton" layoutX="398.0" layoutY="418.0" mnemonicParsing="false" text="Add to cart" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
-            <Label fx:id="commentsLabel" contentDisplay="CENTER" layoutX="260.0" layoutY="475.0" text="Comments" AnchorPane.bottomAnchor="277.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
-            <ScrollPane fx:id="commentsScroll" layoutX="260.0" layoutY="493.0" maxHeight="190.0" prefHeight="190.0" prefWidth="200.0" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" >
-                <TreeView fx:id="commentsTree">
+                <Label fx:id="commentsLabel" contentDisplay="CENTER" layoutX="260.0" layoutY="475.0" text="Comments"
+                       AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0"/>
+                <TreeView fx:id="commentsTree" layoutX="260.0" layoutY="493.0" maxHeight="190.0" prefHeight="190.0"
+                          prefWidth="200.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="260.0"
+                          AnchorPane.rightAnchor="5.0">
 
                 </TreeView>
-            </ScrollPane>
-            <Separator fx:id="commentsSeparator" layoutX="260.0" layoutY="492.0" prefWidth="200.0" AnchorPane.bottomAnchor="262.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
+                <Separator fx:id="commentsSeparator" layoutX="260.0" layoutY="492.0" prefWidth="200.0"
+                           AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0"/>
+                <HBox fx:id="addToCartCommentBox" layoutX="370.0" layoutY="655.0" prefHeight="1.0" prefWidth="200.0"
+                      AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                    <children>
+                        <Button fx:id="addToCartButton" mnemonicParsing="false" prefWidth="1000000.0"
+                                text="Add to cart"/>
+                        <Button fx:id="addCommentButton" mnemonicParsing="false" prefWidth="1000000.0"
+                                text="Add comment">
+                            <HBox.margin>
+                                <Insets left="5.0"/>
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
             </AnchorPane>
         </Tab>
         <Tab fx:id="warehousesTab" text="Warehouses">
             <AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <ListView fx:id="warehousesList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                        <Button fx:id="deleteWarehouseButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="130.0" />
-                        <Button fx:id="addWarehouseButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <ListView fx:id="warehousesList" prefWidth="250" AnchorPane.bottomAnchor="45.0"
+                              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0"/>
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteWarehouseButton" layoutX="10" styleClass="danger" text="Delete"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+                                AnchorPane.rightAnchor="130.0"/>
+                        <Button fx:id="addWarehouseButton" layoutX="132.5" text="Add" AnchorPane.bottomAnchor="5.0"
+                                AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     </AnchorPane>
                 </AnchorPane>
-                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <Pane fx:id="warehouseEditArea" />
+                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0"
+                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <Pane fx:id="warehouseEditArea"/>
                 </ScrollPane>
-                <Button fx:id="saveWarehouseButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                <Button fx:id="saveWarehouseButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0"
+                        AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
             </AnchorPane>
@@ -122,15 +175,20 @@
         <Tab fx:id="ordersTab" text="Cart/orders">
             <AnchorPane>
                 <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <ListView fx:id="ordersList" prefWidth="250" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0" />
-                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                        <Button fx:id="deleteOrderButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+                    <ListView fx:id="ordersList" prefWidth="250" AnchorPane.bottomAnchor="45.0"
+                              AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="5.0"/>
+                    <AnchorPane prefWidth="250" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                AnchorPane.rightAnchor="0.0">
+                        <Button fx:id="deleteOrderButton" layoutX="10" styleClass="danger" text="Delete"
+                                AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0"/>
                     </AnchorPane>
                 </AnchorPane>
-                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <Pane fx:id="orderEditArea" />
+                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0"
+                            AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <Pane fx:id="orderEditArea"/>
                 </ScrollPane>
-                <Button fx:id="saveOrderButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+                <Button fx:id="saveOrderButton" styleClass="success" text="Save" AnchorPane.bottomAnchor="5.0"
+                        AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
             </AnchorPane>

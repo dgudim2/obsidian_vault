@@ -23,7 +23,6 @@ import java.util.function.Supplier;
 public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
 
     public final boolean virtual;
-    public final boolean hideInUI;
     private Function<List<Long>, List<T>> linkedObjectsProducer;
     private Supplier<List<T>> possibleObjectsSupplier;
     private BiConsumer<List<T>, List<T>> onValuesUpdated;
@@ -53,7 +52,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
     @Override
     public boolean hasChanges() {
         if (virtual) {
-            // Virtual fields don't need to be saved, all they do, is update some other non-virtual field via 'onValuesUpdated' callback
+            // Virtual fields don't need to be saved, all they do is update some other non-virtual field via 'onValuesUpdated' callback
             return false;
         }
         return super.hasChanges();
@@ -77,6 +76,12 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
     @NotNull
     public String setLinkedValues(@NotNull List<T> newValues) {
         return set(new IdList(newValues.stream().map(t -> t.id).toList()));
+    }
+
+    public String addLinkedValue(@NotNull T newValue) {
+        var newValues = value == null ? new IdList() : new IdList(value);
+        newValues.add(newValue.id);
+        return set(newValues);
     }
 
     @SuppressWarnings("unchecked")

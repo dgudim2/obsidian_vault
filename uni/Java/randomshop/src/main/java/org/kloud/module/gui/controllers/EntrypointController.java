@@ -6,10 +6,13 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.Comment;
@@ -19,6 +22,7 @@ import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.module.gui.TabWrapper;
+import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
@@ -114,7 +118,6 @@ public class EntrypointController implements BaseController {
     public Button saveOrderButton;
 
 
-    // Orders pane
     @FXML
     public Button addToCartButton;
     @FXML
@@ -124,11 +127,13 @@ public class EntrypointController implements BaseController {
     @FXML
     public Label commentsLabel;
     @FXML
-    public ScrollPane commentsScroll;
-    @FXML
-    public TreeView<Comment> commentsTree;
+    public TreeView<String> commentsTree;
     @FXML
     public Separator commentsSeparator;
+    @FXML
+    public HBox addToCartCommentBox;
+    @FXML
+    public Button addCommentButton;
 
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
@@ -256,25 +261,9 @@ public class EntrypointController implements BaseController {
             passwordDialog.showAndWait();
         });
 
-        addToCartButton.setVisible(false);
-        productTabWrapper.selectedObject.addListener((observable, oldValue, newProduct) -> {
-            addToCartButton.setVisible(newProduct != null);
-            commentsLabel.setVisible(newProduct != null);
-            commentsScroll.setVisible(newProduct != null);
-            commentsSeparator.setVisible(newProduct != null);
-
-            commentsScroll.setContextMenu(new ContextMenu(new MenuItem("Test")));
-
-            if (newProduct != null) {
-                TreeItem<Comment> rootItem = new TreeItem<>(new Comment());
-                rootItem.setExpanded(true);
-                commentsTree.setRoot(rootItem);
-                commentsTree.setShowRoot(false);
-                for (var comment : newProduct.comments.getLinkedValues()) {
-                    rootItem.getChildren().add(new TreeItem<>(comment));
-                }
-            }
-        });
+        loadCommentsForProduct(null);
+        productTabWrapper.selectedObject.addListener((observable, oldValue, newValue) -> loadCommentsForProduct(newValue));
+        addCommentButton.setOnAction(event -> leaveComment(commentsTree.getRoot(), null, productTabWrapper.selectedObject.get()));
 
         initUserLoginTab();
     }
@@ -293,6 +282,84 @@ public class EntrypointController implements BaseController {
         warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
         productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
         userTabWrapper.setEnabled(true);
+    }
+
+    @NotNull
+    private TreeItem<String> addCommentNode(@NotNull TreeItem<String> root,
+                                            @NotNull Comment comment,
+                                            @NotNull Product product) {
+        var item = new TreeItem<>("", new Label(comment.toString()));
+        var replyAction = new MenuItem("Reply");
+        var deleteAction = new MenuItem("Delete");
+        replyAction.setOnAction(event -> leaveComment(item, comment, product));
+        var contextMenu = new ContextMenu(replyAction, deleteAction);
+        // TODO: This is semi-ideal, right click will only work on the label
+        // maybe set preferred width for the label??
+        item.getGraphic().setOnContextMenuRequested(e -> contextMenu.show(item.getGraphic(), e.getScreenX(), e.getScreenY()));
+        root.getChildren().add(item);
+        return item;
+    }
+
+    private void loadCommentLayer(@NotNull TreeItem<String> root,
+                                  @NotNull List<Comment> comments,
+                                  @NotNull Product product) {
+        for (var comment : comments) {
+            var item = addCommentNode(root, comment, product);
+            // TODO: This is not efficient, we should load maybe up to 2 layers deep
+            // but for now I am too lazy to ensure that there are no duplicates on layers
+            // just don't leave 30000 comments
+            loadCommentLayer(item, comment.children.getLinkedValues(), product);
+        }
+    }
+
+    private void loadCommentsForProduct(@Nullable Product product) {
+        addToCartCommentBox.setVisible(product != null);
+        commentsLabel.setVisible(product != null);
+        commentsTree.setVisible(product != null);
+        commentsSeparator.setVisible(product != null);
+
+        if (product != null) {
+            TreeItem<String> rootItem = new TreeItem<>();
+            rootItem.setExpanded(true);
+            commentsTree.setRoot(rootItem);
+            commentsTree.setShowRoot(false);
+            loadCommentLayer(rootItem, product.comments.getLinkedValues(), product);
+        }
+    }
+
+    private void leaveComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parent, @NotNull Product product) {
+        Alert addCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
+        addCommentDialog.setTitle("Comment on " + product);
+        addCommentDialog.setHeaderText(parent == null ? "Add comment" : "Reply to \"" + parent + "\"");
+
+        var newComment = new Comment();
+        newComment.author.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
+
+        var addButton = (Button) addCommentDialog.getDialogPane().lookupButton(ButtonType.YES);
+        addButton.setText("Add");
+
+        BootstrapPane pane = new BootstrapPane();
+        pane.setPrefWidth(350);
+        pane.setPrefHeight(150);
+        pane.addRow(newComment.loadFulGui(false, addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
+            if (parent == null) {
+                productTabWrapper.selectedObject.get().comments.addLinkedValue(newComment);
+                ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(productTabWrapper.selectedObject.get());
+            } else {
+                parent.children.addLinkedValue(newComment);
+                // NOTE: We are saving the child first, then updating the parent,
+                // can't do it in one go because getByIds won't return our newly created child, need to save it first
+                // Maybe add a flag 'save' to addOrUpdateObject, but I don't know how to handle it gracefully in DBDAO because we do SQL UPDATE
+                // when updating the object. Maybe a separate queue??
+                // TLDR: Skip this for now
+                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parent);
+            }
+            addCommentNode(parentNode, newComment, product);
+            addCommentDialog.close();
+        }));
+
+        addCommentDialog.getDialogPane().setContent(pane);
+        addCommentDialog.showAndWait();
     }
 
     private void initUserLoginTab() {

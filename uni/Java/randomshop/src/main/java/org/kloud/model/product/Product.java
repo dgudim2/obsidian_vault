@@ -39,7 +39,7 @@ public abstract class Product extends BaseModel {
                     .getWarehouseStorage().getObjects()
                     .stream()
                     .filter(warehouse -> !warehouse.isFullCapacity())
-                    .toList(), o -> {
+                    .toList(), (o, o1) -> {
     });
 
     public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, true,

@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.datatypes.Dimensions;
 import org.kloud.common.datatypes.HashedString;
+import org.kloud.model.BaseModel;
 import org.kloud.model.ColumnDescriptor;
 import org.kloud.utils.Logger;
 
@@ -30,7 +31,7 @@ import java.util.function.Supplier;
 import static org.kloud.utils.Utils.setDanger;
 
 /**
- * Base class wrapping any value for usage in {@link org.kloud.model.BaseModel BaseModel} and derived classes
+ * Base class wrapping any value for usage in {@link BaseModel BaseModel} and derived classes
  * Also provides matching ui components and utility methods
  * @param <T> Datatype to wrap
  */
@@ -40,6 +41,7 @@ public class Field<T extends Serializable> implements Serializable {
     @Nullable
     protected T value;
     public final boolean required;
+    protected boolean hideInUI;
     protected transient Function<T, @NotNull String> validator;
     public final Class<T> klass;
 
@@ -53,6 +55,7 @@ public class Field<T extends Serializable> implements Serializable {
         this.klass = klass;
         this.required = required;
         this.validator = validator;
+        hideInUI = false;
     }
 
     public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
@@ -125,6 +128,10 @@ public class Field<T extends Serializable> implements Serializable {
             }
             validationCallback.get();
         });
+    }
+
+    public boolean isVisibleInUI() {
+        return !hideInUI;
     }
 
     @SuppressWarnings("unchecked")

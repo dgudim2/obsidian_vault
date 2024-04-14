@@ -1,14 +1,24 @@
 package org.kloud.model;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.common.Fields.Field;
+import org.kloud.daos.BasicDAO;
+import org.kloud.module.gui.components.BootstrapColumn;
+import org.kloud.module.gui.components.BootstrapRow;
+import org.kloud.module.gui.components.Breakpoint;
+import org.kloud.utils.Logger;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import static java.lang.Math.min;
 
@@ -32,6 +42,49 @@ public abstract class BaseModel implements Serializable {
 
     @NotNull
     public abstract List<Field<?>> getFields();
+
+    public <T extends BaseModel> BootstrapRow loadFulGui(boolean readonly, @NotNull Button validateButton, @NotNull BasicDAO<T> dao,
+                                                         @Nullable Runnable afterSave) {
+        BootstrapRow row = new BootstrapRow();
+        var fields = getFields().stream().filter(Field::isVisibleInUI).toList();
+        List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
+
+        for (var field : fields) {
+            var fieldControl = field.getJavaFxControl(readonly, () -> validateButton.setDisable(!hasChanges()));
+            fxControlHandlers.add(fieldControl.getValue());
+            BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
+            column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
+            column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
+            column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
+            column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
+            row.addColumn(column);
+        }
+
+        Logger.info("Loaded " + fields.size() + " fields for '" + this + "'");
+
+        validateButton.setDisable(!hasChanges());
+        validateButton.addEventFilter(ActionEvent.ACTION, actionEvent -> {
+            boolean isValid = true;
+            for (var fxControlHandler : fxControlHandlers) {
+                boolean fieldValid = fxControlHandler.get();
+                isValid = isValid && fieldValid;
+            }
+            if (isValid) {
+                //noinspection unchecked
+                if (dao.addOrUpdateObject((T) this)) {
+                    if (afterSave != null) {
+                        afterSave.run();
+                    }
+                    validateButton.setDisable(true);
+                }
+            } else {
+                // Don't propagate, useful for dialogs
+                actionEvent.consume();
+            }
+        });
+
+        return row;
+    }
 
     public List<? extends ColumnDescriptor<?>> getColumnDescriptors() {
         return getFields().stream().map(Field::getColumnDescriptor).toList();

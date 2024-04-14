@@ -262,9 +262,6 @@ public class EntrypointController implements BaseController {
         });
 
         loadCommentsForProduct(null);
-        productTabWrapper.selectedObject.addListener((observable, oldValue, newValue) -> loadCommentsForProduct(newValue));
-        addCommentButton.setOnAction(event -> leaveComment(commentsTree.getRoot(), null, productTabWrapper.selectedObject.get()));
-
         initUserLoginTab();
     }
 
@@ -285,30 +282,46 @@ public class EntrypointController implements BaseController {
     }
 
     @NotNull
-    private TreeItem<String> addCommentNode(@NotNull TreeItem<String> root,
-                                            @NotNull Comment comment,
+    private TreeItem<String> addCommentNode(@NotNull TreeItem<String> parentNode,
+                                            @Nullable Comment parentComment,
+                                            @NotNull Comment thisComment,
                                             @NotNull Product product) {
-        var item = new TreeItem<>("", new Label(comment.toString()));
+        boolean canEditOther = ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.WRITE_OTHER_COMMENTS);
+
+        var thisNode = new TreeItem<>("", new Label(thisComment.toString()));
         var replyAction = new MenuItem("Reply");
         var deleteAction = new MenuItem("Delete");
-        replyAction.setOnAction(event -> leaveComment(item, comment, product));
-        var contextMenu = new ContextMenu(replyAction, deleteAction);
+        ContextMenu contextMenu;
+        if (ConfigurationSingleton.getLoginController().isLoggedInUser(thisComment.author.getLinkedValue()) && !canEditOther) {
+            contextMenu = new ContextMenu(replyAction);
+        } else {
+            contextMenu = new ContextMenu(replyAction, deleteAction);
+        }
+        replyAction.setOnAction(event -> leaveComment(thisNode, thisComment, product));
+        deleteAction.setOnAction(event -> deleteCommentNode(parentNode, parentComment, thisNode, thisComment, product));
+
         // TODO: This is semi-ideal, right click will only work on the label
         // maybe set preferred width for the label??
-        item.getGraphic().setOnContextMenuRequested(e -> contextMenu.show(item.getGraphic(), e.getScreenX(), e.getScreenY()));
-        root.getChildren().add(item);
-        return item;
+        thisNode.getGraphic().setOnContextMenuRequested(e -> contextMenu.show(thisNode.getGraphic(), e.getScreenX(), e.getScreenY()));
+        parentNode.getChildren().add(thisNode);
+        return thisNode;
     }
 
-    private void loadCommentLayer(@NotNull TreeItem<String> root,
-                                  @NotNull List<Comment> comments,
+    private void loadCommentLayer(@NotNull TreeItem<String> parentNode,
+                                  @Nullable Comment parentComment,
+                                  @NotNull List<Comment> childComments,
                                   @NotNull Product product) {
-        for (var comment : comments) {
-            var item = addCommentNode(root, comment, product);
+        boolean canReadOther = ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.READ_OTHER_COMMENTS);
+        for (var childComment : childComments) {
+            if (ConfigurationSingleton.getLoginController().isLoggedInUser(childComment.author.getLinkedValue()) && !canReadOther) {
+                // Skip comments our user doesn't have read access to
+                continue;
+            }
+            var childNode = addCommentNode(parentNode, parentComment, childComment, product);
             // TODO: This is not efficient, we should load maybe up to 2 layers deep
             // but for now I am too lazy to ensure that there are no duplicates on layers
             // just don't leave 30000 comments
-            loadCommentLayer(item, comment.children.getLinkedValues(), product);
+            loadCommentLayer(childNode, childComment, childComment.children.getLinkedValues(), product);
         }
     }
 
@@ -323,14 +336,14 @@ public class EntrypointController implements BaseController {
             rootItem.setExpanded(true);
             commentsTree.setRoot(rootItem);
             commentsTree.setShowRoot(false);
-            loadCommentLayer(rootItem, product.comments.getLinkedValues(), product);
+            loadCommentLayer(rootItem, null, product.comments.getLinkedValues(), product);
         }
     }
 
-    private void leaveComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parent, @NotNull Product product) {
+    private void leaveComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment, @NotNull Product product) {
         Alert addCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
         addCommentDialog.setTitle("Comment on " + product);
-        addCommentDialog.setHeaderText(parent == null ? "Add comment" : "Reply to \"" + parent + "\"");
+        addCommentDialog.setHeaderText(parentComment == null ? "Add comment" : "Reply to \"" + parentComment + "\"");
 
         var newComment = new Comment();
         newComment.author.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
@@ -342,24 +355,51 @@ public class EntrypointController implements BaseController {
         pane.setPrefWidth(350);
         pane.setPrefHeight(150);
         pane.addRow(newComment.loadFulGui(false, addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
-            if (parent == null) {
+            if (parentComment == null) {
                 productTabWrapper.selectedObject.get().comments.addLinkedValue(newComment);
                 ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(productTabWrapper.selectedObject.get());
             } else {
-                parent.children.addLinkedValue(newComment);
+                parentComment.children.addLinkedValue(newComment);
                 // NOTE: We are saving the child first, then updating the parent,
                 // can't do it in one go because getByIds won't return our newly created child, need to save it first
                 // Maybe add a flag 'save' to addOrUpdateObject, but I don't know how to handle it gracefully in DBDAO because we do SQL UPDATE
                 // when updating the object. Maybe a separate queue??
                 // TLDR: Skip this for now
-                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parent);
+                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
             }
-            addCommentNode(parentNode, newComment, product);
+            addCommentNode(parentNode, parentComment, newComment, product);
             addCommentDialog.close();
         }));
 
         addCommentDialog.getDialogPane().setContent(pane);
         addCommentDialog.showAndWait();
+    }
+
+    private void deleteCommentNode(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
+                                   @NotNull TreeItem<String> thisNode, @NotNull Comment thisComment, @NotNull Product product) {
+        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
+        confirmDialog.setTitle("Delete a comment");
+        confirmDialog.setHeaderText("Delete " + thisComment + "?");
+        var result = confirmDialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.YES) {
+            parentNode.getChildren().remove(thisNode);
+            if (parentComment != null) {
+                parentComment.children.removeLinkedValue(thisComment);
+                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
+            } else {
+                product.comments.removeLinkedValue(thisComment);
+                ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(product);
+            }
+            deleteCommentChildenRecursive(thisComment);
+            ConfigurationSingleton.getStorage().getCommentStorage().removeById(thisComment.id);
+        }
+    }
+
+    private void deleteCommentChildenRecursive(@NotNull Comment thisComment) {
+        for (var child : thisComment.children.getLinkedValues()) {
+            deleteCommentChildenRecursive(child);
+        }
+        ConfigurationSingleton.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
     }
 
     private void initUserLoginTab() {
@@ -388,6 +428,7 @@ public class EntrypointController implements BaseController {
                 var loginResult = loginController.tryLogin(login, password);
 
                 invalidUserLabel.setVisible(!loginResult);
+
             } else {
                 loginController.logout();
                 invalidUserLabel.setVisible(false);
@@ -403,6 +444,13 @@ public class EntrypointController implements BaseController {
             }
 
             enableDisableTabs();
+
+            if (ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.RW_SELF_COMMENTS)) {
+                // Only enable the comments section if our current user has access to it
+                // TODO: Remove listeners on logout
+                productTabWrapper.selectedObject.addListener((__, ___, newValue) -> loadCommentsForProduct(newValue));
+                addCommentButton.setOnAction(event -> leaveComment(commentsTree.getRoot(), null, productTabWrapper.selectedObject.get()));
+            }
 
             boolean isLoggedIn = newUser != null;
 

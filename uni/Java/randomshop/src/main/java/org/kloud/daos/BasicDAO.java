@@ -68,7 +68,7 @@ public abstract class BasicDAO<T extends BaseModel> {
         var existingObject = objects.stream().filter(o -> o.id == object.id).findFirst();
         if (existingObject.isPresent()) {
             if (Objects.equals(existingObject.get(), object)) {
-                Logger.warn("Unnecessary call to addOrUpdateObject (the same object already exists)");
+                Logger.weakWarn("Unnecessary call to addOrUpdateObject (the same object already exists)");
                 // Objects are also equal by content
                 object.markLatestVersionSaved();
                 var res = writeObjectsInternal();
@@ -94,8 +94,30 @@ public abstract class BasicDAO<T extends BaseModel> {
         if (removed) {
             idLookup.remove(object.id);
             return writeObjectsInternal();
+        } else {
+            Logger.warn("Could not remove " + object);
         }
         return false;
+    }
+
+    public boolean removeById(@Nullable Long id) {
+        ensureObjects();
+        var obj = getById(id);
+        if(obj == null) {
+            return false;
+        }
+        return removeObject(obj);
+    }
+
+    public boolean removeByIds(@NotNull List<Long> ids) {
+        ensureObjects();
+        var objs = getByIds(ids);
+        boolean success = true;
+        for(var obj: objs) {
+            var succ = removeObject(obj);
+            success = succ && success;
+        }
+        return success;
     }
 
     public boolean hasUnsavedChanges() {

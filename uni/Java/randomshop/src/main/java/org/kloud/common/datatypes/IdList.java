@@ -55,6 +55,10 @@ public class IdList extends CustomDatatype {
         return backingList.add(id);
     }
 
+    public boolean remove(long id) {
+        return backingList.remove(id);
+    }
+
     public boolean contains(long id) {
         return backingList.contains(id);
     }

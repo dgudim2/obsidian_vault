@@ -65,6 +65,8 @@ public abstract class User extends BaseModel {
         caps.add(UserCapability.CHANGE_SELF_PASSWORD);
         caps.add(UserCapability.RW_SELF_PRODUCTS);
         caps.add(UserCapability.RW_SELF_WAREHOUSES);
+        caps.add(UserCapability.RW_SELF_COMMENTS);
+        caps.add(UserCapability.READ_OTHER_COMMENTS);
         return caps;
     }
 

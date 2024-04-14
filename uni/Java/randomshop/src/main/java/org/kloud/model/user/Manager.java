@@ -66,6 +66,7 @@ public class Manager extends User {
             caps.add(UserCapability.WRITE_OTHER_PRODUCTS);
             caps.add(UserCapability.WRITE_OTHER_WAREHOUSES);
             caps.add(UserCapability.WRITE_MANAGERS);
+            caps.add(UserCapability.WRITE_OTHER_COMMENTS);
             caps.add(UserCapability.CHANGE_ADMIN_PASSWORD);
             caps.add(UserCapability.CHANGE_CUSTOMER_PASSWORD);
             if (isSuperAdmin.get()) {

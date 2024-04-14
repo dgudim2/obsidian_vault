@@ -84,6 +84,12 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
         return set(newValues);
     }
 
+    public String removeLinkedValue(@NotNull T newValue) {
+        var newValues = value == null ? new IdList() : new IdList(value);
+        newValues.remove(newValue.id);
+        return set(newValues);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
     public void postRead(@NotNull Field<?> cleanField) {

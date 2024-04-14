@@ -106,7 +106,7 @@ public class ColumnDescriptor<T extends Serializable> {
                     });
         } else {
             // Assume our value extends CustomDatatype
-            Logger.warn("No native datatype mapping for " + parentField.klass + " will fall back to string marshalling/unmarshalling");
+            Logger.weakWarn("No native datatype mapping for " + parentField.klass + " will fall back to string marshalling/unmarshalling");
             datatype = "varchar";
             datatypeMapper = new Pair<>(
                     set -> {

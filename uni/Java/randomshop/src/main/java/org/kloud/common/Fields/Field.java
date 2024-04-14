@@ -82,8 +82,8 @@ public class Field<T extends Serializable> implements Serializable {
         latestVersionSavedHash = getSavedValueHash();
     }
 
-    public boolean isLatestVersionSaved() {
-        return latestVersionSavedHash == getSavedValueHash();
+    public boolean hasChanges() {
+        return latestVersionSavedHash != getSavedValueHash();
     }
 
     public T get() {
@@ -135,9 +135,8 @@ public class Field<T extends Serializable> implements Serializable {
         if (klass.equals(HashedString.class)) {
 
             if (value != null) {
-                inputField = new TextField();
+                inputField = new TextField("hidden");
                 inputField.setDisable(true);
-                ((TextField) inputField).setText("hidden");
                 return new Pair<>(inputField, () -> true);
             }
 

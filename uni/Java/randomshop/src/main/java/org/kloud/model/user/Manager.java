@@ -20,7 +20,7 @@ public class Manager extends User {
 
     // public final ForeignKeyListField<Order> assignedOrders;
 
-    public final ForeignKeyListField<Warehouse> linkedWarehouses = new ForeignKeyListField<>("Warehouses", false, true,
+    public final ForeignKeyListField<Warehouse> linkedWarehouses = new ForeignKeyListField<>("Warehouses", false, true, false,
             ids -> ConfigurationSingleton.getStorage()
                     .getWarehouseStorage().getObjects()
                     .stream()

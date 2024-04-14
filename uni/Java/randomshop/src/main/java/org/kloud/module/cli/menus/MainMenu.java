@@ -3,8 +3,8 @@ package org.kloud.module.cli.menus;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.gui2.*;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.daos.FileProductsDAO;
-import org.kloud.daos.FileUsersDAO;
+import org.kloud.daos.file.FileProductsDAO;
+import org.kloud.daos.file.FileUsersDAO;
 
 import static org.kloud.module.cli.Utils.*;
 

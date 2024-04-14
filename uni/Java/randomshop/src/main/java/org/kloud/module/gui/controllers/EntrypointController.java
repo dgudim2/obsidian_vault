@@ -12,6 +12,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
+import org.kloud.model.Comment;
 import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
@@ -112,12 +113,22 @@ public class EntrypointController implements BaseController {
     @FXML
     public Button saveOrderButton;
 
+
     // Orders pane
     @FXML
     public Button addToCartButton;
     @FXML
     public Label lastMessageLabel;
 
+    // Comments in the products tab
+    @FXML
+    public Label commentsLabel;
+    @FXML
+    public ScrollPane commentsScroll;
+    @FXML
+    public TreeView<Comment> commentsTree;
+    @FXML
+    public Separator commentsSeparator;
 
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
@@ -168,39 +179,14 @@ public class EntrypointController implements BaseController {
         enableDisableTabs();
 
         userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
-
-        addToCartButton.setVisible(false);
-        productTabWrapper.selectedObject.addListener((observable, oldValue, newProduct) -> addToCartButton.setVisible(newProduct != null));
-
-        initUserLoginTab();
-    }
-
-    private void enableDisableTabs() {
-        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
-        if (loggedInUser == null) {
-            warehouseTabWrapper.setEnabled(false);
-            productTabWrapper.setEnabled(false);
-            userTabWrapper.setEnabled(false);
-            return;
-        }
-
-        var caps = loggedInUser.getUserCaps();
-
-        warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
-        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
-        userTabWrapper.setEnabled(true);
-    }
-
-    private void initUserLoginTab() {
-
         changeUserPasswordButton.setDisable(true);
         changeUserPasswordButton.setOnAction(actionEvent -> {
 
             User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
 
-            boolean adminLoggedInOrCurrentUser =
+            boolean adminLoggedInAndNotCurrentUser =
                     loggedInUser instanceof Manager m && m.isAdmin.get()
-                            || Objects.equals(loggedInUser, userTabWrapper.selectedObject.get());
+                            && !Objects.equals(loggedInUser, userTabWrapper.selectedObject.get());
 
             Alert passwordDialog = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -232,7 +218,8 @@ public class EntrypointController implements BaseController {
             setDanger(wrongPasswordLabel, true);
 
             var container = new VBox();
-            if (adminLoggedInOrCurrentUser) {
+            // Ask for current password for currently logged-in user and for other non-admins
+            if (adminLoggedInAndNotCurrentUser) {
                 container.getChildren().addAll(newPassContainer, wrongPasswordLabel);
             } else {
                 container.getChildren().addAll(oldPassContainer, newPassContainer, wrongPasswordLabel);
@@ -249,10 +236,11 @@ public class EntrypointController implements BaseController {
                 var oldPass = oldPassInput.getText();
                 var newPass = newPassInput.getText();
 
-                if (adminLoggedInOrCurrentUser || loggedInUser.checkPassword(oldPass)) {
+                if (adminLoggedInAndNotCurrentUser || loggedInUser.checkPassword(oldPass)) {
                     var warn = loggedInUser.pass.set(new HashedString(newPass));
                     if (warn.isEmpty()) {
                         wrongPasswordLabel.setVisible(false);
+                        userTabWrapper.refreshUI();
                     } else {
                         wrongPasswordLabel.setText(warn);
                         wrongPasswordLabel.setVisible(true);
@@ -267,6 +255,47 @@ public class EntrypointController implements BaseController {
 
             passwordDialog.showAndWait();
         });
+
+        addToCartButton.setVisible(false);
+        productTabWrapper.selectedObject.addListener((observable, oldValue, newProduct) -> {
+            addToCartButton.setVisible(newProduct != null);
+            commentsLabel.setVisible(newProduct != null);
+            commentsScroll.setVisible(newProduct != null);
+            commentsSeparator.setVisible(newProduct != null);
+
+            commentsScroll.setContextMenu(new ContextMenu(new MenuItem("Test")));
+
+            if (newProduct != null) {
+                TreeItem<Comment> rootItem = new TreeItem<>(new Comment());
+                rootItem.setExpanded(true);
+                commentsTree.setRoot(rootItem);
+                commentsTree.setShowRoot(false);
+                for (var comment : newProduct.comments.getLinkedValues()) {
+                    rootItem.getChildren().add(new TreeItem<>(comment));
+                }
+            }
+        });
+
+        initUserLoginTab();
+    }
+
+    private void enableDisableTabs() {
+        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+        if (loggedInUser == null) {
+            warehouseTabWrapper.setEnabled(false);
+            productTabWrapper.setEnabled(false);
+            userTabWrapper.setEnabled(false);
+            return;
+        }
+
+        var caps = loggedInUser.getUserCaps();
+
+        warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
+        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
+        userTabWrapper.setEnabled(true);
+    }
+
+    private void initUserLoginTab() {
 
         settingsButton.setOnAction(actionEvent -> {
             try {
@@ -299,7 +328,7 @@ public class EntrypointController implements BaseController {
         });
 
         ConfigurationSingleton.getLoginController().loggedInUser.addListener((observable, oldValue, newUser) -> {
-            if(newUser == null) {
+            if (newUser == null) {
                 warehouseTabWrapper.reset();
                 productTabWrapper.reset();
                 userTabWrapper.reset();
@@ -321,7 +350,7 @@ public class EntrypointController implements BaseController {
             setDanger(loginButton, isLoggedIn);
         });
     }
-    
+
     @Override
     public boolean notifyCloseRequest() {
         String message = "";

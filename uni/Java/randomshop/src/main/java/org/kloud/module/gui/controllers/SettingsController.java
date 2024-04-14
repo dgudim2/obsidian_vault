@@ -40,7 +40,9 @@ public class SettingsController implements BaseController {
         backendNames.addAll(ConfigurationSingleton.storageBackends
                 .stream().map(ConfigurationSingleton::getBackendName).toList());
 
-        var loadedBackendIndex = backendNames.indexOf(config.getCurrentBackendName());
+        var currentBackend = config.getCurrentBackendName();
+        var loadedBackendIndex = backendNames.indexOf(currentBackend);
+        newSelectedBackend.set(currentBackend);
 
         storageBackendSelector.setItems(FXCollections.observableList(backendNames));
         storageBackendSelector.getSelectionModel().select(Math.max(loadedBackendIndex, 0));
@@ -58,7 +60,7 @@ public class SettingsController implements BaseController {
 
     @Override
     public boolean notifyCloseRequest() {
-        ConfigurationSingleton.writeConfig();
+
         if (!Objects.equals(newSelectedBackend.get(), ConfigurationSingleton.getInstance().getCurrentBackendName())) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
             closeDialog.setTitle("Confirm exit");
@@ -66,11 +68,16 @@ public class SettingsController implements BaseController {
             closeDialog.setContentText("The app is going to exit now");
             var result = closeDialog.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
+                ConfigurationSingleton.getInstance().storageBackend.set(
+                        ConfigurationSingleton.storageFromClass(
+                                ConfigurationSingleton.storageBackends.get(backendNames.indexOf(newSelectedBackend.get()))));
+                ConfigurationSingleton.writeConfig();
                 System.exit(0);
             } else {
                 return false;
             }
         }
+        ConfigurationSingleton.writeConfig();
         return ConfigurationSingleton.isValid();
     }
 }

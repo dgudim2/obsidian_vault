@@ -19,12 +19,22 @@
         <option value="FxmlFile" />
         <option value="Enum" />
         <option value="Interface" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonElement.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonParser.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar!/com/google/gson/JsonParser.class" root0="SKIP_INSPECTION" />
+    <setting file="jrt:///usr/lib/jvm/java-17-openjdk!/java.base/java/io/ObjectStreamClass.class" root0="SKIP_INSPECTION" />
+    <setting file="jar:///usr/lib/jvm/zulu-jdk-fx/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonElement.java" root0="SKIP_INSPECTION" />
@@ -70,8 +80,11 @@
     "settings.editor.selected.configurable": "editor.preferences.completion",
     "vue.rearranger.settings.migration": "true"
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.kloud.utils" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.kloud.utils" />
     </key>
@@ -80,7 +93,16 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Gui (default)">
+  <component name="RunManager" selected="Application.Gui (default)">
     <configuration name="Cli" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
+      <module name="randomshop" />
+      <option name="PROGRAM_PARAMETERS" value="--mode cli" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Gui (default)" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
       <module name="randomshop" />
       <option name="PROGRAM_PARAMETERS" value="--mode cli" />
@@ -96,8 +118,10 @@
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
+    <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
       <module name="randomshop" />
+      <option name="PROGRAM_PARAMETERS" value="--mode server" />
       <option name="PROGRAM_PARAMETERS" value="--mode server" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -139,8 +163,18 @@
       <item itemvalue="Application.Cli" />
       <item itemvalue="Application.Gui (default)" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Gui (default)" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="Maven.Build" />
     </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>

@@ -21,7 +21,7 @@ public class Order extends BaseModel {
             user -> {
             });
 
-    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Ordered by", false, false,
+    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Ordered by",
             ids -> ConfigurationSingleton.getStorage().getProductStorage().getByIds(ids),
             () -> ConfigurationSingleton.getStorage().getProductStorage().getObjects(), (products1, products2) -> {
 

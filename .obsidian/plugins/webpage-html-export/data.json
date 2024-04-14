@@ -2,7 +2,7 @@
   "settingsVersion": "1.8.01",
   "makeOfflineCompatible": false,
   "inlineAssets": false,
-  "includePluginCSS": "dataview\nobsidian-list-callouts\nobsidian-columns\nobsidian-universal-renderer\nhighlightr-plugin",
+  "includePluginCSS": "dataview\nobsidian-list-callouts\nobsidian-columns\nuniversal-renderer\nhighlightr-plugin",
   "includeSvelteCSS": true,
   "titleProperty": "title",
   "customHeadContentPath": "",

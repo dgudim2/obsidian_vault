@@ -3,8 +3,10 @@ package org.kloud.model.product;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.Fields.Field;
 import org.kloud.common.Fields.ForeignKeyField;
+import org.kloud.common.Fields.ForeignKeyListField;
 import org.kloud.common.Fields.RatingField;
 import org.kloud.model.BaseModel;
+import org.kloud.model.Comment;
 import org.kloud.model.Warehouse;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
@@ -40,6 +42,10 @@ public abstract class Product extends BaseModel {
                     .toList(), o -> {
     });
 
+    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, true,
+            ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
+    });
+
     public Product() {
         super();
     }
@@ -63,6 +69,7 @@ public abstract class Product extends BaseModel {
         fields.add(warranty);
         fields.add(rating);
         fields.add(assignedWarehouse);
+        fields.add(comments);
         return fields;
     }
 

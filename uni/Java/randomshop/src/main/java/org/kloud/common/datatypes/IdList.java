@@ -10,6 +10,7 @@ import java.util.*;
  */
 public class IdList extends CustomDatatype {
 
+    // TODO: This should not be public
     public final List<Long> backingList = new ArrayList<>();
 
     public IdList() {

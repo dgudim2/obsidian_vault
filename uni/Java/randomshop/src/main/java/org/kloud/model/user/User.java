@@ -29,15 +29,15 @@ public abstract class User extends BaseModel {
         CardValidationResult res = RegexCardValidator.isValid(v);
         return res.isValid() ? "" : res.getError();
     });
-
-    public final Field<String> login = new Field<>("Login", true, String.class, v -> {
-        var lenWarning = Utils.testLength(v, 1, 100);
+    public final Field<String> login = new Field<>("Login", true, String.class, newLogin -> {
+        var lenWarning = Utils.testLength(newLogin, 1, 100);
         if (!lenWarning.isEmpty()) {
             return lenWarning;
         }
         if (ConfigurationSingleton.getStorage()
                 .getUserStorage().getObjects()
-                .stream().anyMatch(user -> Objects.equals(user.login.get(), v))) {
+                .stream()
+                .anyMatch(user -> Objects.equals(user.login.get(), newLogin) && user.id != id)) {
             // NOTE: This is inefficient, this will traverse and check every user in the worst case on each character typed
             return "A user with the same login already exists";
         }

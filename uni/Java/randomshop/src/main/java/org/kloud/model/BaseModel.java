@@ -46,13 +46,13 @@ public abstract class BaseModel implements Serializable {
         return mapping;
     }
 
-    public boolean isLatestVestionSaved() {
+    public boolean hasChanges() {
         for (var field : getFields()) {
-            if (!field.isLatestVersionSaved()) {
-                return false;
+            if (field.hasChanges()) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public void markLatestVersionSaved() {

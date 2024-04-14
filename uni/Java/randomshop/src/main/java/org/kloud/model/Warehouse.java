@@ -36,7 +36,7 @@ public class Warehouse extends BaseModel {
                     .toList(), manager -> {
     });
 
-    public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true,
+    public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true, false,
             ids -> ConfigurationSingleton.getStorage()
                     .getProductStorage().getObjects()
                     .stream()

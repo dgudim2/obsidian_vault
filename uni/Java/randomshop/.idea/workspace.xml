@@ -1,57 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
+    <option name="autoReloadType" value="SELECTIVE"/>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
+    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment=""/>
+    <option name="SHOW_DIALOG" value="false"/>
+    <option name="HIGHLIGHT_CONFLICTS" value="true"/>
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false"/>
+    <option name="LAST_RESOLUTION" value="IGNORE"/>
   </component>
   <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
+    <option name="optimizeImportsOnTheFly" value="true"/>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="FxmlFile" />
-        <option value="Enum" />
-        <option value="Interface" />
-        <option value="Class" />
+        <option value="FxmlFile"/>
+        <option value="Enum"/>
+        <option value="Interface"/>
+        <option value="Class"/>
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.."/>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonElement.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonParser.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar!/com/google/gson/JsonParser.class" root0="SKIP_INSPECTION" />
-    <setting file="jrt:///usr/lib/jvm/java-17-openjdk!/java.base/java/io/ObjectStreamClass.class" root0="SKIP_INSPECTION" />
-    <setting file="jar:///usr/lib/jvm/zulu-jdk-fx/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonElement.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonParser.java" root0="SKIP_INSPECTION" />
-    <setting file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar!/com/google/gson/JsonParser.class" root0="SKIP_INSPECTION" />
-    <setting file="jrt:///usr/lib/jvm/java-17-openjdk!/java.base/java/io/ObjectStreamClass.class" root0="SKIP_INSPECTION" />
-    <setting file="jar:///usr/lib/jvm/zulu-jdk-fx/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonElement.java" root0="SKIP_INSPECTION"/>
+    <setting file="jar://$USER_HOME$/.ideaLibSources/gson-2.10.1-sources.jar!/com/google/gson/JsonParser.java" root0="SKIP_INSPECTION"/>
+    <setting file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar!/com/google/gson/JsonParser.class" root0="SKIP_INSPECTION"/>
+    <setting file="jrt:///usr/lib/jvm/java-17-openjdk!/java.base/java/io/ObjectStreamClass.class" root0="SKIP_INSPECTION"/>
+    <setting file="jar:///usr/lib/jvm/zulu-jdk-fx/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION"/>
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 5
+  "associatedIndex": 5
 }</component>
-  <component name="ProjectId" id="2cd1ryr0kM6eeLPNPPcvslhvrWN" />
+  <component name="ProjectId" id="2cd1ryr0kM6eeLPNPPcvslhvrWN"/>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true"/>
+    <option name="showLibraryContents" value="true"/>
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
+  <component name="PropertiesComponent">{
   "keyToString": {
     "Application.Cli.executor": "Run",
     "Application.Gui (default).executor": "Run",
@@ -83,175 +73,153 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.kloud.utils" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.kloud.utils" />
+      <recent name="org.kloud.utils"/>
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/org/kloud/module/gui" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/kloud/module/gui"/>
     </key>
   </component>
   <component name="RunManager" selected="Application.Gui (default)">
-  <component name="RunManager" selected="Application.Gui (default)">
     <configuration name="Cli" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
-      <module name="randomshop" />
-      <option name="PROGRAM_PARAMETERS" value="--mode cli" />
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main"/>
+      <module name="randomshop"/>
+      <option name="PROGRAM_PARAMETERS" value="--mode cli"/>
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Make" enabled="true"/>
       </method>
     </configuration>
     <configuration name="Gui (default)" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
-      <module name="randomshop" />
-      <option name="PROGRAM_PARAMETERS" value="--mode cli" />
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main"/>
+      <module name="randomshop"/>
       <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Gui (default)" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
-      <module name="randomshop" />
-      <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Make" enabled="true"/>
       </method>
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application">
-    <configuration name="Server" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="org.kloud.Main" />
-      <module name="randomshop" />
-      <option name="PROGRAM_PARAMETERS" value="--mode server" />
-      <option name="PROGRAM_PARAMETERS" value="--mode server" />
+      <option name="MAIN_CLASS_NAME" value="org.kloud.Main"/>
+      <module name="randomshop"/>
+      <option name="PROGRAM_PARAMETERS" value="--mode server"/>
       <method v="2">
-        <option name="Make" enabled="true" />
+        <option name="Make" enabled="true"/>
       </method>
     </configuration>
     <configuration name="Build" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
+        <option name="myGeneralSettings"/>
+        <option name="myRunnerSettings"/>
         <option name="myRunnerParameters">
           <MavenRunnerParameters>
-            <option name="cmdOptions" />
+            <option name="cmdOptions"/>
             <option name="profiles">
-              <set />
+              <set/>
             </option>
             <option name="goals">
               <list>
-                <option value="clean" />
-                <option value="compile" />
-                <option value="assembly:single" />
+                <option value="clean"/>
+                <option value="compile"/>
+                <option value="assembly:single"/>
               </list>
             </option>
-            <option name="multimoduleDir" />
-            <option name="pomFileName" />
+            <option name="multimoduleDir"/>
+            <option name="pomFileName"/>
             <option name="profilesMap">
-              <map />
+              <map/>
             </option>
             <option name="projectsCmdOptionValues">
-              <list />
+              <list/>
             </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
+            <option name="resolveToWorkspace" value="false"/>
+            <option name="workingDirPath" value="$PROJECT_DIR$"/>
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
-      <method v="2" />
+      <method v="2"/>
     </configuration>
     <list>
-      <item itemvalue="Application.Cli" />
-      <item itemvalue="Application.Gui (default)" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Application.Gui (default)" />
-      <item itemvalue="Application.Server" />
-      <item itemvalue="Maven.Build" />
+      <item itemvalue="Application.Cli"/>
+      <item itemvalue="Application.Gui (default)"/>
+      <item itemvalue="Application.Server"/>
+      <item itemvalue="Maven.Build"/>
     </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240"/>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240"/>
       </set>
     </attachedChunks>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true"/>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="" />
+      <changelist id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment=""/>
       <created>1708426846308</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
+      <option name="number" value="Default"/>
+      <option name="presentableId" value="Default"/>
       <updated>1708426846308</updated>
-      <workItem from="1708426847640" duration="66000" />
-      <workItem from="1708427022641" duration="2571000" />
-      <workItem from="1708522951172" duration="5000" />
-      <workItem from="1708522973720" duration="5049000" />
-      <workItem from="1708541110037" duration="575000" />
-      <workItem from="1708541708227" duration="2180000" />
-      <workItem from="1708623609084" duration="1229000" />
-      <workItem from="1708625213733" duration="142000" />
-      <workItem from="1708625361182" duration="55000" />
-      <workItem from="1708951096976" duration="5592000" />
-      <workItem from="1709017086701" duration="509000" />
-      <workItem from="1709020377390" duration="7354000" />
-      <workItem from="1709028782051" duration="5625000" />
-      <workItem from="1709038080314" duration="10389000" />
-      <workItem from="1709124169454" duration="6170000" />
-      <workItem from="1709219581897" duration="6457000" />
-      <workItem from="1709272069223" duration="881000" />
-      <workItem from="1709275615270" duration="1193000" />
-      <workItem from="1709312433212" duration="11509000" />
-      <workItem from="1709405078236" duration="6898000" />
-      <workItem from="1709490973520" duration="321000" />
-      <workItem from="1709491302190" duration="195000" />
-      <workItem from="1709491502935" duration="209000" />
-      <workItem from="1709491755176" duration="48000" />
-      <workItem from="1709569650433" duration="8554000" />
-      <workItem from="1709659539622" duration="5267000" />
-      <workItem from="1710350808559" duration="7289000" />
-      <workItem from="1710697448973" duration="4519000" />
-      <workItem from="1710843919748" duration="4242000" />
-      <workItem from="1710851691639" duration="3386000" />
-      <workItem from="1710870607928" duration="155000" />
-      <workItem from="1710870771852" duration="247000" />
-      <workItem from="1710871026775" duration="12000" />
-      <workItem from="1710871043753" duration="219000" />
-      <workItem from="1710871271300" duration="306000" />
-      <workItem from="1711288985573" duration="4067000" />
-      <workItem from="1711293059446" duration="3089000" />
-      <workItem from="1711370473628" duration="4797000" />
-      <workItem from="1711447610854" duration="5600000" />
-      <workItem from="1711822807051" duration="1793000" />
-      <workItem from="1711883605080" duration="11543000" />
-      <workItem from="1711960455557" duration="31295000" />
-      <workItem from="1712043740524" duration="4613000" />
-      <workItem from="1712418975982" duration="2000" />
-      <workItem from="1712419088475" duration="82000" />
-      <workItem from="1712419174829" duration="12226000" />
-      <workItem from="1712472089516" duration="3725000" />
-      <workItem from="1712476292692" duration="19764000" />
-      <workItem from="1712512589071" duration="2068000" />
-      <workItem from="1712576625713" duration="15000" />
-      <workItem from="1712576692434" duration="1943000" />
-      <workItem from="1712652691249" duration="3663000" />
+      <workItem from="1708426847640" duration="66000"/>
+      <workItem from="1708427022641" duration="2571000"/>
+      <workItem from="1708522951172" duration="5000"/>
+      <workItem from="1708522973720" duration="5049000"/>
+      <workItem from="1708541110037" duration="575000"/>
+      <workItem from="1708541708227" duration="2180000"/>
+      <workItem from="1708623609084" duration="1229000"/>
+      <workItem from="1708625213733" duration="142000"/>
+      <workItem from="1708625361182" duration="55000"/>
+      <workItem from="1708951096976" duration="5592000"/>
+      <workItem from="1709017086701" duration="509000"/>
+      <workItem from="1709020377390" duration="7354000"/>
+      <workItem from="1709028782051" duration="5625000"/>
+      <workItem from="1709038080314" duration="10389000"/>
+      <workItem from="1709124169454" duration="6170000"/>
+      <workItem from="1709219581897" duration="6457000"/>
+      <workItem from="1709272069223" duration="881000"/>
+      <workItem from="1709275615270" duration="1193000"/>
+      <workItem from="1709312433212" duration="11509000"/>
+      <workItem from="1709405078236" duration="6898000"/>
+      <workItem from="1709490973520" duration="321000"/>
+      <workItem from="1709491302190" duration="195000"/>
+      <workItem from="1709491502935" duration="209000"/>
+      <workItem from="1709491755176" duration="48000"/>
+      <workItem from="1709569650433" duration="8554000"/>
+      <workItem from="1709659539622" duration="5267000"/>
+      <workItem from="1710350808559" duration="7289000"/>
+      <workItem from="1710697448973" duration="4519000"/>
+      <workItem from="1710843919748" duration="4242000"/>
+      <workItem from="1710851691639" duration="3386000"/>
+      <workItem from="1710870607928" duration="155000"/>
+      <workItem from="1710870771852" duration="247000"/>
+      <workItem from="1710871026775" duration="12000"/>
+      <workItem from="1710871043753" duration="219000"/>
+      <workItem from="1710871271300" duration="306000"/>
+      <workItem from="1711288985573" duration="4067000"/>
+      <workItem from="1711293059446" duration="3089000"/>
+      <workItem from="1711370473628" duration="4797000"/>
+      <workItem from="1711447610854" duration="5600000"/>
+      <workItem from="1711822807051" duration="1793000"/>
+      <workItem from="1711883605080" duration="11543000"/>
+      <workItem from="1711960455557" duration="31295000"/>
+      <workItem from="1712043740524" duration="4613000"/>
+      <workItem from="1712418975982" duration="2000"/>
+      <workItem from="1712419088475" duration="82000"/>
+      <workItem from="1712419174829" duration="12226000"/>
+      <workItem from="1712472089516" duration="3725000"/>
+      <workItem from="1712476292692" duration="19764000"/>
+      <workItem from="1712512589071" duration="2068000"/>
+      <workItem from="1712576625713" duration="15000"/>
+      <workItem from="1712576692434" duration="1943000"/>
+      <workItem from="1712652691249" duration="3663000"/>
+      <workItem from="1712687844479" duration="1881000"/>
+      <workItem from="1712766226205" duration="6167000"/>
     </task>
-    <servers />
+    <servers/>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="3"/>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <expand/>
+    <select/>
   </component>
 </project>

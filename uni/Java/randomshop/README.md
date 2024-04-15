@@ -4,7 +4,7 @@ Please donwnload from here -> https://github.com/dgudim2/obsidian_vault
 
 ## How to download without a bunch of junk
 
-git clone https://github.com/dgudim2/obsidian_vault --filter=blob:none
+git clone https://github.com/dgudim2/obsidian_vault --depth=1
 cd obsidian_vault
 git sparse-checkout init
 git config --worktree core.sparseCheckoutCone false

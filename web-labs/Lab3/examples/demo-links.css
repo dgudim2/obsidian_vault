@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One|Fredoka+One);
+body {
+   margin: 0;
+}
+
+section {
+   margin: 0 auto;
+   max-width: 1000px;
+   position: relative;
+}
+
+h1 {
+   font-family: 'Poiret One', cursive;
+   text-align: center;
+   color: #4C596C;
+   font-size: 40px;
+   color: #4C596C;
+}
+
+.tutorial {
+   width: 33%;
+   min-width: 280px;
+   margin: 0 auto;
+   text-align: center;
+}
+
+.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .s9, .s10, .s11, .s12, .s13, .s14, .s15, .s16, .s17, .s18, .s19, .s20 {
+   text-decoration: none;
+   display: inline-block;
+   padding: 5px 10px;
+   letter-spacing: 1px;
+   margin: 0 20px;
+   font-size: 24px;
+   transition: all 0.3s ease-in-out;
+   font-family: 'PT Sans Caption', sans-serif;
+}
+
+.s1 {
+   color: #FFD201;
+   letter-spacing: 1px;
+   border-bottom: 1px solid transparent;
+   border-top: 1px solid transparent;
+}
+
+.s1:hover {
+   border-bottom: 1px solid #FFD201;
+   border-top: 1px solid #FFD201;
+}
+
+.s2 {
+   color: #969696;
+   text-shadow: 1px 1px black;
+   letter-spacing: 1px;
+   border-bottom: 2px solid transparent;
+}
+
+.s2:hover {
+   color: #F54318;
+   border-bottom: 2px solid #F54318;
+   box-shadow: 0 1px 0 white, 0 2px 0 #969696;
+}
+
+.s3 {
+   color: #BA7D67;
+   border: 2px solid transparent;
+}
+
+.s3:hover {
+   border: 2px solid #BA7D67;
+}
+
+.s4 {
+   color: #2AABBA;
+   font-style: italic;
+   padding-left: 35px;
+   background: url(pdf-icon.png) no-repeat left;
+   text-decoration: underline;
+}
+
+.s4:hover {
+   color: #C9D414;
+}
+
+.s5 {
+   color: #CBB8AA;
+   position: relative;
+}
+
+.s5 {
+   text-shadow: 1px 1px white, 2px 2px #6A5F55;
+}
+
+.s5:hover {
+   text-shadow: 1px 1px 1px #6A5F55;
+}
+
+.s6 {
+   color: #E7805E;
+   border-bottom: 1px dashed;
+}
+
+.s6:hover {
+   border-bottom: 1px solid #9B8381;
+}
+
+.s7 {
+   color: #D5A39C;
+}
+
+.s7:hover {
+   transform: scaleX(1.1);
+}
+
+.s8 {
+   color: #92B8C5;
+   text-shadow: 1px 1px 1px #555555;
+}
+
+.s8:hover {
+   position: relative;
+   top: 2px;
+   left: 2px;
+}
+
+.s9 {
+   color: #B2BBC0;
+   text-shadow: 1px 0 #4D575D;
+}
+
+.s9:hover {
+   transform: rotate(-5deg);
+}
+
+.s10 {
+   color: #B79DCC;
+   position: relative;
+}
+
+.s10:after {
+   content: "";
+   display: block;
+   position: relative;
+   width: 100%;
+   margin: auto;
+   border-bottom: 3px dashed #C1CF00;
+   bottom: -5px;
+   transition: .5s ease-in-out;
+}
+
+.s10:hover:after {
+   width: 0%;
+}
+
+.s11 {
+   background-image: linear-gradient(#FE5568 50%, #FE5568 50%), linear-gradient(silver 50%, silver 50%);
+   background-position: center bottom;
+   background-repeat: no-repeat;
+   background-size: 0 2px, 100% 2px;
+   color: #1E3A52;
+   padding-bottom: 3px;
+   transition: .5s ease-in-out;
+}
+
+.s11:hover {
+   background-size: 100% 2px, 100% 2px;
+   color: #FE5568;
+}
+
+.s12 {
+   background-image: linear-gradient(#EE5E4F 50%, #EE5E4F 50%), linear-gradient(silver 50%, silver 50%);
+   background-position: center bottom;
+   background-repeat: no-repeat;
+   background-size: 0 .063em, 100% .063em;
+   color: #607584;
+   padding-bottom: .188em;
+   transition: background-size .5s;
+}
+
+.s12:hover {
+   background-size: 100% .063em, 100% .063em;
+   background-position: left bottom;
+}
+
+.s13 {
+   color: #34495e;
+   line-height: 1.2;
+   position: relative;
+   padding: 0 14px;
+   text-transform: uppercase;
+}
+
+.s13:after {
+   content: "";
+   height: 100%;
+   min-width: 4px;
+   background: #34495e;
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   transition: all 0.5s;
+}
+
+.s13:hover:after {
+   min-width: 100%;
+   background: #95a5a6;
+   opacity: 0.35;
+}
+
+.s14 {
+   border-bottom: 2px solid #5be;
+   color: #555;
+   transition: .25s;
+   background-image: linear-gradient(180deg, transparent 65%, #5bf 65%);
+   background-position: 0% 100%;
+   background-repeat: no-repeat;
+   background-size: 100% 0%;
+}
+
+.s14:hover {
+   background-size: 100% 100%;
+}

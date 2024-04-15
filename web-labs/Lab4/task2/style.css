@@ -1,0 +1,30 @@
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.container+.container {
+    margin-top: 25px
+}
+
+#pointer {
+    cursor: pointer;
+}
+
+#cursor_loading {
+    cursor: progress;
+}
+
+#loading {
+    cursor: wait;
+}
+
+#custom {
+    cursor: url('cursor.png'), auto;
+}

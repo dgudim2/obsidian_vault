@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Задание 3</title>
+    </head>
+
+    <body>
+        <main>
+            <p id="pToC">При нажатии на кнопку текст в абзаце поменяется</p>
+            <button onclick="changeP()">Press me</button>
+        </main>
+        <script>
+            function changeP(){
+                let p = document.getElementById("pToC");
+                p.innerHTML = "Изменился и <strong>" + "стал жирным" + "</strong>!";
+            }
+        </script>
+
+    </body>
+
+</html>

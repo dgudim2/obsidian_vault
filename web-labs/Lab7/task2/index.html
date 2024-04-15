@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" type="text/css">
+        <script src="js/fontawsome.js"></script>
+        <title>Supabase - the open source firebase alternative</title>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <div id="nav_inner_container">
+                    <div id="nav_inner_container_flex">
+                        <div id="nav_logo_and_nav">
+                            <div id="nav_logo_container"><a href="#">
+                                    <img id="nav_logo" src="images/supabase-logo.svg" alt="Logo"></a></div>
+                            <div id="nav_nav_container">
+                                <div class="nav_item">
+                                    <span>Product</span>
+                                    <svg class="nav_item_dropdown" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div>
+                                <div class="nav_item">
+                                    <span>Developers</span>
+                                    <svg class="nav_item_dropdown" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                </div><a href="#" class="nav_item_a">Beta</a>
+                                <a href="#" class="nav_item_a">Pricing</a>
+                            </div>
+                        </div>
+                        <div id="nav_buttons_container">
+                            <button class="button accent_button">
+                                Start your project
+                            </button>
+                            <button class="button transparent_button">
+                                Sign in
+                            </button>
+                        </div>
+                    </div>
+                    <a href="javascript:void(0);" id="burger_menu" class="nav_item_a" onclick="show_burger()">
+                        <i class="fa fa-bars fa-2x"></i>
+                    </a>
+                </div>
+            </nav>
+            <div id="burger_dropdown">
+                <a class="nav_item_a" href="#">Product</a>
+                <a class="nav_item_a"href="#">Developers</a>
+                <a class="nav_item_a" href="#">Beta</a>
+                <a class="nav_item_a" href="#">Pricing</a>
+                <a class="nav_item_a" href="#">Sign in</a>
+                <button class="button accent_button">
+                    Start your project
+                </button>
+            </div>
+        </header>
+        <main>
+            <section id="section1">
+                <div>
+                    <div class="icon_container">
+                        <div class="icon">
+                            <i class="fas fa-archive"></i>
+                        </div>
+                        <div class="icon_text">
+                            Storage
+                        </div>
+                    </div>
+                    <h1>Store and serve any type of digital content</h1>
+                    <div id="main_section_p_container">
+                        <p>An open source Object store service with unlimited scalability, for any file type.</p>
+                        <p>With custom policies and permissions that are familiar and easy to implement.</p>
+                    </div>
+                    <button class="button accent_button button_section">Start a project</button>
+                </div>
+                <div><img src="images/main_section.png" alt="brief"></div>
+            </section>
+            <section id="section2">
+                <div class="section2_inner_grid_elem">
+                    <div class="section2_elem_icons">
+                        <div class="icon_container">
+                            <div class="icon">
+                                <i class="fas fa-archive"></i>
+                            </div>
+                            <div class="icon_text">
+                                ✖
+                            </div>
+                        </div>
+                        <div class="icon_container">
+                            <div class="icon">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <div class="icon_text">
+                                ✖
+                            </div>
+                        </div>
+                        <div class="icon_container">
+                            <div class="icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Interoperable</h3>
+                    <p>Intergates well with th rest of Supabase ecosystem, including Auth and Postgres.</p>
+                </div>
+                <div class="section2_inner_grid_elem">
+                    <div class="section2_elem_icons">
+                        <div class="icon_container">
+                            <div class="icon icon_no_background">
+                                <i class="fas fa-fast-forward"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Lightning fast</h3>
+                    <p>Thin api layer that leverages Postgres' permissions and performance</p>
+                </div>
+                <div class="section2_inner_grid_elem">
+                    <div class="section2_elem_icons">
+                        <div class="icon_container">
+                            <div class="icon icon_no_background">
+                                <i class="far fa-check-square"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <h3>Dependable</h3>
+                    <p>Enterprise-level scalability and durability</p>
+                </div>
+            </section>
+            <section id="section3">
+                <h1>Sleek dashboard for managing your media</h1>
+                <span>A complete Object Explorer so that any of your team can use</span><br>
+                <span class="secondary">Drag and drop uploading, moving objects, and multiple object sections. As easy
+                    as working on your desktop.</span>
+                <div id="section3_grid">
+                    <div id="section3_grid1">
+                        <div class="flex_buttons">
+                            <button class="button">
+                                File previews
+                            </button>
+                            <button class="button inactive_button">
+                                Column view
+                            </button>
+                            <button class="button inactive_button">
+                                List view
+                            </button>
+                            <button class="button inactive_button">
+                                Multi select actions
+                            </button>
+                            <button class="button inactive_button">
+                                Path navigator
+                            </button>
+                        </div>
+                        <img src="images/dashboard.png" alt="dashboard">
+                    </div>
+                    <div id="section3_grid_right_elem">
+                        <h2>File previews</h2>
+                        <p>Preview any media type, including video and audio.</p>
+                        <h2>Check out our example app</h2>
+                        <div id="example_app">
+                            <h3>Profile management example</h3>
+                            <p>Update a user account with public profile information, including uploading a profile
+                                image.</p>
+                            <div class="icon_container">
+                                <div class="icon_text">
+                                    Created by:
+                                </div>
+                                <div class="icon icon_no_background" id="example_app_logo">
+                                    <i><img src="images/example_app_logo.png" alt="example_app_logo"></i>
+                                </div>
+                                <div class="icon_text">
+                                    supabase
+                                </div>
+                            </div>
+                        </div>
+                        <div id="deploy_js">
+                            <span class="secondary">nextjs-ts-user-management</span>
+                            <button class="button accent_button_blue" id="deploy_js_button">
+                                <i class="fas fa-caret-up"></i> Deploy
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section4">
+                <div>
+                    <h2>Simple and convenient APIs</h2>
+                    <p>Built from the ground-up for interoperable authentication</p>
+                    <p>Fast and easy to implement using our powerfull library clients. Asset optimization and image
+                        transformation coming soon!</p>
+                    <div id="section4_cdn_and_auto">
+                        <div class="section4_card">
+                            <div class="icon_container">
+                                <div class="icon icon_no_background">
+                                    <i class="fas fa-wifi"></i>
+                                </div>
+                            </div>
+                            <h3>CDN intergation</h3>
+                            <p class="secondary">Serve from the edge to reduce latency.</p>
+                            <span class="coming_soon secondary">Coming soon</span>
+                        </div>
+                        <div class="section4_card">
+                            <div class="icon_container">
+                                <div class="icon icon_no_background">
+                                    <i class="fas fa-random"></i>
+                                </div>
+                            </div>
+                            <h3>Auto transformation & optimisation</h3>
+                            <p class="secondary">Resize and compress your media before you serve it.</p>
+                            <span class="coming_soon secondary">Coming soon</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="section_grid_70">
+                    <div class="flex_buttons">
+                        <button class="button">
+                            Upload a file
+                        </button>
+                        <button class="button inactive_button">
+                            Download a file
+                        </button>
+                        <button class="button inactive_button">
+                            List files Move and rename files
+                        </button>
+                        <button class="button inactive_button">
+                            Delete files
+                        </button>
+                    </div>
+                    <img src="images/apis.png" alt="api_example">
+                </div>
+            </section>
+            <section id="section5">
+                <div>
+                    <h2>Integrates natively with Supabase Auth</h2>
+                    <p>Using Postgres Row Level Security to create Object access rules.</p>
+                    <p>Storage Authorization is built around Postgres so that you can use any combination of SQL,
+                        Postgres functions, and even your own metadata to write policies.</p>
+                    <button class="button" id="documentation_button">
+                        <i class="fas fa-external-link-alt"></i>Explore documentation
+                    </button>
+                </div>
+                <div class="section_grid_70">
+                    <div class="flex_buttons">
+                        <button class="button">
+                            Public access to a bucket
+                        </button>
+                        <button class="button inactive_button">
+                            Public access to a folder
+                        </button>
+                        <button class="button inactive_button">
+                            Authenticated access to a bucket
+                        </button>
+                    </div>
+                    <img src="images/bucket_access.png" alt="bucket_access_example">
+                </div>
+            </section>
+            <section id="section6">
+                <div>
+                    <span id="inactive">Build in a weekend,</span>
+                    <span>scale to millions</span>
+                </div>
+                <button class="button accent_button button_section">Start your project</button>
+            </section>
+        </main>
+        <footer>
+            <div id="footer_grid">
+                <div>
+                    <img id="footer_logo" src="images/supabase-logo.svg" alt="Logo"></a>
+                    <div id="footer_git_twitter">
+                        <div class="icon_container">
+                            <div class="icon icon_no_background">
+                                <i class="fab fa-github fa-2x"></i>
+                            </div>
+                        </div>
+                        <div class="icon_container">
+                            <div class="icon icon_no_background">
+                                <i class="fab fa-twitter fa-2x"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4>Product</h4>
+                    <ul>
+                        <li>Database</li>
+                        <li>Authentication</li>
+                        <li>Storage</li>
+                        <li>Functions</li>
+                        <li>Pricing</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Recources</h4>
+                    <ul>
+                        <li>Support</li>
+                        <li>Case Studies</li>
+                        <li>System Status</li>
+                        <li>Terms of service</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Developers</h4>
+                    <ul>
+                        <li>Documentation</li>
+
+                        <li>Api Reference</li>
+                        <li>Guides</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Company</h4>
+                    <ul>
+                        <li>Blog</li>
+                        <li>Open Source</li>
+                        <li>Humans.txt</li>
+                        <li>Lawyers.txt</li>
+                    </ul>
+                </div>
+            </div>
+            <div id="footer_footer_container">
+                <span>© Supabase Inc</span>
+                <div id="theme_switch_container">
+                    <i class="fas fa-sun fa-2x"></i>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                      </label>
+                    <i class="fas fa-moon fa-2x"></i>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            let burger_menu = document.getElementById("burger_dropdown");
+            function show_burger(){
+                if(burger_menu.style.display == ""){
+                    burger_menu.style.display = "flex";
+                }else{
+                    burger_menu.style.display = "";
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

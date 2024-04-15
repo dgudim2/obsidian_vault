@@ -1,0 +1,46 @@
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter_preview_container {
+    margin: 0 25px;
+}
+
+img {
+    height: 250px;
+    margin: 2px
+}
+
+img#grayscale {
+    filter: grayscale(1);
+}
+
+img#sepia {
+    filter: sepia(1);
+}
+
+img#saturate {
+    filter: saturate(0.5);
+}
+
+img#hue-rotate {
+    animation: hueShift 2s infinite;
+}
+
+@keyframes hueShift {
+    from {
+        filter: hue-rotate(0deg)
+    }
+    to {
+        filter: hue-rotate(360deg)
+    }
+}
+
+img#invert {
+    filter: invert(1);
+}
+
+img#contrast {
+    filter: contrast(0.5);
+}

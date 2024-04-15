@@ -1,0 +1,44 @@
+:root{
+    --main-border-color: gray;
+}
+
+main, #banner {
+    text-align: center;
+}
+
+#banner_title_container {
+    position: absolute;
+    top: 100%;
+    width: 47%;
+}
+
+#banner_img {
+    width: 100%;
+    display: block;
+    filter: brightness(0.5);
+}
+
+#banner_title {
+    font-size: 2.5rem;
+}
+
+#banner_title, #banner_description {
+    color: white;
+    padding: 3%;
+    margin: 0;
+}
+
+#main_block_title {
+    font-size: 2rem;
+}
+
+#main_block_paragraph {
+    text-align: justify;
+}
+
+@media only screen and (max-width: 1100px) {
+    #banner_title_container {
+        width: 90%;
+        top: 210%;
+    }
+}

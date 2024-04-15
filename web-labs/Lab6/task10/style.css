@@ -1,0 +1,231 @@
+body {
+    background: rgb(255, 255, 255);
+}
+
+main {
+    height: 500px;
+    width: 100%;
+    background: rgb(190, 181, 219);
+    background: -moz-linear-gradient(45deg, rgba(190, 181, 219, 1) 0%, rgba(161, 185, 229, 1) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(190, 181, 219, 1) 0%, rgba(161, 185, 229, 1) 100%);
+    background: linear-gradient(45deg, rgba(190, 181, 219, 1) 0%, rgba(161, 185, 229, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#beb5db", endColorstr="#a1b9e5", GradientType=1);
+}
+
+#cover {
+    height: 200px;
+    width: 100%;
+    background: white;
+    position: absolute;
+    top: 500px;
+}
+
+#container {
+    position: relative;
+    top: 380px;
+    left: 100px;
+    width: 165px;
+    transform-origin: center;
+}
+
+#yacht {
+    padding: 25px 0;
+    width: 165px;
+    background: #6464c8;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    z-index: 2;
+    position: relative;
+}
+
+#tower {
+    width: 10px;
+    height: 95px;
+    background: #6464c8;
+    position: relative;
+    left: 92px;
+    bottom: 155px;
+    transform-origin: bottom;
+    transform: rotate(-90deg);
+    z-index: 1;
+}
+
+#tower::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 0px solid white;
+    border-left: 70px solid transparent;
+    position: relative;
+    left: -75px;
+    bottom: -70px;
+}
+
+#tower::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-bottom: 0px solid white;
+    border-right: 40px solid transparent;
+    position: relative;
+    left: -55px;
+    bottom: -70px;
+}
+
+#tower.animate_sails::before{
+    animation: scale_sails 0.5s linear forwards, blow_sails_left 0.5s 0.5s alternate 8 ease-in-out;
+}
+
+#tower.animate_sails::after {
+    animation: scale_sails 0.5s linear forwards, blow_sails_rigth 0.5s 0.5s alternate 8 ease-in-out;
+}
+
+#wave1, #wave2, #wave3 {
+    position: absolute;
+    top: 500px;
+}
+
+#wave3{
+    filter:sepia(1) saturate(2) hue-rotate(190deg);
+}
+
+#wave2{
+    filter:sepia(1) saturate(2) hue-rotate(180deg);
+}
+
+#wave1{
+    filter:sepia(1) saturate(2) hue-rotate(170deg);
+}
+
+.animate_wave {
+    animation: move_wave_to_pos 0.5s ease-in-out forwards, move_wave 0.5s 0.5s alternate 8 ease-in-out;
+}
+
+.animate_tower {
+    animation: rotate_tower 0.6s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.animate_borders {
+    animation: transform_borders 0.3s linear;
+    animation-fill-mode: forwards;
+}
+
+.animate_yacht {
+    animation: pre_rotate 0.5s ease-in-out forwards, go 4s ease-in-out forwards, lift 2.3s 1s ease-in-out forwards, rotate 0.5s 0.5s alternate 8 ease-in-out, post_rotate 5.5s ease-in-out forwards;
+}
+
+@keyframes transform_borders {
+    from {
+        border-radius: 5px;
+    }
+    to {
+        border-radius: 5px 5px 55px 55px;
+    }
+}
+
+@keyframes go {
+    from {
+        left: 100px;
+    }
+    to {
+        left: 1130px;
+    }
+}
+
+@keyframes lift {
+    0% {
+        top: 380px;
+    }
+    20%{
+        top: 390px;
+    }
+    60% {
+        top: 330px;
+    }
+    100% {
+        top: 380px;
+    }
+}
+
+@keyframes pre_rotate {
+    to {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(-10deg);
+    }
+    to {
+        transform: rotate(10deg);
+    }
+}
+
+@keyframes post_rotate {
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes rotate_tower {
+    from {
+        transform: rotate(-90deg);
+    }
+    to {
+        transform: rotate(0);
+    }
+}
+
+@keyframes scale_sails {
+    from {
+        bottom: -70px;
+        border-bottom: 0 solid white;
+    }
+    to {
+        bottom: 20px;
+        border-bottom: 90px solid white;
+    }
+}
+
+@keyframes blow_sails_left {
+    from {
+        left: -75px;
+        border-left: 70px solid transparent;
+    }
+    to {
+        left: -65px;
+        border-left: 60px solid transparent;
+    }
+}
+
+@keyframes blow_sails_rigth {
+    from {
+        left: -55px;
+        border-right: 40px solid transparent;
+    }
+    to {
+        left: -45px;
+        border-right: 45px solid transparent;
+    }
+}
+
+@keyframes move_wave {
+    from {
+        top: 375px;
+    }
+    to {
+        top: 365px;
+    }
+}
+
+@keyframes move_wave_to_pos {
+    from {
+        top: 500px;
+    }
+    to {
+        top: 375px;
+    }
+}

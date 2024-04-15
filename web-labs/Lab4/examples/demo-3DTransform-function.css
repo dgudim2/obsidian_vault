@@ -1,0 +1,90 @@
+@import url(https://fonts.googleapis.com/css?family=Sigmar+One);
+body {
+  margin: 0;
+  text-align: center;
+  background: #F4F1F8;
+}
+h1 {
+  font-family: 'Sigmar One', cursive;
+  color: #FFC84D;
+}
+h4 {
+  font-family: monospace;
+}
+section {
+  display: block;
+  width: 660px;
+  margin: 0 auto;
+}
+div {
+  height: 120px;
+  width: 220px;  
+}
+.container {
+  position: relative;
+  display: inline-block;
+  height: 120px;
+  margin: 0 2em 2em 0;
+  opacity: .7;
+  border-radius: 5px;
+  background: #E4E1E4;
+  -webkit-perspective: 400px;
+  perspective: 400px;
+  -webkit-transform-style: preserve-3d; 
+  transform-style: preserve-3d;
+}
+.transform {
+  position: absolute;
+  bottom: 0;
+  background: rgba(65, 245, 254, .5);
+  border-radius: 5px;
+  -webkit-animation: notransform 5s infinite;
+  animation: notransform 5s infinite;
+}
+.translate3d {
+  -webkit-transform: translate3d(20px,20px,20px);
+  -ms-transform: translate3d(20px,20px,20px);
+  transform: translate3d(20px,20px,20px);
+}
+.scale3d {
+  -webkit-transform: scale3d(0,0,1);
+  -ms-transform: scale3d(0,0,1);
+  transform: scale3d(0,0,1);
+  -webkit-animation-delay: .5s;
+  animation-delay: .5s;
+}
+.rotate3d {
+  -webkit-transform: rotate3d(1, .5, 1, -30deg);
+  -ms-transform: rotate3d(1, .5, 1, -30deg);
+  transform: rotate3d(1, .5, 1, -30deg);
+  -webkit-animation-delay: 1s;
+  animation-delay: 1s;
+  
+  }
+.rotateX {
+  -webkit-transform: rotateX(180deg);
+ -ms-transform: rotateX(180deg);
+  transform: rotateX(180deg);
+   -webkit-animation-delay: 1.5s;
+  animation-delay: 1.5s;
+}
+.rotateY {
+  -webkit-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+}
+.rotateZ {
+  -webkit-transform: rotateZ(180deg);
+  -ms-transform: rotateZ(180deg);
+  transform: rotateZ(180deg);
+  -webkit-animation-delay: 2.5s;
+  animation-delay: 2.5s;
+}
+@-webkit-keyframes notransform {
+  50% {transform: none;}
+}
+@keyframes notransform {
+  50% {transform: none;}
+}

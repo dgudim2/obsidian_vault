@@ -1,0 +1,14 @@
+main{
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+div{
+    background: mediumaquamarine;
+    flex: 2 0.7 200px;
+    height: 200px;
+    margin: 5px;
+}

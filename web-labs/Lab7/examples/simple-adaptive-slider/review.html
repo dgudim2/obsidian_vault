@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Слайдер для сайта на чистом JavaScript</title>
+  
+  <!-- Подключаем CSS слайдера -->
+  <link rel="stylesheet" href="simple-adaptive-slider.min.css">
+  <!-- Подключаем JS слайдера -->
+  <script defer src="simple-adaptive-slider.min.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // инициализация слайдера
+      let slider = new SimpleAdaptiveSlider('.slider', {
+        autoplay: true,
+        interval: 10000,
+      });
+    });
+  </script>
+
+  <style>
+    /* стили для элемента body */
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+        sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    }
+
+    .slider {
+      max-width: 960px;
+    }
+
+    /* дополнительные стили для этого примера */
+    .slider__items {
+      counter-reset: slide;
+    }
+
+    .slider__item {
+      height: 320px;
+      overflow: hidden;
+      position: relative;
+      counter-increment: slide;
+    }
+
+    .slider__item::after {
+      content: counter(slide);
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-style: italic;
+      font-size: 32px;
+      font-weight: bold;
+    }
+
+    img {
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    }
+
+    .slider__item:nth-child(1) {
+      background: linear-gradient(45deg, #085078 10%, #85d8ce 90%);
+    }
+
+    .slider__item:nth-child(2) {
+      background: linear-gradient(to right, #dd1818, #333333);
+    }
+
+    .slider__item:nth-child(3) {
+      background: linear-gradient(to right, #093028, #237a57);
+    }
+
+    .slider__item:nth-child(4) {
+      background: linear-gradient(to right, #243B55, #141E30);
+    }
+
+    .slider__item_inner {
+      position: absolute;
+      left: 15%;
+      right: 15%;
+      top: 36px;
+      bottom: 36px;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .slider__item_img {
+      flex: 0 0 80px;
+      max-width: 80px;
+    }
+
+    .slider__item_testimonial {
+      flex: 1 0 0;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+    }
+
+    @media (min-width: 576px) {
+      .slider__item {
+        height: 250px;
+      }
+
+      .slider__item_inner {
+        flex-direction: row;
+      }
+
+      .slider__item_testimonial {
+        margin-left: 15px;
+      }
+
+      .slider__item_img {
+        flex: 0 0 150px;
+        max-width: 150px;
+      }
+
+      .slider__item_testimonial {
+        text-align: left;
+      }
+    }
+
+    .slider__item_name {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .slider__item_post {
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .slider__item_text {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Разметка слайдера -->
+  <div class="slider">
+    <div class="slider__wrapper">
+      <div class="slider__items">
+        <div class="slider__item">
+          <div class="slider__item_inner">
+            <span class="slider__item_img">
+              <img class="slider__item_photo" src="images/image-1.jpg" alt="">
+            </span>
+            <span class="slider__item_testimonial">
+              <span class="slider__item_name">Кот Добби</span>
+              <span class="slider__item_post">Кот домашний, к туалету приучен</span>
+              <span class="slider__item_text">
+                Сфинкс – бесшерстная кошка с поведением и характером собаки. Представители породы относятся к классу компаньонов. Поэтому нуждаются во внимании и совсем непохожи на независимых кошек, стремящихся держаться от человека на расстоянии.
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="slider__item">
+          <div class="slider__item_inner">
+            <span class="slider__item_img">
+              <img src="images/image-2.jpg" alt="">
+            </span>
+            <span class="slider__item_testimonial">
+              <span class="slider__item_name">Кот Добби</span>
+              <span class="slider__item_post">Кот домашний, к туалету приучен</span>
+              <span class="slider__item_text">
+                Сфинкс – бесшерстная кошка с поведением и характером собаки. Представители породы относятся к классу компаньонов. Поэтому нуждаются во внимании и совсем непохожи на независимых кошек, стремящихся держаться от человека на расстоянии.
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="slider__item">
+          <div class="slider__item_inner">
+            <span class="slider__item_img">
+              <img src="images/image-3.jpg" alt="">
+            </span>
+            <span class="slider__item_testimonial">
+              <span class="slider__item_name">Кот Добби</span>
+              <span class="slider__item_post">Кот домашний, к туалету приучен</span>
+              <span class="slider__item_text">
+                Сфинкс – бесшерстная кошка с поведением и характером собаки. Представители породы относятся к классу компаньонов. Поэтому нуждаются во внимании и совсем непохожи на независимых кошек, стремящихся держаться от человека на расстоянии.
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="slider__item">
+          <div class="slider__item_inner">
+            <span class="slider__item_img">
+              <img src="images/image-4.jpg" alt="">
+            </span>
+            <span class="slider__item_testimonial">
+              <span class="slider__item_name">Кот Добби</span>
+              <span class="slider__item_post">Кот домашний, к туалету приучен</span>
+              <span class="slider__item_text">
+                Сфинкс – бесшерстная кошка с поведением и характером собаки. Представители породы относятся к классу компаньонов. Поэтому нуждаются во внимании и совсем непохожи на независимых кошек, стремящихся держаться от человека на расстоянии.
+              </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="slider__control slider__control_prev" href="#" role="button" data-slide="prev"></a>
+    <a class="slider__control slider__control_next" href="#" role="button" data-slide="next"></a>
+  </div>
+</body>
+
+</html>
+
+            

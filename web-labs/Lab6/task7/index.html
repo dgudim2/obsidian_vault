@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <title>Галерея</title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+  </head>
+
+  <body>
+
+    <p><img id="largeImg" src="images/image-6.jpg" title="5 лучших аниме Хаяо Миядзаки"></p>
+
+    <ul id="thumbs">
+      <li>
+        <a href="images/image-1.jpg" title="Навсикая из долины ветров"><img src="images/image-1-thumb.jpg"></a>
+      </li>
+      <li>
+        <a href="images/image-2.jpg" title="Мой сосед Тоторо"><img src="images/image-2-thumb.jpg"></a>
+      </li>
+      <li>
+        <a href="images/image-3.jpg" title="Унесенные призраками"><img src="images/image-3-thumb.jpg"></a>
+      </li>
+      <li>
+        <a href="images/image-4.jpg" title="Ходячий замок"><img src="images/image-4-thumb.jpg"></a>
+      </li>
+      <li>
+        <a href="images/image-5.jpg" title="Ведьмина служба доставки"><img src="images/image-5-thumb.jpg"></a>
+      </li>
+    </ul>
+
+    <script>
+      let largeImg = document.getElementById("largeImg");
+      document.getElementById("thumbs").onclick = function (event) {
+        if (event.target.tagName.toLowerCase() == "img") {
+          largeImg.src = event.target.parentNode.href;
+          largeImg.title = event.target.parentNode.title;
+          return false;
+        }
+      }
+    </script>
+
+  </body>
+
+</html>

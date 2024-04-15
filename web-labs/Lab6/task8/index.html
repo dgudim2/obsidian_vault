@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Задание 8</title>
+    </head>
+
+    <body>
+        <main>
+            <progress id="progressBar" max="100" value="5"></progress>
+            <div id="progressDisplay" style="display:inline">5%</div>
+            <button id="prInc" style="display:block">
+                Click me
+            </button>
+        </main>
+
+        <script>
+            let button = document.getElementById("prInc");
+            button.onclick = progress;
+            let progressBar = document.getElementById("progressBar");
+            let progressDisplay = document.getElementById("progressDisplay");
+            function progress() {
+                progressBar.value += 5;
+                progressDisplay.innerText = progressBar.value + "%";
+            }
+        </script>
+
+    </body>
+
+</html>

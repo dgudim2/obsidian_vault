@@ -1,0 +1,30 @@
+
+.navigation_container{
+    text-align: center;
+}
+
+.navigation {
+    display: inline-block;
+}
+
+.navigation a {
+    color: #333;
+    float: left;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 5px 3px;
+    text-align: center;
+    background-color: #ddd;
+    text-decoration: none;
+    transition: background-color .1s;
+}
+
+.navigation a:hover{
+    background-color: #ccc;
+}
+
+.navigation a:active {
+    color: #fff;
+    background-color: #d10953;
+}

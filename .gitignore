@@ -25,4 +25,25 @@ export
 *_ng_
 /uni/Computer networks/GNS3
 
+# Some stuff from web labs
+*.webm
+*.mp4
+*.mp3
+*.ogg
+*.aac
+*.ogv
+*.vtt
+
+*.webp
+*.png
+*.PNG
+*.jpg
+*.JPG
+*.jpeg
+*.tiff
+*.gif
+
+# Obsidian wasm plugin data
+*.wasm
+
 python_venv

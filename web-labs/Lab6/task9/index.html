@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <title>Задание 9</title>
+    </head>
+
+    <body>
+        <main>
+            <img src="img/bg.jpg" alt="background" class="background">
+            <img src="img/planet-1.png" alt="planet1" class="planet1">
+            <img src="img/planet-2.png" alt="planet2" class="planet2">
+            <img src="img/planet-3.png" alt="planet3" class="planet3">
+            <table id="spinning_table">
+                <tr>
+                    <td><img src="img/ufo.png" alt="ufo" class="ufo"></td>
+                    <td><img src="img/spaceship.png" alt="spaceship" class="ufo"></td>
+                    <td><img src="img/asteroid.png" alt="asteroid" class="asteroid"></td>
+                </tr>
+            </table>
+            <a href="#" class="button" id="start_button">Полетели</a>
+        </main>
+
+        <script>
+            let table = document.getElementById("spinning_table")
+            let button = document.getElementById("start_button");
+
+            button.onclick = function (event) {
+                setInterval(spin, 500);
+            }
+
+            function spin() {
+                let firstRow = table.rows[0];
+                let firstCellInnerHTML = firstRow.cells[0].innerHTML;
+                for (let i = 0; i < firstRow.cells.length - 1; i++) {
+                    firstRow.cells[i].innerHTML = firstRow.cells[i + 1].innerHTML;
+                }
+                firstRow.cells[firstRow.cells.length - 1].innerHTML = firstCellInnerHTML;
+            }
+        </script>
+
+    </body>
+
+</html>

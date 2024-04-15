@@ -1,0 +1,155 @@
+/* flex styles */
+
+#flex_main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+#flex_outer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 1300px;
+}
+
+#flex_inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* button styles */
+
+.btn_vertical_flex_container {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1;
+    margin: 0 var(--button-margin);
+}
+
+.img_container img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.img_container {
+    min-width: 270px;
+}
+
+.btn_a {
+    min-width: 270px;
+    width: 100%;
+    text-decoration: none !important;
+    color: white;
+}
+
+.btn {
+    color: inherit;
+    font-size: inherit;
+    padding: 5px;
+    border-radius: 0.2em;
+    border: none;
+    margin: var(--button-margin) 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.btn span.large {
+    font-size: 2rem;
+}
+
+.btn span.main_text {
+    width: 100%;
+    max-height: 3em;
+    text-align: center;
+    transition-duration: 0.3s;
+}
+
+.btn span.main_text:only-child {
+    transition-duration: 0.15s;
+}
+
+.btn:hover span.main_text:only-child {
+    transform: translateY(-0.5em);
+}
+
+.btn span.additional_text, .btn span.additional_text_full {
+    color: transparent;
+    max-height: 0;
+    transition-duration: 0.3s;
+    font-size: 0.85em;
+}
+
+.btn:hover span.additional_text, .btn:hover span.additional_text_full {
+    color: white;
+}
+
+.btn:hover span.additional_text {
+    max-height: 2em;
+}
+
+.btn:hover span.additional_text_full {
+    max-height: 5em;
+}
+
+.btn:hover span.near_full {
+    color: transparent;
+    max-height: 0;
+    margin: 0;
+}
+
+.btn_regular {
+    height: 110px
+}
+
+.btn_img {
+    height: calc(220px + var(--button-margin) * 2);
+    padding: 0.1rem;
+}
+
+.btn_img span {
+    z-index: 10;
+}
+
+.b_img_block {
+    transition-duration: 0.3s;
+    height: 90%;
+    display: block;
+}
+
+.btn_img:hover .b_img_block {
+    height: 80%;
+    margin-bottom: 0.25em;
+}
+
+.red {
+    background: #6a1a1c;
+}
+
+.red_light {
+    background: #8f4446;
+}
+
+.green {
+    background: #6e9e63;
+}
+
+.blue {
+    background: #0e446a;
+}
+
+.orange {
+    background: #a6441f;
+}

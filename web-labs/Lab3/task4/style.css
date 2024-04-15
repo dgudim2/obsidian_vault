@@ -1,0 +1,28 @@
+
+body{
+    margin: 0;
+}
+#header{
+    background-color: rgb(195, 158, 255);
+    position: fixed;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font: 20px Arial, sans-serif;
+    z-index: 100;
+}
+
+#main_container{
+    position:absolute;
+    margin-top: 65px;
+    width: 100%;
+}
+
+#inner_container{
+    width: 70%;
+    border: 1px solid rgb(214, 214, 214);
+    margin: 0 auto;
+    text-align: left;
+    color: #000;
+    padding: 30px 15px;
+}

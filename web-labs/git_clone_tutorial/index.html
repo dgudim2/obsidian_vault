@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+
+        <style>
+            h1,
+            ul {
+                border-bottom: 1px solid black;
+            }
+
+            li,
+            span {
+                font-size: 20px;
+            }
+
+            li {
+                margin-top: 8px;
+            }
+
+            a,
+            strong,
+            button {
+                font-size: 25px;
+            }
+
+            button {
+                background-color: lightblue;
+                border: 1px solid black;
+                border-radius: 5px;
+                padding: 5px
+            }
+
+            button:hover {
+                background-color: rgb(152, 210, 230);
+
+            }
+
+            button:active {
+                background-color: rgb(96, 190, 221);
+
+            }
+
+            .flex_row {
+                display: flex;
+                flex-direction: row;
+                margin-top: 8px;
+            }
+            
+            #thumbs_up_container{
+                width: 200px;
+                height: 200px;
+                display: none;
+                margin-top: 10px;
+                animation: spin linear infinite 1s;
+                transform-origin: center center;
+            }
+
+            @keyframes spin {
+                from{
+                    transform: rotate(0deg);
+                }
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+
+        </style>
+
+    </head>
+
+
+
+    <body>
+
+        <main>
+            <h1>Если ты оказался тут т.к не знаешь как составить git clone команду, то эта страничка для тебя</h1>
+            <ul>
+                <li>Шаг первый: перейди по <a href="https://github.com/settings/tokens/new" target="_blank">этой</a>
+                    ссылке,
+                    тыкни на
+                    галочку <strong>"repo"</strong> <img src="repo.png" alt="repo">, пролистай вниз и тыкни
+                    <strong>"generate token"</strong><img src="generate_token.png" alt="generate_token"></li>
+                <li>Шаг второй: вставь данные в соответствующие поля</li>
+                <li>Шаг третий: Отправь скопированную команду Макейчик и надейся, что не налажал</li>
+            </ul>
+            <div class="flex_row">
+                <span>Вставь ссылку на репозиторий сюда ---></span>
+                <input type="text" id="link_input" oninput="generate_command()">
+            </div>
+            <div class="flex_row">
+                <span>Вставь полученный ключ сюда ---></span>
+                <input type="text" id="key_input" oninput="generate_command()">
+            </div>
+            <div class="flex_row">
+                <span>Команда появится тута ---></span>
+                <span id="command_output"></span>
+            </div>
+
+            <button onclick="copy_command()" id="copy_button">Скопировать</button>
+
+            <div id="thumbs_up_container">
+                <img src="frog.gif" alt="thumbs-up">
+            </div>
+            
+        </main>
+
+        <script>
+            let link_input = document.getElementById("link_input");
+            let key_input = document.getElementById("key_input");
+            let command_output = document.getElementById("command_output");
+            let copy_button = document.getElementById("copy_button");
+            let thumbs_up_container = document.getElementById("thumbs_up_container");
+            let link;
+            let key;
+            let username;
+            function generate_command() {
+                link = link_input.value.replace("https://github.com/", "");
+                key = key_input.value;
+                username = link.substring(0, link.indexOf("/"));
+                command_output.innerHTML = "git clone https://" + username + ":" + key + "@github.com/" + link;
+                copy_button.innerHTML = "Скопировать";
+            }
+            function copy_command() {
+                copyTextToClipboard(command_output.innerHTML);
+                if(key_input.value.startsWith("ghp")){
+                    thumbs_up_container.style.display = "block";
+                }
+                setTimeout(function (){
+                    thumbs_up_container.style.display = "none";
+                }, 3000)
+                copy_button.innerHTML = "Готово!";
+            }
+
+            function fallbackCopyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+
+                // Avoid scrolling to bottom
+                textArea.style.top = "0";
+                textArea.style.left = "0";
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+
+                try {
+                    var successful = document.execCommand('copy');
+                    var msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Fallback: Copying text command was ' + msg);
+                } catch (err) {
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+
+                document.body.removeChild(textArea);
+            }
+            function copyTextToClipboard(text) {
+                if (!navigator.clipboard) {
+                    fallbackCopyTextToClipboard(text);
+                    return;
+                }
+                navigator.clipboard.writeText(text).then(function () {
+                    console.log('Async: Copying to clipboard was successful!');
+                }, function (err) {
+                    console.error('Async: Could not copy text: ', err);
+                });
+            }
+
+        </script>
+
+    </body>
+
+
+
+</html>

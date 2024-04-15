@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Видео</title>
+    </head>
+
+    <body>
+        <video controls preload="metadata" poster="posterimage.jpg" height="300" width="400">
+            <source src="landscape.webm" type="video/webm">
+            <source src="landscape.mp4" type="video/mp4">
+            <source src="landscape.ogv" type="video/ogg">
+            <track label="Русский" kind="subtitles" srclang="ru" src="landscape_ru.vtt" default>
+            <track label="English" kind="subtitles" srclang="en" src="landscape_en.vtt">
+        </video>
+    </body>
+
+</html>

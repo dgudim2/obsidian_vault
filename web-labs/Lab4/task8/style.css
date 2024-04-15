@@ -1,0 +1,38 @@
+main {
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.button {
+    background: #ADADAD;
+    color: #000000;
+    border: 0.3em outset #e1cfff;
+    padding: 0.5em 1em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    border-radius: 0.5em;
+    box-shadow: 0 0 3px gray;
+}
+
+.button:hover {
+    color: rgb(58, 32, 32);
+    border: 0.3em outset #ebdeff;
+}
+
+.button:active {
+    color: #470000;
+    border: 0.3em inset #e1cfff;
+}
+
+.rounded_button_small {
+    font-size: 0.5rem;
+}
+
+.rounded_button_normal {
+    font-size: 1rem;
+}
+
+.rounded_button_large {
+    font-size: 1.5rem;
+}

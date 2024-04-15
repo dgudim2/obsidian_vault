@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+   <meta charset="UTF-8" />
+   <title>CSS3 Filters</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="description" content="CSS3 Filters<" />
+   <meta name="author" content="MEG" />
+   <link rel="stylesheet" type="text/css" href="demo-filters.css" />
+</head>
+<div>
+  <h1>CSS3 Filters</h1>
+  <p>Наведите на картинку, чтобы увидеть фильтры в действии</p>
+<ul>
+  <li>
+    <img src="dog.jpg">
+    <span><kbd>filter: blur(3px)</kbd></span>
+      
+    </li>
+   <li><img src="dog.jpg"><span><kbd>filter: brightness(40%)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: contrast(10%)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: grayscale(.75)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: saturate(300%)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: sepia(100%)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: hue-rotate(270deg)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: invert(100%)</kbd></span></li>
+   <li><img src="dog.jpg"><span><kbd>filter: opacity(50%)</kbd></span></li>
+  <li><img src="dog.jpg"><span><kbd>filter: url(#posterize)</kbd></span></li></ul></div>
+<svg width="0" height="0">
+      <defs>
+        <filter id="posterize">
+          <feComponentTransfer>
+            <feFuncR type="discrete" 
+        tableValues="0 0.2 0.4 0.6 0.8 1"/>
+            <feFuncG type="discrete" 
+        tableValues="0 0.2 0.4 0.6 0.8 1"/>
+            <feFuncB type="discrete" 
+        tableValues="0 0.2 0.4 0.6 0.8 1"/>
+          </feComponentTransfer>
+       </filter>
+     </defs>      
+      </svg>

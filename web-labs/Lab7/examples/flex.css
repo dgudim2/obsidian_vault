@@ -1,0 +1,32 @@
+html {
+  font: 1.1em/1.4 Helvetica, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+* { box-sizing: border-box; }
+
+.media {
+  display: flex;
+  flex-wrap: wrap;
+  border: 5px solid rgb(86,98,110);
+  border-radius: 5px;
+  margin-bottom: 2em;
+}
+
+.media > * {
+  flex: 1 1 250px;
+  margin: 10px;
+}
+
+.wrapper {
+  width: 450px;
+  border: 2px dotted #999;
+}

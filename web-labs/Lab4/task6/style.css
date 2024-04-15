@@ -1,0 +1,36 @@
+body{
+    background: #FFF
+}
+
+p {
+    margin: 25px;
+    font-size: 100px;
+    color: #000
+}
+
+#shadow {
+    text-shadow: 10px 10px 0px #A0A0A0;
+}
+
+#blurredShadow {
+    text-shadow: 10px 10px 2px #A0A0A0;
+}
+
+#twoShadows {
+    text-shadow: 10px 10px 2px #ff0751, -10px -10px 2px #7b71ff;
+}
+
+#inset {
+    color: rgb(226, 226, 226);
+    text-shadow: -1.5px -1.5px #A0A0A0;
+}
+
+#volumetric {
+    color: rgb(226, 226, 226);
+    text-shadow: 1.5px 1.5px #A0A0A0;
+}
+
+#border {
+    color: rgb(255, 247, 137);
+    -webkit-text-stroke: 2px black;
+}

@@ -1,0 +1,26 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+}
+
+.container+.container{
+    margin-top: 50px
+}
+
+#blurredShadow{
+    box-shadow: 18px 18px 6px 0px #AAA;
+}
+
+#twoShadows{
+    box-shadow: 18px 18px 6px 0px #AAA, -18px -18px 6px 0px #AAA;
+}
+
+#innerShadow{
+    box-shadow: inset 3px 3px 6px 0px #AAA;
+}

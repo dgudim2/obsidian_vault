@@ -1,0 +1,65 @@
+*{box-sizing:border-box;}
+div {
+  position: relative;
+  width: 680px;
+  height: 100px;
+  border: 1px solid #C2C9D5;
+  margin-top: 40px;
+  background: linear-gradient(to top,#D7DFED, #F5FCFD, #D7DFED)
+}
+/*Кружок*/
+div:nth-child(1):before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 11px);
+  left: -webkit-calc(50% - 11px);
+  top: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #AC170E;
+  background: orangered;
+  box-shadow: 0 2px 4px  #292825;
+}
+/*Треугольник*/
+div:nth-child(2):before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 20px;
+  border-color: transparent transparent hotpink transparent;
+  position: absolute;
+  left: calc(50% - 15px);
+  left: -webkit-calc(50% - 15px);
+  top: -21px;
+}
+/*Зебра*/
+div:nth-child(3):before{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 10px;
+  width: 100%;
+  background: repeating-linear-gradient(45deg, turquoise, turquoise 10px, #D7DFED 10px, #D7DFED 20px);
+}
+/*Треугольник с обводкой*/
+div:nth-child(4) {
+  border: 3px solid #3E3A40;
+}
+div:nth-child(4):before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #3E3A40;
+  transform: rotate(135deg);
+  position: absolute;
+  left: calc(50% - 11px);
+  left: -webkit-calc(50% - 11px);
+  top: -15px;
+  background:linear-gradient(to top right,#CDD3CD, #EEF0EE, #CDD3CD);
+  z-index: -1;
+}

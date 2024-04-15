@@ -1,0 +1,34 @@
+*{margin:0;box-sizing: border-box;}
+section {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+p {
+  padding: 20px 0;
+}
+.container {
+  perspective: 500px;
+  margin: 0 40px;
+  background: rgba(195,209,212, .7);
+  border-radius: 5px;
+}
+.style-flat {
+  transform-style: flat;
+}
+.style-3d {
+  transform-style: preserve-3d;
+}
+.flip {
+  height: 160px;
+  transform: rotateX(45deg);
+  border-radius: 5px;
+  background: rgba(169,90,145, .8);
+  -webkit-animation: rotate 5s infinite;
+  animation: rotate 5s infinite;
+}
+@keyframes rotate {
+  50% {
+    transform: none;
+    }
+}

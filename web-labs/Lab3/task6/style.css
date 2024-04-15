@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f8f8;
+}
+
+form {
+    width: 320px;
+    height: 320px;
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+    flex-flow: wrap;
+}
+
+input, button{
+    width: 100%;
+    font-size: 18px
+}
+
+input{
+    height: 35px;
+    border: solid 1px #ccc;
+}
+
+button {
+    background-color: #1cbc11;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #14a20a;
+}

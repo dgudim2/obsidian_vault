@@ -1,0 +1,33 @@
+.left {
+    text-align: center;
+    justify-content: center;
+    display: block;
+}
+
+.left_p {
+    text-align: justify;
+}
+
+.left_img {
+    display: block;
+    width: 100%;
+    margin-left: 2%;
+}
+
+.left_imgs {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.left_imgs img {
+    width: calc(100%/3.5);
+}
+
+.left_imgs img+img {
+    margin-left: 2%;
+}
+
+b {
+    font-size: large;
+}

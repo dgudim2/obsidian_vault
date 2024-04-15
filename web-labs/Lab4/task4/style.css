@@ -1,0 +1,14 @@
+p {
+    width: 100%;
+    padding: 4px 5px;
+    margin: 5px 0;
+    border: 1px solid black;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+p:hover {
+    white-space: normal;
+}

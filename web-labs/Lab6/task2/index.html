@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Задание 2</title>
+    </head>
+
+    <body>
+        <main>
+            <h2 class="pr">Заголовок с классом pr</h2>
+            <p class="pr">Абзац с классом pr</p>
+            <p class="pr">Абзац с классом pr</p>
+            <p>Просто абзац</p>
+            <button onclick="change()">Press me</button>
+        </main>
+        <script>
+            let toChange = document.querySelectorAll(".pr");
+            function change() {
+                for (let i = 0; i < toChange.length; i++) {
+                    toChange[i].innerText = i;
+                }
+            }
+        </script>
+
+    </body>
+
+</html>

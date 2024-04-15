@@ -1,0 +1,9 @@
+main {
+    display: grid;
+    grid-template-columns: minmax(40px, max-content) minmax(40px, max-content);
+    grid-template-rows: minmax(60px, max-content) minmax(60px, max-content) minmax(60px, max-content);
+}
+
+div {
+    border: 1px solid black;
+}

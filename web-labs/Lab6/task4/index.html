@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Задание 4</title>
+        <style>
+            div{
+                display: inline;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main>
+            <input type="number" id="field1" value="0" placeholder="Введите число" oninput="add()">
+            <div>+</div>
+            <input type="number" id="field2" value="0" placeholder="Введите число" oninput="add()">
+            <div>=</div>
+            <div id="result">0</div>
+        </main>
+        <script>
+            let field1 = document.getElementById("field1");
+            let field2 = document.getElementById("field2");
+            let result = document.getElementById("result");
+            function add(){
+                result.innerText = parseFloat(field1.value) + parseFloat(field2.value);
+            }
+        </script>
+    </body>
+
+</html>

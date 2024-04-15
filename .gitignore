@@ -46,3 +46,4 @@ export
 *.wasm
 
 python_venv
+venv

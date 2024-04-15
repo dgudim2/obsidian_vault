@@ -20,9 +20,8 @@ export
 *.odp
 *.ods
 *.odg
-/LaTeX docs
 **/Extra
-*_ng_
+*_ng_*
 /uni/Computer networks/GNS3
 
 # Some stuff from web labs

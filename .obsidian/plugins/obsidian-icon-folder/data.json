@@ -61,7 +61,9 @@
     "iconsInNotesEnabled": true,
     "iconIdentifier": ":",
     "iconsInLinksEnabled": true,
-    "debugMode": false
+    "debugMode": false,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor"
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

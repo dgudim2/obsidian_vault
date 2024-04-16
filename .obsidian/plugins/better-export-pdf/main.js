@@ -4295,7 +4295,7 @@ function modifyDest(doc) {
   });
   return data;
 }
-function modifyAnchors(doc, dest, basename) {
+function fixAnchors(doc, dest, basename) {
   doc.querySelectorAll("a.internal-link").forEach((el, i) => {
     var _a, _b;
     const [title, anchor] = (_b = (_a = el.dataset.href) == null ? void 0 : _a.split("#")) != null ? _b : [];
@@ -4344,6 +4344,11 @@ function traverseFolder(path) {
     arr.push(...traverseFolder(item));
   }
   return arr;
+}
+function copyAttributes(node, attributes) {
+  Array.from(attributes).forEach((attr) => {
+    node.setAttribute(attr.name, attr.value);
+  });
 }
 
 // src/render.ts
@@ -4439,6 +4444,7 @@ function getFrontMatter(app, file) {
 }
 async function renderMarkdown(app, file, config, extra) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _i;
+  const startTime = (/* @__PURE__ */ new Date()).getTime();
   const ws = app.workspace;
   if (((_a = ws.getActiveFile()) == null ? void 0 : _a.path) != file.path) {
     const leaf = ws.getLeaf();
@@ -4462,7 +4468,6 @@ async function renderMarkdown(app, file, config, extra) {
   }
   const comp = new import_obsidian2.Component();
   comp.load();
-  const promises = [];
   const printEl = document.body.createDiv("print");
   const viewEl = printEl.createDiv({
     cls: "markdown-preview-view markdown-rendered " + cssclasses.join(" ")
@@ -4483,8 +4488,9 @@ async function renderMarkdown(app, file, config, extra) {
     lines[idx] = `<span id="^${key}" class="blockid"></span>
 ` + lines[idx];
   });
+  const promises = [];
   await import_obsidian2.MarkdownRenderer.render(app, lines.join("\n"), viewEl, file.path, comp);
-  import_obsidian2.MarkdownRenderer.postProcess(app, {
+  await import_obsidian2.MarkdownRenderer.postProcess(app, {
     docId: generateDocId(16),
     sourcePath: file.path,
     frontmatter: {},
@@ -4508,35 +4514,47 @@ async function renderMarkdown(app, file, config, extra) {
     }
     el.removeAttribute("href");
   });
-  if (data.includes("```dataview")) {
+  if (data.includes("```dataview") || data.includes("```gEvent") || data.includes("![[")) {
     try {
       await waitFor(() => false, 2e3);
     } catch (error2) {
+      console.warn("wait 2s");
     }
   }
+  fixCanvasToImage(viewEl);
   const doc = document.implementation.createHTMLDocument("document");
   doc.body.appendChild(printEl.cloneNode(true));
   printEl.detach();
   comp.unload();
   printEl.remove();
+  const endTime = (/* @__PURE__ */ new Date()).getTime();
+  console.log(`render time:${endTime - startTime}ms`);
   return doc;
 }
 function fixDoc(doc, title) {
   const dest = modifyDest(doc);
-  modifyAnchors(doc, dest, title);
-  modifyEmbedSpan(doc);
+  fixAnchors(doc, dest, title);
+  fixEmbedSpan(doc);
 }
-function modifyEmbedSpan(doc) {
+function fixEmbedSpan(doc) {
   const spans = doc.querySelectorAll("span.markdown-embed");
   spans.forEach((span) => {
     var _a;
     const newDiv = document.createElement("div");
-    Array.from(span.attributes).forEach((attr) => {
-      newDiv.setAttribute(attr.name, attr.value);
-    });
+    copyAttributes(newDiv, span.attributes);
     newDiv.innerHTML = span.innerHTML;
     (_a = span.parentNode) == null ? void 0 : _a.replaceChild(newDiv, span);
   });
+}
+function fixCanvasToImage(el) {
+  for (const canvas of Array.from(el.querySelectorAll("canvas"))) {
+    const data = canvas.toDataURL();
+    const img = document.createElement("img");
+    img.src = data;
+    copyAttributes(img, canvas.attributes);
+    img.className = "__canvas__";
+    canvas.replaceWith(img);
+  }
 }
 function createWebview() {
   const webview = document.createElement("webview");
@@ -20574,12 +20592,13 @@ var ExportConfigModal = class extends import_obsidian3.Modal {
     var _a, _b, _c, _d;
     const conf = config != null ? config : this.config;
     const el = element != null ? element : this.previewDiv;
-    console.log(conf);
     const width = (_d = (_b = (_a = PageSize) == null ? void 0 : _a[conf["pageSise"]]) == null ? void 0 : _b[0]) != null ? _d : parseFloat((_c = conf["pageWidth"]) != null ? _c : "210");
     const scale2 = Math.floor(mm2px(width) / el.offsetWidth * 100) / 100;
-    this.preview.style.transform = `scale(${1 / scale2},${1 / scale2})`;
-    this.preview.style.width = `calc(${scale2} * 100%)`;
-    this.preview.style.height = `calc(${scale2} * 100%)`;
+    if (this.preview) {
+      this.preview.style.transform = `scale(${1 / scale2},${1 / scale2})`;
+      this.preview.style.width = `calc(${scale2} * 100%)`;
+      this.preview.style.height = `calc(${scale2} * 100%)`;
+    }
   }
   async calcWebviewSize() {
     await sleep(500);

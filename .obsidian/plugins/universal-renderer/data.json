@@ -1,0 +1,12 @@
+{
+  "colorPalette": "gruvbox",
+  "dotPath": "dot",
+  "pdflatexPath": "pdflatex",
+  "pdf2svgPath": "pdf2svg",
+  "pdfCropPath": "pdfcrop",
+  "blockdiagPath": "blockdiag",
+  "ditaaPath": "ditaa",
+  "asciidocPath": "asciidoctor",
+  "plantumlPath": "plantuml",
+  "typstPath": "typst"
+}

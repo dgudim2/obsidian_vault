@@ -1,8 +1,8 @@
 package org.kloud.model.user;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
-import org.kloud.common.Fields.ForeignKeyListField;
+import org.kloud.common.fields.Field;
+import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.common.UserCapability;
 import org.kloud.model.Warehouse;
 import org.kloud.utils.ConfigurationSingleton;
@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class Manager extends User {
 
-    public static String NAME = "Manager";
+    public static final String NAME = "Manager";
 
     public final Field<Boolean> isAdmin = new Field<>("Admin", false, false, Boolean.class, __ -> "");
     public final Field<Boolean> isSuperAdmin = new Field<>("Super admin", false, false, Boolean.class, __ -> "");

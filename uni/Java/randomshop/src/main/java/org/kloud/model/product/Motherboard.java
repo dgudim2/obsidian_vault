@@ -1,7 +1,7 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.MotherboardFormFactor;
 
@@ -10,7 +10,7 @@ import java.util.Objects;
 
 public class Motherboard extends HardwarePart {
 
-    public static String NAME = "Motherboard";
+    public static final String NAME = "Motherboard";
     protected final Field<MotherboardFormFactor> formFactor = new Field<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
     protected final Field<CpuSocketType> cpuSocketType = new Field<>("Socket type", true, CpuSocketType.class, __ -> "");
 

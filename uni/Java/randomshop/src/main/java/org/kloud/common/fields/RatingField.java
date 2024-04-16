@@ -1,4 +1,4 @@
-package org.kloud.common.Fields;
+package org.kloud.common.fields;
 
 import javafx.scene.Node;
 import javafx.scene.control.Control;

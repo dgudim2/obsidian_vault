@@ -2,7 +2,7 @@ package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.datatypes.Dimensions;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 
 import java.util.List;
 

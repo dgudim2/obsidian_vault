@@ -1,5 +1,7 @@
 package org.kloud.utils.card;
 
+import lombok.Getter;
+
 /**
  * @see <a href="https://gist.github.com/icchan/47d83bacc5113db59fbc">Source</a>
  */
@@ -11,8 +13,9 @@ public enum CardCompany {
     DISCOVER ("^6(?:011|5[0-9]{2})[0-9]{12}$", "DISCOVER"),
     JCB ("^(?:2131|1800|35\\d{3})\\d{11}$", "JCB");
 
-    private String regex;
-    private String issuerName;
+    private final String regex;
+    @Getter
+    private final String issuerName;
 
     CardCompany(String regex, String issuerName) {
         this.regex = regex;
@@ -21,10 +24,6 @@ public enum CardCompany {
 
     public boolean matches(String card) {
         return card.matches(this.regex);
-    }
-
-    public String getIssuerName() {
-        return this.issuerName;
     }
 
     /**

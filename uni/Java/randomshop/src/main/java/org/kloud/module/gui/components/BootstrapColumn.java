@@ -1,12 +1,20 @@
 package org.kloud.module.gui.components;
 
 import javafx.scene.Node;
+import lombok.Getter;
 import org.kloud.utils.Utils;
 
 /**
  * @see <a href="https://github.com/edencoding/javafx-layouts/tree/master/bootstrap-layout-pane/src/main/java/com/edencoding/layouts">Source</a>
  */
 public class BootstrapColumn {
+    /**
+     * -- GETTER --
+     *  Get the node in this column
+     *
+     * @return the content.
+     */
+    @Getter
     private final Node content;
 
     int[] columnWidths = new int[]{
@@ -69,15 +77,6 @@ public class BootstrapColumn {
 
         //If none are valid, return 1
         return 1;
-    }
-
-    /**
-     * Get the node in this column
-     *
-     * @return the content.
-     */
-    public Node getContent() {
-        return content;
     }
 
     /**

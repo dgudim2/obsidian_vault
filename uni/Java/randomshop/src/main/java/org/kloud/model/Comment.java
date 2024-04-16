@@ -1,10 +1,10 @@
 package org.kloud.model;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
-import org.kloud.common.Fields.ForeignKeyField;
-import org.kloud.common.Fields.ForeignKeyListField;
-import org.kloud.common.Fields.RatingField;
+import org.kloud.common.fields.Field;
+import org.kloud.common.fields.ForeignKeyField;
+import org.kloud.common.fields.ForeignKeyListField;
+import org.kloud.common.fields.RatingField;
 import org.kloud.model.user.User;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;

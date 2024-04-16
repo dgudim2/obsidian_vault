@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class Customer extends User {
 
-    public static String NAME = "Customer";
+    public static final String NAME = "Customer";
 
     public Customer() {
         super();

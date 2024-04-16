@@ -1,6 +1,5 @@
 package org.kloud.module.cli;
 
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.gui2.*;
 import com.googlecode.lanterna.screen.Screen;
@@ -10,7 +9,6 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.module.cli.menus.MainMenu;
 
 import java.io.IOException;
-import java.util.List;
 
 public class Entrypoint {
 

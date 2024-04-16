@@ -1,7 +1,7 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 import org.kloud.model.enums.CpuArchitecture;
 import org.kloud.model.enums.CpuSocketType;
 import org.kloud.model.enums.Manufacturer;
@@ -13,7 +13,7 @@ import static org.kloud.utils.Utils.testBounds;
 
 public class Cpu extends HardwarePart {
 
-    public static String NAME = "Cpu";
+    public static final String NAME = "Cpu";
 
     protected final Field<Float> tdp = new Field<>("TDP (W)", true, Float.class, v -> testBounds(v, 1, -1));
 

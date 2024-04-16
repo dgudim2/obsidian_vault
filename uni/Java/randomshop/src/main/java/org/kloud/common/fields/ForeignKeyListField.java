@@ -1,4 +1,4 @@
-package org.kloud.common.Fields;
+package org.kloud.common.fields;
 
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -23,9 +23,9 @@ import java.util.function.Supplier;
 public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
 
     public final boolean virtual;
-    private Function<List<Long>, List<T>> linkedObjectsProducer;
-    private Supplier<List<T>> possibleObjectsSupplier;
-    private BiConsumer<List<T>, List<T>> onValuesUpdated;
+    private transient Function<List<Long>, List<T>> linkedObjectsProducer;
+    private transient Supplier<List<T>> possibleObjectsSupplier;
+    private transient BiConsumer<List<T>, List<T>> onValuesUpdated;
 
     public ForeignKeyListField(@NotNull String name, boolean required, boolean virtual, boolean hideInUI,
                                @NotNull Function<List<Long>, List<T>> linkedObjectsProducer,

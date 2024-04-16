@@ -1,4 +1,4 @@
-package org.kloud.common.Fields;
+package org.kloud.common.fields;
 
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
@@ -19,9 +19,9 @@ import java.util.function.*;
  */
 public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
-    private Function<Long, T> linkedObjectProducer;
-    private Supplier<List<T>> possibleObjectsSupplier;
-    private BiConsumer<T, T> onValueUpdated;
+    private transient Function<Long, T> linkedObjectProducer;
+    private transient Supplier<List<T>> possibleObjectsSupplier;
+    private transient BiConsumer<T, T> onValueUpdated;
 
     public ForeignKeyField(@NotNull String name, boolean required, boolean hideInUI,
                            @NotNull Function<Long, T> linkedObjectProducer,
@@ -53,6 +53,9 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
     @Nullable
     public T getLinkedValue() {
+        if (linkedObjectProducer == null) {
+            return null;
+        }
         return linkedObjectProducer.apply(value);
     }
 

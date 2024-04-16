@@ -4,106 +4,103 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="370.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.SettingsController">
-   <children>
-      <VBox maxHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+<AnchorPane prefHeight="370.0" prefWidth="390.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.kloud.module.gui.controllers.SettingsController">
+   <VBox maxHeight="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <HBox>
+         <Label prefHeight="300.0" prefWidth="130.0" text="Storage backend">
+            <HBox.margin>
+               <Insets/>
+            </HBox.margin>
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="691.0" prefWidth="30.0"/>
+         <ComboBox fx:id="storageBackendSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </ComboBox>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <Label prefHeight="300.0" prefWidth="120.0" text="Server address">
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="250.0" prefWidth="40.0"/>
+         <TextField fx:id="serverAddressInput" prefWidth="200.0">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <Label prefHeight="300.0" prefWidth="140.0" text="Database address">
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="250.0" prefWidth="20.0"/>
+         <TextField fx:id="dbAddressInput" prefWidth="200.0">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <HBox>
-               <children>
-                  <Label prefHeight="300.0" prefWidth="130.0" text="Storage backend">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="691.0" prefWidth="30.0" />
-                  <ComboBox fx:id="storageBackendSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin></ComboBox>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="120.0" text="Server address">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="250.0" prefWidth="40.0" />
-                  <TextField fx:id="serverAddressInput" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="140.0" text="Database address">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="250.0" prefWidth="20.0" />
-                  <TextField fx:id="dbAddressInput" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="140.0" text="Database username">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="250.0" prefWidth="20.0" />
-                  <TextField fx:id="dbUsername" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label prefHeight="300.0" prefWidth="140.0" text="Database password">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="250.0" prefWidth="20.0" />
-                  <TextField fx:id="dbPass" prefWidth="200.0">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox>
-               <children>
-                  <Label prefHeight="300.0" prefWidth="80.0" text="Log level">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
-                  </Label>
-                  <Separator prefHeight="691.0" prefWidth="80.0" />
-                  <ComboBox fx:id="logLevelSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" top="5.0" />
-                     </HBox.margin></ComboBox>
-               </children>
-            </HBox>
-         </children></VBox>
-      <Label alignment="CENTER" layoutX="284.0" layoutY="32.0" prefHeight="18.0" prefWidth="239.0" text="Edit the settings and close the window" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0" />
-      <Label alignment="CENTER" layoutX="274.0" layoutY="368.0" text="Note: configuration is saved automatically on close" textFill="#7c7c7c" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-   </children>
+            <Label prefHeight="300.0" prefWidth="140.0" text="Database username">
+               <padding>
+                  <Insets left="10.0"/>
+               </padding>
+            </Label>
+            <Separator prefHeight="250.0" prefWidth="20.0"/>
+            <TextField fx:id="dbUsername" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" top="5.0"/>
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="300.0" prefWidth="140.0" text="Database password">
+               <padding>
+                  <Insets left="10.0"/>
+               </padding>
+            </Label>
+            <Separator prefHeight="250.0" prefWidth="20.0"/>
+            <TextField fx:id="dbPass" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" top="5.0"/>
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox>
+         <children>
+            <Label prefHeight="300.0" prefWidth="80.0" text="Log level">
+               <HBox.margin>
+                  <Insets/>
+               </HBox.margin>
+               <padding>
+                  <Insets left="10.0"/>
+               </padding>
+            </Label>
+            <Separator prefHeight="691.0" prefWidth="80.0"/>
+            <ComboBox fx:id="logLevelSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" top="5.0"/>
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+   </VBox>
+   <Label alignment="CENTER" layoutX="284.0" layoutY="32.0" prefHeight="18.0" prefWidth="239.0"
+          text="Edit the settings and close the window" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="20.0"/>
+   <Label alignment="CENTER" layoutX="274.0" layoutY="368.0" text="Note: configuration is saved automatically on close"
+          textFill="#7c7c7c" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"/>
 </AnchorPane>

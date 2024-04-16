@@ -135,16 +135,14 @@
                            AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0"/>
                 <HBox fx:id="addToCartCommentBox" layoutX="370.0" layoutY="655.0" prefHeight="1.0" prefWidth="200.0"
                       AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
-                    <children>
-                        <Button fx:id="addToCartButton" mnemonicParsing="false" prefWidth="1000000.0"
-                                text="Add to cart"/>
-                        <Button fx:id="addCommentButton" mnemonicParsing="false" prefWidth="1000000.0"
-                                text="Add comment">
-                            <HBox.margin>
-                                <Insets left="5.0"/>
-                            </HBox.margin>
-                        </Button>
-                    </children>
+                    <Button fx:id="addToCartButton" mnemonicParsing="false" prefWidth="1000000.0"
+                            text="Add to cart"/>
+                    <Button fx:id="addCommentButton" mnemonicParsing="false" prefWidth="1000000.0"
+                            text="Add comment">
+                        <HBox.margin>
+                            <Insets left="5.0"/>
+                        </HBox.margin>
+                    </Button>
                 </HBox>
             </AnchorPane>
         </Tab>

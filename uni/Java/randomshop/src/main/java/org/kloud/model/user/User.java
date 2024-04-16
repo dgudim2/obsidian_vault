@@ -1,11 +1,12 @@
 package org.kloud.model.user;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
+import org.kloud.common.fields.Field;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
 import org.kloud.utils.card.CardValidationResult;
 import org.kloud.utils.card.RegexCardValidator;
@@ -16,7 +17,7 @@ import static org.kloud.utils.Utils.hashPass;
 
 public abstract class User extends BaseModel {
 
-    public static long ADMIN_ID = 1000;
+    public static final long ADMIN_ID = 1000;
 
     public static final List<Class<? extends User>> USERS = List.of(Manager.class, Customer.class);
 
@@ -72,6 +73,10 @@ public abstract class User extends BaseModel {
 
     public boolean checkPassword(@NotNull String inputPass) {
         var actualPass = pass.get().get();
+        if(actualPass == null) {
+            Logger.error("actualPass is null, failed checking password");
+            return false;
+        }
         return hashPass(inputPass, actualPass.getValue()).equals(actualPass.getKey());
     }
 

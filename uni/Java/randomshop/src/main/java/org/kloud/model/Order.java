@@ -1,9 +1,9 @@
 package org.kloud.model;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
-import org.kloud.common.Fields.ForeignKeyField;
-import org.kloud.common.Fields.ForeignKeyListField;
+import org.kloud.common.fields.Field;
+import org.kloud.common.fields.ForeignKeyField;
+import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.enums.OrderStatus;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.User;

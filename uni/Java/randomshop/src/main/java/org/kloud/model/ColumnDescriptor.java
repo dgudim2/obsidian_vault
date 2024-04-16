@@ -4,7 +4,7 @@ import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.datatypes.CustomDatatype;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 import org.kloud.utils.Logger;
 
 import java.awt.*;
@@ -135,7 +135,7 @@ public class ColumnDescriptor<T extends Serializable> {
     public void readFromDB(@NotNull ResultSet set) {
         try {
             parentField.setUnchecked(datatypeMapper.getKey().read(set));
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             Logger.error("Error setting " + parentField + " from DB: " + e.getMessage());
         }
     }
@@ -143,7 +143,7 @@ public class ColumnDescriptor<T extends Serializable> {
     public void writeToDB(@NotNull PreparedStatement statement, int paramIndex) {
         try {
             datatypeMapper.getValue().write(statement, parentField.get(), paramIndex);
-        } catch (SQLException e) {
+        } catch (SQLException | NullPointerException e) {
             Logger.error("Error writing " + parentField + " to DB: " + e.getMessage());
         }
     }

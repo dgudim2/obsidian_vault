@@ -1,4 +1,4 @@
-package org.kloud.common.Fields;
+package org.kloud.common.fields;
 
 import javafx.collections.FXCollections;
 import javafx.geometry.Insets;

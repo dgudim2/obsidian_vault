@@ -1,7 +1,7 @@
 package org.kloud.model.product;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 import org.kloud.model.enums.MotherboardFormFactor;
 import org.kloud.model.enums.SidePanelType;
 
@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class PcCase extends HardwarePart {
 
-    public static String NAME = "Pc case";
+    public static final String NAME = "Pc case";
     protected final Field<Color> color = new Field<>("Color", true, Color.class, __ -> "");
     protected final Field<MotherboardFormFactor> motherboardFormFactor = new Field<>("Form-factor", true, MotherboardFormFactor.class, __ -> "");
     protected final Field<SidePanelType> sidePanelType = new Field<>("Side-panel type", true, SidePanelType.class, __ -> "");

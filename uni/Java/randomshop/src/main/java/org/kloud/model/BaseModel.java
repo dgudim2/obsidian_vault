@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kloud.common.Fields.Field;
+import org.kloud.common.fields.Field;
 import org.kloud.daos.BasicDAO;
 import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapRow;

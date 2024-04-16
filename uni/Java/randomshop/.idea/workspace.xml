@@ -7,34 +7,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="Comments partially working (without delete)">
+    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="More work on comments">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/Fields/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/Fields/ForeignKeyField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/Fields/ForeignKeyListField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyListField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/Fields/RatingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/RatingField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileCommentsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileCommentsDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/ColumnDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/ColumnDescriptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Cpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Cpu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Gpu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Gpu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/HardwarePart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/HardwarePart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Motherboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Motherboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/PcCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/PcCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/cli/Entrypoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/cli/Entrypoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapColumn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/Breakpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/Breakpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/card/CardCompany.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/card/CardCompany.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/card/CardValidationResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/card/CardValidationResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +43,9 @@
     <setting file="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar!/com/google/gson/JsonParser.class" root0="SKIP_INSPECTION" />
     <setting file="jrt:///usr/lib/jvm/java-17-openjdk!/java.base/java/io/ObjectStreamClass.class" root0="SKIP_INSPECTION" />
     <setting file="jar:///usr/lib/jvm/zulu-jdk-fx/lib/src.zip!/java.base/java/lang/String.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -99,7 +82,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.completion",
+    "settings.editor.selected.configurable": "preferences.toDoOptions",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -245,7 +228,7 @@
       <workItem from="1712687844479" duration="1881000" />
       <workItem from="1712766226205" duration="6167000" />
       <workItem from="1713084763660" duration="16621000" />
-      <workItem from="1713252258695" duration="1678000" />
+      <workItem from="1713252258695" duration="6547000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />
@@ -255,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713095849253</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor fixes here and there">
+      <option name="closed" value="true" />
+      <created>1713253995721</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1713253995721</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +254,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Comments partially working (without delete)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Comments partially working (without delete)" />
+    <MESSAGE value="Minor fixes here and there" />
+    <MESSAGE value="More work on comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="More work on comments" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

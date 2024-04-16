@@ -295,7 +295,7 @@ public class Field<T extends Serializable> implements Serializable {
 
     public Pair<Node, Supplier<Boolean>> getJavaFxControl(boolean readonly, Runnable onItemUpdated) {
 
-        var label = new Label(name + ": " + (required ? "*" : ""));
+        var label = new Label(name + ": " + (required && !readonly ? "*" : ""));
         AnchorPane.setLeftAnchor(label, 0.0);
         AnchorPane.setTopAnchor(label, 0.0);
         AnchorPane.setBottomAnchor(label, 0.0);

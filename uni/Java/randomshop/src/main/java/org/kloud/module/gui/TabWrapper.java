@@ -35,8 +35,6 @@ public class TabWrapper<T extends BaseModel> {
     @NotNull
     protected final ListView<T> objectList;
     @NotNull
-    protected final Button saveButton;
-    @NotNull
     protected final Tab tab;
 
     protected boolean isInitialized = false;
@@ -53,7 +51,6 @@ public class TabWrapper<T extends BaseModel> {
         this.objectName = objectName;
         this.objectsDao = objectsDao;
         this.objectList = objectList;
-        this.saveButton = saveButton;
         this.tab = tab;
 
         BootstrapPane pane = new BootstrapPane();

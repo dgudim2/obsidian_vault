@@ -62,7 +62,7 @@ public abstract class BaseModel implements Serializable {
 
         Logger.info("Loaded " + fields.size() + " fields for '" + this + "'");
 
-        validateButton.setDisable(!hasChanges());
+        validateButton.setDisable(!hasChanges() && !readonly);
         validateButton.addEventFilter(ActionEvent.ACTION, actionEvent -> {
             boolean isValid = true;
             for (var fxControlHandler : fxControlHandlers) {

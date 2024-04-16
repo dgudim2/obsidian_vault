@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -291,18 +292,36 @@ public class EntrypointController implements BaseController {
         var thisNode = new TreeItem<>("", new Label(thisComment.toString()));
         var replyAction = new MenuItem("Reply");
         var deleteAction = new MenuItem("Delete");
+        var editAction = new MenuItem("Edit");
         ContextMenu contextMenu;
         if (ConfigurationSingleton.getLoginController().isLoggedInUser(thisComment.author.getLinkedValue()) && !canEditOther) {
             contextMenu = new ContextMenu(replyAction);
         } else {
-            contextMenu = new ContextMenu(replyAction, deleteAction);
+            contextMenu = new ContextMenu(replyAction, editAction, deleteAction);
         }
-        replyAction.setOnAction(event -> leaveComment(thisNode, thisComment, product));
+        replyAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, null, null, product));
         deleteAction.setOnAction(event -> deleteCommentNode(parentNode, parentComment, thisNode, thisComment, product));
+        editAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, thisNode, thisComment, product));
 
         // TODO: This is semi-ideal, right click will only work on the label
         // maybe set preferred width for the label??
         thisNode.getGraphic().setOnContextMenuRequested(e -> contextMenu.show(thisNode.getGraphic(), e.getScreenX(), e.getScreenY()));
+        thisNode.getGraphic().setOnMouseClicked(event -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+                Alert viewCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
+                viewCommentDialog.setTitle("Comment on " + product);
+                viewCommentDialog.setHeaderText("View comment");
+                BootstrapPane pane = new BootstrapPane();
+                pane.setPrefWidth(350);
+                pane.setPrefHeight(150);
+                pane.addRow(thisComment.loadFulGui(true,
+                        (Button) viewCommentDialog.getDialogPane().lookupButton(ButtonType.OK),
+                        ConfigurationSingleton.getStorage().getCommentStorage(), viewCommentDialog::close));
+
+                viewCommentDialog.getDialogPane().setContent(pane);
+                viewCommentDialog.showAndWait();
+            }
+        });
         parentNode.getChildren().add(thisNode);
         return thisNode;
     }
@@ -340,26 +359,44 @@ public class EntrypointController implements BaseController {
         }
     }
 
-    private void leaveComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment, @NotNull Product product) {
+    private void leaveOrEditComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
+                                    @Nullable TreeItem<String> thisNode, @Nullable Comment thisComment,
+                                    @NotNull Product product) {
         Alert addCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
         addCommentDialog.setTitle("Comment on " + product);
-        addCommentDialog.setHeaderText(parentComment == null ? "Add comment" : "Reply to \"" + parentComment + "\"");
-
-        var newComment = new Comment();
-        newComment.author.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
-
         var addButton = (Button) addCommentDialog.getDialogPane().lookupButton(ButtonType.YES);
-        addButton.setText("Add");
+
+        boolean isEditing;
+        if (thisComment == null) {
+            isEditing = false;
+            addButton.setText("Add");
+            // We are leaving a new comment
+            addCommentDialog.setHeaderText(parentComment == null ? "Add comment" : "Reply to \"" + parentComment + "\"");
+            thisComment = new Comment();
+            thisComment.author.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
+        } else {
+            isEditing = true;
+            addButton.setText("Save");
+            // We are editing a comment
+            addCommentDialog.setHeaderText(parentComment == null ? "Edit comment" : "Edit reply to \"" + parentComment + "\"");
+        }
 
         BootstrapPane pane = new BootstrapPane();
         pane.setPrefWidth(350);
         pane.setPrefHeight(150);
-        pane.addRow(newComment.loadFulGui(false, addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
+
+        @NotNull Comment finalThisComment = thisComment;
+        pane.addRow(thisComment.loadFulGui(false, addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
             if (parentComment == null) {
-                productTabWrapper.selectedObject.get().comments.addLinkedValue(newComment);
+                if (!isEditing) {
+                    productTabWrapper.selectedObject.get().comments.addLinkedValue(finalThisComment);
+                }
+                // NOTE: This is wrong, we can save an invalid object by leaving a comment on it (validate in addOrUpdateObject or here maybe)
                 ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(productTabWrapper.selectedObject.get());
             } else {
-                parentComment.children.addLinkedValue(newComment);
+                if (!isEditing) {
+                    parentComment.children.addLinkedValue(finalThisComment);
+                }
                 // NOTE: We are saving the child first, then updating the parent,
                 // can't do it in one go because getByIds won't return our newly created child, need to save it first
                 // Maybe add a flag 'save' to addOrUpdateObject, but I don't know how to handle it gracefully in DBDAO because we do SQL UPDATE
@@ -367,7 +404,9 @@ public class EntrypointController implements BaseController {
                 // TLDR: Skip this for now
                 ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
             }
-            addCommentNode(parentNode, parentComment, newComment, product);
+            if (!isEditing) {
+                addCommentNode(parentNode, parentComment, finalThisComment, product);
+            }
             addCommentDialog.close();
         }));
 
@@ -390,14 +429,14 @@ public class EntrypointController implements BaseController {
                 product.comments.removeLinkedValue(thisComment);
                 ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(product);
             }
-            deleteCommentChildenRecursive(thisComment);
+            deleteCommentChildrenRecursive(thisComment);
             ConfigurationSingleton.getStorage().getCommentStorage().removeById(thisComment.id);
         }
     }
 
-    private void deleteCommentChildenRecursive(@NotNull Comment thisComment) {
+    private void deleteCommentChildrenRecursive(@NotNull Comment thisComment) {
         for (var child : thisComment.children.getLinkedValues()) {
-            deleteCommentChildenRecursive(child);
+            deleteCommentChildrenRecursive(child);
         }
         ConfigurationSingleton.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
     }
@@ -449,7 +488,10 @@ public class EntrypointController implements BaseController {
                 // Only enable the comments section if our current user has access to it
                 // TODO: Remove listeners on logout
                 productTabWrapper.selectedObject.addListener((__, ___, newValue) -> loadCommentsForProduct(newValue));
-                addCommentButton.setOnAction(event -> leaveComment(commentsTree.getRoot(), null, productTabWrapper.selectedObject.get()));
+                addCommentButton.setOnAction(event -> leaveOrEditComment(
+                        commentsTree.getRoot(),  null,
+                        null, null,
+                        productTabWrapper.selectedObject.get()));
             }
 
             boolean isLoggedIn = newUser != null;

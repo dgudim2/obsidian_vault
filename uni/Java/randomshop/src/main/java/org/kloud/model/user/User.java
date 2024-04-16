@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
 import org.kloud.common.fields.Field;
+import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.BaseModel;
+import org.kloud.model.Comment;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
@@ -30,6 +32,7 @@ public abstract class User extends BaseModel {
         CardValidationResult res = RegexCardValidator.isValid(v);
         return res.isValid() ? "" : res.getError();
     });
+
     public final Field<String> login = new Field<>("Login", true, String.class, newLogin -> {
         var lenWarning = Utils.testLength(newLogin, 1, 100);
         if (!lenWarning.isEmpty()) {
@@ -51,6 +54,10 @@ public abstract class User extends BaseModel {
             return Utils.testLength(rawValue, 8, 100);
         }
         return "";
+    });
+
+    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, true,
+            ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
     });
 
     User() {
@@ -89,6 +96,7 @@ public abstract class User extends BaseModel {
         fields.add(name);
         fields.add(surname);
         fields.add(cardNumber);
+        fields.add(comments);
         return fields;
     }
 

@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 import org.kloud.backends.AbstractBackend;
 import org.kloud.backends.DBBackend;
 import org.kloud.backends.LocalBackend;
+import org.kloud.backends.ServerBackend;
 import org.kloud.flowcontrollers.LoginController;
 
 import java.io.FileNotFoundException;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class ConfigurationSingleton {
 
-    public static final List<Class<? extends AbstractBackend>> storageBackends = List.of(LocalBackend.class, DBBackend.class);
+    public static final List<Class<? extends AbstractBackend>> storageBackends = List.of(LocalBackend.class, DBBackend.class, ServerBackend.class);
 
     private static class Fields {
         static final String DB_ADDRESS = "db_address";
@@ -65,7 +66,7 @@ public class ConfigurationSingleton {
         this.dbAddress = new SimpleStringProperty(getAsString(jsonObject, Fields.DB_ADDRESS, "jdbc:postgresql://localhost/postgres"));
         this.dbUser = new SimpleStringProperty(getAsString(jsonObject, Fields.DB_USER, "postgres"));
         this.dbPassword = new SimpleStringProperty(getAsString(jsonObject, Fields.DB_PASSWORD, ""));
-        this.serverAddress = new SimpleStringProperty(getAsString(jsonObject, Fields.SERVER_ADDRESS, "localhost"));
+        this.serverAddress = new SimpleStringProperty(getAsString(jsonObject, Fields.SERVER_ADDRESS, "http://localhost:8080"));
         try {
             storageBackend = storageFromClass(Class.forName(getAsString(jsonObject, Fields.BACKEND_TYPE, storageBackends.get(0).getName())));
         } catch (ClassNotFoundException e) {

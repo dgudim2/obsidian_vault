@@ -18,6 +18,7 @@ public abstract class BasicDAO<T extends BaseModel> {
 
     @NotNull
     protected List<T> readObjects() {
+        // TODO: Retry on fail maybe (don't return empty arrays from readObjectsInternal on fail)
         List<T> r_objects = readObjectsInternal();
         idLookup = new HashMap<>();
         for (var object : r_objects) {
@@ -31,7 +32,7 @@ public abstract class BasicDAO<T extends BaseModel> {
 
     protected abstract boolean writeObjectsInternal();
 
-    protected void ensureObjects() {
+    private void ensureObjects() {
         if (objects == null) {
             objects = readObjects();
         }

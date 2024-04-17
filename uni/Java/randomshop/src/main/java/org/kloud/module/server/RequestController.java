@@ -1,28 +1,66 @@
 package org.kloud.module.server;
 
-import javafx.util.Pair;
+import org.kloud.daos.BasicDAO;
+import org.kloud.model.BaseModel;
+import org.kloud.model.user.User;
 import org.kloud.utils.ConfigurationSingleton;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
+import static org.kloud.utils.Utils.objectFromBytes;
+import static org.kloud.utils.Utils.objectToBytes;
+
+// TODO: Dynamically create endpoints for all daos
+// TODO: Proper exception handling
 
 @RestController
 @RequestMapping("/api")
 public class RequestController {
 
-    @GetMapping("getusers")
-    public List<Map<String, Pair<Object, Class<?>>>> getUsers() {
-        // TODO: Pass errors/exceptions, check if running in headless mode in ErrorLogger and don't show errors
-        var users = ConfigurationSingleton.getStorage().getUserStorage().getObjects();
-        var convertedUsers = new ArrayList<Map<String, Pair<Object, Class<?>>>>(users.size());
-        for (var user : users) {
-            convertedUsers.add(user.getFieldMap());
+    private <T extends BaseModel> byte[] getWrapper(BasicDAO<T> dao) {
+        // TODO: Hmmm, extra wrapping here
+        return objectToBytes(new ArrayList<>(dao.getObjects()));
+    }
+
+    @GetMapping("users/getall")
+    public byte[] getUsers() {
+        return getWrapper(ConfigurationSingleton.getStorage().getUserStorage());
+    }
+
+    @DeleteMapping("users/delete/{id}")
+    public String deleteUser(@PathVariable long id) {
+        var res = ConfigurationSingleton.getStorage().getUserStorage().removeById(id);
+        return res ? "OK" : "FAIL";
+    }
+
+    @PutMapping("users/update")
+    public String deleteUser(@RequestBody byte[] userBytes) {
+        User user = objectFromBytes(userBytes);
+        if(user == null) {
+            return "FAIL";
         }
-        return convertedUsers;
+        var res = ConfigurationSingleton.getStorage().getUserStorage().addOrUpdateObject(user);
+        return res ? "OK" : "FAIL";
+    }
+
+    @GetMapping("products/getall")
+    public byte[] getProducts() {
+        return getWrapper(ConfigurationSingleton.getStorage().getProductStorage());
+    }
+
+    @GetMapping("orders/getall")
+    public byte[] getOrders() {
+        return getWrapper(ConfigurationSingleton.getStorage().getOrdersStorage());
+    }
+
+    @GetMapping("warehouses/getall")
+    public byte[] getWarehouses() {
+        return getWrapper(ConfigurationSingleton.getStorage().getWarehouseStorage());
+    }
+
+    @GetMapping("comments/getall")
+    public byte[] getComments() {
+        return getWrapper(ConfigurationSingleton.getStorage().getCommentStorage());
     }
 }

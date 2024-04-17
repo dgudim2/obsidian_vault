@@ -8,13 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="More work on comments">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/ServerBackend.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/ServerConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/BasicServerDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/UsersServerDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileCommentsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileCommentsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/BasicDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/BasicDBDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/DbConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,41 +61,44 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2cd1ryr0kM6eeLPNPPcvslhvrWN" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Cli.executor": "Run",
-    "Application.Gui (default).executor": "Run",
-    "Application.Gui.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Application.Server.executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "Maven.Build.executor": "Run",
-    "Maven.randomshop [clean,compile...].executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/kloud/Downloads/randomshop/src/main/java/org/kloud/module/gui",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.toDoOptions",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Cli.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Gui (default).executor&quot;: &quot;Run&quot;,
+    &quot;Application.Gui.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Maven.Build.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.randomshop [clean,compile...].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/kloud/Downloads/randomshop/src/main/java/org/kloud/module/gui&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.toDoOptions&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.kloud.utils" />
@@ -229,6 +242,7 @@
       <workItem from="1712766226205" duration="6167000" />
       <workItem from="1713084763660" duration="16621000" />
       <workItem from="1713252258695" duration="6547000" />
+      <workItem from="1713368304423" duration="8993000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />
@@ -251,6 +265,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Comments partially working (without delete)" />

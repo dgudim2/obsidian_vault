@@ -50,52 +50,46 @@
          </TextField>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label prefHeight="300.0" prefWidth="140.0" text="Database username">
-               <padding>
-                  <Insets left="10.0"/>
-               </padding>
-            </Label>
-            <Separator prefHeight="250.0" prefWidth="20.0"/>
-            <TextField fx:id="dbUsername" prefWidth="200.0">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="10.0" top="5.0"/>
-               </HBox.margin>
-            </TextField>
-         </children>
+         <Label prefHeight="300.0" prefWidth="140.0" text="Database username">
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="250.0" prefWidth="20.0"/>
+         <TextField fx:id="dbUsername" prefWidth="200.0">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </TextField>
       </HBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <Label prefHeight="300.0" prefWidth="140.0" text="Database password">
-               <padding>
-                  <Insets left="10.0"/>
-               </padding>
-            </Label>
-            <Separator prefHeight="250.0" prefWidth="20.0"/>
-            <TextField fx:id="dbPass" prefWidth="200.0">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="10.0" top="5.0"/>
-               </HBox.margin>
-            </TextField>
-         </children>
+         <Label prefHeight="300.0" prefWidth="140.0" text="Database password">
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="250.0" prefWidth="20.0"/>
+         <TextField fx:id="dbPass" prefWidth="200.0">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </TextField>
       </HBox>
       <HBox>
-         <children>
-            <Label prefHeight="300.0" prefWidth="80.0" text="Log level">
-               <HBox.margin>
-                  <Insets/>
-               </HBox.margin>
-               <padding>
-                  <Insets left="10.0"/>
-               </padding>
-            </Label>
-            <Separator prefHeight="691.0" prefWidth="80.0"/>
-            <ComboBox fx:id="logLevelSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets bottom="5.0" left="10.0" top="5.0"/>
-               </HBox.margin>
-            </ComboBox>
-         </children>
+         <Label prefHeight="300.0" prefWidth="80.0" text="Log level">
+            <HBox.margin>
+               <Insets/>
+            </HBox.margin>
+            <padding>
+               <Insets left="10.0"/>
+            </padding>
+         </Label>
+         <Separator prefHeight="691.0" prefWidth="80.0"/>
+         <ComboBox fx:id="logLevelSelector" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <HBox.margin>
+               <Insets bottom="5.0" left="10.0" top="5.0"/>
+            </HBox.margin>
+         </ComboBox>
       </HBox>
    </VBox>
    <Label alignment="CENTER" layoutX="284.0" layoutY="32.0" prefHeight="18.0" prefWidth="239.0"

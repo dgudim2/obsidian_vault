@@ -124,7 +124,7 @@
                         AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
 
                 </Button>
-                <Label fx:id="commentsLabel" contentDisplay="CENTER" layoutX="260.0" layoutY="475.0" text="Comments"
+                <Label fx:id="commentsLabel" contentDisplay="CENTER" layoutX="260.0" layoutY="475.0" text="Comments (double-click to view)"
                        AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0"/>
                 <TreeView fx:id="commentsTree" layoutX="260.0" layoutY="493.0" maxHeight="190.0" prefHeight="190.0"
                           prefWidth="200.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="260.0"

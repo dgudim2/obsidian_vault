@@ -300,7 +300,7 @@ public class EntrypointController implements BaseController {
             contextMenu = new ContextMenu(replyAction, editAction, deleteAction);
         }
         replyAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, null, null, product));
-        deleteAction.setOnAction(event -> deleteCommentNode(parentNode, parentComment, thisNode, thisComment, product));
+        deleteAction.setOnAction(event -> deleteComment(parentNode, parentComment, thisNode, thisComment, product));
         editAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, thisNode, thisComment, product));
 
         // TODO: This is semi-ideal, right click will only work on the label
@@ -406,6 +406,8 @@ public class EntrypointController implements BaseController {
             }
             if (!isEditing) {
                 addCommentNode(parentNode, parentComment, finalThisComment, product);
+            } else {
+                Objects.requireNonNull(thisNode).setValue(finalThisComment.toString());
             }
             addCommentDialog.close();
         }));
@@ -414,8 +416,8 @@ public class EntrypointController implements BaseController {
         addCommentDialog.showAndWait();
     }
 
-    private void deleteCommentNode(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
-                                   @NotNull TreeItem<String> thisNode, @NotNull Comment thisComment, @NotNull Product product) {
+    private void deleteComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
+                               @NotNull TreeItem<String> thisNode, @NotNull Comment thisComment, @NotNull Product product) {
         Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
         confirmDialog.setTitle("Delete a comment");
         confirmDialog.setHeaderText("Delete " + thisComment + "?");
@@ -438,6 +440,7 @@ public class EntrypointController implements BaseController {
         for (var child : thisComment.children.getLinkedValues()) {
             deleteCommentChildrenRecursive(child);
         }
+        // NOTE: This is inefficient, collect all ids and delete in one batch maybe
         ConfigurationSingleton.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
     }
 
@@ -489,7 +492,7 @@ public class EntrypointController implements BaseController {
                 // TODO: Remove listeners on logout
                 productTabWrapper.selectedObject.addListener((__, ___, newValue) -> loadCommentsForProduct(newValue));
                 addCommentButton.setOnAction(event -> leaveOrEditComment(
-                        commentsTree.getRoot(),  null,
+                        commentsTree.getRoot(), null,
                         null, null,
                         productTabWrapper.selectedObject.get()));
             }

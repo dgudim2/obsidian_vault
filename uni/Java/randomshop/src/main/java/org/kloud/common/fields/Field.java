@@ -47,7 +47,7 @@ public class Field<T extends Serializable> implements Serializable {
 
     private transient long latestVersionSavedHash = -1;
 
-    private ColumnDescriptor<T> columnDescriptor;
+    private transient ColumnDescriptor<T> columnDescriptor;
 
     public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
         this.name = name;

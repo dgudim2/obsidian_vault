@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
 import org.kloud.model.ColumnDescriptor;
-import org.kloud.model.DbConnection;
+import org.kloud.common.DbConnection;
 import org.kloud.utils.ErrorHandler;
 import org.kloud.utils.Logger;
 
@@ -145,7 +145,6 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @Override
     public boolean addOrUpdateObject(@NotNull T product) {
-        ensureObjects();
         var columnDescriptors = product.getColumnDescriptors();
         StringBuilder columns = new StringBuilder("(" + idColumn.columnName + "," + klassColumn.columnName);
         StringBuilder values = new StringBuilder("(?, ?");
@@ -186,7 +185,6 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @Override
     public boolean removeObject(@NotNull T product) {
-        ensureObjects();
         var sqlStatement = "DELETE FROM " + getTableName() + " WHERE id = " + product.id + ";";
         boolean res;
         try {

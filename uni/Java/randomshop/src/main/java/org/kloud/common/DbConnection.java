@@ -1,6 +1,7 @@
-package org.kloud.model;
+package org.kloud.common;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.ErrorHandler;
 import org.kloud.utils.Logger;
@@ -20,7 +21,7 @@ public class DbConnection {
     @NotNull
     private String address = "";
     @NotNull
-    private String pasword = "";
+    private String password = "";
     @NotNull
     private String user = "";
 
@@ -33,13 +34,13 @@ public class DbConnection {
         var newUser = conf.dbUser.getValue();
         var newPassword = conf.dbPassword.getValue();
 
-        if (rawDbConnection != null && (!newAddress.equals(address) || !newUser.equals(user) || !newPassword.equals(pasword))) {
+        if (rawDbConnection != null && (!newAddress.equals(address) || !newUser.equals(user) || !newPassword.equals(password))) {
             Logger.info("Db connection " + address + " invalidated");
             close();
         }
 
         address = newAddress;
-        pasword = newPassword;
+        password = newPassword;
         user = newUser;
 
         try {
@@ -51,7 +52,7 @@ public class DbConnection {
             Logger.warn("Connection " + address + " is not valid, trying to reconnect");
         }
         try {
-            rawDbConnection = DriverManager.getConnection(address, user, pasword);
+            rawDbConnection = DriverManager.getConnection(address, user, password);
             if (rawDbConnection.isReadOnly()) {
                 Logger.error("Db connection " + address + " is unusable because it's read-only");
                 return false;
@@ -64,7 +65,6 @@ public class DbConnection {
     }
 
     public void dumpDatatypeMap() {
-
         try {
             ResultSet rs = rawDbConnection.getMetaData().getTypeInfo();
             while (rs.next())
@@ -74,6 +74,7 @@ public class DbConnection {
         }
     }
 
+    @Nullable
     public ResultSet executeQuery(@NotNull String query) throws SQLException {
         if (!ensureConnected()) {
             Logger.error("Could not execute " + query + " because connection failed");

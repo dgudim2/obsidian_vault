@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
@@ -49,6 +50,28 @@ public class Utils {
         } catch (IOException | ClassNotFoundException e) {
             ErrorHandler.displayException(e).handleDefault();
             return defaultValue;
+        }
+    }
+
+    public static <T> byte[] objectToBytes(T obj) {
+        try (ByteArrayOutputStream bos = new ByteArrayOutputStream()) {
+            ObjectOutputStream oos = new ObjectOutputStream(bos);
+            oos.writeObject(obj);
+            oos.flush();
+            return bos.toByteArray();
+        } catch (IOException e) {
+            ErrorHandler.displayException(e).handleDefault();
+            return new byte[0];
+        }
+    }
+
+    @Nullable
+    public static <T> T objectFromBytes(byte[] obj) {
+        try (var bis = new ObjectInputStream(new ByteArrayInputStream(obj))){
+            //noinspection unchecked
+            return (T) bis.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            return null;
         }
     }
 

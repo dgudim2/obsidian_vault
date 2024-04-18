@@ -31,7 +31,7 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
             HttpResponse<byte[]> response = serverConnection.getRequest(getEndpoint() + "/getall", HttpResponse.BodyHandlers.ofByteArray());
             var bis = new ObjectInputStream(new ByteArrayInputStream(Objects.requireNonNull(response).body()));
             //noinspection unchecked
-            return (List<T>) bis.readObject(); // TODO: Make sure this is a modifiable list
+            return new ArrayList<>((List<T>) bis.readObject()); // TODO: Make sure this is a modifiable list
         } catch (URISyntaxException | IOException | InterruptedException | NullPointerException |
                  ClassNotFoundException e) {
             var res = ErrorHandler.displayException(e).handleWithAction(this::readObjectsInternal);
@@ -74,7 +74,7 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
     @Override
     protected @NotNull List<T> readObjects() {
         var objects = super.readObjects();
-        for(var obj: objects) {
+        for (var obj : objects) {
             obj.postRead();
         }
         return objects;

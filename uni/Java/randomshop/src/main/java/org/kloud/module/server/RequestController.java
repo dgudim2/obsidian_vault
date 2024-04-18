@@ -6,8 +6,6 @@ import org.kloud.model.user.User;
 import org.kloud.utils.ConfigurationSingleton;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 import static org.kloud.utils.Utils.objectFromBytes;
 import static org.kloud.utils.Utils.objectToBytes;
 
@@ -19,8 +17,7 @@ import static org.kloud.utils.Utils.objectToBytes;
 public class RequestController {
 
     private <T extends BaseModel> byte[] getWrapper(BasicDAO<T> dao) {
-        // TODO: Hmmm, extra wrapping here
-        return objectToBytes(new ArrayList<>(dao.getObjects()));
+        return objectToBytes(dao.getObjects());
     }
 
     @GetMapping("users/getall")

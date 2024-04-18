@@ -64,7 +64,7 @@ public class TabWrapper<T extends BaseModel> {
             saveButton.setVisible(newObject != null);
             pane.removeFirstRow();
             if (newObject != null) {
-                pane.addRow(newObject.loadFulGui(false, saveButton, objectsDao, objectList::refresh));
+                pane.addRow(newObject.loadEditableGui(saveButton, objectsDao, objectList::refresh));
             }
         };
 
@@ -90,10 +90,7 @@ public class TabWrapper<T extends BaseModel> {
                 if (buttonType != ButtonType.OK) {
                     return;
                 }
-                var prod = selectedObject.get();
-                objectsDao.removeObject(prod);
-                objectList.getSelectionModel().clearSelection();
-                objectList.getItems().remove(prod);
+                removeObject(selectedObject.get());
             });
         });
 
@@ -150,6 +147,15 @@ public class TabWrapper<T extends BaseModel> {
                 });
             });
         }
+    }
+
+    public boolean removeObject(T object) {
+        if (objectsDao.removeObject(object)) {
+            objectList.getSelectionModel().clearSelection();
+            objectList.getItems().remove(object);
+            return true;
+        }
+        return false;
     }
 
     public void reset() {

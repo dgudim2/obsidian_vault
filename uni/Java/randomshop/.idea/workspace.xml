@@ -8,23 +8,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="More work on comments">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/ServerBackend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/ServerConnection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/BasicServerDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/UsersServerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.obsidian/plugins/obsidian-icon-folder/data.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.obsidian/plugins/obsidian-icon-folder/data.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Home.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Home.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/BasicDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/BasicDBDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/DbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/BasicServerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/BasicServerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapColumn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapColumn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapRow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/settings-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -243,6 +243,7 @@
       <workItem from="1713084763660" duration="16621000" />
       <workItem from="1713252258695" duration="6547000" />
       <workItem from="1713368304423" duration="8993000" />
+      <workItem from="1713458930952" duration="6394000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />

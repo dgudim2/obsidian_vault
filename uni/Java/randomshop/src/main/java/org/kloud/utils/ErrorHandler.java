@@ -6,6 +6,8 @@ import javafx.scene.control.ButtonType;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.enums.ErrorResponse;
 
+import java.awt.*;
+
 /**
  * Handles all the errors and displays a ui with choices
  */
@@ -15,6 +17,11 @@ public class ErrorHandler {
 
         e.printStackTrace();
         Logger.fatal(e.getMessage());
+
+        if(GraphicsEnvironment.isHeadless()) {
+            Logger.weakWarn("Running in headless mode, exception actions are not supported");
+            return ErrorResponse.IGNORE;
+        }
 
         Alert errorDialog = new Alert(Alert.AlertType.ERROR, "", ButtonType.CLOSE, ButtonType.FINISH, ButtonType.YES);
         errorDialog.setHeaderText("An error occurred, continue anyway?");

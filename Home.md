@@ -5,7 +5,7 @@ banner_icon: 🏠
 ---
 
 
-`````col 
+`````col
 ````col-md 
 
 # Discrete Math

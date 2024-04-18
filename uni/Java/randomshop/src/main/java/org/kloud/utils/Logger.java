@@ -24,8 +24,8 @@ public class Logger {
         colorMap.put(Loglevel.DEBUG, "\033[38;5;242m[DEBUG]: \033[0m");
         colorMap.put(Loglevel.INFO, "\033[1;34m[INFO]: \033[0m");
         colorMap.put(Loglevel.SUCCESS, "\033[0;32m[SUCCESS]: \033[0m");
-        colorMap.put(Loglevel.WEAK_WARN, "\033[0;33m[WARN]: \033[0m");
-        colorMap.put(Loglevel.WARN, "\033[1;33m[WEAK]: \033[0m");
+        colorMap.put(Loglevel.WEAK_WARN, "\033[0;33m[WEAK]: \033[0m");
+        colorMap.put(Loglevel.WARN, "\033[1;33m[WARN]: \033[0m");
         colorMap.put(Loglevel.ERROR, "\033[0;31m[ERROR]: \033[0m");
         colorMap.put(Loglevel.FATAL, "\033[1;31m[FATAL]: \033[0m");
     }

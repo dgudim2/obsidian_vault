@@ -19,11 +19,14 @@ import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.Comment;
 import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
+import org.kloud.model.enums.OrderStatus;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.module.gui.TabWrapper;
+import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
+import org.kloud.module.gui.components.BootstrapRow;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
@@ -116,7 +119,7 @@ public class EntrypointController implements BaseController {
     @FXML
     public Button saveUserButton;
     @FXML
-    public Button saveOrderButton;
+    public Button changeOrderStatusButton;
 
 
     @FXML
@@ -263,6 +266,8 @@ public class EntrypointController implements BaseController {
         });
 
         loadCommentsForProduct(null);
+
+        initOrdersTab();
         initUserLoginTab();
     }
 
@@ -280,6 +285,62 @@ public class EntrypointController implements BaseController {
         warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
         productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
         userTabWrapper.setEnabled(true);
+    }
+
+    private void initOrdersTab() {
+        addToCartButton.setOnAction(event -> {
+            var existingCart = ConfigurationSingleton.getStorage().getOrdersStorage().getObjects()
+                    .stream().filter(order -> order.orderStatus.get() == OrderStatus.CART)
+                    .findFirst()
+                    .orElseGet(() -> {
+                        var order = new Order();
+                        order.orderedByUser.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
+                        return order;
+                    });
+            // NOTE: This isn't atomic, horrible
+            var selectedProduct = productTabWrapper.selectedObject.get();
+            if (productTabWrapper.removeObject(selectedProduct)) {
+                // Removed from regular list
+                if (ConfigurationSingleton.getStorage().getOrderedProductStorage().addOrUpdateObject(selectedProduct)) {
+                    // Added to ordered list
+                    existingCart.orderedProducts.addLinkedValue(selectedProduct);
+                    if (!ConfigurationSingleton.getStorage().getOrdersStorage().addOrUpdateObject(existingCart)) {
+                        Logger.warn("Order could not be created/updated because of saving inconsistencies");
+                    }
+                } else {
+                    Logger.warn(selectedProduct + " is GONE because of saving inconsistencies");
+                }
+            }
+        });
+
+        BootstrapPane pane = new BootstrapPane();
+        pane.prefWidthProperty().bind(orderEditArea.widthProperty());
+        pane.prefHeightProperty().bind(orderEditArea.heightProperty());
+        orderEditArea.getChildren().add(pane);
+
+        ordersList.getItems().setAll(ConfigurationSingleton.getStorage().getOrdersStorage().getObjects());
+        ordersList.getSelectionModel().selectedItemProperty().addListener((observable, oldObject, newObject) -> {
+            pane.clear();
+            deleteOrderButton.setDisable(newObject == null);
+            changeOrderStatusButton.setDisable(newObject == null);
+            if (newObject != null) {
+
+                var orderedProducts = newObject.orderedProducts.getLinkedValues();
+
+                pane.addRow(new BootstrapRow(new BootstrapColumn("Ordered by: " + newObject.orderedByUser.getLinkedValue())));
+                pane.addRow(new BootstrapRow(new BootstrapColumn("Status: " + newObject.orderStatus)));
+                pane.addRow(new BootstrapRow(new BootstrapColumn("")));
+                pane.addRow(new BootstrapRow(new BootstrapColumn("Products (" + orderedProducts.size() + "):")));
+
+                BootstrapRow row = new BootstrapRow();
+
+                for (var product : orderedProducts) {
+                    row.addColumn(new BootstrapColumn(product.toString()));
+                }
+
+                pane.addRow(row);
+            }
+        });
     }
 
     @NotNull
@@ -314,9 +375,7 @@ public class EntrypointController implements BaseController {
                 BootstrapPane pane = new BootstrapPane();
                 pane.setPrefWidth(350);
                 pane.setPrefHeight(150);
-                pane.addRow(thisComment.loadFulGui(true,
-                        (Button) viewCommentDialog.getDialogPane().lookupButton(ButtonType.OK),
-                        ConfigurationSingleton.getStorage().getCommentStorage(), viewCommentDialog::close));
+                pane.addRow(thisComment.loadReadonlyGui());
 
                 viewCommentDialog.getDialogPane().setContent(pane);
                 viewCommentDialog.showAndWait();
@@ -386,7 +445,7 @@ public class EntrypointController implements BaseController {
         pane.setPrefHeight(150);
 
         @NotNull Comment finalThisComment = thisComment;
-        pane.addRow(thisComment.loadFulGui(false, addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
+        pane.addRow(thisComment.loadEditableGui(addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
             if (parentComment == null) {
                 if (!isEditing) {
                     productTabWrapper.selectedObject.get().comments.addLinkedValue(finalThisComment);

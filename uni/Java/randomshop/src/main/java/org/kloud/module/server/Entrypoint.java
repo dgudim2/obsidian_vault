@@ -12,9 +12,16 @@ import java.io.IOException;
 @SpringBootApplication
 public class Entrypoint {
     public static void launch(@NotNull String[] args) throws IOException {
-        if(!ConfigurationSingleton.getInstance().storageBackend.get().getClass().equals(LocalBackend.class)) {
-            Logger.error("Only Local backend is supported for now");
-            System.exit(1);
+        if (!ConfigurationSingleton.getInstance().storageBackend.get().getClass().equals(LocalBackend.class)) {
+            Logger.warn("""
+                    \033[0;33m
+                    =====================================================
+                    |                                                   |
+                    |      Only Local backend is supported for now      |
+                    |             Switching to LocalBackend             |
+                    |                                                   |
+                    =====================================================\033[0m""");
+            ConfigurationSingleton.getInstance().storageBackend.set(new LocalBackend());
         }
         SpringApplication.run(Entrypoint.class, args);
     }

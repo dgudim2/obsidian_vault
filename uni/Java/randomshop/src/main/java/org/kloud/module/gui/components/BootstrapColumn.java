@@ -1,6 +1,8 @@
 package org.kloud.module.gui.components;
 
+import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import lombok.Getter;
 import org.kloud.utils.Utils;
 
@@ -25,8 +27,23 @@ public class BootstrapColumn {
             -1  //XL
     };
 
+    public BootstrapColumn(String content) {
+        var label = new Label(content);
+        label.setPadding(new Insets(5, 5, 5, 5));
+        this.content = label;
+        defaultBreakpoints();
+    }
+
     public BootstrapColumn(Node content) {
         this.content = content;
+        defaultBreakpoints();
+    }
+
+    public void defaultBreakpoints() {
+        setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
+        setBreakpointColumnWidth(Breakpoint.LARGE, 4);
+        setBreakpointColumnWidth(Breakpoint.SMALL, 6);
+        setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
     }
 
     /**

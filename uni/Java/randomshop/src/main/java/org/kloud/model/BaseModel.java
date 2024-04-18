@@ -9,15 +9,11 @@ import org.kloud.common.fields.Field;
 import org.kloud.daos.BasicDAO;
 import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapRow;
-import org.kloud.module.gui.components.Breakpoint;
 import org.kloud.utils.Logger;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static java.lang.Math.min;
@@ -43,26 +39,31 @@ public abstract class BaseModel implements Serializable {
     @NotNull
     public abstract List<Field<?>> getFields();
 
-    public <T extends BaseModel> BootstrapRow loadFulGui(boolean readonly, @NotNull Button validateButton, @NotNull BasicDAO<T> dao,
-                                                         @Nullable Runnable afterSave) {
+    public <T extends BaseModel> BootstrapRow loadReadonlyGui() {
+        return loadEditableGui(null, null, null);
+    }
+
+    public <T extends BaseModel> BootstrapRow loadEditableGui(@Nullable Button validateButton,
+                                                              @Nullable BasicDAO<T> dao,
+                                                              @Nullable Runnable afterSave) {
         BootstrapRow row = new BootstrapRow();
         var fields = getFields().stream().filter(Field::isVisibleInUI).toList();
         List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
 
+        boolean readonly = validateButton == null;
+
         for (var field : fields) {
-            var fieldControl = field.getJavaFxControl(readonly, () -> validateButton.setDisable(!hasChanges()));
+            var fieldControl = field.getJavaFxControl(readonly, () -> Objects.requireNonNull(validateButton).setDisable(!hasChanges()));
             fxControlHandlers.add(fieldControl.getValue());
-            BootstrapColumn column = new BootstrapColumn(fieldControl.getKey());
-            column.setBreakpointColumnWidth(Breakpoint.XLARGE, 3);
-            column.setBreakpointColumnWidth(Breakpoint.LARGE, 4);
-            column.setBreakpointColumnWidth(Breakpoint.SMALL, 6);
-            column.setBreakpointColumnWidth(Breakpoint.XSMALL, 12);
-            row.addColumn(column);
+            row.addColumn(new BootstrapColumn(fieldControl.getKey()));
         }
 
         Logger.info("Loaded " + fields.size() + " fields for '" + this + "'");
 
-        validateButton.setDisable(!hasChanges() && !readonly);
+        if (validateButton == null) {
+            return row;
+        }
+        validateButton.setDisable(!hasChanges());
         validateButton.addEventFilter(ActionEvent.ACTION, actionEvent -> {
             boolean isValid = true;
             for (var fxControlHandler : fxControlHandlers) {
@@ -71,7 +72,7 @@ public abstract class BaseModel implements Serializable {
             }
             if (isValid) {
                 //noinspection unchecked
-                if (dao.addOrUpdateObject((T) this)) {
+                if (Objects.requireNonNull(dao).addOrUpdateObject((T) this)) {
                     if (afterSave != null) {
                         afterSave.run();
                     }

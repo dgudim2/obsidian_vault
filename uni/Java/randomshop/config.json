@@ -1,8 +1,1 @@
-{
-    "server_address": "http://localhost:8080",
-    "db_address": "jdbc:postgresql://localhost/postgres",
-    "db_user": "postgres",
-    "db_password": "",
-    "backend_type": "org.kloud.backends.ServerBackend",
-    "log_level": "INFO"
-}
+{"server_address":"http://localhost:8080","db_address":"jdbc:postgresql://localhost/postgres","db_user":"postgres","db_password":"","backend_type":"org.kloud.backends.ServerBackend","log_level":"INFO"}

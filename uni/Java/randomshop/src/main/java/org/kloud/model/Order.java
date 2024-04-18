@@ -17,13 +17,13 @@ public class Order extends BaseModel {
 
     public final ForeignKeyField<User> orderedByUser = new ForeignKeyField<>("Ordered by", true,
             id -> ConfigurationSingleton.getStorage().getUserStorage().getById(id),
-            () -> ConfigurationSingleton.getStorage().getUserStorage().getObjects(),
+            List::of,
             (user, newUser) -> {
             });
 
-    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Ordered by",
-            ids -> ConfigurationSingleton.getStorage().getProductStorage().getByIds(ids),
-            () -> ConfigurationSingleton.getStorage().getProductStorage().getObjects(), (products1, products2) -> {
+    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Products",
+            ids -> ConfigurationSingleton.getStorage().getOrderedProductStorage().getByIds(ids),
+            List::of, (products1, products2) -> {
 
     });
 
@@ -47,6 +47,8 @@ public class Order extends BaseModel {
 
     @Override
     protected @NotNull String toStringInternal() {
-        return "";
+        var strId = String.valueOf(id);
+        return "Order " + (strId.substring(0, 2)) + ".." + (strId.substring(strId.length() - 2)) +
+                " (" + orderStatus.get() + ") " + orderedProducts.get().size() + " products";
     }
 }

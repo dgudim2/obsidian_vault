@@ -91,12 +91,22 @@ public class BootstrapPane extends GridPane {
 
     /**
      * Remove the first BootstrapRow from the layout.
-     *
      */
     public void removeFirstRow() {
         if (rows.isEmpty()) {
             return;
         }
         removeRow(rows.get(0));
+    }
+
+
+    /**
+     * Remove the first BootstrapRow from the layout.
+     */
+    public void clear() {
+        for (var row : rows) {
+            // TODO: (PERF) This is crap but I don't have the time to make it proper, calculateNodePositions() is called on every row removal
+            removeRow(row);
+        }
     }
 }

@@ -4310,21 +4310,6 @@ function fixAnchors(doc, dest, basename) {
     }
   });
 }
-function waitFor(cond, timeout = 0) {
-  return new Promise((resolve, reject) => {
-    const startTime = Date.now();
-    const poll = () => {
-      if (cond()) {
-        resolve(true);
-      } else if (timeout > 0 && Date.now() - startTime >= timeout) {
-        reject(new Error("Timeout exceeded"));
-      } else {
-        setTimeout(poll, 500);
-      }
-    };
-    poll();
-  });
-}
 var px2mm = (px2) => {
   return Math.round(px2 * 0.26458333333719);
 };
@@ -4514,12 +4499,10 @@ async function renderMarkdown(app, file, config, extra) {
     }
     el.removeAttribute("href");
   });
-  if (data.includes("```dataview") || data.includes("```gEvent") || data.includes("![[")) {
-    try {
-      await waitFor(() => false, 2e3);
-    } catch (error2) {
-      console.warn("wait 2s");
-    }
+  try {
+    await fixWaitRender(data, viewEl);
+  } catch (error2) {
+    console.warn("wait timeout");
   }
   fixCanvasToImage(viewEl);
   const doc = document.implementation.createHTMLDocument("document");
@@ -4534,17 +4517,24 @@ async function renderMarkdown(app, file, config, extra) {
 function fixDoc(doc, title) {
   const dest = modifyDest(doc);
   fixAnchors(doc, dest, title);
-  fixEmbedSpan(doc);
+  encodeEmbeds(doc);
 }
-function fixEmbedSpan(doc) {
-  const spans = doc.querySelectorAll("span.markdown-embed");
-  spans.forEach((span) => {
-    var _a;
-    const newDiv = document.createElement("div");
-    copyAttributes(newDiv, span.attributes);
-    newDiv.innerHTML = span.innerHTML;
-    (_a = span.parentNode) == null ? void 0 : _a.replaceChild(newDiv, span);
-  });
+function encodeEmbeds(doc) {
+  const spans = Array.from(doc.querySelectorAll("span.markdown-embed")).reverse();
+  spans.forEach((span) => span.innerHTML = btoa_utf8(span.innerHTML));
+}
+function btoa_utf8(string) {
+  return btoa(String.fromCharCode(...new TextEncoder().encode(string)));
+}
+async function fixWaitRender(data, viewEl) {
+  if (data.includes("```dataview") || data.includes("```gEvent") || data.includes("![[")) {
+    await sleep(2e3);
+  }
+  try {
+    await waitForDomChange(viewEl);
+  } catch (error2) {
+    await sleep(1e3);
+  }
 }
 function fixCanvasToImage(el) {
   for (const canvas of Array.from(el.querySelectorAll("canvas"))) {
@@ -4570,6 +4560,28 @@ function createWebview() {
   );
   webview.nodeintegration = true;
   return webview;
+}
+function waitForDomChange(target, timeout = 2e3, interval = 200) {
+  return new Promise((resolve, reject) => {
+    let timer;
+    const observer = new MutationObserver((m) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        observer.disconnect();
+        resolve(true);
+      }, interval);
+    });
+    observer.observe(target, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true
+    });
+    setTimeout(() => {
+      observer.disconnect();
+      reject(new Error(`timeout ${timeout}ms`));
+    }, timeout);
+  });
 }
 
 // src/pdf.ts
@@ -20397,8 +20409,8 @@ function setMetadata(pdfDoc, { title, author, keywords, subject, creator, create
 }
 async function exportToPDF(outputFile, config, w, doc, frontMatter) {
   var _a, _b, _c, _d, _e, _f, _g, _h, _i;
-  let pageSize = config["pageSise"];
-  if (config["pageSise"] == "Custom" && config["pageWidth"] && config["pageHeight"]) {
+  let pageSize = config["pageSize"];
+  if (config["pageSize"] == "Custom" && config["pageWidth"] && config["pageHeight"]) {
     pageSize = {
       width: parseFloat((_a = config["pageWidth"]) != null ? _a : "0") / 25.4,
       height: parseFloat((_b = config["pageHeight"]) != null ? _b : "0") / 25.4
@@ -20509,7 +20521,7 @@ var ExportConfigModal = class extends import_obsidian3.Modal {
     this.file = file;
     this.completed = false;
     this.config = {
-      pageSise: "A4",
+      pageSize: "A4",
       marginType: "1",
       showTitle: (_a = plugin.settings.showTitle) != null ? _a : true,
       open: true,
@@ -20592,7 +20604,7 @@ var ExportConfigModal = class extends import_obsidian3.Modal {
     var _a, _b, _c, _d;
     const conf = config != null ? config : this.config;
     const el = element != null ? element : this.previewDiv;
-    const width = (_d = (_b = (_a = PageSize) == null ? void 0 : _a[conf["pageSise"]]) == null ? void 0 : _b[0]) != null ? _d : parseFloat((_c = conf["pageWidth"]) != null ? _c : "210");
+    const width = (_d = (_b = (_a = PageSize) == null ? void 0 : _a[conf["pageSize"]]) == null ? void 0 : _b[0]) != null ? _d : parseFloat((_c = conf["pageWidth"]) != null ? _c : "210");
     const scale2 = Math.floor(mm2px(width) / el.offsetWidth * 100) / 100;
     if (this.preview) {
       this.preview.style.transform = `scale(${1 / scale2},${1 / scale2})`;
@@ -20614,7 +20626,7 @@ ${px2mm(width)}\xD7${px2mm(height)}mm`;
   async togglePrintSize() {
     const sizeEl = document.querySelector("#print-size");
     if (sizeEl) {
-      if (this.config["pageSise"] == "Custom") {
+      if (this.config["pageSize"] == "Custom") {
         sizeEl.style.visibility = "visible";
       } else {
         sizeEl.style.visibility = "hidden";
@@ -20643,7 +20655,40 @@ ${px2mm(width)}\xD7${px2mm(height)}mm`;
         await this.preview.executeJavaScript(`
         document.body.innerHTML = decodeURIComponent(\`${encodeURIComponent(this.doc.body.innerHTML)}\`);
         document.head.innerHTML = decodeURIComponent(\`${encodeURIComponent(document.head.innerHTML)}\`);
-				
+
+        function atob_utf8(string) { 
+          const latin = atob(string); 
+          return new TextDecoder().decode(
+            Uint8Array.from({ length: latin.length },(_, index) => latin.charCodeAt(index))
+          ) 
+        }
+
+		    function decodeBase64(encodedString) {
+          try {
+            return atob_utf8(encodedString);
+          } catch (e) {
+            // If atob fails, it's likely not base64 encoded, so return the original string
+            return encodedString;
+          }
+        }
+        
+        // Function to recursively decode and replace innerHTML of span.markdown-embed elements
+        function decodeAndReplaceEmbed(element) {
+          if (element.classList.contains("markdown-embed")) {
+            // Decode the innerHTML
+            const decodedContent = decodeBase64(element.innerHTML);
+            // Replace the innerHTML with the decoded content
+            element.innerHTML = decodedContent;
+            // Check if the new content contains further span.markdown-embed elements
+            const newEmbeds = element.querySelectorAll("span.markdown-embed");
+            newEmbeds.forEach(decodeAndReplaceEmbed);
+          }
+        }
+        
+        // Start the process with all span.markdown-embed elements in the document
+        const spans = document.querySelectorAll("span.markdown-embed");
+        spans.forEach(decodeAndReplaceEmbed);
+
         document.body.setAttribute("class", \`${document.body.getAttribute("class")}\`)
         document.body.setAttribute("style", \`${document.body.getAttribute("style")}\`)
         document.body.addClass("theme-light");
@@ -20748,8 +20793,8 @@ ${px2mm(width)}\xD7${px2mm(height)}mm`;
       "Custom"
     ];
     new import_obsidian3.Setting(contentEl).setName("Page size").addDropdown((dropdown) => {
-      dropdown.addOptions(Object.fromEntries(pageSizes.map((size) => [size, size]))).setValue(this.config.pageSise).onChange(async (value) => {
-        this.config["pageSise"] = value;
+      dropdown.addOptions(Object.fromEntries(pageSizes.map((size) => [size, size]))).setValue(this.config.pageSize).onChange(async (value) => {
+        this.config["pageSize"] = value;
         if (value == "Custom") {
           sizeEl.settingEl.hidden = false;
         } else {
@@ -20779,7 +20824,7 @@ ${px2mm(width)}\xD7${px2mm(height)}mm`;
         this.config["pageHeight"] = value;
       });
     });
-    if (this.config["pageSise"] != "Custom") {
+    if (this.config["pageSize"] != "Custom") {
       sizeEl.settingEl.hidden = true;
     }
     new import_obsidian3.Setting(contentEl).setName("Margin").setDesc("The unit is millimeters.").addDropdown((dropdown) => {

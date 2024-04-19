@@ -12,7 +12,6 @@ import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -62,15 +61,7 @@ public abstract class Product extends BaseModel {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {
-        List<Field<?>> fields = new ArrayList<>(5);
-        fields.add(name);
-        fields.add(description);
-        fields.add(price);
-        fields.add(warranty);
-        fields.add(rating);
-        fields.add(assignedWarehouse);
-        fields.add(comments);
-        return fields;
+        return List.of(name, description, price, warranty, rating, assignedWarehouse, comments);
     }
 
     @Override

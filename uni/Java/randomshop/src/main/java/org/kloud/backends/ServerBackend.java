@@ -1,19 +1,47 @@
 package org.kloud.backends;
 
-import org.kloud.daos.file.*;
-import org.kloud.daos.server.UsersServerDAO;
+import org.kloud.daos.server.BasicServerDAO;
 import org.kloud.flowcontrollers.LocalLoginController;
 
 public class ServerBackend extends AbstractBackend {
 
     public ServerBackend() {
-        userStorage = new UsersServerDAO();
-
-        productStorage = new FileProductsDAO();
-        orderedProductStorage = new FileOrderedProductsDAO();
-        warehouseStorage = new FileWarehousesDAO();
-        ordersStorage = new FileOrdersDAO();
-        commentStorage = new FileCommentsDAO();
+        userStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/users";
+            }
+        };
+        productStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/products";
+            }
+        };
+        orderedProductStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/ordered_products";
+            }
+        };
+        warehouseStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/warehouses";
+            }
+        };
+        ordersStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/orders";
+            }
+        };
+        commentStorage = new BasicServerDAO<>() {
+            @Override
+            protected String getEndpoint() {
+                return "api/comments";
+            }
+        };
 
         loginController = new LocalLoginController(userStorage);
     }

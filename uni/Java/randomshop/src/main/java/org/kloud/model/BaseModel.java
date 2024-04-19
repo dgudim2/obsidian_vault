@@ -39,7 +39,7 @@ public abstract class BaseModel implements Serializable {
     @NotNull
     public abstract List<Field<?>> getFields();
 
-    public <T extends BaseModel> BootstrapRow loadReadonlyGui() {
+    public BootstrapRow loadReadonlyGui() {
         return loadEditableGui(null, null, null);
     }
 

@@ -9,7 +9,6 @@ import org.kloud.model.user.Manager;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Warehouse extends BaseModel {
@@ -68,12 +67,7 @@ public class Warehouse extends BaseModel {
 
     @Override
     public @NotNull List<Field<?>> getFields() {
-        List<Field<?>> fields = new ArrayList<>();
-        fields.add(address);
-        fields.add(maxCapacity);
-        fields.add(assignedManager);
-        fields.add(products);
-        return fields;
+        return List.of(address, maxCapacity, assignedManager, products);
     }
 
     @Override

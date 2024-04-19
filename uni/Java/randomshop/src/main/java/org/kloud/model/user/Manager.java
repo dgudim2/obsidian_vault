@@ -18,7 +18,7 @@ public class Manager extends User {
     public final Field<Boolean> isAdmin = new Field<>("Admin", false, false, Boolean.class, __ -> "");
     public final Field<Boolean> isSuperAdmin = new Field<>("Super admin", false, false, Boolean.class, __ -> "");
 
-    // public final ForeignKeyListField<Order> assignedOrders;
+    public final ForeignKeyListField<Order> assignedOrders;
 
     public final ForeignKeyListField<Warehouse> linkedWarehouses = new ForeignKeyListField<>("Warehouses", false, true, false,
             ids -> ConfigurationSingleton.getStorage()

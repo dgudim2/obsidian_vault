@@ -38,6 +38,7 @@ public abstract class User extends BaseModel {
         if (!lenWarning.isEmpty()) {
             return lenWarning;
         }
+        // NOTE: Using stream apis of small arrays is meh, investigate performance
         if (ConfigurationSingleton.getStorage()
                 .getUserStorage().getObjects()
                 .stream()
@@ -81,6 +82,7 @@ public abstract class User extends BaseModel {
     public boolean checkPassword(@NotNull String inputPass) {
         var actualPass = pass.get().get();
         if(actualPass == null) {
+            // WHAT?: When will this occur? IDK, but still handle, should we throw an exception here?
             Logger.error("actualPass is null, failed checking password");
             return false;
         }
@@ -90,16 +92,10 @@ public abstract class User extends BaseModel {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {
-        List<Field<?>> fields = new ArrayList<>(5);
-        fields.add(login);
-        fields.add(pass);
-        fields.add(name);
-        fields.add(surname);
-        fields.add(cardNumber);
-        fields.add(comments);
-        return fields;
+        return List.of(login, pass, name, surname, cardNumber, comments);
     }
 
+    // TODO: Lombok?
     @Override
     public boolean equals(Object object) {
         if (this == object) return true;

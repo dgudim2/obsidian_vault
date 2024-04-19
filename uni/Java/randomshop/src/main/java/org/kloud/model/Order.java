@@ -6,6 +6,7 @@ import org.kloud.common.fields.ForeignKeyField;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.enums.OrderStatus;
 import org.kloud.model.product.Product;
+import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.utils.ConfigurationSingleton;
 
@@ -27,6 +28,24 @@ public class Order extends BaseModel {
 
     });
 
+    // TODO: Extract common fields.
+    public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
+            id -> {
+                var user = ConfigurationSingleton.getStorage()
+                        .getUserStorage().getById(id);
+                if (user instanceof Manager m) {
+                    return m;
+                }
+                return null;
+            },
+            // NOTE: Using stream apis of small arrays is meh, investigate performance
+            () -> ConfigurationSingleton.getStorage()
+                    .getUserStorage().getObjects().stream()
+                    .filter(user -> user instanceof Manager)
+                    .map(user -> (Manager) user)
+                    .toList(), (manager, newManager) -> {
+    });
+
     public Order() {
         super();
     }
@@ -37,7 +56,7 @@ public class Order extends BaseModel {
 
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return List.of(orderStatus, orderedByUser, orderedProducts);
+        return List.of(orderStatus, orderedByUser, orderedProducts, assignedManager);
     }
 
     @Override

@@ -33,6 +33,7 @@ import static org.kloud.utils.Utils.setDanger;
 /**
  * Base class wrapping any value for usage in {@link BaseModel BaseModel} and derived classes
  * Also provides matching ui components and utility methods
+ *
  * @param <T> Datatype to wrap
  */
 public class Field<T extends Serializable> implements Serializable {
@@ -42,14 +43,14 @@ public class Field<T extends Serializable> implements Serializable {
     protected T value;
     public final boolean required;
     protected boolean hideInUI;
-    protected transient Function<T, @NotNull String> validator;
+    protected transient Function<@Nullable T, @NotNull String> validator;
     public final Class<T> klass;
 
     private transient long latestVersionSavedHash = -1;
 
     private transient ColumnDescriptor<T> columnDescriptor;
 
-    public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
+    public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<@Nullable T, @NotNull String> validator) {
         this.name = name;
         value = defaultValue;
         this.klass = klass;
@@ -58,7 +59,7 @@ public class Field<T extends Serializable> implements Serializable {
         hideInUI = false;
     }
 
-    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<T, @NotNull String> validator) {
+    public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<@Nullable T, @NotNull String> validator) {
         this(name, null, required, klass, validator);
     }
 

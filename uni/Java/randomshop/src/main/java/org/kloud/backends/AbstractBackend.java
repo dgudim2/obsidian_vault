@@ -10,6 +10,8 @@ import org.kloud.model.product.Product;
 import org.kloud.model.user.User;
 import org.kloud.utils.Logger;
 
+// TODO: No specific DAOs, anonymous classes instead?
+
 /**
  * Base class that holds all DAOs for accessing objects
  */

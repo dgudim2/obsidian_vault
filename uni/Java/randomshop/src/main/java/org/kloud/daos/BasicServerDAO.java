@@ -1,8 +1,7 @@
-package org.kloud.daos.server;
+package org.kloud.daos;
 
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.ServerConnection;
-import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.ErrorHandler;
 
@@ -29,7 +28,10 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
         var readObjects = new ArrayList<T>();
         try {
             HttpResponse<byte[]> response = serverConnection.getRequest(getEndpoint() + "/getall", HttpResponse.BodyHandlers.ofByteArray());
-            var bis = new ObjectInputStream(new ByteArrayInputStream(Objects.requireNonNull(response).body()));
+            if(Objects.requireNonNull(response).statusCode() != 200) {
+                throw new IOException(response.toString());
+            }
+            var bis = new ObjectInputStream(new ByteArrayInputStream(response.body()));
             //noinspection unchecked
             return new ArrayList<>((List<T>) bis.readObject()); // TODO: Make sure this is a modifiable list
         } catch (URISyntaxException | IOException | InterruptedException | NullPointerException |
@@ -44,7 +46,10 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
         boolean res;
         try {
             HttpResponse<String> response = serverConnection.deleteRequest(getEndpoint() + "/delete/" + object.id, HttpResponse.BodyHandlers.ofString());
-            res = response != null && response.statusCode() == 200 && Objects.equals(response.body(), "OK");
+            if(Objects.requireNonNull(response).statusCode() != 200) {
+                throw new IOException(response.toString());
+            }
+            res = Objects.equals(response.body(), "OK");
         } catch (URISyntaxException | IOException | InterruptedException | NullPointerException e) {
             res = Boolean.TRUE.equals(ErrorHandler.displayException(e).handleWithAction(() -> removeObject(object)));
         }
@@ -61,7 +66,10 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
             HttpResponse<String> response = serverConnection.putRequest(getEndpoint() + "/update",
                     HttpRequest.BodyPublishers.ofByteArray(objectToBytes(object)),
                     HttpResponse.BodyHandlers.ofString());
-            res = response != null && response.statusCode() == 200 && Objects.equals(response.body(), "OK");
+            if(Objects.requireNonNull(response).statusCode() != 200) {
+                throw new IOException(response.toString());
+            }
+            res = Objects.equals(response.body(), "OK");
         } catch (URISyntaxException | IOException | InterruptedException | NullPointerException e) {
             res = Boolean.TRUE.equals(ErrorHandler.displayException(e).handleWithAction(() -> addOrUpdateObject(object)));
         }

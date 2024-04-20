@@ -1,9 +1,10 @@
 package org.kloud.model.user;
 
 import org.jetbrains.annotations.NotNull;
+import org.kloud.common.UserCapability;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyListField;
-import org.kloud.common.UserCapability;
+import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.utils.ConfigurationSingleton;
 
@@ -18,9 +19,24 @@ public class Manager extends User {
     public final Field<Boolean> isAdmin = new Field<>("Admin", false, false, Boolean.class, __ -> "");
     public final Field<Boolean> isSuperAdmin = new Field<>("Super admin", false, false, Boolean.class, __ -> "");
 
-    public final ForeignKeyListField<Order> assignedOrders;
+    public final ForeignKeyListField<Order> assignedOrders = new ForeignKeyListField<>("Orders", false, true, () -> false,
+            ids -> ConfigurationSingleton.getStorage()
+                    .getOrderStorage().getObjects()
+                    .stream()
+                    .filter(order -> order.assignedManager.get() == id)
+                    .toList(),
+            () -> ConfigurationSingleton.getStorage().getOrderStorage().getObjects(),
+            (oldOrders, orders) -> {
+                for (var oldOrder : oldOrders) {
+                    // NOTE: This is a dirty way to do it, should calculate difference instead
+                    oldOrder.assignedManager.set((long) -1);
+                }
+                for (var order : orders) {
+                    order.assignedManager.set(id);
+                }
+            });
 
-    public final ForeignKeyListField<Warehouse> linkedWarehouses = new ForeignKeyListField<>("Warehouses", false, true, false,
+    public final ForeignKeyListField<Warehouse> linkedWarehouses = new ForeignKeyListField<>("Warehouses", false, true, () -> false,
             ids -> ConfigurationSingleton.getStorage()
                     .getWarehouseStorage().getObjects()
                     .stream()
@@ -52,6 +68,7 @@ public class Manager extends User {
         fields.add(isAdmin);
         fields.add(isSuperAdmin);
         fields.add(linkedWarehouses);
+        fields.add(assignedOrders);
         return fields;
     }
 

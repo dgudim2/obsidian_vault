@@ -12,6 +12,7 @@ import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -41,7 +42,7 @@ public abstract class Product extends BaseModel {
                     .toList(), (o, o1) -> {
     });
 
-    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, true,
+    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, () -> true,
             ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
     });
 
@@ -61,7 +62,7 @@ public abstract class Product extends BaseModel {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return List.of(name, description, price, warranty, rating, assignedWarehouse, comments);
+        return new ArrayList<>(List.of(name, description, price, warranty, rating, assignedWarehouse, comments));
     }
 
     @Override

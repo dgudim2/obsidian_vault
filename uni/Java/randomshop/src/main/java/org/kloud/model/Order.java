@@ -10,6 +10,7 @@ import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 import org.kloud.utils.ConfigurationSingleton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order extends BaseModel {
@@ -56,11 +57,14 @@ public class Order extends BaseModel {
 
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return List.of(orderStatus, orderedByUser, orderedProducts, assignedManager);
+        return new ArrayList<>(List.of(orderStatus, orderedByUser, orderedProducts, assignedManager));
     }
 
     @Override
     public String isSafeToDelete() {
+        if(!orderedProducts.get().isEmpty()) {
+            return "Order has " + orderedProducts.get().size() + " products";
+        }
         return "";
     }
 

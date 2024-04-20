@@ -11,13 +11,11 @@ import org.kloud.model.BaseModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 /**
  * Same as {@link ForeignKeyField}, but stores a list of objects
+ *
  * @param <T>
  */
 public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
@@ -27,7 +25,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
     private transient Supplier<List<T>> possibleObjectsSupplier;
     private transient BiConsumer<List<T>, List<T>> onValuesUpdated;
 
-    public ForeignKeyListField(@NotNull String name, boolean required, boolean virtual, boolean hideInUI,
+    public ForeignKeyListField(@NotNull String name, boolean required, boolean virtual, BooleanSupplier hideInUI,
                                @NotNull Function<List<Long>, List<T>> linkedObjectsProducer,
                                @NotNull Supplier<List<T>> possibleObjectsSupplier,
                                @NotNull BiConsumer<List<T>, List<T>> onValuesUpdated) {
@@ -46,7 +44,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
                                @NotNull Function<List<Long>, List<T>> linkedObjectsProducer,
                                @NotNull Supplier<List<T>> possibleObjectsSupplier,
                                @NotNull BiConsumer<List<T>, List<T>> onValuesUpdated) {
-        this(name, false, false, false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
+        this(name, false, false, () -> false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
     }
 
     @Override
@@ -100,7 +98,33 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
     }
 
     @Override
-    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBaseReadonly() {
+        var container = new VBox();
+
+        var linkedValues = getLinkedValues();
+        for (var obj : linkedValues) {
+            container.getChildren().add(new Label(obj.toString()));
+        }
+        container.setPadding(new Insets(10));
+
+        var button = new Button("View");
+
+        button.setOnAction(event -> {
+            Alert objectDialog = new Alert(Alert.AlertType.CONFIRMATION);
+
+            objectDialog.setTitle("View");
+            objectDialog.setHeaderText(linkedValues.size() + " objects");
+            objectDialog.getDialogPane().setContent(container);
+            objectDialog.setGraphic(null);
+
+            objectDialog.showAndWait();
+        });
+
+        return new Pair<>(button, () -> true);
+    }
+
+    @Override
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
 
         var possiblyLinkedObjects = possibleObjectsSupplier.get();
         var actuallyLinkedObjects = getLinkedValues();
@@ -121,7 +145,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
         Runnable updateButtonText = () -> button.setText("Select (" + newLinkedObjects.size() + "/" + possiblyLinkedObjects.size() + ")");
         updateButtonText.run();
 
-        Supplier<Boolean> validationCallback = () -> {
+        BooleanSupplier validationCallback = () -> {
             // NOTE: this is kinda inefficient (or is it 🤔)
             newLinkedObjects.clear();
             for (var checkbox : checkboxes) {
@@ -145,7 +169,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
                     return;
                 }
                 // NOTE: this is kinda inefficient
-                if (validationCallback.get()) {
+                if (validationCallback.getAsBoolean()) {
                     onValuesUpdated.accept(actuallyLinkedObjects, newLinkedObjects);
                     updateButtonText.run();
                 }

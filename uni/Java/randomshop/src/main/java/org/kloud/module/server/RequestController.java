@@ -73,17 +73,17 @@ public class RequestController {
 
     @GetMapping("orders/getall")
     public byte[] getOrders() {
-        return getWrapper(ConfigurationSingleton.getStorage().getOrdersStorage());
+        return getWrapper(ConfigurationSingleton.getStorage().getOrderStorage());
     }
 
     @DeleteMapping("orders/delete/{id}")
     public String deleteOrder(@PathVariable long id) {
-        return ResponseOpt.fromBool(ConfigurationSingleton.getStorage().getOrdersStorage().removeById(id));
+        return ResponseOpt.fromBool(ConfigurationSingleton.getStorage().getOrderStorage().removeById(id));
     }
 
     @PutMapping("orders/update")
     public String updateOrder(@RequestBody byte[] orderBytes) {
-        return updateWrapper(ConfigurationSingleton.getStorage().getOrdersStorage(), orderBytes);
+        return updateWrapper(ConfigurationSingleton.getStorage().getOrderStorage(), orderBytes);
     }
 
 

@@ -14,7 +14,7 @@ import org.kloud.utils.Logger;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 import static java.lang.Math.min;
 
@@ -48,7 +48,7 @@ public abstract class BaseModel implements Serializable {
                                                               @Nullable Runnable afterSave) {
         BootstrapRow row = new BootstrapRow();
         var fields = getFields().stream().filter(Field::isVisibleInUI).toList();
-        List<Supplier<Boolean>> fxControlHandlers = new ArrayList<>(fields.size());
+        List<BooleanSupplier> fxControlHandlers = new ArrayList<>(fields.size());
 
         boolean readonly = validateButton == null;
 
@@ -67,7 +67,7 @@ public abstract class BaseModel implements Serializable {
         validateButton.addEventFilter(ActionEvent.ACTION, actionEvent -> {
             boolean isValid = true;
             for (var fxControlHandler : fxControlHandlers) {
-                boolean fieldValid = fxControlHandler.get();
+                boolean fieldValid = fxControlHandler.getAsBoolean();
                 isValid = isValid && fieldValid;
             }
             if (isValid) {

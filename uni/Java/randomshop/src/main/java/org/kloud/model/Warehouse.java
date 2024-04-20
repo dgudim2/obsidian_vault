@@ -9,11 +9,12 @@ import org.kloud.model.user.Manager;
 import org.kloud.utils.ConfigurationSingleton;
 import org.kloud.utils.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Warehouse extends BaseModel {
 
-    public static String NAME = "Warehouse";
+    public static final String NAME = "Warehouse";
 
     public final Field<String> address = new Field<>("Address", true, String.class, v -> Utils.testLength(v, 5, -1));
 
@@ -35,7 +36,7 @@ public class Warehouse extends BaseModel {
                     .toList(), (manager, newManager) -> {
     });
 
-    public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true, false,
+    public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true, () -> false,
             ids -> ConfigurationSingleton.getStorage()
                     .getProductStorage().getObjects()
                     .stream()
@@ -67,7 +68,7 @@ public class Warehouse extends BaseModel {
 
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return List.of(address, maxCapacity, assignedManager, products);
+        return new ArrayList<>(List.of(address, maxCapacity, assignedManager, products));
     }
 
     @Override

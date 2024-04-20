@@ -57,7 +57,7 @@ public abstract class User extends BaseModel {
         return "";
     });
 
-    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, true,
+    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, () -> true,
             ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
     });
 
@@ -92,7 +92,7 @@ public abstract class User extends BaseModel {
     @SuppressWarnings("DuplicatedCode")
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return List.of(login, pass, name, surname, cardNumber, comments);
+        return new ArrayList<>(List.of(login, pass, name, surname, cardNumber, comments));
     }
 
     // TODO: Lombok?

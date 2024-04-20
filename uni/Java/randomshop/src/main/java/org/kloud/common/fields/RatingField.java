@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.kloud.utils.Utils;
 
 import java.util.function.BiFunction;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 /**
  * A {@link Field} holding a float but with a {@link Slider} instead of a {@link javafx.scene.control.TextField TextField}
@@ -20,10 +20,10 @@ public class RatingField extends Field<Double> {
     }
 
     @Override
-    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
         var inputField = new Slider(0, 10, value == null ? 0 : value);
 
-        Supplier<Boolean> validationCallback =
+        BooleanSupplier validationCallback =
                 () -> validationCallbackBase.apply(inputField, set(inputField.getValue()));
 
         inputField.setShowTickLabels(true);
@@ -34,7 +34,7 @@ public class RatingField extends Field<Double> {
         // One step between 2 ticks dividing the range into 0.5 segments
         inputField.setMinorTickCount(1);
 
-        inputField.valueProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.get());
+        inputField.valueProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.getAsBoolean());
 
         return new Pair<>(inputField, validationCallback);
     }

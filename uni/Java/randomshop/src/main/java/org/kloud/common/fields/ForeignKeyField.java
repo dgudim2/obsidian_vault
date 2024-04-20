@@ -23,7 +23,7 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
     private transient Supplier<List<T>> possibleObjectsSupplier;
     private transient BiConsumer<T, T> onValueUpdated;
 
-    public ForeignKeyField(@NotNull String name, boolean required, boolean hideInUI,
+    public ForeignKeyField(@NotNull String name, boolean required, @NotNull BooleanSupplier hideInUI,
                            @NotNull Function<Long, T> linkedObjectProducer,
                            @NotNull Supplier<List<T>> possibleObjectsSupplier,
                            @NotNull BiConsumer<T, T> onValueUpdated) {
@@ -41,7 +41,7 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
                            @NotNull Function<Long, T> linkedObjectsProducer,
                            @NotNull Supplier<List<T>> possibleObjectsSupplier,
                            @NotNull BiConsumer<T, T> onValuesUpdated) {
-        this(name, required, false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
+        this(name, required, () -> false, linkedObjectsProducer, possibleObjectsSupplier, onValuesUpdated);
     }
 
     @Override
@@ -69,18 +69,18 @@ public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
     }
 
     @Override
-    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
 
         var linkedObjects = possibleObjectsSupplier.get();
 
         var comboBox = new ComboBox<>(FXCollections.observableList(linkedObjects));
-        Supplier<Boolean> validationCallback = () -> {
+        BooleanSupplier validationCallback = () -> {
             var value = comboBox.getValue();
             return validationCallbackBase.apply(comboBox, set(value == null ? null : value.id));
         };
         comboBox.getSelectionModel().select(getLinkedValue());
         comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
-            if (validationCallback.get()) {
+            if (validationCallback.getAsBoolean()) {
                 onValueUpdated.accept(oldValue, newValue);
             }
         });

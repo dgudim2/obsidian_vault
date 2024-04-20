@@ -18,20 +18,38 @@ import org.kloud.utils.Logger;
 @Getter
 public abstract class AbstractBackend {
 
-    protected BasicDAO<User> userStorage;
-    protected BasicDAO<Product> productStorage;
-    protected BasicDAO<Product> orderedProductStorage;
-    protected BasicDAO<Warehouse> warehouseStorage;
-    protected BasicDAO<Comment> commentStorage;
-    protected LoginController loginController;
-    protected BasicDAO<Order> ordersStorage;
+    protected final BasicDAO<User> userStorage;
+    protected final BasicDAO<Product> productStorage;
+    protected final BasicDAO<Product> orderedProductStorage;
+    protected final BasicDAO<Warehouse> warehouseStorage;
+    protected final BasicDAO<Comment> commentStorage;
+    protected final LoginController loginController;
+    protected final BasicDAO<Order> orderStorage;
+
+    protected abstract BasicDAO<User> makeUserStorage();
+    protected abstract BasicDAO<Product> makeProductStorage();
+    protected abstract BasicDAO<Product> makeOrderedProductStorage();
+    protected abstract BasicDAO<Warehouse> makeWarehouseStorage();
+    protected abstract BasicDAO<Comment> makeCommentStorage();
+    protected abstract BasicDAO<Order> makeOrderStorage();
+    protected abstract LoginController makeLoginController();
+
+    public AbstractBackend() {
+        userStorage = makeUserStorage();
+        productStorage = makeProductStorage();
+        orderedProductStorage = makeOrderedProductStorage();
+        warehouseStorage = makeWarehouseStorage();
+        commentStorage = makeCommentStorage();
+        orderStorage = makeOrderStorage();
+        loginController = makeLoginController();
+    }
 
     public boolean isValid() {
         return userStorage.isValid() &&
                 productStorage.isValid() &&
                 orderedProductStorage.isValid() &&
                 warehouseStorage.isValid() &&
-                ordersStorage.isValid() &&
+                orderStorage.isValid() &&
                 commentStorage.isValid();
     }
 
@@ -40,7 +58,7 @@ public abstract class AbstractBackend {
         productStorage.close();
         orderedProductStorage.close();
         warehouseStorage.close();
-        ordersStorage.close();
+        orderStorage.close();
         commentStorage.close();
         Logger.info("Closed(reset) backend");
     }

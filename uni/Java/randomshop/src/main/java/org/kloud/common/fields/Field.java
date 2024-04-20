@@ -25,8 +25,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
+import java.util.function.BooleanSupplier;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static org.kloud.utils.Utils.setDanger;
 
@@ -42,7 +42,7 @@ public class Field<T extends Serializable> implements Serializable {
     @Nullable
     protected T value;
     public final boolean required;
-    protected boolean hideInUI;
+    protected transient BooleanSupplier hideInUI;
     protected transient Function<@Nullable T, @NotNull String> validator;
     public final Class<T> klass;
 
@@ -56,7 +56,7 @@ public class Field<T extends Serializable> implements Serializable {
         this.klass = klass;
         this.required = required;
         this.validator = validator;
-        hideInUI = false;
+        hideInUI = () -> false;
     }
 
     public Field(@NotNull String name, boolean required, @NotNull Class<T> klass, @NotNull Function<@Nullable T, @NotNull String> validator) {
@@ -67,6 +67,7 @@ public class Field<T extends Serializable> implements Serializable {
     public void postRead(@NotNull Field<?> cleanField) {
         Logger.debug("postRead for " + name + " (" + value + ")");
         validator = (Function<T, String>) cleanField.validator;
+        hideInUI = cleanField.hideInUI;
         markLatestVersionSaved();
     }
 
@@ -118,7 +119,7 @@ public class Field<T extends Serializable> implements Serializable {
         markLatestVersionSaved();
     }
 
-    private void setTextFieldNumberCallback(@NotNull TextField inputField, @NotNull Supplier<Boolean> validationCallback, boolean isWhole) {
+    private void setTextFieldNumberCallback(@NotNull TextField inputField, @NotNull BooleanSupplier validationCallback, boolean isWhole) {
         String matchRegex = isWhole ? "\\d*" : "\\d*|\\.";
         String replaceRegex = isWhole ? "\\D" : "[^0-9.]";
         inputField.textProperty().addListener((observableValue, prevValue, newValue) -> {
@@ -127,18 +128,18 @@ public class Field<T extends Serializable> implements Serializable {
             } else if (newValue.isEmpty()) {
                 inputField.setText("0");
             }
-            validationCallback.get();
+            validationCallback.getAsBoolean();
         });
     }
 
     public boolean isVisibleInUI() {
-        return !hideInUI;
+        return !hideInUI.getAsBoolean();
     }
 
     @SuppressWarnings("unchecked")
-    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBase(@NotNull BiFunction<Node, String, Boolean> validationCallbackBase) {
         Control inputField;
-        Supplier<Boolean> validationCallback;
+        BooleanSupplier validationCallback;
 
         if (klass.equals(HashedString.class)) {
 
@@ -156,7 +157,7 @@ public class Field<T extends Serializable> implements Serializable {
                         return validationCallbackBase.apply(inputField, set((T) new HashedString(text)));
                     };
 
-            ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.get());
+            ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.getAsBoolean());
         } else if (klass.equals(Integer.class) || klass.equals(Long.class) || klass.equals(Float.class) || klass.equals(Double.class) || klass.equals(String.class)) {
             inputField = new TextField(klass.equals(String.class) ? "" : "0");
             if (value != null) {
@@ -177,7 +178,7 @@ public class Field<T extends Serializable> implements Serializable {
                     () -> validationCallbackBase.apply(inputField, set(converter.apply(((TextField) inputField).getText())));
 
             if (klass.equals(String.class)) {
-                ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.get());
+                ((TextField) inputField).textProperty().addListener((observableValue, prevValue, newValue) -> validationCallback.getAsBoolean());
             } else {
                 setTextFieldNumberCallback((TextField) inputField, validationCallback, klass.equals(Integer.class) || klass.equals(Long.class));
             }
@@ -200,8 +201,8 @@ public class Field<T extends Serializable> implements Serializable {
                             return validationCallbackBase.apply(inputField, "Wrong format");
                         }
                     };
-            ((DatePicker) inputField).getEditor().textProperty().addListener((observableValue, textField, t1) -> validationCallback.get());
-            ((DatePicker) inputField).valueProperty().addListener((observableValue, localDate, t1) -> validationCallback.get());
+            ((DatePicker) inputField).getEditor().textProperty().addListener((observableValue, textField, t1) -> validationCallback.getAsBoolean());
+            ((DatePicker) inputField).valueProperty().addListener((observableValue, localDate, t1) -> validationCallback.getAsBoolean());
         } else if (klass.equals(Dimensions.class)) {
 
             Function<String, Pair<AnchorPane, TextField>> getSubInput = s -> {
@@ -279,7 +280,7 @@ public class Field<T extends Serializable> implements Serializable {
             } else {
                 comboBox.getSelectionModel().selectFirst();
             }
-            comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.get());
+            comboBox.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> validationCallback.getAsBoolean());
         } else {
             inputField = new Label(klass + " NOT IMPLEMENTED");
             validationCallback = null;
@@ -288,13 +289,14 @@ public class Field<T extends Serializable> implements Serializable {
         return new Pair<>(inputField, validationCallback);
     }
 
-    protected Pair<Control, Supplier<Boolean>> getJavaFxControlBaseReadonly() {
+    protected Pair<Control, BooleanSupplier> getJavaFxControlBaseReadonly() {
         var textField = new Label();
         textField.setText(value == null ? "" : value + "");
         return new Pair<>(textField, () -> true);
     }
 
-    public Pair<Node, Supplier<Boolean>> getJavaFxControl(boolean readonly, Runnable onItemUpdated) {
+    @NotNull
+    public Pair<Node, BooleanSupplier> getJavaFxControl(boolean readonly, Runnable onItemUpdated) {
 
         var label = new Label(name + ": " + (required && !readonly ? "*" : ""));
         AnchorPane.setLeftAnchor(label, 0.0);

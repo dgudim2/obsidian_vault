@@ -289,7 +289,7 @@ public class EntrypointController implements BaseController {
 
     private void initOrdersTab() {
         addToCartButton.setOnAction(event -> {
-            var existingCart = ConfigurationSingleton.getStorage().getOrdersStorage().getObjects()
+            var existingCart = ConfigurationSingleton.getStorage().getOrderStorage().getObjects()
                     .stream().filter(order -> order.orderStatus.get() == OrderStatus.CART)
                     .findFirst()
                     .orElseGet(() -> {
@@ -304,7 +304,7 @@ public class EntrypointController implements BaseController {
                 if (ConfigurationSingleton.getStorage().getOrderedProductStorage().addOrUpdateObject(selectedProduct)) {
                     // Added to ordered list
                     existingCart.orderedProducts.addLinkedValue(selectedProduct);
-                    if (!ConfigurationSingleton.getStorage().getOrdersStorage().addOrUpdateObject(existingCart)) {
+                    if (!ConfigurationSingleton.getStorage().getOrderStorage().addOrUpdateObject(existingCart)) {
                         Logger.warn("Order could not be created/updated because of saving inconsistencies");
                     }
                 } else {
@@ -318,7 +318,7 @@ public class EntrypointController implements BaseController {
         pane.prefHeightProperty().bind(orderEditArea.heightProperty());
         orderEditArea.getChildren().add(pane);
 
-        ordersList.getItems().setAll(ConfigurationSingleton.getStorage().getOrdersStorage().getObjects());
+        ordersList.getItems().setAll(ConfigurationSingleton.getStorage().getOrderStorage().getObjects());
         ordersList.getSelectionModel().selectedItemProperty().addListener((observable, oldObject, newObject) -> {
             pane.clear();
             deleteOrderButton.setDisable(newObject == null);

@@ -1,4 +1,4 @@
-package org.kloud.module.gui;
+package org.kloud.module.gui.components;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -7,15 +7,17 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;
-import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.utils.Logger;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 /**
  * Wrapper over a tab (user/product/warehouse) handling deletion, creation, displaying and editing of the models
@@ -27,7 +29,9 @@ public class TabWrapper<T extends BaseModel> {
     private final String objectName;
 
     @NotNull
-    public final ObjectProperty<T> selectedObject = new SimpleObjectProperty<>(null);
+    private final ObjectProperty<T> selectedObject = new SimpleObjectProperty<>(null);
+    @Nullable
+    private Consumer<T> selectedObjectChangedUserListener;
     @NotNull
     final Consumer<T> onSelectedObjectChanged;
     @NotNull
@@ -36,6 +40,7 @@ public class TabWrapper<T extends BaseModel> {
     protected final ListView<T> objectList;
     @NotNull
     protected final Tab tab;
+    private final Predicate<T> listFilter;
 
     protected boolean isInitialized = false;
 
@@ -47,34 +52,47 @@ public class TabWrapper<T extends BaseModel> {
                       @NotNull ListView<T> objectList,
                       @NotNull Button deleteButton,
                       @NotNull Button addButton,
-                      @NotNull Button saveButton) {
+                      @NotNull Button saveButton,
+                      @NotNull BooleanSupplier addPermission,
+                      @NotNull Predicate<T> writePermission,
+                      @NotNull Predicate<T> listFilter) {
         this.objectName = objectName;
         this.objectsDao = objectsDao;
         this.objectList = objectList;
         this.tab = tab;
+        this.listFilter = listFilter;
 
         BootstrapPane pane = new BootstrapPane();
         pane.prefWidthProperty().bind(objectEditArea.widthProperty());
         pane.prefHeightProperty().bind(objectEditArea.heightProperty());
         objectEditArea.getChildren().add(pane);
+
         saveButton.setVisible(false);
 
         onSelectedObjectChanged = (newObject) -> {
-            deleteButton.setDisable(newObject == null);
-            saveButton.setVisible(newObject != null);
+            addButton.setDisable(!addPermission.getAsBoolean());
+            deleteButton.setDisable(newObject == null || !writePermission.test(newObject));
+            saveButton.setVisible(newObject != null && writePermission.test(newObject));
             pane.removeFirstRow();
             if (newObject != null) {
-                pane.addRow(newObject.loadEditableGui(saveButton, objectsDao, objectList::refresh));
+                pane.addRow(writePermission.test(newObject)
+                        ? newObject.loadEditableGui(saveButton, objectsDao, objectList::refresh)
+                        : newObject.loadReadonlyGui());
+            }
+            if (selectedObjectChangedUserListener != null) {
+                selectedObjectChangedUserListener.accept(newObject);
             }
         };
 
-        tab.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue && objectList.getItems().isEmpty()) {
-                isInitialized = true;
-                Logger.debug(objectName + " tab is now active");
-                objectList.getItems().setAll(objectsDao.getObjects());
+        tab.selectedProperty().addListener((observable, __, selected) -> {
+            if (selected) {
+                if (objectList.getItems().isEmpty()) {
+                    isInitialized = true;
+                    Logger.debug(objectName + " tab is now active");
+                    objectList.getItems().setAll(objectsDao.getWithFilter(listFilter));
+                }
+                refreshUI();
             }
-            refreshUI();
         });
 
         objectList.getSelectionModel().selectedItemProperty().addListener((observableValue, object, newObject) -> selectedObject.set(newObject));
@@ -149,13 +167,28 @@ public class TabWrapper<T extends BaseModel> {
         }
     }
 
+    @Nullable
+    public T getSelectedObject() {
+        return selectedObject.get();
+    }
+
+    public void setSelectedObjectListener(@Nullable Consumer<T> listener) {
+        selectedObjectChangedUserListener = listener;
+    }
+
     public boolean removeObject(T object) {
-        if (objectsDao.removeObject(object)) {
-            objectList.getSelectionModel().clearSelection();
-            objectList.getItems().remove(object);
-            return true;
+        var removed = objectsDao.removeObject(object);
+        objectList.getSelectionModel().clearSelection();
+        objectList.getItems().remove(object);
+        return removed;
+    }
+
+    public boolean addOrUpdateObject(T object) {
+        var updated = objectsDao.addOrUpdateObject(object);
+        if (!objectList.getItems().contains(object)) {
+            objectList.getItems().add(object);
         }
-        return false;
+        return updated;
     }
 
     public void reset() {
@@ -170,7 +203,7 @@ public class TabWrapper<T extends BaseModel> {
 
     public boolean hasUnsavedChanges() {
         return objectsDao.isInitialized() && isInitialized &&
-                (objectList.getItems().size() != objectsDao.getObjects().size() || objectsDao.hasUnsavedChanges());
+                (objectList.getItems().size() != objectsDao.getWithFilter(listFilter).size() || objectsDao.hasUnsavedChanges());
     }
 
     public void refreshUI() {

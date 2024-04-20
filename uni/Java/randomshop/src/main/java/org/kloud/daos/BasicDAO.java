@@ -6,6 +6,7 @@ import org.kloud.model.BaseModel;
 import org.kloud.utils.Logger;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 /**
  * Base class for interfacing with the stored data
@@ -50,6 +51,10 @@ public abstract class BasicDAO<T extends BaseModel> {
         return idLookup.get(id);
     }
 
+    public List<T> getWithFilter(Predicate<T> predicate) {
+        return getObjects().stream().filter(predicate).toList();
+    }
+
     @NotNull
     public List<T> getByIds(@NotNull List<Long> ids) {
         List<T> lookedUp = new ArrayList<>();
@@ -64,6 +69,7 @@ public abstract class BasicDAO<T extends BaseModel> {
         return lookedUp;
     }
 
+    // TODO: Return a status instead (Added/Updated/Failed)
     public boolean addOrUpdateObject(@NotNull T object) {
         ensureObjects();
         var existingObject = objects.stream().filter(o -> o.id == object.id).findFirst();

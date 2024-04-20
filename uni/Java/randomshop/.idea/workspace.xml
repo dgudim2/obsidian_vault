@@ -10,38 +10,32 @@
     <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="DAO/backend refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/backends/AbstractBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/AbstractBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/backends/DBBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/DBBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/backends/LocalBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/LocalBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/backends/ServerBackend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/backends/ServerBackend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/Field.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/DbConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/DbConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/ServerConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/ServerConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/UserCapability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/UserCapability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/datatypes/HashedString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/datatypes/HashedString.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyListField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/ForeignKeyListField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/RatingField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/common/fields/RatingField.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/BasicDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDBDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBCommentsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBOrderedProductsDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBOrdersDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBProductsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBUsersDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/db/DBWarehousesDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/BasicFileDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicFileDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileCommentsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileOrderedProductsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileOrdersDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileProductsDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileUsersDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/file/FileWarehousesDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/server/BasicServerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicServerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicServerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicServerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/flowcontrollers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/flowcontrollers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/BaseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/enums/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/enums/OrderStatus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/product/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/cli/menus/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/cli/menus/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/TabWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/TabWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/components/BootstrapPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/Entrypoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/server/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/ConfigurationSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Conf.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/utils/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/kloud/module/gui/main-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,37 +79,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Cli.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Gui (default).executor&quot;: &quot;Run&quot;,
-    &quot;Application.Gui.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Server.executor&quot;: &quot;Run&quot;,
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Maven.Build.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.randomshop [clean,compile...].executor&quot;: &quot;Run&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/home/kloud/Downloads/randomshop/src/main/java/org/kloud/module/gui&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.toDoOptions&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Cli.executor": "Run",
+    "Application.Gui (default).executor": "Run",
+    "Application.Gui.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Server.executor": "Run",
+    "Downloaded.Files.Path.Enabled": "false",
+    "Maven.Build.executor": "Run",
+    "Maven.randomshop [clean,compile...].executor": "Run",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/home/kloud/Downloads/randomshop/src/main/java/org/kloud/module/gui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.toDoOptions",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.kloud.utils" />
@@ -262,7 +256,8 @@
       <workItem from="1713368304423" duration="8993000" />
       <workItem from="1713458930952" duration="6394000" />
       <workItem from="1713550656361" duration="3413000" />
-      <workItem from="1713606945788" duration="3249000" />
+      <workItem from="1713606945788" duration="5798000" />
+      <workItem from="1713612831034" duration="21745000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />
@@ -288,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713554181363</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="DAO/backend refactor">
+      <option name="closed" value="true" />
+      <created>1713610220410</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713610220410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -6,7 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Logger;
 
 import java.util.ArrayList;
@@ -34,11 +34,11 @@ public class SettingsController implements BaseController {
 
     @FXML
     public void initialize() {
-        var config = ConfigurationSingleton.getInstance();
+        var config = Conf.getInstance();
 
         backendNames.clear();
-        backendNames.addAll(ConfigurationSingleton.storageBackends
-                .stream().map(ConfigurationSingleton::getBackendName).toList());
+        backendNames.addAll(Conf.storageBackends
+                .stream().map(Conf::getBackendName).toList());
 
         var currentBackend = config.getCurrentBackendName();
         var loadedBackendIndex = backendNames.indexOf(currentBackend);
@@ -61,23 +61,23 @@ public class SettingsController implements BaseController {
     @Override
     public boolean notifyCloseRequest() {
 
-        if (!Objects.equals(newSelectedBackend.get(), ConfigurationSingleton.getInstance().getCurrentBackendName())) {
+        if (!Objects.equals(newSelectedBackend.get(), Conf.getInstance().getCurrentBackendName())) {
             Alert closeDialog = new Alert(Alert.AlertType.CONFIRMATION);
             closeDialog.setTitle("Confirm exit");
             closeDialog.setHeaderText("Changing the backend requires app restart");
             closeDialog.setContentText("The app is going to exit now");
             var result = closeDialog.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
-                ConfigurationSingleton.getInstance().storageBackend.set(
-                        ConfigurationSingleton.storageFromClass(
-                                ConfigurationSingleton.storageBackends.get(backendNames.indexOf(newSelectedBackend.get()))));
-                ConfigurationSingleton.writeConfig();
+                Conf.getInstance().storageBackend.set(
+                        Conf.storageFromClass(
+                                Conf.storageBackends.get(backendNames.indexOf(newSelectedBackend.get()))));
+                Conf.writeConfig();
                 System.exit(0);
             } else {
                 return false;
             }
         }
-        ConfigurationSingleton.writeConfig();
-        return ConfigurationSingleton.isValid();
+        Conf.writeConfig();
+        return Conf.isValid();
     }
 }

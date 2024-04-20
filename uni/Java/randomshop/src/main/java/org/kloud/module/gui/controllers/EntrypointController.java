@@ -21,19 +21,21 @@ import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.model.enums.OrderStatus;
 import org.kloud.model.product.Product;
+import org.kloud.model.user.Customer;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
-import org.kloud.module.gui.TabWrapper;
 import org.kloud.module.gui.components.BootstrapColumn;
 import org.kloud.module.gui.components.BootstrapPane;
 import org.kloud.module.gui.components.BootstrapRow;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.module.gui.components.TabWrapper;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import static org.kloud.utils.Utils.setDanger;
 
@@ -120,6 +122,8 @@ public class EntrypointController implements BaseController {
     public Button saveUserButton;
     @FXML
     public Button changeOrderStatusButton;
+    @FXML
+    public Button cancelOrderButton;
 
 
     @FXML
@@ -147,7 +151,7 @@ public class EntrypointController implements BaseController {
     public void initialize() {
         lastMessageLabel.textProperty().bind(Logger.lastMessage);
 
-        var conf = ConfigurationSingleton.getInstance();
+        var conf = Conf.getInstance();
 
         productTabWrapper = new TabWrapper<>(
                 "product",
@@ -158,7 +162,10 @@ public class EntrypointController implements BaseController {
                 productList,
                 deleteProductButton,
                 addProductButton,
-                saveProductButton
+                saveProductButton,
+                () -> Conf.getLoginController().hasCapability(UserCapability.WRITE_PRODUCTS),
+                product -> Conf.getLoginController().hasCapability(UserCapability.WRITE_PRODUCTS),
+                product -> true // Always can read all products
         );
 
         userTabWrapper = new TabWrapper<>(
@@ -170,7 +177,44 @@ public class EntrypointController implements BaseController {
                 userList,
                 deleteUserButton,
                 addUserButton,
-                saveUserButton
+                saveUserButton,
+                () -> Conf.getLoginController().hasCapability(UserCapability.WRITE_CUSTOMERS)
+                        && Conf.getLoginController().hasCapability(UserCapability.WRITE_MANAGERS)
+                        && Conf.getLoginController().hasCapability(UserCapability.WRITE_ADMINS),
+                user -> {
+                    if (user == Conf.getLoginController().loggedInUser.get()) {
+                        return true;
+                    }
+                    if (user instanceof Manager m) {
+                        if (!Conf.getLoginController().hasCapability(UserCapability.WRITE_MANAGERS)) {
+                            return false;
+                        }
+                        if (m.isAdmin.get() || m.isSuperAdmin.get()) {
+                            return Conf.getLoginController().hasCapability(UserCapability.WRITE_ADMINS);
+                        }
+                    }
+                    if (user instanceof Customer) {
+                        return Conf.getLoginController().hasCapability(UserCapability.WRITE_CUSTOMERS);
+                    }
+                    return true;
+                },
+                user -> { // Hide some users
+                    if (user == Conf.getLoginController().loggedInUser.get()) {
+                        return true;
+                    }
+                    if (user instanceof Manager m) {
+                        if (!Conf.getLoginController().hasCapability(UserCapability.READ_MANAGERS)) {
+                            return false;
+                        }
+                        if (m.isAdmin.get() || m.isSuperAdmin.get()) {
+                            return Conf.getLoginController().hasCapability(UserCapability.READ_ADMINS);
+                        }
+                    }
+                    if (user instanceof Customer) {
+                        return Conf.getLoginController().hasCapability(UserCapability.READ_CUSTOMERS);
+                    }
+                    return true;
+                }
         );
 
         warehouseTabWrapper = new TabWrapper<>(
@@ -182,20 +226,27 @@ public class EntrypointController implements BaseController {
                 warehousesList,
                 deleteWarehouseButton,
                 addWarehouseButton,
-                saveWarehouseButton
+                saveWarehouseButton,
+                () -> Conf.getLoginController().hasCapability(UserCapability.WRITE_OTHER_WAREHOUSES),
+
+                warehouse -> Conf.getLoginController().canActOnOtherUser(warehouse.assignedManager.getLinkedValue(), UserCapability.WRITE_OTHER_WAREHOUSES) ||
+                        Conf.getLoginController().canActOnSelf(warehouse.assignedManager.getLinkedValue(), UserCapability.RW_SELF_WAREHOUSES),
+
+                warehouse -> Conf.getLoginController().canActOnOtherUser(warehouse.assignedManager.getLinkedValue(), UserCapability.READ_OTHER_WAREHOUSES) ||
+                        Conf.getLoginController().canActOnSelf(warehouse.assignedManager.getLinkedValue(), UserCapability.RW_SELF_WAREHOUSES)
         );
 
         enableDisableTabs();
 
-        userTabWrapper.selectedObject.addListener((observableValue, oldObject, newObject) -> changeUserPasswordButton.setDisable(newObject == null));
+        userTabWrapper.setSelectedObjectListener((newObject) -> changeUserPasswordButton.setDisable(newObject == null));
         changeUserPasswordButton.setDisable(true);
         changeUserPasswordButton.setOnAction(actionEvent -> {
 
-            User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+            User loggedInUser = Conf.getLoginController().loggedInUser.get();
 
             boolean adminLoggedInAndNotCurrentUser =
                     loggedInUser instanceof Manager m && m.isAdmin.get()
-                            && !Objects.equals(loggedInUser, userTabWrapper.selectedObject.get());
+                            && !Objects.equals(loggedInUser, userTabWrapper.getSelectedObject());
 
             Alert passwordDialog = new Alert(Alert.AlertType.CONFIRMATION);
 
@@ -235,7 +286,7 @@ public class EntrypointController implements BaseController {
             }
 
             passwordDialog.setTitle("Change password");
-            passwordDialog.setHeaderText("Changing password for " + userTabWrapper.selectedObject.get().login.get());
+            passwordDialog.setHeaderText("Changing password for " + Objects.requireNonNull(userTabWrapper.getSelectedObject()).login.get());
             passwordDialog.getDialogPane().setContent(container);
             passwordDialog.setGraphic(null);
 
@@ -272,39 +323,42 @@ public class EntrypointController implements BaseController {
     }
 
     private void enableDisableTabs() {
-        User loggedInUser = ConfigurationSingleton.getLoginController().loggedInUser.get();
+        User loggedInUser = Conf.getLoginController().loggedInUser.get();
         if (loggedInUser == null) {
             warehouseTabWrapper.setEnabled(false);
             productTabWrapper.setEnabled(false);
             userTabWrapper.setEnabled(false);
+            ordersTab.setDisable(true);
             return;
         }
 
         var caps = loggedInUser.getUserCaps();
 
         warehouseTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_WAREHOUSES) || caps.contains(UserCapability.READ_OTHER_WAREHOUSES));
-        productTabWrapper.setEnabled(caps.contains(UserCapability.RW_SELF_PRODUCTS) || caps.contains(UserCapability.READ_OTHER_PRODUCTS));
+        productTabWrapper.setEnabled(true);
+        ordersTab.setDisable(!caps.contains(UserCapability.RW_SELF_ORDERS) && !caps.contains(UserCapability.READ_OTHER_ORDERS));
         userTabWrapper.setEnabled(true);
     }
 
     private void initOrdersTab() {
         addToCartButton.setOnAction(event -> {
-            var existingCart = ConfigurationSingleton.getStorage().getOrderStorage().getObjects()
-                    .stream().filter(order -> order.orderStatus.get() == OrderStatus.CART)
+            var existingCart = Conf.getStorage().getOrderStorage().getObjects()
+                    .stream().filter(order -> order.status.get() == OrderStatus.CART)
                     .findFirst()
                     .orElseGet(() -> {
                         var order = new Order();
-                        order.orderedByUser.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
+                        order.orderedByUser.set(Conf.getLoginController().loggedInUser.get().id);
                         return order;
                     });
             // NOTE: This isn't atomic, horrible
-            var selectedProduct = productTabWrapper.selectedObject.get();
+            var selectedProduct = productTabWrapper.getSelectedObject();
+            Objects.requireNonNull(selectedProduct);
             if (productTabWrapper.removeObject(selectedProduct)) {
                 // Removed from regular list
-                if (ConfigurationSingleton.getStorage().getOrderedProductStorage().addOrUpdateObject(selectedProduct)) {
+                if (Conf.getStorage().getOrderedProductStorage().addOrUpdateObject(selectedProduct)) {
                     // Added to ordered list
                     existingCart.orderedProducts.addLinkedValue(selectedProduct);
-                    if (!ConfigurationSingleton.getStorage().getOrderStorage().addOrUpdateObject(existingCart)) {
+                    if (!Conf.getStorage().getOrderStorage().addOrUpdateObject(existingCart)) {
                         Logger.warn("Order could not be created/updated because of saving inconsistencies");
                     }
                 } else {
@@ -318,28 +372,141 @@ public class EntrypointController implements BaseController {
         pane.prefHeightProperty().bind(orderEditArea.heightProperty());
         orderEditArea.getChildren().add(pane);
 
-        ordersList.getItems().setAll(ConfigurationSingleton.getStorage().getOrderStorage().getObjects());
-        ordersList.getSelectionModel().selectedItemProperty().addListener((observable, oldObject, newObject) -> {
-            pane.clear();
-            deleteOrderButton.setDisable(newObject == null);
-            changeOrderStatusButton.setDisable(newObject == null);
-            if (newObject != null) {
-
-                var orderedProducts = newObject.orderedProducts.getLinkedValues();
-
-                pane.addRow(new BootstrapRow(new BootstrapColumn("Ordered by: " + newObject.orderedByUser.getLinkedValue())));
-                pane.addRow(new BootstrapRow(new BootstrapColumn("Status: " + newObject.orderStatus)));
-                pane.addRow(new BootstrapRow(new BootstrapColumn("")));
-                pane.addRow(new BootstrapRow(new BootstrapColumn("Products (" + orderedProducts.size() + "):")));
-
-                BootstrapRow row = new BootstrapRow();
-
-                for (var product : orderedProducts) {
-                    row.addColumn(new BootstrapColumn(product.toString()));
-                }
-
-                pane.addRow(row);
+        ordersTab.selectedProperty().addListener((observable, __, selected) -> {
+            if (selected) {
+                ordersList.getItems().setAll(Conf.getStorage()
+                        .getOrderStorage()
+                        .getWithFilter(order ->
+                                Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS) ||
+                                        Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.READ_OTHER_ORDERS) ||
+                                        Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS) ||
+                                        Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.READ_OTHER_ASSIGNED_ORDERS)));
             }
+        });
+
+        Consumer<@Nullable Order> updateButtons = order -> {
+
+            deleteOrderButton.setDisable(order == null
+                    || (order.status.get() != OrderStatus.CART && order.status.get() != OrderStatus.PLACED)
+                    || (!Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.WRITE_OTHER_ASSIGNED_ORDERS)
+                    && !Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS)
+                    && !Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.WRITE_OTHER_ORDERS)
+                    && !Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS)));
+
+            cancelOrderButton.setDisable(order == null || order.status.get() != OrderStatus.PLACED); // Only placed orders can be canceled
+
+            if (order == null) {
+                changeOrderStatusButton.setDisable(true);
+                return;
+            }
+
+            var hasPermissionToChangeStatus =
+                    order.status.get() == OrderStatus.CART && Conf.getLoginController().isLoggedInUser(order.orderedByUser.getLinkedValue()) ||
+                            Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS) ||
+                            Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.WRITE_OTHER_ASSIGNED_ORDERS);
+
+            changeOrderStatusButton.setDisable(!hasPermissionToChangeStatus ||
+                    (order.assignedManager.getLinkedValue() == null && order.status.get() != OrderStatus.CART));
+
+            switch (order.status.get()) {
+                case CART -> changeOrderStatusButton.setText("Place order");
+                case PLACED -> changeOrderStatusButton.setText("Mark 'in progress'");
+                case IN_PROGRESS -> changeOrderStatusButton.setText("Ship order");
+                case SHIPPED -> changeOrderStatusButton.setText("Confirm delivery");
+                case DELIVERED -> {
+                    changeOrderStatusButton.setText("Delivered!");
+                    changeOrderStatusButton.setDisable(true);
+                }
+                case CANCELLED -> {
+                    changeOrderStatusButton.setText("Cancelled");
+                    changeOrderStatusButton.setDisable(true);
+                }
+            }
+        };
+
+        Consumer<@Nullable Order> reloadUI = order -> {
+            pane.clear();
+            updateButtons.accept(order);
+
+            if (order == null) {
+                return;
+            }
+
+            var orderedProducts = order.orderedProducts.getLinkedValues();
+
+            pane.addRow(new BootstrapRow(new BootstrapColumn("Ordered by: " + order.orderedByUser.getLinkedValue())));
+            pane.addRow(new BootstrapRow(new BootstrapColumn("Status: " + order.status)));
+
+            if (order.assignedManager.isVisibleInUI()) {
+                pane.addRow(new BootstrapRow(new BootstrapColumn("Assigned manager: " + order.assignedManager.getLinkedValue())));
+            }
+
+            pane.addRow(new BootstrapRow(new BootstrapColumn("")));
+            pane.addRow(new BootstrapRow(new BootstrapColumn("Products (" + orderedProducts.size() + "):")));
+
+            BootstrapRow row = new BootstrapRow();
+
+            for (var product : orderedProducts) {
+                row.addColumn(new BootstrapColumn(product.toString()));
+            }
+
+            pane.addRow(row);
+        };
+
+        changeOrderStatusButton.setOnAction(event -> {
+            var order = ordersList.getSelectionModel().getSelectedItem();
+
+            if (order == null) {
+                return;
+            }
+
+            if (order.status.get() != OrderStatus.DELIVERED) {
+                order.status.set(OrderStatus.values()[order.status.get().ordinal() + 1]);
+            }
+
+            Conf.getStorage().getOrderStorage().addOrUpdateObject(order);
+
+            reloadUI.accept(order);
+        });
+
+        cancelOrderButton.setOnAction(event -> {
+            var selectedOrder = ordersList.getSelectionModel().getSelectedItem();
+            if (selectedOrder != null && selectedOrder.status.get() == OrderStatus.PLACED) {
+                selectedOrder.status.set(OrderStatus.CANCELLED);
+                reloadUI.accept(selectedOrder);
+
+                // TODO: Check status?
+                Conf.getStorage().getOrderStorage().addOrUpdateObject(selectedOrder);
+                for (var orderedProduct : selectedOrder.orderedProducts.getLinkedValues()) {
+                    // Add products back to list but also leave them in ordered products table for information purposes
+                    productTabWrapper.addOrUpdateObject(orderedProduct);
+                }
+            }
+        });
+
+        deleteOrderButton.setOnAction(event -> {
+            var selectedOrder = ordersList.getSelectionModel().getSelectedItem();
+            if (selectedOrder != null &&
+                    (selectedOrder.status.get() == OrderStatus.CART ||
+                            selectedOrder.status.get() == OrderStatus.PLACED)) {
+
+                if(Conf.getStorage().getOrderStorage().removeObject(selectedOrder)) {
+                    ordersList.getItems().remove(selectedOrder);
+                    ordersList.getSelectionModel().clearSelection();
+
+                    for (var orderedProduct : selectedOrder.orderedProducts.getLinkedValues()) {
+                        if (productTabWrapper.addOrUpdateObject(orderedProduct)) {
+                            Conf.getStorage().getOrderedProductStorage().removeObject(orderedProduct);
+                        }
+                    }
+                }
+            }
+        });
+
+        updateButtons.accept(null);
+
+        ordersList.getSelectionModel().selectedItemProperty().addListener((observable, prevOrder, order) -> {
+            reloadUI.accept(order);
         });
     }
 
@@ -348,17 +515,16 @@ public class EntrypointController implements BaseController {
                                             @Nullable Comment parentComment,
                                             @NotNull Comment thisComment,
                                             @NotNull Product product) {
-        boolean canEditOther = ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.WRITE_OTHER_COMMENTS);
-
         var thisNode = new TreeItem<>("", new Label(thisComment.toString()));
         var replyAction = new MenuItem("Reply");
         var deleteAction = new MenuItem("Delete");
         var editAction = new MenuItem("Edit");
         ContextMenu contextMenu;
-        if (ConfigurationSingleton.getLoginController().isLoggedInUser(thisComment.author.getLinkedValue()) && !canEditOther) {
-            contextMenu = new ContextMenu(replyAction);
-        } else {
+        if (Conf.getLoginController()
+                .canActOnOtherUser(thisComment.author.getLinkedValue(), UserCapability.WRITE_OTHER_COMMENTS)) {
             contextMenu = new ContextMenu(replyAction, editAction, deleteAction);
+        } else {
+            contextMenu = new ContextMenu(replyAction);
         }
         replyAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, null, null, product));
         deleteAction.setOnAction(event -> deleteComment(parentNode, parentComment, thisNode, thisComment, product));
@@ -389,9 +555,10 @@ public class EntrypointController implements BaseController {
                                   @Nullable Comment parentComment,
                                   @NotNull List<Comment> childComments,
                                   @NotNull Product product) {
-        boolean canReadOther = ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.READ_OTHER_COMMENTS);
         for (var childComment : childComments) {
-            if (ConfigurationSingleton.getLoginController().isLoggedInUser(childComment.author.getLinkedValue()) && !canReadOther) {
+
+            if (!Conf.getLoginController().canActOnOtherUser(childComment.author.getLinkedValue(), UserCapability.READ_OTHER_COMMENTS) ||
+                    !Conf.getLoginController().canActOnSelf(childComment.author.getLinkedValue(), UserCapability.RW_SELF_COMMENTS)) {
                 // Skip comments our user doesn't have read access to
                 continue;
             }
@@ -432,7 +599,7 @@ public class EntrypointController implements BaseController {
             // We are leaving a new comment
             addCommentDialog.setHeaderText(parentComment == null ? "Add comment" : "Reply to \"" + parentComment + "\"");
             thisComment = new Comment();
-            thisComment.author.set(ConfigurationSingleton.getLoginController().loggedInUser.get().id);
+            thisComment.author.set(Conf.getLoginController().loggedInUser.get().id);
         } else {
             isEditing = true;
             addButton.setText("Save");
@@ -445,13 +612,13 @@ public class EntrypointController implements BaseController {
         pane.setPrefHeight(150);
 
         @NotNull Comment finalThisComment = thisComment;
-        pane.addRow(thisComment.loadEditableGui(addButton, ConfigurationSingleton.getStorage().getCommentStorage(), () -> {
+        pane.addRow(thisComment.loadEditableGui(addButton, Conf.getStorage().getCommentStorage(), () -> {
             if (parentComment == null) {
                 if (!isEditing) {
-                    productTabWrapper.selectedObject.get().comments.addLinkedValue(finalThisComment);
+                    Objects.requireNonNull(productTabWrapper.getSelectedObject()).comments.addLinkedValue(finalThisComment);
                 }
                 // NOTE: This is wrong, we can save an invalid object by leaving a comment on it (validate in addOrUpdateObject or here maybe)
-                ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(productTabWrapper.selectedObject.get());
+                Conf.getStorage().getProductStorage().addOrUpdateObject(Objects.requireNonNull(productTabWrapper.getSelectedObject()));
             } else {
                 if (!isEditing) {
                     parentComment.children.addLinkedValue(finalThisComment);
@@ -461,7 +628,7 @@ public class EntrypointController implements BaseController {
                 // Maybe add a flag 'save' to addOrUpdateObject, but I don't know how to handle it gracefully in DBDAO because we do SQL UPDATE
                 // when updating the object. Maybe a separate queue??
                 // TLDR: Skip this for now
-                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
+                Conf.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
             }
             if (!isEditing) {
                 addCommentNode(parentNode, parentComment, finalThisComment, product);
@@ -485,13 +652,13 @@ public class EntrypointController implements BaseController {
             parentNode.getChildren().remove(thisNode);
             if (parentComment != null) {
                 parentComment.children.removeLinkedValue(thisComment);
-                ConfigurationSingleton.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
+                Conf.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
             } else {
                 product.comments.removeLinkedValue(thisComment);
-                ConfigurationSingleton.getStorage().getProductStorage().addOrUpdateObject(product);
+                Conf.getStorage().getProductStorage().addOrUpdateObject(product);
             }
             deleteCommentChildrenRecursive(thisComment);
-            ConfigurationSingleton.getStorage().getCommentStorage().removeById(thisComment.id);
+            Conf.getStorage().getCommentStorage().removeById(thisComment.id);
         }
     }
 
@@ -500,7 +667,7 @@ public class EntrypointController implements BaseController {
             deleteCommentChildrenRecursive(child);
         }
         // NOTE: This is inefficient, collect all ids and delete in one batch maybe
-        ConfigurationSingleton.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
+        Conf.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
     }
 
     private void initUserLoginTab() {
@@ -519,7 +686,7 @@ public class EntrypointController implements BaseController {
 
         loginButton.setOnAction(actionEvent -> {
 
-            var loginController = ConfigurationSingleton.getLoginController();
+            var loginController = Conf.getLoginController();
             User loggedInUserV = loginController.loggedInUser.get();
 
             if (loggedInUserV == null) {
@@ -531,29 +698,33 @@ public class EntrypointController implements BaseController {
                 invalidUserLabel.setVisible(!loginResult);
 
             } else {
-                loginController.logout();
-                invalidUserLabel.setVisible(false);
+                if (canFinish()) {
+                    loginController.logout();
+                    invalidUserLabel.setVisible(false);
+                }
             }
         });
 
-        ConfigurationSingleton.getLoginController().loggedInUser.addListener((observable, oldValue, newUser) -> {
+        Conf.getLoginController().loggedInUser.addListener((observable, oldValue, newUser) -> {
             if (newUser == null) {
                 warehouseTabWrapper.reset();
                 productTabWrapper.reset();
                 userTabWrapper.reset();
-                ConfigurationSingleton.close();
+                Conf.close();
             }
 
             enableDisableTabs();
 
-            if (ConfigurationSingleton.getLoginController().hasUserCapability(UserCapability.RW_SELF_COMMENTS)) {
+            if (Conf.getLoginController().hasCapability(UserCapability.RW_SELF_COMMENTS) ||
+                    Conf.getLoginController().hasCapability(UserCapability.READ_OTHER_COMMENTS)) {
                 // Only enable the comments section if our current user has access to it
-                // TODO: Remove listeners on logout
-                productTabWrapper.selectedObject.addListener((__, ___, newValue) -> loadCommentsForProduct(newValue));
+                productTabWrapper.setSelectedObjectListener(this::loadCommentsForProduct);
                 addCommentButton.setOnAction(event -> leaveOrEditComment(
                         commentsTree.getRoot(), null,
                         null, null,
-                        productTabWrapper.selectedObject.get()));
+                        Objects.requireNonNull(productTabWrapper.getSelectedObject())));
+            } else {
+                productTabWrapper.setSelectedObjectListener(null);
             }
 
             boolean isLoggedIn = newUser != null;
@@ -570,8 +741,7 @@ public class EntrypointController implements BaseController {
         });
     }
 
-    @Override
-    public boolean notifyCloseRequest() {
+    private boolean canFinish() {
         String message = "";
         if (productTabWrapper.hasUnsavedChanges()) {
             message = "You have some unsaved products, exit?";
@@ -589,8 +759,13 @@ public class EntrypointController implements BaseController {
             res = result.isPresent() && result.get() == ButtonType.OK;
         }
         if (res) {
-            ConfigurationSingleton.close();
+            Conf.close();
         }
         return res;
+    }
+
+    @Override
+    public boolean notifyCloseRequest() {
+        return canFinish();
     }
 }

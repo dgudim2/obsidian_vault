@@ -31,7 +31,7 @@ public class Logger {
     }
 
     private static synchronized void log(@NotNull Loglevel loglevel, String message) {
-        if (loglevel.ordinal() >= ConfigurationSingleton.getInstance().targetLogLevel.get().ordinal()) {
+        if (loglevel.ordinal() >= Conf.getInstance().targetLogLevel.get().ordinal()) {
             var prefix = colorMap.get(loglevel);
             if(System.currentTimeMillis() - lastLogTime < 1000) {
                 lastMessage.setValue(lastMessage.get() + "\n" + message);

@@ -33,7 +33,7 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
             }
             var bis = new ObjectInputStream(new ByteArrayInputStream(response.body()));
             //noinspection unchecked
-            return new ArrayList<>((List<T>) bis.readObject()); // TODO: Make sure this is a modifiable list
+            return new ArrayList<>((List<T>) bis.readObject());
         } catch (URISyntaxException | IOException | InterruptedException | NullPointerException |
                  ClassNotFoundException e) {
             var res = ErrorHandler.displayException(e).handleWithAction(this::readObjectsInternal);

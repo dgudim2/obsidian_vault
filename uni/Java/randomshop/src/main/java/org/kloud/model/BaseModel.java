@@ -1,6 +1,5 @@
 package org.kloud.model;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.util.Pair;
 import org.jetbrains.annotations.NotNull;
@@ -64,7 +63,7 @@ public abstract class BaseModel implements Serializable {
             return row;
         }
         validateButton.setDisable(!hasChanges());
-        validateButton.addEventFilter(ActionEvent.ACTION, actionEvent -> {
+        validateButton.setOnAction(actionEvent -> {
             boolean isValid = true;
             for (var fxControlHandler : fxControlHandlers) {
                 boolean fieldValid = fxControlHandler.getAsBoolean();
@@ -78,9 +77,6 @@ public abstract class BaseModel implements Serializable {
                     }
                     validateButton.setDisable(true);
                 }
-            } else {
-                // Don't propagate, useful for dialogs
-                actionEvent.consume();
             }
         });
 
@@ -142,4 +138,6 @@ public abstract class BaseModel implements Serializable {
 
     @NotNull
     protected abstract String toStringInternal();
+
+    // TODO: Delete method which handles all linked values?
 }

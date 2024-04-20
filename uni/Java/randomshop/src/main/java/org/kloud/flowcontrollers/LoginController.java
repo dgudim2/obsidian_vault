@@ -46,8 +46,16 @@ public abstract class LoginController {
     @Nullable
     protected abstract User checkUserLogin(String user, String pass);
 
-    public boolean hasUserCapability(@NotNull UserCapability capability) {
+    public boolean hasCapability(@NotNull UserCapability capability) {
         return userCaps.contains(capability);
+    }
+
+    public boolean canActOnOtherUser(@Nullable User otherUser, @NotNull UserCapability capability) {
+        return !isLoggedInUser(otherUser) && hasCapability(capability);
+    }
+
+    public boolean canActOnSelf(@Nullable User otherUser, @NotNull UserCapability capability) {
+        return isLoggedInUser(otherUser) && hasCapability(capability);
     }
 
     public boolean isLoggedInUser(@Nullable User user) {

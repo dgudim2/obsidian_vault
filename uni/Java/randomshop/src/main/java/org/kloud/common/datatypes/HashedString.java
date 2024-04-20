@@ -68,4 +68,9 @@ public class HashedString extends CustomDatatype {
         hashValue = parts[0];
         hashSalt = parts[1];
     }
+
+    @Override
+    public String toString() {
+        return "**hashed**";
+    }
 }

@@ -2,7 +2,7 @@ package org.kloud.common;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.ErrorHandler;
 import org.kloud.utils.Logger;
 
@@ -29,7 +29,7 @@ public class DbConnection {
 
     public boolean ensureConnected() {
 
-        var conf = ConfigurationSingleton.getInstance();
+        var conf = Conf.getInstance();
         var newAddress = conf.dbAddress.getValue();
         var newUser = conf.dbUser.getValue();
         var newPassword = conf.dbPassword.getValue();

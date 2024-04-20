@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * A singleton class holding all application state and config
  */
-public class ConfigurationSingleton {
+public class Conf {
 
     public static final List<Class<? extends AbstractBackend>> storageBackends = List.of(LocalBackend.class, DBBackend.class, ServerBackend.class);
 
@@ -47,11 +47,11 @@ public class ConfigurationSingleton {
 
     public final ObjectProperty<AbstractBackend> storageBackend;
 
-    private static ConfigurationSingleton instance;
+    private static Conf instance;
 
     private static final String CONFIG_PATH = "config.json";
 
-    private ConfigurationSingleton() {
+    private Conf() {
 
         AbstractBackend storageBackend = null;
 
@@ -81,7 +81,7 @@ public class ConfigurationSingleton {
     }
 
     private String getAsString(@Nullable JsonObject jsonObject, String field, String defaultValue) {
-        if(jsonObject == null) {
+        if (jsonObject == null) {
             return defaultValue;
         }
         return jsonObject.has(field) ? jsonObject.get(field).getAsString() : defaultValue;
@@ -124,9 +124,9 @@ public class ConfigurationSingleton {
         }
     }
 
-    public static ConfigurationSingleton getInstance() {
+    public static Conf getInstance() {
         if (instance == null) {
-            instance = new ConfigurationSingleton();
+            instance = new Conf();
         }
         return instance;
     }

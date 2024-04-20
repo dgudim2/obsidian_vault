@@ -8,7 +8,7 @@ import org.kloud.common.fields.RatingField;
 import org.kloud.model.BaseModel;
 import org.kloud.model.Comment;
 import org.kloud.model.Warehouse;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Utils;
 
 import java.time.LocalDate;
@@ -33,17 +33,14 @@ public abstract class Product extends BaseModel {
     public final RatingField rating = new RatingField("Rating");
 
     public final ForeignKeyField<Warehouse> assignedWarehouse = new ForeignKeyField<>("Assigned warehouse", true,
-            id -> ConfigurationSingleton.getStorage()
+            id -> Conf.getStorage()
                     .getWarehouseStorage().getById(id),
-            () -> ConfigurationSingleton.getStorage()
-                    .getWarehouseStorage().getObjects()
-                    .stream()
-                    .filter(warehouse -> !warehouse.isFullCapacity())
-                    .toList(), (o, o1) -> {
+            () -> Conf.getStorage()
+                    .getWarehouseStorage().getWithFilter(warehouse -> !warehouse.isFullCapacity()), (o, o1) -> {
     });
 
     public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, () -> true,
-            ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
+            ids -> Conf.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
     });
 
     public Product() {

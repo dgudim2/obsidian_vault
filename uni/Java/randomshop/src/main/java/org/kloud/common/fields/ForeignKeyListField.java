@@ -113,7 +113,7 @@ public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
             Alert objectDialog = new Alert(Alert.AlertType.CONFIRMATION);
 
             objectDialog.setTitle("View");
-            objectDialog.setHeaderText(linkedValues.size() + " objects");
+            objectDialog.setHeaderText(linkedValues.size() + " object(s)");
             objectDialog.getDialogPane().setContent(container);
             objectDialog.setGraphic(null);
 

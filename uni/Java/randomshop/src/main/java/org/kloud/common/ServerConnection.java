@@ -1,7 +1,7 @@
 package org.kloud.common;
 
 import org.jetbrains.annotations.Nullable;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.ErrorHandler;
 import org.kloud.utils.Logger;
 
@@ -19,7 +19,7 @@ public class ServerConnection {
 
     public boolean isServerOnline() {
 
-        var conf = ConfigurationSingleton.getInstance();
+        var conf = Conf.getInstance();
         var serverAddress = conf.serverAddress.get();
         var serverAddressParts = serverAddress.split(":");
 
@@ -47,7 +47,7 @@ public class ServerConnection {
     }
 
     private String getEndpointURL(String endpoint) {
-        return ConfigurationSingleton.getInstance().serverAddress.get() + "/" + endpoint;
+        return Conf.getInstance().serverAddress.get() + "/" + endpoint;
     }
 
     @Nullable

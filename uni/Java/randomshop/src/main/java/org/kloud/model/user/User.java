@@ -7,7 +7,7 @@ import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.BaseModel;
 import org.kloud.model.Comment;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
 import org.kloud.utils.card.CardValidationResult;
@@ -39,7 +39,7 @@ public abstract class User extends BaseModel {
             return lenWarning;
         }
         // NOTE: Using stream apis of small arrays is meh, investigate performance
-        if (ConfigurationSingleton.getStorage()
+        if (Conf.getStorage()
                 .getUserStorage().getObjects()
                 .stream()
                 .anyMatch(user -> Objects.equals(user.login.get(), newLogin) && user.id != id)) {
@@ -58,7 +58,7 @@ public abstract class User extends BaseModel {
     });
 
     public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, () -> true,
-            ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
+            ids -> Conf.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
     });
 
     User() {
@@ -72,9 +72,9 @@ public abstract class User extends BaseModel {
     public Set<UserCapability> getUserCaps() {
         var caps = new HashSet<UserCapability>();
         caps.add(UserCapability.CHANGE_SELF_PASSWORD);
-        caps.add(UserCapability.RW_SELF_PRODUCTS);
         caps.add(UserCapability.RW_SELF_WAREHOUSES);
         caps.add(UserCapability.RW_SELF_COMMENTS);
+        caps.add(UserCapability.RW_SELF_ORDERS);
         caps.add(UserCapability.READ_OTHER_COMMENTS);
         return caps;
     }

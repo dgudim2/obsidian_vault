@@ -6,7 +6,7 @@ import org.kloud.common.fields.ForeignKeyField;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.Manager;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Utils;
 
 import java.util.ArrayList;
@@ -22,27 +22,25 @@ public class Warehouse extends BaseModel {
 
     public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
             id -> {
-                var user = ConfigurationSingleton.getStorage()
+                var user = Conf.getStorage()
                         .getUserStorage().getById(id);
                 if (user instanceof Manager m) {
                     return m;
                 }
                 return null;
             },
-            () -> ConfigurationSingleton.getStorage()
+            () -> Conf.getStorage()
                     .getUserStorage().getObjects().stream()
                     .filter(user -> user instanceof Manager)
                     .map(user -> (Manager) user)
                     .toList(), (manager, newManager) -> {
     });
 
+    // TODO: Take warehouse capacity into account
     public final ForeignKeyListField<Product> products = new ForeignKeyListField<>("Products", false, true, () -> false,
-            ids -> ConfigurationSingleton.getStorage()
-                    .getProductStorage().getObjects()
-                    .stream()
-                    .filter(product -> product.assignedWarehouse.get() == id)
-                    .toList(),
-            () -> ConfigurationSingleton.getStorage()
+            ids -> Conf.getStorage()
+                    .getProductStorage().getWithFilter(product -> product.assignedWarehouse.get() == id),
+            () -> Conf.getStorage()
                     .getProductStorage().getObjects(),
             (oldProducts, products) -> {
                 for (var oldProduct : oldProducts) {
@@ -82,6 +80,6 @@ public class Warehouse extends BaseModel {
 
     @Override
     protected @NotNull String toStringInternal() {
-        return address + " (max " + maxCapacity + " units)";
+        return address + " (" + products.get().size() + "/" + maxCapacity + " units)";
     }
 }

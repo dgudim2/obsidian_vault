@@ -6,7 +6,7 @@ import org.kloud.common.fields.ForeignKeyField;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.common.fields.RatingField;
 import org.kloud.model.user.User;
-import org.kloud.utils.ConfigurationSingleton;
+import org.kloud.utils.Conf;
 import org.kloud.utils.Utils;
 
 import java.util.List;
@@ -19,11 +19,11 @@ public class Comment extends BaseModel {
     public final RatingField rating = new RatingField("Rating");
 
     public final ForeignKeyField<User> author = new ForeignKeyField<>("Author", true, () -> true,
-            id -> ConfigurationSingleton.getStorage().getUserStorage().getById(id), List::of, (user, newUser) -> {
+            id -> Conf.getStorage().getUserStorage().getById(id), List::of, (user, newUser) -> {
     });
 
     public final ForeignKeyListField<Comment> children = new ForeignKeyListField<>("Children", false, false, () -> true,
-            ids -> ConfigurationSingleton.getStorage().getCommentStorage().getByIds(ids), List::of, (comments, comments2) -> {
+            ids -> Conf.getStorage().getCommentStorage().getByIds(ids), List::of, (comments, comments2) -> {
     });
 
     public Comment() {

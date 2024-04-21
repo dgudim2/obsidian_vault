@@ -75,7 +75,7 @@ public class Conf {
             e.printStackTrace();
         }
         this.storageBackend = new SimpleObjectProperty<>(storageBackend == null ? new LocalBackend() : storageBackend);
-        this.targetLogLevel = new SimpleObjectProperty<>(Logger.Loglevel.valueOf(getAsString(jsonObject, Fields.LOG_LEVEL, Logger.Loglevel.DEBUG.name())));
+        this.targetLogLevel = new SimpleObjectProperty<>(Logger.Loglevel.valueOf(getAsString(jsonObject, Fields.LOG_LEVEL, Logger.Loglevel.INFO.name())));
 
         System.out.println("Config loaded");
     }

@@ -1,6 +1,7 @@
 package org.kloud.module.gui.controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -123,7 +124,10 @@ public class EntrypointController implements BaseController {
     @FXML
     public Button addToCartButton;
     @FXML
+    public Button filterOrdersButton;
+    @FXML
     public Label lastMessageLabel;
+
 
     // Comments in the products tab
     @FXML
@@ -137,6 +141,7 @@ public class EntrypointController implements BaseController {
     @FXML
     public Button addCommentButton;
 
+
     // Comments on the orders tab
     @FXML
     public Label orderCommentsLabel;
@@ -146,6 +151,7 @@ public class EntrypointController implements BaseController {
     public Separator orderCommentsSeparator;
     @FXML
     public Button addOrderCommentButton;
+
 
     // Wrappers
     private TabWrapper<Product> productTabWrapper;
@@ -525,8 +531,14 @@ public class EntrypointController implements BaseController {
             }
         });
 
-        updateButtons.accept(null);
+        filterOrdersButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
 
+            }
+        });
+
+        updateButtons.accept(null);
         ordersList.getSelectionModel().selectedItemProperty().addListener((observable, prevOrder, order) -> reloadUI.accept(order));
     }
 

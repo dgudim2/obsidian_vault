@@ -181,7 +181,7 @@ public class CommentsWrapper<T extends BaseModel> {
                 ((Label) Objects.requireNonNull(thisNode).getGraphic()).setText(finalThisComment.toString());
             }
             addCommentDialog.close();
-        }));
+        }, true));
 
         addCommentDialog.getDialogPane().setContent(pane);
         addCommentDialog.showAndWait();

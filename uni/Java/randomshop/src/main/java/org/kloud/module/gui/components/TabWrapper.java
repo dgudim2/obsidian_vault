@@ -76,7 +76,7 @@ public class TabWrapper<T extends BaseModel> {
             pane.removeFirstRow();
             if (newObject != null) {
                 pane.addRow(writePermission.test(newObject)
-                        ? newObject.loadEditableGui(saveButton, objectsDao, objectList::refresh)
+                        ? newObject.loadEditableGui(saveButton, objectsDao, objectList::refresh, false)
                         : newObject.loadReadonlyGui());
             }
             if (selectedObjectChangedUserListener != null) {

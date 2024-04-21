@@ -1,7 +1,6 @@
 package org.kloud.module.gui.controllers;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,6 +14,7 @@ import javafx.stage.Stage;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
+import org.kloud.model.BaseModel;
 import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.model.enums.OrderStatus;
@@ -125,6 +125,8 @@ public class EntrypointController implements BaseController {
     public Button addToCartButton;
     @FXML
     public Button filterOrdersButton;
+    @Nullable
+    private Order filterTemplateOrder = null;
     @FXML
     public Label lastMessageLabel;
 
@@ -370,6 +372,7 @@ public class EntrypointController implements BaseController {
                     .orElseGet(() -> {
                         var order = new Order();
                         order.orderedByUser.set(Conf.getLoginController().loggedInUser.get().id);
+                        order.status.set(OrderStatus.CART);
                         return order;
                     });
             // NOTE: This isn't atomic, horrible
@@ -394,15 +397,35 @@ public class EntrypointController implements BaseController {
         pane.prefHeightProperty().bind(orderViewArea.heightProperty());
         orderViewArea.getChildren().add(pane);
 
+        Runnable updateListItems = () -> ordersList.getItems().setAll(Conf.getStorage()
+                .getOrderStorage()
+                .getWithFilter(order -> {
+                    if (!(Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS) ||
+                            Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.READ_OTHER_ORDERS) ||
+                            Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS) ||
+                            Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.READ_OTHER_ASSIGNED_ORDERS))) {
+                        return false;
+                    }
+                    // NOTE: This is a crappy way to apply a filter
+                    boolean filter = true;
+                    if (filterTemplateOrder != null) {
+                        if (filterTemplateOrder.assignedManager.getLinkedValue() != null) {
+                            filter = filterTemplateOrder.assignedManager.equals(order.assignedManager);
+                        }
+                        if (filterTemplateOrder.status.get() != null && filterTemplateOrder.status.get() != OrderStatus.UNKNOWN) {
+                            filter = filter && filterTemplateOrder.status.equals(order.status);
+                        }
+                        if (filterTemplateOrder.orderedByUser.getLinkedValue() != null) {
+                            filter = filter && filterTemplateOrder.orderedByUser.equals(order.orderedByUser);
+                        }
+                        return filter;
+                    }
+                    return true;
+                }));
+
         ordersTab.selectedProperty().addListener((observable, __, selected) -> {
             if (selected) {
-                ordersList.getItems().setAll(Conf.getStorage()
-                        .getOrderStorage()
-                        .getWithFilter(order ->
-                                Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS) ||
-                                        Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.READ_OTHER_ORDERS) ||
-                                        Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS) ||
-                                        Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.READ_OTHER_ASSIGNED_ORDERS)));
+                updateListItems.run();
             }
         });
 
@@ -531,11 +554,30 @@ public class EntrypointController implements BaseController {
             }
         });
 
-        filterOrdersButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+        filterOrdersButton.setOnAction(event -> {
+            Alert filterDialog = new Alert(Alert.AlertType.INFORMATION, "", ButtonType.NO, ButtonType.YES);
+            filterDialog.setTitle("Apply filter");
+            var applyButton = (Button) filterDialog.getDialogPane().lookupButton(ButtonType.YES);
+            applyButton.setText("Apply");
+            ((Button) filterDialog.getDialogPane().lookupButton(ButtonType.NO)).setText("Reset");
 
+            BootstrapPane pane1 = new BootstrapPane();
+            pane1.setPrefWidth(400);
+            pane1.setPrefHeight(150);
+
+            if (filterTemplateOrder == null) {
+                filterTemplateOrder = new Order(BaseModel.DUMMY_ID);
             }
+            pane1.addRow(filterTemplateOrder.loadEditableGui(applyButton, null, () -> {
+            }, false));
+
+            filterDialog.getDialogPane().setContent(pane1);
+            filterDialog.showAndWait().ifPresent(buttonType -> {
+                if (buttonType == ButtonType.NO) {
+                    filterTemplateOrder = null;
+                }
+                updateListItems.run();
+            });
         });
 
         updateButtons.accept(null);

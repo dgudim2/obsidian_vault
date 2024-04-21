@@ -2,7 +2,6 @@ package org.kloud.model;
 
 import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.UserCapability;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyField;
 import org.kloud.common.fields.ForeignKeyListField;
@@ -18,24 +17,24 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Order extends BaseModel {
 
-    public final Field<OrderStatus> status = new Field<>("Status", OrderStatus.CART, true, OrderStatus.class, __ -> "");
+    // TODO: This field is actually required, this is just for the filtering ui
+    public final Field<OrderStatus> status = new Field<>("Status", false, OrderStatus.class, __ -> "");
 
-    public final ForeignKeyField<User> orderedByUser = new ForeignKeyField<>("Ordered by", true,
+    // TODO: This field is actually required, this is just for the filtering ui
+    public final ForeignKeyField<User> orderedByUser = new ForeignKeyField<>("Ordered by", false,
             id -> Conf.getStorage().getUserStorage().getById(id),
-            List::of,
+            () -> Conf.getStorage().getUserStorage().getObjects(),
             (user, newUser) -> {
             });
 
-    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Products",
+    public final ForeignKeyListField<Product> orderedProducts = new ForeignKeyListField<>("Products", true, false, () -> true,
             ids -> Conf.getStorage().getOrderedProductStorage().getByIds(ids),
             List::of, (products1, products2) -> {
 
     });
 
     // TODO: Extract common fields.
-    public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false,
-            () -> !Conf.getLoginController().hasCapability(UserCapability.RW_SELF_ASSIGNED_ORDERS) &&
-                    !Conf.getLoginController().hasCapability(UserCapability.READ_OTHER_ASSIGNED_ORDERS),
+    public final ForeignKeyField<Manager> assignedManager = new ForeignKeyField<>("Assigned manager", false, () -> false,
             id -> {
                 var user = Conf.getStorage()
                         .getUserStorage().getById(id);

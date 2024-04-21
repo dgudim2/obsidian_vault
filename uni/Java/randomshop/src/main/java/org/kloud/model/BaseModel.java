@@ -1,5 +1,7 @@
 package org.kloud.model;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.util.Pair;
 import lombok.EqualsAndHashCode;
@@ -41,15 +43,20 @@ public abstract class BaseModel implements Serializable {
     @NotNull
     public abstract List<Field<?>> getFields();
 
+    public List<Field<?>> getVisibleFields() {
+        return getFields().stream().filter(Field::isVisibleInUI).toList();
+    }
+
     public BootstrapRow loadReadonlyGui() {
-        return loadEditableGui(null, null, null);
+        return loadEditableGui(null, null, null, false);
     }
 
     public <T extends BaseModel> BootstrapRow loadEditableGui(@Nullable Button validateButton,
                                                               @Nullable BasicDAO<T> dao,
-                                                              @Nullable Runnable afterSave) {
+                                                              @Nullable Runnable afterSave,
+                                                              boolean catchEvent) {
         BootstrapRow row = new BootstrapRow();
-        var fields = getFields().stream().filter(Field::isVisibleInUI).toList();
+        var fields = getVisibleFields();
         List<BooleanSupplier> fxControlHandlers = new ArrayList<>(fields.size());
 
         boolean readonly = validateButton == null;
@@ -66,7 +73,7 @@ public abstract class BaseModel implements Serializable {
             return row;
         }
         validateButton.setDisable(!hasChanges());
-        validateButton.setOnAction(actionEvent -> {
+        EventHandler<ActionEvent> listener = actionEvent -> {
             boolean isValid = true;
             for (var fxControlHandler : fxControlHandlers) {
                 boolean fieldValid = fxControlHandler.getAsBoolean();
@@ -74,14 +81,22 @@ public abstract class BaseModel implements Serializable {
             }
             if (isValid) {
                 //noinspection unchecked
-                if (Objects.requireNonNull(dao).addOrUpdateObject((T) this)) {
+                if (dao == null || dao.addOrUpdateObject((T) this)) {
                     if (afterSave != null) {
                         afterSave.run();
                     }
                     validateButton.setDisable(true);
                 }
+            } else if (catchEvent) {
+                // Only useful in dialogs
+                actionEvent.consume();
             }
-        });
+        };
+        if(catchEvent) {
+            validateButton.addEventHandler(ActionEvent.ACTION, listener);
+        } else {
+            validateButton.setOnAction(listener);
+        }
 
         return row;
     }

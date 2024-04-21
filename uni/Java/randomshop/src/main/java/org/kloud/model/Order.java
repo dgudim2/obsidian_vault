@@ -1,5 +1,6 @@
 package org.kloud.model;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.UserCapability;
 import org.kloud.common.fields.Field;
@@ -14,6 +15,7 @@ import org.kloud.utils.Conf;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Order extends BaseModel {
 
     public final Field<OrderStatus> status = new Field<>("Status", OrderStatus.CART, true, OrderStatus.class, __ -> "");

@@ -1,5 +1,6 @@
 package org.kloud.model;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyField;
@@ -10,8 +11,8 @@ import org.kloud.utils.Conf;
 import org.kloud.utils.Utils;
 
 import java.util.List;
-import java.util.Objects;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Comment extends BaseModel {
 
     public final Field<String> title = new Field<>("Title", true, String.class, s -> Utils.testLength(s, 1, 50));
@@ -53,17 +54,5 @@ public class Comment extends BaseModel {
     public String toString() {
         var authorVal = author.getLinkedValue();
         return title + " (" + rating + "☆) by " + (authorVal == null ? "unknown" : "'" + authorVal.name.get() + " " + authorVal.surname.get() + "'");
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Comment comment)) return false;
-        return Objects.equals(title, comment.title) && Objects.equals(content, comment.content) && Objects.equals(rating, comment.rating) && Objects.equals(author, comment.author) && Objects.equals(children, comment.children);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, content, rating, author, children);
     }
 }

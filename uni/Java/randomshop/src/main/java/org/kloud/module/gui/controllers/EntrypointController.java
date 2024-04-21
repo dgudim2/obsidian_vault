@@ -5,18 +5,15 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
-import org.kloud.model.Comment;
 import org.kloud.model.Order;
 import org.kloud.model.Warehouse;
 import org.kloud.model.enums.OrderStatus;
@@ -24,10 +21,7 @@ import org.kloud.model.product.Product;
 import org.kloud.model.user.Customer;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
-import org.kloud.module.gui.components.BootstrapColumn;
-import org.kloud.module.gui.components.BootstrapPane;
-import org.kloud.module.gui.components.BootstrapRow;
-import org.kloud.module.gui.components.TabWrapper;
+import org.kloud.module.gui.components.*;
 import org.kloud.utils.Conf;
 import org.kloud.utils.Logger;
 import org.kloud.utils.Utils;
@@ -89,7 +83,7 @@ public class EntrypointController implements BaseController {
     @FXML
     public Pane userEditArea;
     @FXML
-    public Pane orderEditArea;
+    public Pane orderViewArea;
 
 
     @FXML
@@ -143,9 +137,22 @@ public class EntrypointController implements BaseController {
     @FXML
     public Button addCommentButton;
 
+    // Comments on the orders tab
+    @FXML
+    public Label orderCommentsLabel;
+    @FXML
+    public TreeView<String> orderCommentsTree;
+    @FXML
+    public Separator orderCommentsSeparator;
+    @FXML
+    public Button addOrderCommentButton;
+
+    // Wrappers
     private TabWrapper<Product> productTabWrapper;
     private TabWrapper<User> userTabWrapper;
     private TabWrapper<Warehouse> warehouseTabWrapper;
+    private CommentsWrapper<Product> productCommentsWrapper;
+    private CommentsWrapper<Order> orderCommentsWrapper;
 
     @FXML
     public void initialize() {
@@ -316,7 +323,16 @@ public class EntrypointController implements BaseController {
             passwordDialog.showAndWait();
         });
 
-        loadCommentsForProduct(null);
+        productCommentsWrapper = new CommentsWrapper<>(commentsLabel, commentsTree, commentsSeparator, addCommentButton,
+                conf.storageBackend.get().getProductStorage(),
+                product -> product.comments,
+                () -> productTabWrapper.getSelectedObject());
+        addToCartCommentBox.setVisible(false);
+
+        orderCommentsWrapper = new CommentsWrapper<>(orderCommentsLabel, orderCommentsTree, orderCommentsSeparator, addOrderCommentButton,
+                conf.storageBackend.get().getOrderStorage(),
+                order -> order.comments,
+                () -> ordersList.getSelectionModel().getSelectedItem());
 
         initOrdersTab();
         initUserLoginTab();
@@ -368,9 +384,9 @@ public class EntrypointController implements BaseController {
         });
 
         BootstrapPane pane = new BootstrapPane();
-        pane.prefWidthProperty().bind(orderEditArea.widthProperty());
-        pane.prefHeightProperty().bind(orderEditArea.heightProperty());
-        orderEditArea.getChildren().add(pane);
+        pane.prefWidthProperty().bind(orderViewArea.widthProperty());
+        pane.prefHeightProperty().bind(orderViewArea.heightProperty());
+        orderViewArea.getChildren().add(pane);
 
         ordersTab.selectedProperty().addListener((observable, __, selected) -> {
             if (selected) {
@@ -451,6 +467,12 @@ public class EntrypointController implements BaseController {
             }
 
             pane.addRow(row);
+
+            if (Conf.getLoginController().hasCapability(UserCapability.RW_SELF_COMMENTS) ||
+                    Conf.getLoginController().hasCapability(UserCapability.READ_OTHER_COMMENTS)) {
+                // Only enable the comments section if our current user has access to it
+                orderCommentsWrapper.loadCommentsForObject(order);
+            }
         };
 
         changeOrderStatusButton.setOnAction(event -> {
@@ -490,7 +512,7 @@ public class EntrypointController implements BaseController {
                     (selectedOrder.status.get() == OrderStatus.CART ||
                             selectedOrder.status.get() == OrderStatus.PLACED)) {
 
-                if(Conf.getStorage().getOrderStorage().removeObject(selectedOrder)) {
+                if (Conf.getStorage().getOrderStorage().removeObject(selectedOrder)) {
                     ordersList.getItems().remove(selectedOrder);
                     ordersList.getSelectionModel().clearSelection();
 
@@ -505,169 +527,7 @@ public class EntrypointController implements BaseController {
 
         updateButtons.accept(null);
 
-        ordersList.getSelectionModel().selectedItemProperty().addListener((observable, prevOrder, order) -> {
-            reloadUI.accept(order);
-        });
-    }
-
-    @NotNull
-    private TreeItem<String> addCommentNode(@NotNull TreeItem<String> parentNode,
-                                            @Nullable Comment parentComment,
-                                            @NotNull Comment thisComment,
-                                            @NotNull Product product) {
-        var thisNode = new TreeItem<>("", new Label(thisComment.toString()));
-        var replyAction = new MenuItem("Reply");
-        var deleteAction = new MenuItem("Delete");
-        var editAction = new MenuItem("Edit");
-        ContextMenu contextMenu;
-        if (Conf.getLoginController()
-                .canActOnOtherUser(thisComment.author.getLinkedValue(), UserCapability.WRITE_OTHER_COMMENTS)) {
-            contextMenu = new ContextMenu(replyAction, editAction, deleteAction);
-        } else {
-            contextMenu = new ContextMenu(replyAction);
-        }
-        replyAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, null, null, product));
-        deleteAction.setOnAction(event -> deleteComment(parentNode, parentComment, thisNode, thisComment, product));
-        editAction.setOnAction(event -> leaveOrEditComment(thisNode, thisComment, thisNode, thisComment, product));
-
-        // TODO: This is semi-ideal, right click will only work on the label
-        // maybe set preferred width for the label??
-        thisNode.getGraphic().setOnContextMenuRequested(e -> contextMenu.show(thisNode.getGraphic(), e.getScreenX(), e.getScreenY()));
-        thisNode.getGraphic().setOnMouseClicked(event -> {
-            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
-                Alert viewCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.OK);
-                viewCommentDialog.setTitle("Comment on " + product);
-                viewCommentDialog.setHeaderText("View comment");
-                BootstrapPane pane = new BootstrapPane();
-                pane.setPrefWidth(350);
-                pane.setPrefHeight(150);
-                pane.addRow(thisComment.loadReadonlyGui());
-
-                viewCommentDialog.getDialogPane().setContent(pane);
-                viewCommentDialog.showAndWait();
-            }
-        });
-        parentNode.getChildren().add(thisNode);
-        return thisNode;
-    }
-
-    private void loadCommentLayer(@NotNull TreeItem<String> parentNode,
-                                  @Nullable Comment parentComment,
-                                  @NotNull List<Comment> childComments,
-                                  @NotNull Product product) {
-        for (var childComment : childComments) {
-
-            if (!Conf.getLoginController().canActOnOtherUser(childComment.author.getLinkedValue(), UserCapability.READ_OTHER_COMMENTS) ||
-                    !Conf.getLoginController().canActOnSelf(childComment.author.getLinkedValue(), UserCapability.RW_SELF_COMMENTS)) {
-                // Skip comments our user doesn't have read access to
-                continue;
-            }
-            var childNode = addCommentNode(parentNode, parentComment, childComment, product);
-            // TODO: This is not efficient, we should load maybe up to 2 layers deep
-            // but for now I am too lazy to ensure that there are no duplicates on layers
-            // just don't leave 30000 comments
-            loadCommentLayer(childNode, childComment, childComment.children.getLinkedValues(), product);
-        }
-    }
-
-    private void loadCommentsForProduct(@Nullable Product product) {
-        addToCartCommentBox.setVisible(product != null);
-        commentsLabel.setVisible(product != null);
-        commentsTree.setVisible(product != null);
-        commentsSeparator.setVisible(product != null);
-
-        if (product != null) {
-            TreeItem<String> rootItem = new TreeItem<>();
-            rootItem.setExpanded(true);
-            commentsTree.setRoot(rootItem);
-            commentsTree.setShowRoot(false);
-            loadCommentLayer(rootItem, null, product.comments.getLinkedValues(), product);
-        }
-    }
-
-    private void leaveOrEditComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
-                                    @Nullable TreeItem<String> thisNode, @Nullable Comment thisComment,
-                                    @NotNull Product product) {
-        Alert addCommentDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
-        addCommentDialog.setTitle("Comment on " + product);
-        var addButton = (Button) addCommentDialog.getDialogPane().lookupButton(ButtonType.YES);
-
-        boolean isEditing;
-        if (thisComment == null) {
-            isEditing = false;
-            addButton.setText("Add");
-            // We are leaving a new comment
-            addCommentDialog.setHeaderText(parentComment == null ? "Add comment" : "Reply to \"" + parentComment + "\"");
-            thisComment = new Comment();
-            thisComment.author.set(Conf.getLoginController().loggedInUser.get().id);
-        } else {
-            isEditing = true;
-            addButton.setText("Save");
-            // We are editing a comment
-            addCommentDialog.setHeaderText(parentComment == null ? "Edit comment" : "Edit reply to \"" + parentComment + "\"");
-        }
-
-        BootstrapPane pane = new BootstrapPane();
-        pane.setPrefWidth(350);
-        pane.setPrefHeight(150);
-
-        @NotNull Comment finalThisComment = thisComment;
-        pane.addRow(thisComment.loadEditableGui(addButton, Conf.getStorage().getCommentStorage(), () -> {
-            if (parentComment == null) {
-                if (!isEditing) {
-                    Objects.requireNonNull(productTabWrapper.getSelectedObject()).comments.addLinkedValue(finalThisComment);
-                }
-                // NOTE: This is wrong, we can save an invalid object by leaving a comment on it (validate in addOrUpdateObject or here maybe)
-                Conf.getStorage().getProductStorage().addOrUpdateObject(Objects.requireNonNull(productTabWrapper.getSelectedObject()));
-            } else {
-                if (!isEditing) {
-                    parentComment.children.addLinkedValue(finalThisComment);
-                }
-                // NOTE: We are saving the child first, then updating the parent,
-                // can't do it in one go because getByIds won't return our newly created child, need to save it first
-                // Maybe add a flag 'save' to addOrUpdateObject, but I don't know how to handle it gracefully in DBDAO because we do SQL UPDATE
-                // when updating the object. Maybe a separate queue??
-                // TLDR: Skip this for now
-                Conf.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
-            }
-            if (!isEditing) {
-                addCommentNode(parentNode, parentComment, finalThisComment, product);
-            } else {
-                Objects.requireNonNull(thisNode).setValue(finalThisComment.toString());
-            }
-            addCommentDialog.close();
-        }));
-
-        addCommentDialog.getDialogPane().setContent(pane);
-        addCommentDialog.showAndWait();
-    }
-
-    private void deleteComment(@NotNull TreeItem<String> parentNode, @Nullable Comment parentComment,
-                               @NotNull TreeItem<String> thisNode, @NotNull Comment thisComment, @NotNull Product product) {
-        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.CANCEL, ButtonType.YES);
-        confirmDialog.setTitle("Delete a comment");
-        confirmDialog.setHeaderText("Delete " + thisComment + "?");
-        var result = confirmDialog.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.YES) {
-            parentNode.getChildren().remove(thisNode);
-            if (parentComment != null) {
-                parentComment.children.removeLinkedValue(thisComment);
-                Conf.getStorage().getCommentStorage().addOrUpdateObject(parentComment);
-            } else {
-                product.comments.removeLinkedValue(thisComment);
-                Conf.getStorage().getProductStorage().addOrUpdateObject(product);
-            }
-            deleteCommentChildrenRecursive(thisComment);
-            Conf.getStorage().getCommentStorage().removeById(thisComment.id);
-        }
-    }
-
-    private void deleteCommentChildrenRecursive(@NotNull Comment thisComment) {
-        for (var child : thisComment.children.getLinkedValues()) {
-            deleteCommentChildrenRecursive(child);
-        }
-        // NOTE: This is inefficient, collect all ids and delete in one batch maybe
-        Conf.getStorage().getCommentStorage().removeByIds(thisComment.children.get().backingList);
+        ordersList.getSelectionModel().selectedItemProperty().addListener((observable, prevOrder, order) -> reloadUI.accept(order));
     }
 
     private void initUserLoginTab() {
@@ -718,11 +578,10 @@ public class EntrypointController implements BaseController {
             if (Conf.getLoginController().hasCapability(UserCapability.RW_SELF_COMMENTS) ||
                     Conf.getLoginController().hasCapability(UserCapability.READ_OTHER_COMMENTS)) {
                 // Only enable the comments section if our current user has access to it
-                productTabWrapper.setSelectedObjectListener(this::loadCommentsForProduct);
-                addCommentButton.setOnAction(event -> leaveOrEditComment(
-                        commentsTree.getRoot(), null,
-                        null, null,
-                        Objects.requireNonNull(productTabWrapper.getSelectedObject())));
+                productTabWrapper.setSelectedObjectListener(product -> {
+                    productCommentsWrapper.loadCommentsForObject(product);
+                    addToCartCommentBox.setVisible(product != null);
+                });
             } else {
                 productTabWrapper.setSelectedObjectListener(null);
             }

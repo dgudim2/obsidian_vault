@@ -1,14 +1,14 @@
 package org.kloud.common.datatypes;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Objects;
 
 /**
  * Custom datatype that holds 3 floats (basically a Vector3)
  */
 @Getter
+@EqualsAndHashCode(doNotUseGetters = true, callSuper = true)
 public class Dimensions extends CustomDatatype {
 
     protected float width;
@@ -39,17 +39,5 @@ public class Dimensions extends CustomDatatype {
         width = Float.parseFloat(parts[0]);
         height = Float.parseFloat(parts[1]);
         depth = Float.parseFloat(parts[2]);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Dimensions that)) return false;
-        return Float.compare(width, that.width) == 0 && Float.compare(height, that.height) == 0 && Float.compare(depth, that.depth) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(width, height, depth);
     }
 }

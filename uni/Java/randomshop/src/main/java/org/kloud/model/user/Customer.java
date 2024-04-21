@@ -1,9 +1,12 @@
 package org.kloud.model.user;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Customer extends User {
 
+    @EqualsAndHashCode.Exclude
     public static final String NAME = "Customer";
 
     public Customer() {

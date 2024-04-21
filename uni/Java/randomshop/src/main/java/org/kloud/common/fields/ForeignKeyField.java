@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Control;
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.model.BaseModel;
@@ -17,6 +18,7 @@ import java.util.function.*;
  *
  * @param <T> Object to wrap
  */
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class ForeignKeyField<T extends BaseModel> extends Field<Long> {
 
     private transient Function<Long, T> linkedObjectProducer;

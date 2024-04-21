@@ -50,6 +50,10 @@ public class Order extends BaseModel {
                     .toList(), (manager, newManager) -> {
     });
 
+    public final ForeignKeyListField<Comment> comments = new ForeignKeyListField<>("Comments", false, false, () -> true,
+            ids -> Conf.getStorage().getCommentStorage().getByIds(ids), List::of, (comments1, comments2) -> {
+    });
+
     public Order() {
         super();
     }
@@ -60,7 +64,7 @@ public class Order extends BaseModel {
 
     @Override
     public @NotNull List<Field<?>> getFields() {
-        return new ArrayList<>(List.of(status, orderedByUser, orderedProducts, assignedManager));
+        return new ArrayList<>(List.of(status, orderedByUser, orderedProducts, assignedManager, comments));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package org.kloud.model;
 
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.datatypes.CustomDatatype;
@@ -10,14 +11,18 @@ import org.kloud.utils.Logger;
 import java.awt.*;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.*;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A class that describes a column in a database and handles all the conversion between table and native datatypes
+ *
  * @param <T> Column type
  */
+@EqualsAndHashCode(doNotUseGetters = true)
 public class ColumnDescriptor<T extends Serializable> {
 
     @FunctionalInterface
@@ -32,14 +37,20 @@ public class ColumnDescriptor<T extends Serializable> {
 
     @NotNull
     public final String datatype;
-    @Nullable
-    public Pair<DbReader<T>, DbWriter<T>> datatypeMapper;
+
     @NotNull
     public final String columnName;
 
+
     @Nullable
+    @EqualsAndHashCode.Exclude
+    public Pair<DbReader<T>, DbWriter<T>> datatypeMapper;
+
+    @Nullable
+    @EqualsAndHashCode.Exclude
     private Field<T> parentField;
 
+    
     @SuppressWarnings("unchecked")
     public ColumnDescriptor(@NotNull Field<T> parentField) {
         this.parentField = parentField;
@@ -69,7 +80,7 @@ public class ColumnDescriptor<T extends Serializable> {
             datatype = "float4";
             datatypeMapper = new Pair<>(
                     set -> (T) Float.valueOf(set.getFloat(columnName)),
-                    (statement, value, index) -> statement.setFloat(index, value == null ? 0: (Float) value));
+                    (statement, value, index) -> statement.setFloat(index, value == null ? 0 : (Float) value));
         } else if (klass.equals(Double.class)) {
             datatype = "float8";
             datatypeMapper = new Pair<>(
@@ -151,18 +162,5 @@ public class ColumnDescriptor<T extends Serializable> {
     @Override
     public String toString() {
         return "Column " + columnName + " " + datatype;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        ColumnDescriptor<?> that = (ColumnDescriptor<?>) object;
-        return Objects.equals(datatype, that.datatype) && Objects.equals(columnName, that.columnName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(datatype, columnName);
     }
 }

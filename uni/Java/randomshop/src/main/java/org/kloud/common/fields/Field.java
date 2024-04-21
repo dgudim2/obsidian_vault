@@ -10,6 +10,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.datatypes.Dimensions;
@@ -36,18 +37,19 @@ import static org.kloud.utils.Utils.setDanger;
  *
  * @param <T> Datatype to wrap
  */
+@EqualsAndHashCode(doNotUseGetters = true)
 public class Field<T extends Serializable> implements Serializable {
 
     public final String name;
     @Nullable
     protected T value;
     public final boolean required;
+    public final Class<T> klass;
+    
     protected transient BooleanSupplier hideInUI;
     protected transient Function<@Nullable T, @NotNull String> validator;
-    public final Class<T> klass;
 
     private transient long latestVersionSavedHash = -1;
-
     private transient ColumnDescriptor<T> columnDescriptor;
 
     public Field(@NotNull String name, @Nullable T defaultValue, boolean required, @NotNull Class<T> klass, @NotNull Function<@Nullable T, @NotNull String> validator) {
@@ -349,17 +351,5 @@ public class Field<T extends Serializable> implements Serializable {
     @Override
     public String toString() {
         return String.valueOf(value == null ? "-" : value);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Field<?> field)) return false;
-        return required == field.required && Objects.equals(name, field.name) && Objects.equals(value, field.value) && Objects.equals(klass, field.klass);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, value, required, klass);
     }
 }

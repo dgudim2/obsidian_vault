@@ -2,6 +2,7 @@ package org.kloud.model;
 
 import javafx.scene.control.Button;
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.kloud.common.fields.Field;
@@ -20,9 +21,11 @@ import static java.lang.Math.min;
 /**
  * vase class for all storable objects
  */
+@EqualsAndHashCode(doNotUseGetters = true)
 public abstract class BaseModel implements Serializable {
 
     // Id used in getStoredClasses, a dummy id
+    @EqualsAndHashCode.Exclude
     public static final long DUMMY_ID = 333;
 
     public final long id;

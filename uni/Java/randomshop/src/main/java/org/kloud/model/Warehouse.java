@@ -1,5 +1,6 @@
 package org.kloud.model;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyField;
@@ -12,8 +13,10 @@ import org.kloud.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Warehouse extends BaseModel {
 
+    @EqualsAndHashCode.Exclude
     public static final String NAME = "Warehouse";
 
     public final Field<String> address = new Field<>("Address", true, String.class, v -> Utils.testLength(v, 5, -1));

@@ -133,9 +133,15 @@
                         <Button fx:id="deleteOrderButton" layoutX="10" styleClass="danger" text="Delete" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
                     </AnchorPane>
                 </AnchorPane>
-                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                    <Pane fx:id="orderEditArea" />
+                <ScrollPane fitToWidth="true" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                    <Pane fx:id="orderViewArea" />
                 </ScrollPane>
+
+                <Label fx:id="orderCommentsLabel" contentDisplay="CENTER" layoutX="260.0" layoutY="475.0" text="Comments (double-click to view)" AnchorPane.bottomAnchor="283.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
+                <TreeView fx:id="orderCommentsTree" layoutX="260.0" layoutY="493.0" maxHeight="190.0" prefHeight="190.0" prefWidth="200.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
+
+                </TreeView>
+                <Separator fx:id="orderCommentsSeparator" layoutX="260.0" layoutY="492.0" prefWidth="200.0" AnchorPane.bottomAnchor="267.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
                 <HBox AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0">
                     <Button fx:id="cancelOrderButton" prefWidth="10000.0" text="Cancel order">
                   <HBox.margin>
@@ -146,6 +152,7 @@
                      <Insets left="5.0" />
                   </HBox.margin></Button>
                 </HBox>
+            <Button fx:id="addOrderCommentButton" layoutX="448.0" layoutY="697.0" mnemonicParsing="false" text="Add comment" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="260.0" AnchorPane.rightAnchor="5.0" />
 
             </AnchorPane>
         </Tab>

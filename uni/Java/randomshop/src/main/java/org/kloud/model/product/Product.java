@@ -1,5 +1,6 @@
 package org.kloud.model.product;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyField;
@@ -14,10 +15,11 @@ import org.kloud.utils.Utils;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public abstract class Product extends BaseModel {
 
+    @EqualsAndHashCode.Exclude
     public static final List<Class<? extends Product>> PRODUCTS = List.of(Cpu.class, Gpu.class, Motherboard.class, PcCase.class);
 
     public final Field<String> name = new Field<>("Name", true, String.class, name -> Utils.testLength(name, 2, 30));
@@ -60,17 +62,5 @@ public abstract class Product extends BaseModel {
     @Override
     public @NotNull List<Field<?>> getFields() {
         return new ArrayList<>(List.of(name, description, price, warranty, rating, assignedWarehouse, comments));
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Product product)) return false;
-        return id == product.id && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(warranty, product.warranty) && Objects.equals(rating, product.rating);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, description, price, warranty, rating);
     }
 }

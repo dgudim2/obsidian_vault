@@ -1,5 +1,6 @@
 package org.kloud.model.user;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.UserCapability;
 import org.kloud.common.fields.Field;
@@ -10,11 +11,12 @@ import org.kloud.model.enums.OrderStatus;
 import org.kloud.utils.Conf;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class Manager extends User {
 
+    @EqualsAndHashCode.Exclude
     public static final String NAME = "Manager";
 
     public final Field<Boolean> isAdmin = new Field<>("Admin", false, false, Boolean.class, __ -> "");
@@ -113,19 +115,5 @@ public class Manager extends User {
     @Override
     protected @NotNull String toStringInternal() {
         return NAME + ": " + name + " " + surname;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        Manager manager = (Manager) object;
-        return Objects.equals(isAdmin, manager.isAdmin);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), isAdmin);
     }
 }

@@ -1,5 +1,6 @@
 package org.kloud.model.user;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.UserCapability;
 import org.kloud.common.datatypes.HashedString;
@@ -17,10 +18,13 @@ import java.util.*;
 
 import static org.kloud.utils.Utils.hashPass;
 
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public abstract class User extends BaseModel {
 
+    @EqualsAndHashCode.Exclude
     public static final long ADMIN_ID = 1000;
 
+    @EqualsAndHashCode.Exclude
     public static final List<Class<? extends User>> USERS = List.of(Manager.class, Customer.class);
 
     public final Field<String> name = new Field<>("Name", true, String.class, v -> Utils.testLength(v, 1, 100));
@@ -93,19 +97,5 @@ public abstract class User extends BaseModel {
     @Override
     public @NotNull List<Field<?>> getFields() {
         return new ArrayList<>(List.of(login, pass, name, surname, cardNumber, comments));
-    }
-
-    // TODO: Lombok?
-    @Override
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        User user = (User) object;
-        return Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(cardNumber, user.cardNumber) && Objects.equals(login, user.login) && Objects.equals(pass, user.pass);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, surname, cardNumber, login, pass);
     }
 }

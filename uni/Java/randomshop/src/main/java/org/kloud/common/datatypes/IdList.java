@@ -1,5 +1,6 @@
 package org.kloud.common.datatypes;
 
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -8,6 +9,7 @@ import java.util.*;
 /**
  * Custom datatype that is a wrapper over a list of longs (typically for storing foreign key references/ids)
  */
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class IdList extends CustomDatatype {
 
     // TODO: This should not be public
@@ -63,24 +65,16 @@ public class IdList extends CustomDatatype {
         return backingList.contains(id);
     }
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IdList idList)) return false;
-
-        return backingList.equals(idList.backingList);
-    }
-
-    @Override
-    public int hashCode() {
-        return backingList.hashCode();
-    }
-
     public boolean isEmpty() {
         return backingList.isEmpty();
     }
 
     public int size() {
         return backingList.size();
+    }
+
+    @Override
+    public String toString() {
+        return backingList.toString();
     }
 }

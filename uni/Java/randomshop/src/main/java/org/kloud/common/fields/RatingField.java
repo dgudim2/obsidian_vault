@@ -4,6 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Control;
 import javafx.scene.control.Slider;
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.utils.Utils;
 
@@ -13,6 +14,7 @@ import java.util.function.BooleanSupplier;
 /**
  * A {@link Field} holding a float but with a {@link Slider} instead of a {@link javafx.scene.control.TextField TextField}
  */
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class RatingField extends Field<Double> {
 
     public RatingField(@NotNull String name) {

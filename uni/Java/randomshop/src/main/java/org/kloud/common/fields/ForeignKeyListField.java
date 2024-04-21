@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.util.Pair;
+import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.common.datatypes.IdList;
 import org.kloud.model.BaseModel;
@@ -18,6 +19,7 @@ import java.util.function.*;
  *
  * @param <T>
  */
+@EqualsAndHashCode(callSuper = true, doNotUseGetters = true)
 public class ForeignKeyListField<T extends BaseModel> extends Field<IdList> {
 
     public final boolean virtual;

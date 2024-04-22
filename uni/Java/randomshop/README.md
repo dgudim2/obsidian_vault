@@ -1,6 +1,6 @@
 ## Hello :)
 
-Please donwnload from here -> https://github.com/dgudim2/obsidian_vault
+Please download from here -> https://github.com/dgudim2/obsidian_vault
 
 ## How to download without a bunch of junk
 
@@ -14,3 +14,5 @@ git sparse-checkout set uni/Java/randomshop
 
 Default user: admin
 Default password: admin123
+
+start the server with the '--mode server' cli arg, gui is started by default with no arguments

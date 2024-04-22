@@ -24,7 +24,7 @@ public abstract class BasicServerDAO<T extends BaseModel> extends BasicDAO<T> {
     protected abstract String getEndpoint();
 
     @Override
-    protected @NotNull List<T> readObjectsInternal() {
+    protected @NotNull ArrayList<T> readObjectsInternal() {
         var readObjects = new ArrayList<T>();
         try {
             HttpResponse<byte[]> response = serverConnection.getRequest(getEndpoint() + "/getall", HttpResponse.BodyHandlers.ofByteArray());

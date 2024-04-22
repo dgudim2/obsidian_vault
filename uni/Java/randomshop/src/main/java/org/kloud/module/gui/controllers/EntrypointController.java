@@ -432,13 +432,15 @@ public class EntrypointController implements BaseController {
         Consumer<@Nullable Order> updateButtons = order -> {
 
             deleteOrderButton.setDisable(order == null
-                    || (order.status.get() != OrderStatus.CART && order.status.get() != OrderStatus.PLACED)
-                    || (!Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.WRITE_OTHER_ASSIGNED_ORDERS)
-                    && !Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS)
-                    && !Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.WRITE_OTHER_ORDERS)
-                    && !Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS)));
+                    || !Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.DELETE_ORDERS)
+                    || !Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.DELETE_ORDERS));
 
-            cancelOrderButton.setDisable(order == null || order.status.get() != OrderStatus.PLACED); // Only placed orders can be canceled
+            cancelOrderButton.setDisable(order == null ||
+                    order.status.get() != OrderStatus.PLACED || // Only placed orders can be canceled
+                    (!Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.WRITE_OTHER_ASSIGNED_ORDERS)
+                            && !Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.RW_SELF_ASSIGNED_ORDERS)
+                            && !Conf.getLoginController().canActOnOtherUser(order.orderedByUser.getLinkedValue(), UserCapability.WRITE_OTHER_ORDERS)
+                            && !Conf.getLoginController().canActOnSelf(order.orderedByUser.getLinkedValue(), UserCapability.RW_SELF_ORDERS)));
 
             if (order == null) {
                 changeOrderStatusButton.setDisable(true);

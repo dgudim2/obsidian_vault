@@ -37,6 +37,7 @@ import static org.kloud.utils.Utils.setDanger;
  *
  * @param <T> Datatype to wrap
  */
+// TODO: Add a lambda for conditional readonly access
 @EqualsAndHashCode(doNotUseGetters = true)
 public class Field<T extends Serializable> implements Serializable {
 

@@ -19,8 +19,8 @@ public abstract class BasicFileDAO<T extends BaseModel> extends BasicDAO<T> {
     protected abstract String getFileName();
     @Override
     @NotNull
-    protected List<T> readObjectsInternal() {
-        return readObject(getFileName(), new ArrayList<>());
+    protected ArrayList<T> readObjectsInternal() {
+        return new ArrayList<>(readObject(getFileName(), List.of()));
     }
 
     protected boolean writeObjectsInternal() {

@@ -14,6 +14,7 @@ import org.kloud.model.user.Customer;
 import org.kloud.model.user.Manager;
 import org.kloud.model.user.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.kloud.utils.Utils.createDefaultUser;
@@ -37,7 +38,7 @@ public class DBBackend extends AbstractBackend {
             }
 
             @Override
-            protected @NotNull List<User> readObjectsInternal() {
+            protected @NotNull ArrayList<User> readObjectsInternal() {
                 return createDefaultUser(super.readObjectsInternal());
             }
         };

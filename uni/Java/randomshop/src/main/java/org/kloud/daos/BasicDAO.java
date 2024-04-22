@@ -28,8 +28,9 @@ public abstract class BasicDAO<T extends BaseModel> {
         return r_objects;
     }
 
+    //WHAT?: Hacky way to make sure that the list is mutable
     @NotNull
-    protected abstract List<T> readObjectsInternal();
+    protected abstract ArrayList<T> readObjectsInternal();
 
     protected abstract boolean writeObjectsInternal();
 

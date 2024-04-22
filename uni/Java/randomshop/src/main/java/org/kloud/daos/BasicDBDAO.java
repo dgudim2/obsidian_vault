@@ -105,7 +105,7 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @SuppressWarnings("unchecked")
     @Override
-    protected @NotNull List<T> readObjectsInternal() {
+    protected @NotNull ArrayList<T> readObjectsInternal() {
         var readObjects = new ArrayList<T>();
         if (!ensureSchema()) {
             return readObjects;

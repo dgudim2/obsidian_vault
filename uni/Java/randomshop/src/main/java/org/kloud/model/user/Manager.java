@@ -83,6 +83,7 @@ public class Manager extends User {
         caps.add(UserCapability.READ_CUSTOMERS);
         caps.add(UserCapability.READ_MANAGERS);
         caps.add(UserCapability.WRITE_PRODUCTS);
+        caps.add(UserCapability.DELETE_ORDERS);
         caps.add(UserCapability.WRITE_CUSTOMERS);
         caps.add(UserCapability.READ_OTHER_WAREHOUSES);
         caps.add(UserCapability.RW_SELF_ASSIGNED_ORDERS);

@@ -40,4 +40,9 @@ public class Dimensions extends CustomDatatype {
         height = Float.parseFloat(parts[1]);
         depth = Float.parseFloat(parts[2]);
     }
+
+    @Override
+    public String toString() {
+        return "W:" + width + " H:" + height + " D:" + depth;
+    }
 }

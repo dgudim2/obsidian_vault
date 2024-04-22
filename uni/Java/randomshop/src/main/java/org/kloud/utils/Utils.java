@@ -186,7 +186,7 @@ public class Utils {
     }
 
     @NotNull
-    public static List<User> createDefaultUser(@NotNull List<User> users) {
+    public static <T extends List<User>> T createDefaultUser(@NotNull T users) {
         boolean has_admin = false;
         for (var user : users) {
             has_admin = user.id == User.ADMIN_ID;

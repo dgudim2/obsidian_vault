@@ -11,7 +11,7 @@ import org.kloud.model.Warehouse;
 import org.kloud.model.product.Product;
 import org.kloud.model.user.User;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import static org.kloud.utils.Utils.createDefaultUser;
 
@@ -30,7 +30,7 @@ public class LocalBackend extends AbstractBackend {
             }
 
             @Override
-            protected @NotNull List<User> readObjectsInternal() {
+            protected @NotNull ArrayList<User> readObjectsInternal() {
                 return createDefaultUser(super.readObjectsInternal());
             }
         };

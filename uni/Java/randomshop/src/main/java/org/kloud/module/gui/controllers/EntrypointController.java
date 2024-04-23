@@ -444,6 +444,7 @@ public class EntrypointController implements BaseController {
 
             if (order == null) {
                 changeOrderStatusButton.setDisable(true);
+                changeOrderStatusButton.setText("---");
                 return;
             }
 

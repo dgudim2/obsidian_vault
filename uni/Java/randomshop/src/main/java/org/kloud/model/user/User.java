@@ -76,7 +76,6 @@ public abstract class User extends BaseModel {
     public Set<UserCapability> getUserCaps() {
         var caps = new HashSet<UserCapability>();
         caps.add(UserCapability.CHANGE_SELF_PASSWORD);
-        caps.add(UserCapability.RW_SELF_WAREHOUSES);
         caps.add(UserCapability.RW_SELF_COMMENTS);
         caps.add(UserCapability.RW_SELF_ORDERS);
         caps.add(UserCapability.READ_OTHER_COMMENTS);

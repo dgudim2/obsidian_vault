@@ -11,6 +11,7 @@
 !*.mp4
 !*.mp3
 !*.ogg
+!*.wav
 !*.aac
 !*.ogv
 !*.vtt

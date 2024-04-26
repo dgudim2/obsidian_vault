@@ -89,6 +89,7 @@ icon: FasBook
 |                                               taip pat | also                                                   |
 |                                                  kartu | together                                               |
 |                                                  šeima | family                                                 |
+|                                                     su | with (preposition)                                     |
 
 |      Lit | Eng    |
 | --------:|:------ |

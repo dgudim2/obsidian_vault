@@ -9,9 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="Fix order equals method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/model/user/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/module/gui/controllers/EntrypointController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/kloud/daos/BasicDBDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +81,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.toDoOptions&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -237,6 +236,8 @@
       <workItem from="1713686683070" duration="11798000" />
       <workItem from="1713789835450" duration="185000" />
       <workItem from="1713857210663" duration="801000" />
+      <workItem from="1714231408618" duration="204000" />
+      <workItem from="1714234723502" duration="845000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />

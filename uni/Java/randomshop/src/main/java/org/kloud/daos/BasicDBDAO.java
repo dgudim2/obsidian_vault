@@ -144,6 +144,9 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @Override
     public boolean addOrUpdateObject(@NotNull T product) {
+        if (!ensureSchema()) {
+            return false;
+        }
         var columnDescriptors = product.getColumnDescriptors();
         StringBuilder columns = new StringBuilder("(" + idColumn.columnName + "," + klassColumn.columnName);
         StringBuilder values = new StringBuilder("(?, ?");
@@ -184,6 +187,9 @@ public abstract class BasicDBDAO<T extends BaseModel> extends BasicDAO<T> {
 
     @Override
     public boolean removeObject(@NotNull T product) {
+        if (!ensureSchema()) {
+            return false;
+        }
         var sqlStatement = "DELETE FROM " + getTableName() + " WHERE id = " + product.id + ";";
         boolean res;
         try {

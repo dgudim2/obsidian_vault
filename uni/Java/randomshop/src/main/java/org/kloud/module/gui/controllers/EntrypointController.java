@@ -431,9 +431,7 @@ public class EntrypointController implements BaseController {
 
         Consumer<@Nullable Order> updateButtons = order -> {
 
-            deleteOrderButton.setDisable(order == null
-                    || !Conf.getLoginController().canActOnOtherUser(order.assignedManager.getLinkedValue(), UserCapability.DELETE_ORDERS)
-                    || !Conf.getLoginController().canActOnSelf(order.assignedManager.getLinkedValue(), UserCapability.DELETE_ORDERS));
+            deleteOrderButton.setDisable(order == null || !Conf.getLoginController().hasCapability(UserCapability.DELETE_ORDERS));
 
             cancelOrderButton.setDisable(order == null ||
                     order.status.get() != OrderStatus.PLACED || // Only placed orders can be canceled

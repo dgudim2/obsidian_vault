@@ -93,7 +93,7 @@ public abstract class BaseModel implements Serializable {
             }
         };
         if(catchEvent) {
-            validateButton.addEventHandler(ActionEvent.ACTION, listener);
+            validateButton.addEventFilter(ActionEvent.ACTION, listener);
         } else {
             validateButton.setOnAction(listener);
         }

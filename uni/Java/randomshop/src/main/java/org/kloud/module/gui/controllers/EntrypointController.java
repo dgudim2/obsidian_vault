@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.Nullable;
-import org.kloud.common.UserCapability;
+import org.kloud.model.enums.UserCapability;
 import org.kloud.common.datatypes.HashedString;
 import org.kloud.model.BaseModel;
 import org.kloud.model.Order;

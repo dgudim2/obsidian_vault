@@ -1,7 +1,7 @@
 package org.kloud.daos;
 
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.ServerConnection;
+import org.kloud.connections.ServerConnection;
 import org.kloud.model.BaseModel;
 import org.kloud.utils.ErrorHandler;
 

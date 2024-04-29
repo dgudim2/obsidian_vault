@@ -2,7 +2,7 @@ package org.kloud.model.user;
 
 import lombok.EqualsAndHashCode;
 import org.jetbrains.annotations.NotNull;
-import org.kloud.common.UserCapability;
+import org.kloud.model.enums.UserCapability;
 import org.kloud.common.fields.Field;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.model.Order;

@@ -3,7 +3,7 @@ package org.kloud.daos;
 import org.jetbrains.annotations.NotNull;
 import org.kloud.model.BaseModel;
 import org.kloud.model.ColumnDescriptor;
-import org.kloud.common.DbConnection;
+import org.kloud.connections.DbConnection;
 import org.kloud.utils.ErrorHandler;
 import org.kloud.utils.Logger;
 

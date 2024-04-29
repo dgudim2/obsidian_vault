@@ -1,4 +1,4 @@
-package org.kloud.common;
+package org.kloud.connections;
 
 import org.jetbrains.annotations.Nullable;
 import org.kloud.utils.Conf;

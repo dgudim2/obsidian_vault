@@ -4,7 +4,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseButton;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kloud.common.UserCapability;
+import org.kloud.model.enums.UserCapability;
 import org.kloud.common.fields.ForeignKeyListField;
 import org.kloud.daos.BasicDAO;
 import org.kloud.model.BaseModel;

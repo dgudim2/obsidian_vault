@@ -4,7 +4,7 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kloud.common.UserCapability;
+import org.kloud.model.enums.UserCapability;
 import org.kloud.daos.BasicDAO;
 import org.kloud.model.user.User;
 import org.kloud.utils.Logger;

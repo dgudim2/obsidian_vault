@@ -1,4 +1,4 @@
-package org.kloud.common;
+package org.kloud.model.enums;
 
 /**
  * {@link org.kloud.model.user.User User} permissions basically

@@ -1,0 +1,72 @@
+sequenceDiagram
+    User->>UI: Enter data and press 'login'
+    UI->>LocalLoginController: tryLogin
+    LocalLoginController->>+FileUserDAO: getObjects
+    FileUserDAO-->>+LocalLoginController: List<User>
+    loop Every user
+        break when login matches
+            LocalLoginController-->>+UI: Set login variables and exit loop
+        end
+        LocalLoginController-->>+LocalLoginController: Check data
+        LocalLoginController-->>+UI: Pass login result
+    end
+    alt valid login data
+        UI-->>+User: Login and disable input fields
+    else invalid login data
+        UI-->>+User: Display error and don't login
+    end
+
+
+sequenceDiagram
+    User->>UI: Enter data and press 'save'
+    UI->>+TabWrapper: trigger listener in 'loadEditableGui'
+    loop Every field
+        TabWrapper-->>+TabWrapper: Check data
+        alt when field is invalid
+            TabWrapper-->>-UI: Show warning under the field
+        end
+    end
+    TabWrapper-->>-UI: Pass validation result
+    alt all fields are valid
+        UI-->>User: Disable 'save' button
+        TabWrapper->>DBProductDao: addOrUpdateObject
+        DBProductDao->>DbConnection: executeUpdate
+        DbConnection-->>DBProductDao: Return result of execution
+        DBProductDao-->>TabWrapper: Pass result
+    else some fields are invalid
+        UI-->>+User: Show warnings to the user
+    end
+
+
+sequenceDiagram
+    User->>UI: Select a product and press 'add to cart'
+    UI->>UIController: trigger listener
+    UIController->>ConfSingleton: Get configured order storage
+    ConfSingleton-->>+UIController: Return DAO for products
+    UIController->>-ProductStorage: getObjects
+    activate ProductStorage
+    ProductStorage-->>-UIController: List<Product>
+    loop Every order/cart
+        UIController-->>UIController: Get status
+        alt Cart not found
+            UIController-->>UIController: Create new cart for current user
+        else cart is found
+            UIController-->>UIController: Break from the loop
+        end
+    end
+
+    UIController->>+ProductTabWrapper: getSelectedObject (in UI)
+    ProductTabWrapper-->>-UIController: selectedObject
+    activate UIController
+    UIController->>-ProductTabWrapper: removeObject
+    activate ProductTabWrapper
+    ProductTabWrapper-->>-UI: Remove product from the list
+    UI-->>User: Product disappears from the list
+    UIController->>ConfSingleton: Get configured ordered products storage
+    ConfSingleton-->>+UIController: Return DAO for ordered products
+    UIController->>-ConfSingleton: addOrUpdateObject
+    UIController-->>UIController: Link selected product to cart
+    UIController->>ProductStorage: addOrUpdateObject (user cart)
+
+
+

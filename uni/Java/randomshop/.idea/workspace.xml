@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="Fix order equals method">
+    <list default="true" id="f28be37a-243a-4d57-958a-d42c272d62ae" name="Changes" comment="Reorder classes in packages">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -237,6 +237,8 @@
       <workItem from="1714231408618" duration="204000" />
       <workItem from="1714234723502" duration="845000" />
       <workItem from="1714296681146" duration="8981000" />
+      <workItem from="1714416167274" duration="1968000" />
+      <workItem from="1714494017883" duration="5320000" />
     </task>
     <task id="LOCAL-00001" summary="Comments partially working (without delete)">
       <option name="closed" value="true" />
@@ -294,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713692369582</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Reorder classes in packages">
+      <option name="closed" value="true" />
+      <created>1714416305773</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1714416305774</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,7 +330,8 @@
     <MESSAGE value="Permission and order system fully operational" />
     <MESSAGE value="Comments on orders" />
     <MESSAGE value="Fix order equals method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix order equals method" />
+    <MESSAGE value="Reorder classes in packages" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reorder classes in packages" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

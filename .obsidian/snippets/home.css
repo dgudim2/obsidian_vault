@@ -1,0 +1,10 @@
+.home br {
+  content: "";
+  margin: 2em;
+  display: block;
+  font-size: 24%;
+}
+
+.home .task-list-item {
+  padding-top: 15px !important;
+}

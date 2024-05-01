@@ -147,6 +147,7 @@ $G = (V, E)$
 
 $G = (\{a, b, c, d, e\}, \{\{a, b\}, \{a, c\}, \{a, d\}, \{b, c\}, \{b, d\}, \{d, e\}\})$
 
+
 ```dot
 ---
 preset:math-graph

@@ -190,5 +190,21 @@
       ],
       "key": " "
     }
+  ],
+  "obsidian-completr:completr-bypass-enter-key": [
+    {
+      "key": "Enter",
+      "modifiers": [
+        "Ctrl"
+      ]
+    }
+  ],
+  "jelly-snippets:trigger-snippet": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": "Enter"
+    }
   ]
 }

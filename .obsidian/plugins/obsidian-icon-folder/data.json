@@ -1,6 +1,6 @@
 {
   "settings": {
-    "migrated": 4,
+    "migrated": 5,
     "iconPacksPath": ".obsidian/icons/obsidian-icon-folder/",
     "fontSize": 16,
     "emojiStyle": "native",
@@ -63,7 +63,8 @@
     "iconsInLinksEnabled": true,
     "debugMode": false,
     "iconInFrontmatterFieldName": "icon",
-    "iconColorInFrontmatterFieldName": "iconColor"
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconInTitlePosition": "above"
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",

@@ -112,5 +112,5 @@ icon: FasBook
 |          |        |
 ### From Antra
 
-![[Antra paskaita.pdf#page=12&rect=334,44,717,341|Antra paskaita, p.12]]
+![[Antra paskaita.pdf#page=12&rect=334,44,717,341&color=note|Antra paskaita, p.12]]
 

@@ -1,0 +1,87 @@
+--- How do You understand web application in the context of web application testing? 
+
+An application that we use via a web browser, it has several components
+1. Frontend (html, ja, css) that we can test manually or with automated ui tests
+2. Backend that we can test using unit tests and integration tests 
+The backend runs separately from the frontend and frontend communicates with it using rest/soap/rpc
+
+
+
+
+
+--- What needs to be tested for a web application? 
+
+Frontend: Ui/Ux performance, input data validation tests
+Cookies testing, bypass testing
+
+Server side: server response testing, database testing
+
+
+
+
+
+--- What is a test case in web application testing? 
+
+Test case is a task which describes how to test and to confirm that the system satisfies all related standards, guidelines and customer requirements.
+
+
+
+
+
+
+--- May we use control flow graphs for web application testing?
+
+Yes. Control flow graphs provide a visual representation of the control flow within a program or application. In the case of web applications, a control flow graph can help testers understand the flow of control between different components, pages, and modules within the application.
+
+
+
+
+
+--- Web application testing at client side;
+
+Classical unit testing
+Check that the system directs (or forwards) to valid pages
+Input data validation testing
+Events handler (listener), should react to corresponding user actions. 
+Cookies testing 
+
+
+
+
+--- Web application testing at server side;
+
+Functionality, security, performace, databases
+If server-side source code is available we can use graph model to test the server.
+
+
+
+
+
+--- Multiple conditions testing and Modified Condition/Decision Coverage (MC/DC) Testing. What is the purpose? Describe the techniques.
+
+
+The purpose of multiple conditions testing is to verify the behavior of a software system when it encounters various combinations of conditions or inputs. 
+MC/DC testing is to assess the reliability and correctness of software systems.
+
+In multiple conditions testing, testers identify different combinations of conditions that can influence the behavior of a software system, including both valid and invalid inputs, boundary conditions, and error scenarios. 
+
+MC/DC testing is a white-box testing technique that aims to achieve thorough coverage of decision conditions within the software code. 
+Techniques for generating MC/DC test cases typically involve analyzing the control flow of the software code to identify decision conditions and their outcomes.
+
+
+
+
+
+--- Basis path testing; cyclomatic complexity, what are the three ways to compute it? Myer‘s interval;
+
+
+Bases path testing method analyzes the control flow graph of a program to find a set of linearly independent paths of execution .
+Cyclomatic complexity - number of tests to test all control statements (= number of conditions +1)
+
+Methods:
+- Edges and nodes
+- Predicate method
+- Topological method
+
+Myer's interval helps identify independent paths in the control flow graph, ensuring thorough testing of all possible execution paths.
+

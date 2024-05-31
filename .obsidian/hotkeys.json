@@ -202,9 +202,9 @@
   "jelly-snippets:trigger-snippet": [
     {
       "modifiers": [
-        "Shift"
+        "Mod"
       ],
-      "key": "Enter"
+      "key": " "
     }
   ]
 }

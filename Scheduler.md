@@ -36,6 +36,9 @@ kanban-plugin: basic
 - [ ] **Cleanup database**<br><br>Remove invalid entries from deleted calendars periodically<br><br>@{2024-03-02}
 - [ ] **Merge events with the same timeframe**<br><br>Display 2 events with the same starting/ending time as one event (optional)<br><br>@{2024-03-07}
 - [ ] **Indicator settings**<br><br>Add settings for calendar event indicators<br><br>@{2024-03-13}
+- [ ] **Auto-export**<br><br>Run export on schedule<br> <br>@{2024-05-31}
+- [ ] **Photo picker opt-out**<br><br>A way to opt out of google's crappy crappy picker (Same as in saucenao)<br><br>@{2024-05-31}
+- [ ] **Group/prompt on event duplicates**<br><br>Warn or group events with the same contents<br><br>@{2024-05-31}
 
 
 ## Fixed bugs

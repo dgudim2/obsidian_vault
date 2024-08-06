@@ -27,6 +27,8 @@
 + Peeky blinders
 + monster trucks
 + Blade runner 2049
++ Другая земля
++ Blade runner (orig)
 
 ## Anime
 + Стальной алхимик 2008

@@ -29,12 +29,6 @@
 + Blade runner 2049
 + Другая земля
 + Blade runner (orig)
-+ Forrest Gump
-+ The Grand Budapest Hotel
-+ Memento
-+ Короткое замыкание
-+ Тринадцатый этаж
-+ Стальной гигант
 
 ## Anime
 + Стальной алхимик 2008
@@ -66,7 +60,8 @@
 + Solo leveling
 + Cowboy bebop
 + Синдуальность: Нуар
-+ https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
++  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
++ My Deer Friend Nokotan
 
 
 # Stuff to read

@@ -29,6 +29,12 @@
 + Blade runner 2049
 + Другая земля
 + Blade runner (orig)
++ Forrest Gump
++ The Grand Budapest Hotel
++ Memento
++ Короткое замыкание
++ Тринадцатый этаж
++ Стальной гигант
 
 ## Anime
 + Стальной алхимик 2008

@@ -68,6 +68,7 @@
 + Синдуальность: Нуар
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
 + My Deer Friend Nokotan
++ delicious in dungeon 
 
 
 # Stuff to read

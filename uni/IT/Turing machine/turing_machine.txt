@@ -1,0 +1,81 @@
+; This program splits the input string into blocks of 4
+; Input: a string of {a, b, c}'s, eg 'aabbacc'
+; Output: split string, eg 'aab baac'
+
+; Machine starts in state 0.
+
+; State 0: Switch to running state
+0 * * r r1          ; Switch to 'move to the right state'
+
+; State r1: Move to the right and check the length (1)
+r1 * * r r2          ; Move to the right one symbol
+r1 _ _ * halt-accept ; Our string is 1 symbol
+
+; State r2: Move to the right and check the length (2)
+r2 * * r r3          ; Move to the right one symbol
+r2 _ _ * halt-accept ; Our string is 2 symbols
+
+; State r3: Move to the right and check the length (3)
+r3 * * r r4          ; Move to the right one symbol
+r3 _ _ * halt-accept ; Our string is 3 symbols
+
+; State r4: Move to the right and check the length (4)
+r4 * * r r5          ; Move to the right one symbol
+r4 _ _ * halt-accept ; Our string is 4 symbols
+
+; State r5: Move to the right, we know that our string is at least 4 symbols long
+r5 * * r r5          ; Move to the right
+r5 _ _ l fs          ; We have reached the end, find the next shift point
+
+
+; State fs: Find the next symbol to shift right from
+fs   * * l fs_1        ; Move to the left, 1st symbol
+fs   _ * l fs_check    ; Move to the left, 1st symbol, we found blank space, check if it's the end
+
+fs_1 * * l fs_2        ; Move to the left, 2nd symbol
+fs_1 _ * l fs_check    ; Move to the left, 2nd symbol, we found blank space, check if it's the end
+
+fs_2 * * l fs_3        ; Move to the left, 3rd symbol
+fs_2 _ * l fs_check    ; Move to the left, 3rd symbol, we found blank space, check if it's the end
+
+fs_3 * * l fs_4        ; Move to the left, 4th symbol
+fs_3 _ * l fs_check    ; Move to the left, 4th symbol, we found blank space, check if it's the end
+
+fs_4 * * r sp          ; 5th non-blank, move back to the 4th symbol, shift to the right from here
+fs_4 _ * l fs_check    ; Move to the left, fifth symbol, we found blank space, check if it's the end
+
+fs_check * * * fs          ; next symbol is not blank, reset counter
+fs_check _ * r halt-accept ; next symbol is blank, we have reached the end, stop
+
+; State sp, shift right
+sp _ _ r sp_blank    ; Shift to the right (blank)
+sp a _ r sp_a        ; Shift to the right (a)
+sp b _ r sp_b        ; Shift to the right (b)
+sp c _ r sp_c        ; Shift to the right (c)
+
+
+; State sp_blank, set current symbol to blank, shift next
+sp_blank     _ _ l fs        ; we have reached the end of the string (2 subsequent blanks), repeat the shifting
+sp_blank     a _ r sp_a      ; shift next symbol (a)
+sp_blank     b _ r sp_b      ; shift next symbol (b)
+sp_blank     c _ r sp_c      ; shift next symbol (c)
+
+; State sp_a, set current symbol to a, shift next
+sp_a     _ a r sp_blank  ; shift next symbol (blank)
+sp_a     a a r sp_a      ; shift next symbol (a)
+sp_a     b a r sp_b      ; shift next symbol (b)
+sp_a     c a r sp_c      ; shift next symbol (c)
+
+; State sp_b, set current symbol to b, shift next
+sp_b     _ b r sp_blank  ; shift next symbol (blank)
+sp_b     a b r sp_a      ; shift next symbol (a)
+sp_b     b b r sp_b      ; shift next symbol (b)
+sp_b     c b r sp_c      ; shift next symbol (c)
+
+; State sp_c, shift c right
+sp_c     _ c r sp_blank  ; shift next symbol (blank)
+sp_c     a c r sp_a      ; shift next symbol (a)
+sp_c     b c r sp_b      ; shift next symbol (b)
+sp_c     c c r sp_c      ; shift next symbol (c)
+
+

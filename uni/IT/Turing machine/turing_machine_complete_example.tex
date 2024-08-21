@@ -1,0 +1,604 @@
+\documentclass[12pt, a4paper, bibliography=totocnumbered]{report}
+\usepackage{amsmath,amscd,amsfonts,amssymb}
+\usepackage{multicol}
+\usepackage{datetime}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{placeins}
+\usepackage{fancybox,framed}
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{oz}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,automata}
+
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={180mm,257mm},
+	left=10mm,
+	top=20mm,
+}
+
+
+\topmargin -1.5 cm
+%\leftmargin 2.0 cm
+%\rightmargin 0.0 cm
+\oddsidemargin -0.5 cm
+\textheight 25cm
+\textwidth 17cm
+
+\everydisplay{\color{blue}}
+\everymath{\color{blue}}
+
+\newcommand{\VS}{\vskip 2in}
+\newcommand{\vs}{\vskip .1in}
+\newcommand{\hs}{\hskip .1in}
+\newcommand{\nin}{\noindent}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Pw}{\mathcal{P}}
+
+
+\newcommand{\leqv}{\leftrightarrow}
+
+\newcommand{\link}[2]{\hyperlink{#1}{\underline{\textcolor{Cerulean}{#2}}}}
+
+\newcommand{\hsp}[1]{\hspace{0.5cm}{(#1)}}
+
+\newcommand{\vsp}{\vspace{-0.25cm}}
+
+\newcommand{\Vs}{\vspace{-0.5cm}}
+
+%\newcommand{\VS}{\vspace{-0.75cm}}
+
+% Horizontalus tarpai padidinti
+%\newcommand{\hs}{\hspace{0.5cm}}
+\newcommand{\Hs}{\hspace{0.75cm}}
+\newcommand{\HS}{\hspace{1.0cm}}
+\newcommand{\HSS}{\hspace{1.5cm}}
+\newcommand{\bc}[1]{\textbf{\uppercase{#1}}}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%------- Kodo atvaizdavimo stilius -------
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    %basicstyle=\ttfamily\footnotesize,
+	basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+%------------------------------------------
+
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+%\setcounter{secnumdepth}{4}
+
+\begin{document}
+\pagestyle{headings}
+
+\begin{titlepage}
+	\begin{center}
+		Vilnius Gediminas Technical University\\
+		\vs
+	Department Department of Informational Technologies \\
+		\vspace*{5cm}
+ 
+		\textbf{\Large Informational Technologies Homework 2}
+		\vs
+		\textbf{\Large  Turing Machine}
+\end{center}
+		\vspace{0.5cm}
+		
+		\flushright{\textbf{Student}: Suirad Sinoilubaz}
+		\flushright{\textbf{Lecturer}: Darius Zabulionis}
+			 
+
+
+ 
+		\vfill
+			 
+					
+		\center{Vilnius 2022}
+
+			 
+ \end{titlepage}
+
+
+
+
+\markboth{}{{\bf Homework 2. Student:} \uline{\hfill Suirad Sinoilubaz \hfill} {\bf group:} \uline{\hfill student from Accenture \hfill}}
+
+%\markboth{}{{\bf Homework 2., Name:} \underline{Jonas Jonaitis {\bf group:} ITfuc-19 }}
+
+%\vspace{-.5cm}
+Module: Informational technologies FMISB18100; Date: \today{}
+\vspace{-.10cm}
+\begin{center}{\bf Vilnius Gediminas Technical University}\\
+	%\THEMONTH~\THEYEAR
+	%\monthname[\THEMONTH]~\THEDAY, \THEYEAR
+	Department of Information Systems\\
+	
+	\large{\bf Assignment of homework 2: Turing machine} 
+	
+\end{center}
+\vsp
+
+%\uline{ \hfill gggg \hfill}
+
+{\bf The main problem}
+\vsp
+\begin{framed}
+	Write the Turing machine program that copies the input string after the comma. That is, the TM program writes a comma at the end of the input string 
+	and makes a copy of the initial input string.\\
+	Examples:
+	\begin{enumerate}
+		\item The input string is "$ aabbaaaccc $"; the output string is "$ aabbaaaccc,aaabbaaaccc $".
+		\item The input string is "$ aaa $"; the output string is "$ aaa , aaa $".
+		\item The initial input string is null string ( the empty string ); the output string is ,.
+		\item The initial input string is $ aabbababcccacacacacbcbccb $; the output string is $ aabbababcccacacacacbcbccb,aabbababcccacacacacbcbccb $ .
+	\end{enumerate}
+	The alphabet of the input string $\Sigma = \{a, b, c\}$, the alphabet of the Turing machine tape $ \Sigma \cup \{\texttt{\char32}\} \cup \{ \_ \} \subset \Gamma $. The empty input string $ \lambda $ is also allowed.
+\end{framed}
+
+{\bf For the main problem formulate and report the following items}
+
+\begin{multicols}{2}
+	\begin{enumerate}[label=(\Roman*)]
+		\item Make the program for the online version of the Turing machine simulator
+		\item Find all terms that comprise the Turing machine theoretical model
+		\begin{enumerate}[label=(\arabic*)]
+			\item The set of the states $ Q $
+			\item The alphabet $\Sigma $ of the input string
+			\item The alphabet $\Gamma$ of the symbols of the Turing machine type
+			\item The initial state $q_0$
+			\item The accept state $q_{acc}$
+			\item The reject state $q_{rej}$
+			\item The Cartesian products: $Q \times \Gamma$ and $ \Gamma \times \{L, R\} \times Q $
+			\item Calculate the cardinality of the sets $ Q \times \Gamma$ and $ \Gamma \times \{L, R\} \times Q $
+			\item make the transition table of the Turing machine
+			\item Find the domain of definition $ D $ of the transition function $ \delta $ of the Turing machine
+			\item Define and represent the transition function $ \delta $ as a set of all ordered pairs from the domain of the definition $Q \times \Gamma$ and the codomain $ \Gamma \times \{L, R\} \times Q$
+		\end{enumerate}
+		\item Draw the transition diagram or the graph of the Turing machine
+	\end{enumerate}
+\end{multicols}
+
+Remarks.
+\par
+The report of the homework must contain: the title page, assignment, abstract page, table of contents, the main text of the homework whose chapters and numbering of the chapters correspond to the above listed items, the list of the references (if literature were used)
+\par
+All calculations, derivations of formulas assumptions etc. must be commented in the text of the report; variables of the formulas must be explained when they are used for the first time in the text; figures and tables must be labelled and numbered in the text of the report.
+
+\newpage
+\markboth{}{}
+\vspace{-15cm}
+\begin{abstract}
+	In the present homework report there are covered:
+	\begin{enumerate}
+		\item Program for the Turing machine computer simulator: \url{http://morphett.info/turing/turing.html}
+		\item Theoretical model of the Turing Machine: $ TM = (Q, \Sigma, \Gamma, \delta, q_{0}, q_{accp}, q_{rej}) $, 
+		where: 
+			\begin{itemize}
+				\item $Q$  is the set of TM states
+				\item $\Sigma$  is the alphabet of the input string of TM
+				\item $\gamma$  is the type symbol set of TM
+				\item $\delta$  is the transition function of TM
+				\item $q_{0}$ is the initial state of TM
+				\item $q_{accp}$ is accept state of TM
+				\item $q_{rej}$  is reject state of TM
+				\end{itemize}
+		\item Also in the present report there are covered all rest items of the enclosed assignment of the homework.
+		\end{enumerate}
+
+	\end{abstract}
+%=====================================================================================
+\newpage
+
+\tableofcontents
+\addcontentsline{toc}{chapter}{Bibliography}
+
+%=====================================================================================
+
+\newpage
+\chapter{Program for the computer simulator of the Turing machine}
+\section[]{Programming realization of the Turing Machine}
+
+The program for the Turing machine simulator \cite{TuringSite} \vspace{-0.25cm}
+{\center \url{http://morphett.info/turing/turing.html} \par}
+\noindent
+is listed below in program Listing~\ref{programListing}.
+The program is also explained in Listing~\ref{programListing}. The explaining comments start with semicolons ";".
+The default initial state in the online simulator of the Turing machine \cite{TuringSite} is $ 0 $, in the present code the initial state is $ s0 $. Therefore, to run the code it is necessary in the simulator site \cite{TuringSite} to set the initial state as $ s0 $ manually.
+
+\lstset{style=mystyle}
+
+%\begin{verbatim}
+	\begin{lstlisting}[language = , caption= Turing machine program] 
+	
+    ; ---------- Description and explanations of the program ----------
+    ; The TM program copies the input string after the comma,
+    ; That is, the TM program writes a comma at the end of the input string
+    ; and makes a copy of the initial input string 
+    ; The initial input string may be composed of any collections
+    ; of the following symbols: a, b or c
+    ; Examples:
+    ; (1) The initial input string is aabbaaaccc, 
+    ;     the result is aabbaaaccc,aaabbaaaccc
+    ; (2) The initial input string is aaa; the result is aaa,aaa.
+    ; (3) The initial input string is null string (the empty string);
+    ;     the result is ,.
+    ; (4) The initial input string is aabbababcccacacacacbcbccb;
+    ;     the result is aabbababcccacacacacbcbccb,aabbababcccacacacacbcbccb.
+    ; ------------- Beginning of the program code -------------
+    ; go to the end of the input line
+    s0  a  a  R  s0
+    s0  b  b  R  s0
+    s0  c  c  R  s0
+    s0  _  #  R  s1
+    ; Go to the end of the copied part of the string
+    s1  a  a  R  s1
+    s1  b  b  R  s1
+    s1  c  c  R  s1
+    s1  _  _  L  s2 ; That is end of the copied string
+    ; Got to the beginning of the input string
+    s2  a  a  L  s2
+    s2  b  b  L  s2
+    s2  c  c  L  s2
+    s2  #  #  L  s2
+    s2  1  1  R  s3 
+    s2  2  2  R  s3 
+    s2  3  3  R  s3 
+    s2  _  _  R  s3 
+    ; Copying of the input string
+    s3  a  1  R  sa ; a is changed into 1
+    s3  b  2  R  sb ; b is changed into 2
+    s3  c  3  R  sc ; c is changed into 3
+    s3  #  ,  L  st ; # is changed into comma ,
+    ;-----------------------------------------------------
+    ; Go to the end of the copied string and copy letter a
+    sa  a  a  R  sa
+    sa  b  b  R  sa
+    sa  c  c  R  sa
+    sa  #  #  R  sa
+    sa  _  a  L  s2  ; letter a is copied
+    ;-----------------------------------------------------
+    ; Go to the end of the copied string and copy letter b
+    sb  a  a  R  sb
+    sb  b  b  R  sb
+    sb  c  c  R  sb
+    sb  #  #  R  sb
+    sb  _  b  L  s2  ; letter b is copied
+    ;-----------------------------------------------------
+    ; Go to the end of the copied string and copy letter c
+    sc  a  a  R  sc
+    sc  b  b  R  sc
+    sc  c  c  R  sc
+    sc  #  #  R  sc
+    sc  _  c  L  s2  ; letter c is coppied
+    ;-----------------------------------------------------
+    ; Go to the end of the copied string and copy letter c
+    st  1  a  L  st
+    st  2  b  L  st
+    st  3  c  L  st
+    st  _  _  R  halt
+
+\end{lstlisting} \label{programListing}
+
+% \end{verbatim}
+
+\chapter{Theoretical modelling of the Turing machine}
+
+
+\section[]{Turing machine theoretical model as an ordered set}
+
+Turing Machine can be represented as an ordered set: $ TM = (Q, \Sigma, \Gamma, \delta, q_{0}, q_{accp}, q_{rej}) $, consisting of: 
+			\begin{itemize}
+				\item $Q$  is the set of TM states
+				\item $\Sigma$  is the alphabet of the input string of TM
+				\item $\gamma$  is the type symbol set of TM
+				\item $\delta$  is the transition function of TM
+				\item $q_{0}$ is the initial state of TM
+				\item $q_{accp}$ is accept state of TM
+				\item $q_{rej}$  is reject state of TM
+				\end{itemize}
+
+
+	\subsection{The set of the states $Q$ of TM}
+	This set contains all states of the TM program listed in Listing \ref{programListing}.
+		\begin{equation}\label{eq:Q}
+			Q = \{s0, s1, s2, s3, sa, sb, sc, st\}
+		\end{equation}
+	% 
+	\subsection{The alphabet $ \Sigma $ of the input string of TM}
+		The alphabet $ \Sigma $ is a set containing all symbols that can be used to make the input strings of the given TM program, see Listing \ref{programListing}. These permitted symbols are pointed out in the assignment of Homework 2. For the present Homework 2 the alphabet is as follows:
+		\begin{equation}
+			\Sigma = \{a, b, c\}
+		\end{equation}
+% 
+	\subsection{The set of the tape symbols $ \Gamma $ of TM}
+	The set of the TM tape symbols contains all symbols that can be used on the TM tape. At least, the TM tape can contain $ \Sigma $ and blank space $ \_ $. Therefore, at least $ \Gamma $ is superset of $ \Sigma \cup \{\_\} $, i.e. $ \Gamma \supset (\Sigma \cup \{\_\}) $.
+		\begin{equation} \label{eq:Gamma}
+			\Gamma = \{ a, b, c \} \cup \{1, 2, 3, \#, \_ \} = \{a, b, c, 1, 2, 3, \#, \_ \}
+		\end{equation}
+	
+	\subsection{Domain of definition $ D_{\delta} $ of the transition function $ \delta $ of TM}
+	In the present work the domain of definition is a set denoted by $ D_{\delta} $. This set contains ordered pairs $ (s, r) $ where  their components $ s $ and $ r $ are state and read symbol (by TM head) respectively. This set $ D_{\delta} $ is made of two first columns of the TM program listed in Listing \ref{programListing}. The essential feature of the domain of definition $ D_{\delta} $ is that all ordered pairs, or vectors, must be utilized in the prepared TM program listed in Listing \ref{programListing}.
+	\begin{equation}
+	\begin{aligned}
+	\label{eq:domain}
+		D_{\delta} = \{ & (s0, a), (s0, b), (s0, c), (s0, \_), (s1, a), (s1, b), (s1, c), (s1, \_), (s2, a), (s2, b), \\
+		       & (s2, c), (s2, \#), (s2, 1), (s2, 2), (s2, 3), (s2, \_), (s3, a), (s3, b), (s3, c), (s3, \#),   \\
+		       & (sa, a), (sa, b), (sa, c), (sa, \#), (sa, \_), (sb, a), (sb, b), (sb, c), (sb, \#), (sb, \_),  \\
+		       & (sc, a), (sc, b), (sc, c), (sc, \#), (sc, \_), (st, 1), (st, 2), (st, 3), (st, \_) \}
+	\end{aligned}
+	\end{equation}
+
+	\subsection{Range $ R_{\delta} $ of the transition function $ \delta $ of TM}
+	In the present work, the range of the transition function $ \delta $, see Eq. \ref{eq:delta}, is a set denoted by $ R_{\delta} $. This set contains ordered triples $ (w, d, z) \in R_{\delta} $ attained by the Transition function $ \delta $. The components of $ (w, d, z) $ are following: $ w \in \Gamma $ is symbol that can be written on TM tape; $ d \in \{L, R\} $ is direction; and $ z \in Q $ is a state that.
+	The range, it is also a set, $ R_{\delta} $ is composed of the terms of three last columns of the TM program listed in Listing \ref{programListing}. The essential feature of the range $ R_{\delta} $ is that all ordered triples $ (w, d, z) $, or vectors in the other words, must be utilized in the prepared TM program listed in Listing \ref{programListing}.
+	\begin{equation}
+	\label{eq:range}
+	\begin{aligned}
+	R_{\delta} = \{ & (a, R, s0), (b, R, s0), (c, R, s0), (\#, R, s1), (a, R, s1), (b, R, s1), (c, R, s1), (\_, L, s2), \\
+		   & (a, L, s2), (b, L, s2), (c, L, s2), (\#, L, s2), (1, R, s3), (2, R, s3), (3, R, s3), (\_, R, s3), \\
+		   & (1, R, sa), (2, R, sb), (3, R, sc), (,, L, st), (a, R, sa), (b, R, sa), (c, R, sa), (\#, R, sa),  \\
+		   & (a, L, s2), (a, R, sb), (b, R, sb), (c, R, sb), (\#, R, sb), (b, L, s2), (a, R, sc), (b, R, sc),  \\
+		   & (c, R, sc), (\#, R, sc), (c, L, s2), (a, L, st), (b, L, st), (c, L, st), (\_, R, halt) \}
+	\end{aligned}
+	\end{equation}
+	
+	
+	\subsection{Transition function $ \delta $ of TM}
+	\paragraph{Some explanations.} The transition function $ \delta $ maps the set $ D_{\delta} $, i.e. the domain of the definition, to set $ R_{\delta} $, i.e. the range. Usually it is written as $ \delta: D_{\delta} \to R_{\delta} $.  It should be noticed that according to the definition of the function in mathematics the function $ \delta $ must be defined over the entire set $ D_{\delta} $, i.e. the domain of the definition, also the transition function $ \delta $ must attain every element from the range $ R_{\delta} $. In mathematics a function also can be denoted as a map from the domain of definition $ D_{\delta} $ to so called codomain, denoted hereafter by $ C_{\delta} $, as follows: $ f: D_{\delta} \to C_{\delta} $, where codomain $ C_{\delta} $ is superset of the domain of definition $ D_{\delta}: $ $ D_{\delta} \subseteqq C_{\delta} $.
+	
+	The transition function $ \delta $ defined here as a set, see Eq. \ref{eq:delta}, consists of ordered pairs $ (a , b) $, where $ a \in D_{\delta} $ and $ b \in R_{\delta}  $ is also made on the basis of the prepared TM program listed in Listing \ref{programListing}. The essential feature of the transition function $ \delta $ is that all ordered pairs  or vectors $ (a , b) $, where $ a \in D_{\delta} $ and $ b \in R_{\delta}  $ must be utilized in the prepared TM program listed in Listing \ref{programListing}.
+	
+	\begin{equation} \label{eq:delta}
+	\begin{aligned}
+	\delta = \{&((s0, a), (a, R, s0)), ((s0, b), (b, R, s0)), ((s0, c), (c, R, s0)), ((s0, \_), (\#, R, s1)), \\
+		       &((s1, a), (a, R, s1)), ((s1, b), (b, R, s1)), ((s1, c), (c, R, s1)), ((s1, \_), (\_, L, s2)), \\
+		       &((s2, a), (a, L, s2)), ((s2, b), (b, L, s2)), ((s2, c), (c, L, s2)), ((s2, \#), (\#, L, s2)),  \\
+		       &((s2, 1), (1, R, s3)), ((s2, 2), (2, R, s3)), ((s2, 3), (3, R, s3)), ((s2, \_), (\_, R, s3)),  \\
+		       &((s3, a), (1, R, sa)), ((s3, b), (2, R, sb)), ((s3, c), (3, R, sc)), ((s3, \#), (,, L, st)),   \\
+		       &((sa, a), (a, R, sa)), ((sa, b), (b, R, sa)), ((sa, c), (c, R, sa)), ((sa, \#), (\#, R, sa)),  \\
+		       &((sa, \_),(a, L, s2)), ((sb, a), (a, R, sb)), ((sb, b), (b, R, sb)), ((sb, c), (c, R, sb)),   \\
+		       &((sb, \#),(\#, R, sb)),((sb, \_), (b, L, s2)), ((sc, a), (a, R, sc)), ((sc, b), (b, R, sc)), \\
+		       &((sc, c), (c, R, sc)), ((sc, \#), (\#, R, sc)), ((sc, \_), (c, L, s2)), ((st, 1), (a, L, st)), \\
+		       &((st, 2), (b, L, st)), ((st, 3), (c, L, st)), ((st, \_), (\_, R, halt))\}
+	\end{aligned}
+	\end{equation}
+	\paragraph{Remark.} As we can see from Eq. \eqref{eq:delta}, Turing machine, or one tape non-deterministic Turing machine, can be treated as \emph{a vector variable vector valued function} $ \delta $
+	\begin{equation}\label{key}
+		\delta = \{((s, r), \delta(s, r)) : (s, r) \in D_{\delta} \} 
+	\end{equation}
+	where $ (s, r) $ is vector variable, and their components $ s $ and $ r $ are state and read symbol respectively. Thus, we can write that $ (w, d, z) = \delta(s, r) $ where $ (w, d, z) \in R_{\delta} $ is vector value attained by $ \delta $, whose components   $ w $, $ d \in \{L, R\} $, $ z $ are as follows:
+	\begin{itemize}
+		\item $ w $ is  written symbol on TM tape
+		\item $ d $ is direction
+		\item $ z $ new state
+	\end{itemize}
+	Thus the first term of Eq. \eqref{eq:delta}, is $ ((s0, a), (a, R, s0)) $ therefore, $ (a, R, s0) =\delta(s0, a) $.
+	
+	\subsection{The initial, accept and reject states of TM}
+	{The initial state, denoted by $ q_0 $, see Eq. \eqref{eq:q0}, is the state with which the TM starts to execute the program listed in Listing \ref{programListing}. In general, not necessarily $ q_0 $ is located at the beginning of the executing lines of the program text as it is shown in line $ 18 $ of Listing \ref{programListing}. That is, actually, the executing lines containing the initial state $ q_0 $ can be placed in any position of the TM program.
+	\begin{equation} \label{eq:q0}
+		q0 = s0
+	\end{equation}
+	
+	The accept state $ q_{accp} $ and reject state $ q_{rej} $ are states used to show if the input string is accepted, i.e. an input string meets the requirements, or the input string is rejected, i.e. an input string does not meet the requirements. That is, $ q_{accp} $ and $ q_{rej} $ are used to make the decision. However, if the TM program makes no decision but modifies the input string or does another functions, e.g. counts symbols, then usually, the accept state $ q_{accp} $ presents allays while the reject state $ q_{rej} $ can be omitted in the TM program code, see Listing \ref{programListing}. The absent state can be specified by using so called null or empty string $ \lambda $.
+	
+	\noindent {The accept state:}
+	\begin{equation}
+		q_{accp} = halt
+	\end{equation}
+	%
+	{The reject state:}
+	\begin{equation}\label{eq:q_rej}
+			q_{rej} = \lambda
+	\end{equation}
+	where $\lambda$ is null string.
+	
+
+	\section{The Cartesian products: $Q \times \Gamma$ and $ \Gamma \times \{L, R\} \times Q $}
+	
+	The Cartesian product of $Q \times \Gamma = \{(a,b) : a \in Q \text{~and~} b \in \Gamma \}$ is as follows:
+		\begin{equation}\label{eq:Q_times_Gamma}
+		\begin{aligned}
+		Q \times \Gamma = \{ & (s0,a),(s0,b),(s0,c),(s0,1),(s0,2),(s0,3),(s0,\#),(s0,\_),(s1,a),(s1,b),       \\
+		                     & (s1,c),(s1,1),(s1,2), (s1,3),(s1,\#),(s1,\_),(s2,a),(s2,b),(s2,c),(s2,1),      \\
+		                     & (s2,2),(s2,3),(s2,\#),(s2,\_),(s3,a),(s3,b), (s3,c),(s3,1),(s3,2),(s3,3),      \\
+		                     & (s3,\#),(s3,\_),(sa,a),(sa,b),(sa,c),(sa,1),(sa,2),(sa,3),(sa,\#), (sa,\_),    \\
+		                     & (sb,a),(sb,b),(sb,c),(sb,1),(sb,2),(sb,3),(sb,\#),(sb,\_),(sc,a),(sc,b),       \\
+		                     & (sc,c),(sc,1),(sc,2), (sc,3),(sc,\#),(sc,\_),(st,a),(st,b),(st,c),(st,1),      \\
+		                     & (st,2),(st,3),(st,\#),(st,\_) \}
+		\end{aligned}
+		\end{equation}
+		
+	The Cartesian product of $ \Gamma \times \{L,R\} \times Q = \{(a,b,c) : a \in \Gamma \text{~and~} b \in \{L,R\} \text{~and~} c \in Q \}$ is as follows:
+		%
+		\begin{equation}\label{eq:Q_times_Gamma_times_LR}
+		\begin{aligned}
+		& \Gamma \times \{L,R\} \times Q = \\
+		= \{    & (a, L, s0),(b, L, s0),(c, L, s0),(1, L, s0),(2, L, s0),(3, L, s0),(\#, L, s0),(\_, L, s0), \\
+		& (a, L, s1),(b, L, s1),(c, L, s1),(1, L, s1),(2, L, s1),(3, L, s1),(\#, L, s1),(\_, L, s1), \\
+		& (a, L, s2),(b, L, s2),(c, L, s2),(1, L, s2),(2, L, s2),(3, L, s2),(\#, L, s2),(\_, L, s2), \\
+		& (a, L, s3),(b, L, s3),(c, L, s3),(1, L, s3),(2, L, s3),(3, L, s3),(\#, L, s3),(\_, L, s3), \\
+		& (a, L, sa),(b, L, sa),(c, L, sa),(1, L, sa),(2, L, sa),(3, L, sa),(\#, L, sa),(\_, L, sa), \\
+		& (a, L, sb),(b, L, sb),(c, L, sb),(1, L, sb),(2, L, sb),(3, L, sb),(\#, L, sb),(\_, L, sb), \\
+		& (a, L, sc),(b, L, sc),(c, L, sc),(1, L, sc),(2, L, sc),(3, L, sc),(\#, L, sc),(\_, L, sc), \\
+		& (a, L, st),(b, L, st),(c, L, st),(1, L, st),(2, L, st),(3, L, st),(\#, L, st),(\_, L, st), \\
+		& (a, R, s0),(b, R, s0),(c, R, s0),(1, R, s0),(2, R, s0),(3, R, s0),(\#, R, s0),(\_, R, s0), \\
+		& (a, R, s1),(b, R, s1),(c, R, s1),(1, R, s1),(2, R, s1),(3, R, s1),(\#, R, s1),(\_, R, s1), \\
+		& (a, R, s2),(b, R, s2),(c, R, s2),(1, R, s2),(2, R, s2),(3, R, s2),(\#, R, s2),(\_, R, s2), \\
+		& (a, R, s3),(b, R, s3),(c, R, s3),(1, R, s3),(2, R, s3),(3, R, s3),(\#, R, s3),(\_, R, s3), \\
+		& (a, R, sa),(b, R, sa),(c, R, sa),(1, R, sa),(2, R, sa),(3, R, sa),(\#, R, sa),(\_, R, sa), \\
+		& (a, R, sb),(b, R, sb),(c, R, sb),(1, R, sb),(2, R, sb),(3, R, sb),(\#, R, sb),(\_, R, sb), \\
+		& (a, R, sc),(b, R, sc),(c, R, sc),(1, R, sc),(2, R, sc),(3, R, sc),(\#, R, sc),(\_, R, sc), \\
+		& (a, R, st),(b, R, st),(c, R, st),(1, R, st),(2, R, st),(3, R, st),(\#, R, st),(\_, R, st) \}      \\
+		\end{aligned}
+		\end{equation}
+		
+		\paragraph{Remarks.}{
+		
+		By comparing Eqs. (\ref{eq:domain}) and (\ref{eq:Q_times_Gamma}) we can see that the domain of the definition $ D_{\delta} $ of the transition function $ \delta $, see Eq. (\ref{eq:delta}), is proper subset of the Cartesian product $ Q \times \Gamma $, i.e. $ D_{\delta} \subsetneqq Q \times \Gamma $, the proper subset since $ (s0, \#)  \in  Q \times \Gamma $ however, $ (s0, \#)  \notin  D_{\delta} $.
+		
+		Also, by comparing Eqs. (\ref{eq:range}) and (\ref{eq:Q_times_Gamma_times_LR}) we can see that the range $ R_{\delta} $ of the transition function $ \delta $, see Eq. (\ref{eq:delta}), is a proper subset of the Cartesian product $ \Gamma \times \{L,R\} \times Q$ , i.e. $ R_{\delta} \subsetneqq \Gamma \times \{L,R\} \times Q $. Therefore, according to the generally accepted notion of the function, the Cartesian product $ \Gamma \times \{L,R\} \times Q $ is also \emph{codomain} of the transition function $ \delta $
+		
+		Since the Cartesian product $ \Gamma \times \{L,R\} \times Q $ is the superset of the range $ R_{\delta} $, then the transition function $ \delta $ can be defined also as follows: $ \delta: D_{\delta} \to \Gamma \times \{L,R\} \times Q $. It should be noticed that both notations $ \delta: D_{\delta} \to R_{\delta} $ and $ \delta: D_{\delta} \to \Gamma \times \{L,R\} \times Q $ denotes the same transition function $ \delta $ since the domain of definition is the same $ D_{\delta} $ and the range $ R_{\delta} $ is subset of the codomain: $ R_{\delta} \subsetneqq \Gamma \times \{L,R\} \times Q $.
+		
+		In mathematics and especially in the Computer Science there is so called \emph{partial function}. The \emph{partial function} is a mapping $ f : A \pfun B $ which assigns to every element of set $ A $ at most one element of set $ B $. Where "at most" means that if $ x \in A $ then $ f(x) \in B $ may exist and if $ f(x) $ exists then it is unique. That is, if $ y_1 = f(x), x \in A $ and $ y_2 = f(x), x \in A $ then $ y_1 = y_2, y_1, y_2 \in B $. However, if $ f $ is a partial function, then $ f(x), x \in A $ may be undefined, or in other words $ f(x), x  \in A $ may do not exist. This feature is prohibited for the usual functions (according to the agreement on the notion of function in mathematics). O course, the case that the partial function $ f $ is defined on the entire $ A $ is possible. Therefore, any usual function is the partial function too.
+		
+		Thus, finally, by using the obtained Cartesian product $ \Gamma \times \{L,R\} \times Q $ we can also define the partial transition function, denoted hereafter by $ \delta_p $, as follows:
+		\begin{equation}\label{key}
+			\delta_p : Q \times \Gamma \pfun \Gamma \times \{L,R\} \times Q
+		\end{equation}
+		}
+		
+	\section{Cardinality of the sets $ Q \times \Gamma$ and $ \Gamma \times \{L, R\} \times Q $}
+	In the present Homework 2 the cardinality of set $ Q \times \Gamma $, is denoted as $ |Q \times \Gamma| $. The cardinality of the set $ Q \times \Gamma $ is number of elements of $ Q \times \Gamma $ that can be calculated as $ |Q \times \Gamma| = |Q| \cdot |\Gamma| $. Therefore for the TM program listed in Listing \ref{programListing} 
+	%
+	\begin{equation}\label{eq:cardinality2}
+		|Q \times \Gamma| = |Q| \cdot |\Gamma| = 8 \cdot 8 = 64
+	\end{equation}
+	%
+	where $ |Q| = 8 $ and $ |\Gamma| = 8 $, can be easily counted from Eqs. \eqref{eq:Q} and \eqref{eq:Gamma}.
+	
+	Also, the cardinality $ |Q \times \Gamma| $ can be counted directly by using Eq. \eqref{eq:Q_times_Gamma}. However, it is easier to evaluate $ {|Q \times \Gamma| = {|Q|}\cdot|\Gamma|}$ than count directly $ |Q \times \Gamma| $ from Eq. \eqref{eq:Q_times_Gamma}. And this  advantage is even more evident for the cardinality of $ |\Gamma \times \{L, R\} \times Q| $, see Eq. \eqref{eq:cardinality2}
+	%
+	\begin{equation}\label{eq:cardinality2}
+		|\Gamma \times \{L, R\} \times Q| = |\Gamma| \cdot |\{L, R\}| \cdot |Q| = 8 \cdot 2 \cdot 8 = 128
+	\end{equation}
+	%
+	Also, the cardinality $ |\Gamma \times \{L, R\} \times Q| $ can be counted directly by using Eq. \eqref{eq:Q_times_Gamma_times_LR}. 
+	
+	\newpage
+	\section{The transition table of the Turing machine}
+	The transition table of the TM program is given in Table \ref{table:transitionTable}. In first column of Table \ref{table:transitionTable} there are listed states from set $ Q $, while in the second row there are listed TM tape symbols from set $ \Gamma $.
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{graphicx}
+\begin{table}[h]
+	\caption{Transition table of the Turing machine program given in Listing \ref{programListing}} \label{table:transitionTable}
+	\centering
+	\resizebox{\textwidth}{!}{%
+		\begin{tabular}{@{~}l@{~~~}llllllll@{}}
+			\toprule
+			 & \multicolumn{8}{c}{Tape symbols (elements of set $ \Gamma $)}                                                                          \\ \midrule
+			$ Q $ states & ~~~~a    & ~~~~b        & ~~~~c        & ~~~~1        &~~~~~2      &~~~~~3      &~~~~~\#     &~~~~~\_        \\ \midrule
+			$ s0 $     & $(a, R, s0)$ & $(b, R, s0)$ & $(c, R, s0)$ &            &            &            &             & $(\#, R, s1)$   \\
+			$ s1 $     & $(a, R, s1)$ & $(b, R, s1)$ & $(c, R, s1)$ &            &            &            &             & $(\_, L, s2)$   \\
+			$ s2 $     & $(a, L, s2)$ & $(b, L, s2)$ & $(c, L, s2)$ &$(1, R,s3)$ &$(2, R, s3)$&$(3, R, s3)$&$(\#, L, s2)$& $(\_, R, s3)$   \\
+			$ s3 $     & $(1, R, sa)$ & $(2, R, sb)$ & $(3, R, sc)$ &            &            &            & $(,, L, st) $ &               \\
+			\hline
+			$ sa $     & $(a, R, sa)$ & $(b, R, sa)$ & $(c, R, sa)$ &            &            &            & $(\#, R, sa)$ & $(a, L, s2)$   \\
+			$ sb $     & $(a, R, sb)$ & $(b, R, sb)$ & $(c, R, sb)$ &            &            &            & $(\#, R, sb)$ & $(b, L, s2)$   \\
+			$ sc $     & $(a, R, sc)$ & $(b, R, sc)$ & $(c, R, sc)$ &            &            &            & $(\#, R, sc)$ & $(c, L, s2)$   \\
+			$ st $     &              &              &              & $(a,L,st)$ & $(b,L,st)$ & $(c,L,st)$ &               & $(\_,R,halt)$ \\ \bottomrule
+		\end{tabular}%
+	}
+\end{table}
+
+\section{Transition diagram of the TM program}
+	The transition diagram of the TM program is given in Fig. \ref{transitionDiagram}. The diagram is made by using the TM program code given in Listing \ref{programListing} and by using the transition table given in Table \ref{table:transitionTable}. From the diagram, we can see the connections of the states, also what operations are done by transiting from one state to another.
+	
+	It should be noted, that al three approaches: the transition function $ \delta $, Eq. \eqref{eq:delta}, the transition table, Table \ref{table:transitionTable}, and the transition diagram, Fig. \ref{transitionDiagram}, define the same TM program given in Listing \ref{programListing}. However, there are more approaches how to describe or define TM. Transition function may be thought of as the simplest and clearest approach to define TM. However, the transition function is not suitable when the non-deterministic TM is designed. Transition table is not a strict approach to define TM since there can be made different Transition tables for the same TM. The most general approach is the transition diagram that is suitable for very sophisticated TM's: multi tape nondeterministic TM. Finally, it should be noticed that the transition table of Fig. \ref{transitionDiagram} is made by Latex package TikZ \cite{TikzAndPgf}.
+
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}[>=stealth',shorten >=1pt,auto,node distance = 4.2cm]
+	
+	\node[initial,state,accepting] (s0)      {$s0$};
+	\node[state]         (s1) [right of=s0]  {$s_1$};
+	\node[state]         (s2) [below of=s1]  {$s_2$};
+	\node[state]         (s3) [below of=s2]  {$s_3$};
+	\node[state]         (sa) [right of=s3]  {$s_a$};
+	\node[state]         (sb) [left of=s3]  {$s_b$};
+	\node[state]         (sc) [left of=sb]  {$s_c$};
+	\node[state]         (st) [below of=s3]  {$s_t$};
+	\node[state,accepting] (halt) [below of=st]     {$halt$};
+	
+	\path[->]
+	
+	(s0) edge              node { $ \_  \to  \#, R$ } (s1)
+	(s0) edge [loop above]  node[text width=2cm] { $ a \to a, R $ $ b \to b, R $ $ c \to c, R $ } ()
+	
+	(s1) edge              node { $ \_  \to  \_, L$ } (s2)
+	(s1) edge [loop above]  node[text width=2cm] { $ a \to a, R $ $ b \to b, R $ $ c \to c, R $ } ()
+	
+	(s2) edge  node[text width=2cm] { $ \_ \to \_, R$ $ 1 \to 1, R$ $2 \to 2, R$ $3 \to 3, R$ } (s3)
+	(s2) edge [in=110,out=160, loop, above left ]  node[text width=2cm] { $ a \to a, L $ $ b \to b, L $ $ c \to c, L $ $ \# \to \#, L $ } ()
+	
+	(s3) edge                   node { $ a  \to  1, R$ } (sa)
+	(s3) edge                   node { $ b  \to  2, R$ } (sb)
+	(s3) edge [bend left  = 80] node { $ c  \to  3, R$ } (sc)
+	(s3) edge                   node { $ \#  \to , ,L$ } (st)
+	
+	(sa) edge [bend right  = 40, above right] node { $ \_  \to  a, R$ } (s2)
+	(sa) edge [loop right]  node[text width=2cm] { $ a \to a, R $ $ b \to b, R $ $ c \to c, R $ $ \# \to \#, R $ } ()
+	
+	(sb) edge              node { $ \_  \to  b, R$ } (s2)
+	(sb) edge [in=180,out=220, loop, below ]  node[text width=2cm] { $ a \to a, R $ $ b \to b, R $ $ c \to c, R $ $ \# \to \#, R $ } ()
+	
+	
+	(sc) edge [bend left  = 30] node { $ \_  \to  c, R$ } (s2)
+	(sc) edge [in=70,out=110, loop]  node[text width=2cm] { $ a \to a, R $ $ b \to b, R $ $ c \to c, R $ $ \# \to \#, R $ } ()
+	
+	(st) edge              node { $ \_  \to  \_, R$ } (halt)
+	(st) edge [loop right]  node[text width=2cm] { $ 1 \to a, L $ $ 2 \to b, L $ $ 3 \to c, L $ } ()
+	;
+	\end{tikzpicture}
+	\caption{Transition diagram of the TM program given in Listing \ref{programListing}} \label{transitionDiagram}
+\end{figure}
+
+
+
+\newpage
+
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{Bibliography}
+	\begin{thebibliography}{1}
+
+		
+		\bibitem{TuringSite} Turing machine simulator: \url{http://morphett.info/turing/turing.html}.
+		%\bibitem{}Sharma H., Dominic P., and Christine H. L., Stabilization of Methanol-Bases Suspensions, \emph{J. K. Ceram. Soc.}, 89, (2005) 450-485.
+		
+		\bibitem{TikzAndPgf} Till Tantaul. TikZ and pgf. Manual for version 1.18, 2007, 405 p.:\\ \url{https://www.bu.edu/math/files/2013/08/tikzpgfmanual.pdf}; \\
+		\url{https://sourceforge.net/projects/pgf/}.
+		
+		
+		
+	\end{thebibliography}
+\end{document}
+	

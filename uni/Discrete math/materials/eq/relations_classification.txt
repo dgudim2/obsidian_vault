@@ -1,0 +1,15 @@
+- Tolerance relations
+    - reflexive
+    - symmetric
+
+- Equivalence relation
+    - reflexive
+    - transitive
+    - symmetric
+
+- Order relation
+    - antisymmetric
+    - transitive
+    - if reflexive => non-strict
+    - if antireflexive => strict
+    - if complete => complete else partial

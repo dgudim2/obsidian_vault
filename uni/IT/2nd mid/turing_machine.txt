@@ -1,0 +1,199 @@
+p1 p p R p2          ; 1 p
+p1 r r R r2          ; no p's
+p1 * * * halt-reject ; reject any other symbol and empty string
+
+p2 p p R p3
+p2 r r R r2
+p2 * * * halt-reject ; either s or any other symbol
+
+p3 p p * halt-reject ; too many p's
+p3 r r R r2
+p3 * * * halt-reject ; either s or any other symbol
+
+r2 r r R r3
+r2 * * * halt-reject ; not enought r's
+
+r3 r r R s1
+r3 s s R s2
+r3 * * * halt-reject ; no s's
+
+s1 s s R s2
+s1 * * R halt-reject ; not an s after 3 r's
+
+s2 s s R s3
+s2 * * * halt-reject ; can't have any symbols after s
+s2 _ _ L check_len1 ; 1 s
+
+s3 * * * halt-reject ; too many s's
+s3 _ _ L check_len1 ; 2 s
+
+
+check_len1 * * L check_len2
+check_len2 * * L check_len3
+check_len3 * * L check_len4
+
+check_len4 * * L check_len5
+check_len4 _ _ * halt-reject ; 3 symbols, too short
+
+check_len5 * * L check_len6
+check_len5 _ _ * halt-reject ; 4 symbols, too short
+
+check_len6 * * L check_len7
+check_len6 _ _ * halt-reject ; 5 symbols, too short
+
+check_len7 * * L check_len8
+check_len7 _ _ * halt-accept ; 7th symbol is a space, length is 6, accept
+
+check_len8 * * L halt-reject ; 8th symbol is not a space, length is bigger than 7, reject
+check_len8 _ _ * halt-accept ; 8th symbol is a space, length is 7, accept
+
+
+
+
+
+; THEORETICAL MODEL
+
+; Q = { p1, p2, p3, r2, r3, s1, s2, s3, check_len1, check_len2, check_len3, check_len4,
+; check_len5, check_len6, check_len7, check_len8, halt-accept, halt-reject }
+
+; alphabet of the input string = {p, r, s}
+; set of tape symbols = at least {p, r, s, _}
+; initial state q0 = p1
+; accept state qacc = halt-accept
+; reject state qrej = halt-reject
+
+; domain of the definition =
+; (p1, p), (p1, r), (p1, s), (p1, _), (p2, p), (p2, r), (p2, s), (p2, _), (p3, p),
+; (p3, r), (p3, s), (p3, _), (r2, r), (r2, p), (r2, s), (r2, _), (r3, r), (r3, s),
+; (r3, p), (r3, _), (s1, s), (s1, p), (s1, r), (s1, _), (s2, s), (s2, p), (s2, r),
+; (s2, _), (s3, p), (s3, r), (s3, s), (s3, _), (check_len1, p), (check_len1, r),
+; (check_len1, s), (check_len1, _), (check_len2, p), (check_len2, r), (check_len2, s),
+; (check_len2, _), (check_len3, p), (check_len3, r), (check_len3, s), (check_len3, _),
+; (check_len4, p), (check_len4, r), (check_len4, s), (check_len4, _), (check_len5, p),
+; (check_len5, r), (check_len5, s), (check_len5, _), (check_len6, p), (check_len6, r),
+; (check_len6, s), (check_len6, _), (check_len7, p), (check_len7, r), (check_len7, s),
+; (check_len7, _), (check_len8, p), (check_len8, r), (check_len8, s), (check_len8, _)
+
+
+
+
+; range of the turing machine =
+; (p, R, p2), (r, R, r2), (s, *, halt-reject), (_, *, halt-reject), (p, R, p3),
+; (r, R, r2), (s, *, halt-reject), (_, *, halt-reject), (p, *, halt-reject),
+; (r, R, r2), (s, *, halt-reject), (_, *, halt-reject), (r, R, r3), (p, *, halt-reject),
+; (s, *, halt-reject), (_, *, halt-reject), (r, R, s1), (s, R, s2), (p, *, halt-reject),
+; (_, *, halt-reject), (s, R, s2), (p, R, halt-reject), (r, R, halt-reject),
+; (_, R, halt-reject), (s, R, s3), (p, *, halt-reject), (r, *, halt-reject),
+; (_, L, check_len1), (p, *, halt-reject), (r, *, halt-reject), (s, *, halt-reject),
+; (_, L, check_len1), (p, L, check_len2), (r, L, check_len2), (s, L, check_len2),
+; (_, L, check_len2), (p, L, check_len3), (r, L, check_len3), (s, L, check_len3),
+; (_, L, check_len3), (p, L, check_len4), (r, L, check_len4), (s, L, check_len4),
+; (_, L, check_len4), (p, L, check_len5), (r, L, check_len5), (s, L, check_len5),
+; (_, *, halt-reject), (p, L, check_len6), (r, L, check_len6), (s, L, check_len6),
+; (_, *, halt-reject), (p, L, check_len7), (r, L, check_len7), (s, L, check_len7),
+; (_, *, halt-reject), (p, L, check_len8), (r, L, check_len8), (s, L, check_len8),
+; (_, *, halt-accept), (p, L, halt-reject), (r, L, halt-reject), (s, L, halt-reject),
+; (_, *, halt-accept)
+
+
+
+
+; transition function =
+; ((p1, p), (p, R, p2)), ((p1, r), (r, R, r2)), ((p1, s), (s, *, halt-reject)),
+; ((p1, _), (_, *, halt-reject)), ((p2, p), (p, R, p3)), ((p2, r), (r, R, r2)),
+; ((p2, s), (s, *, halt-reject)), ((p2, _), (_, *, halt-reject)), ((p3, p), (p, *, halt-reject)),
+; ((p3, r), (r, R, r2)), ((p3, s), (s, *, halt-reject)), ((p3, _), (_, *, halt-reject)),
+; ((r2, r), (r, R, r3)), ((r2, p), (p, *, halt-reject)), ((r2, s), (s, *, halt-reject)),
+; ((r2, _), (_, *, halt-reject)), ((r3, r), (r, R, s1)), ((r3, s), (s, R, s2)),
+; ((r3, p), (p, *, halt-reject)), ((r3, _), (_, *, halt-reject)), ((s1, s), (s, R, s2)),
+; ((s1, p), (p, R, halt-reject)), ((s1, r), (r, R, halt-reject)), ((s1, _), (_, R, halt-reject)),
+; ((s2, s), (s, R, s3)), ((s2, p), (p, *, halt-reject)), ((s2, r), (r, *, halt-reject)),
+; ((s2, _), (_, L, check_len1)), ((s3, p), (p, *, halt-reject)), ((s3, r), (r, *, halt-reject)),
+; ((s3, s), (s, *, halt-reject)), ((s3, _), (_, L, check_len1)), ((check_len1, p), (p, L, check_len2)),
+; ((check_len1, r), (r, L, check_len2)), ((check_len1, s), (s, L, check_len2)),
+; ((check_len1, _), (_, L, check_len2)), ((check_len2, p), (p, L, check_len3)),
+; ((check_len2, r), (r, L, check_len3)), ((check_len2, s), (s, L, check_len3)),
+; ((check_len2, _), (_, L, check_len3)), ((check_len3, p), (p, L, check_len4)),
+; ((check_len3, r), (r, L, check_len4)), ((check_len3, s), (s, L, check_len4)),
+; ((check_len3, _), (_, L, check_len4)), ((check_len4, p), (p, L, check_len5)),
+; ((check_len4, r), (r, L, check_len5)), ((check_len4, s), (s, L, check_len5)),
+; ((check_len4, _), (_, *, halt-reject)), ((check_len5, p), (p, L, check_len6)),
+; ((check_len5, r), (r, L, check_len6)), ((check_len5, s), (s, L, check_len6)),
+; ((check_len5, _), (_, *, halt-reject)), ((check_len6, p), (p, L, check_len7)),
+; ((check_len6, r), (r, L, check_len7)), ((check_len6, s), (s, L, check_len7)),
+; ((check_len6, _), (_, *, halt-reject)), ((check_len7, p), (p, L, check_len8)),
+; ((check_len7, r), (r, L, check_len8)), ((check_len7, s), (s, L, check_len8)),
+; ((check_len7, _), (_, *, halt-accept)), ((check_len8, p), (p, L, halt-reject)),
+; ((check_len8, r), (r, L, halt-reject)), ((check_len8, s), (s, L, halt-reject)),
+; ((check_len8, _), (_, *, halt-accept))
+
+
+; QxG =
+; (p1, p), (p1, r), (p1, s), (p1, _), (p2, p), (p2, r), (p2, s), (p2, _), (p3, p),
+; (p3, r), (p3, s), (p3, _), (r2, p), (r2, r), (r2, s), (r2, _), (r3, p), (r3, r),
+; (r3, s), (r3, _), (s1, p), (s1, r), (s1, s), (s1, _), (s2, p), (s2, r), (s2, s),
+; (s2, _), (s3, p), (s3, r), (s3, s), (s3, _), (check_len1, p), (check_len1, r),
+; (check_len1, s), (check_len1, _), (check_len2, p), (check_len2, r), (check_len2, s),
+; (check_len2, _), (check_len3, p), (check_len3, r), (check_len3, s), (check_len3, _),
+; (check_len4, p), (check_len4, r), (check_len4, s), (check_len4, _), (check_len5, p),
+; (check_len5, r), (check_len5, s), (check_len5, _), (check_len6, p), (check_len6, r),
+; (check_len6, s), (check_len6, _), (check_len7, p), (check_len7, r), (check_len7, s),
+; (check_len7, _), (check_len8, p), (check_len8, r), (check_len8, s), (check_len8, _)
+
+; cardinality of QxG = |Q| x |G| = 18 * 4 = 72
+
+
+
+
+; QxGx{L,R} =
+; (p1, p, L), (p1, p, R), (p1, r, L), (p1, r, R), (p1, s, L), (p1, s, R), (p1, _, L), (p1, _, R),
+; (p2, p, L), (p2, p, R), (p2, r, L), (p2, r, R), (p2, s, L), (p2, s, R), (p2, _, L), (p2, _, R),
+; (p3, p, L), (p3, p, R), (p3, r, L), (p3, r, R), (p3, s, L), (p3, s, R), (p3, _, L), (p3, _, R),
+; (r2, p, L), (r2, p, R), (r2, r, L), (r2, r, R), (r2, s, L), (r2, s, R), (r2, _, L), (r2, _, R),
+; (r3, p, L), (r3, p, R), (r3, r, L), (r3, r, R), (r3, s, L), (r3, s, R), (r3, _, L), (r3, _, R),
+; (s1, p, L), (s1, p, R), (s1, r, L), (s1, r, R), (s1, s, L), (s1, s, R), (s1, _, L), (s1, _, R),
+; (s2, p, L), (s2, p, R), (s2, r, L), (s2, r, R), (s2, s, L), (s2, s, R), (s2, _, L), (s2, _, R),
+; (s3, p, L), (s3, p, R), (s3, r, L), (s3, r, R), (s3, s, L), (s3, s, R), (s3, _, L), (s3, _, R),
+; (check_len1, p, L), (check_len1, p, R), (check_len1, r, L), (check_len1, r, R),
+; (check_len1, s, L), (check_len1, s, R), (check_len1, _, L), (check_len1, _, R),
+; (check_len2, p, L), (check_len2, p, R), (check_len2, r, L), (check_len2, r, R),
+; (check_len2, s, L), (check_len2, s, R), (check_len2, _, L), (check_len2, _, R),
+; (check_len3, p, L), (check_len3, p, R), (check_len3, r, L), (check_len3, r, R),
+; (check_len3, s, L), (check_len3, s, R), (check_len3, _, L), (check_len3, _, R),
+; (check_len4, p, L), (check_len4, p, R), (check_len4, r, L), (check_len4, r, R),
+; (check_len4, s, L), (check_len4, s, R), (check_len4, _, L), (check_len4, _, R),
+; (check_len5, p, L), (check_len5, p, R), (check_len5, r, L), (check_len5, r, R),
+; (check_len5, s, L), (check_len5, s, R), (check_len5, _, L), (check_len5, _, R),
+; (check_len6, p, L), (check_len6, p, R), (check_len6, r, L), (check_len6, r, R),
+; (check_len6, s, L), (check_len6, s, R), (check_len6, _, L), (check_len6, _, R),
+; (check_len7, p, L), (check_len7, p, R), (check_len7, r, L), (check_len7, r, R),
+; (check_len7, s, L), (check_len7, s, R), (check_len7, _, L), (check_len7, _, R),
+; (check_len8, p, L), (check_len8, p, R), (check_len8, r, L), (check_len8, r, R),
+; (check_len8, s, L), (check_len8, s, R), (check_len8, _, L), (check_len8, _, R)
+
+; cardinality of QxGx{L,R} = |Q| x |G| x 2 = 18 * 4 * 2 = 144
+
+
+
+
+
+; transition table
+; | Q states    |          p          |          r          |          s          |          _          |
+; -------------------------------------------------------------------------------------------------------
+; | p1          | (p, R, p2)          | (r, R, r2)          | (s, *, halt-reject) | (_, *, halt-reject) |
+; | p2          | (p, R, p3)          | (r, R, r2)          | (s, *, halt-reject) | (_, *, halt-reject) |
+; | p3          | (p, *, halt-reject) | (r, R, r2)          | (s, *, halt-reject) | (_, *, halt-reject) |
+; | r2          | (p, *, halt-reject) | (r, R, r3)          | (s, *, halt-reject) | (_, *, halt-reject) |
+; | r3          | (p, *, halt-reject) | (r, R, s1)          | (s, R, s2)          | (_, *, halt-reject) |
+; | s1          | (p, R, halt-reject) | (r, R, halt-reject) | (s, R, s2)          | (_, R, halt-reject) |
+; | s2          | (p, *, halt-reject) | (r, *, halt-reject) | (s, R, s3)          | (_, L, check_len1)  |
+; | s3          | (p, *, halt-reject) | (r, *, halt-reject) | (s, *, halt-reject) | (_, L, check_len1)  |
+; | check_len1  | (p, L, check_len2)  | (r, L, check_len2)  | (s, L, check_len2)  | (_, L, check_len2)  |
+; | check_len2  | (p, L, check_len3)  | (r, L, check_len3)  | (s, L, check_len3)  | (_, L, check_len3)  |
+; | check_len3  | (p, L, check_len4)  | (r, L, check_len4)  | (s, L, check_len4)  | (_, L, check_len4)  |
+; | check_len4  | (p, L, check_len5)  | (r, L, check_len5)  | (s, L, check_len5)  | (_, *, halt-reject) |
+; | check_len5  | (p, L, check_len6)  | (r, L, check_len6)  | (s, L, check_len6)  | (_, *, halt-reject) |
+; | check_len6  | (p, L, check_len7)  | (r, L, check_len7)  | (s, L, check_len7)  | (_, *, halt-reject) |
+; | check_len7  | (p, L, check_len8)  | (r, L, check_len8)  | (s, L, check_len8)  | (_, *, halt-accept) |
+; | check_len8  | (p, L, halt-reject) | (r, L, halt-reject) | (s, L, halt-reject) | (_, *, halt-accept) |
+

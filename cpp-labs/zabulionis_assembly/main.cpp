@@ -1,1 +1,1 @@
-/home/kloud/Documents/obsidian_vault/uni/IT/assembly-lab/main.cpp
+../../uni/IT/assembly-lab/main.cpp

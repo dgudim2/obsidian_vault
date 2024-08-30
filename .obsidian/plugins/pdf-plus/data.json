@@ -283,6 +283,7 @@
   "enableBibInEmbed": false,
   "enableBibInHoverPopover": false,
   "enableBibInCanvas": true,
+  "copyAsSingleLine": true,
   "removeWhitespaceBetweenCJChars": true,
   "vim": false,
   "vimrcPath": "",

@@ -1,0 +1,44 @@
+{
+  "cascadeColors": false,
+  "colorBackground": true,
+  "palette": [
+    {
+      "id": "m9sFTIMRMZHA47dDqo7pd",
+      "name": "yellow",
+      "value": "#fabc2f"
+    },
+    {
+      "id": "6axopAn7qa0NKk8P3xiVj",
+      "name": "red",
+      "value": "#fb4934"
+    },
+    {
+      "id": "T9OsHwUPZ080iU-o2tnmp",
+      "name": "aqua",
+      "value": "#8ec07c"
+    },
+    {
+      "id": "BXZsl6DxZP38x-6hkJhf-",
+      "name": "green",
+      "value": "#b7ba25"
+    }
+  ],
+  "fileColors": [
+    {
+      "path": "uni",
+      "color": "BXZsl6DxZP38x-6hkJhf-"
+    },
+    {
+      "path": "Films_etc",
+      "color": "m9sFTIMRMZHA47dDqo7pd"
+    },
+    {
+      "path": "uni/Lithuanian",
+      "color": "6axopAn7qa0NKk8P3xiVj"
+    },
+    {
+      "path": "uni/Extra",
+      "color": "T9OsHwUPZ080iU-o2tnmp"
+    }
+  ]
+}

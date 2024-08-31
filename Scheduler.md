@@ -1,76 +1,277 @@
 ---
 
-kanban-plugin: basic
+kanban-plugin: board
 
 ---
 
 ## Bugs
 
-- [ ] **Transparency is broken on 100%**<br><br>If the transparency slider is at 100%, the background is black<br><br>@{2024-02-22}
-- [ ] **Turn off predictive gesture**<br><br>@{2024-02-22}
-- [ ] **Lock screen not refreshing on bg change**<br><br>Setting a new per day bg in settings does not trigger a lockscreen update<br><br>@{2024-03-02}
+- [ ] **Transparency is broken on 100%**
+    
+    If the transparency slider is at 100%, the background is black
+    
+    @{2024-02-22}
+- [ ] **Turn off predictive gesture**
+    
+    @{2024-02-22}
+- [ ] **Lock screen not refreshing on bg change**
+    
+    Setting a new per day bg in settings does not trigger a lockscreen update
+    
+    @{2024-03-02}
+- [ ] **changing blend on an entry does not work**
+    
+    changing 'blend with background' on a specific entry does not work
+    
+    @{2024-08-31}
 
 
 ## Features
 
-- [ ] **Contribution section**<br><br>Add contribution section with translators, open when clicking the "version" text<br><br>@{2023-03-12}
-- [ ] **Option to archive entries for faster loading**<br><br>Add an option to put completed entries into a separate list<br><br>@{2023-05-08}
-- [ ] **Menu for editing groups**<br><br>Add a menu to edit group parameters (better than re-saving groups)<br><br>@{2023-05-12}
-- [ ] **Put the event on the day it was completed**<br>Add an option to put the event on the day it was completed (expired events completed 2 days later)<br><br>@{2023-08-01}
-- [ ] **More group options**<br>- Option to choose default group<br>- Option to collapse events by groups<br><br>@{2023-08-01}
-- [ ] **Per event backgrounds**<br>Ability to set backgrounds if some event happens<br>@{2023-08-31}
-- [ ] **Cache view for dialogs in a ViewModel**<br><br>Recreate on config change (bind to lifetime)<br><br>@{2023-10-01}
-- [ ] **Collapse events hidden by content**<br><br>Optionally show an expand button<br><br>@{2023-10-15}
-- [ ] **Option to pad events on the lockscreen**<br><br>Option to configure padding, not just min/max width of events on the lockscreen<br><br>@{2023-04-01}
-- [ ] **Add settings to view types (rectangle, rounded, etc)**<br><br>Also make the dialog more clear with selection, graying-out of not selected views<br><br>@{2023-11-09}
-- [ ] **Sync with markdown files and nextcloud/calDAV**<br><br>Sync integration with those services<br><br>@{2023-04-01}
-- [ ] **Event length**<br>Add an option to display event length in brackets for regular events<br><br>@{2023-12-05}
-- [ ] **Bottom menu**<br>Add a bottom menu (switcher)?<br><br>@{2024-01-05}
-- [ ] **DB stats in the debug menu**<br><br>Display stats for the vents in the debug menu<br>@{2024-01-05}
-- [ ] **Granular time reminders**<br><br>Add an option for granular reminders (i.e. in 2 hours)<br>@{2024-01-05}
-- [ ] **Display full date for todo events**<br><br>Display a full date for upcoming/expired todo events<br><br>@{2024-02-22}
-- [ ] **Expose saves via a file provider**<br><br>Self-explanatory<br><br>@{2024-02-22}
-- [ ] **Auto-updater**<br><br>Use the new UPDATE_PACKAGE_WITHOUT_USER_REACTION<br><br>@{2024-02-22}
-- [ ] **Option to open links**<br><br>Search for links in todos, add a button/menu to  open them<br><br>@{2024-02-24}
-- [ ] **Add as a target in share menu**<br><br>Register with android's share menu (send from other apps)<br><br>@{2024-02-24}
-- [ ] **Cleanup database**<br><br>Remove invalid entries from deleted calendars periodically<br><br>@{2024-03-02}
-- [ ] **Merge events with the same timeframe**<br><br>Display 2 events with the same starting/ending time as one event (optional)<br><br>@{2024-03-07}
-- [ ] **Indicator settings**<br><br>Add settings for calendar event indicators<br><br>@{2024-03-13}
-- [ ] **Auto-export**<br><br>Run export on schedule<br> <br>@{2024-05-31}
-- [ ] **Photo picker opt-out**<br><br>A way to opt out of google's crappy crappy picker (Same as in saucenao)<br><br>@{2024-05-31}
-- [ ] **Group/prompt on event duplicates**<br><br>Warn or group events with the same contents<br><br>@{2024-05-31}
+- [ ] **Contribution section**
+    
+    Add contribution section with translators, open when clicking the "version" text
+    
+    @{2023-03-12}
+- [ ] **Option to archive entries for faster loading**
+    
+    Add an option to put completed entries into a separate list
+    
+    @{2023-05-08}
+- [ ] **Menu for editing groups**
+    
+    Add a menu to edit group parameters (better than re-saving groups)
+    
+    @{2023-05-12}
+- [ ] **Put the event on the day it was completed**
+    Add an option to put the event on the day it was completed (expired events completed 2 days later)
+    
+    @{2023-08-01}
+- [ ] **More group options**
+    - Option to choose default group
+    - Option to collapse events by groups
+    
+    @{2023-08-01}
+- [ ] **Per event backgrounds**
+    Ability to set backgrounds if some event happens
+    @{2023-08-31}
+- [ ] **Cache view for dialogs in a ViewModel**
+    
+    Recreate on config change (bind to lifetime)
+    
+    @{2023-10-01}
+- [ ] **Collapse events hidden by content**
+    
+    Optionally show an expand button
+    
+    @{2023-10-15}
+- [ ] **Option to pad events on the lockscreen**
+    
+    Option to configure padding, not just min/max width of events on the lockscreen
+    
+    @{2023-04-01}
+- [ ] **Add settings to view types (rectangle, rounded, etc)**
+    
+    Also make the dialog more clear with selection, graying-out of not selected views
+    
+    @{2023-11-09}
+- [ ] **Sync with markdown files and nextcloud/calDAV**
+    
+    Sync integration with those services
+    
+    @{2023-04-01}
+- [ ] **Event length**
+    Add an option to display event length in brackets for regular events
+    
+    @{2023-12-05}
+- [ ] **Bottom menu**
+    Add a bottom menu (switcher)?
+    
+    @{2024-01-05}
+- [ ] **DB stats in the debug menu**
+    
+    Display stats for the vents in the debug menu
+    @{2024-01-05}
+- [ ] **Granular time reminders**
+    
+    Add an option for granular reminders (i.e. in 2 hours)
+    @{2024-01-05}
+- [ ] **Display full date for todo events**
+    
+    Display a full date for upcoming/expired todo events
+    
+    @{2024-02-22}
+- [ ] **Expose saves via a file provider**
+    
+    Self-explanatory
+    
+    @{2024-02-22}
+- [ ] **Auto-updater**
+    
+    Use the new UPDATE_PACKAGE_WITHOUT_USER_REACTION
+    
+    @{2024-02-22}
+- [ ] **Option to open links**
+    
+    Search for links in todos, add a button/menu to  open them
+    
+    @{2024-02-24}
+- [ ] **Add as a target in share menu**
+    
+    Register with android's share menu (send from other apps)
+    
+    @{2024-02-24}
+- [ ] **Cleanup database**
+    
+    Remove invalid entries from deleted calendars periodically
+    
+    @{2024-03-02}
+- [ ] **Merge events with the same timeframe**
+    
+    Display 2 events with the same starting/ending time as one event (optional)
+    
+    @{2024-03-07}
+- [ ] **Indicator settings**
+    
+    Add settings for calendar event indicators
+    
+    @{2024-03-13}
+- [ ] **Auto-export**
+    
+    Run export on schedule
+     
+    @{2024-05-31}
+- [ ] **Photo picker opt-out**
+    
+    A way to opt out of google's crappy crappy picker (Same as in saucenao)
+    
+    @{2024-05-31}
+- [ ] **Group/prompt on event duplicates**
+    
+    Warn or group events with the same contents
+    
+    @{2024-05-31}
+- [ ] **'Complete today' button**
+    
+    'Complete today' option for past of future events
+    
+    @{2024-08-31}
+- [ ] **> in a month.**
+    
+    Be more specific (i.e in about 5 months)
+    
+    
+    
+    @{2024-08-31}
+- [ ] **events api**
+    
+    api to get events, integrate with tasker auromation (remind if there are uncompleted events when leaving work)
+    
+    @{2024-08-31}
+- [ ] **locale day of the week**
+    
+    option to use device default first day of the week
+    
+    @{2024-08-31}
+- [ ] **global group**
+    
+    Add an option to make a group have a global flag
+    
+    @{2024-08-31}
+- [ ] **Multi-select mode**
+    
+    Option to select and edit/delete multiple events
+    
+    @{2024-08-31}
+- [ ] **Multi-day event labels**
+    
+    show length of events / date for events spanning multiple days
+    
+    @{2024-08-31}
+- [ ] **Regex styling**
+    
+    Option to apply styles based on regex rules
+    
+    @{2024-08-31}
 
 
 ## Fixed bugs
 
-- [x] **Event count doesn't update**<br><br>When adding an event/sync from calendar event count doesn't update<br><br>@{2023-03-12}
-- [x] **Differently sized icons in sorting settings**<br><br>Icons in the sorting settings have different sizes<br>@{2024-01-05}
-- [x] **Dialog fragment**<br><br>Broken gestures in event settings<br><br>@{2023-03-12}
-- [x] **Bugged "Отчет Виктории"**<br><br>See event in the calendar
+- [x] **Event count doesn't update**
+    
+    When adding an event/sync from calendar event count doesn't update
+    
+    @{2023-03-12}
+- [x] **Differently sized icons in sorting settings**
+    
+    Icons in the sorting settings have different sizes
+    @{2024-01-05}
+- [x] **Dialog fragment**
+    
+    Broken gestures in event settings
+    
+    @{2023-03-12}
+- [x] **Bugged "Отчет Виктории"**
+    
+    See event in the calendar
 
 
 ## Implemented features
 
-- [x] **Possibility to view uncompleted events**<br><br>@{2023-11-02}
-- [x] **Hide events excluded by content from tommorow/yesterday**<br><br>Currently still visible which is kinda annoying<br><br>@{2023-04-01}
-- [x] **Open settings on long click**<br><br>self-describing<br><br>@{2023-09-01}
-- [x] **Open calendar event descriptions/details on click**<br><br>When clicking on event from system calendar open it's details instead of doing nothing<br><br>@{2023-04-01}
-- [x] **Import/export as zip**<br><br>better import/export<br>@{2023-09-01}
-- [x] **An option to sort calendar entries separately**<br><br>@{2023-03-12}
-- [x] **Add a toast when the even is added**<br><br>Display "Event was added" toast<br><br>@{2023-08-01}
-- [x] **download readme**<br>Add obtanium to scheduler readme<br><br>@{2023-08-01}
-- [x] **An option to put "global" in front of event**<br><br>Currently (Global) is added only to the back<br><br>@{2023-04-01}
+- [x] **Possibility to view uncompleted events**
+    
+    @{2023-11-02}
+- [x] **Hide events excluded by content from tommorow/yesterday**
+    
+    Currently still visible which is kinda annoying
+    
+    @{2023-04-01}
+- [x] **Open settings on long click**
+    
+    self-describing
+    
+    @{2023-09-01}
+- [x] **Open calendar event descriptions/details on click**
+    
+    When clicking on event from system calendar open it's details instead of doing nothing
+    
+    @{2023-04-01}
+- [x] **Import/export as zip**
+    
+    better import/export
+    @{2023-09-01}
+- [x] **An option to sort calendar entries separately**
+    
+    @{2023-03-12}
+- [x] **Add a toast when the even is added**
+    
+    Display "Event was added" toast
+    
+    @{2023-08-01}
+- [x] **download readme**
+    Add obtanium to scheduler readme
+    
+    @{2023-08-01}
+- [x] **An option to put "global" in front of event**
+    
+    Currently (Global) is added only to the back
+    
+    @{2023-04-01}
 
 
 ## Archive
 
-- [ ] **Broken calendar name updates**<br><br>When the calendar is renamed in Google calendar it's not renamed in the app<br><br>@{2023-03-12}
+- [ ] **Broken calendar name updates**
+    
+    When the calendar is renamed in Google calendar it's not renamed in the app
+    
+    @{2023-03-12}
 
 
 
 
 %% kanban:settings
 ```
-{"kanban-plugin":"basic","tag-colors":[]}
+{"kanban-plugin":"board","tag-colors":[]}
 ```
 %%

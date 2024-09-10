@@ -1,5 +1,5 @@
 ---
-icon: TiAdjustmentsCode
+icon: TiAdjustments
 ---
 
 # RSA coding

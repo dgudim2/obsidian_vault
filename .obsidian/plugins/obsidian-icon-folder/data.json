@@ -6,6 +6,10 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "TiAdjustments",
+      "LiLink",
+      "LiDice",
+      "SiGraphql",
       "RiTodoLine",
       "LiLanguages",
       "FasBook",
@@ -21,11 +25,7 @@
       "FabCodepen",
       "LiDivideSquare",
       "RiLoader3Line",
-      "LiExternalLink",
-      "FasMemory",
-      "FasDice",
-      "RiCalculatorLine",
-      "FasDesktop"
+      "LiExternalLink"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -85,7 +85,7 @@
   "uni/Presentations/Git presentation.md": "SiGit",
   "uni/Management": "⬆",
   "uni/Computer architecture/IO.md": "RiArrowUpDownLine",
-  "uni/Discrete math/Number theory": "FasDice",
+  "uni/Discrete math/Number theory": "LiDice",
   "uni/Computer architecture/Memory.md": "FasMemory",
   "uni/Index.md": "IbStackVertical",
   "uni/Extra": "LiExternalLink",
@@ -93,7 +93,7 @@
   "uni/Discrete math/Number theory/Residue classes, divisibility.md": "LiDivideSquare",
   "uni/Discrete math/Number theory/Huffman codes.md": "FabCodepen",
   "uni/Discrete math/Number theory/Divisors, multiples, primes.md": "TiBoxMultiple",
-  "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustmentsCode",
+  "uni/Discrete math/Number theory/RSA, ECC.md": "TiAdjustments",
   "uni/Probability theory": "FasDice",
   "uni/Economics": "RiMoneyEuroBoxLine",
   "uni/Economics/Presentation - Nigeria.md": "LiScreenShare",
@@ -108,5 +108,6 @@
   "uni/Lithuanian/Dictionary.md": "FasBook",
   "uni/Lithuanian/19.04.april-2024.md": "FasLinesLeaning",
   "uni/Lithuanian/26.04.april-2024.md": "FasLinesLeaning",
-  "Scheduler.md": "RiTodoLine"
+  "Scheduler.md": "RiTodoLine",
+  "uni/Discrete math/Number theory/attachements": "LiLink"
 }

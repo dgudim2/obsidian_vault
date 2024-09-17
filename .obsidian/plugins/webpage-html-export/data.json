@@ -7,7 +7,7 @@
   "titleProperty": "title",
   "customHeadContentPath": "",
   "faviconPath": "",
-  "documentWidth": "50em",
+  "documentWidth": "60em",
   "sidebarWidth": "20em",
   "minOutlineCollapse": 2,
   "startOutlineCollapsed": false,
@@ -43,7 +43,7 @@
   "defaultFileIcon": "lucide//file",
   "defaultFolderIcon": "lucide//folder",
   "defaultMediaIcon": "lucide//file-image",
-  "exportPath": "/home/kloud/Documents/obsidian_vault/export",
+  "exportPath": "/home/kloud/Documents/shared/obsidian_vault/export",
   "filesToExport": [
     [
       "uni/Computer architecture/Data representation.md",

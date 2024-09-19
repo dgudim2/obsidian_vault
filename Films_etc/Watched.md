@@ -36,6 +36,7 @@
 32. Upgraded (7.5/10)
 33. Anon (8/10)
 34. Jumper (8/10)
+35. Lorax (9/10)
 
 ## Series
 

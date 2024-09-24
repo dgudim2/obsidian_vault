@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "OcFileBinary24",
       "TiAdjustments",
       "LiLink",
       "LiDice",
@@ -24,8 +25,7 @@
       "TiBoxMultiple",
       "FabCodepen",
       "LiDivideSquare",
-      "RiLoader3Line",
-      "LiExternalLink"
+      "RiLoader3Line"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -109,5 +109,6 @@
   "uni/Lithuanian/19.04.april-2024.md": "FasLinesLeaning",
   "uni/Lithuanian/26.04.april-2024.md": "FasLinesLeaning",
   "Scheduler.md": "RiTodoLine",
-  "uni/Discrete math/Number theory/attachements": "LiLink"
+  "uni/Discrete math/Number theory/attachements": "LiLink",
+  "uni/Cryptography": "OcFileBinary24"
 }

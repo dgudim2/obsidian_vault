@@ -27,7 +27,7 @@
 !/uni/Computer\ networks/GNS3
 !**/Extra
 !*_ng_
-export
-python_venv
-venv
+/export
+**/python_venv
+**/venv
 *

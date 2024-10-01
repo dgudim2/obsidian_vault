@@ -23,6 +23,7 @@
 !*.jpeg
 !*.tiff
 !*.gif
+!*.psd
 !/LaTeX docs
 !/uni/Computer\ networks/GNS3
 !**/Extra

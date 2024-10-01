@@ -42,6 +42,7 @@ export
 *.jpeg
 *.tiff
 *.gif
+*.psd
 
 # Obsidian wasm plugin data
 *.wasm

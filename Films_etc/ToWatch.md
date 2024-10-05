@@ -37,6 +37,7 @@
 + Стальной гигант
 + Области тьмы
 + Love death robots
++ tom cruise - oblivion
 
 ## Anime
 + Стальной алхимик 2008
@@ -71,6 +72,7 @@
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
 + My Deer Friend Nokotan
 + delicious in dungeon 
++ panteema inverted
 
 
 # Stuff to read

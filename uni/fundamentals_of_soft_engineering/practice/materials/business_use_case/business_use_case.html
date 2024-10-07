@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, img.Wirisformula {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}
+[data-darkreader-inline-bg] {
+  background: var(--darkreader-inline-bg) !important;
+}
+[data-darkreader-inline-invert] {
+    filter: invert(100%) hue-rotate(180deg);
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #282828;
+   --darkreader-neutral-text: #ebdbb2;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #ebdbb2;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">@layer {
+html {
+    background-color: #282828 !important;
+}
+html {
+    color-scheme: dark !important;
+}
+iframe {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #282828;
+}
+html, body {
+    border-color: #a6842b;
+    color: #ebdbb2;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #595959;
+}
+mark {
+    color: #ebdbb2;
+}
+::placeholder {
+    color: #d9ba6b;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #4f5400 !important;
+    color: #ebdbb2 !important;
+}
+* {
+    scrollbar-color: #4e4e4e #2f2f2f;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #ebdbb2 !important;
+}
+}</style>
+<meta charset="utf-8">
+<meta name="author" content="Kirill Fakhroutdinov">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="distribution" content="Global">
+<link rel="stylesheet" type="text/css" media="only screen and (min-width: 768px)" href="business_use_case_files/style_1024.css"><style class="darkreader darkreader--sync" media="screen"></style>
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 767px)" href="business_use_case_files/style_767_160929.css"><style class="darkreader darkreader--sync" media="screen"></style>
+<link rel="stylesheet" type="text/css" media="only print" href="business_use_case_files/style_print_160717.css"><style class="darkreader darkreader--sync" media="screen"></style>
+<link rel="shortcut icon" href="https://www.uml-diagrams.org/favicon.ico">
+<script type="text/javascript">
+let umlScript = document.createElement('script');
+umlScript.src = 'https://adncdnend.azureedge.net/adtags/uml.adn.js';
+document.getElementsByTagName('head')[0].append(umlScript);
+</script><meta name="darkreader" content="ea4105ba12754421afab140927c2a860"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #715200 !important;
+    border-color: #9e7e00 !important;
+    color: #e5d19c !important;
+}
+#vimvixen-console-frame {
+    color-scheme: light !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #1f5465 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #13495a !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #2d2d2d !important;
+}
+.tou-uknfeu {
+    background-color: #58390c !important;
+}
+.tou-6i3zyv {
+    background-color: #266378 !important;
+}
+div.mermaid-viewer-control-panel .btn {
+    background-color: var(--darkreader-neutral-background);
+    fill: var(--darkreader-neutral-text);
+}
+svg g rect.er {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.entityBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxOdd {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.er.attributeBoxEven {
+    fill: var(--darkreader-selection-background);
+    fill-opacity: 0.8 !important;
+}
+svg rect.er.relationshipLabelBox {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g g.nodes rect,
+svg g g.nodes polygon {
+    fill: var(--darkreader-neutral-background) !important;
+}
+svg g rect.task {
+    fill: var(--darkreader-selection-background) !important;
+}
+svg line.messageLine0,
+svg line.messageLine1 {
+    stroke: var(--darkreader-neutral-text) !important;
+}
+div.mermaid .actor {
+    fill: var(--darkreader-neutral-background) !important;
+}
+mitid-authenticators-code-app > .code-app-container {
+    background-color: white !important;
+    padding-top: 1rem;
+}
+iframe#unpaywall[src$="unpaywall.html"] {
+    color-scheme: light !important;
+}
+embed[type="application/pdf"] { filter: invert(100%) contrast(90%); }</style><script src="business_use_case_files/uml.adn.js"></script>
+<script>
+/* Mobile menu - when the user clicks on the button, toggle between hiding and showing the dropdown */
+var menuVisible = false;
+function mobile_menu() {
+  if (menuVisible) {
+	document.getElementById("navigation_btn").innerHTML = "Menu \u25BA";
+    document.getElementById("navigation_dsk").style.display = "none";
+    menuVisible = false;
+  } else {
+	document.getElementById("navigation_btn").innerHTML = "Menu \u25BC";
+    document.getElementById("navigation_dsk").style.display = "block";
+    document.getElementById("navigation_list").style.display = "block";
+    menuVisible = true;
+  }
+}
+</script>
+<meta name="description" content="Use case diagrams are UML diagrams describing units of useful functionality (use cases) performed by a system in collaboration with external users (actors) to provide observable and valuable result to the actors.">
+<meta name="keywords" content="UML 2, 2.5, Use Case Diagrams, actor, use case, subject, relationship, include, extend.">
+<title>Use case diagrams are UML diagrams describing units of useful 
+functionality (use cases) performed by a system in collaboration with 
+external users (actors).</title>
+<script src="business_use_case_files/embed.js" data-timestamp="1728308523461"></script></head> 
+<body>
+<header>
+<div>
+</div>
+<div class="mainmenu">
+<button id="navigation_btn" class="box-shadow-menu" onclick="mobile_menu()">Menu&nbsp;►</button>
+<nav id="navigation_dsk">
+<ul id="navigation_list" class="navig_items">
+<li>
+ <a href="https://www.uml-diagrams.org/" title="UML graphical notation overview, examples, and reference.">UML diagrams</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-diagrams.html" title="UML Use Case diagrams overview of graphical notation" class="active-nav">Use case diagrams</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-subject.html" title="Subject of UML use case diagrams">Subject</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-actor.html" title="Actor of UML use case diagrams">Actor</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case.html" title="Use case of UML use case diagrams">Use case</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-actor-association.html" title="Association between actor and use case in UML use case diagrams">Association</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-extend.html" title="Extend relationship of UML use case diagrams">Extend</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-include.html" title="Include relationship of UML use case diagrams">Include</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-diagrams-how-to.html" title="How to Draw UML Use Case Diagram.">How to draw</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-diagrams-examples.html" title="UML Use Case diagrams examples">Use case diagrams examples</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-reference.html" title="UML Use Case diagrams graphical notation reference">Use case diagrams reference</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/use-case-diagrams-questions-answers.html" title="UML Use Case diagrams FAQ">Use case diagrams FAQ</a>
+</li>
+<li>
+ <a href="https://www.uml-diagrams.org/index-references.html" title="Index of UML Elements">UML index</a>
+</li>
+</ul> 
+</nav>
+</div>
+</header>
+<main>
+<article id="mainContent">
+<h1>UML Use Case Diagrams</h1>
+
+<p>
+<strong>Use case diagrams</strong> are usually referred to as
+ <a href="https://www.uml-diagrams.org/uml-25-diagrams.html#behavior-diagram" class="ref-link">behavior diagrams</a>
+ used to describe a set of actions
+ (<a href="https://www.uml-diagrams.org/use-case.html" class="ref-link">use cases</a>)
+ that some system or systems
+ (<a href="https://www.uml-diagrams.org/use-case-subject.html" class="ref-link">subject</a>)
+ should or can perform in collaboration with one or more <strong>external users</strong> of the system
+ (<a href="https://www.uml-diagrams.org/use-case-actor.html" class="ref-link">actors</a>).
+ Each use case should provide some observable and valuable result to the actors or other stakeholders
+ of the system.
+</p>
+
+<p>
+Note, that UML 2.0 to 2.4 specifications also described <strong>use case diagram</strong>
+ as a specialization of
+ a <a href="https://www.uml-diagrams.org/class-diagrams-overview.html" class="ref-link">class diagram</a>,
+ and class diagram is
+ a <a href="https://www.uml-diagrams.org/uml-25-diagrams.html#structure-diagram" class="ref-link">structure diagram</a>.
+</p>
+
+<p>
+Use case diagrams are in fact twofold - they are both 
+ <a href="https://www.uml-diagrams.org/uml-25-diagrams.html#behavior-diagram" class="ref-link">behavior diagrams</a>,
+ because they describe behavior of the system, and they are also
+ <a href="https://www.uml-diagrams.org/uml-25-diagrams.html#structure-diagram" class="ref-link">structure diagrams</a>
+ - as a special case of class diagrams where classifiers are restricted to be either
+ <a href="https://www.uml-diagrams.org/use-case-actor.html" class="ref-link">actors</a> or 
+ <a href="https://www.uml-diagrams.org/use-case.html" class="ref-link">use cases</a>
+ related to each other with <a href="https://www.uml-diagrams.org/association.html" class="ref-link">associations</a>.
+</p>
+
+<p>
+<a href="https://www.uml-diagrams.org/references.html#ref-uml-25-b1" class="external-ref" title="UML 2.5 Specification FTF Beta 1">[UML 2.5 FTF - Beta 1]</a>
+ moved use cases out of behavior modeling to UML <strong>supplementary concepts</strong>.
+ So, it is an unfortunate quandary what kind of UML diagrams use case diagrams are.
+</p>
+
+
+<!--
+****************
+  Business UCs
+****************
+-->
+
+<h2>Business Use Case Diagrams</h2>
+
+<p>
+While support for <strong>business modeling</strong> was declared as one of the goals of the UML,
+ UML specification provides <strong>no notation</strong> specific to business needs.
+</p>
+
+<p>
+<a href="https://www.uml-diagrams.org/use-case.html#business-use-case" class="ref-link">Business use cases</a>
+ were introduced in <strong>Rational Unified Process</strong> (RUP)
+ to represent business function, process, or activity performed in the modeled <strong>business</strong>.
+ A <a href="https://www.uml-diagrams.org/use-case-actor.html#business-actor" class="ref-link">business actor</a>
+ represents a role played by some person or system external to the modeled business,
+ and interacting with the business.
+ Business use case should produce a result of observable value to a business actor.
+</p>
+
+<p>
+Major elements of the business use case diagram are shown on the picture below.
+ Note again, both business use case as well as business actor are not defined in UML standard,
+ so you will either need to use some UML tool supporting those or create your own business modeling stereotypes.
+</p>
+
+<div class="figure-left-80" itemscope="" itemtype="http://schema.org/ImageObject">
+<img src="business_use_case_files/business-use-case-diagram-elements.png" width="540" height="467" alt="Major elements of business use case UML diagram." title="Major elements of business use case UML diagram." itemprop="contentURL">
+<p class="figure-text" itemprop="description">
+Major elements of business use case diagram - 
+<a href="https://www.uml-diagrams.org/use-case-actor.html#business-actor" class="ref-link">business actor</a>,
+<a href="https://www.uml-diagrams.org/use-case.html#business-use-case" class="ref-link">business use case</a>, <br>
+<a href="https://www.uml-diagrams.org/use-case-subject.html" class="ref-link">business boundary</a>,
+<a href="https://www.uml-diagrams.org/use-case-include.html" class="ref-link">include</a>
+and <a href="https://www.uml-diagrams.org/use-case-extend.html" class="ref-link">extend</a> relationships.
+</p>
+<meta itemprop="author" content="Kirill Fakhroutdinov">
+<meta itemprop="copyrightHolder" content="uml-diagrams.org">
+<meta itemprop="datePublished" content="2010-08-05">
+<meta itemprop="dateModified" content="2014-01-04">
+</div>
+
+
+
+<!--
+******************
+  System UCs
+******************
+-->
+
+<h2>System Use Case Diagrams</h2>
+
+<p>
+(System) Use case diagrams are used to specify:
+</p>
+<ul>
+<li>(external) <strong>requirements</strong>, required usages of a system under design or analysis 
+ (<a href="https://www.uml-diagrams.org/use-case-subject.html" class="ref-link">subject</a>)
+ - to capture what the system is supposed to do;</li>
+<li>the <strong>functionality</strong> offered by a subject – what the system can do;</li>
+<li>requirements the specified subject poses on its <strong>environment</strong> -
+ by defining how environment should interact with the subject so that it will be able
+ to perform its services.</li>
+</ul>
+
+<p>
+Major elements of the UML use case diagram are shown on the picture below.
+</p>
+<div class="figure-left-80" itemscope="" itemtype="http://schema.org/ImageObject">
+<img src="business_use_case_files/use-case-diagram-elements.png" width="540" height="441" alt="Major elements of UML use case diagram." title="Major elements of UML use case diagram." itemprop="contentURL">
+<p class="figure-text" itemprop="description">
+Major elements of UML use case diagram -
+<a href="https://www.uml-diagrams.org/use-case-actor.html" class="ref-link">actor</a>,
+<a href="https://www.uml-diagrams.org/use-case.html" class="ref-link">use case</a>,
+<a href="https://www.uml-diagrams.org/use-case-subject.html" class="ref-link">subject</a>,<br>
+<a href="https://www.uml-diagrams.org/use-case-include.html" class="ref-link">include</a>
+and <a href="https://www.uml-diagrams.org/use-case-extend.html" class="ref-link">extend</a> relationships.
+</p>
+<meta itemprop="author" content="Kirill Fakhroutdinov">
+<meta itemprop="copyrightHolder" content="uml-diagrams.org">
+<meta itemprop="representativeOfPage" content="true">
+<meta itemprop="datePublished" content="2010-01-01">
+<meta itemprop="dateModified" content="2014-01-04">
+</div>
+
+
+<p>
+<img src="business_use_case_files/arrow-next.png" width="40" height="37" align="middle" alt="Next" title="Next">&nbsp; 
+ <a href="https://www.uml-diagrams.org/use-case-subject.html" title="UML use case subject">Use Case Subject</a>
+</p>
+
+</article>
+</main>
+<footer>
+<div id="footer">
+
+<p>
+This document describes <strong>UML 2.5</strong> and is based on
+ <strong>OMG™ Unified Modeling Language™ (OMG UML®) 2.5</strong> specification 
+ <a href="https://www.uml-diagrams.org/references.html#ref-uml-25-b2" class="external-ref" title="UML 2.5 Specification RTF Beta 2">[UML 2.5 RTF - Beta 2]</a>.
+All UML diagrams were created in <strong>Microsoft Visio</strong> 2007-2016 using 
+<a href="http://softwarestencils.com/uml/index.html" class="external-ref" title="Visio Stencil and Template for UML 2.2">UML 2.2 stencils</a>.
+ You can send your comments and suggestions to <a href="mailto:webmaster@uml-diagrams.org">webmaster</a>.
+ <a href="https://www.uml-diagrams.org/privacy-policy.html" class="ref-link">Privacy policy</a>.
+</p>
+
+<p>&nbsp;</p>
+
+<p>
+<em>Copyright © 2009-2024 uml-diagrams.org. All rights reserved. Authored by Kirill Fakhroutdinov.</em>
+</p>
+
+<p>&nbsp;</p>
+
+<img src="business_use_case_files/www.uml-diagrams.org" id="sl_shield_image" style="border-style:none;cursor:pointer;" lyi8f6xyh="">
+<script id="sl_shield" src="business_use_case_files/sitelock.js"></script>
+
+</div>
+<div id="disqus_thread"></div>
+<script>
+var disqus_config = function () {
+ this.page.identifier = 'use-case-diagrams.html';
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//umldiagrams.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript=umldiagrams" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script id="dsq-count-scr" src="business_use_case_files/count.js" async=""></script>
+</footer>
+
+<div id="ptc-notification" data-v-app=""><div data-v-a2014e="" id="ptc-notification-container"><div data-v-a2014e="" id="ptc-notification-sepia-search"></div><button data-v-a2014e="" title="Close" type="button" class="ptc-notification-close"> x </button><a data-v-a2014e="" id="ptc-notification-watch">Watch on PeerTube</a><div data-v-a2014e="" id="ptc-notification-sepia-running"></div></div></div></body><script src="business_use_case_files/passkeys.js"></script></html>

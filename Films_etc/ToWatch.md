@@ -76,6 +76,8 @@
 + panteema inverted
 + Lupin 3rd
 + city hunter 2
++ shiko
++ girls and panzer
 + 
 
 

@@ -74,6 +74,8 @@
 + My Deer Friend Nokotan
 + delicious in dungeon 
 + panteema inverted
++ Lupin 3rd
++ 
 
 
 # Stuff to read

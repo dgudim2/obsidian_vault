@@ -75,6 +75,7 @@
 + delicious in dungeon 
 + panteema inverted
 + Lupin 3rd
++ city hunter 2
 + 
 
 

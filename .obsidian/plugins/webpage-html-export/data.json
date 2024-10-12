@@ -2,7 +2,7 @@
   "settingsVersion": "1.8.01",
   "makeOfflineCompatible": true,
   "inlineAssets": false,
-  "includePluginCSS": "universal-renderer\ncode-emitter",
+  "includePluginCSS": "universal-renderer\nobsidian-list-callouts",
   "includeSvelteCSS": true,
   "titleProperty": "title",
   "customHeadContentPath": "",

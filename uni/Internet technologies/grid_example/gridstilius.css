@@ -1,0 +1,246 @@
+.container {
+  display: inline-grid;
+  padding: 5px;
+  grid-gap: 5px;
+  grid-template-columns: 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+}
+
+.item1{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.item2{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.item3{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+
+}
+
+.item4{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+
+.item5{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+
+/*antras*/
+.container2 {
+  display: inline-grid;
+  padding: 5px;
+  grid-gap: 5px;
+  grid-template-columns: 50px 50px 50px;
+  grid-template-rows: repeat(5, 50px);
+}
+
+.item21{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 4;
+  grid-row: 1 / 2;
+}
+
+.item22{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 2;
+  grid-row: 2 / 5;
+}
+
+.item23{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+
+}
+
+.item24{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 2 / 4;
+  grid-row: 3 / 4;
+}
+
+.item25{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 2 / 4;
+  grid-row: 4 / 5;
+}
+
+.item26{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-column: 1 / 4;
+  grid-row: 5 / 6;
+}
+
+/*trecias*/
+.container3 {
+  display: inline-grid;
+  padding: 5px;
+  grid-gap: 5px;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px;
+  grid-template-areas:
+    "pirmas antras antras trecias"
+    "pirmas ketvirtas ketvirtas ketvirtas"
+    "penktas penktas penktas sestas";
+}
+
+.item31{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: pirmas;
+}
+
+.item32{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: antras;
+}
+
+.item33{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: trecias;
+
+}
+
+.item34{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: ketvirtas;
+}
+
+.item35{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: penktas;
+}
+
+.item36{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: sestas;
+}
+
+/*ketvirtas*/
+.container4 {
+  display: inline-grid;
+  padding: 5px;
+  grid-gap: 5px;
+  grid-template-columns: 50px 50px 50px 50px;
+  grid-template-rows: 50px 50px 50px 50px;
+}
+
+.item41{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 1 / 1 / span 2 /  2;
+}
+
+.item42{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: antras;
+  grid-area: 1 / 2 / 2 / span 2;
+}
+
+.item43{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 1 / 4 / 3 / 5;
+
+}
+
+.item44{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 2 / 2 / span 2 / span 2;
+}
+
+.item45{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 3 / 1 / span 2 / 2;
+}
+
+.item46{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 4 / 2 / 5 / span 2;
+}
+
+.item47{
+  border-color: grey;
+  border-width: 2px;
+  border-style: solid;
+  background-color: lightsalmon;
+  grid-area: 3 / 4 / 5 / 5;
+}

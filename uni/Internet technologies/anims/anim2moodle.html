@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+display:grid;
+grid-template-columns: auto auto;
+grid-template-rows: auto;
+grid-template-areas:
+"kodas vaizdas";
+}
+.item1{
+grid-area: kodas;
+border: 1px solid black;
+}
+.item2{
+grid-area: vaizdas;
+place-self: center;
+}
+#anim2{
+   width: 100px;
+  height: 100px;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+}
+@keyframes example {
+  0%   {background-color: red;}
+  25%  {background-color: yellow;}
+50%  {width: 200px; height:200px}
+  100% {background-color: green;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="item1">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;style&gt;<br>
+div {<br>
+  width: 100px;<br>
+  height: 100px;<br>
+  background-color: red;<br>
+  animation-name: example;<br>
+  animation-duration: 4s;<br>
+}<br>
+@keyframes example {<br>
+  0%   {background-color: red;}<br>
+  25%  {background-color: yellow;}<br>
+50%  {width: 200px; height:200px}<br>
+  100% {background-color: green;}<br>
+}<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;div&gt;&lt;/div&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</div>
+<div class="item2">
+<div id="anim2"></div>
+</div></div>
+</body>
+</html>

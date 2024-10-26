@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Selectors for a form</title>
+<link rel="stylesheet" type="text/css" href="style2.css"/>
+</head>
+<body>
+<forms>
+<label for="name"> Name</label>
+<input type="text" id="name" required><br><br>
+<label for="city"> City</label>
+<input type="text" id="city"><br><br>
+<input type="text" value="Day" disabled>
+<br><br>
+<input type="radio" id="st1" name="same">
+<label for="st1">Student</label><br>
+<input type="radio" id="st2" name="same">
+<label for="st2">Employee</label><br>
+<input type="radio" id="st3" name="same">
+<label for="st3">Unemployed</label>
+<br><br>
+<input type="checkbox" id="c1" name="checksame">
+<label for="c1">Monday</label><br>
+<input type="checkbox" id="c2" name="checksame">
+<label for="c2">Tuesday</label><br>
+<input type="checkbox" id="c3" name="checksame">
+<label for="c3">Friday</label>
+<br>
+<label for="favnum">Write any number from an interval [10;55]:</label>
+<input type="number" id="favnum" name="favnum" min="10" max="55">
+<br><br>
+<fieldset>
+<legend>Related information</legend>
+<label for="birth">Date of your birth:</label>
+<input type="datetime-local" id="birth" name="birth" min="2015-01-01" required>
+<br><br>
+<label for="pd">Select the date:</label>
+<input type="week" id="pd" name="pd">
+<br><br><input type="file">
+<br><br>
+</fieldset>
+</forms>
+</body>
+</html>

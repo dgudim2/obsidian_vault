@@ -1,0 +1,22 @@
+input:checked + label{
+background-color: salmon;
+border: 2px solid;
+}
+input:disabled{
+background-color: blue;
+}
+input:required{
+background-color: red;
+}
+input:focus{
+color: blue;
+}
+input:in-range{
+border: 2px solid green;
+}
+input:out-of-range{
+border: 2px solid red;
+}
+fieldset:hover{
+background-color: #7eed9a;
+}

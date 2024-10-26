@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+display:grid;
+grid-template-columns: auto auto;
+grid-template-rows: auto;
+grid-template-areas:
+"kodas vaizdas";
+}
+.item1{
+grid-area: kodas;
+border: 1px solid black;
+}
+.item2{
+grid-area: vaizdas;
+place-self: start;
+}
+#anim{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 10s;
+  animation-delay: 5s;
+  animation-iteration-count: 2;
+}
+.non {animation-fill-mode: none;}
+.for {animation-fill-mode: forwards;}
+.back {animation-fill-mode: backwards;}
+.both {animation-fill-mode: both;}
+@keyframes example {
+  from {left: 0px;background-color:yellow;}
+  to {left: 300px;background-color:green;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="item1">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;style&gt;<br>
+div {<br>
+  width: 100px;<br>
+  height: 100px;<br>
+  background-color: red;<br>
+  position: relative;<br>
+  animation-name: example;<br>
+  animation-duration: 10s;<br>
+  animation-delay: 5s;<br>
+  animation-iteration-count: 2;<br>
+}<br>
+.non {animation-fill-mode: none;}<br>
+.for {animation-fill-mode: forwards;}<br>
+.back {animation-fill-mode: backwards;}<br>
+.both {animation-fill-mode: both;}<br>
+@keyframes example {<br>
+  from {left: 0px;background-color:yellow;}<br>
+  to {left: 300px;background-color:green;}<br>
+}<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;div id="anim" class="non"&gt;none&lt;/div&gt;<br>
+&lt;div id="anim" class="for"&gt;forwards&lt;/div&gt;<br>
+&lt;div id="anim" class="back"&gt;backwards&lt;/div&gt;<br>
+&lt;div id="anim" class="both"&gt;both&lt;/div&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</div>
+<div class="item2">
+<div id="anim" class="non">none</div>
+<div id="anim" class="for">forwards</div>
+<div id="anim" class="back">backwards</div>
+<div id="anim" class="both">both</div>
+</div></div>
+</body>
+</html>

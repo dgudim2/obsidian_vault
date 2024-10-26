@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Forms</title>
+</head>
+<body>
+<forms>
+<label for="pass"> Your password</label>
+<input type="password" id="pass"><br><br>
+<input type="text" value="Any text">
+<input type="submit" value="Submit">
+<input type="reset">
+<br><br>
+<input type="radio" id="st1" name="same">
+<label for="st1">Student</label><br>
+<input type="radio" id="st2" name="same">
+<label for="st2">Employed</label><br>
+<input type="radio" id="st3" name="same">
+<label for="st3">Unemployed</label>
+<br><br>
+<input type="checkbox" id="c1" name="days">
+<label for="c1">Monday</label><br>
+<input type="checkbox" id="c2" name="days">
+<label for="c2">Tuesday</label><br>
+<input type="checkbox" id="c3" name="days">
+<label for="c3">Friday</label>
+<br>
+<input type="button" onclick="alert('Hello!')" value="Click">
+<br>
+<label for="favc">Pick your favourite colour:</label>
+<input type="color" id="favc" name="favcol">
+<br><br>
+<fieldset>
+<legend>Related elements</legend>
+<label for="birth">Your birth date:</label>
+<input type="datetime-local" id="birth" name="bday">
+<br><br>
+<label for="dd">Choose a date for a delivery:</label>
+<input type="date" id="dd" name="deld" min="2022-09-30" max="2022-10-14">
+<br><br><input type="file">
+<br><br>
+<input type="tel" pattern="[A-Za-z]{3}-[0-9]{2}-[0-9]{3}" value="111-11-111">
+<br><br>
+<input type="image" src="https://i.kym-cdn.com/entries/icons/mobile/000/014/057/Screenshot_7.jpg" width="250px" onclick="alert('Thank you for submitting your form!')">
+</fieldset>
+</forms>
+</body>
+</html>

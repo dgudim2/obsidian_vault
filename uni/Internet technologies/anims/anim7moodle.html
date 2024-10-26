@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container{
+display:grid;
+grid-template-columns: auto auto;
+grid-template-rows: auto;
+grid-template-areas:
+"kodas vaizdas";
+}
+.item1{
+grid-area: kodas;
+border: 1px solid black;
+}
+.item2{
+grid-area: vaizdas;
+place-self: start;
+}
+#anim{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
+}
+.lin {animation-timing-function: linear;}
+.eas {animation-timing-function: ease;}
+.easin {animation-timing-function: ease-in;}
+.easout {animation-timing-function: ease-out;}
+.inout {animation-timing-function: ease-in-out;}
+.cub {animation-timing-function: cubic-bezier(.98,0,1,.28);}
+@keyframes example {
+  from {left: 0px;}
+  to {left: 300px;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="item1">
+&lt;!DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+&lt;head&gt;<br>
+&lt;style&gt;<br>
+div {<br>
+  width: 100px;<br>
+  height: 100px;<br>
+  background-color: red;<br>
+  position: relative;<br>
+  animation-name: example;<br>
+  animation-duration: 4s;<br>
+  animation-delay: 2s;<br>
+  animation-iteration-count: infinite;<br>
+}<br>
+.lin {animation-timing-function: linear;}<br>
+.eas {animation-timing-function: ease;}<br>
+.easin {animation-timing-function: ease-in;}<br>
+.easout {animation-timing-function: ease-out;}<br>
+.inout {animation-timing-function: ease-in-out;}<br>
+.cub {animation-timing-function: cubic-bezier(.98,0,1,.28);}<br>
+@keyframes example {<br>
+  from {left: 0px;}<br>
+  to {left: 300px;}<br>
+}<br>
+&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&lt;div id="anim" class="lin"&gt;linear&lt;/div&gt;<br>
+&lt;div id="anim" class="eas"&gt;ease&lt;/div&gt;<br>
+&lt;div id="anim" class="easin"&gt;ease-in&lt;/div&gt;<br>
+&lt;div id="anim" class="easout"&gt;ease-out&lt;/div&gt;<br>
+&lt;div id="anim" class="inout"&gt;ease-in-out&lt;/div&gt;<br>
+&lt;div id="anim" class="cub"&gt;cubic-bezier&lt;/div&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</div>
+<div class="item2">
+<div id="anim" class="lin">linear</div>
+<div id="anim" class="eas">ease</div>
+<div id="anim" class="easin">ease-in</div>
+<div id="anim" class="easout">ease-out</div>
+<div id="anim" class="inout">ease-in-out</div>
+<div id="anim" class="cub">cubic-bezier</div>
+</div></div>
+</body>
+</html>

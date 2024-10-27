@@ -21,11 +21,14 @@ flexGrow=1
 flexGrow=1
 ===
 
-![[no-version-control.excalidraw.svg]]
+```dynamic-svg
+[[no-version-control.excalidraw.svg]]
+```
 
 ```` 
 `````
 ---
+<br>
 
 # So what is version control?
 
@@ -45,12 +48,15 @@ flexGrow=1
 flexGrow=1
 ===
 
-![[version-control-simple.excalidraw.svg]]
+```dynamic-svg
+[[version-control-simple.excalidraw.svg]]
+```
 
 ```` 
 `````
 
 ---
+<br>
 
 # More benefits
 
@@ -75,22 +81,30 @@ flexGrow=1
 flexGrow=1
 ===
 
-![[git_commit_alpha.png]]
+```dynamic-svg
+---
+invert-color
+---
+[[commit-list.excalidraw.svg]]
+```
 
 ```` 
 `````
 
 ---
+<br>
 
 # Types of version control
 
 ![[Git presentation#3 Main categories]]
 
 ---
+<br>
 
 ![[Git presentation#Here are some examples of such systems]]
 
 ---
+<br>
 
 # How subversion works
 
@@ -99,6 +113,7 @@ flexGrow=1
 > - https://subversion.apache.org/docs/
 
 --- 
+<br>
 
 # How git works
 
@@ -108,6 +123,7 @@ flexGrow=1
 > - https://git-scm.com/doc
 
 ---
+<br>
 
 `````col 
 ````col-md 
@@ -127,10 +143,12 @@ flexGrow=1
 `````
 
 ---
+<br>
 
 ![[Git presentation#Git branching]]
 
 ---
+<br>
 
 # Pull requests (PRs)
 
@@ -163,12 +181,14 @@ flexGrow=1
 > https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
 ---
+<br>
 
 ![[Git presentation#Merge conflicts]]
 
 > - https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line
 
 ---
+<br>
 
 # Different type of versioning
 
@@ -223,6 +243,7 @@ flexGrow=1
 `````
 
 ---
+<br>
 
 # Thanks for your attention!
 

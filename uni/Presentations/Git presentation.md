@@ -23,9 +23,9 @@ width:350px
 
 # No! 
 
-### It is a <u>version control</u> system
+## It is a <u>version control</u> system
 
-Here are some more examples of such systems
+#### Here are some examples of such systems
 
 `````col
 ````col-md

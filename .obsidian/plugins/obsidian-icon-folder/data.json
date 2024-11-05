@@ -46,6 +46,13 @@
         "icon": "LiBook",
         "for": "everything",
         "order": 2
+      },
+      {
+        "rule": "excalidraw",
+        "icon": "SiExcalidraw",
+        "for": "everything",
+        "order": 3,
+        "useFilePath": false
       }
     ],
     "extraMargin": {

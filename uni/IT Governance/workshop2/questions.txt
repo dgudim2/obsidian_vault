@@ -1,0 +1,13 @@
+What were the primary challenges faced by Bottler Company LLC in the ERP system implementation, and how did these issues affect the company’s progress?
+Answer: Bottler Company LLC’s ERP implementation faced challenges from outdated systems, reliance on an inexperienced internal team, and poor communication. Without adequate training and clear roles, employees felt overwhelmed, leading to stress, delays, and resignations, which ultimately slowed project progress.
+
+What benefits, risks, and key performance metrics should Bottler Company LLC focus on to evaluate the success of its ERP system, according to the business case?
+Answer: The ERP system promises benefits like real-time reporting, data integration, and increased profitability. Key risks include resistance to change, limited IT staffing, and potential cost overruns. Success metrics should focus on improvements in operational efficiency, ROI, and employee adoption rates.
+
+How can COBIT 5’s domains be mapped to specific actions Bottler needs to take to ensure successful ERP project governance?
+Answer:
+
+Align, Plan, and Organize: Establish governance, define roles, and set feedback loops.
+Build, Acquire, and Implement: Customize and test the ERP, conduct training, and use phased rollouts.
+Deliver, Service, and Support: Set up ERP support structures and provide user documentation.
+Monitor, Evaluate, and Assess: Regularly track KPIs, review progress, and adjust strategies as needed.

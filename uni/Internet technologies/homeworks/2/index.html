@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="js/fontawsome.js"></script>
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="favicons/safari-pinned-tab.svg"
+      color="#00a300"
+    />
+    <link rel="shortcut icon" href="favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#00a300" />
+    <meta name="msapplication-config" content="favicons/browserconfig.xml" />
+    <meta name="theme-color" content="#00a300" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+
+    <meta
+      name="description"
+      content="Discover the beautiful world of attractors"
+    />
+    <meta
+      name="keywords"
+      content="Strange attractor, chaos attractor, attractor, chaos theory, fractal, dynamical system, graphs, phase space, differential equations"
+    />
+
+    <title class="localized" data-key="title">
+      Beautiful world of attractors
+    </title>
+  </head>
+
+  <body>
+    <header id="header">
+      <h1 id="project_name" class="localized" data-key="title">
+        Beautiful world of attractors
+      </h1>
+      <nav id="nav">
+        <ul>
+          <li>
+            <a href="#info_anchor" class="localized" data-key="nav_info"
+              >Info</a
+            >
+          </li>
+          <li>
+            <a
+              href="#more_acticles_anchor"
+              class="localized"
+              data-key="nav_more_articles"
+              >More articles</a
+            >
+          </li>
+          <li>
+            <a href="#gallery_anchor" class="localized" data-key="nav_gallery"
+              >Galery</a
+            >
+          </li>
+          <li>
+            <a href="#" class="localized" data-key="nav_lang">Language</a>
+          </li>
+          <li style="float: right" id="nav_up">
+            <a href="#header" class="localized" data-key="nav_up">Up</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div id="info_anchor"></div>
+    <main id="content">
+      <section id="about">
+        <div id="title_and_img">
+          <span
+            id="about_title"
+            class="localized"
+            data-key="visual_representation"
+            >Visual representation of a polynomial attractor</span
+          >
+
+          <div id="img_container">
+            <img
+              id="about_img"
+              src="images/polynomial_attractor.png"
+              alt="Polynomial attarctor"
+            />
+          </div>
+        </div>
+        <div class="description_section">
+          <h2 class="localized" data-key="what_are_attractors">
+            What are attractors?
+          </h2>
+          <p class="description localized" data-key="description_paragraph_1">
+            In the mathematical field of dynamical systems, an attractor is a
+            set of states toward which a system tends to evolve, for a wide
+            variety of starting conditions. Some attractors are known to be
+            chaotic, in which case the evolution of any two distinct points of
+            the attractor result in exponentially diverging trajectories, which
+            complicates prediction when even the smallest noise is present in
+            the system.
+          </p>
+          <p class="description localized" data-key="description_paragraph_2">
+            A dynamical system is generally described by differential equations.
+            The equations specify system's behavior over any given short period
+            of time. To determine the system's behavior for a longer period, it
+            is often necessary to integrate the equations, either through
+            analytical means or through iteration.
+          </p>
+        </div>
+        <div class="description_section">
+          <h2 class="localized" data-key="implementation">Implementation</h2>
+          <p class="description localized" data-key="implementation_paragraph">
+            Take about 1 000 00 points, scatter them randomly on your simulation
+            square, iterate each of the points using some attarctor
+            equations(for example Lorenz), at each iteration add some constant
+            value to an intensity map at each point's coordinate. Do about a
+            million iterations. You will get an intensity map that can be
+            converted to color map.
+          </p>
+          <a
+            href="https://github.com/dgudim/AttractorSimulator"
+            target="_blank"
+            class="default_link"
+            id="implementation_link"
+          >
+            <div class="inner_link_container">
+              <i class="fab fa-github fa-2x"></i
+              ><span
+                class="link_text localized"
+                data-key="implementation_button"
+                >Example implementation</span
+              >
+            </div>
+          </a>
+        </div>
+      </section>
+      <div id="more_acticles_anchor"></div>
+      <section class="border_before">
+        <h2 class="section_title localized" data-key="usefull_info">
+          Usefull info about attractors
+        </h2>
+        <div id="more_articles_section">
+          <article class="useful_article" id="article1">
+            <a href="http://attractors.io/" target="_blank">
+              <div class="article_content">
+                <h2 class="localized" data-key="interractive_site">
+                  Interractive site where you can play with attractors
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article2">
+            <a href="http://paulbourke.net/fractals/sprott/" target="_blank">
+              <div class="article_content">
+                <h2 class="localized" data-key="polynomial_site">
+                  A site with polynomial attractors
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article3">
+            <a href="http://www.3d-meier.de/tut5/Seite0.html" target="_blank">
+              <div class="article_content">
+                <h2 class="localized" data-key="german_site">
+                  German site with diffrent attractors
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article4">
+            <a href="https://en.wikipedia.org/wiki/Attractor" target="_blank">
+              <div class="article_content">
+                <h2 class="localized" data-key="wikipedia_site">
+                  Wikipedia page about attractors
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article5">
+            <a
+              href="https://www.youtube.com/watch?v=idpOunnpKTo&t=2s"
+              target="_blank"
+            >
+              <div class="article_content">
+                <h2 class="localized" data-key="other_attractors_site">
+                  Are there other Chaotic Attractors?
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article6">
+            <a
+              href="https://www.algosome.com/articles/lorenz-attractor-programming-code.html"
+              target="_blank"
+            >
+              <div class="article_content">
+                <h2 class="localized" data-key="programming_lorenz_site">
+                  Programming the Lorenz Attractor
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+          </article>
+          <article class="useful_article" id="article7">
+            <a
+              href="https://www.youtube.com/watch?v=8ttGBReE5gg"
+              target="_blank"
+            >
+              <div class="article_content">
+                <h2 class="localized" data-key="chaos_theory_site">
+                  Chaos theory (attractor visualisation)
+                </h2>
+                <span class="localized" data-key="click_to_visit"
+                  >Click to visit</span
+                >
+              </div>
+            </a>
+            <!-- TODO: Implement dynamic loading from json or whatever -->
+          </article>
+        </div>
+      </section>
+      <div id="gallery_anchor"></div>
+      <section class="border_before">
+        <h2 class="section_title localized" data-key="more_images">
+          More images of attractors
+        </h2>
+        <!--<div id="slider">
+          <!- Loading Screen - >
+          <div data-u="loading" class="spin">
+            <img src="images/spin.svg" alt="loading_image_svg" />
+          </div>
+          <div data-u="slides" id="slides_container">
+            <div>
+              <img
+                data-u="image"
+                src="images/attractor1.png"
+                alt="attractor 1"
+              />
+            </div>
+            <div>
+              <img
+                data-u="image"
+                src="images/attractor2.png"
+                alt="attractor 2"
+              />
+            </div>
+            <div>
+              <img
+                data-u="image"
+                src="images/attractor3.png"
+                alt="attractor 3"
+              />
+            </div>
+            <div>
+              <img
+                data-u="image"
+                src="images/attractor4.png"
+                alt="attractor 4"
+              />
+            </div>
+            <div>
+              <img
+                data-u="image"
+                src="images/attractor5.png"
+                alt="attractor 5"
+              />
+            </div>
+          </div>
+          <!- Bullet Navigator - >
+          <div
+            data-u="navigator"
+            class="bullet_navigator"
+            style="position: absolute; bottom: 16px; right: 16px"
+            data-autocenter="1"
+            data-scale="0.5"
+            data-scale-bottom="0.75"
+          >
+            <div
+              data-u="prototype"
+              class="bullet_circle"
+              style="width: 12px; height: 12px"
+            >
+              <svg
+                viewbox="0 0 16000 16000"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                "
+              >
+                <circle class="bullet" cx="8000" cy="8000" r="5800"></circle>
+              </svg>
+            </div>
+          </div>
+          <!- Arrow Navigator - >
+          <div
+            data-u="arrowleft"
+            class="arrow_navigator"
+            style="width: 65px; height: 65px; top: 0px; left: 35px"
+            data-autocenter="2"
+            data-scale="0.75"
+            data-scale-left="0.75"
+          >
+            <svg
+              viewbox="0 0 16000 16000"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              "
+            >
+              <polyline
+                class="arrow"
+                points="11040,1920 4960,8000 11040,14080 "
+              ></polyline>
+            </svg>
+          </div>
+          <div
+            data-u="arrowright"
+            class="arrow_navigator"
+            style="width: 65px; height: 65px; top: 0px; right: 35px"
+            data-autocenter="2"
+            data-scale="0.75"
+            data-scale-right="0.75"
+          >
+            <svg
+              viewbox="0 0 16000 16000"
+              style="
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              "
+            >
+              <polyline
+                class="arrow"
+                points="4960,1920 11040,8000 4960,14080 "
+              ></polyline>
+            </svg>
+          </div>
+        </div> -->
+        <div id="vertical_galery" class="carousel slide">
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#vertical_galery"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#vertical_galery"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#vertical_galery"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#vertical_galery"
+              data-bs-slide-to="3"
+              aria-label="Slide 4"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#vertical_galery"
+              data-bs-slide-to="4"
+              aria-label="Slide 5"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img
+                class="img_vertical d-block w-100"
+                src="images/attractor1.png"
+                alt="attractor 1"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                class="img_vertical d-block w-100"
+                src="images/attractor2.png"
+                alt="attractor 2"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                class="img_vertical d-block w-100"
+                src="images/attractor3.png"
+                alt="attractor 3"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                class="img_vertical d-block w-100"
+                src="images/attractor4.png"
+                alt="attractor 4"
+              />
+            </div>
+            <div class="carousel-item">
+              <img
+                class="img_vertical d-block w-100"
+                src="images/attractor5.png"
+                alt="attractor 5"
+              />
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#vertical_galery"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#vertical_galery"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer id="footer">
+      <a
+        href="https://github.com/dgudim?tab=repositories"
+        target="_blank"
+        class="default_link"
+      >
+        <div class="inner_link_container">
+          <i class="fab fa-github fa-2x"></i
+          ><span class="link_text localized" data-key="footer_other_projects"
+            >Other projects</span
+          >
+        </div>
+      </a>
+      <a
+        href="mailto:dgudim@gmail.com?subject=Mail-regarding-attractors"
+        target="_blank"
+        class="default_link"
+      >
+        <div class="inner_link_container">
+          <i class="far fa-envelope fa-2x"></i
+          ><span class="link_text localized" data-key="footer_email"
+            >E-mail the creator</span
+          >
+        </div>
+      </a>
+      <a href="https://vk.com/gudimd2" target="_blank" class="default_link">
+        <div class="inner_link_container">
+          <i class="fab fa-vk fa-2x"></i
+          ><span class="link_text localized" data-key="footer_vk"
+            >Contact via vk</span
+          >
+        </div>
+      </a>
+      <a
+        href="https://www.youtube.com/channel/UC5PtgS_iXYUBdU5HIfdX9Lg"
+        target="_blank"
+        class="default_link"
+      >
+        <div class="inner_link_container">
+          <i class="fab fa-youtube fa-2x"></i
+          ><span class="link_text localized" data-key="footer_youtube"
+            >Youtube channel</span
+          >
+        </div>
+      </a>
+    </footer>
+
+    <a href="#header" id="mobile_button_top"
+      ><i class="fas fa-arrow-up fa-2x" id="mobile_button_top_arrow"></i
+    ></a>
+
+    <script src="localization/ru.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      slider_init();
+    </script>
+  </body>
+</html>

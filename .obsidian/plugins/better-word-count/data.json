@@ -21,5 +21,6 @@
   "countComments": true,
   "collectStats": false,
   "displaySectionCounts": true,
-  "pageWords": 300
+  "pageWords": 300,
+  "statsPath": ".obsidian/vault-stats.json"
 }

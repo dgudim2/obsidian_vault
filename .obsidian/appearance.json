@@ -1,6 +1,6 @@
 {
-  "accentColor": "",
-  "cssTheme": "Obsidian gruvbox",
+  "accentColor": "#bf4a4a",
+  "cssTheme": "Minimal",
   "baseFontSize": 13,
   "interfaceFontFamily": "Segoe UI",
   "textFontFamily": "FiraCode Nerd Font",
@@ -20,7 +20,8 @@
     "home",
     "MCL Wide Views",
     "table-tweak",
-    "page-breaks"
+    "page-breaks",
+    "theme-overrides"
   ],
   "showViewHeader": true,
   "theme": "system"

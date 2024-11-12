@@ -1,0 +1,9 @@
+Eve v.0.4
+Licensed under Academic Free License 3.0
+https://opensource.org/licenses/AFL-3.0
+
+p.s.
+Keep upper comments in the file(s) as it is, that's it.
+Any suggestions are appreciated.
+If something bad happens, then would need to find the cause of the incident.
+Reporting incident's may help to stop the future incidents.

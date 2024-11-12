@@ -206,5 +206,14 @@
       ],
       "key": " "
     }
+  ],
+  "templater-obsidian:/templates/paste": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "V"
+    }
   ]
 }

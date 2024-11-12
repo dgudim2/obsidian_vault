@@ -48,10 +48,23 @@
       "title": "Solution",
       "injectColor": true,
       "noTitle": false
+    },
+    "explanation": {
+      "type": "explanation",
+      "color": "167, 82, 173",
+      "icon": {
+        "name": "info",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Explanation",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": true
     }
   },
   "syntaxHighlight": false,
-  "copyButton": false,
+  "copyButton": true,
   "version": "10.3.2",
   "autoCollapse": true,
   "defaultCollapseType": "open",

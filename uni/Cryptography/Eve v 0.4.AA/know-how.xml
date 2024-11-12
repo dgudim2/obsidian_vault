@@ -1,0 +1,684 @@
+<?xml version="1.0"?>
+<data>
+    <language name="Polish">
+        <class name="language">
+            <t_polish>polski</t_polish>
+            <t_english>angelski</t_english>
+            <t_lithuanian>litewski</t_lithuanian>
+        </class>
+        <class name="general">
+            <t_settings_menu>Menu ustawienia</t_settings_menu>
+            <t_show_this_settings_menu>Pokaż to menu ustawienia</t_show_this_settings_menu>
+            <t_show_current_options>W tym czasie pokaż opcje</t_show_current_options>
+            <t_show_available_operations>Pokaż dostępne funkcjonalności</t_show_available_operations>
+            <t_select_operation>Wybierz funkcjonalność</t_select_operation>
+            <t_current>W tym czasie</t_current>
+            <t_operation_start>Zaczinacz funkcjonalność</t_operation_start>
+            <t_language_settings>Ustawienia języka</t_language_settings>
+            <t_exit>Wyjdź</t_exit>
+            <t_current_operations>Opcje w tym czasie</t_current_operations>
+            <t_no_operations_were_loaded>Brakuje obciążonej funkcjonalności</t_no_operations_were_loaded>
+            <t_operation_were_selected>Wybrana funkcjonalność</t_operation_were_selected>
+            <t_no_operations_were_selected>Nie wybrano funkcjonalności</t_no_operations_were_selected>
+            <t_select_operation_according_the_settings_menu>Wybierz funkcjonalność według menu ustawień</t_select_operation_according_the_settings_menu>
+            <t_please_select_the_operation>Proszę wyborzycz funkcjonalności</t_please_select_the_operation>
+            <t_no_actions_were_processed_select_the_operation>Nie wykonano akcji. Proszę wyborzycz funkcjonalności</t_no_actions_were_processed_select_the_operation>
+            <t_choose_language>Wybierz język</t_choose_language>
+            <t_exiting>Wychodzisz</t_exiting>
+            <t_restarting>Rozpoczinat znowu</t_restarting>
+            <t_loaded_operation>Włączony funkcjonalność</t_loaded_operation>
+            <t_scan_options>Opcje skanowania</t_scan_options>
+            <t_do_you_want_to_change_the_scan_options>Czy chcesz zmienić opcje skanowania</t_do_you_want_to_change_the_scan_options>
+            <t_no_options_were_changed>Opcje nie zmienione</t_no_options_were_changed>
+            <t_current_time>Aktualny czas</t_current_time>
+            <t_continue>Kontinuować</t_continue>
+            <t_try_out_for_the_next_one>Spróbuj drugi</t_try_out_for_the_next_one>
+            <t_retry>Spróbuj ponownie</t_retry>
+            <t_none>Żaden</t_none>
+            <e_no>Bląd Nr</e_no>
+            <t_no>Nie</t_no>
+            <t_number>Nr</t_number>
+            <t_result>Wynik</t_result>
+            <t_status>Status</t_status>
+            <t_available_scan_options>Dostępne opcje skanowania</t_available_scan_options>
+            <t_directory>Katalog</t_directory>
+            <t_mime>Mime</t_mime>
+            <t_files>Pliki</t_files>
+        </class>
+        <class name="eve_class1">
+            <t_brute_force_of_the_server>Niezwyciężona siła na serwera</t_brute_force_of_the_server>
+            <eve_class_one_description>Funkcjonalność siły niezwyciężony dla prostego mechanizmu uwierzytelniania serwera sieci</eve_class_one_description>
+            <t_all_available_protocols>Wszystkie dostępni protokóly</t_all_available_protocols>
+            <t_protocol>Protokól</t_protocol>
+            <t_host>Host komputera</t_host>
+            <t_port>Port komputera</t_port>
+            <t_path>Droga</t_path>
+            <t_current_uri>URI w tym czasu</t_current_uri>
+            <t_all_available_types>Wszystkie dostępni typy</t_all_available_types>
+            <t_type_prepared_to_launch>Typ gotowe zaczinacz</t_type_prepared_to_launch>
+            <t_current_protocol>Protokól w tym czasu</t_current_protocol>
+            <t_it_is_a_http_protocol>To jest HTTP protokól</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>To jest HTTPS protokól</t_it_is_a_https_protocol>
+            <t_current_host>Host w tym czasu</t_current_host>
+            <t_specify_new_host_information>Określ nowe informacje o Hostu</t_specify_new_host_information>
+            <t_enter_the_host_information>Wprowadż informacje o Hostu</t_enter_the_host_information>
+            <t_current_port>Port w tym czasu</t_current_port>
+            <t_specify_new_port>Określ nowe informacje o Portu</t_specify_new_port>
+            <t_enter_the_port>Wprowadż informacje o Portu</t_enter_the_port>
+            <t_current_path>Droga w tym czasu</t_current_path>
+            <t_specify_new_path_information>Określ nowe informacje o Droge</t_specify_new_path_information>
+            <t_enter_the_path_information>Wprowadż informacje o Droge</t_enter_the_path_information>
+            <t_current_scan_type>Typ skanowania w tym czasu</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Używay dane w pliku dla Prośbu</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>To jest ręczna Prośba</t_it_is_a_manual_request>
+            <t_please_enter_username_and_password_in_this_format>Proszę wprowadż nazwa użytkownika i hasło w tym format jak nazwa użytkownika:hasło</t_please_enter_username_and_password_in_this_format>
+            <t_response_data>Dane Odpowiedżi</t_response_data>
+            <t_successfully_logged_in_with_status_code>Logowania było sukces z kodu statusa</t_successfully_logged_in_with_status_code>
+            <t_no_luck_you_may_try_it_again>Nie ma szczęście, ty możeś spróbować ponownie. Kod statusa</t_no_luck_you_may_try_it_again>
+            <t_credentials_used>Używane dane logowania</t_credentials_used>
+            <t_no_luck_using_credentials>Nie ma szczęście używ dane logowania</t_no_luck_using_credentials>
+            <e_check_connectivity_and_selected_options>Bląd: sprawdz łączność i wybrane opcje</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Bląd: Nie mogę czytać z pliku</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class2">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class3">
+            <t_guess_the_password_of_the_pdf_files>Zgadnij hasło PDF plików</t_guess_the_password_of_the_pdf_files>
+            <eve_class_three_description>Funkcjonalność do odkrycia faktu, że PDF plik z hasłem i jego znaczenia</eve_class_three_description>
+            <e_in_uname_command>Bląd w uname polecenie</e_in_uname_command>
+            <e_linux_is_not_in_the_list>Linux nie jest w listu</e_linux_is_not_in_the_list>
+            <e_in_whereis_gs_command>Bląd w whereis gs polecenie</e_in_whereis_gs_command>
+            <t_dependency_the_interpreter_for_pdf_gs>Zależność: Portable Document Format interpreter Ghostscript</t_dependency_the_interpreter_for_pdf_gs>
+            <t_path_to_the_gs>Droga do Ghostscript</t_path_to_the_gs>
+            <t_path_for_the_input_and_output>Droga dla Wejścia i Wyjścia</t_path_for_the_input_and_output>
+            <t_input_file_name>Nażwa pliku Wejście</t_input_file_name>
+            <t_output_file_name>Nażwa pliku Wyjście</t_output_file_name>
+            <t_current_full_path_to_the_input_file>W tym czasie pełna Droga do pliku Wejście</t_current_full_path_to_the_input_file>
+            <t_current_full_path_to_the_output_file>W tym czasie pełna Droga do pliku Wyjście</t_current_full_path_to_the_output_file>
+            <t_current_path>Droga w tym czasie</t_current_path>
+            <t_specify_new_path>Określ nowe Droge</t_specify_new_path>
+            <t_enter_the_new_path>Wprowadż nowe Droge</t_enter_the_new_path>
+            <t_current_input_file>Plik Wejście w tym czasie</t_current_input_file>
+            <t_specify_new_input_file>Określ nowe plik Wejście</t_specify_new_input_file>
+            <t_enter_the_new_input_file>Wprowadż nowe plik Wejście</t_enter_the_new_input_file>
+            <t_current_output_file>Plik Wyjście w tym czasie</t_current_output_file>
+            <t_specify_new_output_file>Określ nowe plik Wyjście</t_specify_new_output_file>
+            <t_enter_the_new_output_file>Wprowadż nowe plik Wyjście</t_enter_the_new_output_file>
+            <t_current_path_for_the_input_and_output>Droga dla Wejścia i Wyjścia w tym czasie</t_current_path_for_the_input_and_output>
+            <t_specify_new_path_for_the_input_and_output>Określ nowe Droge dla Wejścia i Wyjścia</t_specify_new_path_for_the_input_and_output>
+            <t_enter_the_new_path_for_the_input_and_output>Wprowadż nowe Droge dla Wejścia i Wyjścia</t_enter_the_new_path_for_the_input_and_output>
+            <t_do_you_want_to_create_test_file>Czy chcesz utworzyć plik testowy</t_do_you_want_to_create_test_file>
+            <t_decryption_begin>Zaczynać odszyfrowania</t_decryption_begin>
+            <t_decryption_end>Zakończić odszyfrowania</t_decryption_end>
+        </class>
+        <class name="eve_class4">
+            <t_crawler_for_server_status_and_header_information>Robot internetowy dla status o serwera i informacje o nagłówków</t_crawler_for_server_status_and_header_information>
+            <eve_class_four_description>Funkcja sprawdzania dostępnego dostępu dla robotów i informacja o nagłówkach</eve_class_four_description>
+            <t_all_available_protocols>Wszystkie dostępni protokóly</t_all_available_protocols>
+            <t_protocol>Protokól</t_protocol>
+            <t_host>Host komputera</t_host>
+            <t_port>Port komputera</t_port>
+            <t_path>Droga</t_path>
+            <t_current_uri>URI w tym czasu</t_current_uri>
+            <t_all_available_types>Wszystkie dostępni typy</t_all_available_types>
+            <t_type_prepared_to_launch>Typ gotowe zaczinacz</t_type_prepared_to_launch>
+            <t_current_protocol>Protokól w tym czasu</t_current_protocol>
+            <t_it_is_a_http_protocol>To jest HTTP protokól</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>To jest HTTPS protokól</t_it_is_a_https_protocol>
+            <t_current_host>Host w tym czasu</t_current_host>
+            <t_specify_new_host_information>Określ nowe informacje o Hostu</t_specify_new_host_information>
+            <t_enter_the_host_information>Wprowadż informacje o Hostu</t_enter_the_host_information>
+            <t_current_port>Port w tym czasu</t_current_port>
+            <t_specify_new_port>Określ nowe informacje o Portu</t_specify_new_port>
+            <t_enter_the_port>Wprowadż informacje o Portu</t_enter_the_port>
+            <t_current_path>Droga w tym czasu</t_current_path>
+            <t_specify_new_path_information>Określ nowe informacje o Droge</t_specify_new_path_information>
+            <t_enter_the_path_information>Wprowadż informacje o Droge</t_enter_the_path_information>
+            <t_current_scan_type>Typ skanowania w tym czasu</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Używay dane w pliku dla Prośbu</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>To jest ręczna Prośba</t_it_is_a_manual_request>
+            <t_attention>Uwaga</t_attention>
+            <t_secret_for_authentication_is_empty>Tajny dla Autentykacja jest pusty</t_secret_for_authentication_is_empty>
+            <t_add_secret>Dodaj tajny</t_add_secret>
+            <t_ua>UA</t_ua>
+            <t_authentication>Autentykacja</t_authentication>
+            <t_auth_option>Opcja autentyfikacjy</t_auth_option>
+            <t_the_use_of_an_file_authentication>Używay autentykacja pliku</t_the_use_of_an_file_authentication>
+            <t_enforce_the_file_authentication>Umożliwiaj autentykacja pliku</t_enforce_the_file_authentication>
+            <t_no_authentication>Nie jest autentifikowano</t_no_authentication>
+            <t_the_file_auth>Autentykacja pliku</t_the_file_auth>
+            <t_the_eve_are_authorized_for_actions>Eve jest autoryzowana dla działania</t_the_eve_are_authorized_for_actions>
+            <t_the_eve_are_not_authorized_for_actions>Eve nie jest autoryzowana dla działania</t_the_eve_are_not_authorized_for_actions>
+            <t_the_eve_capabilities_host_address>Szanse Eve (Host adres)</t_the_eve_capabilities_host_address>
+            <t_request_rate>Częstość Prośbi</t_request_rate>
+            <t_crawl_delay>Opóźnienie przewijania</t_crawl_delay>
+            <t_allowed_to_fetch_host_address>pozwolej dostęp do Host adresa</t_allowed_to_fetch_host_address>
+            <t_content>Treść</t_content>
+            <t_headers_or_data>Nagłówki i dane</t_headers_or_data>
+            <e_check_connectivity_and_selected_options>Bląd: sprawdz łączność i wybrane opcje</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Bląd: Nie mogę czytać z pliku</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class5">
+            <t_configuration_check_of_the_operating_system>Sprawdż konfigurację systemu operacyjnego</t_configuration_check_of_the_operating_system>
+            <eve_class_five_description>Funkcjonalność sprawdzania konfiguracji, ktore zostały zdefiniowane w dokumentacji konkretnej platformy</eve_class_five_description>
+            <t_select_os_for_the_scan>Wybraj OS dla skanowania</t_select_os_for_the_scan>
+            <t_do_you_want_to_scan_the>Czy chcieś skanować</t_do_you_want_to_scan_the>
+            <t_do_you_want_to_scan_only_first_option>Czy chcesz zeskanować tylko pierwszą opcję</t_do_you_want_to_scan_only_first_option>
+            <t_linuxos_scan_commence>Rozpoczynać skanowania LinuxOS</t_linuxos_scan_commence>
+            <t_macos_scan_commence>Rozpoczynać skanowania MacOS</t_macos_scan_commence>
+            <t_windows_scan_commence>Rozpoczynać skanowania WindowsOS</t_windows_scan_commence>
+            <t_android_scan_commence>Rozpoczynać skanowania AndroidOS</t_android_scan_commence>
+            <t_os_prod_information>Informacje o OS produkt</t_os_prod_information>
+            <t_initial_actual_information>Wejściowane aktualne informacje</t_initial_actual_information>
+            <t_does_the_current_user_has_administrative_access_to_the_system>Czy aktualny użytkownik ma dostęp administracyjny do systemu?</t_does_the_current_user_has_administrative_access_to_the_system>
+            <t_does_admin_access_is_in_place_for_checking_the_configuration>Czy istneje dostęp administracyjny do sprawdzania konfiguracji</t_does_admin_access_is_in_place_for_checking_the_configuration>
+            <t_does_admin_access_is_in_place_for_checking_the_system_configuration>Czy istneje dostęp administracyjny do sprawdzania systemowej konfiguracji</t_does_admin_access_is_in_place_for_checking_the_system_configuration>
+            <t_everything_seems_right>Wszystko wydaje się być w porządku</t_everything_seems_right>
+            <t_everything_seems_right_there_exists_possibility_for_admin_access>Wszystko wydaje się być w porządku. Istnieje możliwość dostępu administracyjnego</t_everything_seems_right_there_exists_possibility_for_admin_access>
+            <t_it_gonna_work>To zadziała</t_it_gonna_work>
+            <t_it_gonna_work_has_admin_access>To zadziała. Ma dostęp adminitracyjny</t_it_gonna_work_has_admin_access>
+            <t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>Czy istnieje dostęp do pliku danych hasła i czy konta są z pustym polem hasła</t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>
+            <t_does_the_user_have_permission_to_access_the_shadow_file>Czy użytkownik ma dostępu do uprawnienia shadow pliku</t_does_the_user_have_permission_to_access_the_shadow_file>
+            <t_this_user_does_not_have_read_access_of_the_shadow_file>Ten użytkownik nie ma dostępu do odczytu shadow pliku</t_this_user_does_not_have_read_access_of_the_shadow_file>
+            <t_this_user_cannot_access_system_privileges>Ten użytkownik nie może uzyskać dostępu do uprawnień systemowych</t_this_user_cannot_access_system_privileges>
+            <t_does_exists_accounts_with_empty_password_field>Czy istnieją konta z pustym polem hasła</t_does_exists_accounts_with_empty_password_field>
+            <t_all_accounts_has_passwords_and_not_empty>Wszystkie konta mają hasła i nie są puste</t_all_accounts_has_passwords_and_not_empty>
+            <t_need_to_check_for_passwordless_accounts>Musisz sprawdzić, czy nie ma kont bez hasła</t_need_to_check_for_passwordless_accounts>
+            <t_check_available_applications>Sprawdż dostępne oprogramowanie użytkowe</t_check_available_applications>
+            <t_no_idea_about>Nie mam pojęcia o</t_no_idea_about>
+            <t_currently_not_available>Teraz niedostępne</t_currently_not_available>
+        </class>
+        <class name="eve_class6">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class7">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class8">
+            <t_frigevest_procedure>Procedura skrótki katalogą</t_frigevest_procedure>
+            <eve_class_eight_description>Skróti katalog z bezpłatny rezultaty skróta w moduł Evi</eve_class_eight_description>
+            <e_in_pwd_command>Bląd w pwd polecenie</e_in_pwd_command>
+            <t_digest_options>Opcji rezultata skróta</t_digest_options>
+            <t_current_directory>Katalog w tym czasu</t_current_directory>
+            <t_change_directory>zmieniaj katalog</t_change_directory>
+            <t_enter_the_directory>Wprowadż kataloga</t_enter_the_directory>
+            <t_show_mime_information>Pokaż informacje o Mime</t_show_mime_information>
+            <t_enable_mime_information>umożlivić informacje o Mime</t_enable_mime_information>
+            <t_disable_mime_information>unieszkodliwiać informacje o Mime</t_disable_mime_information>
+            <t_current_mime_information>informacje o Mime w tym czasu</t_current_mime_information>
+            <t_do_you_want_to_change_the_digest_options>Czy chcesz zmienić opcje rezultata skróta</t_do_you_want_to_change_the_digest_options>
+            <e_in_ls_command>Bląd w ls -1 [path] polecenie</e_in_ls_command>
+            <e_in_file_command>Bląd w file [path] polecenie</e_in_file_command>
+            <e_in_du_command>Bląd w du -s --time [path] polecenie</e_in_du_command>
+            <e_in_file_mime_command>Bląd w file --mime-type [path] polecenie</e_in_file_mime_command>
+            <t_note_this_is_a_directory>notatka: To jest katalog</t_note_this_is_a_directory>
+            <t_md_five_sum>md5sum</t_md_five_sum>
+            <t_size_mod>size.mod.</t_size_mod>
+            <t_mim_t>mim.t.</t_mim_t>
+        </class>
+    </language>
+    <language name="English">
+        <class name="language">
+            <t_polish>polish</t_polish>
+            <t_english>english</t_english>
+            <t_lithuanian>lithuanian</t_lithuanian>
+        </class>
+        <class name="general">
+            <t_settings_menu>Settings Menu</t_settings_menu>
+            <t_show_this_settings_menu>Show this Settings Menu</t_show_this_settings_menu>
+            <t_show_current_options>Show current Options</t_show_current_options>
+            <t_show_available_operations>Show available Operations</t_show_available_operations>
+            <t_select_operation>Select Operation</t_select_operation>
+            <t_current>Current</t_current>
+            <t_operation_start>Operation Start</t_operation_start>
+            <t_language_settings>Language Settings</t_language_settings>
+            <t_exit>Exit</t_exit>
+            <t_current_operations>Current Options</t_current_operations>
+            <t_no_operations_were_loaded>No Operations were loaded</t_no_operations_were_loaded>
+            <t_operation_were_selected>Operation were selected</t_operation_were_selected>
+            <t_no_operations_were_selected>No Operations were selected</t_no_operations_were_selected>
+            <t_select_operation_according_the_settings_menu>Select Operation according the Settings Menu</t_select_operation_according_the_settings_menu>
+            <t_please_select_the_operation>Please select the Operation</t_please_select_the_operation>
+            <t_no_actions_were_processed_select_the_operation>No actions were processed. Select the Operation</t_no_actions_were_processed_select_the_operation>
+            <t_choose_language>Choose language</t_choose_language>
+            <t_exiting>Exiting</t_exiting>
+            <t_restarting>Restarting</t_restarting>
+            <t_loaded_operation>Loaded Operation</t_loaded_operation>
+            <t_scan_options>Scan Options</t_scan_options>
+            <t_do_you_want_to_change_the_scan_options>Do You want to change the Scan Options</t_do_you_want_to_change_the_scan_options>
+            <t_no_options_were_changed>No Options were changed</t_no_options_were_changed>
+            <t_current_time>Current time</t_current_time>
+            <t_continue>Continue</t_continue>
+            <t_try_out_for_the_next_one>Try out for the next one</t_try_out_for_the_next_one>
+            <t_retry>Retry</t_retry>
+            <t_none>None</t_none>
+            <e_no>Error No</e_no>
+            <t_no>No</t_no>
+            <t_number>No</t_number>
+            <t_result>Result</t_result>
+            <t_status>Status</t_status>
+            <t_available_scan_options>Available Scan Options</t_available_scan_options>
+            <t_directory>Directory</t_directory>
+            <t_mime>Mime</t_mime>
+            <t_files>Files</t_files>
+        </class>
+        <class name="eve_class1">
+            <t_brute_force_of_the_server>Brute Force of the Server</t_brute_force_of_the_server>
+            <eve_class_one_description>Functionality for brute forcing Basic Authentication mechanism of the web server</eve_class_one_description>
+            <t_all_available_protocols>All available protocols</t_all_available_protocols>
+            <t_protocol>Protocol</t_protocol>
+            <t_host>Host</t_host>
+            <t_port>Port</t_port>
+            <t_path>Path</t_path>
+            <t_current_uri>Current URI</t_current_uri>
+            <t_all_available_types>All available types</t_all_available_types>
+            <t_type_prepared_to_launch>Type prepared to launch</t_type_prepared_to_launch>
+            <t_current_protocol>Current protocol</t_current_protocol>
+            <t_it_is_a_http_protocol>It's a HTTP protocol</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>It's a HTTPS protocol</t_it_is_a_https_protocol>
+            <t_current_host>Current Host</t_current_host>
+            <t_specify_new_host_information>Specify new Host information</t_specify_new_host_information>
+            <t_enter_the_host_information>Enter the Host information</t_enter_the_host_information>
+            <t_current_port>Current Port</t_current_port>
+            <t_specify_new_port>Specify new Port information</t_specify_new_port>
+            <t_enter_the_port>Enter the Port information</t_enter_the_port>
+            <t_current_path>Current Path</t_current_path>
+            <t_specify_new_path_information>Specify new Path information</t_specify_new_path_information>
+            <t_enter_the_path_information>Enter the Path information</t_enter_the_path_information>
+            <t_current_scan_type>Current Scan Type</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Use data in file for the Request</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>It's a manual Request</t_it_is_a_manual_request>
+            <t_please_enter_username_and_password_in_this_format>Please enter username and password in this format of username:password</t_please_enter_username_and_password_in_this_format>
+            <t_response_data>Response data</t_response_data>
+            <t_successfully_logged_in_with_status_code>Successfully logged in with status code</t_successfully_logged_in_with_status_code>
+            <t_no_luck_you_may_try_it_again>No luck, You may try it again. Status code</t_no_luck_you_may_try_it_again>
+            <t_credentials_used>Credentials used</t_credentials_used>
+            <t_no_luck_using_credentials>No luck using credentials</t_no_luck_using_credentials>
+            <e_check_connectivity_and_selected_options>Error: Check connectivity and selected Options</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Error: Can't read from file</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class2">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class3">
+            <t_guess_the_password_of_the_pdf_files>Guess the Password of the PDF files</t_guess_the_password_of_the_pdf_files>
+            <eve_class_three_description>Functionality for finding fact that PDF contains the Password and it's value</eve_class_three_description>
+            <e_in_uname_command>Error in uname command</e_in_uname_command>
+            <e_linux_is_not_in_the_list>Linux is not in the list</e_linux_is_not_in_the_list>
+            <e_in_whereis_gs_command>Error in whereis gs command</e_in_whereis_gs_command>
+            <t_dependency_the_interpreter_for_pdf_gs>Dependency: the interpreter for Portable Document Format Ghostscript</t_dependency_the_interpreter_for_pdf_gs>
+            <t_path_to_the_gs>Path to the Ghostscript</t_path_to_the_gs>
+            <t_path_for_the_input_and_output>Path for the Input and Output</t_path_for_the_input_and_output>
+            <t_input_file_name>Input File Name</t_input_file_name>
+            <t_output_file_name>Output File Name</t_output_file_name>
+            <t_current_full_path_to_the_input_file>Current Full Path to the Input File</t_current_full_path_to_the_input_file>
+            <t_current_full_path_to_the_output_file>Current Full Path to the Output File</t_current_full_path_to_the_output_file>
+            <t_current_path>Current Path</t_current_path>
+            <t_specify_new_path>Specify new Path</t_specify_new_path>
+            <t_enter_the_new_path>Enter the new Path</t_enter_the_new_path>
+            <t_current_input_file>Current Input File</t_current_input_file>
+            <t_specify_new_input_file>Specify new Input File</t_specify_new_input_file>
+            <t_enter_the_new_input_file>Enter the new Input File</t_enter_the_new_input_file>
+            <t_current_output_file>Current Output File</t_current_output_file>
+            <t_specify_new_output_file>Specify new Output File</t_specify_new_output_file>
+            <t_enter_the_new_output_file>Enter the new Output File</t_enter_the_new_output_file>
+            <t_current_path_for_the_input_and_output>Current Path for the Input and Output</t_current_path_for_the_input_and_output>
+            <t_specify_new_path_for_the_input_and_output>Specify new Path for the Input and Output</t_specify_new_path_for_the_input_and_output>
+            <t_enter_the_new_path_for_the_input_and_output>Enter the new Path for the Input and Output</t_enter_the_new_path_for_the_input_and_output>
+            <t_do_you_want_to_create_test_file>Do You want to create test File</t_do_you_want_to_create_test_file>
+            <t_decryption_begin>Decryption begin</t_decryption_begin>
+            <t_decryption_end>Decryption end</t_decryption_end>
+        </class>
+        <class name="eve_class4">
+            <t_crawler_for_server_status_and_header_information>Crawler for Server status and Header information</t_crawler_for_server_status_and_header_information>
+            <eve_class_four_description>Functionality for finding out the available access for the robots and Header information</eve_class_four_description>
+            <t_all_available_protocols>All available protocols</t_all_available_protocols>
+            <t_protocol>Protocol</t_protocol>
+            <t_host>Host</t_host>
+            <t_port>Port</t_port>
+            <t_path>Path</t_path>
+            <t_current_uri>Current URI</t_current_uri>
+            <t_all_available_types>All available types</t_all_available_types>
+            <t_type_prepared_to_launch>Type prepared to launch</t_type_prepared_to_launch>
+            <t_current_protocol>Current protocol</t_current_protocol>
+            <t_it_is_a_http_protocol>It's a HTTP protocol</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>It's a HTTPS protocol</t_it_is_a_https_protocol>
+            <t_current_host>Current Host</t_current_host>
+            <t_specify_new_host_information>Specify new Host information</t_specify_new_host_information>
+            <t_enter_the_host_information>Enter the Host information</t_enter_the_host_information>
+            <t_current_port>Current Port</t_current_port>
+            <t_specify_new_port>Specify new Port</t_specify_new_port>
+            <t_enter_the_port>Enter the Port</t_enter_the_port>
+            <t_current_path>Current Path</t_current_path>
+            <t_specify_new_path_information>Specify new Path information</t_specify_new_path_information>
+            <t_enter_the_path_information>Enter the Path information</t_enter_the_path_information>
+            <t_current_scan_type>Current Scan Type</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Use data in file for the Request</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>It's a manual Request</t_it_is_a_manual_request>
+            <t_attention>Attention</t_attention>
+            <t_secret_for_authentication_is_empty>Secret for Authentication is empty</t_secret_for_authentication_is_empty>
+            <t_add_secret>Add secret</t_add_secret>
+            <t_ua>UA</t_ua>
+            <t_authentication>Authentication</t_authentication>
+            <t_auth_option>Auth Option</t_auth_option>
+            <t_the_use_of_an_file_authentication>The use of an file Authentication</t_the_use_of_an_file_authentication>
+            <t_enforce_the_file_authentication>Enforce the file Authentication</t_enforce_the_file_authentication>
+            <t_no_authentication>No Authentication</t_no_authentication>
+            <t_the_file_auth>The file Auth</t_the_file_auth>
+            <t_the_eve_are_authorized_for_actions>The Eve are authorized for actions</t_the_eve_are_authorized_for_actions>
+            <t_the_eve_are_not_authorized_for_actions>The Eve are not authorized for actions</t_the_eve_are_not_authorized_for_actions>
+            <t_the_eve_capabilities_host_address>The Eve capabilities (Host address)</t_the_eve_capabilities_host_address>
+            <t_request_rate>Request Rate</t_request_rate>
+            <t_crawl_delay>Crawl Delay</t_crawl_delay>
+            <t_allowed_to_fetch_host_address>Allowed to fetch Host address</t_allowed_to_fetch_host_address>
+            <t_content>Content</t_content>
+            <t_headers_or_data>Headers or data</t_headers_or_data>
+            <e_check_connectivity_and_selected_options>Error: Check connectivity and selected Options</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Error: Can't read from file</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class5">
+            <t_configuration_check_of_the_operating_system>Configuration check of the Operating System</t_configuration_check_of_the_operating_system>
+            <eve_class_five_description>Functionality for checking the Configuration, which were defined in the Documentation of the specific Platform</eve_class_five_description>
+            <t_select_os_for_the_scan>Select OS for the scan</t_select_os_for_the_scan>
+            <t_do_you_want_to_scan_the>Do You want to scan the</t_do_you_want_to_scan_the>
+            <t_do_you_want_to_scan_only_first_option>Do You want to scan only first Option</t_do_you_want_to_scan_only_first_option>
+            <t_linuxos_scan_commence>LinuxOS scan commence</t_linuxos_scan_commence>
+            <t_macos_scan_commence>MacOS scan commence</t_macos_scan_commence>
+            <t_windows_scan_commence>WindowsOS scan commence</t_windows_scan_commence>
+            <t_android_scan_commence>AndroidOS scan commence</t_android_scan_commence>
+            <t_os_prod_information>OS prod information</t_os_prod_information>
+            <t_initial_actual_information>Initial actual information</t_initial_actual_information>
+            <t_does_the_current_user_has_administrative_access_to_the_system>Does the current User has Administrative Access to the System</t_does_the_current_user_has_administrative_access_to_the_system>
+            <t_does_admin_access_is_in_place_for_checking_the_configuration>Does Administrative Access is in Place for checking the Configuration</t_does_admin_access_is_in_place_for_checking_the_configuration>
+            <t_does_admin_access_is_in_place_for_checking_the_system_configuration>Does Administrative Access is in Place for checking the System Configuration</t_does_admin_access_is_in_place_for_checking_the_system_configuration>
+            <t_everything_seems_right>Everything seems right</t_everything_seems_right>
+            <t_everything_seems_right_there_exists_possibility_for_admin_access>Everything seems right. There exists possibility for an administrative access</t_everything_seems_right_there_exists_possibility_for_admin_access>
+            <t_it_gonna_work>It gonna work</t_it_gonna_work>
+            <t_it_gonna_work_has_admin_access>It gonna work. Has Administrative Access</t_it_gonna_work_has_admin_access>
+            <t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>Does exists access to Credentials file and does accounts are with empty password field</t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>
+            <t_does_the_user_have_permission_to_access_the_shadow_file>Does the User have permission to access the Shadow File</t_does_the_user_have_permission_to_access_the_shadow_file>
+            <t_this_user_does_not_have_read_access_of_the_shadow_file>This User does not have read access of the Shadow File</t_this_user_does_not_have_read_access_of_the_shadow_file>
+            <t_this_user_cannot_access_system_privileges>This User can't access System privileges</t_this_user_cannot_access_system_privileges>
+            <t_does_exists_accounts_with_empty_password_field>Does exists accounts with empty password field</t_does_exists_accounts_with_empty_password_field>
+            <t_all_accounts_has_passwords_and_not_empty>All accounts has passwords and not empty</t_all_accounts_has_passwords_and_not_empty>
+            <t_need_to_check_for_passwordless_accounts>Need to check for passwordless accounts</t_need_to_check_for_passwordless_accounts>
+            <t_check_available_applications>Check available Applications</t_check_available_applications>
+            <t_no_idea_about>No idea about</t_no_idea_about>
+            <t_currently_not_available>Currently not available</t_currently_not_available>
+        </class>
+        <class name="eve_class6">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class7">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class8">
+            <t_frigevest_procedure>Frigevest procedure</t_frigevest_procedure>
+            <eve_class_eight_description>Hash the Directory with Free Digest Eve module</eve_class_eight_description>
+            <e_in_pwd_command>Error in pwd command</e_in_pwd_command>
+            <t_digest_options>Digest Options</t_digest_options>
+            <t_current_directory>Current directory</t_current_directory>
+            <t_change_directory>change directory</t_change_directory>
+            <t_enter_the_directory>Enter the directory</t_enter_the_directory>
+            <t_show_mime_information>Show Mime information</t_show_mime_information>
+            <t_enable_mime_information>enable Mime information</t_enable_mime_information>
+            <t_disable_mime_information>disable Mime information</t_disable_mime_information>
+            <t_current_mime_information>Current Mime information</t_current_mime_information>
+            <t_do_you_want_to_change_the_digest_options>Do You want to change the Digest Options</t_do_you_want_to_change_the_digest_options>
+            <e_in_ls_command>Error in ls -1 [path] command</e_in_ls_command>
+            <e_in_file_command>Error in file [path] command</e_in_file_command>
+            <e_in_du_command>Error in du -s --time [path] command</e_in_du_command>
+            <e_in_file_mime_command>Error in file --mime-type [path] command</e_in_file_mime_command>
+            <t_note_this_is_a_directory>note: This is a Directory</t_note_this_is_a_directory>
+            <t_md_five_sum>md5sum</t_md_five_sum>
+            <t_size_mod>size.mod.</t_size_mod>
+            <t_mim_t>mim.t.</t_mim_t>
+        </class>
+    </language>
+    <language name="Lithuanian">
+        <class name="language">
+            <t_polish>lenkų</t_polish>
+            <t_english>anglų</t_english>
+            <t_lithuanian>lietuvių</t_lithuanian>
+        </class>
+        <class name="general">
+            <t_settings_menu>Parinkčių sąrašas</t_settings_menu>
+            <t_show_this_settings_menu>Pateikti šį parinkčių sąrašą</t_show_this_settings_menu>
+            <t_show_current_options>Pateikti einamąsias nuostatas</t_show_current_options>
+            <t_show_available_operations>Pateikti galimas operacijas</t_show_available_operations>
+            <t_select_operation>Pasirinkti operaciją</t_select_operation>
+            <t_current>Einamasis</t_current>
+            <t_operation_start>Pradėti operaciją</t_operation_start>
+            <t_language_settings>Kalbų nuostatos</t_language_settings>
+            <t_exit>Išeiti</t_exit>
+            <t_current_operations>Einamieji nustatymai</t_current_operations>
+            <t_no_operations_were_loaded>Jokių operacijų nebuvo užkrauta</t_no_operations_were_loaded>
+            <t_operation_were_selected>Pasirinkta operacija</t_operation_were_selected>
+            <t_no_operations_were_selected>Operacijų nepasirinkta</t_no_operations_were_selected>
+            <t_select_operation_according_the_settings_menu>Pasirinkti operacją pagal parinkčių sąrašą</t_select_operation_according_the_settings_menu>
+            <t_please_select_the_operation>Pasirinkite operaciją</t_please_select_the_operation>
+            <t_no_actions_were_processed_select_the_operation>Veiksmų neatlikta. Pasirinkti operaciją</t_no_actions_were_processed_select_the_operation>
+            <t_choose_language>Pasirinkti kalbą</t_choose_language>
+            <t_exiting>Išeinama</t_exiting>
+            <t_restarting>Perkraunama</t_restarting>
+            <t_loaded_operation>Užkrautos operacijos</t_loaded_operation>
+            <t_scan_options>Tyrimo nustatymai</t_scan_options>
+            <t_do_you_want_to_change_the_scan_options>Ar nori pakeisti tyrimo nuostatas</t_do_you_want_to_change_the_scan_options>
+            <t_no_options_were_changed>Nuostatos nebuvo pakeistos</t_no_options_were_changed>
+            <t_current_time>Laikas dabar</t_current_time>
+            <t_continue>Tęsti</t_continue>
+            <t_try_out_for_the_next_one>Išmėginti sekantį</t_try_out_for_the_next_one>
+            <t_retry>Pakartoti</t_retry>
+            <t_none>Nieko</t_none>
+            <e_no>Klaidos Nr</e_no>
+            <t_no>Ne</t_no>
+            <t_number>Nr</t_number>
+            <t_result>Rezultatas</t_result>
+            <t_status>Būsena</t_status>
+            <t_available_scan_options>Įmanomi tyrimo nuostatai</t_available_scan_options>
+            <t_directory>Katalogas</t_directory>
+            <t_mime>Mime</t_mime>
+            <t_files>Failas</t_files>
+        </class>
+        <class name="eve_class1">
+            <t_brute_force_of_the_server>Nenugalimos jėgos veiksmai el. paslaugai</t_brute_force_of_the_server>
+            <eve_class_one_description>Nenugalimo jėgos funkcionalumo veiksmai įprastam žiniatinklio autentifikavimo mechanizmui.</eve_class_one_description>
+            <t_all_available_protocols>Visi galimi protokolai</t_all_available_protocols>
+            <t_protocol>Protokolas</t_protocol>
+            <t_host>Šeimininkas</t_host>
+            <t_port>Prievadas</t_port>
+            <t_path>Kelias</t_path>
+            <t_current_uri>Einamasis URI</t_current_uri>
+            <t_all_available_types>Visos galimos rūšys</t_all_available_types>
+            <t_type_prepared_to_launch>Paleidimui pasirengusi rūšis</t_type_prepared_to_launch>
+            <t_current_protocol>Einamoji protokolo informacija</t_current_protocol>
+            <t_it_is_a_http_protocol>Tai yra HTTP protokolas</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>Tai yra HTTPS protokolas</t_it_is_a_https_protocol>
+            <t_current_host>Einamoji šeimininko informacija</t_current_host>
+            <t_specify_new_host_information>Nurodyti naują šeimininko informaciją</t_specify_new_host_information>
+            <t_enter_the_host_information>Įvesk šeimininko informaciją</t_enter_the_host_information>
+            <t_current_port>Einamoji prievado informacija</t_current_port>
+            <t_specify_new_port>Nurodyti naują prievado informaciją</t_specify_new_port>
+            <t_enter_the_port>Įvesk prievado informaciją</t_enter_the_port>
+            <t_current_path>Einamoji kelio informacija</t_current_path>
+            <t_specify_new_path_information>Nurodyti naują kelio informaciją</t_specify_new_path_information>
+            <t_enter_the_path_information>Įvesk kelio informaciją</t_enter_the_path_information>
+            <t_current_scan_type>Einamasis tyrimo tipas</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Užklausai naudoti duomenis faile</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>Tai yra rankinė užklausa</t_it_is_a_manual_request>
+            <t_please_enter_username_and_password_in_this_format>Prašau įvesk naudotojo vardą ir naudotojo slaptažodį šiuo formatu naudotojo vardas:naudotojo slaptažodis</t_please_enter_username_and_password_in_this_format>
+            <t_response_data>Atsakymo duomenys</t_response_data>
+            <t_successfully_logged_in_with_status_code>Sėkmingai prisijungta su būsenos kodu</t_successfully_logged_in_with_status_code>
+            <t_no_luck_you_may_try_it_again>Nesėkmė, gali mėginti dar kartą. Būsenos kodas</t_no_luck_you_may_try_it_again>
+            <t_credentials_used>Naudoti prisijungimo duomenys</t_credentials_used>
+            <t_no_luck_using_credentials>Nesėkmė naudojantis prisijungimo duomenimis</t_no_luck_using_credentials>
+            <e_check_connectivity_and_selected_options>Klaida: Tikrink ryšį ir parinkčių nuostatas</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Klaida: Negalima skaityti iš failo</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class2">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class3">
+            <t_guess_the_password_of_the_pdf_files>Spėk PDF failų slaptažodį</t_guess_the_password_of_the_pdf_files>
+            <eve_class_three_description>Funkcionalumas randant, kad PDF turi slaptažodį ir jo reikšmę, faktą</eve_class_three_description>
+            <e_in_uname_command>Klaida uname komandoje</e_in_uname_command>
+            <e_linux_is_not_in_the_list>Linux nėra sąraše</e_linux_is_not_in_the_list>
+            <e_in_whereis_gs_command>Klaida whereis gs komandoje</e_in_whereis_gs_command>
+            <t_dependency_the_interpreter_for_pdf_gs>Priklausomybė: interpretatorius Portable Document Format'ui Ghostscript</t_dependency_the_interpreter_for_pdf_gs>
+            <t_path_to_the_gs>Kelias iki Ghostscript</t_path_to_the_gs>
+            <t_path_for_the_input_and_output>Kelias iki įvesties ir išvesties</t_path_for_the_input_and_output>
+            <t_input_file_name>Įvesties failo pavadinimas</t_input_file_name>
+            <t_output_file_name>Išvesties failo pavadinimas</t_output_file_name>
+            <t_current_full_path_to_the_input_file>Numatytas visas kelias iki įvesties failo</t_current_full_path_to_the_input_file>
+            <t_current_full_path_to_the_output_file>Numatytas visas kelias iki išvesties failo</t_current_full_path_to_the_output_file>
+            <t_current_path>Numatytas kelias</t_current_path>
+            <t_specify_new_path>Numatyti naują kelią</t_specify_new_path>
+            <t_enter_the_new_path>Numatyk naują kelią</t_enter_the_new_path>
+            <t_current_input_file>Numatytas įvesties failas</t_current_input_file>
+            <t_specify_new_input_file>Numatyk naują įvesties failą</t_specify_new_input_file>
+            <t_enter_the_new_input_file>Įvesk naują įvesties failą</t_enter_the_new_input_file>
+            <t_current_output_file>Numatytas išvesties failas</t_current_output_file>
+            <t_specify_new_output_file>Numatyk naują išvesties failą</t_specify_new_output_file>
+            <t_enter_the_new_output_file>Įvesk naują išvesties failą</t_enter_the_new_output_file>
+            <t_current_path_for_the_input_and_output>Numatytas kelias įvesčiai ir išvesčiai</t_current_path_for_the_input_and_output>
+            <t_specify_new_path_for_the_input_and_output>Numatyk naują kelią įvesčiai ir išvesčiai</t_specify_new_path_for_the_input_and_output>
+            <t_enter_the_new_path_for_the_input_and_output>Įvesk naują kelią įvesčiai ir išvesčiai</t_enter_the_new_path_for_the_input_and_output>
+            <t_do_you_want_to_create_test_file>Ar nori sukurti testavimo failą</t_do_you_want_to_create_test_file>
+            <t_decryption_begin>Iššifravimas pradėti</t_decryption_begin>
+            <t_decryption_end>Iššifravimas pabaiga</t_decryption_end>
+        </class>
+        <class name="eve_class4">
+            <t_crawler_for_server_status_and_header_information>Žiniatinklio robotas serverio būsenai ir antraštės informacijai</t_crawler_for_server_status_and_header_information>
+            <eve_class_four_description>Funkcionalumas surandant įmanomą prieigą robotams ir antraštės informacija</eve_class_four_description>
+            <t_all_available_protocols>Visi galimi protokolai</t_all_available_protocols>
+            <t_protocol>Protokolas</t_protocol>
+            <t_host>Šeimininkas</t_host>
+            <t_port>Prievadas</t_port>
+            <t_path>Kelias</t_path>
+            <t_current_uri>Einamasis URI</t_current_uri>
+            <t_all_available_types>Visos galimos rūšys</t_all_available_types>
+            <t_type_prepared_to_launch>Rūšis numatyta paleidimui</t_type_prepared_to_launch>
+            <t_current_protocol>Einamasis protokolas</t_current_protocol>
+            <t_it_is_a_http_protocol>Tai yra HTTP protokolas</t_it_is_a_http_protocol>
+            <t_it_is_a_https_protocol>Tai yra HTTPS protokolas</t_it_is_a_https_protocol>
+            <t_current_host>Einamoji šeimininko informacija</t_current_host>
+            <t_specify_new_host_information>Nurodyti naują šeimininko informaciją</t_specify_new_host_information>
+            <t_enter_the_host_information>Įvesk naują šeimininko informaciją</t_enter_the_host_information>
+            <t_current_port>Einamoji prievado informacija</t_current_port>
+            <t_specify_new_port>Nurodyti naują prievado informaciją</t_specify_new_port>
+            <t_enter_the_port>Įvesk prievado informaciją</t_enter_the_port>
+            <t_current_path>Einamoji kelio informacija</t_current_path>
+            <t_specify_new_path_information>Nurodyti naują kelio informaciją</t_specify_new_path_information>
+            <t_enter_the_path_information>Įvesk kelio informaciją</t_enter_the_path_information>
+            <t_current_scan_type>Einamasis tyrimo tipas</t_current_scan_type>
+            <t_use_data_in_file_for_the_request>Užklausai naudoti duomenis faile</t_use_data_in_file_for_the_request>
+            <t_it_is_a_manual_request>Tai yra rankinė užklausa</t_it_is_a_manual_request>
+            <t_attention>Dėmesio</t_attention>
+            <t_secret_for_authentication_is_empty>Nenurodytas autentifikatoriaus slaptasis</t_secret_for_authentication_is_empty>
+            <t_add_secret>Pridėti slaptąjį</t_add_secret>
+            <t_ua>NA</t_ua>
+            <t_authentication>Autentifikavimas</t_authentication>
+            <t_auth_option>Autentifikavimo parinktis</t_auth_option>
+            <t_the_use_of_an_file_authentication>Naudoti autentifikavimą failu</t_the_use_of_an_file_authentication>
+            <t_enforce_the_file_authentication>Įgalinti autentifikavimą failu</t_enforce_the_file_authentication>
+            <t_no_authentication>Nenaudoti autentifikavimo</t_no_authentication>
+            <t_the_file_auth>Autentifikavimas failu</t_the_file_auth>
+            <t_the_eve_are_authorized_for_actions>Eve autorizuota veiksmams</t_the_eve_are_authorized_for_actions>
+            <t_the_eve_are_not_authorized_for_actions>Eve neautorizuota veiksmams</t_the_eve_are_not_authorized_for_actions>
+            <t_the_eve_capabilities_host_address>Eve galimybės (Šeimininko adresas)</t_the_eve_capabilities_host_address>
+            <t_request_rate>Užklausos dažnumas</t_request_rate>
+            <t_crawl_delay>Slinkties delsa</t_crawl_delay>
+            <t_allowed_to_fetch_host_address>Leidžiama išgauti šeimininko adresą</t_allowed_to_fetch_host_address>
+            <t_content>Turinys</t_content>
+            <t_headers_or_data>Antraštės arba duomenys</t_headers_or_data>
+            <e_check_connectivity_and_selected_options>Klaida: Tikrink ryšį ir parinkčių nuostatas</e_check_connectivity_and_selected_options>
+            <e_cannot_read_from_file>Klaida: Negalima skaityti iš failo</e_cannot_read_from_file>
+        </class>
+        <class name="eve_class5">
+            <t_configuration_check_of_the_operating_system>Tikrinti operacinės sistemos konfigūraciją</t_configuration_check_of_the_operating_system>
+            <eve_class_five_description>Funkcionalumas konfigūracijos tikrinimui, kuri numatyta tam tikros platformos dokumentacijoje</eve_class_five_description>
+            <t_select_os_for_the_scan>Pasirinkti OS tyrimui</t_select_os_for_the_scan>
+            <t_do_you_want_to_scan_the>Ar nori tyrinėti</t_do_you_want_to_scan_the>
+            <t_do_you_want_to_scan_only_first_option>Ar nori tyrinėti tiktai pirmą nuostatą</t_do_you_want_to_scan_only_first_option>
+            <t_linuxos_scan_commence>Pradėti LinuxOS tyrimą</t_linuxos_scan_commence>
+            <t_macos_scan_commence>Pradėti MacOS tyrimą</t_macos_scan_commence>
+            <t_windows_scan_commence>Pradėti WindowsOS tyrimą</t_windows_scan_commence>
+            <t_android_scan_commence>Pradėti AndroidOS tyrimą</t_android_scan_commence>
+            <t_os_prod_information>OS produkto informacija</t_os_prod_information>
+            <t_initial_actual_information>Pradinė aktuali informacija</t_initial_actual_information>
+            <t_does_the_current_user_has_administrative_access_to_the_system>Ar esamasis naudotojas turi administracinę prieigą prie sistemos</t_does_the_current_user_has_administrative_access_to_the_system>
+            <t_does_admin_access_is_in_place_for_checking_the_configuration>Ar konfigūracijos tikrinimui administracinė prieiga yra vietoje</t_does_admin_access_is_in_place_for_checking_the_configuration>
+            <t_does_admin_access_is_in_place_for_checking_the_system_configuration>Ar konfigūracijos tikrinimui administracinė prieiga yra vietoje</t_does_admin_access_is_in_place_for_checking_the_system_configuration>
+            <t_everything_seems_right>Viskas atrodo gerai</t_everything_seems_right>
+            <t_everything_seems_right_there_exists_possibility_for_admin_access>Viskas atrodo gerai. Egzistuoja galimybė administracinei prieigai</t_everything_seems_right_there_exists_possibility_for_admin_access>
+            <t_it_gonna_work>Turėtų veikti</t_it_gonna_work>
+            <t_it_gonna_work_has_admin_access>Turėtų veikti. Turi administracinę prieigą</t_it_gonna_work_has_admin_access>
+            <t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>Ar egzistuoja prieiga prie prisijungimo duomenų failo ir ar paskyros su tuščiu slaptažodžio lauku</t_does_exists_access_to_credentials_file_and_does_accounts_are_with_empty_password_field>
+            <t_does_the_user_have_permission_to_access_the_shadow_file>Ar naudotojas turi prieigos teises prie shadow failo</t_does_the_user_have_permission_to_access_the_shadow_file>
+            <t_this_user_does_not_have_read_access_of_the_shadow_file>Šis naudotojas neturi shadow failo skaitymo teisių</t_this_user_does_not_have_read_access_of_the_shadow_file>
+            <t_this_user_cannot_access_system_privileges>Šis naudotojas negali gauti sisteminių teisių</t_this_user_cannot_access_system_privileges>
+            <t_does_exists_accounts_with_empty_password_field>Ar egzistuoja paskyros su tuščiu slaptažodžio lauku</t_does_exists_accounts_with_empty_password_field>
+            <t_all_accounts_has_passwords_and_not_empty>Visos paskyros turi slaptažodžius ir nėra tuščios</t_all_accounts_has_passwords_and_not_empty>
+            <t_need_to_check_for_passwordless_accounts>Reikia tikrint dėl paskyrų be numatyto slaptažodžio</t_need_to_check_for_passwordless_accounts>
+            <t_check_available_applications>Tikrint galimas taikomąsias programas</t_check_available_applications>
+            <t_no_idea_about>Nėra idėjos apie</t_no_idea_about>
+            <t_currently_not_available>Dabar negalima</t_currently_not_available>
+        </class>
+        <class name="eve_class6">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class7">
+            <tmp_o>Tmp1</tmp_o>
+            <tmp_t>Tmp2</tmp_t>
+            <tmp_th>Tmp3</tmp_th>
+            <tmp_f>Tmp4</tmp_f>
+        </class>
+        <class name="eve_class8">
+            <t_frigevest_procedure>Katalogų maišos procedūra</t_frigevest_procedure>
+            <eve_class_eight_description>Maišyk katalogą su nemokamu rezultatų maišymo Evos moduliu</eve_class_eight_description>
+            <e_in_pwd_command>Klaida pwd komandoje</e_in_pwd_command>
+            <t_digest_options>Maišos rezultatų nuostatos</t_digest_options>
+            <t_current_directory>Einamasis katalogas</t_current_directory>
+            <t_change_directory>pakeisti katalogą</t_change_directory>
+            <t_enter_the_directory>Įvesk katalogą</t_enter_the_directory>
+            <t_show_mime_information>Rodyti Mime informaciją</t_show_mime_information>
+            <t_enable_mime_information>įgalinti Mime informaciją</t_enable_mime_information>
+            <t_disable_mime_information>išgalinti Mime informaciją</t_disable_mime_information>
+            <t_current_mime_information>Einamoji Mime informacija</t_current_mime_information>
+            <t_do_you_want_to_change_the_digest_options>Ar nori keisti maišos rezultatų nuostatas</t_do_you_want_to_change_the_digest_options>
+            <e_in_ls_command>Klaida ls -1 [path] komandoje</e_in_ls_command>
+            <e_in_file_command>Klaida file [path] komandoje</e_in_file_command>
+            <e_in_du_command>Klaida du -s --time [path] komandoje</e_in_du_command>
+            <e_in_file_mime_command>Klaida file --mime-type [path] komandoje</e_in_file_mime_command>
+            <t_note_this_is_a_directory>pastaba: Tai katalogas</t_note_this_is_a_directory>
+            <t_md_five_sum>md5sum</t_md_five_sum>
+            <t_size_mod>size.mod.</t_size_mod>
+            <t_mim_t>mim.t.</t_mim_t>
+        </class>
+    </language>
+</data>

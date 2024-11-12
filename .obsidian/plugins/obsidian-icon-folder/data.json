@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiNetwork",
       "TiVersions",
       "OcFileBinary24",
       "TiAdjustments",
@@ -24,8 +25,7 @@
       "TiArrowsRandom",
       "TiAdjustmentsCode",
       "TiBoxMultiple",
-      "FabCodepen",
-      "LiDivideSquare"
+      "FabCodepen"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -118,5 +118,6 @@
   "Scheduler.md": "RiTodoLine",
   "uni/Discrete math/Number theory/attachements": "LiLink",
   "uni/Cryptography": "OcFileBinary24",
-  "uni/Presentations/Version Control.md": "TiVersions"
+  "uni/Presentations/Version Control.md": "TiVersions",
+  "uni/Computer networks": "LiNetwork"
 }

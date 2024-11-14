@@ -2,23 +2,37 @@ const queryString = window.location.search; //get url query params
 const urlParams = new URLSearchParams(queryString);
 let lang = urlParams.get('lang'); //get lang attribute
 
-if(lang == undefined){
+if (lang === undefined) {
   lang = getLang().split('-')[0];
-  document.location.search += "?lang="+lang;
+  document.location.search = `${document.location.search}?lang=${lang}`;
 }
 
 window.onload = () => {
   loadLocaleStrings();
+  const swicth_ru = document.getElementById("lang-switch-ru");
+  const swicth_en = document.getElementById("lang-switch-en");
+
+  swicth_ru.onclick = () => {
+    lang = "ru";
+    document.location.search = `${document.location.search.split('?')[0]}?lang=${lang}`
+  };
+
+  swicth_en.onclick = () => {
+    lang = "en";
+    document.location.search = `${document.location.search.split('?')[0]}?lang=${lang}`
+  };
+
+  carouselAutoplay();
 }
 
-window.onscroll = function () { scroll(); highlightCenter() };
+window.onscroll = () => { scroll(); highlightCenter() };
 
-var header = document.getElementById("nav");
-var content = document.getElementById("content");
-var sticky = header.offsetTop;
+const header = document.getElementById("nav");
+const content = document.getElementById("content");
+const sticky = header.offsetTop;
 
 function scroll() {
-  if (window.pageYOffset > sticky) {
+  if (window.scrollY > sticky) {
     header.classList.add("sticky");
     content.classList.add("content_sticky");
   } else {
@@ -27,46 +41,8 @@ function scroll() {
   }
 }
 
-window.slider_init = function () {
-
-  var slider_options = {
-    $AutoPlay: 0,
-    $SlideWidth: 720,
-    $ArrowNavigatorOptions: {
-      $Class: $JssorArrowNavigator$
-    },
-    $BulletNavigatorOptions: {
-      $Class: $JssorBulletNavigator$,
-      $SpacingX: 16,
-      $SpacingY: 16
-    }
-  };
-
-  var slider = new $JssorSlider$("slider", slider_options);
-
-  /*#region responsive code begin*/
-
-  function ScaleSlider() {
-    var containerElement = slider.$Elmt.parentNode;
-    var containerWidth = containerElement.clientWidth;
-
-    if (containerWidth) {
-      slider.$ScaleWidth(containerWidth);
-    }
-    else {
-      window.setTimeout(ScaleSlider, 30);
-    }
-  }
-
-  ScaleSlider();
-
-  $Jssor$.$AddEvent(window, "load", ScaleSlider);
-  $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-  $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-};
-
 function isElementInViewport(el) {
-  var rect = el.getBoundingClientRect();
+  const rect = el.getBoundingClientRect();
 
   return (
     rect.top >= 0 &&
@@ -77,36 +53,43 @@ function isElementInViewport(el) {
 }
 
 function highlightCenter() {
-  let articles = document.querySelectorAll(".useful_article");
+  const articles = document.querySelectorAll(".useful_article");
 
-  for (let i = 0; i < articles.length; i++) {
-    if (isElementInViewport(articles[i])) {
-      articles[i].classList.add("hover");
+  for (const article of articles) {
+    if (isElementInViewport(article)) {
+      article.classList.add("hover");
     } else {
-      articles[i].classList.remove("hover");
+      article.classList.remove("hover");
     }
   }
 }
 
 function getLang() {
-  if (navigator.languages != undefined)
-    return navigator.languages[0]; 
+  if (navigator.languages !== undefined)
+    return navigator.languages[0];
   return navigator.language;
 }
 
+function carouselAutoplay() {
+  const carouselButtonNext = document.querySelector(".carousel-control-next")
+  setInterval(() => {
+    carouselButtonNext.click();
+  }, 5000);
+}
+
 function loadLocaleStrings() {
-  let localizedElements = document.querySelectorAll(".localized");
+  const localizedElements = document.querySelectorAll(".localized");
   let currentLocale;
   switch (lang) {
     case "ru":
       currentLocale = lang_ru;
       break;
   }
-  if (currentLocale != undefined) {
-    for (let i = 0; i < localizedElements.length; i++) {
-      let value = currentLocale[localizedElements[i].getAttribute("data-key")];
-      if(value != undefined){
-        localizedElements[i].innerHTML = value;
+  if (currentLocale !== undefined) {
+    for (const localizedElement of localizedElements) {
+      const value = currentLocale[localizedElement.getAttribute("data-key")];
+      if (value !== undefined) {
+        localizedElement.innerHTML = value;
       }
     }
   }

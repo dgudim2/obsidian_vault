@@ -12,7 +12,7 @@ It is particularly necessary to identify possible developments threatening the e
 - improved decision making = it's easier too see the whole picture and react accordingly (better planning and resource allocation)
     - Identifying Interdependencies: most risks do not operate in isolation. One risk may trigger another, or multiple risks might affect the same business objective. Aggregating risks allows for the identification of such interdependencies, helping to prevent blind spots in risk management.
 
-- easier to access likelyhood and severity or risk events = some risks may cancel or offset each other
+- easier to access likelihood and severity or risk events = some risks may cancel or offset each other
    = Example: If a company sources critical components from two different suppliers, a disruption in one supplier's operations (e.g., due to a labor strike) may be offset by the continued availability of components from the second supplier.
    = Example: If a business operates in multiple geographic regions, a natural disaster (e.g., an earthquake) that impacts one location may be offset by unaffected regions. In some cases, the company may even benefit from reduced competition or lower demand in the affected area, while other locations perform well.
 

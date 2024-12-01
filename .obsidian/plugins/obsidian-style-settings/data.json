@@ -10,5 +10,6 @@
   "minimal-style@@blockquote-border-color@@dark": "#BD4343",
   "minimal-style@@callouts-style": "callouts-default",
   "minimal-style@@code-background@@dark": "#2E2E2E",
-  "pdf-plus@@pdf-plus-highlight-opacity": 0.25
+  "pdf-plus@@pdf-plus-highlight-opacity": 0.25,
+  "minimal-style@@image-muted": 1
 }

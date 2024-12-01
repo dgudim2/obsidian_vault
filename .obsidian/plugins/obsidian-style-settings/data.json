@@ -11,5 +11,7 @@
   "minimal-style@@callouts-style": "callouts-default",
   "minimal-style@@code-background@@dark": "#2E2E2E",
   "pdf-plus@@pdf-plus-highlight-opacity": 0.25,
-  "minimal-style@@image-muted": 1
+  "minimal-style@@image-muted": 1,
+  "minimal-style@@code-size": "1em",
+  "minimal-style@@code-normal@@dark": "#FFCF9A"
 }

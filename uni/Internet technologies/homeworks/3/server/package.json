@@ -1,0 +1,20 @@
+{
+  "name": "homework3",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun --watch index.ts",
+    "mongo": "docker rm my-mongo && docker run --name my-mongo -p 27017:27017 mongo:latest"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "fastify": "^5.1.0",
+    "mongoose": "^8.8.3"
+  }
+}

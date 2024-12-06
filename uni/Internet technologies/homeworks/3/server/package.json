@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "bun --watch index.ts",
-    "mongo": "docker rm my-mongo && docker run --name my-mongo -p 27017:27017 mongo:latest"
+    "mongo": "docker rm my-mongo || docker run --name my-mongo -p 27017:27017 mongo:latest"
   },
   "devDependencies": {
     "@types/bun": "latest"

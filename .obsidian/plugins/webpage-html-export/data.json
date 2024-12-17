@@ -43,7 +43,7 @@
   "defaultFileIcon": "lucide//file",
   "defaultFolderIcon": "lucide//folder",
   "defaultMediaIcon": "lucide//file-image",
-  "exportPath": "/home/kloud/Documents/shared/obsidian_vault/export",
+  "exportPath": "/home/kloud/Downloads/export",
   "filesToExport": [
     [
       "uni/Computer architecture/Data representation.md",

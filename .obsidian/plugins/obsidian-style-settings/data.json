@@ -13,5 +13,14 @@
   "pdf-plus@@pdf-plus-highlight-opacity": 0.25,
   "minimal-style@@image-muted": 1,
   "minimal-style@@code-size": "1em",
-  "minimal-style@@code-normal@@dark": "#FFCF9A"
+  "minimal-style@@code-normal@@dark": "#FFCF9A",
+  "minimal-style@@file-header-visibility": "minimal-tab-title-visible",
+  "minimal-style@@file-header-font-weight": 700,
+  "minimal-style@@file-header-justify": "center",
+  "minimal-style@@inline-title-weight": 500,
+  "minimal-style@@inline-title-font": "Courier Prime",
+  "minimal-style@@inline-title-size": "3.125em",
+  "minimal-style@@bold-color@@dark": "#EB9342",
+  "minimal-style@@bold-modifier": 300,
+  "minimal-style@@italic-color@@dark": "#FFC08C"
 }

@@ -8,3 +8,7 @@
 .home .task-list-item {
   padding-top: 15px !important;
 }
+
+.obsidian-banner-wrapper {
+  width: 100% !important;
+}

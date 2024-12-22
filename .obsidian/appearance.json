@@ -17,11 +17,11 @@
     "big-math",
     "slides-theme-colors",
     "fix_highligh",
-    "home",
     "MCL Wide Views",
     "table-tweak",
     "page-breaks",
-    "theme-overrides"
+    "theme-overrides",
+    "home"
   ],
   "showViewHeader": true,
   "theme": "system"

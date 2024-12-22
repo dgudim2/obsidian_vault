@@ -1,3 +1,8 @@
+---
+cssclasses:
+  - wide-page
+---
+
 # Hash Collisions in Hash Functions: Implications on Security
 
 - Table of Contents

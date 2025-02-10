@@ -6,6 +6,9 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "SiEsphome",
+      "SiArduino",
+      "LiAlignVerticalDistributeCenter",
       "LiNetwork",
       "TiVersions",
       "OcFileBinary24",
@@ -22,10 +25,7 @@
       "🇱🇹",
       "LiScreenShare",
       "RiMoneyEuroBoxLine",
-      "TiArrowsRandom",
-      "TiAdjustmentsCode",
-      "TiBoxMultiple",
-      "FabCodepen"
+      "TiArrowsRandom"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -119,5 +119,7 @@
   "uni/Discrete math/Number theory/attachements": "LiLink",
   "uni/Cryptography": "OcFileBinary24",
   "uni/Presentations/Version Control.md": "TiVersions",
-  "uni/Computer networks": "LiNetwork"
+  "uni/Computer networks": "LiNetwork",
+  "uni/Distributed systems": "LiAlignVerticalDistributeCenter",
+  "uni/IOT": "SiEsphome"
 }

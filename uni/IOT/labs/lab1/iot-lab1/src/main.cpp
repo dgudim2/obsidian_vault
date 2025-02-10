@@ -16,7 +16,8 @@
 
 #define BUZZER_PIN A8
 
-void setup() {
+void setup()
+{
     Serial.begin(9600);
 
     Serial.println("Danila Gudim");
@@ -46,10 +47,16 @@ void setup() {
     pinMode(RGB_PIN_G, OUTPUT);
     pinMode(RGB_PIN_B, OUTPUT);
 
+    pinMode(LED_PIN1, OUTPUT);
+    pinMode(LED_PIN2, OUTPUT);
+    pinMode(LED_PIN3, OUTPUT);
+    pinMode(LED_PIN4, OUTPUT);
+
     pinMode(BUZZER_PIN, OUTPUT);
 }
 
-void all_star() {
+void all_star()
+{
     // first verse
     tone(BUZZER_PIN, 370, 600);
     delay(600);
@@ -133,7 +140,8 @@ int b = 0;
 
 int counter = 0;
 
-void loop() {
+void loop()
+{
 
     // 0 on the second segment
     digitalWrite(46, LOW);

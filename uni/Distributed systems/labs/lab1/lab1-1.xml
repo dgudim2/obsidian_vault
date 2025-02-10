@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<root xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:x="urn:students">
+    <xs:schema targetNamespace="urn:students">
+        <xs:element name="students" type="studentsType"/>
+        <xs:complexType name="studentType">
+            <xs:sequence>
+                <xs:element type="xs:short" name="id"/>
+                <xs:element type="xs:string" name="first-name"/>
+                <xs:element type="xs:string" name="last-name"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:complexType name="studentsType">
+            <xs:sequence>
+                <xs:element type="studentType" name="student" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:schema>
+    <x:students>
+        <student>
+            <id>10001</id>
+            <first-name>Name</first-name>
+            <last-name>Surname</last-name>
+        </student>
+        <student>
+            <id>10002</id>
+            <first-name>Name2</first-name>
+            <last-name>Surname2</last-name>
+        </student>
+        <student>
+            <id>10003</id>
+            <first-name>Name3</first-name>
+            <last-name>Surname3</last-name>
+        </student>
+    </x:students>
+</root>

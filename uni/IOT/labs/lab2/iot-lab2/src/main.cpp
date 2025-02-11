@@ -1,0 +1,95 @@
+#include "RF24.h"
+#include "printf.h"
+
+#define M1 2
+#define M2 3
+#define M3 43
+#define M4 44
+#define LED1 A12
+#define LED2 A13
+#define LED3 A14
+#define LED4 A15
+
+// CE, CSN. SPI speed
+RF24 radio(38, 40, 4000000); // 4000000 = 4MHz
+
+uint8_t data = 123; // Message-data
+unsigned char address0[] = "00000";
+unsigned char address1[] = "00000";
+
+void setup() {
+    pinMode(M1, INPUT_PULLUP);
+    pinMode(M2, INPUT_PULLUP);
+    pinMode(M3, INPUT_PULLUP);
+    pinMode(M4, INPUT_PULLUP);
+    pinMode(LED1, OUTPUT);
+    pinMode(LED2, OUTPUT);
+    pinMode(LED3, OUTPUT);
+    pinMode(LED4, OUTPUT);
+
+    Serial.begin(2000000);
+    printf_begin();
+
+    // Setup and configure rf radio
+    radio.begin();
+    radio.setAutoAck(true);
+    radio.setChannel(17);
+    radio.setPayloadSize(sizeof(uint8_t)); // How many bytes in the message
+    radio.setRetries(15, 15);              // How much to wait, how much to repeat
+    radio.openReadingPipe(1, address1);
+    radio.openWritingPipe(address0);
+    radio.setPALevel(RF24_PA_MIN); // Transmitter power. RF24_PA_MAX is default.
+    radio.startListening();
+    radio.setAutoAck(true);
+    radio.printDetails();
+}
+
+void listen(void) {
+    // if (radio.available(&address1[0])) {             // Is there a payload? Get the pipe number that recieved it
+    if (radio.available()) {
+        radio.read(&data, sizeof(uint8_t));
+        Serial.write(data);
+        if(data == 82) {
+            digitalWrite(LED1, !digitalRead(LED1));
+        }
+        if(data == 76) {
+            digitalWrite(LED2, !digitalRead(LED2));
+        }
+        if(data == 77) {
+            digitalWrite(LED3, !digitalRead(LED3));
+        }
+        if(data == 78) {
+            digitalWrite(LED4, !digitalRead(LED4));
+        }
+    }
+}
+
+void send(uint8_t d) {
+    radio.stopListening();
+    if (radio.write(&d, sizeof(uint8_t))) { // true if transferred successfully
+        Serial.println("Data was sent successfully");
+    } else {
+        Serial.println("Data Transfer Failed");
+    }
+    delay(500);
+    radio.startListening();
+}
+
+void loop() {
+    if (digitalRead(M1) == 0) { // Pressed M1
+        send('R');
+    }
+    if (digitalRead(M2) == 0) { // Pressed M2
+        send('L');
+    }
+    if (digitalRead(M3) == 0) { // Pressed M3
+        send('M');
+    }
+    if (digitalRead(M4) == 0) { // Pressed M4
+        send('N');
+    }
+    if (Serial.available() > 0) { // Pressed M4
+        send(Serial.read());
+    }
+    listen();
+}

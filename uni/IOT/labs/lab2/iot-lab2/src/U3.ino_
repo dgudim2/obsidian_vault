@@ -1,0 +1,58 @@
+#include "RF24.h"
+#include "printf.h"
+
+//CE, CSN. SPI speed
+RF24 radio(38, 40, 4000000);                    //4000000 = 4MHz
+
+uint8_t data = 123;                               //Message-data
+unsigned char address0[] = "00000";
+unsigned char address1[] = "00000";
+
+void setup() {
+  Serial.begin(115200);
+  printf_begin();
+  
+  // Setup and configure rf radio
+  radio.begin();
+  radio.setAutoAck(false);
+  radio.setChannel(112);
+  radio.setPayloadSize(sizeof(uint8_t));                      //How many bytes in the message
+  radio.setRetries(15, 15);                                   //How much to wait, how much to repeat
+  radio.openReadingPipe(1, address0 );
+  radio.openWritingPipe(address1);
+  radio.setPALevel(RF24_PA_MIN);                              //Transmitter power. RF24_PA_MAX is default.
+  radio.startListening();
+  radio.stopListening();
+  radio.printDetails();
+}
+
+void listen() {
+  radio.startListening();
+  while (1) {
+    if (radio.available(&address0[0])) {             // Is there a payload? Get the pipe number that recieved it
+      radio.read(&data, sizeof(uint8_t));
+      Serial.print("I received:");
+      Serial.println(data);
+    }
+  }
+}
+void send() {
+  radio.stopListening();
+  while (1) {                                                 //will send data forever
+    if ( radio.write(&data, sizeof(uint8_t))) {               //true if transferred successfully
+      //Serial.println("succeeded");
+    } else {
+      //Serial.println("failed?");
+    }
+    data++;
+    delay(100);
+  }
+}
+
+void loop() {
+  //The transmitter
+  //send();
+
+  //Receiver
+  listen();
+}

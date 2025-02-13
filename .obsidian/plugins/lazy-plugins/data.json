@@ -1,0 +1,196 @@
+{
+  "dualConfigs": false,
+  "showConsoleLog": false,
+  "desktop": {
+    "shortDelaySeconds": 5,
+    "longDelaySeconds": 15,
+    "delayBetweenPlugins": 40,
+    "defaultStartupType": "short",
+    "showDescriptions": true,
+    "plugins": {
+      "3d-graph": {
+        "startupType": "disabled"
+      },
+      "aw-watcher-obsidian": {
+        "startupType": "disabled"
+      },
+      "obsidian-admonition": {
+        "startupType": "instant"
+      },
+      "advanced-canvas": {
+        "startupType": "disabled"
+      },
+      "table-editor-obsidian": {
+        "startupType": "instant"
+      },
+      "obsidian-banners": {
+        "startupType": "instant"
+      },
+      "better-export-pdf": {
+        "startupType": "disabled"
+      },
+      "better-search-views": {
+        "startupType": "disabled"
+      },
+      "better-word-count": {
+        "startupType": "instant"
+      },
+      "obsidian42-brat": {
+        "startupType": "disabled"
+      },
+      "card-note": {
+        "startupType": "disabled"
+      },
+      "obsidian-charts": {
+        "startupType": "instant"
+      },
+      "code-emitter": {
+        "startupType": "disabled"
+      },
+      "colored-tags": {
+        "startupType": "disabled"
+      },
+      "colored-tags-wrangler": {
+        "startupType": "disabled"
+      },
+      "cmdr": {
+        "startupType": "disabled"
+      },
+      "obsidian-completr": {
+        "startupType": "instant"
+      },
+      "obsidian-core-search-assistant-plugin": {
+        "startupType": "disabled"
+      },
+      "obsidian-custom-file-extensions-plugin": {
+        "startupType": "disabled"
+      },
+      "obsidian-custom-frames": {
+        "startupType": "disabled"
+      },
+      "dataview": {
+        "startupType": "instant"
+      },
+      "editing-toolbar": {
+        "startupType": "instant"
+      },
+      "excalibrain": {
+        "startupType": "disabled"
+      },
+      "obsidian-excalidraw-plugin": {
+        "startupType": "disabled"
+      },
+      "execute-code": {
+        "startupType": "disabled"
+      },
+      "obsidian-file-color": {
+        "startupType": "instant"
+      },
+      "find-unlinked-files": {
+        "startupType": "disabled"
+      },
+      "obsidian-git": {
+        "startupType": "instant"
+      },
+      "graph-banner": {
+        "startupType": "disabled"
+      },
+      "highlightr-plugin": {
+        "startupType": "instant"
+      },
+      "homepage": {
+        "startupType": "instant"
+      },
+      "obsidian-icon-folder": {
+        "startupType": "instant"
+      },
+      "copy-url-in-preview": {
+        "startupType": "instant"
+      },
+      "oz-image-plugin": {
+        "startupType": "instant"
+      },
+      "obsidian-image-toolkit": {
+        "startupType": "instant"
+      },
+      "inline-admonitions": {
+        "startupType": "disabled"
+      },
+      "jelly-snippets": {
+        "startupType": "instant"
+      },
+      "obsidian-kanban": {
+        "startupType": "instant"
+      },
+      "obsidian-kroki": {
+        "startupType": "disabled"
+      },
+      "obsidian-latex-suite": {
+        "startupType": "instant"
+      },
+      "obsidian-linter": {
+        "startupType": "disabled"
+      },
+      "obsidian-list-callouts": {
+        "startupType": "instant"
+      },
+      "obsidian-markmind": {
+        "startupType": "disabled"
+      },
+      "obsidian-math-plus": {
+        "startupType": "disabled"
+      },
+      "mermaid-tools": {
+        "startupType": "instant"
+      },
+      "obsidian-minimal-settings": {
+        "startupType": "disabled"
+      },
+      "obsidian-columns": {
+        "startupType": "instant"
+      },
+      "omnisearch": {
+        "startupType": "disabled"
+      },
+      "pdf-plus": {
+        "startupType": "instant"
+      },
+      "quick-tagger": {
+        "startupType": "disabled"
+      },
+      "slide-note": {
+        "startupType": "disabled"
+      },
+      "obsidian-style-settings": {
+        "startupType": "instant"
+      },
+      "tag-wrangler": {
+        "startupType": "disabled"
+      },
+      "obsidian-tagfolder": {
+        "startupType": "instant"
+      },
+      "templater-obsidian": {
+        "startupType": "disabled"
+      },
+      "text-extractor": {
+        "startupType": "disabled"
+      },
+      "tinychart": {
+        "startupType": "disabled"
+      },
+      "universal-renderer": {
+        "startupType": "instant"
+      },
+      "obsidian-version-history-diff": {
+        "startupType": "instant"
+      },
+      "webpage-html-export": {
+        "startupType": "short"
+      },
+      "iconic": {
+        "startupType": "short"
+      }
+    }
+  }
+}

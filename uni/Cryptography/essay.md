@@ -35,9 +35,9 @@ A hash function, denoted as $H(x)$, takes an input value 'x' and produces a hash
 
 - **Determinism**: Identical inputs always yield the same hash output. This property is crucial for data integrity checks.
 - **Efficiency**: Hash computation should be fast and require minimal computational resources. This is essential for practical applications.
-- **Pre-image Resistance (One-wayness)**: Given a hash value 'h', it should be computationally infeasible to find an input 'x' such that H(x) = h. This prevents attackers from recovering the original input from its hash.
-- **Second Pre-image Resistance (Weak Collision Resistance)**: Given an input 'x', it should be computationally infeasible to find a different input 'x'' such that H(x) = H(x'). This prevents attackers from substituting one input with another that produces the same hash.
-- **Collision Resistance (Strong Collision Resistance)**: It should be computationally infeasible to find any two distinct inputs 'x' and 'x'' such that H(x) 1 = H(x'). This is the most crucial property for many security applications, as it ensures the uniqueness of hash values.   
+- **Pre-image Resistance (One-wayness)**: Given a hash value $h$, it should be computationally infeasible to find an input $x$ such that $H(x) = h$. This prevents attackers from recovering the original input from its hash.
+- **Second Pre-image Resistance (Weak Collision Resistance)**: Given an input $x$, it should be computationally infeasible to find a different input $x'$ such that $H(x) = H(x')$. This prevents attackers from substituting one input with another that produces the same hash (For example if file is verified with a hash). We don't care if 2 inputs produce the same hash on accident though.
+- **Collision Resistance (Strong Collision Resistance)**: It should be computationally infeasible to find any two distinct inputs $x$ and $x'$ such that $H(x) = H(x')$. This is the most crucial property for many security applications, as it ensures the uniqueness of hash values. In this case, NO 2 values should produce the same hash in any circumstance  
 
 ### 2.2 Hash Collisions: Definition and Causes
 
@@ -76,8 +76,8 @@ Several strategies can be employed to mitigate the risk of collisions:
 
 - **Using Stronger Hash Functions**: Employing hash functions with larger output sizes, such as SHA-256, SHA-384, SHA-512, or SHA-3, significantly increases the computational cost of finding collisions.
 - **Salting Passwords**: Adding a random "salt" to passwords before hashing them makes it much harder for attackers to use precomputed tables of hashes (rainbow tables) to crack passwords.
-- HMAC (Hash-based Message Authentication Code): HMAC uses a secret key along with a hash function to generate a message authentication code, providing both data integrity and authentication.
-- Code Signing Certificates: Using code signing certificates from trusted Certificate Authorities (CAs) helps to ensure the integrity and authenticity of software.
+- **HMAC** (Hash-based Message Authentication Code): HMAC uses a secret key along with a hash function to generate a message authentication code, providing both data integrity and authentication.
+- **Code Signing Certificates**: Using code signing certificates from trusted Certificate Authorities (CAs) helps to ensure the integrity and authenticity of software.
 
 ### 3.3 Real-World Examples of Collision Exploits
 
@@ -117,7 +117,7 @@ Several strategies can be employed to mitigate the risk of collisions:
 Hash tables, a fundamental data structure, utilize hash functions to map keys to indices in an array. Collisions are inevitable when different keys map to the same index. Several techniques exist to resolve these collisions:
 
 - **Chaining**: Each index in the array points to a linked list of entries that hash to that index.
-- **Open Addressing**: When a collision occurs, the algorithm probes for an alternative empty slot in the array using techniques like <u>linear probing</u>, <u>quadratic probing</u>, or <u>double hashing</u>.
+- **Open Addressing**: When a collision occurs, the algorithm probes for an alternative empty slot in the array using techniques like <u>linear probing</u>, <u>quadratic probing</u>, or <u>double hashing</u> 
 
 ### 3.5 Cryptographic Hash Functions in Different Applications
 

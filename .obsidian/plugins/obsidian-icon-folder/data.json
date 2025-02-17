@@ -7,8 +7,6 @@
     "iconColor": null,
     "recentlyUsedIcons": [
       "SiEsphome",
-      "SiArduino",
-      "LiAlignVerticalDistributeCenter",
       "LiNetwork",
       "TiVersions",
       "OcFileBinary24",
@@ -25,7 +23,9 @@
       "🇱🇹",
       "LiScreenShare",
       "RiMoneyEuroBoxLine",
-      "TiArrowsRandom"
+      "TiArrowsRandom",
+      "TiAdjustmentsCode",
+      "TiBoxMultiple"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -72,8 +72,7 @@
     "iconInFrontmatterFieldName": "icon",
     "iconColorInFrontmatterFieldName": "iconColor",
     "iconInTitlePosition": "above",
-    "lucideIconPackType": "native",
-    "useInternalPlugins": false
+    "lucideIconPackType": "native"
   },
   "uni/Discrete math": "RiCalculatorLine",
   "uni/English": "FasLanguage",
@@ -121,6 +120,5 @@
   "uni/Cryptography": "OcFileBinary24",
   "uni/Presentations/Version Control.md": "TiVersions",
   "uni/Computer networks": "LiNetwork",
-  "uni/Distributed systems": "LiAlignVerticalDistributeCenter",
   "uni/IOT": "SiEsphome"
 }

@@ -81,7 +81,7 @@
 + city hunter 2
 + shiko
 + girls and panzer
-+ 
++ в любви как на войне
 
 
 # Stuff to read

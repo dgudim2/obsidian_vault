@@ -1,6 +1,8 @@
 package lt.vgtu.hw1.model;
 
 import jakarta.persistence.*;
+import jakarta.xml.bind.annotation.XmlElementRefs;
+import jakarta.xml.bind.annotation.XmlTransient;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,6 +28,7 @@ public class Comment {
     @ManyToOne()
     private User commentOwner;
     @OneToMany(mappedBy = "parentComment", cascade = CascadeType.ALL, orphanRemoval = true)
+    @MapsId
     private List<Comment> replies;
     @ManyToOne()
     private Comment parentComment;

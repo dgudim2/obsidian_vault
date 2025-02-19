@@ -9,11 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import java.util.List;
 
+/**
+ * The type Manager.
+ */
 @Setter
 @Getter
 @AllArgsConstructor
@@ -29,11 +30,18 @@ public class Manager extends User {
     @OneToMany(mappedBy = "manager", cascade = CascadeType.ALL)
     private List<Cart> myResponsibleCarts;
 
+    /**
+     * Instantiates a new Manager.
+     *
+     * @param login    the login
+     * @param password the password
+     * @param name     the name
+     * @param surname  the surname
+     * @param isAdmin  the is admin
+     */
     public Manager(String login, String password, String name, String surname, boolean isAdmin) {
         super(name, surname, login, password);
         this.isAdmin = isAdmin;
     }
-
-
 
 }

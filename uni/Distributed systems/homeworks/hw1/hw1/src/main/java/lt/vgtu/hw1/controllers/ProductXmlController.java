@@ -7,18 +7,30 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 
+
+/**
+ * The type Product xml controller.
+ */
 @RestController
 @RequiredArgsConstructor
 public class ProductXmlController {
 
     private final ProductXmlService bookToXmlService;
 
+    /**
+     * Map xml response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     * @throws JAXBException the jaxb exception
+     * @throws IOException   the io exception
+     */
     @GetMapping(value = "/mapXml/{id}")
-    public ResponseEntity<String> mapXml(@PathVariable(name = "id") int id) throws JAXBException {
+    public ResponseEntity<String> mapXml(@PathVariable(name = "id") int id) throws JAXBException, IOException {
         var saved = bookToXmlService.saveXml(id, "./product-" + id + ".xml");
         if (saved == null) {
             return new ResponseEntity<>("Product with ID " + id + " not found.", HttpStatus.NOT_FOUND);

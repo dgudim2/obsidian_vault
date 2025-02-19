@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 import java.util.Properties;
 
+/**
+ * The type User controller.
+ */
 @RestController
 public class UserController {
 
@@ -29,40 +32,81 @@ public class UserController {
     private WarehouseRepo warehouseRepo;
 
 
-
+    /**
+     * Gets all managers.
+     *
+     * @return the all managers
+     */
     @GetMapping(value = "/getAllManagers")
     public @ResponseBody Iterable<Manager> getAllManagers() {
         return managerRepo.findAll();
     }
+
+    /**
+     * Gets all customer.
+     *
+     * @return the all customer
+     */
     @GetMapping(value = "/getAllCustomers")
     public @ResponseBody Iterable<Customer> getAllCustomer() {
         return customerRepo.findAll();
     }
+
+    /**
+     * Gets user by id.
+     *
+     * @param id the id
+     * @return the user by id
+     */
     @GetMapping(value = "/getUserById/{id}")
     public @ResponseBody Optional<User> getUserById(@PathVariable(name = "id") int id) {
         return userRepo.findById(id);
     }
 
 
+    /**
+     * Create manager manager.
+     *
+     * @param manager the manager
+     * @return the manager
+     */
     @PostMapping(value = "/createManager")
-    public @ResponseBody Manager createManager(@RequestBody Manager manager){
+    public @ResponseBody Manager createManager(@RequestBody Manager manager) {
         managerRepo.save(manager);
         return new Manager();
     }
+
+    /**
+     * Create a customer.
+     *
+     * @param customer the customer to create
+     */
     @PostMapping(value = "/createCustomer")
-    public @ResponseBody Customer createCustomer(@RequestBody Customer customer){
+    public void createCustomer(@RequestBody Customer customer) {
         customerRepo.save(customer);
-        return new Customer();
     }
 
 
+    /**
+     * Update the manager
+     *
+     * @param manager the manager
+     * @return the updated manager
+     */
     @PutMapping(value = "/updateManagerObject")
-    public @ResponseBody Manager updateManagerObject(@RequestBody Manager manager){
+    public @ResponseBody Manager updateManagerObject(@RequestBody Manager manager) {
         managerRepo.save(manager);
-        return new Manager();//I will update this
+        return manager;
     }
+
+    /**
+     * Update manager as json.
+     *
+     * @param info the manager json string
+     * @return the updated manager
+     */
     @PutMapping(value = "/updateManager")
-    public @ResponseBody Manager updateManager(@RequestBody String info){
+    public @ResponseBody Manager updateManager(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
@@ -81,19 +125,31 @@ public class UserController {
             manager.setLogin(login);
             manager.setPassword(password);
 
-            Manager updatedManager = managerRepo.save(manager);
-            return updatedManager;
+            return managerRepo.save(manager);
         } else {
             throw new RuntimeException("Manager with ID " + id + " not found");
         }
     }
+
+    /**
+     * Update customer object
+     *
+     * @return the updated customer
+     */
     @PutMapping(value = "/updateCustomerObject")
-    public @ResponseBody Customer updateCustomerObject(@RequestBody Customer customer){
+    public @ResponseBody Customer updateCustomerObject(@RequestBody Customer customer) {
         customerRepo.save(customer);
-        return new Customer();
+        return customer;
     }
+
+    /**
+     * Update customer customer.
+     *
+     * @param info the info
+     * @return the customer
+     */
     @PutMapping(value = "/updateCustomer")
-    public @ResponseBody Customer updateCustomer(@RequestBody String info){
+    public @ResponseBody Customer updateCustomer(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
@@ -120,7 +176,7 @@ public class UserController {
             customer.setBillingAddress(billingAddress);
             customer.setBirthDate(birthDate);
 
-            Customer updatedCustomer= customerRepo.save(customer);
+            Customer updatedCustomer = customerRepo.save(customer);
             return updatedCustomer;
         } else {
             throw new RuntimeException("Customer with ID " + id + " not found");
@@ -128,6 +184,12 @@ public class UserController {
     }
 
 
+    /**
+     * Delete user response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping(value = "/deleteUser/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable(name = "id") int id) {
         Optional<User> userOptional = userRepo.findById(id);

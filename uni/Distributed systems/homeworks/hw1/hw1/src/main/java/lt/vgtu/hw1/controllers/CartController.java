@@ -1,7 +1,10 @@
 package lt.vgtu.hw1.controllers;
 
 import com.google.gson.Gson;
-import lt.vgtu.hw1.model.*;
+import lt.vgtu.hw1.model.Cart;
+import lt.vgtu.hw1.model.Manager;
+import lt.vgtu.hw1.model.Product;
+import lt.vgtu.hw1.model.User;
 import lt.vgtu.hw1.repos.CartRepo;
 import lt.vgtu.hw1.repos.ManagerRepo;
 import lt.vgtu.hw1.repos.ProductRepo;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+/**
+ * The type Cart controller.
+ */
 @RestController
 public class CartController {
 
@@ -26,7 +32,7 @@ public class CartController {
     private CartRepo cartRepo;
 
     private static List<Integer> convertStringToIntegerList(String input) {
-        if(Objects.equals(input, "")) {
+        if (Objects.equals(input, "")) {
             List<Integer> result = new ArrayList<>();
             return result;
         }
@@ -38,23 +44,42 @@ public class CartController {
         return result;
     }
 
+    /**
+     * Gets all carts.
+     *
+     * @return the all carts
+     */
     @GetMapping(value = "/getAllCarts")
-    public @ResponseBody Iterable<Cart> getAllCarts() {return cartRepo.findAll();}
+    public @ResponseBody Iterable<Cart> getAllCarts() {
+        return cartRepo.findAll();
+    }
 
+    /**
+     * Create cart cart.
+     *
+     * @param cart the cart
+     * @return the cart
+     */
     @PostMapping(value = "/createCart")
-    public @ResponseBody Cart createCart(@RequestBody Cart cart){
+    public @ResponseBody Cart createCart(@RequestBody Cart cart) {
         cartRepo.save(cart);
         return new Cart();
     }
+
+    /**
+     * Create warehouse with ids cart.
+     *
+     * @param info the info
+     * @return the cart
+     */
     @PostMapping(value = "/createCartWithIds")
-    public @ResponseBody Cart createWarehouseWithIds(@RequestBody String info){
+    public @ResponseBody Cart createWarehouseWithIds(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
         var customerId = properties.getProperty("customer");
         var managerId = properties.getProperty("manager");
-        List<Integer> itemsToBuy =  convertStringToIntegerList(properties.getProperty("itemsToBuy"));
-
+        List<Integer> itemsToBuy = convertStringToIntegerList(properties.getProperty("itemsToBuy"));
 
 
         Cart cart = new Cart();
@@ -93,12 +118,24 @@ public class CartController {
     }
 
 
+    /**
+     * Update cart object cart.
+     *
+     * @param cart the cart
+     * @return the cart
+     */
     @PutMapping(value = "/updateCartObject")
     public @ResponseBody Cart updateCartObject(@RequestBody Cart cart) {
         cartRepo.save(cart);
         return cart;
     }
 
+    /**
+     * Update cart cart.
+     *
+     * @param info the info
+     * @return the cart
+     */
     @PutMapping(value = "/updateCart")
     public @ResponseBody Cart updateCart(@RequestBody String info) {
         Gson gson = new Gson();
@@ -145,6 +182,12 @@ public class CartController {
         }
     }
 
+    /**
+     * Delete cart response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping(value = "/deleteCart/{id}")
     public @ResponseBody ResponseEntity<String> deleteCart(@PathVariable(name = "id") int id) {
         Optional<Cart> optionalCart = cartRepo.findById(id);

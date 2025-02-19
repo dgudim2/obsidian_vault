@@ -13,9 +13,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.*;
 
+/**
+ * The type Warehouse controller.
+ */
 @RestController
 public class WarehouseController {
 
@@ -29,7 +31,7 @@ public class WarehouseController {
     private ManagerRepo managerRepo;
 
     private static List<Integer> convertStringToIntegerList(String input) {
-        if(Objects.equals(input, "")) {
+        if (Objects.equals(input, "")) {
             List<Integer> result = new ArrayList<>();
             return result;
         }
@@ -42,23 +44,42 @@ public class WarehouseController {
     }
 
 
-
+    /**
+     * Gets all warehouses.
+     *
+     * @return the all warehouses
+     */
     @GetMapping(value = "/getAllWarehouses")
-    public @ResponseBody Iterable<Warehouse> getAllWarehouses() {return warehouseRepo.findAll();}
+    public @ResponseBody Iterable<Warehouse> getAllWarehouses() {
+        return warehouseRepo.findAll();
+    }
 
 
+    /**
+     * Create spoiler warehouse.
+     *
+     * @param warehouse the warehouse
+     * @return the warehouse
+     */
     @PostMapping(value = "/createWarehouse")
-    public @ResponseBody Warehouse createSpoiler(@RequestBody Warehouse warehouse){
+    public @ResponseBody Warehouse createSpoiler(@RequestBody Warehouse warehouse) {
         warehouseRepo.save(warehouse);
         return new Warehouse();
     }
+
+    /**
+     * Create warehouse with ids warehouse.
+     *
+     * @param info the info
+     * @return the warehouse
+     */
     @PostMapping(value = "/createWarehouseWithIds")
-    public @ResponseBody Warehouse createWarehouseWithIds(@RequestBody String info){
+    public @ResponseBody Warehouse createWarehouseWithIds(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
         var address = properties.getProperty("address");
-        List<Integer> stockIds =  convertStringToIntegerList(properties.getProperty("stock"));
+        List<Integer> stockIds = convertStringToIntegerList(properties.getProperty("stock"));
         List<Integer> managerIds = convertStringToIntegerList(properties.getProperty("managers"));
 
         Warehouse warehouse = new Warehouse();
@@ -98,11 +119,24 @@ public class WarehouseController {
     }
 
 
+    /**
+     * Update warehouse object warehouse.
+     *
+     * @param warehouse the warehouse
+     * @return the warehouse
+     */
     @PutMapping(value = "/updateWarehouseObject")
     public @ResponseBody Warehouse updateWarehouseObject(@RequestBody Warehouse warehouse) {
         warehouseRepo.save(warehouse);
         return warehouse;
     }
+
+    /**
+     * Update warehouse warehouse.
+     *
+     * @param info the info
+     * @return the warehouse
+     */
     @PutMapping(value = "/updateWarehouse")
     public @ResponseBody Warehouse updateWarehouse(@RequestBody String info) {
         Gson gson = new Gson();
@@ -110,7 +144,7 @@ public class WarehouseController {
 
         var id = Integer.parseInt(properties.getProperty("id"));
         var address = properties.getProperty("address");
-        List<Integer> stockIds =  convertStringToIntegerList(properties.getProperty("stock"));
+        List<Integer> stockIds = convertStringToIntegerList(properties.getProperty("stock"));
         List<Integer> managerIds = convertStringToIntegerList(properties.getProperty("managers"));
 
         Optional<Warehouse> optionalWarehouse = warehouseRepo.findById(id);
@@ -127,7 +161,6 @@ public class WarehouseController {
                 manager.setWarehouse(null);
                 managerRepo.save(manager);
             });
-
 
 
             List<Product> products = new ArrayList<>();
@@ -166,6 +199,12 @@ public class WarehouseController {
     }
 
 
+    /**
+     * Delete warehouse response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping(value = "/deleteWarehouse/{id}")
     public @ResponseBody ResponseEntity<String> deleteWarehouse(@PathVariable(name = "id") int id) {
         Optional<Warehouse> optionalWarehouse = warehouseRepo.findById(id);

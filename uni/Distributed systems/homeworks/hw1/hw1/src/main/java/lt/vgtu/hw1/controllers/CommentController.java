@@ -1,7 +1,9 @@
 package lt.vgtu.hw1.controllers;
 
 import com.google.gson.Gson;
-import lt.vgtu.hw1.model.*;
+import lt.vgtu.hw1.model.Comment;
+import lt.vgtu.hw1.model.Product;
+import lt.vgtu.hw1.model.User;
 import lt.vgtu.hw1.repos.CommentRepo;
 import lt.vgtu.hw1.repos.ProductRepo;
 import lt.vgtu.hw1.repos.UserRepo;
@@ -10,8 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.Optional;
+import java.util.Properties;
 
+/**
+ * The type Comment controller.
+ */
 @RestController
 public class CommentController {
 
@@ -23,17 +29,36 @@ public class CommentController {
     private UserRepo userRepo;
 
 
-
+    /**
+     * Gets all comments.
+     *
+     * @return the all comments
+     */
     @GetMapping(value = "/getAllComments")
-    public @ResponseBody Iterable<Comment> getAllComments() {return commentRepo.findAll();}
+    public @ResponseBody Iterable<Comment> getAllComments() {
+        return commentRepo.findAll();
+    }
 
+    /**
+     * Create comment comment.
+     *
+     * @param comment the comment
+     * @return the comment
+     */
     @PostMapping(value = "/createComment")
-    public @ResponseBody Comment createComment(@RequestBody Comment comment){
+    public @ResponseBody Comment createComment(@RequestBody Comment comment) {
         commentRepo.save(comment);
         return new Comment();
     }
+
+    /**
+     * Create comment with ids comment.
+     *
+     * @param info the info
+     * @return the comment
+     */
     @PostMapping(value = "/createCommentWithIds")
-    public @ResponseBody Comment createCommentWithIds(@RequestBody String info){
+    public @ResponseBody Comment createCommentWithIds(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
@@ -79,13 +104,26 @@ public class CommentController {
     }
 
 
+    /**
+     * Updatee comment comment.
+     *
+     * @param comment the comment
+     * @return the comment
+     */
     @PutMapping(value = "/updateCommentObject")
-    public @ResponseBody Comment updateeComment(@RequestBody Comment comment){
+    public @ResponseBody Comment updateeComment(@RequestBody Comment comment) {
         commentRepo.save(comment);
         return new Comment();
     }
+
+    /**
+     * Update comment object comment.
+     *
+     * @param info the info
+     * @return the comment
+     */
     @PostMapping(value = "/updateComment")
-    public @ResponseBody Comment updateCommentObject(@RequestBody String info){
+    public @ResponseBody Comment updateCommentObject(@RequestBody String info) {
         Gson gson = new Gson();
         Properties properties = gson.fromJson(info, Properties.class);
 
@@ -96,7 +134,6 @@ public class CommentController {
         int commentOwner = Integer.parseInt(properties.getProperty("commentOwner"));
         var parentComment = properties.getProperty("parentComment");
         var rating = Float.parseFloat(properties.getProperty("rating"));
-
 
 
         Optional<Comment> optionalComment = commentRepo.findById(id);
@@ -116,11 +153,17 @@ public class CommentController {
         }
     }
 
+    /**
+     * Delete comment response entity.
+     *
+     * @param id the id
+     * @return the response entity
+     */
     @DeleteMapping(value = "/deleteComment/{id}")
     public @ResponseBody ResponseEntity<String> deleteComment(@PathVariable(name = "id") int id) {
         Optional<Comment> commentOptional = commentRepo.findById(id);
 
-        if(commentOptional.isPresent()) {
+        if (commentOptional.isPresent()) {
             Comment comment = commentOptional.get();
             deleteReplies(comment);
             unlinkComment(comment);
@@ -130,6 +173,7 @@ public class CommentController {
             return new ResponseEntity<>("Comment with ID " + id + " not found.", HttpStatus.NOT_FOUND);
         }
     }
+
     private void deleteReplies(Comment comment) {
         if (comment.getReplies() != null) {
             for (Comment reply : comment.getReplies()) {
@@ -139,6 +183,7 @@ public class CommentController {
             }
         }
     }
+
     private void unlinkComment(Comment comment) {
         if (comment.getWhichProductCommented() != null) {
             Product product = comment.getWhichProductCommented();

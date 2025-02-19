@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 
-
-/**
- * The type Product xml controller.
- */
 @RestController
 @RequiredArgsConstructor
 public class ProductXmlController {
@@ -22,14 +18,14 @@ public class ProductXmlController {
     private final ProductXmlService bookToXmlService;
 
     /**
-     * Map xml response entity.
+     * Map a product to xml by id.
      *
      * @param id the id
-     * @return the response entity
-     * @throws JAXBException the jaxb exception
-     * @throws IOException   the io exception
+     * @return   the saved path (200) or 404 if the product lookup failed
+     * @throws JAXBException the jaxb exception, if serialization failed (500)
+     * @throws IOException   the io exception, if writing to file failed (500)
      */
-    @GetMapping(value = "/mapXml/{id}")
+    @GetMapping(value = "/productToXml/{id}")
     public ResponseEntity<String> mapXml(@PathVariable(name = "id") int id) throws JAXBException, IOException {
         var saved = bookToXmlService.saveXml(id, "./product-" + id + ".xml");
         if (saved == null) {

@@ -10,9 +10,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-/**
- * The type Customer.
- */
 @Setter
 @Getter
 @AllArgsConstructor
@@ -26,12 +23,7 @@ public class Customer extends User {
     private LocalDate birthDate;
 
     /**
-     * Instantiates a new Customer.
-     *
-     * @param name     the name
-     * @param surname  the surname
-     * @param login    the login
-     * @param password the password
+     * Instantiates a new Customer. (minimal)
      */
     public Customer(String name, String surname, String login, String password) {
         super(name, surname, login, password);
@@ -39,15 +31,6 @@ public class Customer extends User {
 
     /**
      * Instantiates a new Customer.
-     *
-     * @param name            the name
-     * @param surname         the surname
-     * @param login           the login
-     * @param password        the password
-     * @param cardNumber      the card number
-     * @param shippingAddress the shipping address
-     * @param billingAddress  the billing address
-     * @param birthDate       the birth date
      */
     public Customer(String name, String surname, String login, String password, String cardNumber, String shippingAddress, String billingAddress, String birthDate) {
         super(name, surname, login, password);
@@ -77,11 +60,6 @@ public class Customer extends User {
 
     }
 
-    /**
-     * Sets birth date.
-     *
-     * @param birthDate the birth date
-     */
     public void setBirthDate(String birthDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MM yyyy");
         this.birthDate = LocalDate.parse(birthDate, formatter);

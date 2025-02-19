@@ -1,8 +1,8 @@
 package lt.vgtu.hw1.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.xml.bind.annotation.XmlID;
+import jakarta.xml.bind.annotation.XmlIDREF;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,43 +11,39 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * The type User.
- */
-@Setter
-@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 public abstract class User implements Serializable {
-    /**
-     * The Comments.
-     */
-    @JsonIgnore
     @OneToMany(mappedBy = "commentOwner", cascade = CascadeType.ALL)
+    @Setter
+    @Getter
     protected List<Comment> comments;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Setter
+    @Getter
     private int id;
     private String name;
+    @Setter
+    @Getter
     private String surname;
+    @Setter
+    @Getter
     private String login;
+    @Setter
+    @Getter
     private String password;
+    @Getter
     @ManyToOne
     private Shop shop;
-    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @Setter
+    @Getter
     private List<Cart> myPurchases;
-
 
     /**
      * Instantiates a new User.
-     *
-     * @param name     the name
-     * @param surname  the surname
-     * @param login    the login
-     * @param password the password
      */
     public User(String name, String surname, String login, String password) {
         this.name = name;
@@ -56,11 +52,11 @@ public abstract class User implements Serializable {
         this.password = password;
     }
 
-    /**
-     * Gets x id.
-     *
-     * @return the x id
-     */
+    @XmlIDREF
+    public void setShop(Shop shop) {
+        this.shop = shop;
+    }
+
     @XmlID
     public String getXId() {
         return id + "";

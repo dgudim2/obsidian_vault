@@ -11,3 +11,8 @@ insert into "Warehouse" (id, address) values
 
 insert into "Product" (id, description, price, quantity, title, cart_id, shop_id, warehouse_id)
 values (1, 'Test1', 10, 10, 'test title', null, 1, 1);
+
+insert into "Comment" ("commentOwner_id", id, "parentComment_id", rating, "whichProductCommented_id", "commentBody", "commentTitle")
+values
+(1, 1, null, 8, 1, 'comment body 1', 'comment 1'),
+(2, 2, 1, 10, 1, 'comment body 2', 'comment 2');

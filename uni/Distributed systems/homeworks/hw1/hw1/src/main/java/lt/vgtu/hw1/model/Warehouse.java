@@ -26,75 +26,41 @@ public class Warehouse {
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Product> stock;
 
+    @Setter
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Manager> managers;
 
     @Setter
     private String address;
 
-    /**
-     * Instantiates a new Warehouse.
-     *
-     * @param address the address
-     */
     public Warehouse(String address) {
         this.address = address;
         this.stock = new ArrayList<>();
         this.managers = new ArrayList<>();
     }
 
-    /**
-     * Gets stock.
-     *
-     * @return the stock
-     */
     @XmlElement
     public List<Product> getStock() {
         return stock;
     }
 
-    /**
-     * Sets stock.
-     *
-     * @param stock the stock
-     */
     @XmlIDREF
     public void setStock(List<Product> stock) {
         this.stock = stock;
     }
 
-    /**
-     * Gets managers.
-     *
-     * @return the managers
-     */
     @XmlElement
     public List<Manager> getManagers() {
         return managers;
     }
-
-    /**
-     * Sets managers.
-     *
-     * @param managers the managers
-     */
-    @XmlIDREF
-    public void setManagers(List<Manager> managers) {
-        this.managers = managers;
-    }
-
-    /**
-     * Gets address.
-     *
-     * @return the address
-     */
+    
     @XmlElement
     public String getAddress() {
         return address;
     }
 
     @XmlID
-    private String getId() {
+    private String getXId() {
         return id + "";
     }
 }

@@ -89,7 +89,7 @@ flexGrow=1
 This task requires us to setup 2 arduinos, one as a *transmitter*, the other as a *receiver*
 
 > [!note]
-> *autoAck* is set to **false** here, for a more reliable communication. If it is set to **true**, acknowledgement from the other (receiving side) are not necessary, this is useful in message broadcast scenarios, in 1-1 communication there will be higher *packet loss* on longer distances
+> *autoAck* is set to **false** here, for a more reliable communication. If it is set to **true**, acknowledgements from the other (receiving side) are not necessary, this is useful in message broadcast scenarios, in 1-1 communication there will be higher *packet loss* on longer distances
 
 ### Transmitter
 

@@ -1,0 +1,23 @@
+enable
+show ip interface brief
+show ip route
+configure terminal
+hostname R1kawai
+interface GigabitEthernet0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface GigabitEthernet0/1
+ip address 10.1.1.1 255.255.255.0
+no shutdown
+exit
+ip dhcp pool LW3_1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+exit
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+ip dhcp pool LW3_2
+network 10.1.1.0 255.255.255.0
+default-router 10.1.1.1
+exit
+ip dhcp excluded-address 10.1.1.1 10.1.1.10

@@ -42,6 +42,8 @@
 + grommit and ...
 + flow (поток)
 + Tales of the loop
++ Hot tub time machine
++ the severance
 
 ## Anime
 + Стальной алхимик 2008
@@ -82,6 +84,7 @@
 + shiko
 + girls and panzer
 + в любви как на войне
++ Solo leveling
 
 
 # Stuff to read

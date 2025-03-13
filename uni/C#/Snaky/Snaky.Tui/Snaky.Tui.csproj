@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Snaky.Core\Snaky.Core.csproj" />
+      <ProjectReference Include="..\Snaky.CommonUI\Snaky.CommonUI.csproj" />
+      <ProjectReference Include="..\Snaky.Game\Snaky.Game.csproj" />
+    </ItemGroup>
+
+</Project>

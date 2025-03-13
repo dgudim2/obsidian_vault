@@ -9,6 +9,9 @@ var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __typeError = (msg) => {
+  throw TypeError(msg);
+};
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -34,28 +37,12 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
-var __accessCheck = (obj, member, msg) => {
-  if (!member.has(obj))
-    throw TypeError("Cannot " + msg);
-};
-var __privateGet = (obj, member, getter) => {
-  __accessCheck(obj, member, "read from private field");
-  return getter ? getter.call(obj) : member.get(obj);
-};
-var __privateAdd = (obj, member, value) => {
-  if (member.has(obj))
-    throw TypeError("Cannot add the same private member more than once");
-  member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
-};
-var __privateSet = (obj, member, value, setter) => {
-  __accessCheck(obj, member, "write to private field");
-  setter ? setter.call(obj, value) : member.set(obj, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
+var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
+var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
+var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
+var __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), setter ? setter.call(obj, value) : member.set(obj, value), value);
+var __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), method);
 var __privateWrapper = (obj, member, setter, getter) => ({
   set _(value) {
     __privateSet(obj, member, value, setter);
@@ -64,10 +51,6 @@ var __privateWrapper = (obj, member, setter, getter) => ({
     return __privateGet(obj, member, getter);
   }
 });
-var __privateMethod = (obj, member, method) => {
-  __accessCheck(obj, member, "access private method");
-  return method;
-};
 
 // (disabled):node_modules/jsdom/lib/api.js
 var require_api = __commonJS({
@@ -90,7 +73,7 @@ var require_utils2 = __commonJS({
 // node_modules/fabric/dist/fabric.js
 var require_fabric = __commonJS({
   "node_modules/fabric/dist/fabric.js"(exports) {
-    var fabric2 = fabric2 || { version: "5.3.0" };
+    var fabric2 = fabric2 || { version: "5.4.2" };
     if (typeof exports !== "undefined") {
       exports.fabric = fabric2;
     } else if (typeof define === "function" && define.amd) {
@@ -823,8 +806,10 @@ var require_fabric = __commonJS({
               return number * fabric2.DPI;
             case "pt":
               return number * fabric2.DPI / 72;
+            // or * 4 / 3
             case "pc":
               return number * fabric2.DPI / 72 * 12;
+            // or * 16
             case "em":
               return number * fontSize;
             default:
@@ -1783,16 +1768,19 @@ var require_fabric = __commonJS({
           converted = false;
           current = path[i].slice(0);
           switch (current[0]) {
+            // first letter
             case "l":
               current[0] = "L";
               current[1] += x;
               current[2] += y;
+            // falls through
             case "L":
               x = current[1];
               y = current[2];
               break;
             case "h":
               current[1] += x;
+            // falls through
             case "H":
               current[0] = "L";
               current[2] = y;
@@ -1800,6 +1788,7 @@ var require_fabric = __commonJS({
               break;
             case "v":
               current[1] += y;
+            // falls through
             case "V":
               current[0] = "L";
               y = current[1];
@@ -1810,6 +1799,7 @@ var require_fabric = __commonJS({
               current[0] = "M";
               current[1] += x;
               current[2] += y;
+            // falls through
             case "M":
               x = current[1];
               y = current[2];
@@ -1824,6 +1814,7 @@ var require_fabric = __commonJS({
               current[4] += y;
               current[5] += x;
               current[6] += y;
+            // falls through
             case "C":
               controlX = current[3];
               controlY = current[4];
@@ -1836,6 +1827,7 @@ var require_fabric = __commonJS({
               current[2] += y;
               current[3] += x;
               current[4] += y;
+            // falls through
             case "S":
               if (previous === "C") {
                 controlX = 2 * x - controlX;
@@ -1862,6 +1854,7 @@ var require_fabric = __commonJS({
               current[2] += y;
               current[3] += x;
               current[4] += y;
+            // falls through
             case "Q":
               controlX = current[1];
               controlY = current[2];
@@ -1872,6 +1865,7 @@ var require_fabric = __commonJS({
               current[0] = "T";
               current[1] += x;
               current[2] += y;
+            // falls through
             case "T":
               if (previous === "Q") {
                 controlX = 2 * x - controlX;
@@ -1892,6 +1886,7 @@ var require_fabric = __commonJS({
               current[0] = "A";
               current[6] += x;
               current[7] += y;
+            // falls through
             case "A":
               converted = true;
               destinationPath = destinationPath.concat(fromArcToBeziers(x, y, current));
@@ -2004,6 +1999,7 @@ var require_fabric = __commonJS({
             command: current[0]
           };
           switch (current[0]) {
+            //first letter
             case "M":
               tempInfo.length = 0;
               x2 = x1 = current[1];
@@ -2370,7 +2366,7 @@ var require_fabric = __commonJS({
       }(), addMethods = function(klass, source, parent) {
         for (var property in source) {
           if (property in klass.prototype && typeof klass.prototype[property] === "function" && (source[property] + "").indexOf("callSuper") > -1) {
-            klass.prototype[property] = function(property2) {
+            klass.prototype[property] = /* @__PURE__ */ function(property2) {
               return function() {
                 var superclass = this.constructor.superclass;
                 this.constructor.superclass = parent;
@@ -2808,12 +2804,12 @@ var require_fabric = __commonJS({
         });
         fabric2.runningAnimations.push(context);
         requestAnimFrame(function(timestamp) {
-          var start = timestamp || +new Date(), duration = options.duration || 500, finish = start + duration, time, onChange = options.onChange || noop, abort = options.abort || noop, onComplete = options.onComplete || noop, easing = options.easing || defaultEasing, isMany = "startValue" in options ? options.startValue.length > 0 : false, startValue = "startValue" in options ? options.startValue : 0, endValue = "endValue" in options ? options.endValue : 100, byValue = options.byValue || (isMany ? startValue.map(function(value, i) {
+          var start = timestamp || +/* @__PURE__ */ new Date(), duration = options.duration || 500, finish = start + duration, time, onChange = options.onChange || noop, abort = options.abort || noop, onComplete = options.onComplete || noop, easing = options.easing || defaultEasing, isMany = "startValue" in options ? options.startValue.length > 0 : false, startValue = "startValue" in options ? options.startValue : 0, endValue = "endValue" in options ? options.endValue : 100, byValue = options.byValue || (isMany ? startValue.map(function(value, i) {
             return endValue[i] - startValue[i];
           }) : endValue - startValue);
           options.onStart && options.onStart();
           (function tick(ticktime) {
-            time = ticktime || +new Date();
+            time = ticktime || +/* @__PURE__ */ new Date();
             var currentTime = time > finish ? duration : time - start, timePerc = currentTime / duration, current = isMany ? startValue.map(function(_value, i) {
               return easing(currentTime, startValue[i], byValue[i], duration);
             }) : easing(currentTime, startValue, byValue, duration), valuePerc = isMany ? Math.abs((current[0] - startValue[0]) / byValue[0]) : Math.abs((current - startValue) / byValue);
@@ -7116,10 +7112,13 @@ var require_fabric = __commonJS({
             }
             if (object) {
               ctx.save();
+              var skipOffscreen = this.skipOffscreen;
+              this.skipOffscreen = needsVpt;
               if (needsVpt) {
                 ctx.transform(v[0], v[1], v[2], v[3], v[4], v[5]);
               }
               object.render(ctx);
+              this.skipOffscreen = skipOffscreen;
               ctx.restore();
             }
           },
@@ -9779,8 +9778,8 @@ var require_fabric = __commonJS({
             target && target.fire("mouseout", { e });
             var _this = this;
             this._hoveredTargets.forEach(function(_target) {
-              _this.fire("mouse:out", { target, e });
-              _target && target.fire("mouseout", { e });
+              _this.fire("mouse:out", { target: _target, e });
+              _target && _target.fire("mouseout", { e });
             });
             this._hoveredTargets = [];
           },
@@ -11459,8 +11458,8 @@ var require_fabric = __commonJS({
               // for sure this ALIASING_LIMIT is slightly creating problem
               // in situation in which the cache canvas gets an upper limit
               // also objectScale contains already scaleX and scaleY
-              width: neededX + ALIASING_LIMIT,
-              height: neededY + ALIASING_LIMIT,
+              width: Math.ceil(neededX + ALIASING_LIMIT),
+              height: Math.ceil(neededY + ALIASING_LIMIT),
               zoomX: objectScale.scaleX,
               zoomY: objectScale.scaleY,
               x: neededX,
@@ -11481,25 +11480,11 @@ var require_fabric = __commonJS({
                 return false;
               }
             }
-            var canvas = this._cacheCanvas, dims = this._limitCacheSize(this._getCacheCanvasDimensions()), minCacheSize = fabric3.minCacheSideLimit, width = dims.width, height = dims.height, drawingWidth, drawingHeight, zoomX = dims.zoomX, zoomY = dims.zoomY, dimensionsChanged = width !== this.cacheWidth || height !== this.cacheHeight, zoomChanged = this.zoomX !== zoomX || this.zoomY !== zoomY, shouldRedraw = dimensionsChanged || zoomChanged, additionalWidth = 0, additionalHeight = 0, shouldResizeCanvas = false;
-            if (dimensionsChanged) {
-              var canvasWidth = this._cacheCanvas.width, canvasHeight = this._cacheCanvas.height, sizeGrowing = width > canvasWidth || height > canvasHeight, sizeShrinking = (width < canvasWidth * 0.9 || height < canvasHeight * 0.9) && canvasWidth > minCacheSize && canvasHeight > minCacheSize;
-              shouldResizeCanvas = sizeGrowing || sizeShrinking;
-              if (sizeGrowing && !dims.capped && (width > minCacheSize || height > minCacheSize)) {
-                additionalWidth = width * 0.1;
-                additionalHeight = height * 0.1;
-              }
-            }
-            if (this instanceof fabric3.Text && this.path) {
-              shouldRedraw = true;
-              shouldResizeCanvas = true;
-              additionalWidth += this.getHeightOfLine(0) * this.zoomX;
-              additionalHeight += this.getHeightOfLine(0) * this.zoomY;
-            }
+            var canvas = this._cacheCanvas, dims = this._limitCacheSize(this._getCacheCanvasDimensions()), width = dims.width, height = dims.height, drawingWidth, drawingHeight, zoomX = dims.zoomX, zoomY = dims.zoomY, dimensionsChanged = width !== this.cacheWidth || height !== this.cacheHeight, zoomChanged = this.zoomX !== zoomX || this.zoomY !== zoomY, shouldRedraw = dimensionsChanged || zoomChanged;
             if (shouldRedraw) {
-              if (shouldResizeCanvas) {
-                canvas.width = Math.ceil(width + additionalWidth);
-                canvas.height = Math.ceil(height + additionalHeight);
+              if (dimensionsChanged) {
+                canvas.width = width;
+                canvas.height = height;
               } else {
                 this._cacheContext.setTransform(1, 0, 0, 1, 0, 0);
                 this._cacheContext.clearRect(0, 0, canvas.width, canvas.height);
@@ -12167,8 +12152,8 @@ var require_fabric = __commonJS({
            */
           _applyPatternForTransformedGradient: function(ctx, filler) {
             var dims = this._limitCacheSize(this._getCacheCanvasDimensions()), pCanvas = fabric3.util.createCanvasElement(), pCtx, retinaScaling = this.canvas.getRetinaScaling(), width = dims.x / this.scaleX / retinaScaling, height = dims.y / this.scaleY / retinaScaling;
-            pCanvas.width = width;
-            pCanvas.height = height;
+            pCanvas.width = Math.ceil(width);
+            pCanvas.height = Math.ceil(height);
             pCtx = pCanvas.getContext("2d");
             pCtx.beginPath();
             pCtx.moveTo(0, 0);
@@ -13836,7 +13821,10 @@ var require_fabric = __commonJS({
           drawControls: function(ctx, styleOverride) {
             styleOverride = styleOverride || {};
             ctx.save();
-            var retinaScaling = this.canvas.getRetinaScaling(), matrix, p;
+            var retinaScaling = 1, matrix, p;
+            if (this.canvas) {
+              retinaScaling = this.canvas.getRetinaScaling();
+            }
             ctx.setTransform(retinaScaling, 0, 0, retinaScaling, 0, 0);
             ctx.strokeStyle = ctx.fillStyle = styleOverride.cornerColor || this.cornerColor;
             if (!this.transparentCorners) {
@@ -15151,6 +15139,7 @@ var require_fabric = __commonJS({
             for (var i = 0, len = this.path.length; i < len; ++i) {
               current = this.path[i];
               switch (current[0]) {
+                // first letter
                 case "L":
                   x = current[1];
                   y = current[2];
@@ -15295,6 +15284,7 @@ var require_fabric = __commonJS({
             for (var i = 0, len = this.path.length; i < len; ++i) {
               current = this.path[i];
               switch (current[0]) {
+                // first letter
                 case "L":
                   x = current[1];
                   y = current[2];
@@ -15990,7 +15980,6 @@ var require_fabric = __commonJS({
           _renderControls: function(ctx, styleOverride, childrenOverride) {
             ctx.save();
             ctx.globalAlpha = this.isMoving ? this.borderOpacityWhenMoving : 1;
-            this.callSuper("_renderControls", ctx, styleOverride);
             childrenOverride = childrenOverride || {};
             if (typeof childrenOverride.hasControls === "undefined") {
               childrenOverride.hasControls = false;
@@ -15999,6 +15988,7 @@ var require_fabric = __commonJS({
             for (var i = 0, len = this._objects.length; i < len; i++) {
               this._objects[i]._renderControls(ctx, childrenOverride);
             }
+            this.callSuper("_renderControls", ctx, styleOverride);
             ctx.restore();
           }
         }
@@ -20098,8 +20088,9 @@ var require_fabric = __commonJS({
             this._splitText();
             this._clearCache();
             if (this.path) {
-              this.width = this.path.width;
-              this.height = this.path.height;
+              var additionalWidth = this.getHeightOfLine(0) * 1.1;
+              this.width = this.path.width + additionalWidth;
+              this.height = this.path.height + additionalWidth;
             } else {
               this.width = this.calcTextWidth() || this.cursorWidth || this.MIN_TEXT_WIDTH;
               this.height = this.calcTextHeight();
@@ -20879,6 +20870,10 @@ var require_fabric = __commonJS({
             if (!this[type] && !this.styleHas(type)) {
               return;
             }
+            ctx.save();
+            if (type === "overline" || type === "linethrough") {
+              this._removeShadow(ctx);
+            }
             var heightOfLine, size, _size2, lineLeftOffset, dy, _dy, line, lastDecoration, leftOffset = this._getLeftOffset(), topOffset = this._getTopOffset(), top, boxStart, boxWidth, charBox, currentDecoration, maxHeight, currentFill, lastFill, path = this.path, charSpacing = this._getWidthOfCharSpacing(), offsetY = this.offsets[type];
             for (var i = 0, len = this._textLines.length; i < len; i++) {
               heightOfLine = this.getHeightOfLine(i);
@@ -20951,7 +20946,7 @@ var require_fabric = __commonJS({
               );
               topOffset += heightOfLine;
             }
-            this._removeShadow(ctx);
+            ctx.restore();
           },
           /**
            * return font declaration string for canvas context
@@ -21290,7 +21285,7 @@ var require_fabric = __commonJS({
                   charIndex: selectionStart
                 };
               }
-              selectionStart -= lines[i].length + this.missingNewlineOffset(i);
+              selectionStart -= lines[i].length + this.missingNewlineOffset(i, skipWrapping);
             }
             return {
               lineIndex: i - 1,
@@ -21804,6 +21799,7 @@ var require_fabric = __commonJS({
       fabric2.IText.fromObject = function(object, callback) {
         var styles = fabric2.util.stylesFromArray(object.styles, object.text);
         var objCopy = Object.assign({}, object, { styles });
+        delete objCopy.path;
         parseDecoration(objCopy);
         if (objCopy.styles) {
           for (var i in objCopy.styles) {
@@ -21812,7 +21808,16 @@ var require_fabric = __commonJS({
             }
           }
         }
-        fabric2.Object._fromObject("IText", objCopy, callback, "text");
+        fabric2.Object._fromObject("IText", objCopy, function(textInstance) {
+          if (object.path) {
+            fabric2.Object._fromObject("Path", object.path, function(pathInstance) {
+              textInstance.set("path", pathInstance);
+              callback(textInstance);
+            }, "path");
+          } else {
+            callback(textInstance);
+          }
+        }, "text");
       };
     })();
     (function() {
@@ -22427,7 +22432,7 @@ var require_fabric = __commonJS({
            * @param {Array} copiedStyle Array of objects styles
            */
           insertNewlineStyleObject: function(lineIndex, charIndex, qty, copiedStyle) {
-            var currentCharStyle, newLineStyles = {}, somethingAdded = false, isEndOfLine = this._unwrappedTextLines[lineIndex].length === charIndex;
+            var currentCharStyle, newLineStyles = {}, someStyleIsCarryingOver = false, originalLineLength = this._unwrappedTextLines[lineIndex].length, isEndOfLine = originalLineLength === charIndex;
             qty || (qty = 1);
             this.shiftLineStyles(lineIndex, qty);
             if (this.styles[lineIndex]) {
@@ -22436,7 +22441,7 @@ var require_fabric = __commonJS({
             for (var index in this.styles[lineIndex]) {
               var numIndex = parseInt(index, 10);
               if (numIndex >= charIndex) {
-                somethingAdded = true;
+                someStyleIsCarryingOver = true;
                 newLineStyles[numIndex - charIndex] = this.styles[lineIndex][index];
                 if (!(isEndOfLine && charIndex === 0)) {
                   delete this.styles[lineIndex][index];
@@ -22444,11 +22449,11 @@ var require_fabric = __commonJS({
               }
             }
             var styleCarriedOver = false;
-            if (somethingAdded && !isEndOfLine) {
+            if (someStyleIsCarryingOver && !isEndOfLine) {
               this.styles[lineIndex + qty] = newLineStyles;
               styleCarriedOver = true;
             }
-            if (styleCarriedOver) {
+            if (styleCarriedOver || originalLineLength > charIndex) {
               qty--;
             }
             while (qty > 0) {
@@ -22598,8 +22603,8 @@ var require_fabric = __commonJS({
          * Initializes "dbclick" event handler
          */
         initDoubleClickSimulation: function() {
-          this.__lastClickTime = +new Date();
-          this.__lastLastClickTime = +new Date();
+          this.__lastClickTime = +/* @__PURE__ */ new Date();
+          this.__lastLastClickTime = +/* @__PURE__ */ new Date();
           this.__lastPointer = {};
           this.on("mousedown", this.onMouseDown);
         },
@@ -22611,7 +22616,7 @@ var require_fabric = __commonJS({
           if (!this.canvas) {
             return;
           }
-          this.__newClickTime = +new Date();
+          this.__newClickTime = +/* @__PURE__ */ new Date();
           var newPointer = options.pointer;
           if (this.isTripleClick(newPointer)) {
             this.fire("tripleclick", options);
@@ -23384,7 +23389,7 @@ var require_fabric = __commonJS({
       }
     );
     (function() {
-      var toFixed = fabric2.util.toFixed, multipleSpacesRegex = /  +/g;
+      var toFixed = fabric2.util.toFixed, radiansToDegrees = fabric2.util.radiansToDegrees, calcRotateMatrix = fabric2.util.calcRotateMatrix, transformPoint = fabric2.util.transformPoint, multipleSpacesRegex = /  +/g;
       fabric2.util.object.extend(
         fabric2.Text.prototype,
         /** @lends fabric.Text.prototype */
@@ -23404,10 +23409,17 @@ var require_fabric = __commonJS({
            * @return {String} svg representation of an instance
            */
           toSVG: function(reviver) {
-            return this._createBaseSVGMarkup(
+            var textSvg = this._createBaseSVGMarkup(
               this._toSVG(),
               { reviver, noStyle: true, withShadow: true }
-            );
+            ), path = this.path;
+            if (path) {
+              return textSvg + path._createBaseSVGMarkup(path._toSVG(), {
+                reviver,
+                withShadow: true
+              });
+            }
+            return textSvg;
           },
           /**
            * @private
@@ -23466,10 +23478,20 @@ var require_fabric = __commonJS({
           /**
            * @private
            */
-          _createTextCharSpan: function(_char, styleDecl, left, top) {
-            var shouldUseWhitespace = _char !== _char.trim() || _char.match(multipleSpacesRegex), styleProps = this.getSvgSpanStyles(styleDecl, shouldUseWhitespace), fillStyles = styleProps ? 'style="' + styleProps + '"' : "", dy = styleDecl.deltaY, dySpan = "", NUM_FRACTION_DIGITS = fabric2.Object.NUM_FRACTION_DIGITS;
+          _createTextCharSpan: function(_char, styleDecl, left, top, charBox) {
+            var shouldUseWhitespace = _char !== _char.trim() || _char.match(multipleSpacesRegex), styleProps = this.getSvgSpanStyles(styleDecl, shouldUseWhitespace), fillStyles = styleProps ? 'style="' + styleProps + '"' : "", dy = styleDecl.deltaY, dySpan = "", NUM_FRACTION_DIGITS = fabric2.Object.NUM_FRACTION_DIGITS, angleAttr = "";
             if (dy) {
               dySpan = ' dy="' + toFixed(dy, NUM_FRACTION_DIGITS) + '" ';
+            }
+            if (charBox.renderLeft !== void 0) {
+              var angle = charBox.angle;
+              angleAttr = ' rotate="' + toFixed(radiansToDegrees(angle), fabric2.Object.NUM_FRACTION_DIGITS) + '" ';
+              var wBy2 = charBox.width / 2, m = calcRotateMatrix({ angle: radiansToDegrees(angle) });
+              m[4] = charBox.renderLeft;
+              m[5] = charBox.renderTop;
+              var renderPoint = transformPoint({ x: -wBy2, y: 0 }, m);
+              left = renderPoint.x;
+              top = renderPoint.y;
             }
             return [
               '<tspan x="',
@@ -23479,6 +23501,7 @@ var require_fabric = __commonJS({
               '" ',
               dySpan,
               fillStyles,
+              angleAttr,
               ">",
               fabric2.util.string.escapeXml(_char),
               "</tspan>"
@@ -23488,7 +23511,7 @@ var require_fabric = __commonJS({
             var lineHeight = this.getHeightOfLine(lineIndex), isJustify = this.textAlign.indexOf("justify") !== -1, actualStyle, nextStyle, charsToRender = "", charBox, style, boxWidth = 0, line = this._textLines[lineIndex], timeToRender;
             textTopOffset += lineHeight * (1 - this._fontSizeFraction) / this.lineHeight;
             for (var i = 0, len = line.length - 1; i <= len; i++) {
-              timeToRender = i === len || this.charSpacing;
+              timeToRender = i === len || this.charSpacing || this.path;
               charsToRender += line[i];
               charBox = this.__charBounds[lineIndex][i];
               if (boxWidth === 0) {
@@ -23509,7 +23532,7 @@ var require_fabric = __commonJS({
               }
               if (timeToRender) {
                 style = this._getStyleDeclaration(lineIndex, i) || {};
-                textSpans.push(this._createTextCharSpan(charsToRender, style, textLeftOffset, textTopOffset));
+                textSpans.push(this._createTextCharSpan(charsToRender, style, textLeftOffset, textTopOffset, charBox));
                 charsToRender = "";
                 actualStyle = nextStyle;
                 textLeftOffset += boxWidth;
@@ -23915,10 +23938,12 @@ var require_fabric = __commonJS({
         /**
          * Detect if a line has a linebreak and so we need to account for it when moving
          * and counting style.
+         * This is important only for splitByGrapheme at the end of wrapping.
+         * If we are not wrapping the offset is always 1
          * @return Number
          */
-        missingNewlineOffset: function(lineIndex) {
-          if (this.splitByGrapheme) {
+        missingNewlineOffset: function(lineIndex, skipWrapping) {
+          if (this.splitByGrapheme && !skipWrapping) {
             return this.isEndOfWrapping(lineIndex) ? 1 : 0;
           }
           return 1;
@@ -23968,7 +23993,17 @@ var require_fabric = __commonJS({
       fabric3.Textbox.fromObject = function(object, callback) {
         var styles = fabric3.util.stylesFromArray(object.styles, object.text);
         var objCopy = Object.assign({}, object, { styles });
-        return fabric3.Object._fromObject("Textbox", objCopy, callback, "text");
+        delete objCopy.path;
+        return fabric3.Object._fromObject("Textbox", objCopy, function(textInstance) {
+          if (object.path) {
+            fabric3.Object._fromObject("Path", object.path, function(pathInstance) {
+              textInstance.set("path", pathInstance);
+              callback(textInstance);
+            }, "path");
+          } else {
+            callback(textInstance);
+          }
+        }, "text");
       };
     })(typeof exports !== "undefined" ? exports : exports);
     (function() {
@@ -24101,7 +24136,7 @@ if (typeof AC === "undefined") {
       warnACPolyfill();
     }
     abort(reason) {
-      var _a3, _b;
+      var _a3, _b2;
       if (this.signal.aborted)
         return;
       this.signal.reason = reason;
@@ -24109,7 +24144,7 @@ if (typeof AC === "undefined") {
       for (const fn of this.signal._onabort) {
         fn(reason);
       }
-      (_b = (_a3 = this.signal).onabort) == null ? void 0 : _b.call(_a3, reason);
+      (_b2 = (_a3 = this.signal).onabort) == null ? void 0 : _b2.call(_a3, reason);
     }
   };
   let printACPolyfillWarning = ((_a = PROCESS.env) == null ? void 0 : _a.LRU_CACHE_IGNORE_AC_WARNING) !== "1";
@@ -24131,7 +24166,7 @@ var ZeroArray = class extends Array {
   }
 };
 var _constructing;
-var _Stack = class {
+var _Stack = class _Stack {
   constructor(max, HeapCls) {
     __publicField(this, "heap");
     __publicField(this, "length");
@@ -24157,31 +24192,21 @@ var _Stack = class {
     return this.heap[--this.length];
   }
 };
-var Stack = _Stack;
 _constructing = new WeakMap();
 // private constructor
-__privateAdd(Stack, _constructing, false);
-var _max, _maxSize, _dispose, _disposeAfter, _fetchMethod, _size, _calculatedSize, _keyMap, _keyList, _valList, _next, _prev, _head, _tail, _free, _disposed, _sizes, _starts, _ttls, _hasDispose, _hasFetchMethod, _hasDisposeAfter, _initializeTTLTracking, initializeTTLTracking_fn, _updateItemAge, _statusTTL, _setItemTTL, _isStale, _initializeSizeTracking, initializeSizeTracking_fn, _removeItemSize, _addItemSize, _requireSize, _indexes, indexes_fn, _rindexes, rindexes_fn, _isValidIndex, isValidIndex_fn, _a2, _evict, evict_fn, _backgroundFetch, backgroundFetch_fn, _isBackgroundFetch, isBackgroundFetch_fn, _connect, connect_fn, _moveToTail, moveToTail_fn;
-var _LRUCache = class {
+__privateAdd(_Stack, _constructing, false);
+var Stack = _Stack;
+var _a2, _b, _max, _maxSize, _dispose, _disposeAfter, _fetchMethod, _memoMethod, _size, _calculatedSize, _keyMap, _keyList, _valList, _next, _prev, _head, _tail, _free, _disposed, _sizes, _starts, _ttls, _hasDispose, _hasFetchMethod, _hasDisposeAfter, _LRUCache_instances, initializeTTLTracking_fn, _updateItemAge, _statusTTL, _setItemTTL, _isStale, initializeSizeTracking_fn, _removeItemSize, _addItemSize, _requireSize, indexes_fn, rindexes_fn, isValidIndex_fn, evict_fn, backgroundFetch_fn, isBackgroundFetch_fn, connect_fn, moveToTail_fn, delete_fn, clear_fn;
+var _LRUCache = class _LRUCache {
   constructor(options) {
-    __privateAdd(this, _initializeTTLTracking);
-    __privateAdd(this, _initializeSizeTracking);
-    __privateAdd(this, _indexes);
-    __privateAdd(this, _rindexes);
-    __privateAdd(this, _isValidIndex);
-    __privateAdd(this, _evict);
-    __privateAdd(this, _backgroundFetch);
-    __privateAdd(this, _isBackgroundFetch);
-    __privateAdd(this, _connect);
-    __privateAdd(this, _moveToTail);
-    // properties coming in from the options of these, only max and maxSize
-    // really *need* to be protected. The rest can be modified, as they just
-    // set defaults for various methods.
-    __privateAdd(this, _max, void 0);
-    __privateAdd(this, _maxSize, void 0);
-    __privateAdd(this, _dispose, void 0);
-    __privateAdd(this, _disposeAfter, void 0);
-    __privateAdd(this, _fetchMethod, void 0);
+    __privateAdd(this, _LRUCache_instances);
+    // options that cannot be changed without disaster
+    __privateAdd(this, _max);
+    __privateAdd(this, _maxSize);
+    __privateAdd(this, _dispose);
+    __privateAdd(this, _disposeAfter);
+    __privateAdd(this, _fetchMethod);
+    __privateAdd(this, _memoMethod);
     /**
      * {@link LRUCache.OptionsBase.ttl}
      */
@@ -24243,23 +24268,23 @@ var _LRUCache = class {
      */
     __publicField(this, "ignoreFetchAbort");
     // computed properties
-    __privateAdd(this, _size, void 0);
-    __privateAdd(this, _calculatedSize, void 0);
-    __privateAdd(this, _keyMap, void 0);
-    __privateAdd(this, _keyList, void 0);
-    __privateAdd(this, _valList, void 0);
-    __privateAdd(this, _next, void 0);
-    __privateAdd(this, _prev, void 0);
-    __privateAdd(this, _head, void 0);
-    __privateAdd(this, _tail, void 0);
-    __privateAdd(this, _free, void 0);
-    __privateAdd(this, _disposed, void 0);
-    __privateAdd(this, _sizes, void 0);
-    __privateAdd(this, _starts, void 0);
-    __privateAdd(this, _ttls, void 0);
-    __privateAdd(this, _hasDispose, void 0);
-    __privateAdd(this, _hasFetchMethod, void 0);
-    __privateAdd(this, _hasDisposeAfter, void 0);
+    __privateAdd(this, _size);
+    __privateAdd(this, _calculatedSize);
+    __privateAdd(this, _keyMap);
+    __privateAdd(this, _keyList);
+    __privateAdd(this, _valList);
+    __privateAdd(this, _next);
+    __privateAdd(this, _prev);
+    __privateAdd(this, _head);
+    __privateAdd(this, _tail);
+    __privateAdd(this, _free);
+    __privateAdd(this, _disposed);
+    __privateAdd(this, _sizes);
+    __privateAdd(this, _starts);
+    __privateAdd(this, _ttls);
+    __privateAdd(this, _hasDispose);
+    __privateAdd(this, _hasFetchMethod);
+    __privateAdd(this, _hasDisposeAfter);
     // conditionally set private methods related to TTL
     __privateAdd(this, _updateItemAge, () => {
     });
@@ -24280,11 +24305,12 @@ var _LRUCache = class {
       return 0;
     });
     /**
-     * A String value that is used in the creation of the default string description of an object.
-     * Called by the built-in method Object.prototype.toString.
+     * A String value that is used in the creation of the default string
+     * description of an object. Called by the built-in method
+     * `Object.prototype.toString`.
      */
     __publicField(this, _a2, "LRUCache");
-    const { max = 0, ttl, ttlResolution = 1, ttlAutopurge, updateAgeOnGet, updateAgeOnHas, allowStale, dispose, disposeAfter, noDisposeOnSet, noUpdateTTL, maxSize = 0, maxEntrySize = 0, sizeCalculation, fetchMethod, noDeleteOnFetchRejection, noDeleteOnStaleGet, allowStaleOnFetchRejection, allowStaleOnFetchAbort, ignoreFetchAbort } = options;
+    const { max = 0, ttl, ttlResolution = 1, ttlAutopurge, updateAgeOnGet, updateAgeOnHas, allowStale, dispose, disposeAfter, noDisposeOnSet, noUpdateTTL, maxSize = 0, maxEntrySize = 0, sizeCalculation, fetchMethod, memoMethod, noDeleteOnFetchRejection, noDeleteOnStaleGet, allowStaleOnFetchRejection, allowStaleOnFetchAbort, ignoreFetchAbort } = options;
     if (max !== 0 && !isPosInt(max)) {
       throw new TypeError("max option must be a nonnegative integer");
     }
@@ -24304,6 +24330,10 @@ var _LRUCache = class {
         throw new TypeError("sizeCalculation set to non-function");
       }
     }
+    if (memoMethod !== void 0 && typeof memoMethod !== "function") {
+      throw new TypeError("memoMethod must be a function if defined");
+    }
+    __privateSet(this, _memoMethod, memoMethod);
     if (fetchMethod !== void 0 && typeof fetchMethod !== "function") {
       throw new TypeError("fetchMethod must be a function if specified");
     }
@@ -24346,7 +24376,7 @@ var _LRUCache = class {
       if (!isPosInt(this.maxEntrySize)) {
         throw new TypeError("maxEntrySize must be a positive integer if specified");
       }
-      __privateMethod(this, _initializeSizeTracking, initializeSizeTracking_fn).call(this);
+      __privateMethod(this, _LRUCache_instances, initializeSizeTracking_fn).call(this);
     }
     this.allowStale = !!allowStale;
     this.noDeleteOnStaleGet = !!noDeleteOnStaleGet;
@@ -24359,7 +24389,7 @@ var _LRUCache = class {
       if (!isPosInt(this.ttl)) {
         throw new TypeError("ttl must be a positive integer if specified");
       }
-      __privateMethod(this, _initializeTTLTracking, initializeTTLTracking_fn).call(this);
+      __privateMethod(this, _LRUCache_instances, initializeTTLTracking_fn).call(this);
     }
     if (__privateGet(this, _max) === 0 && this.ttl === 0 && __privateGet(this, _maxSize) === 0) {
       throw new TypeError("At least one of max, maxSize, or ttl is required");
@@ -24403,23 +24433,23 @@ var _LRUCache = class {
       // methods
       isBackgroundFetch: (p) => {
         var _a3;
-        return __privateMethod(_a3 = c, _isBackgroundFetch, isBackgroundFetch_fn).call(_a3, p);
+        return __privateMethod(_a3 = c, _LRUCache_instances, isBackgroundFetch_fn).call(_a3, p);
       },
       backgroundFetch: (k, index, options, context) => {
         var _a3;
-        return __privateMethod(_a3 = c, _backgroundFetch, backgroundFetch_fn).call(_a3, k, index, options, context);
+        return __privateMethod(_a3 = c, _LRUCache_instances, backgroundFetch_fn).call(_a3, k, index, options, context);
       },
       moveToTail: (index) => {
         var _a3;
-        return __privateMethod(_a3 = c, _moveToTail, moveToTail_fn).call(_a3, index);
+        return __privateMethod(_a3 = c, _LRUCache_instances, moveToTail_fn).call(_a3, index);
       },
       indexes: (options) => {
         var _a3;
-        return __privateMethod(_a3 = c, _indexes, indexes_fn).call(_a3, options);
+        return __privateMethod(_a3 = c, _LRUCache_instances, indexes_fn).call(_a3, options);
       },
       rindexes: (options) => {
         var _a3;
-        return __privateMethod(_a3 = c, _rindexes, rindexes_fn).call(_a3, options);
+        return __privateMethod(_a3 = c, _LRUCache_instances, rindexes_fn).call(_a3, options);
       },
       isStale: (index) => {
         var _a3;
@@ -24458,6 +24488,9 @@ var _LRUCache = class {
   get fetchMethod() {
     return __privateGet(this, _fetchMethod);
   }
+  get memoMethod() {
+    return __privateGet(this, _memoMethod);
+  }
   /**
    * {@link LRUCache.OptionsBase.dispose} (read-only)
    */
@@ -24471,7 +24504,8 @@ var _LRUCache = class {
     return __privateGet(this, _disposeAfter);
   }
   /**
-   * Return the remaining TTL time for a given entry key
+   * Return the number of ms left in the item's TTL. If item is not in cache,
+   * returns `0`. Returns `Infinity` if item is in cache without a defined TTL.
    */
   getRemainingTTL(key) {
     return __privateGet(this, _keyMap).has(key) ? Infinity : 0;
@@ -24481,8 +24515,8 @@ var _LRUCache = class {
    * in order from most recently used to least recently used.
    */
   *entries() {
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this)) {
-      if (__privateGet(this, _valList)[i] !== void 0 && __privateGet(this, _keyList)[i] !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this)) {
+      if (__privateGet(this, _valList)[i] !== void 0 && __privateGet(this, _keyList)[i] !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield [__privateGet(this, _keyList)[i], __privateGet(this, _valList)[i]];
       }
     }
@@ -24494,8 +24528,8 @@ var _LRUCache = class {
    * in order from least recently used to most recently used.
    */
   *rentries() {
-    for (const i of __privateMethod(this, _rindexes, rindexes_fn).call(this)) {
-      if (__privateGet(this, _valList)[i] !== void 0 && __privateGet(this, _keyList)[i] !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+    for (const i of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this)) {
+      if (__privateGet(this, _valList)[i] !== void 0 && __privateGet(this, _keyList)[i] !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield [__privateGet(this, _keyList)[i], __privateGet(this, _valList)[i]];
       }
     }
@@ -24505,9 +24539,9 @@ var _LRUCache = class {
    * in order from most recently used to least recently used.
    */
   *keys() {
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this)) {
       const k = __privateGet(this, _keyList)[i];
-      if (k !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+      if (k !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield k;
       }
     }
@@ -24519,9 +24553,9 @@ var _LRUCache = class {
    * in order from least recently used to most recently used.
    */
   *rkeys() {
-    for (const i of __privateMethod(this, _rindexes, rindexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this)) {
       const k = __privateGet(this, _keyList)[i];
-      if (k !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+      if (k !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield k;
       }
     }
@@ -24531,9 +24565,9 @@ var _LRUCache = class {
    * in order from most recently used to least recently used.
    */
   *values() {
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this)) {
       const v = __privateGet(this, _valList)[i];
-      if (v !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+      if (v !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield __privateGet(this, _valList)[i];
       }
     }
@@ -24545,9 +24579,9 @@ var _LRUCache = class {
    * in order from least recently used to most recently used.
    */
   *rvalues() {
-    for (const i of __privateMethod(this, _rindexes, rindexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this)) {
       const v = __privateGet(this, _valList)[i];
-      if (v !== void 0 && !__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
+      if (v !== void 0 && !__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, __privateGet(this, _valList)[i])) {
         yield __privateGet(this, _valList)[i];
       }
     }
@@ -24556,17 +24590,17 @@ var _LRUCache = class {
    * Iterating over the cache itself yields the same results as
    * {@link LRUCache.entries}
    */
-  [Symbol.iterator]() {
+  [(_b = Symbol.iterator, _a2 = Symbol.toStringTag, _b)]() {
     return this.entries();
   }
   /**
    * Find a value for which the supplied fn method returns a truthy value,
-   * similar to Array.find().  fn is called as fn(value, key, cache).
+   * similar to `Array.find()`. fn is called as `fn(value, key, cache)`.
    */
   find(fn, getOptions = {}) {
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this)) {
       const v = __privateGet(this, _valList)[i];
-      const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+      const value = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
       if (value === void 0)
         continue;
       if (fn(value, __privateGet(this, _keyList)[i], this)) {
@@ -24575,15 +24609,20 @@ var _LRUCache = class {
     }
   }
   /**
-   * Call the supplied function on each item in the cache, in order from
-   * most recently used to least recently used.  fn is called as
-   * fn(value, key, cache).  Does not update age or recenty of use.
-   * Does not iterate over stale values.
+   * Call the supplied function on each item in the cache, in order from most
+   * recently used to least recently used.
+   *
+   * `fn` is called as `fn(value, key, cache)`.
+   *
+   * If `thisp` is provided, function will be called in the `this`-context of
+   * the provided object, or the cache if no `thisp` object is provided.
+   *
+   * Does not update age or recenty of use, or iterate over stale values.
    */
   forEach(fn, thisp = this) {
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this)) {
       const v = __privateGet(this, _valList)[i];
-      const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+      const value = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
       if (value === void 0)
         continue;
       fn.call(thisp, value, __privateGet(this, _keyList)[i], this);
@@ -24594,9 +24633,9 @@ var _LRUCache = class {
    * reverse order.  (ie, less recently used items are iterated over first.)
    */
   rforEach(fn, thisp = this) {
-    for (const i of __privateMethod(this, _rindexes, rindexes_fn).call(this)) {
+    for (const i of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this)) {
       const v = __privateGet(this, _valList)[i];
-      const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+      const value = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
       if (value === void 0)
         continue;
       fn.call(thisp, value, __privateGet(this, _keyList)[i], this);
@@ -24608,9 +24647,9 @@ var _LRUCache = class {
    */
   purgeStale() {
     let deleted = false;
-    for (const i of __privateMethod(this, _rindexes, rindexes_fn).call(this, { allowStale: true })) {
+    for (const i of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this, { allowStale: true })) {
       if (__privateGet(this, _isStale).call(this, i)) {
-        this.delete(__privateGet(this, _keyList)[i]);
+        __privateMethod(this, _LRUCache_instances, delete_fn).call(this, __privateGet(this, _keyList)[i], "expire");
         deleted = true;
       }
     }
@@ -24618,16 +24657,22 @@ var _LRUCache = class {
   }
   /**
    * Get the extended info about a given entry, to get its value, size, and
-   * TTL info simultaneously. Like {@link LRUCache#dump}, but just for a
-   * single key. Always returns stale values, if their info is found in the
-   * cache, so be sure to check for expired TTLs if relevant.
+   * TTL info simultaneously. Returns `undefined` if the key is not present.
+   *
+   * Unlike {@link LRUCache#dump}, which is designed to be portable and survive
+   * serialization, the `start` value is always the current timestamp, and the
+   * `ttl` is a calculated remaining time to live (negative if expired).
+   *
+   * Always returns stale values, if their info is found in the cache, so be
+   * sure to check for expirations (ie, a negative {@link LRUCache.Entry#ttl})
+   * if relevant.
    */
   info(key) {
     const i = __privateGet(this, _keyMap).get(key);
     if (i === void 0)
       return void 0;
     const v = __privateGet(this, _valList)[i];
-    const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+    const value = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
     if (value === void 0)
       return void 0;
     const entry = { value };
@@ -24647,14 +24692,23 @@ var _LRUCache = class {
   }
   /**
    * Return an array of [key, {@link LRUCache.Entry}] tuples which can be
-   * passed to cache.load()
+   * passed to {@link LRLUCache#load}.
+   *
+   * The `start` fields are calculated relative to a portable `Date.now()`
+   * timestamp, even if `performance.now()` is available.
+   *
+   * Stale entries are always included in the `dump`, even if
+   * {@link LRUCache.OptionsBase.allowStale} is false.
+   *
+   * Note: this returns an actual array, not a generator, so it can be more
+   * easily passed around.
    */
   dump() {
     const arr = [];
-    for (const i of __privateMethod(this, _indexes, indexes_fn).call(this, { allowStale: true })) {
+    for (const i of __privateMethod(this, _LRUCache_instances, indexes_fn).call(this, { allowStale: true })) {
       const key = __privateGet(this, _keyList)[i];
       const v = __privateGet(this, _valList)[i];
-      const value = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+      const value = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
       if (value === void 0 || key === void 0)
         continue;
       const entry = { value };
@@ -24672,8 +24726,12 @@ var _LRUCache = class {
   }
   /**
    * Reset the cache and load in the items in entries in the order listed.
-   * Note that the shape of the resulting cache may be different if the
-   * same options are not used in both caches.
+   *
+   * The shape of the resulting cache may be different if the same options are
+   * not used in both caches.
+   *
+   * The `start` fields are assumed to be calculated relative to a portable
+   * `Date.now()` timestamp, even if `performance.now()` is available.
    */
   load(arr) {
     this.clear();
@@ -24690,9 +24748,33 @@ var _LRUCache = class {
    *
    * Note: if `undefined` is specified as a value, this is an alias for
    * {@link LRUCache#delete}
+   *
+   * Fields on the {@link LRUCache.SetOptions} options param will override
+   * their corresponding values in the constructor options for the scope
+   * of this single `set()` operation.
+   *
+   * If `start` is provided, then that will set the effective start
+   * time for the TTL calculation. Note that this must be a previous
+   * value of `performance.now()` if supported, or a previous value of
+   * `Date.now()` if not.
+   *
+   * Options object may also include `size`, which will prevent
+   * calling the `sizeCalculation` function and just use the specified
+   * number if it is a positive integer, and `noDisposeOnSet` which
+   * will prevent calling a `dispose` function in the case of
+   * overwrites.
+   *
+   * If the `size` (or return value of `sizeCalculation`) for a given
+   * entry is greater than `maxEntrySize`, then the item will not be
+   * added to the cache.
+   *
+   * Will update the recency of the entry.
+   *
+   * If the value is `undefined`, then this is an alias for
+   * `cache.delete(key)`. `undefined` is never stored in the cache.
    */
   set(k, v, setOptions = {}) {
-    var _a3, _b, _c, _d, _e;
+    var _a3, _b2, _c, _d, _e;
     if (v === void 0) {
       this.delete(k);
       return this;
@@ -24705,12 +24787,12 @@ var _LRUCache = class {
         status.set = "miss";
         status.maxEntrySizeExceeded = true;
       }
-      this.delete(k);
+      __privateMethod(this, _LRUCache_instances, delete_fn).call(this, k, "set");
       return this;
     }
     let index = __privateGet(this, _size) === 0 ? void 0 : __privateGet(this, _keyMap).get(k);
     if (index === void 0) {
-      index = __privateGet(this, _size) === 0 ? __privateGet(this, _tail) : __privateGet(this, _free).length !== 0 ? __privateGet(this, _free).pop() : __privateGet(this, _size) === __privateGet(this, _max) ? __privateMethod(this, _evict, evict_fn).call(this, false) : __privateGet(this, _size);
+      index = __privateGet(this, _size) === 0 ? __privateGet(this, _tail) : __privateGet(this, _free).length !== 0 ? __privateGet(this, _free).pop() : __privateGet(this, _size) === __privateGet(this, _max) ? __privateMethod(this, _LRUCache_instances, evict_fn).call(this, false) : __privateGet(this, _size);
       __privateGet(this, _keyList)[index] = k;
       __privateGet(this, _valList)[index] = v;
       __privateGet(this, _keyMap).set(k, index);
@@ -24723,10 +24805,10 @@ var _LRUCache = class {
         status.set = "add";
       noUpdateTTL = false;
     } else {
-      __privateMethod(this, _moveToTail, moveToTail_fn).call(this, index);
+      __privateMethod(this, _LRUCache_instances, moveToTail_fn).call(this, index);
       const oldVal = __privateGet(this, _valList)[index];
       if (v !== oldVal) {
-        if (__privateGet(this, _hasFetchMethod) && __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, oldVal)) {
+        if (__privateGet(this, _hasFetchMethod) && __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, oldVal)) {
           oldVal.__abortController.abort(new Error("replaced"));
           const { __staleWhileFetching: s } = oldVal;
           if (s !== void 0 && !noDisposeOnSet) {
@@ -24734,7 +24816,7 @@ var _LRUCache = class {
               (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, s, k, "set");
             }
             if (__privateGet(this, _hasDisposeAfter)) {
-              (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([s, k, "set"]);
+              (_b2 = __privateGet(this, _disposed)) == null ? void 0 : _b2.push([s, k, "set"]);
             }
           }
         } else if (!noDisposeOnSet) {
@@ -24750,7 +24832,7 @@ var _LRUCache = class {
         __privateGet(this, _valList)[index] = v;
         if (status) {
           status.set = "replace";
-          const oldValue = oldVal && __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, oldVal) ? oldVal.__staleWhileFetching : oldVal;
+          const oldValue = oldVal && __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, oldVal) ? oldVal.__staleWhileFetching : oldVal;
           if (oldValue !== void 0)
             status.oldValue = oldValue;
         }
@@ -24759,7 +24841,7 @@ var _LRUCache = class {
       }
     }
     if (ttl !== 0 && !__privateGet(this, _ttls)) {
-      __privateMethod(this, _initializeTTLTracking, initializeTTLTracking_fn).call(this);
+      __privateMethod(this, _LRUCache_instances, initializeTTLTracking_fn).call(this);
     }
     if (__privateGet(this, _ttls)) {
       if (!noUpdateTTL) {
@@ -24786,8 +24868,8 @@ var _LRUCache = class {
     try {
       while (__privateGet(this, _size)) {
         const val = __privateGet(this, _valList)[__privateGet(this, _head)];
-        __privateMethod(this, _evict, evict_fn).call(this, true);
-        if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, val)) {
+        __privateMethod(this, _LRUCache_instances, evict_fn).call(this, true);
+        if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, val)) {
           if (val.__staleWhileFetching) {
             return val.__staleWhileFetching;
           }
@@ -24810,6 +24892,14 @@ var _LRUCache = class {
    * Will return false if the item is stale, even though it is technically
    * in the cache.
    *
+   * Check if a key is in the cache, without updating the recency of
+   * use. Age is updated if {@link LRUCache.OptionsBase.updateAgeOnHas} is set
+   * to `true` in either the options or the constructor.
+   *
+   * Will return `false` if the item is stale, even though it is technically in
+   * the cache. The difference can be determined (if it matters) by using a
+   * `status` argument, and inspecting the `has` field.
+   *
    * Will not update item age unless
    * {@link LRUCache.OptionsBase.updateAgeOnHas} is set.
    */
@@ -24818,7 +24908,7 @@ var _LRUCache = class {
     const index = __privateGet(this, _keyMap).get(k);
     if (index !== void 0) {
       const v = __privateGet(this, _valList)[index];
-      if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) && v.__staleWhileFetching === void 0) {
+      if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) && v.__staleWhileFetching === void 0) {
         return false;
       }
       if (!__privateGet(this, _isStale).call(this, index)) {
@@ -24853,7 +24943,7 @@ var _LRUCache = class {
       return;
     }
     const v = __privateGet(this, _valList)[index];
-    return __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
+    return __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v) ? v.__staleWhileFetching : v;
   }
   async fetch(k, fetchOptions = {}) {
     const {
@@ -24907,11 +24997,11 @@ var _LRUCache = class {
     if (index === void 0) {
       if (status)
         status.fetch = "miss";
-      const p = __privateMethod(this, _backgroundFetch, backgroundFetch_fn).call(this, k, index, options, context);
+      const p = __privateMethod(this, _LRUCache_instances, backgroundFetch_fn).call(this, k, index, options, context);
       return p.__returned = p;
     } else {
       const v = __privateGet(this, _valList)[index];
-      if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
+      if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
         const stale = allowStale && v.__staleWhileFetching !== void 0;
         if (status) {
           status.fetch = "inflight";
@@ -24924,7 +25014,7 @@ var _LRUCache = class {
       if (!forceRefresh && !isStale) {
         if (status)
           status.fetch = "hit";
-        __privateMethod(this, _moveToTail, moveToTail_fn).call(this, index);
+        __privateMethod(this, _LRUCache_instances, moveToTail_fn).call(this, index);
         if (updateAgeOnGet) {
           __privateGet(this, _updateItemAge).call(this, index);
         }
@@ -24932,7 +25022,7 @@ var _LRUCache = class {
           __privateGet(this, _statusTTL).call(this, status, index);
         return v;
       }
-      const p = __privateMethod(this, _backgroundFetch, backgroundFetch_fn).call(this, k, index, options, context);
+      const p = __privateMethod(this, _LRUCache_instances, backgroundFetch_fn).call(this, k, index, options, context);
       const hasStale = p.__staleWhileFetching !== void 0;
       const staleVal = hasStale && allowStale;
       if (status) {
@@ -24942,6 +25032,28 @@ var _LRUCache = class {
       }
       return staleVal ? p.__staleWhileFetching : p.__returned = p;
     }
+  }
+  async forceFetch(k, fetchOptions = {}) {
+    const v = await this.fetch(k, fetchOptions);
+    if (v === void 0)
+      throw new Error("fetch() returned undefined");
+    return v;
+  }
+  memo(k, memoOptions = {}) {
+    const memoMethod = __privateGet(this, _memoMethod);
+    if (!memoMethod) {
+      throw new Error("no memoMethod provided to constructor");
+    }
+    const { context, forceRefresh, ...options } = memoOptions;
+    const v = this.get(k, options);
+    if (!forceRefresh && v !== void 0)
+      return v;
+    const vv = memoMethod(k, v, {
+      options,
+      context
+    });
+    this.set(k, vv, options);
+    return vv;
   }
   /**
    * Return a value from the cache. Will update the recency of the cache
@@ -24954,7 +25066,7 @@ var _LRUCache = class {
     const index = __privateGet(this, _keyMap).get(k);
     if (index !== void 0) {
       const value = __privateGet(this, _valList)[index];
-      const fetching = __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, value);
+      const fetching = __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, value);
       if (status)
         __privateGet(this, _statusTTL).call(this, status, index);
       if (__privateGet(this, _isStale).call(this, index)) {
@@ -24962,7 +25074,7 @@ var _LRUCache = class {
           status.get = "stale";
         if (!fetching) {
           if (!noDeleteOnStaleGet) {
-            this.delete(k);
+            __privateMethod(this, _LRUCache_instances, delete_fn).call(this, k, "expire");
           }
           if (status && allowStale)
             status.returnedStale = true;
@@ -24979,7 +25091,7 @@ var _LRUCache = class {
         if (fetching) {
           return value.__staleWhileFetching;
         }
-        __privateMethod(this, _moveToTail, moveToTail_fn).call(this, index);
+        __privateMethod(this, _LRUCache_instances, moveToTail_fn).call(this, index);
         if (updateAgeOnGet) {
           __privateGet(this, _updateItemAge).call(this, index);
         }
@@ -24991,107 +25103,25 @@ var _LRUCache = class {
   }
   /**
    * Deletes a key out of the cache.
+   *
    * Returns true if the key was deleted, false otherwise.
    */
   delete(k) {
-    var _a3, _b, _c, _d;
-    let deleted = false;
-    if (__privateGet(this, _size) !== 0) {
-      const index = __privateGet(this, _keyMap).get(k);
-      if (index !== void 0) {
-        deleted = true;
-        if (__privateGet(this, _size) === 1) {
-          this.clear();
-        } else {
-          __privateGet(this, _removeItemSize).call(this, index);
-          const v = __privateGet(this, _valList)[index];
-          if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
-            v.__abortController.abort(new Error("deleted"));
-          } else if (__privateGet(this, _hasDispose) || __privateGet(this, _hasDisposeAfter)) {
-            if (__privateGet(this, _hasDispose)) {
-              (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "delete");
-            }
-            if (__privateGet(this, _hasDisposeAfter)) {
-              (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "delete"]);
-            }
-          }
-          __privateGet(this, _keyMap).delete(k);
-          __privateGet(this, _keyList)[index] = void 0;
-          __privateGet(this, _valList)[index] = void 0;
-          if (index === __privateGet(this, _tail)) {
-            __privateSet(this, _tail, __privateGet(this, _prev)[index]);
-          } else if (index === __privateGet(this, _head)) {
-            __privateSet(this, _head, __privateGet(this, _next)[index]);
-          } else {
-            const pi = __privateGet(this, _prev)[index];
-            __privateGet(this, _next)[pi] = __privateGet(this, _next)[index];
-            const ni = __privateGet(this, _next)[index];
-            __privateGet(this, _prev)[ni] = __privateGet(this, _prev)[index];
-          }
-          __privateWrapper(this, _size)._--;
-          __privateGet(this, _free).push(index);
-        }
-      }
-    }
-    if (__privateGet(this, _hasDisposeAfter) && ((_c = __privateGet(this, _disposed)) == null ? void 0 : _c.length)) {
-      const dt = __privateGet(this, _disposed);
-      let task;
-      while (task = dt == null ? void 0 : dt.shift()) {
-        (_d = __privateGet(this, _disposeAfter)) == null ? void 0 : _d.call(this, ...task);
-      }
-    }
-    return deleted;
+    return __privateMethod(this, _LRUCache_instances, delete_fn).call(this, k, "delete");
   }
   /**
    * Clear the cache entirely, throwing away all values.
    */
   clear() {
-    var _a3, _b, _c;
-    for (const index of __privateMethod(this, _rindexes, rindexes_fn).call(this, { allowStale: true })) {
-      const v = __privateGet(this, _valList)[index];
-      if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
-        v.__abortController.abort(new Error("deleted"));
-      } else {
-        const k = __privateGet(this, _keyList)[index];
-        if (__privateGet(this, _hasDispose)) {
-          (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "delete");
-        }
-        if (__privateGet(this, _hasDisposeAfter)) {
-          (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "delete"]);
-        }
-      }
-    }
-    __privateGet(this, _keyMap).clear();
-    __privateGet(this, _valList).fill(void 0);
-    __privateGet(this, _keyList).fill(void 0);
-    if (__privateGet(this, _ttls) && __privateGet(this, _starts)) {
-      __privateGet(this, _ttls).fill(0);
-      __privateGet(this, _starts).fill(0);
-    }
-    if (__privateGet(this, _sizes)) {
-      __privateGet(this, _sizes).fill(0);
-    }
-    __privateSet(this, _head, 0);
-    __privateSet(this, _tail, 0);
-    __privateGet(this, _free).length = 0;
-    __privateSet(this, _calculatedSize, 0);
-    __privateSet(this, _size, 0);
-    if (__privateGet(this, _hasDisposeAfter) && __privateGet(this, _disposed)) {
-      const dt = __privateGet(this, _disposed);
-      let task;
-      while (task = dt == null ? void 0 : dt.shift()) {
-        (_c = __privateGet(this, _disposeAfter)) == null ? void 0 : _c.call(this, ...task);
-      }
-    }
+    return __privateMethod(this, _LRUCache_instances, clear_fn).call(this, "delete");
   }
 };
-var LRUCache = _LRUCache;
-_a2 = Symbol.toStringTag;
 _max = new WeakMap();
 _maxSize = new WeakMap();
 _dispose = new WeakMap();
 _disposeAfter = new WeakMap();
 _fetchMethod = new WeakMap();
+_memoMethod = new WeakMap();
 _size = new WeakMap();
 _calculatedSize = new WeakMap();
 _keyMap = new WeakMap();
@@ -25109,7 +25139,7 @@ _ttls = new WeakMap();
 _hasDispose = new WeakMap();
 _hasFetchMethod = new WeakMap();
 _hasDisposeAfter = new WeakMap();
-_initializeTTLTracking = new WeakSet();
+_LRUCache_instances = new WeakSet();
 initializeTTLTracking_fn = function() {
   const ttls = new ZeroArray(__privateGet(this, _max));
   const starts = new ZeroArray(__privateGet(this, _max));
@@ -25121,7 +25151,7 @@ initializeTTLTracking_fn = function() {
     if (ttl !== 0 && this.ttlAutopurge) {
       const t = setTimeout(() => {
         if (__privateGet(this, _isStale).call(this, index)) {
-          this.delete(__privateGet(this, _keyList)[index]);
+          __privateMethod(this, _LRUCache_instances, delete_fn).call(this, __privateGet(this, _keyList)[index], "expire");
         }
       }, ttl + 1);
       if (t.unref) {
@@ -25180,7 +25210,6 @@ _updateItemAge = new WeakMap();
 _statusTTL = new WeakMap();
 _setItemTTL = new WeakMap();
 _isStale = new WeakMap();
-_initializeSizeTracking = new WeakSet();
 initializeSizeTracking_fn = function() {
   const sizes = new ZeroArray(__privateGet(this, _max));
   __privateSet(this, _calculatedSize, 0);
@@ -25190,7 +25219,7 @@ initializeSizeTracking_fn = function() {
     sizes[index] = 0;
   });
   __privateSet(this, _requireSize, (k, v, size, sizeCalculation) => {
-    if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
+    if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
       return 0;
     }
     if (!isPosInt(size)) {
@@ -25213,7 +25242,7 @@ initializeSizeTracking_fn = function() {
     if (__privateGet(this, _maxSize)) {
       const maxSize = __privateGet(this, _maxSize) - sizes[index];
       while (__privateGet(this, _calculatedSize) > maxSize) {
-        __privateMethod(this, _evict, evict_fn).call(this, true);
+        __privateMethod(this, _LRUCache_instances, evict_fn).call(this, true);
       }
     }
     __privateSet(this, _calculatedSize, __privateGet(this, _calculatedSize) + sizes[index]);
@@ -25226,11 +25255,10 @@ initializeSizeTracking_fn = function() {
 _removeItemSize = new WeakMap();
 _addItemSize = new WeakMap();
 _requireSize = new WeakMap();
-_indexes = new WeakSet();
 indexes_fn = function* ({ allowStale = this.allowStale } = {}) {
   if (__privateGet(this, _size)) {
     for (let i = __privateGet(this, _tail); true; ) {
-      if (!__privateMethod(this, _isValidIndex, isValidIndex_fn).call(this, i)) {
+      if (!__privateMethod(this, _LRUCache_instances, isValidIndex_fn).call(this, i)) {
         break;
       }
       if (allowStale || !__privateGet(this, _isStale).call(this, i)) {
@@ -25244,11 +25272,10 @@ indexes_fn = function* ({ allowStale = this.allowStale } = {}) {
     }
   }
 };
-_rindexes = new WeakSet();
 rindexes_fn = function* ({ allowStale = this.allowStale } = {}) {
   if (__privateGet(this, _size)) {
     for (let i = __privateGet(this, _head); true; ) {
-      if (!__privateMethod(this, _isValidIndex, isValidIndex_fn).call(this, i)) {
+      if (!__privateMethod(this, _LRUCache_instances, isValidIndex_fn).call(this, i)) {
         break;
       }
       if (allowStale || !__privateGet(this, _isStale).call(this, i)) {
@@ -25262,24 +25289,22 @@ rindexes_fn = function* ({ allowStale = this.allowStale } = {}) {
     }
   }
 };
-_isValidIndex = new WeakSet();
 isValidIndex_fn = function(index) {
   return index !== void 0 && __privateGet(this, _keyMap).get(__privateGet(this, _keyList)[index]) === index;
 };
-_evict = new WeakSet();
 evict_fn = function(free) {
-  var _a3, _b;
+  var _a3, _b2;
   const head = __privateGet(this, _head);
   const k = __privateGet(this, _keyList)[head];
   const v = __privateGet(this, _valList)[head];
-  if (__privateGet(this, _hasFetchMethod) && __privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
+  if (__privateGet(this, _hasFetchMethod) && __privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
     v.__abortController.abort(new Error("evicted"));
   } else if (__privateGet(this, _hasDispose) || __privateGet(this, _hasDisposeAfter)) {
     if (__privateGet(this, _hasDispose)) {
       (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, "evict");
     }
     if (__privateGet(this, _hasDisposeAfter)) {
-      (_b = __privateGet(this, _disposed)) == null ? void 0 : _b.push([v, k, "evict"]);
+      (_b2 = __privateGet(this, _disposed)) == null ? void 0 : _b2.push([v, k, "evict"]);
     }
   }
   __privateGet(this, _removeItemSize).call(this, head);
@@ -25298,10 +25323,9 @@ evict_fn = function(free) {
   __privateWrapper(this, _size)._--;
   return head;
 };
-_backgroundFetch = new WeakSet();
 backgroundFetch_fn = function(k, index, options, context) {
   const v = index === void 0 ? void 0 : __privateGet(this, _valList)[index];
-  if (__privateMethod(this, _isBackgroundFetch, isBackgroundFetch_fn).call(this, v)) {
+  if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
     return v;
   }
   const ac = new AC();
@@ -25336,7 +25360,7 @@ backgroundFetch_fn = function(k, index, options, context) {
         if (bf2.__staleWhileFetching) {
           __privateGet(this, _valList)[index] = bf2.__staleWhileFetching;
         } else {
-          this.delete(k);
+          __privateMethod(this, _LRUCache_instances, delete_fn).call(this, k, "fetch");
         }
       } else {
         if (options.status)
@@ -25362,7 +25386,7 @@ backgroundFetch_fn = function(k, index, options, context) {
     if (__privateGet(this, _valList)[index] === p) {
       const del = !noDelete || bf2.__staleWhileFetching === void 0;
       if (del) {
-        this.delete(k);
+        __privateMethod(this, _LRUCache_instances, delete_fn).call(this, k, "fetch");
       } else if (!allowStaleAborted) {
         __privateGet(this, _valList)[index] = bf2.__staleWhileFetching;
       }
@@ -25407,30 +25431,116 @@ backgroundFetch_fn = function(k, index, options, context) {
   }
   return bf;
 };
-_isBackgroundFetch = new WeakSet();
 isBackgroundFetch_fn = function(p) {
   if (!__privateGet(this, _hasFetchMethod))
     return false;
   const b = p;
   return !!b && b instanceof Promise && b.hasOwnProperty("__staleWhileFetching") && b.__abortController instanceof AC;
 };
-_connect = new WeakSet();
 connect_fn = function(p, n) {
   __privateGet(this, _prev)[n] = p;
   __privateGet(this, _next)[p] = n;
 };
-_moveToTail = new WeakSet();
 moveToTail_fn = function(index) {
   if (index !== __privateGet(this, _tail)) {
     if (index === __privateGet(this, _head)) {
       __privateSet(this, _head, __privateGet(this, _next)[index]);
     } else {
-      __privateMethod(this, _connect, connect_fn).call(this, __privateGet(this, _prev)[index], __privateGet(this, _next)[index]);
+      __privateMethod(this, _LRUCache_instances, connect_fn).call(this, __privateGet(this, _prev)[index], __privateGet(this, _next)[index]);
     }
-    __privateMethod(this, _connect, connect_fn).call(this, __privateGet(this, _tail), index);
+    __privateMethod(this, _LRUCache_instances, connect_fn).call(this, __privateGet(this, _tail), index);
     __privateSet(this, _tail, index);
   }
 };
+delete_fn = function(k, reason) {
+  var _a3, _b2, _c, _d;
+  let deleted = false;
+  if (__privateGet(this, _size) !== 0) {
+    const index = __privateGet(this, _keyMap).get(k);
+    if (index !== void 0) {
+      deleted = true;
+      if (__privateGet(this, _size) === 1) {
+        __privateMethod(this, _LRUCache_instances, clear_fn).call(this, reason);
+      } else {
+        __privateGet(this, _removeItemSize).call(this, index);
+        const v = __privateGet(this, _valList)[index];
+        if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
+          v.__abortController.abort(new Error("deleted"));
+        } else if (__privateGet(this, _hasDispose) || __privateGet(this, _hasDisposeAfter)) {
+          if (__privateGet(this, _hasDispose)) {
+            (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, reason);
+          }
+          if (__privateGet(this, _hasDisposeAfter)) {
+            (_b2 = __privateGet(this, _disposed)) == null ? void 0 : _b2.push([v, k, reason]);
+          }
+        }
+        __privateGet(this, _keyMap).delete(k);
+        __privateGet(this, _keyList)[index] = void 0;
+        __privateGet(this, _valList)[index] = void 0;
+        if (index === __privateGet(this, _tail)) {
+          __privateSet(this, _tail, __privateGet(this, _prev)[index]);
+        } else if (index === __privateGet(this, _head)) {
+          __privateSet(this, _head, __privateGet(this, _next)[index]);
+        } else {
+          const pi = __privateGet(this, _prev)[index];
+          __privateGet(this, _next)[pi] = __privateGet(this, _next)[index];
+          const ni = __privateGet(this, _next)[index];
+          __privateGet(this, _prev)[ni] = __privateGet(this, _prev)[index];
+        }
+        __privateWrapper(this, _size)._--;
+        __privateGet(this, _free).push(index);
+      }
+    }
+  }
+  if (__privateGet(this, _hasDisposeAfter) && ((_c = __privateGet(this, _disposed)) == null ? void 0 : _c.length)) {
+    const dt = __privateGet(this, _disposed);
+    let task;
+    while (task = dt == null ? void 0 : dt.shift()) {
+      (_d = __privateGet(this, _disposeAfter)) == null ? void 0 : _d.call(this, ...task);
+    }
+  }
+  return deleted;
+};
+clear_fn = function(reason) {
+  var _a3, _b2, _c;
+  for (const index of __privateMethod(this, _LRUCache_instances, rindexes_fn).call(this, { allowStale: true })) {
+    const v = __privateGet(this, _valList)[index];
+    if (__privateMethod(this, _LRUCache_instances, isBackgroundFetch_fn).call(this, v)) {
+      v.__abortController.abort(new Error("deleted"));
+    } else {
+      const k = __privateGet(this, _keyList)[index];
+      if (__privateGet(this, _hasDispose)) {
+        (_a3 = __privateGet(this, _dispose)) == null ? void 0 : _a3.call(this, v, k, reason);
+      }
+      if (__privateGet(this, _hasDisposeAfter)) {
+        (_b2 = __privateGet(this, _disposed)) == null ? void 0 : _b2.push([v, k, reason]);
+      }
+    }
+  }
+  __privateGet(this, _keyMap).clear();
+  __privateGet(this, _valList).fill(void 0);
+  __privateGet(this, _keyList).fill(void 0);
+  if (__privateGet(this, _ttls) && __privateGet(this, _starts)) {
+    __privateGet(this, _ttls).fill(0);
+    __privateGet(this, _starts).fill(0);
+  }
+  if (__privateGet(this, _sizes)) {
+    __privateGet(this, _sizes).fill(0);
+  }
+  __privateSet(this, _head, 0);
+  __privateSet(this, _tail, 0);
+  __privateGet(this, _free).length = 0;
+  __privateSet(this, _calculatedSize, 0);
+  __privateSet(this, _size, 0);
+  if (__privateGet(this, _hasDisposeAfter) && __privateGet(this, _disposed)) {
+    const dt = __privateGet(this, _disposed);
+    let task;
+    while (task = dt == null ? void 0 : dt.shift()) {
+      (_c = __privateGet(this, _disposeAfter)) == null ? void 0 : _c.call(this, ...task);
+    }
+  }
+};
+var LRUCache = _LRUCache;
 
 // src/pdfblock/cache.ts
 var import_path = require("path");
@@ -25605,11 +25715,11 @@ var PDFBlockRenderer = class extends import_obsidian2.MarkdownRenderChild {
               const text = event_hover;
               text.addClass("slide-note-text-layer");
               text.style.setProperty("--scale-factor", zoom.toString());
-              pdfjs.renderTextLayer({
+              new pdfjs.TextLayer({
                 textContentSource: textContent,
                 container: text,
                 viewport: pageview
-              });
+              }).render();
               new ResizeObserver(resize2Canvas).observe(canvas);
             });
           }
@@ -25650,7 +25760,7 @@ var PDFBlockProcessor = class {
     }
   }
   async parseParameters(src, frontmatter) {
-    var _a3, _b;
+    var _a3, _b2;
     const lines = src.split("\n");
     const keywords = ["file", "page", "text", "scale", "rotat", "rect", "dpi"];
     const paramsRaw = {};
@@ -25682,7 +25792,7 @@ var PDFBlockProcessor = class {
     if (paramsRaw["file"] == void 0)
       paramsRaw["file"] = typeof frontmatter["default_file"] == "string" ? frontmatter["default_file"] : frontmatter["default_file"][0][0];
     const file_raw = paramsRaw["file"].contains("[[") ? paramsRaw["file"].replace("[[", "").replace("]]", "") : paramsRaw["file"];
-    params.file = (_b = (_a3 = app.metadataCache.getFirstLinkpathDest(file_raw, "")) == null ? void 0 : _a3.path) != null ? _b : file_raw;
+    params.file = (_b2 = (_a3 = app.metadataCache.getFirstLinkpathDest(file_raw, "")) == null ? void 0 : _a3.path) != null ? _b2 : file_raw;
     if (params.file == void 0)
       throw new Error(paramsRaw["file"] + ": No such file or directory");
     if (paramsRaw["page"] == void 0)
@@ -26000,12 +26110,12 @@ var import_obsidian5 = require("obsidian");
 var import_obsidian4 = require("obsidian");
 var import_path2 = require("path");
 function getFileName(view, absolute = false) {
-  var _a3, _b, _c, _d, _e;
+  var _a3, _b2, _c, _d, _e;
   const selected = view.editor.somethingSelected() ? view.editor.getSelection() : view.editor.getLine(view.editor.getCursor("anchor").line);
   const filePath = (_a3 = this.app.workspace.getActiveFile()) == null ? void 0 : _a3.path;
   if (!filePath)
     return void 0;
-  const frontmatter = (_c = (_b = app.metadataCache.getCache(filePath)) == null ? void 0 : _b.frontmatter) != null ? _c : {};
+  const frontmatter = (_c = (_b2 = app.metadataCache.getCache(filePath)) == null ? void 0 : _b2.frontmatter) != null ? _c : {};
   const lines = selected.split("\n");
   let fileName = frontmatter["default_file"];
   for (let i = 0; i < lines.length; i++) {
@@ -26283,3 +26393,5 @@ var SlideNotePlugin = class extends import_obsidian8.Plugin {
 fabric/dist/fabric.js:
   (*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) *)
 */
+
+/* nosourcemap */

@@ -4,11 +4,22 @@ code.iad {
 	border: var(--tag-border-width) solid var(--tag-border-color);
 	border-radius: var(--tag-radius);
 	color: var(--tag-color);
-	font-size: var(--tag-size);
+	font-size: small;
 	font-weight: var(--tag-weight);
+	font-family: var(--font-text);
 	text-decoration: var(--tag-decoration);
 	padding: var(--tag-padding-y) var(--tag-padding-x);
+	/* its off by 1 px? */
+	padding-bottom: calc(var(--tag-padding-y) + 1px);
 	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	vertical-align: middle
+}
+
+span.iad > p,
+code.iad > p {
+	display: inline;
 }
 
 .iad-setting-row {
@@ -16,7 +27,7 @@ code.iad {
 	justify-content: end;
 }
 
-.iad-setting-row * {
+.iad-setting-row > * {
 	margin-left: 0.5em;
 }
 
@@ -38,4 +49,23 @@ code.iad {
 
 .cm-active .iad-hidden {
 	display: inline;
+}
+
+.admonition-icon-left {
+	display: inline-flex;
+	align-items: center;
+	height: var(--tag-size);
+	margin-right: 0.5em;
+}
+
+.admonition-icon-right {
+	display: inline-flex;
+	align-items: center;
+	height: var(--tag-size);
+	margin-left: 0.5em;
+}
+
+.admonition-icon svg {
+	/*height: 1em;*/
+	/*width: 1em;*/
 }

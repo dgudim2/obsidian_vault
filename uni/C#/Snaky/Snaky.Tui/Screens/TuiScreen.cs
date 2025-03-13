@@ -11,11 +11,12 @@ public abstract class TuiScreen : BaseScreen
 {
     private bool _windowSizeValid;
     private readonly MessageBox _warningMessageBox;
-    
+
     protected TuiScreen()
     {
         PosixSignalRegistration.Create(PosixSignal.SIGWINCH, _ => _windowSizeValid = false);
-        _warningMessageBox = new MessageBox(this, "<Terminal window is too small>", 1, MessageBox.Alignment.CENTER);
+        _warningMessageBox = new MessageBox(this, "<Terminal window is too small>", 1,
+            MessageBox.Alignment.H_CENTER | MessageBox.Alignment.V_CENTER);
     }
 
     protected override bool DimensionsValid()
@@ -39,7 +40,7 @@ public abstract class TuiScreen : BaseScreen
             _warningMessageBox.Render();
             return;
         }
-        
+
         Objects.ForEach(o => o.Render());
     }
 }

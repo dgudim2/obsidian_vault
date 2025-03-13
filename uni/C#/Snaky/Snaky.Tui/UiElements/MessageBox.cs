@@ -1,3 +1,4 @@
+using System.Numerics;
 using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
@@ -6,22 +7,41 @@ namespace Snaky.Tui.UiElements;
 
 public class MessageBox : IUpdatable
 {
-    public enum Alignment { TOP, CENTER, BOTTOM }
-    
+    [Flags]
+    public enum Alignment
+    {
+        V_TOP,
+        V_CENTER,
+        V_BOTTOM,
+        H_RIGTH,
+        H_CENTER,
+        H_LEFT
+    }
+
     public Vector2<int> Position { get; set; }
-    public Vector2<int> Size { get; }
-    
-    private Alignment _alignment;
+
+    public Vector2<int> Size => new(Text.Length, Lines);
+
+    private readonly Alignment _alignment;
 
     private readonly IRenderable _parent;
-    private string _text;
 
-    public MessageBox(IRenderable parent, string text, int lines, Alignment alignment)
+    public string Text { get; set; }
+
+    public int Lines { get; set; }
+    
+    public MessageBox(IRenderable parent, string text, int lines,
+        Alignment alignment)
     {
         _parent = parent;
-        _text = text;
+        Text = text;
+        Lines = lines;
         _alignment = alignment;
-        Size = new Vector2<int>(_text.Length, lines);
+    }
+
+    private bool HasAlignment(Alignment alignment)
+    {
+        return (_alignment & alignment) == alignment;
     }
 
     public void Render()
@@ -29,26 +49,29 @@ public class MessageBox : IUpdatable
         var pos = _parent.Position + Position;
         var parentCenter = _parent.Size / 2;
 
-        var startX = parentCenter.X - Size.X / 2 + pos.X;
-
-
+        var startX = pos.X;
         var startY = pos.Y;
-        switch (_alignment)
-        {
-            case Alignment.TOP:
-                break;
-            case Alignment.CENTER:
-                startY += parentCenter.Y - Size.Y / 2;
-                break;
-            case Alignment.BOTTOM:
-                startY += _parent.Size.Y - 1;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
         
+        if (HasAlignment(Alignment.V_CENTER))
+        {
+            startY += parentCenter.Y - Size.Y / 2;
+        }
+        else if (HasAlignment(Alignment.V_BOTTOM))
+        {
+            startY += _parent.Size.Y - 1;
+        }
+
+        if (HasAlignment(Alignment.H_CENTER))
+        {
+            startX += parentCenter.X - Size.X / 2;
+        }
+        else if (HasAlignment(Alignment.H_RIGTH))
+        {
+            startX += _parent.Size.X - 1;
+        }
+
         Console.SetCursorPosition(startX, startY);
-        Console.Write(_text);
+        Console.Write(Text);
     }
 
     public void Update(float dt)

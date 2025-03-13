@@ -45,7 +45,7 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
     {
         if (_positionUpdateTicker < 1)
         {
-            _positionUpdateTicker += dt / 300000;
+            _positionUpdateTicker += dt / 500;
             return;
         }
 

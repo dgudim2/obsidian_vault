@@ -7,13 +7,14 @@ public class TuiMenuScreen : TuiScreen
 {
     public TuiMenuScreen()
     {
-        Objects.Add(new Border(this));
+        var border = new Border(this);
+        Objects.Add(border);
         Objects.Add(new MessageBox(this,
             $"{UnicodeSymbols.DOUBLE_MIDDLE_HORIZONTAL_LINE}Welcome to snaky!{UnicodeSymbols.DOUBLE_MIDDLE_HORIZONTAL_LINE}",
-            1, MessageBox.Alignment.BOTTOM));
+            1, MessageBox.Alignment.V_BOTTOM | MessageBox.Alignment.H_CENTER));
         Objects.Add(new MessageBox(this,
             $"{UnicodeSymbols.DOUBLE_MIDDLE_HORIZONTAL_LINE}Press ENTER to start{UnicodeSymbols.DOUBLE_MIDDLE_HORIZONTAL_LINE}",
-            1, MessageBox.Alignment.CENTER));
+            1, MessageBox.Alignment.V_CENTER | MessageBox.Alignment.H_CENTER));
     }
 
     public override bool DispatchKeyEvent(ConsoleKey key)

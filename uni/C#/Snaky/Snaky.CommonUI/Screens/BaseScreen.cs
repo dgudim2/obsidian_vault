@@ -46,7 +46,7 @@ public abstract class BaseScreen : IScreen
     
     public abstract void Render();
 
-    public void Update(float dt)
+    public virtual void Update(float dt)
     {
         Objects.ForEach(o => o.Update(dt));
     }

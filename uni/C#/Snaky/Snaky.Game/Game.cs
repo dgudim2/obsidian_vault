@@ -37,7 +37,7 @@ public class Game : IRenderable
         float dt = 0;
         while (true)
         {
-            sw.Start();
+            sw.Restart();
             var pressedKey = GetKeyEvent();
 
             if (pressedKey == ConsoleKey.Escape)
@@ -51,6 +51,7 @@ public class Game : IRenderable
             {
                 CurrentScreen.DispatchKeyEvent(pressedKey);
                 CurrentScreen.Update(dt);
+                // Console.Out.WriteLine(dt);
                 CurrentScreen.Render();
             }
 

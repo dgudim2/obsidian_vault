@@ -6,10 +6,6 @@ namespace Snaky.Game.Objects;
 
 public abstract class SnakeNode(ISized parent) : GameObject(parent)
 {
-    protected readonly ISized _parent = parent;
-
-    private double _positionUpdateTicker;
-    
     protected enum Direction
     {
         Up,
@@ -17,40 +13,21 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
         Left,
         Right
     }
-
+    
     protected Direction _direction = Direction.Right;
 
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    protected internal void SetDirection(SnakeNode parentNode)
     {
-        switch (key)
-        {
-            case ConsoleKey.LeftArrow:
-                _direction = Direction.Left;
-                return false;
-            case ConsoleKey.RightArrow:
-                _direction = Direction.Right;
-                return false;
-            case ConsoleKey.DownArrow:
-                _direction = Direction.Down;
-                return false;
-            case ConsoleKey.UpArrow:
-                _direction = Direction.Up;
-                return false;
-            default:
-                return true;
-        }
+        _direction = parentNode._direction;
     }
     
     public override void Update(float dt)
     {
-        if (_positionUpdateTicker < 1)
-        {
-            _positionUpdateTicker += dt / 500;
-            return;
-        }
-
-        _positionUpdateTicker = 0;
-
+        MoveInDirection();
+    }
+    
+    protected void MoveInDirection()
+    {
         switch (_direction)
         {
             case Direction.Up:
@@ -69,24 +46,24 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
                 throw new ArgumentOutOfRangeException();
         }
 
-        if (Position.X >= _parent.ComputedPosition.X)
+        if (Position.X >= _parent.SizeWithPosOffset.X - 1)
         {
             _position.X = _parent.Position.X + 1;
         }
         
         if (Position.X <= _parent.Position.X)
         {
-            _position.X = _parent.ComputedPosition.X - 1;
+            _position.X = _parent.SizeWithPosOffset.X - 1;
         }
         
-        if (Position.Y >= _parent.ComputedPosition.Y)
+        if (Position.Y >= _parent.SizeWithPosOffset.Y - 1)
         {
             _position.Y = _parent.Position.Y + 1;
         }
         
         if (Position.Y <= _parent.Position.Y)
         {
-            _position.Y = _parent.ComputedPosition.Y - 1;
+            _position.Y = _parent.SizeWithPosOffset.Y - 1;
         }
     }
 }

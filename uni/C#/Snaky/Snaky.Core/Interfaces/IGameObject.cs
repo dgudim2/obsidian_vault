@@ -5,5 +5,5 @@ namespace Snaky.Core.Interfaces;
 
 public interface IGameObject: IUpdatable
 {
-    bool CollidesWith(IGameObject other);
+    public bool CollidesWith(IGameObject other);
 }

@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Snaky.CommonUI.Interfaces;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
+using Snaky.Game.Objects;
 
 namespace Snaky.Game;
 
@@ -13,17 +14,15 @@ public class Game : IRenderable
 
     public Game(IScreen startingScreen)
     {
-        CurrentScreen = startingScreen;
         CurrentGameState = GameState.ACTIVE;
-
-        CurrentScreen.OnScreenTransition += OnScreenTransition;
-
+        OnScreenTransition(startingScreen);
         Console.Out.WriteLine("Starting Game...");
     }
 
     private void OnScreenTransition(IScreen newScreen)
     {
         CurrentScreen = newScreen;
+        CurrentScreen.OnScreenTransition += OnScreenTransition;
     }
 
     public ConsoleKey GetKeyEvent()

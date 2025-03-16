@@ -10,12 +10,12 @@ public class MessageBox : IUpdatable
     [Flags]
     public enum Alignment
     {
-        V_TOP,
-        V_CENTER,
-        V_BOTTOM,
-        H_RIGTH,
-        H_CENTER,
-        H_LEFT
+        V_TOP = 0,
+        V_CENTER = 2,
+        V_BOTTOM = 4,
+        H_RIGTH = 8,
+        H_CENTER = 16,
+        H_LEFT = 32
     }
 
     public Vector2<int> Position { get; set; }
@@ -29,7 +29,7 @@ public class MessageBox : IUpdatable
     public string Text { get; set; }
 
     public int Lines { get; set; }
-    
+
     public MessageBox(IRenderable parent, string text, int lines,
         Alignment alignment)
     {
@@ -51,7 +51,7 @@ public class MessageBox : IUpdatable
 
         var startX = pos.X;
         var startY = pos.Y;
-        
+
         if (HasAlignment(Alignment.V_CENTER))
         {
             startY += parentCenter.Y - Size.Y / 2;
@@ -79,6 +79,11 @@ public class MessageBox : IUpdatable
     }
 
     public bool DispatchKeyEvent(ConsoleKey key)
+    {
+        return true;
+    }
+
+    public bool IsValid()
     {
         return true;
     }

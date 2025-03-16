@@ -1,20 +1,16 @@
 using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
+using Snaky.Core.Utils;
 
 namespace Snaky.Game.Objects;
 
-public class SnakeBody(ISized parent) : GameObject(parent)
+public class SnakeBody(ISized parent) : SnakeNode(parent)
 {
     protected override string GetRenderChar()
     {
-        return "▪";
+        return "▣";
     }
-
-    public override void Update(float dt)
-    {
-        
-    }
-
+    
     public override bool DispatchKeyEvent(ConsoleKey key)
     {
         return true;

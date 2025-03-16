@@ -58,4 +58,9 @@ public class Border : IUpdatable
     {
         return true;
     }
+
+    public bool IsValid()
+    {
+        return true;
+    }
 }

@@ -13,7 +13,7 @@ public class Apple(ISized parent) : GameObject(parent)
     public override void Update(float dt)
     {
     }
-
+    
     public override bool DispatchKeyEvent(ConsoleKey key)
     {
         return true;

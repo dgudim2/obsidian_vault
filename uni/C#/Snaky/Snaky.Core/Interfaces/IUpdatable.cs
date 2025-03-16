@@ -5,4 +5,6 @@ public interface IUpdatable : IRenderable
     void Update(float dt);
 
     bool DispatchKeyEvent(ConsoleKey key);
+
+    bool IsValid();
 }

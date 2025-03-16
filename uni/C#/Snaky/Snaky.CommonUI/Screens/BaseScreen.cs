@@ -6,8 +6,6 @@ using Snaky.Core.Utils;
 
 namespace Snaky.CommonUI.Screens;
 
-public delegate void KeyEventDelegate(ConsoleKey consoleKey);
-
 public abstract class BaseScreen : IScreen
 {
     private Vector2<int>? _cachedDimensions;
@@ -23,7 +21,7 @@ public abstract class BaseScreen : IScreen
     public Vector2<int> Size => GetCurrentSize();
 
     public event ScreenChangeDelegate? OnScreenTransition;
-    
+
     protected abstract bool DimensionsValid();
 
     protected abstract Vector2<int> RecalculateDimensions();
@@ -43,14 +41,14 @@ public abstract class BaseScreen : IScreen
         OnScreenTransition?.Invoke(newScreen);
         OnScreenTransition = null;
     }
-    
+
     public abstract void Render();
 
     public virtual void Update(float dt)
     {
         Objects.ForEach(o => o.Update(dt));
     }
-    
+
     public virtual bool DispatchKeyEvent(ConsoleKey key)
     {
         foreach (var obj in Objects)
@@ -61,6 +59,12 @@ public abstract class BaseScreen : IScreen
                 return false;
             }
         }
+
         return true;
+    }
+
+    public bool IsValid()
+    {
+        throw new NotImplementedException();
     }
 }

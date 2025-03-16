@@ -7,5 +7,5 @@ public interface ISized
     public Vector2<int> Position { get; set; }
     public Vector2<int> Size { get; }
 
-    public Vector2<int> ComputedPosition => Position + Size;
+    public Vector2<int> SizeWithPosOffset => Position + Size;
 }

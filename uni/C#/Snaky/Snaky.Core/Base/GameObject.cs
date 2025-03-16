@@ -37,7 +37,7 @@ public abstract class GameObject(ISized parent) : IGameObject
     }
     
     public abstract void Update(float dt);
-    public abstract bool DispatchKeyEvent(ConsoleKey key);
+    public abstract bool DispatchKeyEvent(ConsoleKeyInfo key);
     public bool IsValid()
     {
         return _valid;

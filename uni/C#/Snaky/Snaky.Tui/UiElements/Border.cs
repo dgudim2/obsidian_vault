@@ -54,7 +54,7 @@ public class Border : IUpdatable
     {
     }
 
-    public bool DispatchKeyEvent(ConsoleKey key)
+    public bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         return true;
     }

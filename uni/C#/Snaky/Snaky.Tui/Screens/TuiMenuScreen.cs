@@ -17,9 +17,9 @@ public class TuiMenuScreen : TuiScreen
             1, MessageBox.Alignment.V_CENTER | MessageBox.Alignment.H_CENTER));
     }
 
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
-        if (key != ConsoleKey.Enter) return base.DispatchKeyEvent(key);
+        if (key.Key != ConsoleKey.Enter) return base.DispatchKeyEvent(key);
         
         ChangeScreen(new MainGameScreen());
         return false;

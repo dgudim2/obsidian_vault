@@ -108,7 +108,7 @@ public class Snake : IUpdatable
         }
     }
 
-    public bool DispatchKeyEvent(ConsoleKey key)
+    public bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         return _head.DispatchKeyEvent(key);
     }

@@ -14,7 +14,7 @@ public class Apple(ISized parent) : GameObject(parent)
     {
     }
     
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         return true;
     }

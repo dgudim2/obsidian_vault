@@ -30,9 +30,9 @@ public class GameOverScreen : TuiScreen
         Objects.Add(leaderboardBox);
     }
 
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
-        switch (key)
+        switch (key.Key)
         {
             case ConsoleKey.Enter:
                 ChangeScreen(new MainGameScreen());

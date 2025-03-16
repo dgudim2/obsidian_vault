@@ -49,7 +49,7 @@ public abstract class BaseScreen : IScreen
         Objects.ForEach(o => o.Update(dt));
     }
 
-    public virtual bool DispatchKeyEvent(ConsoleKey key)
+    public virtual bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         foreach (var obj in Objects)
         {

@@ -11,7 +11,7 @@ public class SnakeBody(ISized parent) : SnakeNode(parent)
         return "▣";
     }
     
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         return true;
     }

@@ -18,9 +18,9 @@ public class SnakeHead(ISized parent) : SnakeNode(parent)
         };
     }
 
-    public override bool DispatchKeyEvent(ConsoleKey key)
+    public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
-        switch (key)
+        switch (key.Key)
         {
             case ConsoleKey.LeftArrow:
                 if (_direction != Direction.Right)

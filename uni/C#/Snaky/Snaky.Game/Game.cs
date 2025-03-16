@@ -25,9 +25,9 @@ public class Game : IRenderable
         CurrentScreen.OnScreenTransition += OnScreenTransition;
     }
 
-    public ConsoleKey GetKeyEvent()
+    public ConsoleKeyInfo GetKeyEvent()
     {
-        return Console.KeyAvailable ? Console.ReadKey(true).Key : ConsoleKey.None;
+        return Console.KeyAvailable ? Console.ReadKey(true) : new ConsoleKeyInfo(char.MinValue, ConsoleKey.None, false, false, false);
     }
 
     public void Render()
@@ -39,7 +39,7 @@ public class Game : IRenderable
             sw.Restart();
             var pressedKey = GetKeyEvent();
 
-            if (pressedKey == ConsoleKey.Escape)
+            if (pressedKey.Key == ConsoleKey.Escape)
             {
                 CurrentGameState = CurrentGameState == GameState.ACTIVE ? GameState.PAUSED : GameState.ACTIVE;
                 Thread.Sleep(100);

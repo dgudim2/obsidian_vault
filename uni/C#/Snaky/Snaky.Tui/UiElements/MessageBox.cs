@@ -78,7 +78,7 @@ public class MessageBox : IUpdatable
     {
     }
 
-    public bool DispatchKeyEvent(ConsoleKey key)
+    public bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         return true;
     }

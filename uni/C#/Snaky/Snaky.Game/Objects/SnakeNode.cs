@@ -48,7 +48,7 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
 
         if (Position.X >= _parent.SizeWithPosOffset.X - 1)
         {
-            _position.X = _parent.Position.X + 1;
+            _position.X = _parent.Position.X + 2;
         }
         
         if (Position.X <= _parent.Position.X)
@@ -58,7 +58,7 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
         
         if (Position.Y >= _parent.SizeWithPosOffset.Y - 1)
         {
-            _position.Y = _parent.Position.Y + 1;
+            _position.Y = _parent.Position.Y + 2;
         }
         
         if (Position.Y <= _parent.Position.Y)

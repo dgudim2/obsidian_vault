@@ -1,12 +1,15 @@
+using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
 using Snaky.Game.Objects;
 using Snaky.Tui.UiElements;
+using Snaky.Tui.Utils;
 
 namespace Snaky.Tui.Screens;
 
 public class MainGameScreen : TuiScreen
 {
+    private readonly AppleType _appleType;
     private readonly MessageBox _fpsMonitor;
     private readonly MessageBox _scoreMonitor;
     private readonly Random _rand = new();
@@ -14,8 +17,9 @@ public class MainGameScreen : TuiScreen
     private readonly Snake _snake;
     private readonly ISized _border;
     
-    public MainGameScreen()
+    public MainGameScreen(AppleType appleType)
     {
+        _appleType = appleType;
         _border = new Border(this);
         _fpsMonitor = new MessageBox(this, "Delta", 1, MessageBox.Alignment.V_BOTTOM | MessageBox.Alignment.H_LEFT)
         {
@@ -23,7 +27,7 @@ public class MainGameScreen : TuiScreen
         };
         _scoreMonitor = new MessageBox(this, "Score:", 1, MessageBox.Alignment.V_BOTTOM | MessageBox.Alignment.H_LEFT)
         {
-            Position = new Vector2<int>(25, 0)
+            Position = new Vector2<int>(35, 0)
         };
 
         var snake = new Snake(this, () => Objects);
@@ -47,21 +51,21 @@ public class MainGameScreen : TuiScreen
 
     private void AddApple()
     {
-        var apple = new Apple(this);
+        var apple = new Apple(this, _appleType);
         while (true)
         {
             var x = _rand.Next(_border.Position.X + 1, _border.SizeWithPosOffset.X - 1);
             var y = _rand.Next(_border.Position.Y + 1, _border.SizeWithPosOffset.Y - 1);
 
-            var position = new Vector2<int>(x, y);
+            var newApplePosition = new Vector2<int>(x, y);
 
             // Prevent overlaps
-            if (Objects.Any(a => a.Position == position))
+            if (Objects.Any(a => a.Position == newApplePosition))
             {
                 continue;
             }
 
-            apple.Position = position;
+            apple.Position = newApplePosition;
             Objects.Add(apple);
             break;
         }
@@ -69,8 +73,8 @@ public class MainGameScreen : TuiScreen
 
     public override void Update(float dt)
     {
-        _fpsMonitor.Text = $"Delta: {dt}";
-        _scoreMonitor.Text = $"Score: {_snake.Score}";
+        _fpsMonitor.Text = $" Delta: {dt:.} {UnicodeSymbols.MIDDLE_HORIZONTAL_LINE} Fps: {1/dt * 1000:.} ";
+        _scoreMonitor.Text = $" Score: {_snake.Score} ";
         
         base.Update(dt);
         
@@ -84,7 +88,7 @@ public class MainGameScreen : TuiScreen
 
         if (!_snake.IsValid())
         {
-            ChangeScreen(new GameOverScreen(_snake.Score));
+            ChangeScreen(new GameOverScreen(_snake.Score, _appleType));
         }
     }
 }

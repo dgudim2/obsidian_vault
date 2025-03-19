@@ -28,7 +28,7 @@ public class MessageBox : IUpdatable
 
     public string Text { get; set; }
 
-    public int Lines { get; set; }
+    public int Lines { get; }
 
     public MessageBox(IRenderable parent, string text, int lines,
         Alignment alignment)

@@ -12,11 +12,16 @@ public class MainGameScreen : TuiScreen
     private readonly AppleType _appleType;
     private readonly MessageBox _fpsMonitor;
     private readonly MessageBox _scoreMonitor;
-    private readonly Random _rand = new();
+    private static readonly Random Rand;
 
     private readonly Snake _snake;
     private readonly ISized _border;
-    
+
+    static MainGameScreen()
+    {
+        Rand = new Random();
+    }
+
     public MainGameScreen(AppleType appleType)
     {
         _appleType = appleType;
@@ -30,7 +35,7 @@ public class MainGameScreen : TuiScreen
             Position = new Vector2<int>(35, 0)
         };
 
-        var snake = new Snake(this, () => Objects);
+        var snake = new Snake(parent: this, gameObjects: () => Objects);
         _snake = snake;
 
         for (var i = 0; i < 5; i++)
@@ -54,8 +59,8 @@ public class MainGameScreen : TuiScreen
         var apple = new Apple(this, _appleType);
         while (true)
         {
-            var x = _rand.Next(_border.Position.X + 1, _border.SizeWithPosOffset.X - 1);
-            var y = _rand.Next(_border.Position.Y + 1, _border.SizeWithPosOffset.Y - 1);
+            var x = Rand.Next(_border.Position.X + 1, _border.SizeWithPosOffset.X - 1);
+            var y = Rand.Next(_border.Position.Y + 1, _border.SizeWithPosOffset.Y - 1);
 
             var newApplePosition = new Vector2<int>(x, y);
 
@@ -73,17 +78,17 @@ public class MainGameScreen : TuiScreen
 
     public override void Update(float dt)
     {
-        _fpsMonitor.Text = $" Delta: {dt:.} {UnicodeSymbols.MIDDLE_HORIZONTAL_LINE} Fps: {1/dt * 1000:.} ";
+        _fpsMonitor.Text = $" Delta: {dt:.} {UnicodeSymbols.MIDDLE_HORIZONTAL_LINE} Fps: {1 / dt * 1000:.} ";
         _scoreMonitor.Text = $" Score: {_snake.Score} ";
-        
+
         base.Update(dt);
-        
+
         var badApples = Objects.Where(o => o is Apple).Count(apple => !apple.IsValid());
         for (var i = 0; i < badApples; i++)
         {
             AddApple();
         }
-        
+
         Objects.RemoveAll(o => !o.IsValid()); // Remove invalid objects
 
         if (!_snake.IsValid())

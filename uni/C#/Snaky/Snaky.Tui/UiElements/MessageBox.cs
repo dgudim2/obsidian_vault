@@ -49,8 +49,7 @@ public class MessageBox : IUpdatable
         var pos = _parent.Position + Position;
         var parentCenter = _parent.Size / 2;
 
-        var startX = pos.X;
-        var startY = pos.Y;
+        var (startX, startY) = pos;
 
         if (HasAlignment(Alignment.V_CENTER))
         {

@@ -25,9 +25,11 @@ public class Game : IRenderable
         CurrentScreen.OnScreenTransition += OnScreenTransition;
     }
 
-    public ConsoleKeyInfo GetKeyEvent()
+    private static ConsoleKeyInfo GetKeyEvent()
     {
-        return Console.KeyAvailable ? Console.ReadKey(true) : new ConsoleKeyInfo(char.MinValue, ConsoleKey.None, false, false, false);
+        return Console.KeyAvailable
+            ? Console.ReadKey(true)
+            : new ConsoleKeyInfo(char.MinValue, ConsoleKey.None, false, false, false);
     }
 
     public void Render()
@@ -36,27 +38,35 @@ public class Game : IRenderable
         float dt = 0;
         while (true)
         {
-            sw.Restart();
-            var pressedKey = GetKeyEvent();
-
-            if (pressedKey.Key == ConsoleKey.Escape)
+            try
             {
-                CurrentGameState = CurrentGameState == GameState.ACTIVE ? GameState.PAUSED : GameState.ACTIVE;
-                Thread.Sleep(100);
-                dt -= 100;
-            }
+                sw.Restart();
+                var pressedKey = GetKeyEvent();
 
-            if (CurrentGameState != GameState.PAUSED)
+                if (pressedKey.Key == ConsoleKey.Escape)
+                {
+                    CurrentGameState = CurrentGameState == GameState.ACTIVE ? GameState.PAUSED : GameState.ACTIVE;
+                    Thread.Sleep(100);
+                    dt -= 100;
+                }
+
+                if (CurrentGameState != GameState.PAUSED)
+                {
+                    CurrentScreen.DispatchKeyEvent(pressedKey);
+                    CurrentScreen.Update(dt);
+                    CurrentScreen.Render();
+                }
+
+                Thread.Sleep(UpdateDelta);
+                sw.Stop();
+                dt = sw.ElapsedTicks / (float)Stopwatch.Frequency * 1000;
+            }
+            catch (Exception e)
             {
-                CurrentScreen.DispatchKeyEvent(pressedKey);
-                CurrentScreen.Update(dt);
-                // Console.Out.WriteLine(dt);
-                CurrentScreen.Render();
+                Console.Clear();
+                Console.WriteLine("Render error: {0}", e);
+                throw;
             }
-
-            Thread.Sleep(UpdateDelta);
-            sw.Stop();
-            dt = sw.ElapsedTicks / (float)Stopwatch.Frequency * 1000;
         }
     }
 

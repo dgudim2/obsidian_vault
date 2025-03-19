@@ -1,36 +1,35 @@
-Write a doodle jump game in mauikit, more than 2000 lines of code, follow these instructions:
 
-You have created and applied your own interface
-You correctly implemented IComparable<T>
-You correctly implemented IEquatable<T>
-You correctly implemented IFormattable
-You correctly implemented IEnumerable<T>
-You correctly implemented IEnumerator<T>
-You correctly implemented ICloneable
+✅ You have created and applied your own interface
+✅ You correctly implemented IComparable<T>
+✅ You correctly implemented IEquatable<T>
+✅ You correctly implemented IFormattable
+✅ You correctly implemented IEnumerable<T>
+✅ You correctly implemented IEnumerator<T>
+✅ You correctly implemented ICloneable
 You use switch with the when keyword
 Pattern matching is used
-You use the Range type
-The project consists of more than one module (assembly)
+✅ You use the Range type
+✅ The project consists of more than one module (assembly)
 You use a sealed or partial class
-You use an abstract class
-A static constructor is used
-You created an extension deconstructor
-Operator overloading is used
-Data structures from System.Collections or System.Collections.Generic are used
-The is operator is used
-Default and named arguments are used
+✅ You use an abstract class
+✅ A static constructor is used
+✅ You created an extension deconstructor
+✅ Operator overloading is used
+✅ Data structures from System.Collections or System.Collections.Generic are used
+✅ The is operator is used
+✅ Default and named arguments are used
 The params keyword is used
-Initialization using out arguments is implemented
-Delegates or lambda functions are used
+✅ Initialization using out arguments is implemented
+✅ Delegates or lambda functions are used
 Bitwise operations are used
-Operators ?., ?[], ??, or ??= are used
-You created an iterator
+✅ Operators ?., ?[], ??, or ??= are used
+✅ You created an iterator
 You extended C# types
 You created and used your own exception types
-There are try-catch blocks in places where errors may occur
-You created your own generic type
+✅ There are try-catch blocks in places where errors may occur
+✅ You created your own generic type
 You applied your generic type using the where keyword
 You created your own generic extension method
-You use events in your project
-You use LINQ
-You use a database and Entity Framework in your project
+✅ You use events in your project
+✅ You use LINQ
+✅ You use a database and Entity Framework in your project

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Numerics;
@@ -6,7 +7,7 @@ using Snaky.Core.Interfaces;
 
 namespace Snaky.Core.Utils;
 
-public struct Vector2<T>(T x, T y) : IEquatable<Vector2<T>>, IFormattable
+public struct Vector2<T>(T x, T y) : IEquatable<Vector2<T>>, IFormattable, ICloneable, IComparable<Vector2<T>>, IComparable, IEnumerable
     where T : INumber<T>
 {
     /// <summary>The X component of the vector.</summary>
@@ -32,6 +33,21 @@ public struct Vector2<T>(T x, T y) : IEquatable<Vector2<T>>, IFormattable
         return ToString("G", CultureInfo.CurrentCulture);
     }
 
+    public IEnumerator GetEnumerator()
+    {
+        return new VectorEnumetaror<T>(this);
+    }
+
+    public int CompareTo(object? obj)
+    {
+        return obj == null ? -1 : CompareTo((Vector2<T>)obj);
+    }
+    
+    public object Clone()
+    {
+        return new Vector2<T>(X, Y);
+    }
+
     public string ToString([StringSyntax("NumericFormat")] string? format)
     {
         return ToString(format, CultureInfo.CurrentCulture);
@@ -55,6 +71,11 @@ public struct Vector2<T>(T x, T y) : IEquatable<Vector2<T>>, IFormattable
         return EqualityComparer<T>.Default.Equals(X, other.X) && EqualityComparer<T>.Default.Equals(Y, other.Y);
     }
 
+    public int CompareTo(Vector2<T> other)
+    {
+        return X.CompareTo(other.X) + Y.CompareTo(other.Y);
+    }
+    
     public override bool Equals(object? obj)
     {
         return obj is Vector2<T> other && Equals(other);

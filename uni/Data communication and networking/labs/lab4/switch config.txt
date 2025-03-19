@@ -1,0 +1,15 @@
+SW2
+
+fal/0/13 - PC2
+fal/0/17 - GE0/1 (router)
+
+SW1-2
+
+fal/0/45 - GE0/0 (router)
+fal/0/20 - Laptop
+fal/0/43 - SW1-1
+
+SW1-1
+fa0/12 - PC1
+fa0/21 - SW1-2
+

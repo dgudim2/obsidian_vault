@@ -43,6 +43,10 @@ public class Game : IRenderable
                 sw.Restart();
                 var pressedKey = GetKeyEvent();
 
+                if (pressedKey.Key == ConsoleKey.Backspace) {
+                    break;
+                }
+
                 if (pressedKey.Key == ConsoleKey.Escape)
                 {
                     CurrentGameState = CurrentGameState == GameState.ACTIVE ? GameState.PAUSED : GameState.ACTIVE;

@@ -1,16 +1,15 @@
-community-plugins.json
-workspace.json
-workspace-mobile.json
-.obsidian/icons
-scanned_words.txt
-export
-
-.stversions
-
-# Ignore Smart Connections folder because embeddings file is large and updated frequently
-.smart-connections
-
-# Ignore pdfs and docx and other files, they are synced separately
+/.obsidian/community-plugins.json
+/.obsidian/workspace.json
+/.obsidian/workspace-mobile.json
+/.obsidian/icons
+/.obsidian/plugins/obsidian-completr/scanned_words.txt
+/.stversions
+*.wasm
+**/python_venv
+**/venv
+**/.venv
+**/__pycache__
+*.pyc
 *.pdf
 *.doc
 *.docx
@@ -21,11 +20,6 @@ export
 *.ods
 *.odg
 *.mpp
-**/Extra
-*_ng_*
-/uni/Computer networks/GNS3
-
-# Some stuff from web labs
 *.webm
 *.mp4
 *.mp3
@@ -34,7 +28,6 @@ export
 *.ogv
 *.wav
 *.vtt
-
 *.webp
 *.png
 *.PNG
@@ -44,11 +37,7 @@ export
 *.tiff
 *.gif
 *.psd
-
-# Obsidian wasm plugin data
-*.wasm
-
-python_venv
-venv
-__pycache__
-*.pyc
+**/Extra
+*_ng_*
+/uni/Computer\ networks/GNS3
+/LaTeX\ docs

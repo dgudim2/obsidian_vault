@@ -1,3 +1,15 @@
+/.obsidian/community-plugins.json
+/.obsidian/workspace.json
+/.obsidian/workspace-mobile.json
+/.obsidian/icons
+/.obsidian/plugins/obsidian-completr/scanned_words.txt
+/.stversions
+*.wasm
+**/python_venv
+**/venv
+**/.venv
+**/__pycache__
+*.pyc
 !*.pdf
 !*.doc
 !*.docx
@@ -7,13 +19,14 @@
 !*.odp
 !*.ods
 !*.odg
+!*.mpp
 !*.webm
 !*.mp4
 !*.mp3
 !*.ogg
-!*.wav
 !*.aac
 !*.ogv
+!*.wav
 !*.vtt
 !*.webp
 !*.png
@@ -24,12 +37,8 @@
 !*.tiff
 !*.gif
 !*.psd
-!*.mpp
-!/LaTeX docs
-!/uni/Computer\ networks/GNS3
 !**/Extra
-!*_ng_
-/export/*
-**/python_venv
-**/venv
+!*_ng_*
+!/uni/Computer\ networks/GNS3
+!/LaTeX\ docs
 *

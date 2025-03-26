@@ -1,0 +1,6 @@
+https://github.com/sunilsoni/Cassandra-Data-Modeling
+https://www.youtube.com/watch?v=ziq7FUKpCS8
+https://cassandra.apache.org/doc/latest/
+https://www.tpointtech.com/cassandra-history
+https://www.youtube.com/watch?v=KZsVSfQVU4I
+https://scribe.rip/geekculture/system-design-solutions-when-to-use-cassandra-and-when-not-to-496ba51ef07a

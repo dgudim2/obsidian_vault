@@ -1,0 +1,65 @@
+# Slide 1. What is cassandra
+In short, it's a general-purpose distributed NoSQL (non-relational) database with very good horizontal scalability, meaning you can scale it across multiple servers with no problem.
+NoSQL means that you don't have a bunch of small normalized tables and instead work with de-normalized tables with unstructured database.
+
+# Slide 2. A bit of history
+Developed at Facebook by Avinash Lakshman and Prashant Malik.
+Developed for Facebook inbox search feature.
+Open sourced by Facebook in July 2008.
+Accepted by Apache Incubator in March 2009.
+Top level project of Apache since February 2010.
+
+
+# Slide 3. What’s wrong with relational dbs?
+So the short answer to the question, "What’s wrong with relational databases?" is
+"Nothing", a more proper answer would be: "What problem do you have?".
+That is, you want to ensure that your solution matches the problem that you have.
+There are certain problems that relational databases solve very well.
+If massive, elastic scalability is not an issue for you, the trade-offs in relative complexity of a system such as Cassandra may simply not be worth it.
+Why yes? Why was the idea born? Why not scale a relational db? Relational DBs rely on joins, which are inherently slower then denormalized data, relational DBs are much harder to scale horizontally because of joins (network latency), transaction locks, need for data replication and consistency checks in failover scenarios.
+
+
+# Slide 4. Nodes and distribution
+In a cassandra system you have multiple instances or 'nodes', those can be physical machines, virtual machines or containers in a cluster. One node typically stores from 2 to 4 Tb of data. Data is replicated across multiples nodes. (Will will go over this later)
+
+
+# Slide 5. Partitions and clusters
+Each node holds a so-called each own 'partition' of data. Nodes are connected in a 'cluster' or 'ring'. They use gossip protocol to detect dead nodes and who was what data. Even though a node only stores some of the data, it can serve any data because it knows where to get it from.
+
+
+# Slide 6. What is a partition and how to partition
+A partition is just a group of data, part of a table. Each node can have multiple partitions on it. When designing your schema, you should keep related data in the same partition and keep you partitions small. Ideally, a query should access a single partition.
+When you create table in cassandra, order of fields in the primary key matters. The first field is your partition key. In the example we see that the 'club' key is the partition key, so all the players from the same club will be in the same partition. If we usually filter by club, this is a good schema (Only 1 partition accessed most of the time). Cassandra implements storage-based indexing with partitions (it know what data lives on what disks to avoid accessing disks that don't have the data specific to the query)
+
+
+# Slide 7. Peer-to-peer
+Typically, in a distributed system there is a mater node that handles all the writes and its replicas which handle reads.
+Cassandra has a master-less architecture, meaning that there is no 'master' node, any node can take a write and the data is then replicated to a number of nodes. And or course, any node can take a read. This makes the system more resilient at the cost of consistency. (You can choose between consistency, availability and partition loss tolerance)
+
+# Slide 8. Fast writes
+Why are the writes so fast? Because any node can take a write and because a write is considered a successful one when it's written to a mem-table and not to disk (which is slow). But what if a node goes down before the data is written to disk? Well, because of replication, the chance of data being lost is very very low. (Traditional non-distributed dbs typically declare write a successful one after flushing trnsaction log to disk)
+
+
+# Slide 9. Data replication, what and why
+Data replication is the process of copying the data over multiple nodes and keeping it in sync. This has the benefits of faster reads (client can read from the closest node), elimination of single point of failure (The node will go down, others still have the data) and this leads to very good uptime an fault tolerance. The drawbacks are increased network and disk usage and possibility of replication conflicts.
+
+
+# Slide 10. CQL
+Cassandra uses CQL, a subset of SQL
+Every table MUST have a primary key (partition key), selecting is like in sql, you can use where clauses for filtering, but an index is REQUIRED on the field you are filtering.
+You CAN'T use joins though
+
+
+# Slide 11. What, no joins?
+Yes, this is by design. If you remember, cassandra is a non-relational database. So instead of joining a bunch of small tables, data in tables is de-normalized to match the queries accessing them for MUCH faster reads.
+
+
+# Slide 12. Usecases and examples
+Anything that requires high amount of writes and storage of large amounts of historical data like Event logging, recommendation engines, messaging services, iot. Apple uses it for storing all your historical data (location history, browser history), they have over 150000 nodes with 2 petabytes of data overall.
+Facebook and discord used it at the start.
+Activision and bestbuy use it for the their messaging
+
+
+# Slide 13. Cassandra alternatives
+One might want to use something else and not cassandra when choosing a distributed nosql db. Another option is scyllaDB. It's written in c++ as opposed to java, so it's faster and more predicable than cassandra. It's cassandra-compatible meaning you can just replace one with another pretty smoothly with no changes to your queries.
+

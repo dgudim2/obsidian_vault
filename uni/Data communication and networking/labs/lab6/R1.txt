@@ -1,0 +1,15 @@
+en
+conf t
+host R1
+int gi0/0
+ip add 8.8.8.11 255.0.0.0
+no shut
+int gi0/1
+ip add 172.16.1.1 255.255.255.0
+no shut
+exit
+ip dhcp pool LW6_1
+network 172.16.1.0 255.255.255.0
+default-router 172.16.1.1
+exit
+exit

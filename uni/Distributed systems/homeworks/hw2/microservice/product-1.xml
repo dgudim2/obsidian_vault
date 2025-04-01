@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<product>
+    <comments>
+        <commentBody>comment body 1</commentBody>
+        <commentOwner>1</commentOwner>
+        <commentTitle>comment 1</commentTitle>
+        <id>1</id>
+        <rating>8.0</rating>
+        <replies>
+            <commentBody>comment body 2</commentBody>
+            <commentOwner>2</commentOwner>
+            <commentTitle>comment 2</commentTitle>
+            <id>2</id>
+            <parentComment>1</parentComment>
+            <rating>10.0</rating>
+            <whichProductCommented>1</whichProductCommented>
+            <XId>2</XId>
+        </replies>
+        <whichProductCommented>1</whichProductCommented>
+        <XId>1</XId>
+    </comments>
+    <comments>
+        <commentBody>comment body 2</commentBody>
+        <commentOwner>2</commentOwner>
+        <commentTitle>comment 2</commentTitle>
+        <id>2</id>
+        <parentComment>1</parentComment>
+        <rating>10.0</rating>
+        <whichProductCommented>1</whichProductCommented>
+        <XId>2</XId>
+    </comments>
+    <description>Test1</description>
+    <id>1</id>
+    <price>10.0</price>
+    <quantity>10</quantity>
+    <shop>
+        <description>description1</description>
+        <id>1</id>
+        <product>1</product>
+        <user>
+            <comments>
+                <commentBody>comment body 1</commentBody>
+                <commentOwner>1</commentOwner>
+                <commentTitle>comment 1</commentTitle>
+                <id>1</id>
+                <rating>8.0</rating>
+                <replies>
+                    <commentBody>comment body 2</commentBody>
+                    <commentOwner>2</commentOwner>
+                    <commentTitle>comment 2</commentTitle>
+                    <id>2</id>
+                    <parentComment>1</parentComment>
+                    <rating>10.0</rating>
+                    <whichProductCommented>1</whichProductCommented>
+                    <XId>2</XId>
+                </replies>
+                <whichProductCommented>1</whichProductCommented>
+                <XId>1</XId>
+            </comments>
+            <id>1</id>
+            <login>test</login>
+            <password>test</password>
+            <shop>1</shop>
+            <XId>1</XId>
+        </user>
+        <title>shop1</title>
+        <XId>1</XId>
+    </shop>
+    <title>test title</title>
+    <warehouse>
+        <address>test street 1</address>
+        <stock>1</stock>
+        <XId>1</XId>
+    </warehouse>
+    <XId>1</XId>
+</product>

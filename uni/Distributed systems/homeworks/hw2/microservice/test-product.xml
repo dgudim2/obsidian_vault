@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<product>
+    <description>Test1</description>
+    <id>1</id>
+    <price>10.0</price>
+    <quantity>10</quantity>
+    <shop>1</shop>
+    <title>test title</title>
+    <warehouse>1</warehouse>
+    <XId>1</XId>
+</product>

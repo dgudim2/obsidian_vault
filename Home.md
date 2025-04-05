@@ -1,5 +1,5 @@
 ---
-banner: "[[home-banner.jpg]]"
+banner: "[[home-banner.png]]"
 banner_y: 1
 banner_icon: 🏠
 cssclasses:

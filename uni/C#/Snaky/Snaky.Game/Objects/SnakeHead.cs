@@ -1,10 +1,11 @@
+using Snaky.CommonUI.Screens;
 using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
 
 namespace Snaky.Game.Objects;
 
-public class SnakeHead(ISized parent) : SnakeNode(parent)
+public class SnakeHead(BaseScreen parent) : SnakeNode(parent)
 {
     protected override string GetRenderChar()
     {
@@ -17,7 +18,7 @@ public class SnakeHead(ISized parent) : SnakeNode(parent)
             _ => throw new ArgumentOutOfRangeException()
         };
     }
-
+    
     public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         switch (key.Key)

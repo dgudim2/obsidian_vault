@@ -1,0 +1,22 @@
+1) Realizuokite praplėtimo metodą kurio algoritmo rezultatas būtų atitinkamas rezultatui metodo 'System.Linq.Last' (1 t.)
+2) Realizuokite praplėtimo metodą kurio algoritmo rezultatas būtų atitinkamas rezultatui metodo 'System.Linq.LastOrDefault' (1 t.)
+3) Realizuokite praplėtimo metodą kurio algoritmo rezultatas būtų atitinkamas rezultatui metodo 'System.Linq.Any' (1 t.)
+4) Patikrinkite ar taisingai atlikote užduotis 1-3 naudojant 'System.Linq.SequenceEqual' (0,5 t.)
+5) Deserializuokite gautą JSON į 'Person' objektų sarašą. (2 t.)
+6) Su gautu 5 punkte sąrašu atlikite sekančius veiksmus: (2 t.)
+      1. Palikite sąraše tik tuos žmones, kurie iki šiandienos vis dar gyvi
+      2. Surikiuokite elementus pagal parametrą 'SalaryPerMonth', po to pagal 'BirthDate'
+              2.1. Patikrinkite ar visi elementai atitinka salygą: Jaunesni nei 39 m.
+              2.2. Išveskite elementą su indeksu 12 arba reikšme pagal nutylėjimą, jei elemento nėra
+      3. Paimkite 28 elementų(-us) iš priekio
+      4. Pasirinkite sukankatenuotus per tarpą parametrus parametrus 'birthDate' ir 'deathDate'
+
+7) Su gautu 5 punkte sąrašu atlikite sekančius veiksmus: (2 t.)
+      1. Palikite sąraše tik tuos žmones, kurie sveria mažiau nei 25,51 kg.
+      2. Surikiuokite elementus pagal parametrą 'Surname', po to pagal 'Weight'
+              2.1. Patikrinkite ar visi elementai atitinka salygą: Pavardė turi raidę 'R'
+              2.2. Išveskite elementą su indeksu 92 arba reikšme pagal nutylėjimą, jei elemento nėra
+      3. Praleiskite 47 elementų(-us) iš galo
+      4. Pasirinkite sukankatenuotus per tarpą parametrus parametrus 'birthDate' ir 'deathDate'
+
+8) Gautus sąrašus išsaugokite į skirtingus failus (0,5 t.)

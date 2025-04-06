@@ -16,17 +16,18 @@ public class Apple(ISized parent, AppleType appleType) : GameObject(parent)
 {
     protected override string GetRenderChar()
     {
-        switch (appleType)
+        return appleType switch
         {
-            case AppleType.COMPANY:
-                return "\ue711";
-            case AppleType.FOOD:
-                return "\udb80\ude5b";
-            case AppleType.FOOD_OUTLINE:
-                return "\udb83\udc84";
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
+            AppleType.COMPANY => "\ue711",
+            AppleType.FOOD => "\udb80\ude5b",
+            AppleType.FOOD_OUTLINE => "\udb83\udc84",
+            _ => throw new ArgumentOutOfRangeException()
+        };
+    }
+
+    public override bool DimensionsValid()
+    {
+        return true;
     }
 
     public override void Update(float dt)

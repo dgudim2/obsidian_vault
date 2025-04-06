@@ -1,3 +1,4 @@
+using Snaky.CommonUI.Screens;
 using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
@@ -6,7 +7,7 @@ namespace Snaky.Game.Objects;
 
 public class Snake : IUpdatable
 {
-    private readonly ISized _parent;
+    private readonly BaseScreen _parent;
     private readonly Func<List<IUpdatable>> _gameObjects;
     private readonly SnakeHead _head;
 
@@ -27,7 +28,7 @@ public class Snake : IUpdatable
     private double _positionUpdateTicker;
     private double _speed = 1;
 
-    public Snake(ISized parent, Func<List<IUpdatable>> gameObjects)
+    public Snake(BaseScreen parent, Func<List<IUpdatable>> gameObjects)
     {
         _parent = parent;
         _gameObjects = gameObjects;
@@ -39,12 +40,30 @@ public class Snake : IUpdatable
 
     public void Render()
     {
-        foreach (var snakePart in _snakeParts)
+        if (DimensionsValid())
         {
-            snakePart.Render();
+            if (_snakeParts.Count > 0)
+            {
+                _snakeParts.First().Render();
+                var last = _snakeParts.Last();
+                Console.SetCursorPosition(last.prevPosition.X, last.prevPosition.Y);
+                Console.Out.Write(" ");
+            }
         }
-
+        else
+        {
+            foreach (var snakePart in _snakeParts)
+            {
+                snakePart.Render();
+            }
+        }
+        
         _head.Render();
+    }
+
+    public bool DimensionsValid()
+    {
+        return _parent.DimensionsValid();
     }
 
     public void Update(float dt)

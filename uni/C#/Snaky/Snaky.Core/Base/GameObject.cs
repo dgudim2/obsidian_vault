@@ -35,7 +35,9 @@ public abstract class GameObject(ISized parent) : IGameObject
         Console.SetCursorPosition(_position.X, _position.Y);
         Console.Out.Write(GetRenderChar());
     }
-    
+
+    public abstract bool DimensionsValid();
+
     public abstract void Update(float dt);
     public abstract bool DispatchKeyEvent(ConsoleKeyInfo key);
     public bool IsValid()

@@ -1,10 +1,11 @@
+using Snaky.CommonUI.Screens;
 using Snaky.Core.Base;
 using Snaky.Core.Interfaces;
 using Snaky.Core.Utils;
 
 namespace Snaky.Game.Objects;
 
-public abstract class SnakeNode(ISized parent) : GameObject(parent)
+public abstract class SnakeNode(BaseScreen parent) : GameObject(parent)
 {
     protected enum Direction
     {
@@ -13,7 +14,8 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
         Left,
         Right
     }
-    
+
+    public Vector2<int> prevPosition = new(0, 0);
     protected Direction _direction = Direction.Right;
 
     protected internal void SetDirection(SnakeNode parentNode)
@@ -25,9 +27,17 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
     {
         MoveInDirection();
     }
-    
+
+    public override bool DimensionsValid()
+    {
+        return parent.DimensionsValid();
+    }
+
     protected void MoveInDirection()
     {
+        
+        prevPosition = new Vector2<int>(_position.X, _position.Y);
+        
         switch (_direction)
         {
             case Direction.Up:
@@ -45,25 +55,27 @@ public abstract class SnakeNode(ISized parent) : GameObject(parent)
             default:
                 throw new ArgumentOutOfRangeException();
         }
-
-        if (Position.X >= _parent.SizeWithPosOffset.X - 1)
+        
+        ISized p = parent;
+        
+        if (Position.X >= p.SizeWithPosOffset.X - 1)
         {
-            _position.X = _parent.Position.X + 1;
+            _position.X = parent.Position.X + 1;
         }
         
-        if (Position.X <= _parent.Position.X)
+        if (Position.X <= parent.Position.X)
         {
-            _position.X = _parent.SizeWithPosOffset.X - 1;
+            _position.X = p.SizeWithPosOffset.X - 2;
         }
         
-        if (Position.Y >= _parent.SizeWithPosOffset.Y - 1)
+        if (Position.Y >= p.SizeWithPosOffset.Y - 1)
         {
-            _position.Y = _parent.Position.Y + 1;
+            _position.Y = parent.Position.Y + 1;
         }
         
-        if (Position.Y <= _parent.Position.Y)
+        if (Position.Y <= parent.Position.Y)
         {
-            _position.Y = _parent.SizeWithPosOffset.Y - 1;
+            _position.Y = p.SizeWithPosOffset.Y - 2;
         }
     }
 }

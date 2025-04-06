@@ -69,7 +69,7 @@ public class TuiMenuScreen : TuiScreen
 
         for (var i = 0; i < totalAppleTypeCount; i++)
         {
-            appleSelectionBoxes[i].Text = (i == selectedAppleIndex ? "> " : "") + appleTypes[i].ToLower();
+            appleSelectionBoxes[i].Text = (i == selectedAppleIndex ? "> " : "  ") + appleTypes[i].ToLower();
         }
 
         return base.DispatchKeyEvent(key);

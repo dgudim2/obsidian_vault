@@ -11,7 +11,8 @@ public class LeaderboardScreen : TuiScreen
     private readonly AppleType _appleType;
     private MessageBox? _nicknameInputField;
     private string _nickname = "";
-
+    private readonly int _nicknameMaxLength = 15;
+    
     public LeaderboardScreen(int currentScore, AppleType appleType)
     {
         _currentScore = currentScore;
@@ -79,14 +80,15 @@ public class LeaderboardScreen : TuiScreen
         ctx.Scores.Add(score);
         ctx.SaveChanges();
         ReadLeaderboard(false);
+        WindowSizeValidForRender = false;
     }
-
+    
     public override bool DispatchKeyEvent(ConsoleKeyInfo key)
     {
         var c = key.KeyChar;
         if (_nicknameInputField != null)
         {
-            if ((!char.IsControl(c) || char.IsWhiteSpace(c)) && key.Key != ConsoleKey.Enter)
+            if ((!char.IsControl(c) || char.IsWhiteSpace(c)) && key.Key != ConsoleKey.Enter && _nickname.Length < _nicknameMaxLength)
             {
                 _nickname += key.KeyChar;
             }
@@ -101,7 +103,7 @@ public class LeaderboardScreen : TuiScreen
                         {
                             AddScore(new ScoreModel
                             {
-                                Name = _nickname,
+                                Name = _nickname.Trim(),
                                 Score = _currentScore
                             });
                         }
@@ -109,7 +111,7 @@ public class LeaderboardScreen : TuiScreen
                         return false;
                 }
 
-            _nicknameInputField.Text = $"Your nickname: {_nickname}";
+            _nicknameInputField.Text = $"Your nickname: {_nickname.PadRight(_nicknameMaxLength)}";
         }
         else
         {

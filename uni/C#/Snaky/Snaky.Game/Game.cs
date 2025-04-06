@@ -8,7 +8,7 @@ namespace Snaky.Game;
 
 public class Game : IRenderable
 {
-    protected TimeSpan UpdateDelta = TimeSpan.FromSeconds(1 / 60f);
+    protected TimeSpan UpdateDelta = TimeSpan.FromSeconds(1 / 240f);
     protected IScreen CurrentScreen;
     protected GameState CurrentGameState;
 
@@ -43,7 +43,7 @@ public class Game : IRenderable
                 sw.Restart();
                 var pressedKey = GetKeyEvent();
 
-                if (pressedKey.Key == ConsoleKey.Backspace) {
+                if (pressedKey.Key == ConsoleKey.Delete) {
                     break;
                 }
 
@@ -72,6 +72,11 @@ public class Game : IRenderable
                 throw;
             }
         }
+    }
+
+    public bool DimensionsValid()
+    {
+        return CurrentScreen.DimensionsValid();
     }
 
     public Vector2<int> Position

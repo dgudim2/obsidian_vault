@@ -25,7 +25,7 @@ public class MessageBox : IUpdatable
     private readonly Alignment _alignment;
 
     private readonly IRenderable _parent;
-
+    
     public string Text { get; set; }
 
     public int Lines { get; }
@@ -46,6 +46,11 @@ public class MessageBox : IUpdatable
 
     public void Render()
     {
+        if (DimensionsValid())
+        {
+            return;
+        }
+
         var pos = _parent.Position + Position;
         var parentCenter = _parent.Size / 2;
 
@@ -71,6 +76,11 @@ public class MessageBox : IUpdatable
 
         Console.SetCursorPosition(startX, startY);
         Console.Write(Text);
+    }
+
+    public bool DimensionsValid()
+    {
+        return false;
     }
 
     public void Update(float dt)

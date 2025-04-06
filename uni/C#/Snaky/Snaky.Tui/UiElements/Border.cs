@@ -19,6 +19,11 @@ public class Border : IUpdatable
 
     public void Render()
     {
+        if (DimensionsValid())
+        {
+            return;
+        }
+
         var xOffset = Position.X + _parent.Position.X;
         var yOffset = Position.Y + _parent.Position.Y;
 
@@ -48,6 +53,11 @@ public class Border : IUpdatable
         Console.Out.Write(UnicodeSymbols.BOTTOM_LEFT_ROUND_CORNER);
         Console.SetCursorPosition(_parent.Size.X - 1, _parent.Size.Y - 1);
         Console.Out.Write(UnicodeSymbols.BOTTOM_RIGHT_ROUND_CORNER);
+    }
+
+    public bool DimensionsValid()
+    {
+        return _parent.DimensionsValid();
     }
 
     public void Update(float dt)

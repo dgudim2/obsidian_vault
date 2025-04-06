@@ -22,7 +22,7 @@ public abstract class BaseScreen : IScreen
 
     public event ScreenChangeDelegate? OnScreenTransition;
 
-    protected abstract bool DimensionsValid();
+    public abstract bool DimensionsValid();
 
     protected abstract Vector2<int> RecalculateDimensions();
 

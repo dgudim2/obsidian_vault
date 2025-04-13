@@ -2,6 +2,7 @@ package lt.vgtu.hw1.controllers;
 
 import jakarta.xml.bind.JAXBException;
 import lombok.RequiredArgsConstructor;
+import lt.vgtu.hw1.config.TestConfig;
 import lt.vgtu.hw1.service.ProductXmlService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +28,12 @@ public class ProductXmlController {
      */
     @GetMapping(value = "/productToXml/{id}")
     public ResponseEntity<String> mapXml(@PathVariable(name = "id") int id) throws JAXBException, IOException {
-        var saved = bookToXmlService.saveXml(id, "./product-" + id + ".xml");
+        var conf = new TestConfig();
+        var base_path = conf.getFoo();
+        if (base_path == null || base_path.isEmpty()) {
+            base_path  = ".";
+        }
+        var saved = bookToXmlService.saveXml(id, base_path + "/product-" + id + ".xml");
         if (saved == null) {
             return new ResponseEntity<>("Product with ID " + id + " not found.", HttpStatus.NOT_FOUND);
         }

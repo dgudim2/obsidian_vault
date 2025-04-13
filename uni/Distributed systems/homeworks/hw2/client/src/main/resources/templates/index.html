@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Client Load Balancer Demo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+    <h1>Client Load Balancer Demo</h1>
+
+    <p>Making multiple requests to microservice. Each request may be routed to a different instance:</p>
+
+    <div th:each="response : ${responses}" class="response">
+        <span th:text="${response}"></span>
+    </div>
+
+    <p>
+        <a href="/" onclick="location.reload(); return false;">Refresh to Test Load Balancing Again</a>
+    </p>
+</div>
+</body>
+</html>

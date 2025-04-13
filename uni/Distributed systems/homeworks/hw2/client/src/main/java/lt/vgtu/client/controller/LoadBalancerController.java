@@ -1,6 +1,5 @@
 package lt.vgtu.client.controller;
 
-import lt.vgtu.client.model.BookResponseDto;
 import lt.vgtu.client.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

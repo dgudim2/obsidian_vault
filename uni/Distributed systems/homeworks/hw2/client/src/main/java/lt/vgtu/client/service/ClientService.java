@@ -13,10 +13,10 @@ public class ClientService {
     }
 
     public String getBook(Long id) {
-        return restTemplate.getForObject("http://microservice/productToXml/" + id, String.class);
+        return restTemplate.getForObject("http://microservice-hw1/productToXml/" + id, String.class);
     }
 
     public String getServerInstanceInfo() {
-        return restTemplate.getForObject("http://microservice/instance-info", String.class);
+        return restTemplate.getForObject("http://microservice-hw1/instance-info", String.class);
     }
 }

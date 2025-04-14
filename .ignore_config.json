@@ -15,6 +15,7 @@
     "*.doc": "git",
     "*.docx": "git",
     "*.pptx": "git",
+    "*.xlsx": "git",
     "*.ppt": "git",
     "*.odt": "git",
     "*.odp": "git",

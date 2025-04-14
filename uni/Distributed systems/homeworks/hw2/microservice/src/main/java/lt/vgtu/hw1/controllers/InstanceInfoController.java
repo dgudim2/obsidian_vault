@@ -9,8 +9,11 @@ public class InstanceInfoController {
     @Value("${server.port}")
     private String serverPort;
 
+    @Value("${spring.application.name}")
+    private String serviceName;
+
     @GetMapping("/instance-info")
     public String instanceInfo() {
-        return "Book Microservice running on port: " + serverPort;
+        return serviceName + " running on port: " + serverPort;
     }
 }

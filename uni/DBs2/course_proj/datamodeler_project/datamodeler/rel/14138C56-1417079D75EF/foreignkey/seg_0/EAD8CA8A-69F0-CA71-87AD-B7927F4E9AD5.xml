@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="EAD8CA8A-69F0-CA71-87AD-B7927F4E9AD5" containerWithKeyObject="C42E291D-A4DA-27F9-1036-B6D345AE6C50" localFKIndex="E2C01C2A-8B24-FEBF-32FC-BF7B4B6A2416" name="FK9huqlgox8wqmseg52nd0t6kd2">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>FK9huqlgox8wqmseg52nd0t6kd2</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<referredTableLongName>MYSCHEMA.Cart</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>786C84B1-D265-D1E2-8A03-F283C439D3A3</referredTableID>
+<keyObject>30AA3206-4D96-02AB-ADBC-1967EC99147F</keyObject>
+<referredKeyID>30AA3206-4D96-02AB-ADBC-1967EC99147F</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

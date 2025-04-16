@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="Comment" directorySegmentName="seg_0" id="9EABE55F-0035-042C-D29E-EAA597CC3330">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>78273F58-6A6F-072B-63DF-5D199FB514C3</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="commentTitle" id="24BBDD1A-E1DA-086F-AE92-9FDDDABCBB2A">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="commentBody" id="38C6EB00-4C46-6664-5942-AB57D574FDE7">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="parentComment_id" id="6A36B148-B5C5-3198-04B1-5F8217362E4B">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="whichProductCommented_id" id="7997E4BE-D355-C19F-B20D-613FF8F56410">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="ID" id="7B50ACA4-0431-56A4-D44A-4F9E66A09FCA">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<autoIncrementDDL>TRIGGER</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="commentOwner_id" id="7DA47959-979B-EF36-B2FD-2BE018C5E20E">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ColumnProxy>
+<ColumnProxy name="RATING" id="A6FEDE41-426F-5188-8AA6-88CB509F16D3">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="Comment_pkey" id="C8AAB116-559D-B944-9095-2DA19D995324">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FKmvq25icouaiu0a8bu09ddesf7" id="7BA4F37F-517D-300F-11BE-FFA75259B9B7">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK6p9no5puf4g8mi983isrpmwtq" id="A5B7E8F7-A2E4-F42F-8734-8AF8E887E73D">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FKhqp8s1t3voefj0pvb07ytseil" id="B6A7179C-5ACE-855D-DD14-5CD7B0E5F7B1">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Comment_pkey" id="F6A5EEAB-A7BA-2B82-1100-DBBC6F74A27D">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<existingIndex>C8AAB116-559D-B944-9095-2DA19D995324</existingIndex>
+<indexSegment>16080567-FFCE-33A5-8D1B-82C24487FBF1</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

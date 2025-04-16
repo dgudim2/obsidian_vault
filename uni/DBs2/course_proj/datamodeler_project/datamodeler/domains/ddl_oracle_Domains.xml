@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<DomainFile class="oracle.dbtools.crest.model.design.DomainFileWrapper" fileName="ddl_oracle_Domains">
+<domains>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="NUMERIC_10_0_0" id="056BB286-4E8E-0F60-5BB8-087D6690AE2C">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:03:58 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>0</dataTypeSize>
+<fileName>ddl_oracle_Domains</fileName>
+<logicalDatatype>LOGDT019</logicalDatatype>
+</Domain>
+<Domain class="oracle.dbtools.crest.model.design.Domain" name="VARCHAR_0_0_255 char" id="F095A94E-14A5-1120-90F2-9DFF3A78CF65">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:03:58 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<avTSortOrder>0</avTSortOrder>
+<dataTypePrecision>0</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<dataTypeSize>255 char</dataTypeSize>
+<fileName>ddl_oracle_Domains</fileName>
+<logicalDatatype>LOGDT024</logicalDatatype>
+</Domain>
+</domains>
+</DomainFile>

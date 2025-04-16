@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4C4E449E-1D5E-EE67-3F22-966DF15C9FCB" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Warehouse">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Warehouse</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="1B43E533-4B09-9FE5-C362-BB153D8D7F00">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Warehouse</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementMaxValue>2147483647</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+<autoIncrementSequenceName>Warehouse_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>Warehouse_seq_tr</autoIncrementTriggerName>
+</Column>
+<Column name="ADDRESS" id="FFDA9166-0EEC-02AE-50E7-932A2042496D">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Warehouse</sourceObjSchema>
+<sourceObjName>ADDRESS</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0A9A6B20-DAE1-2B5F-C4B8-33B04A346D3A" name="Warehouse_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Warehouse_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B43E533-4B09-9FE5-C362-BB153D8D7F00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6BCF5A61-8E10-E7F3-8B5D-323A04C5BDC6" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Warehouse_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Warehouse_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1B43E533-4B09-9FE5-C362-BB153D8D7F00"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

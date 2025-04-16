@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="Warehouse" directorySegmentName="seg_0" id="4C4E449E-1D5E-EE67-3F22-966DF15C9FCB">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>78273F58-6A6F-072B-63DF-5D199FB514C3</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID" id="1B43E533-4B09-9FE5-C362-BB153D8D7F00">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<autoIncrementDDL>TRIGGER</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="ADDRESS" id="FFDA9166-0EEC-02AE-50E7-932A2042496D">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="Warehouse_pkey" id="6BCF5A61-8E10-E7F3-8B5D-323A04C5BDC6">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+</IndexProxy>
+</indexProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Warehouse_pkey" id="0A9A6B20-DAE1-2B5F-C4B8-33B04A346D3A">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<existingIndex>6BCF5A61-8E10-E7F3-8B5D-323A04C5BDC6</existingIndex>
+<indexSegment>16080567-FFCE-33A5-8D1B-82C24487FBF1</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

@@ -1,0 +1,233 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7AFD5B95-836E-94B8-CCA7-1E3BB01A99CA" name="User">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>16BC0C82-A89B-DD7A-2D21-71D659851947</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="birthDate" id="56A99923-F366-61F3-0A36-D0E1881BEC70">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>C40BE2AA-4D67-F739-1A5A-C0C1D0372AD4</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID" id="FE101852-B261-2D41-75AA-67DDC707D3EE">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>AFDF7107-81E4-5214-0FFC-C5D49CBDF3AF</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+</Attribute>
+<Attribute name="isAdmin" id="25E367F2-A75F-3623-3AAF-7EB442091BCB">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>6E6870E0-73BF-E7C5-B964-98A9D0322EC4</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1 BYTE</dataTypeSize>
+<ownDataTypeParameters>1 BYTE,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SHOP ID" id="D000DB54-7801-6B81-39AD-DAD0DEC2AD33">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>14BD4814-854A-227D-052B-3EC4194A55E1</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>EDBE00FF-9A74-F2D4-AB13-4D7EA282C3C7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="WAREHOUSE ID" id="056F0FA8-7CCD-016B-24FF-654C995EB6DB">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>FC9EF438-D776-3472-ACE0-CBDDE68E9525</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>4E40D206-493F-0E93-CE72-E13EC83DCB8D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DTYPE" id="B338ED25-6B02-EE5F-C00F-A924286E6B4A">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>FC075111-11D5-8A1B-99DD-CAC092FEC82A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>31 CHAR</dataTypeSize>
+<ownDataTypeParameters>31 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="billingAddress" id="CDAA4F59-78F8-2FBE-2155-5348A64F2DFD">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>7A64CB07-BB7F-CC27-83C1-F08F70E649BF</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cardNumber" id="6EE6D389-2C58-977B-D3D1-823D86864A58">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>CBBAE950-F53A-E6CC-4C8B-75B00DD3B0D3</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LOGIN" id="701C3ECB-0A1B-34C3-C8F3-BCEF410AFFD4">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>CF278AFF-813E-551E-18F5-AA03134CDBD5</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="8A03F0DD-C9DB-23F0-58D7-F18D5E3704CD">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>DFF75028-9553-25AC-5546-2E5EA65E2B9E</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password" id="004F26DF-4770-F2DD-2023-0014EB07E432">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>6F29FFF3-5DBF-22CF-4177-7EB91C19B77E</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="shippingAddress" id="1617E222-F587-E6A0-6E56-C0D9EE9B8EAE">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>0EB052C5-2F6C-D742-F21F-C49AEC9D164C</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="SURNAME" id="10F2F895-F045-7B90-686D-3805112A413B">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>D9263F5B-BA00-8451-10FB-68DA39D0F257</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6E730F67-0301-5187-EACA-CB64C7E21857" name="User pkey">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>EFCF0356-7DC2-A0B8-FD89-2350CE5C02F6</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>FE101852-B261-2D41-75AA-67DDC707D3EE</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

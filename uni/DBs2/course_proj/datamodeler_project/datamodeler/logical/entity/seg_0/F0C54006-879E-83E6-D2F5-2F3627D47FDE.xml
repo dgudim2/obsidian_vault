@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F0C54006-879E-83E6-D2F5-2F3627D47FDE" name="Warehouse">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>4C4E449E-1D5E-EE67-3F22-966DF15C9FCB</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID" id="4E40D206-493F-0E93-CE72-E13EC83DCB8D">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>1B43E533-4B09-9FE5-C362-BB153D8D7F00</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ADDRESS" id="F82C0D3A-B30A-6737-F9D7-3739E18B52E1">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>FFDA9166-0EEC-02AE-50E7-932A2042496D</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="C2214636-C049-8E4C-BDA4-B468E1C3191F" name="Warehouse pkey">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>0A9A6B20-DAE1-2B5F-C4B8-33B04A346D3A</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4E40D206-493F-0E93-CE72-E13EC83DCB8D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

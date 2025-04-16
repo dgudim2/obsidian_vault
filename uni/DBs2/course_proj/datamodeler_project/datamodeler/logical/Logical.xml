@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="EFD71D42-747A-2619-8E5E-CE299E6540A9" mainViewID="4F5B046B-EC41-2689-86A9-2A77E1758C49">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 09:45:56 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

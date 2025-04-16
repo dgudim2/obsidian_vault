@@ -1,0 +1,104 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev20c class="oracle.dbtools.crest.model.design.storage.oracle.v20c.TableProxyOraclev20c" name="Product" directorySegmentName="seg_0" id="C42E291D-A4DA-27F9-1036-B6D345AE6C50">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>78273F58-6A6F-072B-63DF-5D199FB514C3</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="QUANTITY" id="00465CE4-AF12-E8A0-FB0B-C165F808863F">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="229DE914-E718-871D-76DA-7F599DF69727">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<autoIncrementDDL>TRIGGER</autoIncrementDDL>
+</ColumnProxy>
+<ColumnProxy name="CART_ID" id="37638205-44D7-67BD-05E7-2E2E9E9DC726">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="SHOP_ID" id="7E1CBACC-B13F-5065-A0B0-FE3CCCA9EA49">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRICE" id="9AD33514-0C2C-4F66-2C29-55A5A642E2F5">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WAREHOUSE_ID" id="ACDC5067-4CA1-7F7E-D619-AEEC2404A656">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="DESCRIPTION" id="CD438F97-8DFA-C12B-B38D-6029F1343473">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="TITLE" id="DA07BA4A-E0CC-0432-92D0-1F0C68E7AACB">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<indexProxies>
+<IndexProxy class="oracle.dbtools.crest.model.design.storage.oracle.v10g.IndexProxyOraclev10g" name="Product_pkey" id="AE7DB825-D408-9596-2A37-3F0FCC2605AA">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<schemaObject>4329D7C3-3211-0DCF-8FDB-93F86F29C660</schemaObject>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+</IndexProxy>
+</indexProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FKmrnf6ubkbldnxh3mh8wwf2f7b" id="0086870B-4D31-1F8D-1E62-9BB5657F023E">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FKbo85e8vrmk72ujd6yo1atbtqm" id="9AF64B3C-3AE1-0065-B59A-D42F9DF952AE">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK9huqlgox8wqmseg52nd0t6kd2" id="E2C01C2A-8B24-FEBF-32FC-BF7B4B6A2416">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="Product_pkey" id="FFC7D83E-2997-A0F3-41D9-F586CB990E48">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<segment>16080567-FFCE-33A5-8D1B-82C24487FBF1</segment>
+<tableSpace>185961F2-F7D8-E61C-1B44-9CA2CFA96FB3</tableSpace>
+<existingIndex>AE7DB825-D408-9596-2A37-3F0FCC2605AA</existingIndex>
+<indexSegment>16080567-FFCE-33A5-8D1B-82C24487FBF1</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev20c>

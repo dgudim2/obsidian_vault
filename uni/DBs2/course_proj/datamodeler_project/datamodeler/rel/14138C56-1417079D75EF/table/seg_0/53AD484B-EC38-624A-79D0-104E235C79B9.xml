@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="53AD484B-EC38-624A-79D0-104E235C79B9" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Shop">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Shop</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B54A22F0-3F29-20A2-348E-D3E00448FB26">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Shop</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementMaxValue>2147483647</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+<autoIncrementSequenceName>Shop_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>Shop_seq_tr</autoIncrementTriggerName>
+</Column>
+<Column name="DESCRIPTION" id="DE1C3BF6-8089-6209-18B5-502117D44728">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Shop</sourceObjSchema>
+<sourceObjName>DESCRIPTION</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TITLE" id="4C79721A-58E7-3A2E-6402-CD4FE6759B4D">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Shop</sourceObjSchema>
+<sourceObjName>TITLE</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D3AF4042-66F2-7BA3-3895-A922C5604BD7" name="Shop_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Shop_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B54A22F0-3F29-20A2-348E-D3E00448FB26"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C2B5E02F-980B-E662-11D7-5464EB7BA684" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Shop_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Shop_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B54A22F0-3F29-20A2-348E-D3E00448FB26"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,129 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="786C84B1-D265-D1E2-8A03-F283C439D3A3" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Cart">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Cart</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CUSTOMER_ID" id="E610AFF8-D6DE-18B0-3401-CB56694809F7">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Cart</sourceObjSchema>
+<sourceObjName>CUSTOMER_ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F9E8B434-4E14-527A-8374-20772C98FD40" referredColumn="AFDF7107-81E4-5214-0FFC-C5D49CBDF3AF"/>
+</associations>
+</Column>
+<Column name="ID" id="4E4900AA-9895-CFCD-3564-82F5FBFCEE59">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Cart</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementMaxValue>2147483647</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+<autoIncrementSequenceName>Cart_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>Cart_seq_tr</autoIncrementTriggerName>
+</Column>
+<Column name="MANAGER_ID" id="405BEC4C-E8C7-56AD-18CE-4CF50EC44034">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Cart</sourceObjSchema>
+<sourceObjName>MANAGER_ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0B8D6B67-5F9A-C33A-07D5-E49AD1C3BE50" referredColumn="AFDF7107-81E4-5214-0FFC-C5D49CBDF3AF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="30AA3206-4D96-02AB-ADBC-1967EC99147F" name="Cart_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Cart_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E4900AA-9895-CFCD-3564-82F5FBFCEE59"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2CD7A666-3AFC-CE92-5860-4D335157D7C4" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Cart_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Cart_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E4900AA-9895-CFCD-3564-82F5FBFCEE59"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2C46E913-E82B-B36F-F884-0E91E3BFC0FE" name="FK9ppk0usn74jlqusd4dxc2fh5u">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="405BEC4C-E8C7-56AD-18CE-4CF50EC44034"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="267808AB-786A-30F5-122F-1496EEF765C4" name="FKdny3cm2c3ie03va9mvid9drjr">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E610AFF8-D6DE-18B0-3401-CB56694809F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

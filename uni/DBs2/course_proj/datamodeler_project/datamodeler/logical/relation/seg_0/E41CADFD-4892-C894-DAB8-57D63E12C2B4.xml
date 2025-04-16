@@ -1,0 +1,20 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK6p9no5puf4g8mi983isrpmwtq" directorySegmentName="seg_0" id="E41CADFD-4892-C894-DAB8-57D63E12C2B4">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 12:07:40 UTC</createdTime>
+<generatorID>41309FA4-C015-0212-501A-02B62172885B</generatorID>
+<ownerDesignName>datamodeler</ownerDesignName>
+<engineerTo>
+<item key="14138C56-ABE1-DE43-CC61-1417079D75EF" value="true"/>
+</engineerTo>
+<sourcePk>3DAAE958-A606-EBA7-7CCB-7646DBDF074B</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>C165DAC3-EE78-11A0-4764-5870DEED689C</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>B8C6F27E-E8D0-8CD6-7CFF-B641F679F416</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

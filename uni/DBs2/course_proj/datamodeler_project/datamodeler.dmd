@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="datamodeler" id="21E62D5B-2FB3-EF61-291B-6DB1CB6A8433" version="3.5">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 09:45:56 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>21E62D5B-2FB3-EF61-291B-6DB1CB6A8433</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="3029CB93-4EA9-9D0C-A883-6F40243F0F13">
+<designStoragePath>/ddl_oracle</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

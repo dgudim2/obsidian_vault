@@ -1,0 +1,52 @@
+classDiagram
+    COMMENT "1" --> "0..*" COMMENT: "can reply"
+    PRODUCT "0..*" --> "1" CART : "can be placed"
+    USER "1" --> "0..*" CART : "has"
+    USER "1" --> "0..*" COMMENT : "can place"
+    PRODUCT "1" --> "0..*" COMMENT : "commented on"
+    SHOP "1" --> "0..*" PRODUCT : "has"
+    WAREHOUSE "1" --> "0..*" PRODUCT : "has"
+
+    class COMMENT {
+        comment_id : PK
+        parent_comment_id: FK
+        comment_title
+        comment_content
+        comment_author: FK
+        comment_product_id: FK
+        rating
+    }
+
+    class WAREHOUSE {
+         warehouse_id : PK
+         address
+         max_capacity
+    }
+
+    class SHOP {
+         shop_id : PK
+         address
+         opens_at
+         closes_at
+         description
+         title
+    }
+
+    class USER {
+         user_id : PK
+         birth_date
+
+    }
+
+    class CART {
+         cart_id : PK
+         manager_id : PK
+    }
+
+    class PRODUCT {
+         product_id : PK
+         car_id : FK
+         sale_date
+         sale_price
+         country
+    }

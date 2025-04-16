@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd10d134-de31-48ff-a61a-fa91702c9655" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../../DBs2/practices/db-sketch.excalidraw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../DBs2/practices/db-sketch2.excalidraw" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../config_dir/.gits" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/lt/vgtu/hw1/controllers/InstanceInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/lt/vgtu/hw1/controllers/InstanceInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../fundamentals_of_soft_engineering/practice/DB.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
-  <component name="RunManager" selected="Spring Boot.Application">
+  <component name="RunManager" selected="Spring Boot.Second instance">
     <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="hw1" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="lt.vgtu.hw1.Application" />
@@ -103,6 +105,7 @@
       <workItem from="1744569219592" duration="1403000" />
       <workItem from="1744572058141" duration="621000" />
       <workItem from="1744639350863" duration="968000" />
+      <workItem from="1744810492747" duration="1003000" />
     </task>
     <servers />
   </component>

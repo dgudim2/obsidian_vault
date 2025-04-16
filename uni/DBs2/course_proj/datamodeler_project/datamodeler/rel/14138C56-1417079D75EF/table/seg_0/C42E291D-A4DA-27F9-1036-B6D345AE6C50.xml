@@ -1,0 +1,218 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C42E291D-A4DA-27F9-1036-B6D345AE6C50" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Product">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Product</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="CART_ID" id="37638205-44D7-67BD-05E7-2E2E9E9DC726">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>CART_ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EAD8CA8A-69F0-CA71-87AD-B7927F4E9AD5" referredColumn="4E4900AA-9895-CFCD-3564-82F5FBFCEE59"/>
+</associations>
+</Column>
+<Column name="ID" id="229DE914-E718-871D-76DA-7F599DF69727">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementMaxValue>2147483647</autoIncrementMaxValue>
+<autoIncrementCycle>false</autoIncrementCycle>
+<autoIncrementDisableCache>false</autoIncrementDisableCache>
+<autoIncrementCache>20</autoIncrementCache>
+<autoIncrementOrder>false</autoIncrementOrder>
+<autoIncrementSequenceName>Product_seq</autoIncrementSequenceName>
+<autoIncrementTriggerName>Product_seq_tr</autoIncrementTriggerName>
+</Column>
+<Column name="PRICE" id="9AD33514-0C2C-4F66-2C29-55A5A642E2F5">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>PRICE</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT055</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="QUANTITY" id="00465CE4-AF12-E8A0-FB0B-C165F808863F">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>QUANTITY</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SHOP_ID" id="7E1CBACC-B13F-5065-A0B0-FE3CCCA9EA49">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>SHOP_ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8B9F40F3-93A3-09BF-E40C-60EFE7F420A2" referredColumn="B54A22F0-3F29-20A2-348E-D3E00448FB26"/>
+</associations>
+</Column>
+<Column name="WAREHOUSE_ID" id="ACDC5067-4CA1-7F7E-D619-AEEC2404A656">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>WAREHOUSE_ID</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,10,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="60E33D7C-3CC6-CCFE-937F-1CB3F95DF58F" referredColumn="1B43E533-4B09-9FE5-C362-BB153D8D7F00"/>
+</associations>
+</Column>
+<Column name="DESCRIPTION" id="CD438F97-8DFA-C12B-B38D-6029F1343473">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>DESCRIPTION</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TITLE" id="DA07BA4A-E0CC-0432-92D0-1F0C68E7AACB">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>Product</sourceObjSchema>
+<sourceObjName>TITLE</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:00 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FFC7D83E-2997-A0F3-41D9-F586CB990E48" name="Product_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Product_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="229DE914-E718-871D-76DA-7F599DF69727"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AE7DB825-D408-9596-2A37-3F0FCC2605AA" schemaObject="4329D7C3-3211-0DCF-8FDB-93F86F29C660" name="Product_pkey">
+<sourceConnName>localdb</sourceConnName>
+<sourceObjSchema>MYSCHEMA</sourceObjSchema>
+<sourceObjName>Product_pkey</sourceObjName>
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:01 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="229DE914-E718-871D-76DA-7F599DF69727"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E2C01C2A-8B24-FEBF-32FC-BF7B4B6A2416" name="FK9huqlgox8wqmseg52nd0t6kd2">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37638205-44D7-67BD-05E7-2E2E9E9DC726"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9AF64B3C-3AE1-0065-B59A-D42F9DF952AE" name="FKbo85e8vrmk72ujd6yo1atbtqm">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ACDC5067-4CA1-7F7E-D619-AEEC2404A656"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0086870B-4D31-1F8D-1E62-9BB5657F023E" name="FKmrnf6ubkbldnxh3mh8wwf2f7b">
+<createdBy>kloud</createdBy>
+<createdTime>2025-04-16 10:08:02 UTC</createdTime>
+<ownerDesignName>datamodeler</ownerDesignName>
+<nameHasQuotes>true</nameHasQuotes>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7E1CBACC-B13F-5065-A0B0-FE3CCCA9EA49"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

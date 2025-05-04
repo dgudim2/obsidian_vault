@@ -39,6 +39,7 @@
 35. Lorax (9/10)
 36. Proximity (4/10)
 37. The electric state (8/10)
+38. Притяжение (6/10)
 
 ## Series
 

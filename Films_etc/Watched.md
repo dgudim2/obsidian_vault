@@ -65,7 +65,7 @@
 9. Akira (7.8/10)
 10. Paprika (8/10)
 11. Psycho-pass (8.8/10)
-12. Fullmetal alchemist
+12. Fullmetal alchemist (8/10)
 13. Odd taxi (9/10)
 14. Cyberpunk: Edgerunners (9/10)
 15. Goblin slayer (6/10)

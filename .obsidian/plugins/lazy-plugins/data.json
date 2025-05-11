@@ -190,6 +190,12 @@
       },
       "iconic": {
         "startupType": "short"
+      },
+      "obsidian-auto-link-title": {
+        "startupType": "short"
+      },
+      "automatic-table-of-contents": {
+        "startupType": "short"
       }
     }
   }

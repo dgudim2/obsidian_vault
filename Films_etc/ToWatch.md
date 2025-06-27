@@ -15,8 +15,6 @@
 + the prestige
 + ghost in the shell
 + whoami
-+ машина времени в джакузи
-+ The electric state
 + дивергент
 + создатель (the creator)
 + The Three Body Problem
@@ -41,6 +39,7 @@
 + pandorum
 + grommit and ...
 + flow (поток)
++ gemini
 + Tales of the loop
 + Hot tub time machine
 + the severance

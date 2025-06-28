@@ -65,12 +65,10 @@
 + trigun stampede
 + kiznavier
 + Крутой учитель Онидзука
-+ frieren beyond journey's end
 + food wars
 + Скотт Пилигрим жмёт на газ (после фильма)
 + darker than black
 + Ergo proxy
-+ Solo leveling
 + Cowboy bebop
 + Синдуальность: Нуар
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
@@ -83,6 +81,7 @@
 + girls and panzer
 + в любви как на войне
 + Solo leveling
++ Blue locks
 
 
 # Stuff to read

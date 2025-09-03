@@ -1,0 +1,22 @@
+A high number of developers choose Java due to its shallow learning curve
+
+The program was not able to function as expected because people without proper knowledge had access to source code
+
+It is proven by many studies done in 2024-2025 that including ai in developer's toolbox can highly increase development speed
+
+The research shows that backups reduce the chance of irreversible data loss by 80%,
+In order to provide high level of data redundancy, regular backups are mandatory
+
+Users showed high level of disappointment caused by poor internet  provider service level 
+
+We conducted highly sophisticated ui and ux tests and confidently can conclude that application is reaching desired level of requirement satisfaction 
+
+After carefull review, several experienced team members concluded that existing code base is hard to maintain and comprehend
+
+Despite final results not being aligned with expected situation, data can be considered as reliable safely 
+
+The mentioned paper delves into/discusses the topic of cybersecurity
+
+As expected the new versions of this application outperforms previous one in all aspects.
+
+

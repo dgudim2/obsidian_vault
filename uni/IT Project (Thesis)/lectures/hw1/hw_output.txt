@@ -1,0 +1,23 @@
+DOI: 10.3390/s23010170
+
+
+- Topic/problem/research field analyzed
+
+The problem of data inconsistency in large-scale IOT monitoring systems.
+
+2. What are the solutions/methods was proposed for solving the determined issue?
+
+Data recovery approach based on spatial-temporal (ST) correlation between the IoT nodes in the network.
+
+3. What are results achieved by authors?
+
+The proposed approach is more affective than existing ones.
+The results demonstrate the effectiveness of ST-HLSTM in terms of mean absolute deviation, mean squared deviation, and data reliability.
+
+4. What are limitations of the proposed solution, possible improvements and suggestions provided by you?
+
+The proposed model takes higher training time compared to existing data recovery models.
+And the smaller models work on short-term data only.
+
+Suggestions:
+Try to find a model architecture that is comparatively easy/fast to train while still providing reasonable accuracy.

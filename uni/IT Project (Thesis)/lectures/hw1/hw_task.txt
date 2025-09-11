@@ -1,0 +1,97 @@
+Suitable Scientific Databases:
+
+https://www.webofscience.com
+
+https://www.scopus.com
+
+https://www.sciencedirect.com
+
+https://www.ieee.org
+
+https://scholar.google.com
+
+ 
+
+Task:
+
+Find a scientific articles on a given topic and analyze them. Your report should include the following:
+
+0. DOI of the article
+
+1. What topic/problem/research field was analyzed?
+
+2. What are the solutions/methods was proposed for solving the determined issue?
+
+3. What are results achieved by authors?
+
+4. What are limitations of the proposed solution, possible improvements and suggestions provided by you?
+
+Group 1:
+
+Topic: Tool to convert sign language to text
+
+Annotation
+
+The thesis successfully investigates the challenges, opportunities, and state-of-the-art in sign language recognition and translation, aiming to develop an effective sign language-to-text conversion tool prototype. The research explores various methods for recognition and translation of the American Sign language(ASL), employing Convolutional Neural Networks (CNN) as the model for classification. The performance of these methods is compared to existing approaches, validating their effectiveness. Furthermore, the thesis develops a prototype tool capable of converting sign language to text with a high level of accuracy. This prototype utilizes the TensorFlow deep learning framework and incorporates real-time detection and prediction using a normal camera. The use of Convolutional Neural Network and TensorFlow signifies the technical approach employed in the research, emphasizing accuracy and robust performance. Overall, the thesis accomplishes its aims by conducting an in-depth investigation, developing effective methods, and creating a practical prototype tool for sign language-to-text conversion using object detection technologies. The utilization of CNN, TensorFlow, and real-time camera-based detection highlights the technical aspects and practical applicability of the developed tool.
+
+Keywords: Object detection, Convolutional Neural Network, American Sign language, Gesture recognition, machine learning, sign prediction, Tensorflow, Filter.
+
+--------------------------------------------
+
+Group 2: 
+
+Topic: DEEP-LEARNING METHODS TO DETECT IMAGE FALSIFICATION
+
+Annotation
+
+The master’s thesis analyzes how deep learning based image forgeries such as “Deepfakes” are created and how they could be detected. In this paper, we analyze a “Deepfake” recognition method that is described in scientific literature and make improvements. This paper provides a comprehensive analysis of scientific literature on “Deepfake” generation and recognition methods, then a selected machine learning model’s investigation was conducted, by changing various model parameters, during which 135 different results were obtained. These results were analyzed to find the most optimal model parameters. Based on the research results, a new improved model was developed, in which the accuracy is higher by 1,08 % in certain cases compared to the model described in scientific literature. The final work consists of 63 pages, presents 26 illustrations, 9 tables, and 25 bibliographic sources.
+
+Keywords: Machine learning, Deepfakes, Deep learning
+
+-----------------------------------
+
+Group 3:
+
+Topic: E-commerce of Moodle courses
+
+Annotation
+
+The aim of this thesis is to simplify the sale of Moodle courses using modern information systems development technologies. The thesis analyses the existing e-learning environments on the market, their advantages and disadvantages, provides an overview of the systems and the "Moodle" plugins used to sell courses, and describes the most popular technologies used to develop similar systems. The work then goes on to outline the main tasks of the system to be developed, design the database, and create a prototype system. Finally, the developed system is tested using manual and automated testing techniques and the final view of the developed system and its functionalities are presented. The system is realised using the ,,PHP" and ,,Javascript" programming languages, ,,Laravel" and ,,VueJs" frameworks. The thesis consists of 6 parts: introduction, modern e-learning systems, specification of the Moodle course sales system, evaluation of the system's suitability, conclusions and list of references. The thesis contains 59 pages of text without appendices, 34 illustrations, 41 tables, 37 bibliographic sources. The annexes are attached separately.
+
+Keywords:  Moodle, commercialisation, system, automation, modern information systems development technologies, API
+
+-----------------------------------------
+
+Group 4:
+
+Topic: Comparative analysis of missing data recovery algorithms
+
+
+Annotation
+The bachelor's thesis examines and compares various statistical and machine learning algorithms in terms of their effectiveness in recovering missing values. The comparative analysis evaluated the performance of the different algorithms on relevant indicators and datasets. Factors such as the number of missing values, the percentage of correctly recovered values and the standard deviation between the erroneously recovered values and the real values of the dataset have been taken into account. By examining and comparing these algorithms, the paper aims to understand their capabilities and limitations in recovering missing values. The study contributes to the general field of data analysis by providing a better understanding of the performance of the algorithms in recovering missing values. The thesis consists of 6 parts: introduction, theoretical part, research part, research results, conclusions, list of references. The volume of the thesis is 69 p. of text without appendices, 5 illustrations, 15 tables, 17 bibliographic sources.
+
+Keywords: recovery of missing values, statistical methods, machine learning algorithms, comparative analysis of algorithms, recovery algorithms
+
+--------------------------------------------
+
+Group 5:
+
+Topic: Design and implementation of video recommendation system
+
+Annotation
+
+The aim of this thesis is to simplify the sale of Moodle courses using modern information systems development technologies. The thesis analyses the existing e-learning environments on the market, their advantages and disadvantages, provides an overview of the systems and the "Moodle" plugins used to sell courses, and describes the most popular technologies used to develop similar systems. The work then goes on to outline the main tasks of the system to be developed, design the database, and create a prototype system. Finally, the developed system is tested using manual and automated testing techniques and the final view of the developed system and its functionalities are presented. The system is realised using the ,,PHP" and ,,Javascript" programming languages, ,,Laravel" and ,,VueJs" frameworks. The thesis consists of 6 parts: introduction, modern e-learning systems, specification of the Moodle course sales system, evaluation of the system's suitability, conclusions and list of references. The thesis contains 59 pages of text without appendices, 34 illustrations, 41 tables, 37 bibliographic sources. The annexes are attached separately.
+
+Keywords: Moodle, commercialisation, system, automation, modern information systems development technologies, API
+
+-------------------------------------------------
+
+Group 6:
+
+Topic: Security analysis of operating systems
+
+Annotation
+
+This bachelor thesis investigates operating system security tools and their application to personal computer security assessment. Different technological strategies are analysed, including authentication, authorisation, data encryption and vulnerability analysis. The study assesses how these tools can be applied to the personal computer for the early identification and prevention of security incidents. A tool is proposed that allows users to monitor the system more easily and does not require high technical expertise.
+
+Keywords:Monitoring tools, security methods

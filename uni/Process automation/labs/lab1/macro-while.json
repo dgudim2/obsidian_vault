@@ -1,0 +1,114 @@
+{
+  "Name": "readCsv-while",
+  "CreationDate": "2025-9-14",
+  "Commands": [
+    {
+      "Command": "csvReadArray",
+      "Target": "customers-100.csv",
+      "Value": "csv_array",
+      "Description": "Read csv into an array"
+    },
+    {
+      "Command": "store",
+      "Target": "0",
+      "Value": "currentRowIndex",
+      "Description": "Start at row 0"
+    },
+    {
+      "Command": "while",
+      "Target": "${currentRowIndex} < ${csv_array.length}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "",
+      "Value": "currentRow",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "0",
+      "Value": "currentColumnIndex",
+      "Description": ""
+    },
+    {
+      "Command": "while",
+      "Target": "${currentColumnIndex} < ${csv_array[0].length}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if",
+      "Target": "${currentRow.length} == 0",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${csv_array[${currentRowIndex}][${currentColumnIndex}]}",
+      "Value": "currentRow",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${currentRow}, ${csv_array[${currentRowIndex}][${currentColumnIndex}]}",
+      "Value": "currentRow",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${currentColumnIndex}) + 1",
+      "Value": "currentColumnIndex",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${currentRowIndex}) + 1",
+      "Value": "currentRowIndex",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return [\"red\", \"green\", \"maroon\", \"purple\", \"olive\", \"blue\", \"cyan\", \"orange\"][${currentRowIndex} % 8]",
+      "Value": "echoColor",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Row: ${currentRow}",
+      "Value": "${echoColor}",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "csvReadStatus: OK, row number: ${currentRowIndex}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

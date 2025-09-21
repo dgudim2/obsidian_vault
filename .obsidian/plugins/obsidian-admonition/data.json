@@ -61,6 +61,19 @@
       "injectColor": true,
       "noTitle": false,
       "copy": true
+    },
+    "analysis": {
+      "type": "analysis",
+      "color": "184, 187, 38",
+      "icon": {
+        "name": "project-diagram",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "title": "Analysis",
+      "injectColor": true,
+      "noTitle": false,
+      "copy": true
     }
   },
   "syntaxHighlight": true,

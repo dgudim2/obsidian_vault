@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiEthernetPort",
       "SiEsphome",
       "LiNetwork",
       "TiVersions",
@@ -24,8 +25,7 @@
       "LiScreenShare",
       "RiMoneyEuroBoxLine",
       "TiArrowsRandom",
-      "TiAdjustmentsCode",
-      "TiBoxMultiple"
+      "TiAdjustmentsCode"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -121,5 +121,6 @@
   "uni/Cryptography": "OcFileBinary24",
   "uni/Presentations/Version Control.md": "TiVersions",
   "uni/Computer networks": "LiNetwork",
-  "uni/IOT": "SiEsphome"
+  "uni/IOT": "SiEsphome",
+  "uni/ISP services": "LiEthernetPort"
 }

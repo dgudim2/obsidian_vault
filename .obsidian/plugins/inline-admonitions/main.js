@@ -2931,14 +2931,14 @@ __export(main_exports, {
   default: () => InlineAdmonitionPlugin
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian9 = require("obsidian");
+var import_obsidian10 = require("obsidian");
 var import_state2 = require("@codemirror/state");
 
 // src/settings/inlineAdmonitionSettingTab.ts
-var import_obsidian7 = require("obsidian");
+var import_obsidian8 = require("obsidian");
 
 // src/settings/editInlineAdmonitionModal.ts
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
 // src/utils.ts
 function encodeChar(char) {
@@ -3061,7 +3061,7 @@ var InlineAdmonition = class {
 };
 
 // src/InlineAdmonitions/prefixInlineAdmonition.ts
-var import_obsidian4 = require("obsidian");
+var import_obsidian5 = require("obsidian");
 
 // src/InlineAdmonitions/suffixInlineAdmonition.ts
 var import_obsidian = require("obsidian");
@@ -3271,11 +3271,128 @@ var ContainsInlineAdmonition = class extends InlineAdmonition {
 };
 
 // src/InlineAdmonitions/inlineAdmonitionType.ts
+var import_obsidian4 = require("obsidian");
+
+// src/InlineAdmonitions/regexInlineAdmonition.ts
 var import_obsidian3 = require("obsidian");
+var import_view3 = require("@codemirror/view");
+var RegexInlineAdmonition = class extends InlineAdmonition {
+  constructor(regex, sampleInput, backgroundColor, bgColorOpacityPercent, color, colorOpacityPercent, slug, prefixIcon, suffixIcon) {
+    super(backgroundColor, bgColorOpacityPercent, color, colorOpacityPercent, slug, prefixIcon, suffixIcon);
+    this.type = "regex" /* Regex */;
+    this.toString = () => {
+      return "RegexInlineAdmonition(/" + this.regex + "/)";
+    };
+    this.regex = regex;
+    this.sampleInput = sampleInput;
+  }
+  // TODO - I dont like this...
+  static create() {
+    return new RegexInlineAdmonition(
+      "",
+      "",
+      "#f1f1f1",
+      100,
+      "#000000",
+      100,
+      InlineAdmonition.generateSlug(),
+      "",
+      ""
+    );
+  }
+  static unmarshal(data) {
+    if (data.type != "regex" /* Regex */) {
+      throw new Error("Cannot unmarshal data into RegexInlineAdmonition: Wrong type: " + data.type);
+    }
+    return new RegexInlineAdmonition(
+      data.regex,
+      data.sampleInput,
+      data.backgroundColor,
+      data.bgColorOpacityPercent,
+      data.color,
+      data.colorOpacityPercent,
+      data.slug,
+      data.prefixIcon,
+      data.suffixIcon
+    );
+  }
+  process(codeElement) {
+    try {
+      const regex = new RegExp(this.regex);
+      if (regex.test(codeElement.innerText)) {
+        this.cssClasses().forEach((c) => codeElement.classList.add(c));
+        if (this.prefixIcon) {
+          const iconElement = document.createElement("span");
+          iconElement.classList.add("admonition-icon-left");
+          (0, import_obsidian3.setIcon)(iconElement, this.prefixIcon);
+          codeElement.prepend(iconElement);
+        }
+        if (this.suffixIcon) {
+          const iconElement = document.createElement("span");
+          iconElement.classList.add("admonition-icon-right");
+          (0, import_obsidian3.setIcon)(iconElement, this.suffixIcon);
+          codeElement.append(iconElement);
+        }
+      }
+    } catch (e) {
+      console.error("Error processing regex admonition: ", e);
+    }
+  }
+  applyTo(node, content, builder) {
+    try {
+      const regex = new RegExp(this.regex);
+      if (regex.test(content)) {
+        builder.add(
+          node.from,
+          node.to,
+          import_view3.Decoration.mark({
+            inclusive: true,
+            attributes: { class: this.cssClasses().join(" ") },
+            tagName: "span"
+          })
+        );
+      }
+    } catch (e) {
+      console.error("Error applying regex admonition: ", e);
+    }
+  }
+  cssClasses() {
+    const classes = super.cssClasses();
+    classes.push("iad-regex");
+    classes.push("iad-regex-" + sanitizeClassName(this.regex));
+    return classes;
+  }
+  sampleText() {
+    return "sample " + this.sampleInput + " match";
+  }
+  buildSettings(contentEl, updateSampleFunction) {
+    let iconButton;
+    const results = new Array();
+    results.push(new import_obsidian3.Setting(contentEl).setName("Regex").setDesc("Inline codeblock matches this regex to trigger this formatting").addText(
+      (text) => text.setPlaceholder("Enter regex").setValue(this.regex).onChange((value) => {
+        this.regex = value;
+        updateSampleFunction();
+      })
+    ));
+    results.push(new import_obsidian3.Setting(contentEl).setName("Sample input").setDesc("Use this for testing your regex and for assisting the sample display").addText((text) => text.setPlaceholder("Text match for regex").setValue(this.sampleInput).onChange((value) => {
+      this.sampleInput = value;
+      const regex = new RegExp(this.regex);
+      const ok = regex.test(value);
+      iconButton.setIcon(ok ? "checkmark" : "alert-triangle");
+      updateSampleFunction();
+    })).addButton((btn) => {
+      iconButton = btn.setIcon(new RegExp(this.regex).test(this.sampleInput) ? "checkmark" : "alert-triangle").setTooltip("Regex match");
+    }));
+    return results;
+  }
+};
+
+// src/InlineAdmonitions/inlineAdmonitionType.ts
 var InlineAdmonitionType = /* @__PURE__ */ ((InlineAdmonitionType2) => {
   InlineAdmonitionType2["Prefix"] = "prefix";
   InlineAdmonitionType2["Suffix"] = "suffix";
   InlineAdmonitionType2["Contains"] = "contains";
+  InlineAdmonitionType2["Regex"] = "regex";
   return InlineAdmonitionType2;
 })(InlineAdmonitionType || {});
 ((InlineAdmonitionType2) => {
@@ -3287,6 +3404,8 @@ var InlineAdmonitionType = /* @__PURE__ */ ((InlineAdmonitionType2) => {
         return SuffixInlineAdmonition.create();
       case "contains" /* Contains */:
         return ContainsInlineAdmonition.create();
+      case "regex" /* Regex */:
+        return RegexInlineAdmonition.create();
       default:
         throw new Error("Cannot create, invalid Inline Admonition type");
     }
@@ -3300,6 +3419,8 @@ var InlineAdmonitionType = /* @__PURE__ */ ((InlineAdmonitionType2) => {
         return "suffix" /* Suffix */;
       case "contains" /* Contains */:
         return "contains" /* Contains */;
+      case "regex" /* Regex */:
+        return "regex" /* Regex */;
       default:
         throw new Error("Invalid Inline Admonition type: " + type);
     }
@@ -3318,6 +3439,8 @@ var InlineAdmonitionType = /* @__PURE__ */ ((InlineAdmonitionType2) => {
         return SuffixInlineAdmonition.unmarshal(data);
       case "contains" /* Contains */:
         return ContainsInlineAdmonition.unmarshal(data);
+      case "regex" /* Regex */:
+        return RegexInlineAdmonition.unmarshal(data);
       default:
         throw new Error("Cannot Unmarshal, invalid Inline Admonition type: " + type);
     }
@@ -3330,11 +3453,12 @@ The "type" defines what triggers an Inline Admonition
  - Prefix: Triggered if a codeblock starts with the string.
  - Suffix: Triggered if a codeblock ends with the string.
  - Contains: Triggered if a codeblock contains the string anywhere within it.
+ - Regex: Triggered if a codeblock matches the regular expression.
  `;
   }
   InlineAdmonitionType2.tooltip = tooltip;
 })(InlineAdmonitionType || (InlineAdmonitionType = {}));
-var TypeTooltipModal = class extends import_obsidian3.Modal {
+var TypeTooltipModal = class extends import_obsidian4.Modal {
   onOpen() {
     super.onOpen();
     const { contentEl } = this;
@@ -3346,7 +3470,7 @@ var TypeTooltipModal = class extends import_obsidian3.Modal {
 };
 
 // src/InlineAdmonitions/prefixInlineAdmonition.ts
-var import_view3 = require("@codemirror/view");
+var import_view4 = require("@codemirror/view");
 var PrefixInlineAdmonition = class extends InlineAdmonition {
   constructor(prefix, hideTriggerString, backgroundColor, bgColorOpacityPercent, color, colorOpacityPercent, slug, prefixIcon, suffixIcon) {
     super(backgroundColor, bgColorOpacityPercent, color, colorOpacityPercent, slug, prefixIcon, suffixIcon);
@@ -3396,13 +3520,13 @@ var PrefixInlineAdmonition = class extends InlineAdmonition {
       if (this.prefixIcon) {
         const iconElement = document.createElement("span");
         iconElement.classList.add("admonition-icon-left");
-        (0, import_obsidian4.setIcon)(iconElement, this.prefixIcon);
+        (0, import_obsidian5.setIcon)(iconElement, this.prefixIcon);
         codeElement.prepend(iconElement);
       }
       if (this.suffixIcon) {
         const iconElement = document.createElement("span");
         iconElement.classList.add("admonition-icon-right");
-        (0, import_obsidian4.setIcon)(iconElement, this.suffixIcon);
+        (0, import_obsidian5.setIcon)(iconElement, this.suffixIcon);
         codeElement.append(iconElement);
       }
     }
@@ -3412,7 +3536,7 @@ var PrefixInlineAdmonition = class extends InlineAdmonition {
       builder.add(
         node.from,
         node.to,
-        import_view3.Decoration.mark({
+        import_view4.Decoration.mark({
           inclusive: true,
           attributes: { class: this.cssClasses().join(" ") },
           tagName: "span"
@@ -3422,7 +3546,7 @@ var PrefixInlineAdmonition = class extends InlineAdmonition {
         builder.add(
           node.from,
           node.from + this.prefix.length,
-          import_view3.Decoration.mark({
+          import_view4.Decoration.mark({
             inclusive: true,
             attributes: { class: "iad-hidden" },
             tagName: "span"
@@ -3442,14 +3566,14 @@ var PrefixInlineAdmonition = class extends InlineAdmonition {
   }
   buildSettings(contentEl, updateSampleFunction) {
     const results = new Array();
-    results.push(new import_obsidian4.Setting(contentEl).setName("Prefix").setDesc("Inline codeblock prefix to trigger this formatting").addText(
+    results.push(new import_obsidian5.Setting(contentEl).setName("Prefix").setDesc("Inline codeblock prefix to trigger this formatting").addText(
       (text) => text.setPlaceholder("Enter prefix").setValue(this.prefix).onChange((value) => {
         this.prefix = value;
         updateSampleFunction();
       })
     ));
     results.push(
-      new import_obsidian4.Setting(contentEl).setName("Hide prefix text").setDesc("If enabled, the 'prefix' text will not show in resulting Inline Admonition").addToggle(
+      new import_obsidian5.Setting(contentEl).setName("Hide prefix text").setDesc("If enabled, the 'prefix' text will not show in resulting Inline Admonition").addToggle(
         (toggle) => toggle.setValue(this.hideTriggerString).onChange((val) => {
           this.hideTriggerString = val;
           updateSampleFunction();
@@ -3461,8 +3585,8 @@ var PrefixInlineAdmonition = class extends InlineAdmonition {
 };
 
 // src/settings/IconSelectionModal.ts
-var import_obsidian5 = require("obsidian");
-var IconSelectionModal = class extends import_obsidian5.Modal {
+var import_obsidian6 = require("obsidian");
+var IconSelectionModal = class extends import_obsidian6.Modal {
   constructor(app, currentIcon, onSelect) {
     super(app);
     this.currentIcon = currentIcon;
@@ -3482,7 +3606,7 @@ var IconSelectionModal = class extends import_obsidian5.Modal {
       const iconButton = iconGrid.createEl("button", { cls: "icon-button" });
       iconButton.setAttr("aria-label", iconName);
       const iconEl = iconButton.createDiv({ cls: "icon" });
-      (0, import_obsidian5.setIcon)(iconEl, iconName);
+      (0, import_obsidian6.setIcon)(iconEl, iconName);
       iconButton.addEventListener("click", () => {
         this.onSelect(iconName);
         this.close();
@@ -3518,12 +3642,12 @@ var IconSelectionModal = class extends import_obsidian5.Modal {
     contentEl.empty();
   }
   getAvailableIcons() {
-    return (0, import_obsidian5.getIconIds)().filter((id) => id.startsWith("lucide-")).map((id) => id.slice(7));
+    return (0, import_obsidian6.getIconIds)().filter((id) => id.startsWith("lucide-")).map((id) => id.slice(7));
   }
 };
 
 // src/settings/editInlineAdmonitionModal.ts
-var EditInlineAdmonitionModal = class extends import_obsidian6.Modal {
+var EditInlineAdmonitionModal = class extends import_obsidian7.Modal {
   constructor(app, toEdit, onSubmit) {
     super(app);
     this.typeSettings = new Array();
@@ -3539,33 +3663,33 @@ var EditInlineAdmonitionModal = class extends import_obsidian6.Modal {
   onOpen() {
     const { contentEl } = this;
     contentEl.createEl("br");
-    const submitSetting = new import_obsidian6.Setting(contentEl).addButton((btn) => btn.setButtonText("Submit").setCta().onClick(() => {
+    const submitSetting = new import_obsidian7.Setting(contentEl).addButton((btn) => btn.setButtonText("Submit").setCta().onClick(() => {
       this.close();
       this.onSubmit(this.result);
     }));
     this.sample = submitSetting.nameEl.createEl("code", { attr: { "style": `margin: 0.5em;` } });
     this.updateSample();
-    new import_obsidian6.Setting(contentEl).setName("Background color").setDesc("Color of the background of the inline admonition").addColorPicker(
+    new import_obsidian7.Setting(contentEl).setName("Background color").setDesc("Color of the background of the inline admonition").addColorPicker(
       (cp) => cp.setValue(this.result.backgroundColor).onChange((val) => {
         this.result.backgroundColor = val;
         this.updateSample();
       })
     );
-    new import_obsidian6.Setting(contentEl).setName("Background opacity (0% - 100%)").setDesc("Percentage of opacity to apply to the background color. 0% is fully transparent.").addSlider((s) => s.setLimits(0, 100, 1).setValue(this.result.bgColorOpacityPercent).onChange((val) => {
+    new import_obsidian7.Setting(contentEl).setName("Background opacity (0% - 100%)").setDesc("Percentage of opacity to apply to the background color. 0% is fully transparent.").addSlider((s) => s.setLimits(0, 100, 1).setValue(this.result.bgColorOpacityPercent).onChange((val) => {
       this.result.bgColorOpacityPercent = val;
       this.updateSample();
     }));
-    new import_obsidian6.Setting(contentEl).setName("Text color").setDesc("Color of the text of the inline admonition").addColorPicker(
+    new import_obsidian7.Setting(contentEl).setName("Text color").setDesc("Color of the text of the inline admonition").addColorPicker(
       (cp) => cp.setValue(this.result.color).onChange((val) => {
         this.result.color = val;
         this.updateSample();
       })
     );
-    new import_obsidian6.Setting(contentEl).setName("Text color opacity (0% - 100%)").setDesc("Percentage of opacity to apply to the text color. 0% is fully transparent.").addSlider((s) => s.setLimits(0, 100, 1).setValue(this.result.colorOpacityPercent).onChange((val) => {
+    new import_obsidian7.Setting(contentEl).setName("Text color opacity (0% - 100%)").setDesc("Percentage of opacity to apply to the text color. 0% is fully transparent.").addSlider((s) => s.setLimits(0, 100, 1).setValue(this.result.colorOpacityPercent).onChange((val) => {
       this.result.colorOpacityPercent = val;
       this.updateSample();
     }));
-    new import_obsidian6.Setting(contentEl).setName("Prefix Icon").setDesc("Select an icon to include at the beginning of the inline admonition").addButton(
+    new import_obsidian7.Setting(contentEl).setName("Prefix Icon").setDesc("Select an icon to include at the beginning of the inline admonition").addButton(
       (btn) => {
         if (this.result.prefixIcon) {
           btn.setIcon(this.result.prefixIcon);
@@ -3587,7 +3711,7 @@ var EditInlineAdmonitionModal = class extends import_obsidian6.Modal {
         });
       }
     );
-    new import_obsidian6.Setting(contentEl).setName("Suffix Icon").setDesc("Select an icon to include at the end of the inline admonition").addButton(
+    new import_obsidian7.Setting(contentEl).setName("Suffix Icon").setDesc("Select an icon to include at the end of the inline admonition").addButton(
       (btn) => {
         if (this.result.suffixIcon) {
           btn.setIcon(this.result.suffixIcon);
@@ -3609,7 +3733,7 @@ var EditInlineAdmonitionModal = class extends import_obsidian6.Modal {
         });
       }
     );
-    new import_obsidian6.Setting(contentEl).setName("Type").setDesc("The way the Inline Admonition is triggered").setTooltip(InlineAdmonitionType.tooltip()).addDropdown((dc) => dc.addOption("prefix" /* Prefix */, "prefix" /* Prefix */).addOption("suffix" /* Suffix */, "suffix" /* Suffix */).addOption("contains" /* Contains */, "contains" /* Contains */).setValue(this.result.type).onChange((value) => {
+    new import_obsidian7.Setting(contentEl).setName("Type").setDesc("The way the Inline Admonition is triggered").setTooltip(InlineAdmonitionType.tooltip()).addDropdown((dc) => dc.addOption("prefix" /* Prefix */, "prefix" /* Prefix */).addOption("suffix" /* Suffix */, "suffix" /* Suffix */).addOption("contains" /* Contains */, "contains" /* Contains */).addOption("regex" /* Regex */, "regex" /* Regex */).setValue(this.result.type).onChange((value) => {
       this.clearTypeSettings();
       const old = this.result;
       this.result = InlineAdmonitionType.createFrom(value);
@@ -3643,7 +3767,7 @@ var EditInlineAdmonitionModal = class extends import_obsidian6.Modal {
 };
 
 // src/settings/inlineAdmonitionSettingTab.ts
-var InlineAdmonitionSettingTab = class extends import_obsidian7.PluginSettingTab {
+var InlineAdmonitionSettingTab = class extends import_obsidian8.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -3651,7 +3775,7 @@ var InlineAdmonitionSettingTab = class extends import_obsidian7.PluginSettingTab
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian7.Setting(containerEl).addButton((b) => b.setButtonText("Create new inline admonition").onClick(async (evt) => {
+    new import_obsidian8.Setting(containerEl).addButton((b) => b.setButtonText("Create new inline admonition").onClick(async (evt) => {
       EditInlineAdmonitionModal.new(this.app, async (result) => {
         this.plugin.settings.inlineAdmonitions.set(result.slug, result);
         await this.plugin.saveSettings();
@@ -3777,11 +3901,11 @@ var InlineAdmonitionsPostProcessor = class {
 };
 
 // src/InlineAdmonitions/InlineAdmonitionExtension.ts
-var import_view4 = require("@codemirror/view");
+var import_view5 = require("@codemirror/view");
 var import_state = require("@codemirror/state");
 var import_language = require("@codemirror/language");
 function inlineAdmonitionPlugin(admonitions) {
-  return import_view4.ViewPlugin.fromClass(
+  return import_view5.ViewPlugin.fromClass(
     class {
       constructor(view) {
         this.decorations = this.buildDecorations(view);
@@ -3901,7 +4025,7 @@ function _makeCssRule(className, cssDeclarations) {
 }
 
 // src/io/MarkdownRenderer.ts
-var import_obsidian8 = require("obsidian");
+var import_obsidian9 = require("obsidian");
 var MarkdownRendererSingleton = class {
   constructor() {
     this.plugin = null;
@@ -3927,12 +4051,12 @@ var MarkdownRendererSingleton = class {
       return;
     }
     el.addClass("iad-inline-md");
-    import_obsidian8.MarkdownRenderer.render(this.plugin.app, markdown, el, sourcePath, this.plugin);
+    import_obsidian9.MarkdownRenderer.render(this.plugin.app, markdown, el, sourcePath, this.plugin);
   }
 };
 
 // main.ts
-var InlineAdmonitionPlugin = class extends import_obsidian9.Plugin {
+var InlineAdmonitionPlugin = class extends import_obsidian10.Plugin {
   async onload() {
     console.log("Loading Inline Admonitions.");
     this.inlineAdmonitionCompartment = new import_state2.Compartment();
@@ -3972,13 +4096,13 @@ var InlineAdmonitionPlugin = class extends import_obsidian9.Plugin {
     }
   }
   rerenderMarkdownViews() {
-    const view = this.app.workspace.getActiveViewOfType(import_obsidian9.MarkdownView);
+    const view = this.app.workspace.getActiveViewOfType(import_obsidian10.MarkdownView);
     view == null ? void 0 : view.previewMode.rerender(true);
   }
   updateEditorExtensions() {
     const newExtension = inlineAdmonitionPlugin(Array.from(this.settings.inlineAdmonitions.values()));
     this.app.workspace.iterateAllLeaves((leaf) => {
-      if (leaf.view instanceof import_obsidian9.MarkdownView && leaf.view.editor) {
+      if (leaf.view instanceof import_obsidian10.MarkdownView && leaf.view.editor) {
         const editor = leaf.view.editor;
         const cm = editor.cm;
         cm.dispatch({

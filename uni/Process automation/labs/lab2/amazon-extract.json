@@ -1,0 +1,162 @@
+{
+  "Name": "extract-test",
+  "CreationDate": "2025-9-21",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://www.amazon.com/s?k=power+tools",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "1000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "waitForElementPresent",
+      "Target": "css=span.rush-component.s-latency-cf-section",
+      "Value": "15000",
+      "Description": ""
+    },
+    {
+      "Command": "storeXpathCount",
+      "Target": "xpath=//div[contains(@role,'listitem')]//img[contains(@class, 's-image')]",
+      "Value": "productCount",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Found ${productCount} products",
+      "Value": "orange",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "index",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "true",
+      "Value": "!errorignore",
+      "Description": ""
+    },
+    {
+      "Command": "while",
+      "Target": "${index} <= ${productCount}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@role,'listitem')]//div[contains(@data-cy, 'title-recipe')]/a/h2/span)[${index}]",
+      "Value": "title",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@role,'listitem')]//div[contains(@data-cy, 'delivery-recipe')]//span[contains(@class, 'a-text-bold')])[${index}]",
+      "Value": "delivery",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@role,'listitem')]//span[contains(@class, 'a-price')]//span[contains(@class, 'a-price-whole')])[${index}]",
+      "Value": "price",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@role,'listitem')]//div[contains(@data-cy, 'reviews-block')]/div/span[contains(@aria-hidden, 'true')])[${index}]",
+      "Value": "rating",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@role,'listitem')]//div[contains(@data-cy, 'reviews-block')]/div//div[contains(@data-csa-c-content-id, 'alf-customer-ratings-count-component')]/a/span)[${index}]",
+      "Value": "rating_count",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return '${title}'.replace(/,/g, ';').replace(/^\"|\"$/g, '');",
+      "Value": "title",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return '${delivery}'.replace(/,/g, ';').replace(/^\"|\"$/g, '');",
+      "Value": "delivery",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return '${price}'.replace(/\\./g, '').replace(/^\"|\"$/g, '').trim();",
+      "Value": "price",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return '${rating_count}'.replace(/\\(|\\)/g, '').replace(/^\"|\"$/g, '').trim();",
+      "Value": "rating_count",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Product ${index}: \\n Title: ${title} \\n Price: ${price} \\n Rating ${rating} \\n Rating count: ${rating_count} \\n Delivery: ${delivery}",
+      "Value": "green",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${title}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${delivery}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${price}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${rating}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${rating_count}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "csvSave",
+      "Target": "amazon_output.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${index})+1",
+      "Value": "index",
+      "Description": ""
+    },
+    {
+      "Command": "endWhile",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

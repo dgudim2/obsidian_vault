@@ -1,0 +1,114 @@
+{
+  "Name": "VarleLtExtractAllTitles",
+  "CreationDate": "2025-9-15",
+  "Commands": [
+    {
+      "Command": "open",
+      "Target": "https://www.varle.lt/",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "pause",
+      "Target": "3000",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "type",
+      "Target": "css=input[placeholder='Paieška']",
+      "Value": "telefonas",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "css=form[action*='search'] button[type='submit']",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "waitForElementPresent",
+      "Target": "css=div.ajax-container",
+      "Value": "15000",
+      "Description": ""
+    },
+    {
+      "Command": "storeXpathCount",
+      "Target": "xpath=//div[contains(@class,'ajax-container')]//h3/a",
+      "Value": "productCount",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Found ${productCount} products",
+      "Value": "blue",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "1",
+      "Value": "index",
+      "Description": ""
+    },
+    {
+      "Command": "while",
+      "Target": "${index} <= ${productCount}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "xpath=(//div[contains(@class,'ajax-container')]//h3/a)[${index}]",
+      "Value": "title",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return '${title}'.replace(/,/g, ';');",
+      "Value": "title",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return ${title}.replace(/^\"|\"$/g, '');",
+      "Value": "title",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Product ${index}: ${title}",
+      "Value": "green",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "Title before saving: '${title}'",
+      "Value": "green",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${title}",
+      "Value": "!csvLine",
+      "Description": ""
+    },
+    {
+      "Command": "csvSave",
+      "Target": "varle_output.csv",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${index})+1",
+      "Value": "index",
+      "Description": ""
+    },
+    {
+      "Command": "endWhile",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}

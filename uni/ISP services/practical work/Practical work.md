@@ -630,9 +630,19 @@ Average overhead is **6.45%**, which is not nothing, but reasonably low
 
 > Set and analyze QoS parameters (TOS, DiffServ, ...). Determine the deviation of sending, receiving, and delaying individual traffic components in a packet. Use mathematical and statistical means to estimate the minimums and maximums and deviations of these characteristics. Summarize the obtained results.
 
+
+> [!note] 
+> In this section, I am going to analyze **TCP** and **UDP** traffic
+
+### Analyzing QoS parameters
+
+1. Add custom columns to view DSCP (**D**ifferentiated **s**ervices **c**ode **p**oint) and TOS (**T**ype **o**f **s**ervice)
+
+![[Pasted image 20250928203621.png]]
+
 ## Task 5 - Flow rates
 
-> Determine the rate of individual ow components and the total ow rate. To evaluate speed minimum, maximum and deviations by mathematical and statistical means. Summarize the obtained results.
+> Determine the rate of individual flow components and the total flow rate. To evaluate speed minimum, maximum and deviations by mathematical and statistical means. Summarize the obtained results.
 
 ## Task 6 - Conclusion
 

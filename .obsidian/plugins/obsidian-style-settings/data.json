@@ -23,5 +23,6 @@
   "minimal-style@@bold-color@@dark": "#EB9342",
   "minimal-style@@bold-modifier": 300,
   "minimal-style@@italic-color@@dark": "#FFC08C",
-  "pdf-plus@@pdf-plus-highlight-border-radius": 0.1
+  "pdf-plus@@pdf-plus-highlight-border-radius": 0.1,
+  "minimal-style@@minimal-code-scroll": false
 }

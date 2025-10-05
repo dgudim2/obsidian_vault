@@ -533,6 +533,7 @@ var DEFAULT_SETTINGS_VALUES = {
   usePgUpPgDownKeysToChangeSlides: true,
   zoomToSlideWithoutPadding: true,
   useUnclampedZoomWhilePresenting: false,
+  fullscreenPresentationEnabled: true,
   slideTransitionAnimationDuration: 0.5,
   slideTransitionAnimationIntensity: 1.25,
   canvasEncapsulationEnabled: false,
@@ -851,6 +852,11 @@ var SETTINGS = {
       useUnclampedZoomWhilePresenting: {
         label: "Use unclamped zoom while presenting",
         description: "When enabled, the zoom will not be clamped while presenting.",
+        type: "boolean"
+      },
+      fullscreenPresentationEnabled: {
+        label: "Enter fullscreen while presenting",
+        description: "When enabled, presentations automatically request fullscreen. Disable to keep Obsidian windowed during presentations.",
         type: "boolean"
       },
       slideTransitionAnimationDuration: {
@@ -3073,6 +3079,7 @@ var PresentationCanvasExtension = class extends CanvasExtension {
     this.isPresentationMode = false;
     this.visitedNodeIds = [];
     this.fullscreenModalObserver = null;
+    this.presentationUsesFullscreen = false;
   }
   isEnabled() {
     return "presentationFeatureEnabled";
@@ -3274,13 +3281,27 @@ var PresentationCanvasExtension = class extends CanvasExtension {
       y: canvas.ty,
       zoom: canvas.tZoom
     };
+    const shouldEnterFullscreen = this.plugin.settings.getSetting("fullscreenPresentationEnabled");
+    this.presentationUsesFullscreen = shouldEnterFullscreen;
     canvas.wrapperEl.focus();
-    canvas.wrapperEl.requestFullscreen();
     canvas.wrapperEl.classList.add("presentation-mode");
+    if (shouldEnterFullscreen) {
+      try {
+        await canvas.wrapperEl.requestFullscreen();
+      } catch (_err) {
+        this.presentationUsesFullscreen = false;
+      }
+    }
     canvas.setReadonly(true);
     if (this.plugin.settings.getSetting("useUnclampedZoomWhilePresenting"))
       canvas.screenshotting = true;
     canvas.wrapperEl.onkeydown = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        e.stopPropagation();
+        this.endPresentation(canvas);
+        return;
+      }
       if (this.plugin.settings.getSetting("useArrowKeysToChangeSlides")) {
         if (e.key === "ArrowRight") this.nextNode(canvas);
         else if (e.key === "ArrowLeft") this.previousNode(canvas);
@@ -3290,24 +3311,27 @@ var PresentationCanvasExtension = class extends CanvasExtension {
         else if (e.key === "PageUp") this.previousNode(canvas);
       }
     };
-    this.fullscreenModalObserver = new MutationObserver((mutationRecords) => {
-      mutationRecords.forEach((mutationRecord) => {
-        mutationRecord.addedNodes.forEach((node) => {
-          var _a;
-          document.body.removeChild(node);
-          (_a = document.fullscreenElement) == null ? void 0 : _a.appendChild(node);
+    if (this.presentationUsesFullscreen) {
+      this.fullscreenModalObserver = new MutationObserver((mutationRecords) => {
+        mutationRecords.forEach((mutationRecord) => {
+          mutationRecord.addedNodes.forEach((node) => {
+            var _a;
+            document.body.removeChild(node);
+            (_a = document.fullscreenElement) == null ? void 0 : _a.appendChild(node);
+          });
         });
+        const inputField = document.querySelector(".prompt-input");
+        if (inputField) inputField.focus();
       });
-      const inputField = document.querySelector(".prompt-input");
-      if (inputField) inputField.focus();
-    });
-    this.fullscreenModalObserver.observe(document.body, { childList: true });
-    canvas.wrapperEl.onfullscreenchange = (_e) => {
-      if (document.fullscreenElement) return;
-      this.endPresentation(canvas);
-    };
+      this.fullscreenModalObserver.observe(document.body, { childList: true });
+      canvas.wrapperEl.onfullscreenchange = (_e) => {
+        if (document.fullscreenElement) return;
+        this.endPresentation(canvas);
+      };
+    }
     this.isPresentationMode = true;
-    await sleep(500);
+    if (this.presentationUsesFullscreen)
+      await sleep(500);
     const startNodeId = this.visitedNodeIds.first();
     if (!startNodeId) return;
     const startNode = canvas.nodes.get(startNodeId);
@@ -3316,18 +3340,22 @@ var PresentationCanvasExtension = class extends CanvasExtension {
   }
   endPresentation(canvas) {
     var _a;
-    (_a = this.fullscreenModalObserver) == null ? void 0 : _a.disconnect();
-    this.fullscreenModalObserver = null;
+    if (!this.isPresentationMode) return;
+    if (this.presentationUsesFullscreen) {
+      (_a = this.fullscreenModalObserver) == null ? void 0 : _a.disconnect();
+      this.fullscreenModalObserver = null;
+      canvas.wrapperEl.onfullscreenchange = null;
+      if (document.fullscreenElement) document.exitFullscreen();
+    }
     canvas.wrapperEl.onkeydown = null;
-    canvas.wrapperEl.onfullscreenchange = null;
     canvas.setReadonly(false);
     if (this.plugin.settings.getSetting("useUnclampedZoomWhilePresenting"))
       canvas.screenshotting = false;
     canvas.wrapperEl.classList.remove("presentation-mode");
-    if (document.fullscreenElement) document.exitFullscreen();
     if (this.plugin.settings.getSetting("resetViewportOnPresentationEnd"))
       canvas.setViewport(this.savedViewport.x, this.savedViewport.y, this.savedViewport.zoom);
     this.isPresentationMode = false;
+    this.presentationUsesFullscreen = false;
   }
   nextNode(canvas) {
     var _a;

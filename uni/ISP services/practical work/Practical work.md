@@ -305,7 +305,7 @@ We can use the same **protocol hierarchy** section user earlier to get a more in
 | [[#BitTorrent]] | 5-7 (Application)                                                           | 1.4       | random                |
 
 > [!note] 
-> There are packets without a recognized protocol (about 50%), those are applications exchanging raw data over the **TCP/UDP** connections, those are most likely *BitTorrent*
+> There are packets without a recognized protocol (about 50%), those are applications exchanging raw data over the **TCP/UDP** connections, those are most likely *BitTorrent* or websites fetching data from an *API*
 
 
 - $ Here is a tree-like overview (you can also click the protocol names in the table)
@@ -457,7 +457,7 @@ We can use the same **protocol hierarchy** section user earlier to get a more in
 
 > [!analysis] 
 > 
-> We can see some **DHT** packet captures, but none are decoded correctly, which suggests a miss-classification
+> We can see some **DHT** packet captures, but none are decoded correctly, which suggests a missclassification
 > 
 > ![[Pasted image 20250928180252.png]]
 > > IMG 9 - Misclassified DHT
@@ -480,6 +480,9 @@ We can use the same **protocol hierarchy** section user earlier to get a more in
 
 > [!analysis] 
 > We see some **ARP** packets in our capture, which is totally normal. We don't see a lot of them, so the network seems to be configured properly and there are no frequent hardware connects/disconnects.
+> 
+> ![[Pasted image 20251004191232.png]]
+> > IMG 11 - ARP
 
 
 ## Task 3 - Protocol overhead
@@ -494,16 +497,16 @@ We can use the same **protocol hierarchy** section user earlier to get a more in
 > **[[#IPv4]]** header: *20 bytes*
 > **[[#TCP]]** header: *variable* (22.5 bytes on avg)
 > 
-> **Total header length**: $(14 + 20 + 22.5) * 8 = 452$ *bits*
-
-### Analyzing TCP header size
+> **Total avg header length**: $(14 + 20 + 22.5) * 8 = 452$ *bits*
 
 1. Add a field to see the header size
 
 ![[Pasted image 20250928183359.png]]
-> Img 11 - adding TCP header length
+> Img 12 - adding TCP header length
 
 2. Apply *TCP* filter and export the data into an *sqlite* DB
+
+### Analyzing TCP header size
 
 
 `````col 
@@ -536,24 +539,24 @@ flexGrow=1
 
 #### Table - TCP header sizes in bytes
 
-|TCP_header_length|count(*)|
-|-|-|
-|20|42803|
-|32|9217|
-|44|349|
-|28|344|
-|40|220|
-|52|192|
-|60|11|
-|48|8|
-|24|1|
+|TCP header length|count(*)|percentage|
+|---|---|---|
+|20|42803|80.25|
+|32|9217|17.28|
+|44|349|0.65|
+|28|344|0.64|
+|40|220|0.41|
+|52|192|0.36|
+|60|11|0.02|
+|48|8|0.01|
+|24|1|0.00|
 
 ````
 
 `````
 
 ![[Pasted image 20250928184803.png]]
-> IMG 12 - Tcp header sizes
+> IMG 13 - Tcp header sizes
 
 > [!analysis] 
 > 
@@ -597,7 +600,7 @@ flexGrow=1
 We can plot the header size (green) and payload size (purple) and see that the overhead is not that big
 
 ![[Pasted image 20250928191340.png]]
-> IMG 13 - TCP payload and header sizes
+> IMG 14 - TCP payload and header sizes
 
 We can also calculate it in percent
 
@@ -621,29 +624,685 @@ flexGrow=1
 Average overhead is **6.45%**, which is not nothing, but reasonably low
 
 > [!note] 
-> For small packets the overhead will be bigger and for bigger ones - smaller
+> For small packets the overhead will be *bigger* and for bigger ones - *smaller*
 
 ```` 
 `````
+
+> [!analysis] 
+> 
+> In this particular capture, overhead is not that big in comparison with the average payload size of *819* bytes
 
 ## Task 4 - QoS parameters
 
 > Set and analyze QoS parameters (TOS, DiffServ, ...). Determine the deviation of sending, receiving, and delaying individual traffic components in a packet. Use mathematical and statistical means to estimate the minimums and maximums and deviations of these characteristics. Summarize the obtained results.
 
+> https://en.wikipedia.org/wiki/Differentiated_services
 
 > [!note] 
 > In this section, I am going to analyze **TCP** and **UDP** traffic
 
-### Analyzing QoS parameters
-
 1. Add custom columns to view DSCP (**D**ifferentiated **s**ervices **c**ode **p**oint) and TOS (**T**ype **o**f **s**ervice)
 
 ![[Pasted image 20250928203621.png]]
+> Img 14 - adding TCP header length
+
+2. Apply *TCP + UDP* filter and export the data into an *sqlite* DB
+
+### Analyzing protocol distribution
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select Protocol, count(*),
+printf("%.2f", (count(*) / (select count(*) + 0.0 from all_tcp_udp_qos)) * 100.0) as percentage
+from all_tcp_udp_qos
+group by Protocol 
+having count(*) > 10
+order by count(*) desc
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|Protocol|count(*)|percentage|
+|---|---|---|
+|TCP|51591|96.72|
+|SSHv2|738|1.38|
+|BitTorrent|737|1.38|
+|DNS|100|0.19|
+|FTP|74|0.14|
+|BT-DHT|49|0.09|
+|UDP|25|0.05|
+|ICMP|14|0.03|
+
+```` 
+`````
+
+> [!analysis] 
+> 
+> Most of our packets (*96.7%*) are either raw *TCP* or some *higher level* protcols on top of *TCP* (FTP/SSH)
+
+> [!note] 
+> Only the **DSCP value** is set in our capture, so that's what we will be analyzing
+
+### QoS overview
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select "DSCP Value", count(distinct Protocol), 
+CASE WHEN count(distinct Protocol) < 4 then string_agg(Protocol, ',') END,
+count(*),
+printf("%.2f", (count(*) / (select count(*) + 0.0 from all_tcp_udp_qos)) * 100.0) as percentage
+from all_tcp_udp_qos 
+group by "DSCP Value"
+order by count(*) desc
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|DSCP Value|count(distinct Protocol)|Protocols|Num packets|Percentage|
+|---|---|---|---|---|
+|CS0|11||30241|56.69|
+|2|1|TCP|8992|16.86|
+|CS2|7||8613|16.15|
+|AF11|2|TCP,SSHv2|4702|8.82|
+|AF21|3|TCP,BitTorrent,BT-DHT|789|1.48|
+|CS6|1|ICMP|2|0.00|
+|CS1|1|ICMP|1|0.00|
+
+```` 
+`````
+
+> [!analysis] 
+> 
+> - Most of our packets (*56.7%*) are **CS0** (Standard service class, precedence of 0)
+> - ~9k *TCP* packets (*16.9%*) have a *DSCP* value of **2**, which I think is also **CS0**, **LE** or maybe something custom
+> - ~8.5k packets (7 different protocols) (*16.2%*) are **CS2** (Network administration and management, precedence of 2)
+> - 4.7k *TCP* packets (*8.8%*) are **AF11** (Assured forwarding 11 (class 1, low drop, elastic), High-throughput data)
+> - 789 packets (*1.48%*) are **AF21** (Assured forwarding 21 (class 2, low drop, elastic), Low-latency data)
+> - 3 *ICMP* packets with **CS1** (Low-priority data, precedence of 1) and **CS6** (Network control, precedence of 6)
+
+
+### QoS of particular protocols
+
+> [!note] 
+> All other protocols not listed here are either **CS0** or **CS2** with some **AF21** in *BitTorrent*
+
+#### TCP
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select "DSCP Value",
+count(*),
+printf("%.2f", (count(*) / (select count(*) + 0.0 from all_tcp_udp_qos where Protocol = 'TCP')) * 100.0) as percentage
+from all_tcp_udp_qos
+where Protocol = 'TCP'
+group by "DSCP Value"
+order by count(*) desc
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|DSCP Value|count(*)|percentage|
+|---|---|---|
+|CS0|29403|55.12|
+|2|8992|16.86|
+|CS2|8300|15.56|
+|AF11|4220|7.91|
+|AF21|676|1.27|
+
+```` 
+`````
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+```` 
+`````
+#### SSH (TCP)
+
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select "DSCP Value",
+count(*),
+printf("%.2f", (count(*) / (select count(*) + 0.0 from all_tcp_udp_qos where Protocol = 'SSHv2')) * 100.0) as percentage
+from all_tcp_udp_qos
+where Protocol = 'SSHv2'
+group by "DSCP Value"
+order by count(*) desc
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|DSCP Value|count(*)|percentage|
+|---|---|---|
+|AF11|482|65.31|
+|CS0|256|34.69|
+
+```` 
+`````
+
+#### ICMP
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select "DSCP Value",
+count(*),
+printf("%.2f", (count(*) / (select count(*) + 0.0 from all_tcp_udp_qos where Protocol = 'ICMP')) * 100.0) as percentage
+from all_tcp_udp_qos
+where Protocol = 'ICMP'
+group by "DSCP Value"
+order by count(*) desc
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|DSCP Value|count(*)|percentage|
+|---|---|---|
+|CS2|11|78.57|
+|CS6|2|14.29|
+|CS1|1|7.14|
+
+```` 
+`````
+
+### Timings and jitter (deviation)
+
+> [!note] 
+> I am going to analyze **TCP** traffic, since a significant majority of captured traffic is **TCP**
+
+1. Add delta time column to wireshark
+
+![[Pasted image 20251004215738.png]]
+> Img 15 - adding TCP delta time
+
+2. Apply *TCP* filter and export the data into an *sqlite* DB
+
+#### Delta distribution
+
+```sql
+select 
+printf("%.2f", (COUNT(CASE WHEN "DSCP Value" = 'CS0' THEN 1 END) / (select count(*) + 0.0 from 'all-tcp' where  "DSCP Value" = 'CS0')) * 100.0) as "CS0 timings", 
+printf("%.2f", (COUNT(CASE WHEN "DSCP Value" = '2' THEN 1 END) / (select count(*) + 0.0 from 'all-tcp' where  "DSCP Value" = '2')) * 100.0) as "2 timings", 
+printf("%.2f", (COUNT(CASE WHEN "DSCP Value" = 'CS2' THEN 1 END) / (select count(*) + 0.0 from 'all-tcp' where  "DSCP Value" = 'CS2')) * 100.0) as "CS2 timings", 
+printf("%.2f", (COUNT(CASE WHEN "DSCP Value" = 'AF11' THEN 1 END) / (select count(*) + 0.0 from 'all-tcp' where  "DSCP Value" = 'AF11')) * 100.0) as "AF11 timings", 
+printf("%.2f", (COUNT(CASE WHEN "DSCP Value" = 'AF21' THEN 1 END) / (select count(*) + 0.0 from 'all-tcp' where  "DSCP Value" = 'AF21')) * 100.0) as "AF21 timings", 
+tcp_delta_time from 'all-tcp' 
+where tcp_delta_time > 0
+and tcp_delta_time > 0.00001
+and tcp_delta_time < 2
+group by trunc(tcp_delta_time * 10)
+order by tcp_delta_time desc
+```
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+##### CS0, 2, CS2
+
+![[Pasted image 20251004222854.png]]
+> Img 16 - CS0, 2, CS2 delta distribution
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+##### AF11, AF21
+
+![[Pasted image 20251004222923.png]]
+> Img 17 - AF11, AF21 delta distribution
+
+```` 
+`````
+
+
+#### CS0 vs AF11
+
+![[Pasted image 20251004223314.png]]
+> Img 18 - CS0 vs AF11
+
+#### Averages and deviation
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select 
+	count(*) as num_packets,
+	"DSCP Value" as dscp,
+	printf("%.5f", avg_) as avg_,
+	printf("%.5f", sum((tcp_delta_time - avg_) * (tcp_delta_time - avg_)) / (COUNT(tcp_delta_time) - 1)) AS Deviation,
+	printf("%.5f", min(tcp_delta_time)) as min_,
+	printf("%.5f", max(tcp_delta_time)) as max_
+	from 'all-tcp' src 
+left join
+	(
+		select 
+			"DSCP Value" as dscp,
+			avg(tcp_delta_time) as avg_
+		from 'all-tcp' 
+		where tcp_delta_time > 0 
+		group by "DSCP Value" 
+	) avgs
+	on avgs.dscp = src."DSCP Value"
+where tcp_delta_time > 0 
+group by "DSCP Value"
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+|num_packets|dscp|avg_|Deviation|min_|max_|
+|---|---|---|---|---|---|
+|8992|2|0.00007|0.00000|0.00000|0.03898|
+|4701|AF11|0.03121|0.01333|0.00000|6.80143|
+|786|AF21|0.35945|0.85365|0.00001|11.48556|
+|29899|CS0|0.11114|1.50789|0.00000|47.98444|
+|8546|CS2|0.38031|2.87614|0.00000|36.96510|
+
+![[Pasted image 20251004225628.png]]
+> Img 19 - DSCP deviations
+
+```` 
+`````
+
+
+> [!analysis] 
+> 
+> From all those graphs we can make several conclusions
+> 
+> 1. **CS2** has the highest deviation and not the best average, this is seen in the last graph and in the delta distribution graph (most gradual fall-off)
+> 2. **CS0** has the second highest deviation and lower average than **CS2**, this is seen in the last graph and in the delta distribution graph (less gradual, sharper fall-off than **CS2**)
+> 3. **AF21** average is almost the same as **CS2** average, but the deviation is way lower (*3.4x* lower) (seen in the delta distribution as a more smoothed-out fall-off), which suggests that the packets are delivered more reliably
+> 4. **AF11** has the lowest average and deviation
+> 5. The mysterious **2** class has average and deviation close to 0, looking at wireshark, all packets with this value are between *FoxConn* and *DLink* devices mentioned at the beginning of the report, this suggests that they are connected with an ethernet cable directly with no routing equipment in between.
 
 ## Task 5 - Flow rates
 
 > Determine the rate of individual flow components and the total flow rate. To evaluate speed minimum, maximum and deviations by mathematical and statistical means. Summarize the obtained results.
 
+> [!note]
+> I'm going to analyze communication between *2 Dlink* devices and the *Foxconn* device mentioned at the start of the report
+
+### Dlink_99 and Foxconn
+
+#### Send/receive graph
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select 
+	t_out.time_bucket,
+	bytes_per_sec_log_out,
+	bytes_per_sec_log_in,
+	packets_out,
+	packets_in
+from
+(
+	select 
+		trunc(Time) as time_bucket,
+		log(2, sum(Length)) as bytes_per_sec_log_out,
+		log(2, count(*)) as packets_out
+	from from_dlink99_to_fox
+	group by trunc(Time)
+) t_out
+left join
+(
+	select 
+		trunc(Time) as time_bucket,
+		log(2, sum(Length)) as bytes_per_sec_log_in,
+		log(2, count(*)) as packets_in
+	from from_fox_to_dlink99
+	group by trunc(Time)
+) t_in
+on t_in.time_bucket = t_out.time_bucket
+
+```
+
+```` 
+````col-md 
+flexGrow=1
+===
+
+> [!note] 
+> 
+> I'm using *logarithmic scale* here for better visuals
+
+![[Pasted image 20251005152815.png]]
+> Img 20 - Dlink_99 and foxconn send/receive graphs
+
+```` 
+`````
+
+> [!analysis] 
+> 
+> We can see that there was a <u>short burst of packets</u> at the start, reaching **20 Mebibytes/s** and *~13k* packets/s, and from *40 to 47 seconds* packets from *foxconn* were a bit bigger (number of packets stayed the about same, but bytes/s went up to **8Kib/s**). Other than that, network traffic is stable and *quite low* at about **2Kib/s** and between *8 and 16* packets/s
+#### Min/max/avg
+
+##### Bytes
+
+```sql
+with t_out as (
+	select 
+		trunc(Time) as time_bucket,
+		sum(Length) as bytes_per_sec_out,
+		count(*) as packets_out
+	from from_dlink99_to_fox
+	group by trunc(Time)
+),
+t_in as (
+	select 
+		trunc(Time) as time_bucket,
+		sum(Length) as bytes_per_sec_in,
+		count(*) as packets_in
+	from from_fox_to_dlink99
+	group by trunc(Time)
+),
+avgs as (
+select 
+	avg(bytes_per_sec_in) as avg_bytes_per_sec_in,
+	avg(bytes_per_sec_out) as avg_bytes_per_sec_out,
+	
+	min(bytes_per_sec_in) as min_bytes_per_sec_in,
+	min(bytes_per_sec_out) as min_bytes_per_sec_out,
+	
+	max(bytes_per_sec_in) as max_bytes_per_sec_in,
+	max(bytes_per_sec_out) as max_bytes_per_sec_out
+from
+t_out left join t_in on t_in.time_bucket = t_out.time_bucket
+GROUP by true
+)
+select 
+	printf("%.2f", sum((bytes_per_sec_in - avg_bytes_per_sec_in) * (bytes_per_sec_in - avg_bytes_per_sec_in)) 
+		/ (COUNT(bytes_per_sec_in) - 1) / 1024) 
+		AS bytes_per_sec_in_deviation,
+
+	printf("%.2f", avg_bytes_per_sec_in / 1024) as avg_kibibytes_per_sec_in,
+	printf("%.2f", min_bytes_per_sec_in / 1024) as min_kibibytes_per_sec_in,
+	printf("%.2f", max_bytes_per_sec_in / 1024) as max_kibibytes_per_sec_in,
+	
+	printf("%.2f", sum((bytes_per_sec_out - avg_bytes_per_sec_out) * (bytes_per_sec_out - avg_bytes_per_sec_out)) 
+	/ (COUNT(bytes_per_sec_out) - 1) / 1024) 
+	AS bytes_per_sec_out_deviation,
+	
+	printf("%.2f", avg_bytes_per_sec_out / 1024) as avg_kibibytes_per_sec_out,
+	printf("%.2f", min_bytes_per_sec_out / 1024) as min_kibibytes_per_sec_out,
+	printf("%.2f", max_bytes_per_sec_out / 1024) as max_kibibytes_per_sec_out
+from t_out 
+left join t_in on t_in.time_bucket = t_out.time_bucket
+left join avgs on true
+
+```
+
+##### Packets
+
+```sql
+with t_out as (
+	select 
+		trunc(Time) as time_bucket,
+		count(*) as packets_out
+	from from_dlink99_to_fox
+	group by trunc(Time)
+),
+t_in as (
+	select 
+		trunc(Time) as time_bucket,
+		count(*) as packets_in
+	from from_fox_to_dlink99
+	group by trunc(Time)
+),
+avgs as (
+select 	
+	avg(packets_in) as avg_packets_in,
+	avg(packets_out) as avg_packets_out,
+	
+	min(packets_in) as min_packets_in,
+	min(packets_out) as min_packets_out,
+	
+	max(packets_in) as max_packets_in,
+	max(packets_out) as max_packets_out
+from
+t_out left join t_in on t_in.time_bucket = t_out.time_bucket
+GROUP by true
+)
+select 
+	printf("%.2f", sum((packets_in - avg_packets_in) * (packets_in - avg_packets_in)) 
+		/ (COUNT(packets_in) - 1) / 1024) 
+		AS packets_in_deviation,
+
+	printf("%.2f", avg_packets_in / 1024) as avg_kpackets_in,
+	printf("%.2f", min_packets_in / 1024) as min_kpackets_in,
+	printf("%.2f", max_packets_in / 1024) as max_kpackets_in,
+	
+	printf("%.2f", sum((packets_out - avg_packets_out) * (packets_out - avg_packets_out)) 
+	/ (COUNT(packets_out) - 1) / 1024) 
+	AS packets_out_deviation,
+	
+	printf("%.2f", avg_packets_out / 1024) as avg_kpackets_out,
+	printf("%.2f", min_packets_out / 1024) as min_kpackets_out,
+	printf("%.2f", max_packets_out / 1024) as max_kpackets_out
+from t_out 
+left join t_in on t_in.time_bucket = t_out.time_bucket
+left join avgs on true
+
+```
+
+##### From foxconn to dlink99
+
+| bytes_per_sec_in_deviation | avg_kibibytes_per_sec_in | min_kibibytes_per_sec_in | max_kibibytes_per_sec_in |
+| -------------------------- | ------------------------ | ------------------------ | ------------------------ |
+| 2057946.94                 | 7.63                     | 0.00                     | 379.00                   |
+
+| packets_in_deviation | avg_kpackets_in | min_kpackets_in | max_kpackets_in |
+| -------------------- | --------------- | --------------- | --------------- |
+| 708.07               | 0.12            | 0.00            | 7.00            |
+
+##### From dlink99 to foxconn
+
+|bytes_per_sec_out_deviation|avg_kibibytes_per_sec_out|min_kibibytes_per_sec_out|max_kibibytes_per_sec_out|
+|---|---|---|---|
+|5462468842.03|320.47|0.00|19618.00|
+
+|packets_out_deviation|avg_kpackets_out|min_kpackets_out|max_kpackets_out|
+|---|---|---|---|
+|2709.87|0.23|0.00|13.00|
+> [!analysis] 
+> 
+> - Maximum data rate is almost **20 Mebibytes/s** (*13k packets/sec*) from dlink to foxconn and **379 Kibibytes/s** (*7k packets/s*) from foxconn to dlink
+> - Minimum is 0 for both directions, there were times where no device was sending packets
+> - Average data rate is **320 Kibibytes/s** (*230 packets/s*) from dlink to foxconn and **7.6 Kibibytes/s** (*120 packets/s*) from foxconn to dlink
+
+### Dlink_99 and Dlink_66
+
+> [!note] 
+> 
+> I won't be pasting queries, they are the same, just use different tables
+
+#### Send/receive graph
+
+![[Pasted image 20251005180821.png]]
+> Img 21 - Dlink_99 and Dlink_66 send/receive graphs
+
+> [!analysis] 
+> 
+> Here we can see that traffic <u>slowly increases with time</u>, *dips* an the end *and returns* to the baseline. Also, after about **38 seconds** packet sizes going *from dlink99 to dlink66* <u>increase</u> and almost reach the size of packets in the other direction.
+
+#### Min/max/avg
+
+##### From from dlink99 to dlink66
+
+|bytes_per_sec_in_deviation|avg_kibibytes_per_sec_in|min_kibibytes_per_sec_in|max_kibibytes_per_sec_in|
+|---|---|---|---|
+|1136428.32|42.75|1.00|142.00|
+
+| packets_in_deviation | avg_packets_in | min_packets_in | max_packets_in |
+| -------------------- | -------------- | -------------- | -------------- |
+| 1164.22              | 79.74          | 15.00          | 148.00         |
+
+##### From from dlink66 to dlink99
+
+| bytes_per_sec_out_deviation | avg_kibibytes_per_sec_out | min_kibibytes_per_sec_out | max_kibibytes_per_sec_out |
+| --------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| 1759595.28                  | 93.48                     | 1.00                      | 212.00                    |
+
+| packets_out_deviation | avg_packets_out | min_packets_out | max_packets_out |
+| --------------------- | --------------- | --------------- | --------------- |
+| 1390.97               | 88.89           | 6.00            | 188.00          |
+
+> [!analysis] 
+> 
+> - Maximum data rate is **142 Kibibytes/s** (*148 packets/sec*) from dlink99 to dlink66 and **212 Kibibytes/s** (*118 packets/s*) from dlink66 to dlink99
+> - Minimum is > 0 for either directions, the communication was more consistent then between foxconn and dlink
+> - Average data rate is **43 Kibibytes/s** (*80 packets/s*) from dlink99 to dlink66 and **94 Kibibytes/s** (*89 packets/s*) from dlink66 to dlink99
+> - Comparing to the previous flow, communication speed is more consistent and the packet sizes are bigger
+
+### Total flow
+
+#### Speed graph
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```sql
+select 
+	trunc(Time) as time_bucket,
+	log(2, sum(Length)) as bytes_per_sec_log,
+	log(2, count(*)) as packets
+from 'all-tcp'
+group by trunc(Time)
+```
+
+```` 
+````col-md 
+flexGrow=2
+===
+
+![[Pasted image 20251005183726.png]]
+
+```` 
+`````
+
+> [!analysis] 
+> 
+> Total graph is a sum of the 2 most prominent flows analyzed above: traffic is stable except for 1 burst at the start and a dip at the end
+
+#### Min/max/avg
+
+```sql
+with bucketed as (
+	select 
+		trunc(Time) as time_bucket,
+		sum(Length) as bytes_per_sec,
+		count(*) as packets
+	from 'all-tcp'
+	group by trunc(Time)
+),
+avgs as (
+select 	
+	avg(packets) as avg_packets,
+	min(packets) as min_packets,
+	max(packets) as max_packets,
+	
+	avg(bytes_per_sec) as avg_bytes_per_sec,
+	min(bytes_per_sec) as min_bytes_per_sec,
+	max(bytes_per_sec) as max_bytes_per_sec
+from
+bucketed 
+GROUP by true
+)
+select 
+
+	printf("%.2f", sum((bytes_per_sec - avg_bytes_per_sec) * (bytes_per_sec - avg_bytes_per_sec)) 
+	/ (COUNT(bytes_per_sec) - 1) / 1024) 
+	AS bytes_per_sec_deviation,
+	
+	printf("%.2f", avg_bytes_per_sec / 1024) as avg_kibibytes_per_sec,
+	printf("%.2f", min_bytes_per_sec / 1024) as min_kibibytes_per_sec,
+	printf("%.2f", max_bytes_per_sec / 1024) as max_kibibytes_per_sec,
+
+	printf("%.2f", sum((packets - avg_packets) * (packets - avg_packets)) 
+		/ (COUNT(packets) - 1)) 
+		AS packets_deviation,
+
+	printf("%.2f", avg_packets) as avg_packets,
+	printf("%.2f", min_packets) as min_packets,
+	printf("%.2f", max_packets) as max_packets
+	
+from bucketed 
+left join avgs on true
+```
+
+|bytes_per_sec_deviation|avg_kibibytes_per_sec|min_kibibytes_per_sec|max_kibibytes_per_sec|
+|---|---|---|---|
+|2771048911.17|296.98|18.00|20054.00|
+
+|packets_deviation|avg_packets|min_packets|max_packets|
+|---|---|---|---|
+|3094665.04|347.39|21.00|21441.00|
+
+> [!analysis] 
+> 
+> Situation here is the same, this is a sum of the 2 most prominent flows analyzed above
+> - Maximum data rate: **20 Mebibytes/s** (*21.5k packets/s*)
+> - Minimum data rate: **18 Kibibytes/s** (*21 packets/s*)
+> - Average data rate: **297 Kibibytes/s** (*347 packets/s*) (matches with our average payload size of ~800 kibibytes)
+
 ## Task 6 - Conclusion
 
 > Provide summarized conclusions of whole practical work.
+
+I did basic network traffic analysis on real-life network traffic, determined that most of the traffic was TCP. Determined devices responsible for most of the traffic (2 DLink devices and 1 Foxconn). Calculated protocol overhead (6.5%). Analyzed QoS parameters and how they affect data flow and analyzed data flow speeds. Overall, it was an interesting and practical work with a good collection of different analyses.

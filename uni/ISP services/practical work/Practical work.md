@@ -444,7 +444,7 @@ We can use the same **protocol hierarchy** section user earlier to get a more in
 
 > [!analysis] 
 > 
-> Our capture contains only one packet, but I don't think it's an **LSD** packet, wireshark failed to decode it properly and it the contents we see *BT-SEARCH*, which suggests that it's *bittorrent* protocol, wireshark just misclassified the packet because of the port 
+> Our capture contains only one packet, but I don't think it's an **LSD** packet, wireshark failed to decode it properly and in the contents we see *BT-SEARCH*, which suggests that it's *bittorrent* protocol, wireshark just misclassified the packet because of the port 
 > 
 > ![[Pasted image 20250928175542.png]]
 > > IMG 8 - Misclassified LSD

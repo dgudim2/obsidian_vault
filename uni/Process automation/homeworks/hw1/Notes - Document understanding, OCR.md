@@ -128,19 +128,29 @@ OCR or Optical Character Recognition is the process of detecting text in a image
 
 ##### Technical explanation on how OCR works
 
-Before running the recognition itself image cleanup is needed, so step 1 is cleanup.
+1. Before running the recognition itself image cleanup is needed, so step 1 is cleanup.
 
 
-- De-skewing – making the document perfectly horizontal or vertical.
-- Despeckling – removal of positive and negative spots, smoothing edges
-- Binarization – conversion of an image from color or greyscale to black-and-white (called a binary image because there are two colors). The task is performed as a simple way of separating the text (or any other desired image component) from the background.[16] The task of binarization is necessary since most commercial recognition algorithms work only on binary images, as it is simpler to do so.[17] In addition, the effectiveness of binarization influences to a significant extent the quality of character recognition, and careful decisions are made in the choice of the binarization employed for a given input image type; since the quality of the method used to obtain the binary result depends on the type of image (scanned document, scene text image, degraded historical document, etc.).[18][19]
-- Line removal – Cleaning up non-glyph boxes and lines
-- Layout analysis or zoning – Identification of columns, paragraphs, captions, etc. as distinct blocks. Especially important in multi-column layouts and tables.
-- Line and word detection – Establishment of a baseline for word and character shapes, separating words as necessary.
-- Script recognition – In multilingual documents, the script may change at the level of the words and hence, identification of the script is necessary, before the right OCR can be invoked to handle the specific script.[20]
-- Character isolation or segmentation – For per-character OCR, multiple characters that are connected due to image artifacts must be separated; single characters that are broken into multiple pieces due to artifacts must be connected.
-    Normalization of aspect ratio and scale[21]
+- De-skewing - making the document perfectly horizontal or vertical.
+- Despeckling - removing bright or dark spots, smoothing edges
+- Binarization - applying a grayscale (+threshold) filter so the detection step has to work with less variable data and to improve contrast
+- Line removal - Removing lines/boxes that are not letters
+- Layout analysis or zoning - Identifying columns, paragraphs (important in multi-column layouts and tables)
+- Line and word detection - Establishment of a baseline for word and character shapes, separating words as necessary.
+- Character isolation or segmentation - (For per-character OCR) - Multiple characters that are connected due to image artifacts must be separated; single characters that are broken into multiple pieces due to artifacts must be connected.
+- Normalization of aspect ratio and scale
 
+2. After the cleanup we can do the recognition itself
+
+There are 2 major types of OCR algorithms
+- _Matrix matching_ - matching glyphs on a pixel-by-pixel basis to a dataset
+- _Feature extraction_ - decomposing glyphs into "features" like lines, closed loops, line direction, and line intersections and matching those. Some classifier model is used (for example k-nearest neighbors algorithm)
+
+Modern OCR software uses *feature extraction* with some tricks to improve the accuracy like using neural networks trained for line recognition instead of single character or automatically splitting a document into sections based on the page layout.
+
+3. After scanning, some post-processing can improve the result even further
+
+We can fix typos by using Levenshtein distance algorithm. Knowing language grammar and having a dictionary of valid words and how often they occur in the target language helps as well.
 
 ### Slide 3.4 - Getting data - TLDR
 

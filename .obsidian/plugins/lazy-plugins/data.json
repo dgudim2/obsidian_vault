@@ -7,6 +7,7 @@
     "delayBetweenPlugins": 40,
     "defaultStartupType": "short",
     "showDescriptions": true,
+    "enableDependencies": false,
     "plugins": {
       "3d-graph": {
         "startupType": "disabled"
@@ -195,6 +196,15 @@
         "startupType": "short"
       },
       "automatic-table-of-contents": {
+        "startupType": "short"
+      },
+      "dynamic-outline": {
+        "startupType": "short"
+      },
+      "language-translator": {
+        "startupType": "short"
+      },
+      "obsidian-languagetool-plugin": {
         "startupType": "short"
       }
     }

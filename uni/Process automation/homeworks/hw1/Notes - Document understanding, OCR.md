@@ -1,3 +1,7 @@
+
+```toc
+```
+
 ## Slide 0 - Title slide
 
 Hello, let's talk about document understanding and OCR in automation systems context
@@ -121,6 +125,23 @@ OCR or Optical Character Recognition is the process of detecting text in a image
 - For basic OCR from screenshots (useful to use on a PC for example for copying text from somewhere without text selection) you can use Tesseract or Kraken OCR library.
 - For scans, photos and handwritten text you may want to preprocess the image removing artifacts, distortions and maybe use a more specialized model. Foe example doctr or ocular.
 - If the input images are all the same or specific structure (For example Passports) or class (Old documents). It may be a good option to use specialized models to parse that type of document for more reliably labeled output. (I.e: convolutional neural networks)
+
+##### Technical explanation on how OCR works
+
+Before running the recognition itself image cleanup is needed, so step 1 is cleanup.
+
+
+- De-skewing – making the document perfectly horizontal or vertical.
+- Despeckling – removal of positive and negative spots, smoothing edges
+- Binarization – conversion of an image from color or greyscale to black-and-white (called a binary image because there are two colors). The task is performed as a simple way of separating the text (or any other desired image component) from the background.[16] The task of binarization is necessary since most commercial recognition algorithms work only on binary images, as it is simpler to do so.[17] In addition, the effectiveness of binarization influences to a significant extent the quality of character recognition, and careful decisions are made in the choice of the binarization employed for a given input image type; since the quality of the method used to obtain the binary result depends on the type of image (scanned document, scene text image, degraded historical document, etc.).[18][19]
+- Line removal – Cleaning up non-glyph boxes and lines
+- Layout analysis or zoning – Identification of columns, paragraphs, captions, etc. as distinct blocks. Especially important in multi-column layouts and tables.
+- Line and word detection – Establishment of a baseline for word and character shapes, separating words as necessary.
+- Script recognition – In multilingual documents, the script may change at the level of the words and hence, identification of the script is necessary, before the right OCR can be invoked to handle the specific script.[20]
+- Character isolation or segmentation – For per-character OCR, multiple characters that are connected due to image artifacts must be separated; single characters that are broken into multiple pieces due to artifacts must be connected.
+    Normalization of aspect ratio and scale[21]
+
+
 ### Slide 3.4 - Getting data - TLDR
 
 So the TLDR is
@@ -133,7 +154,7 @@ So the TLDR is
 
 After you get your data, you need to sanitize it and make sense of it.
 
-### Slide 4.1 - Data cleanup
+### Slide 4.1 - Data cleanup (post)
 
 - If you got the data in a structured format, it was validated by the party you are getting this from, so no cleanup is needed, you already have everything you need, you can use it in you code.
 

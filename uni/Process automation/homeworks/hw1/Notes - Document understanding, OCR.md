@@ -77,7 +77,7 @@ If you can't get your hands on a fully structured format, but you have access to
 #### Slide 3.2.1 - Hybrid format parsing. How
 
 
-- For html you can use html parsing libraries such as BeautifulSoap, Puppeteer, Playwright, Selenium
+- For html you can use html parsing and automation libraries such as BeautifulSoap, Puppeteer, Playwright, Selenium
 - For PDFs you can use py-pdf-parser for python, ITextSharp for C#, pdf-parse for Javascript, etc.
 - For Word documents you can for example use docx-parser for python, but generally, any xml parsing library will be enough because word documents are archives of xml documents.
 

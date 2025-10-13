@@ -11,6 +11,7 @@
     "**/.venv": "both",
     "**/__pycache__": "both",
     "*.pyc": "both",
+    "*.tmp": "git",
     "*.pdf": "git",
     "*.doc": "git",
     "*.docx": "git",

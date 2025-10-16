@@ -45,6 +45,7 @@
 + the severance
 + Семейка адамс
 + tron legacy
++ The thing
 
 ## Anime
 + 91 день

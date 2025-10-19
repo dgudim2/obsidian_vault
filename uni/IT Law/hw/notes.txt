@@ -1,0 +1,277 @@
+####### Slide 0:
+
+Hello
+
+
+
+
+####### Slide 1: What is IA?
+
+First, a little intro before discussing the case itself. What is the internet archive?
+
+They are are an American non-profit organisation (funded by donations, grants and by providing archiving services to partners)
+doing what their name says: archiving the internet,
+building and preserving a digital library of cultural artifacts and knowledge.
+
+They provide the archived information to the general public.
+It's useful for researchers, historians, scholars, and you!
+
+Have you ever visited a website saved in your bookmarks only to see it being gone?
+There is a very high chance of it being archived by the Internet archive.
+
+They started archiving the internet in 1996 and now have over 29 years of web history
+all accessible by the public. Totalling over 175 Petabytes (179200 Terabytes) (You can scan the qr code to access it)
+
+Anyone can upload media to the internet archive. And they work with global partners (more than 1.2k)
+to preserve their collections.
+
+
+
+
+
+####### Slide 2: Books
+
+They also run a book archiving service. Not everyone has access to a good public or academic library
+and not everyone has the money to pay for access to a good one.
+
+They started to digitize books in 2005 and scan more than 4k books daily.
+Books published before 1929 are available for download,
+and the rest - modern books, can be borrowed through their Open Library.
+
+They are also designated depository for U.S. Government documents.
+
+
+
+
+
+
+
+####### Slide 3: More about how Open Library works
+
+The case I'm going to talk about concerns their Open Library lending service.
+So here is how it works
+
+Internet Archive maintains a one-to-one owned-to-loaned ratio for the stored eBooks
+It allows only as many 'lends' of a digital book as there are physical copies in its posession (They buy them).
+Subsequently, Internet Archive expanded its Free Digital Library to include other libraries,
+counting the number of physical copies of a book possessed by those libraries toward the total number
+of digital copies it makes available at any given time.
+
+You can't download books from the library, only lend them
+
+This lending is called 'Controlled Digital Lending' or CDL
+
+
+
+
+
+####### Slide 4: The case
+
+
+In March 24 2020, during the pandemic Internet archive changed how the Open Library works
+
+Instead of allowing one-to-one lending, they allowed unlimited number of users to lend the book,
+but for a limited time.
+They named this initiative "National Emergency Library" (NEL) and would run it until June 30 2020 or
+until the US national emergency was over. At launch, the Internet Archive allowed authors
+to submit opt-out requests for their works to be omitted from the National Emergency Library.
+
+
+2 months after they did that, four book publishers sued Internet Archive,
+saying that their library infringes copyright. 2 weeks after that, The national Emergency library was shut down.
+
+
+You can see the whole timeline on the slide, and now I'm going to talk about each part separately.
+
+
+
+
+####### Slide 5: Summary judgement
+
+
+June 2022, both parties to the case requested summary judgment for the case, each favoring their respective sides
+but no summary was issued, and instead, first hearing was held at the US District Court for the Southern District of New York
+
+
+Summary judgment is a pretrial motion that promptly resolves legal actions where the
+parties have no genuine issues with any material fact.
+The court produces a judgment for one party against the opposing party without needing a full trial.
+
+
+
+
+####### Slide 6: Publishers' point of view
+
+
+Even though the lawsuit was triggered after the creation on NEL, the main topic
+was not NEL, but rather the lending process itself. The NEL was also discussed, but in the context of
+publishers' profit loss only.
+
+From the publishers point of view, CDL was was illegal and not protected by the
+doctrine of fair use. They also argued that Internet archive was not fully abiding by the CDL,
+because sometimes, their partner libraries were not removing physical copies of books from their shelves
+when the book was lent in the Open Library.
+
+And for the emergency library, they argued that it harmed their revenue.
+
+
+
+
+####### Slide 7: Internet archive point of view
+
+
+They argued that CDL is fair use and that the publishers'
+market was not impacted by their library
+
+
+
+####### Slide 8: The press conference
+
+
+
+Before oral arguments, Internet Archive held a press conference discussing the matter
+The presenters agreed that book publishers need to make money to pay their expenses including authors.
+The question is whether the National Emergency Library (NEL) actually harmed the publishers.
+
+
+Lila Bailey, Senior Policy Counsel for the Internet Archive,[22] noted that:
+
+    In the past, publishers stood against microfilm and photocopiers, crying harm. It took years, but eventually,
+    the law affirmed each of these things, and the public benefitted.
+
+    With this lawsuit, publishers have repeated those same claims of massive harm from controlled digital lending.
+    When asked under oath, their own executives admitted this.
+
+    They even instructed their own 950 dollar per hour expert not to even try to measure economic harm.
+    On the other hand, when we invited economists from Northeastern University and the University of
+    Copenhagen to look at the sales and library lending data produced in this case,
+    they came to a singular conclusion: The Internet Archive's digital lending had no measurable effect on the market whatsoever.
+
+Harvard Law School Professor Lawrence Lessig said that book publishers
+need to make a profit to serve the public, but the material available to the public should not be limited to what commercial enterprises find profitable.
+Netflix, for example, offers subscribers access to thousands of movies and television shows but routinely stops offering content for which the demand is too low.
+That doesn't happen with libraries. Without controlled digital lending,
+out-of-print books become essentially unavailable to the vast majority of humanity.
+
+There were expert reports as well, saying that sales in the first five years after an edition's publication account for up to 90% of lifetime sales
+
+
+####### Slide 9: First hearing, results
+
+
+
+Judge John G. Koeltl ruled on March 24, 2023, granting the publishers' request.
+He held that the Internet Archive's scanning and lending of complete copies constituted
+copyright infringement and that the Internet Archive's fair use defense failed all four factors of the "fair use test".
+He did not assess damages. Instead, he directed the parties to basically negotiate themselves.
+
+
+Four factors:
+
+    the purpose and character of your use
+    the nature of the copyrighted work
+    the amount and substantiality of the portion taken
+    the effect of the use upon the potential market
+
+
+####### Slide 10: The appeal
+
+
+On September 11, 2023,
+the Internet Archive filed an appeal notice to the US Court of Appeals for the Second Circuit.
+On December 15, 2023, the Internet Archive filed its opening brief in its appeal.
+Shortly afterwards, several other organizations filed friend of the court briefs (Association of American Publishers)
+
+
+friend of the court - is an individual or organization that is not a party to a case,
+but that is permitted to assist a court with information, expertise, or insight connected with the issue.
+
+In this case, it was AAP (Association of American Publishers), national trade association of the American book publishing industry
+includes most of the major commercial publishers.
+
+
+####### Slide 11: The appeal, results
+
+
+On September 4, 2024, the Second Circuit Court of Appeals affirmed the lower court rulings.
+The court stated "On the one hand, eBook licensing fees may impose a burden on libraries and reduce access to creative work.
+On the other hand, authors have a right to be compensated in connection with the copying and distribution of their original creations."
+
+
+Which is wrong, because it's not copying and distribution, it's lending, but
+Internet archive did not petition to have this reviewed by the Supreme Court
+
+
+
+####### Slide 12: The outcome
+
+
+As a result of the lawsuit, Internet Archive can't loan the books
+published by the aforementioned publishers in full through their CDL program.
+Which resulted in over half a million books beeing no longer available including more than 1.3k
+books banned in some countries, so not available through mainstream publishers.
+
+Also, Internet Archive had to pay an undisclosed amount to the publishers in monetary damages.
+
+
+####### Slide 13: Similar cases / precedents
+
+-- February 2005 - Users started archiving digital copies of 'Nintendo power', Nintendo's official magazine
+for their games and products which ran from 1988 to 2012.
+The first 140 issues had been collected, then Nintendo had the archive removed on August 8, 2016.
+
+"[Nintendo] must protect our own characters, trademarks and other content.
+The unapproved use of Nintendo's intellectual property can weaken our ability
+to protect and preserve it, or to possibly use it for new projects"
+
+-- August 2017
+Internet Archive was blocked in India because of "Piracy" because 2 blocked films were stored theme
+
+
+-- August 2023
+Universal Music Group (UMG), Sony Music
+sued the Internet Archive over its 'Great 78' Project, saying that the project was engaged in copyright infringement.
+The Great 78 Project stores digitized versions of pre-1972 songs and albums from 78-rpm phonograph records.
+
+Dropped in September 15, 2025, parties reached undisclosed consensus
+
+
+
+
+####### Slide 14: My opinion
+
+
+I disagree with the the decision about the lending part.
+
+And for the NEL, while maybe not completely right legally,
+It was the right thing to do morally during the pandemic.
+Publishers increased their prices during the pandemic as well,
+which was a stupid thing to do.
+And the whole Open Library concept is a great idea.
+Just like physical libraries, but online.
+
+In physical libraries, they buy books and lend them to people. So why can't the same
+be done in the digital world?
+
+If not for it, you would be stuck between buying overpriced licences to books
+that can be altered by the publisher at any moment, or even removed when deemed not profitable of
+banned by the government and between pirating the same books.
+
+So from a personal point a view, not related to the case.
+If you can't buy a real book on mainstream services, why even bother.
+Don't feed the machine, buy books directly from authors!
+This way they have more profit skipping both the publishers' and the distributors fee of about 60% in total.
+and you have an actual e-book, not just a licence.
+
+
+
+
+####### Slide 15: Why I chose this case. Conclusions
+
+Cases like this show how greedy people are.
+
+While controlled fair lending of eBooks is not fine,
+but training AI on the same books without paying a cent to the authors, without an option to opt-out
+and taking all the profits is fine and 'fair use'.
+And the same preservation efforts by google and HathiTrust started in 2014 is also fair use.
+

@@ -1,0 +1,17 @@
+timeline
+        title Timeline
+        section Beginning
+          March 24 2020 : NEL opened
+          June 1, 2020 : Lawsuit started
+          June 15, 2020 : NEL closes
+        section First hearing
+          June 2022 : Summary judgement requested
+          March 20, 2023 : First hearing held
+          March 24, 2023 : First hearing result
+          August 11, 2023 : Parties reach negotiated judgement
+        section Appeal
+          September 11, 2023: appeal notice filed
+          December 15, 2023: opening brief filed, friend of the court driefs filed
+          June 28, 2024: oral phase of the appeal
+          September 4, 2024: Appeals affirmed the lower court rulings
+

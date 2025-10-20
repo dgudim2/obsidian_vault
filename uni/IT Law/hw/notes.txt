@@ -143,6 +143,7 @@ Lila Bailey, Senior Policy Counsel for the Internet Archive,[22] noted that:
     When asked under oath, their own executives admitted this.
 
     They even instructed their own 950 dollar per hour expert not to even try to measure economic harm.
+
     On the other hand, when we invited economists from Northeastern University and the University of
     Copenhagen to look at the sales and library lending data produced in this case,
     they came to a singular conclusion: The Internet Archive's digital lending had no measurable effect on the market whatsoever.
@@ -201,6 +202,8 @@ On the other hand, authors have a right to be compensated in connection with the
 Which is wrong, because it's not copying and distribution, it's lending, but
 Internet archive did not petition to have this reviewed by the Supreme Court
 
+so their decision was the final decision.
+
 
 
 ####### Slide 12: The outcome
@@ -223,6 +226,8 @@ The first 140 issues had been collected, then Nintendo had the archive removed o
 "[Nintendo] must protect our own characters, trademarks and other content.
 The unapproved use of Nintendo's intellectual property can weaken our ability
 to protect and preserve it, or to possibly use it for new projects"
+
+Typical corporate law babble.
 
 -- August 2017
 Internet Archive was blocked in India because of "Piracy" because 2 blocked films were stored theme
@@ -270,7 +275,10 @@ and you have an actual e-book, not just a licence.
 
 Cases like this show how greedy people are.
 
-While controlled fair lending of eBooks is not fine,
+In the whole case 'we lost profits' was focused on the publishers,
+very few authors objected the CDL.
+
+While controlled fair lending of eBooks is not fine and not fair use,
 but training AI on the same books without paying a cent to the authors, without an option to opt-out
 and taking all the profits is fine and 'fair use'.
 And the same preservation efforts by google and HathiTrust started in 2014 is also fair use.

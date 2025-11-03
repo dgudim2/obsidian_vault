@@ -1,0 +1,248 @@
+======================= Slide 0:
+
+Hello
+
+
+
+
+
+======================= Slide 1:
+
+I'm going to talk about 2 atlassian products: jira and confluence
+and one integration which is usually used from inside jira
+
+
+
+
+
+======================= Slide 2:
+
+First - jira, what is jira?
+Jira is web app made by atlassian.
+It's used for all your tracking and project management needs: Issue, bug and task tracking,
+project and sprint management.
+
+Some companies using Jira include
+Datadog
+Udemy
+Coinbase
+General motors
+
+In addition to the base functionality, you can extend jira with plugins,
+it has integration with other Atlassian products and with version control systems.
+
+
+
+
+
+======================= Slide 3:
+
+For the technical part, jira is written in Java, uses some apache components and WebWork 1 technology stack.
+Provider REST and xml interfaces.
+
+Jira comes in 3 flavours:
+
+Jira Software - the base package, including agile project management features
+Jira Service Management - for IT operations and service desks.
+Jira Align - for product and portfolio management.
+
+
+For hosting you can either host it on your own hardware and pay for the licence,
+or let Atlassian host it for you on AWS (So you can experience AWS outages with everyone else)
+
+Here are the prices for cloud deployment. 9$ per user for standard and 18$ per user for premium
+While it makes sense to pay per user in the cloud because you re increasing load with each user,
+it makes less sense when running on-prem.
+But on prem you pay per-user as well, just a bit less
+
+You can get Jira for free if you are a non-academic, non-commercial, non-governmental, non-political and non-profit organization
+
+
+
+
+
+======================= Slide 4:
+
+So why would you want to use jira
+Well, if used properly, can make project management easier for the whole team
+It's quite flexible, you can extend it with plugin and integrations
+It's configurable as well, you can change a log of settings to suit your flow
+
+
+
+======================= Slide 5:
+
+And here are the reasons against.
+
+The extensibility of Jira is also its biggest drawback
+
+Configuring it properly requires good project management skills.
+Projects managers can install a million extensions, and expect you,
+the developer to be more productive, while it's the opposite -
+you have to fill out a million fields and navigate the messy ui.
+
+This leads to developers working to produce good statistics for
+project managers instead of doing actual work.
+
+Also, even though its flexible, sometimes it feels like
+core features are missing, like granular email notification controls
+or good keyboard shortcuts.
+
+
+======================= Slide 6:
+
+When talking about the UI
+I usually like when the interface provides all the controls
+at a glance and uses screen space efficienly, but here, well,
+here half of the fields are never used, so they are visual clutter.
+I had to inject custom css rules into jira to clean the UI up, since you
+can't disable or move them from the UI.
+
+
+
+
+======================= Slide 7:
+
+There are some great alternatives to jira.
+Here are 3 open source ones.
+I only tried OpenProject, it's better in some areas,
+like the gantt chart, and work in others - like the kanban board
+
+
+
+
+
+======================= Slide 8:
+Next up, confluence
+
+This is another product made by Atlassian.
+
+This one is a web wiki for organizing your documentation.
+
+Companies using confluence are mostly the same as those using
+jira because those products integrate nicely and it makes sense to use them together
+
+You can also extend confluence with plugins (I use the d2 plugin at work a lot for diagrams), although there is
+no integration with version control systems out of the box
+
+
+
+
+
+
+======================= Slide 9:
+
+For the technical part, confluence is written in Java as well, uses Apache tomcat and string boot
+Provider REST and xml interfaces as well
+
+
+Hosting and pricing are basically the same as with jira. On premise or in the cloud. the price is a bit lower though.
+
+
+
+
+
+======================= Slide 10:
+
+Why would you want to use confluence?
+
+
+Well, if you are using other atlassian products already, it's quite convenient, the integration is nice
+If you want a central place to manage your wiki instead of storing the documentation per-project.
+
+
+======================= Slide 11:
+
+
+And here are some reason why not.
+
+Even though it's a wiki, the search is sub-par, you can't always find what you are looking for,
+it doesn't search inside documents on text on images.
+
+It can become messy and desynchronised with the project documentation
+in the repositories, version control integration is a MUST have.
+
+The format of notes is xml, so exporting to other system is not straight-forward.
+
+
+
+======================= Slide 12:
+
+Here are some alternatives to confluence
+
+MkDocs, XWiki and GItlab
+All of them store documents in markdown, so that's a clear advantage,
+can't say about the experience, because I've never used any.
+But what I can say, is that having wiki in GitLab seems like a great idea
+because you are storing your documentation with your projects with proper version control
+
+
+
+
+======================= Slide 13:
+
+And for the last product - zephyr
+This is a SmartBear product, not Atlassian, but it can be used from inside Jira as a plugin
+
+It's used for test management and organization
+
+And here are some companies using it
+Epam
+Fujitsu
+AT&T
+Qualcom
+
+
+
+
+
+======================= Slide 14:
+
+
+
+For the technical part, it's written in java and uses Apache tomcat as well, like confluence and uses Elasticsearch for indexing.
+That's for the standalone 'enterprise' edition. When running as a jira plugin it uses the same stack as jira.
+
+
+There are several editions: as a jira plugin, or as a standalone service, both can be hosted on-premise or in the cloud.
+For the jira plugin version, there are 2 editions: squad for smaller teams and scale for bigger one.
+You can see the pricing here, it's not per user, but per team size
+
+
+
+
+
+======================= Slide 15:
+
+
+Why would you want to use it?
+
+The reasons are mostly the same as with confluence.
+You are an existing Jira user, this plugin feels like
+a part of the system when installed and not as a separate addition
+And the test management is good, I'm mostly satisfied with it.
+
+
+Why mostly, because there is no integration with automated testing and CI/CD for releases.
+The analytics are very basic and it's not very flexible, you either use it, or choose something else.
+And of course, the ui, it's using Jira UI, so it's just as bad.
+
+
+
+======================= Slide 16:
+
+Th test window takes up only like half of your screen horizontally and a third vertically,
+when I'm editing a test, I want it fullscreen.
+The copy and delete step buttons are too small and there are no keyboard shortcuts for
+marking the state of current item, completing the test or switching between section.
+I had to add all of that myself with custom css and javascript.
+
+
+
+======================= Slide 17:
+
+Thanks
+
+
+
+

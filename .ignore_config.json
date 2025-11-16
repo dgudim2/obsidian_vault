@@ -42,6 +42,7 @@
     "*.psd": "git",
     "**/Extra": "git",
     "*_ng_*": "git",
+    "*.gz": "git",
     "/uni/Computer\\ networks/GNS3": "git",
     "/LaTeX\\ docs": "git"
 }

@@ -1,5 +1,13 @@
 #!/usr/bin/python
 
+# /// script
+# dependencies = [
+#   "telebot",
+#   "pydot",
+#   "requests"
+# ]
+# ///
+
 import telebot
 import time
 import os
@@ -12,7 +20,7 @@ import shutil
 
 from autogen import gen
 
-API_TOKEN = "5980932188:AAHMgklvSlNjRMsSrJuSqfnDoe4bhNgdNng"
+API_TOKEN = os.environ["BOT_TOKEN"]
 
 bot = telebot.TeleBot(API_TOKEN)
 

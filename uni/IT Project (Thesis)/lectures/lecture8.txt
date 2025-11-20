@@ -1,0 +1,3 @@
+This lecture was dedicated to literature review / bibliometric analysis.
+
+The tool is called VOSviewer (https://www.vosviewer.com), the database was Scopus (https://www.sciencedirect.com/search)

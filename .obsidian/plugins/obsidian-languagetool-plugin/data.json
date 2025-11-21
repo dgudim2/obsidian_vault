@@ -1,10 +1,10 @@
 {
-  "serverUrl": "",
+  "serverUrl": "https://sceakbiryzigvgdfrjbumjvivedwzchd.kloud.home.kg/v2",
   "urlMode": "custom",
   "glassBg": false,
   "shouldAutoCheck": true,
   "autoCheckDelay": 3000,
-  "pickyMode": false,
+  "pickyMode": true,
   "staticLanguage": "auto",
   "englishVeriety": "en-US"
 }

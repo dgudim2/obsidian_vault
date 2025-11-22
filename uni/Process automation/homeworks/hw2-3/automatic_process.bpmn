@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-atm-install-process" targetNamespace="http://bpmn.io/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.9.0">
+  <collaboration id="Collaboration_1">
+    <participant id="Participant_Engineer" name="ATM Software Installation Process" processRef="Process_ATM_Installation" />
+    <participant id="Participant_Software_Repo" name="Software Repository" />
+    <participant id="Participant_17d3h81" name="Filesystem" />
+    <messageFlow id="MessageFlow_SoftwarePackage" sourceRef="Participant_Software_Repo" targetRef="Task_ReceivePackage" />
+    <messageFlow id="Flow_0zvulw7" sourceRef="Activity_0rxlk5c" targetRef="Participant_17d3h81" />
+    <messageFlow id="Flow_0gbre8p" sourceRef="Activity_1m6mde2" targetRef="Participant_17d3h81" />
+  </collaboration>
+  <process id="Process_ATM_Installation" isExecutable="false">
+    <laneSet id="LaneSet_1">
+      <lane id="Lane_ATMSystem" name="ATM System">
+        <flowNodeRef>Task_InstallSoftware</flowNodeRef>
+        <flowNodeRef>Task_PerformTests</flowNodeRef>
+        <flowNodeRef>ExclusiveGateway_TestsSuccessful</flowNodeRef>
+      </lane>
+      <lane id="Lane_Engineer" name="Automated process">
+        <flowNodeRef>Task_BackupConfig</flowNodeRef>
+        <flowNodeRef>Gateway_0s6q2qh</flowNodeRef>
+        <flowNodeRef>Activity_0rxlk5c</flowNodeRef>
+        <flowNodeRef>Event_15uekxk</flowNodeRef>
+        <flowNodeRef>Activity_1m6mde2</flowNodeRef>
+        <flowNodeRef>EndEvent_Complete</flowNodeRef>
+        <flowNodeRef>Task_VerifyOperation</flowNodeRef>
+        <flowNodeRef>Activity_1ika7a5</flowNodeRef>
+        <flowNodeRef>Gateway_0poh9uj</flowNodeRef>
+        <flowNodeRef>Task_Travel</flowNodeRef>
+        <flowNodeRef>Task_ReceivePackage</flowNodeRef>
+        <flowNodeRef>StartEvent_Request</flowNodeRef>
+      </lane>
+    </laneSet>
+    <task id="Task_BackupConfig" name="Backup Existing Configuration">
+      <incoming>Flow_0veqe1j</incoming>
+      <outgoing>Flow_1y3znq9</outgoing>
+    </task>
+    <exclusiveGateway id="Gateway_0s6q2qh" name="Backup succeeded?">
+      <incoming>Flow_1y3znq9</incoming>
+      <outgoing>Flow_1w17w2z</outgoing>
+      <outgoing>Flow_0t34mwx</outgoing>
+    </exclusiveGateway>
+    <task id="Task_InstallSoftware" name="Install &#38; Configure Software">
+      <incoming>Flow_0t34mwx</incoming>
+      <outgoing>SequenceFlow_11</outgoing>
+    </task>
+    <task id="Task_PerformTests" name="Perform Tests">
+      <incoming>SequenceFlow_11</incoming>
+      <outgoing>SequenceFlow_12</outgoing>
+    </task>
+    <exclusiveGateway id="ExclusiveGateway_TestsSuccessful" name="Tests Successful?" gatewayDirection="Diverging">
+      <incoming>SequenceFlow_12</incoming>
+      <outgoing>SequenceFlow_Failure</outgoing>
+      <outgoing>Flow_1tyqp7h</outgoing>
+    </exclusiveGateway>
+    <task id="Activity_0rxlk5c" name="Write report file">
+      <incoming>Flow_1t98q90</incoming>
+      <incoming>Flow_1w17w2z</incoming>
+      <incoming>Flow_0tc3x28</incoming>
+      <outgoing>Flow_0mbdfgz</outgoing>
+    </task>
+    <endEvent id="Event_15uekxk" name="Installation failed">
+      <incoming>Flow_0mbdfgz</incoming>
+    </endEvent>
+    <task id="Activity_1m6mde2" name="Wrire report file">
+      <incoming>Flow_09q97to</incoming>
+    </task>
+    <endEvent id="EndEvent_Complete" name="Software Installed">
+      <incoming>Flow_0ejgko6</incoming>
+    </endEvent>
+    <task id="Task_VerifyOperation" name="Verify Operation &#38; Calibrate">
+      <incoming>SequenceFlow_Failure</incoming>
+      <outgoing>Flow_0ejgko6</outgoing>
+      <outgoing>Flow_09q97to</outgoing>
+    </task>
+    <task id="Activity_1ika7a5" name="Restore from the backup">
+      <incoming>Flow_1tyqp7h</incoming>
+      <outgoing>Flow_0tc3x28</outgoing>
+    </task>
+    <exclusiveGateway id="Gateway_0poh9uj" name="Login successfull?">
+      <incoming>SequenceFlow_3</incoming>
+      <outgoing>Flow_0veqe1j</outgoing>
+      <outgoing>Flow_1t98q90</outgoing>
+    </exclusiveGateway>
+    <task id="Task_Travel" name="Log in into the specified ATM">
+      <incoming>SequenceFlow_2</incoming>
+      <outgoing>SequenceFlow_3</outgoing>
+    </task>
+    <task id="Task_ReceivePackage" name="Receive Software Package &#38; Instructions">
+      <incoming>SequenceFlow_1</incoming>
+      <outgoing>SequenceFlow_2</outgoing>
+    </task>
+    <startEvent id="StartEvent_Request" name="Installation Requested">
+      <outgoing>SequenceFlow_1</outgoing>
+    </startEvent>
+    <sequenceFlow id="Flow_0veqe1j" name="Yes" sourceRef="Gateway_0poh9uj" targetRef="Task_BackupConfig" />
+    <sequenceFlow id="Flow_1y3znq9" sourceRef="Task_BackupConfig" targetRef="Gateway_0s6q2qh" />
+    <sequenceFlow id="Flow_1w17w2z" name="No" sourceRef="Gateway_0s6q2qh" targetRef="Activity_0rxlk5c" />
+    <sequenceFlow id="Flow_0t34mwx" name="Yes" sourceRef="Gateway_0s6q2qh" targetRef="Task_InstallSoftware" />
+    <sequenceFlow id="SequenceFlow_11" sourceRef="Task_InstallSoftware" targetRef="Task_PerformTests" />
+    <sequenceFlow id="SequenceFlow_12" sourceRef="Task_PerformTests" targetRef="ExclusiveGateway_TestsSuccessful" />
+    <sequenceFlow id="SequenceFlow_Failure" name="Yes" sourceRef="ExclusiveGateway_TestsSuccessful" targetRef="Task_VerifyOperation" />
+    <sequenceFlow id="Flow_1tyqp7h" name="No" sourceRef="ExclusiveGateway_TestsSuccessful" targetRef="Activity_1ika7a5" />
+    <sequenceFlow id="Flow_1t98q90" name="No" sourceRef="Gateway_0poh9uj" targetRef="Activity_0rxlk5c" />
+    <sequenceFlow id="Flow_0tc3x28" sourceRef="Activity_1ika7a5" targetRef="Activity_0rxlk5c" />
+    <sequenceFlow id="Flow_0mbdfgz" sourceRef="Activity_0rxlk5c" targetRef="Event_15uekxk" />
+    <sequenceFlow id="Flow_09q97to" sourceRef="Task_VerifyOperation" targetRef="Activity_1m6mde2" />
+    <sequenceFlow id="Flow_0ejgko6" sourceRef="Task_VerifyOperation" targetRef="EndEvent_Complete" />
+    <sequenceFlow id="SequenceFlow_3" sourceRef="Task_Travel" targetRef="Gateway_0poh9uj" />
+    <sequenceFlow id="SequenceFlow_2" sourceRef="Task_ReceivePackage" targetRef="Task_Travel" />
+    <sequenceFlow id="SequenceFlow_1" sourceRef="StartEvent_Request" targetRef="Task_ReceivePackage" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_Engineer_di" bpmnElement="Participant_Engineer" isHorizontal="true">
+        <omgdc:Bounds x="160" y="200" width="1340" height="470" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_ATMSystem_di" bpmnElement="Lane_ATMSystem" isHorizontal="true">
+        <omgdc:Bounds x="190" y="470" width="1310" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Engineer_di" bpmnElement="Lane_Engineer" isHorizontal="true">
+        <omgdc:Bounds x="190" y="200" width="1310" height="270" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_BackupConfig_di" bpmnElement="Task_BackupConfig">
+        <omgdc:Bounds x="750" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0s6q2qh_di" bpmnElement="Gateway_0s6q2qh" isMarkerVisible="true">
+        <omgdc:Bounds x="875" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="934.5" y="346" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_InstallSoftware_di" bpmnElement="Task_InstallSoftware">
+        <omgdc:Bounds x="720" y="520" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_PerformTests_di" bpmnElement="Task_PerformTests">
+        <omgdc:Bounds x="860" y="520" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ExclusiveGateway_TestsSuccessful_di" bpmnElement="ExclusiveGateway_TestsSuccessful" isMarkerVisible="true">
+        <omgdc:Bounds x="1005" y="535" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="989" y="595" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0rxlk5c_di" bpmnElement="Activity_0rxlk5c">
+        <omgdc:Bounds x="850" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15uekxk_di" bpmnElement="Event_15uekxk">
+        <omgdc:Bounds x="1432" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1408" y="253" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1m6mde2_di" bpmnElement="Activity_1m6mde2">
+        <omgdc:Bounds x="1190" y="260" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_Complete_di" bpmnElement="EndEvent_Complete">
+        <omgdc:Bounds x="1222" y="402" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1197" y="445" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_VerifyOperation_di" bpmnElement="Task_VerifyOperation">
+        <omgdc:Bounds x="1050" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ika7a5_di" bpmnElement="Activity_1ika7a5">
+        <omgdc:Bounds x="1320" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0poh9uj_di" bpmnElement="Gateway_0poh9uj" isMarkerVisible="true">
+        <omgdc:Bounds x="605" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="587" y="392" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Travel_di" bpmnElement="Task_Travel">
+        <omgdc:Bounds x="460" y="320" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReceivePackage_di" bpmnElement="Task_ReceivePackage">
+        <omgdc:Bounds x="320" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_Request_di" bpmnElement="StartEvent_Request">
+        <omgdc:Bounds x="242" y="342" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="232" y="385" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1_di" bpmnElement="SequenceFlow_1">
+        <omgdi:waypoint x="278" y="360" />
+        <omgdi:waypoint x="320" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_2_di" bpmnElement="SequenceFlow_2">
+        <omgdi:waypoint x="420" y="360" />
+        <omgdi:waypoint x="460" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_3_di" bpmnElement="SequenceFlow_3">
+        <omgdi:waypoint x="560" y="360" />
+        <omgdi:waypoint x="605" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tyqp7h_di" bpmnElement="Flow_1tyqp7h">
+        <omgdi:waypoint x="1055" y="560" />
+        <omgdi:waypoint x="1370" y="560" />
+        <omgdi:waypoint x="1370" y="400" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1473" y="543" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y3znq9_di" bpmnElement="Flow_1y3znq9">
+        <omgdi:waypoint x="850" y="360" />
+        <omgdi:waypoint x="875" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_Failure_di" bpmnElement="SequenceFlow_Failure">
+        <omgdi:waypoint x="1030" y="535" />
+        <omgdi:waypoint x="1030" y="360" />
+        <omgdi:waypoint x="1050" y="360" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1032" y="457" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ejgko6_di" bpmnElement="Flow_0ejgko6">
+        <omgdi:waypoint x="1150" y="360" />
+        <omgdi:waypoint x="1170" y="360" />
+        <omgdi:waypoint x="1170" y="420" />
+        <omgdi:waypoint x="1222" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1w17w2z_di" bpmnElement="Flow_1w17w2z">
+        <omgdi:waypoint x="900" y="335" />
+        <omgdi:waypoint x="900" y="290" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="879" y="303" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t34mwx_di" bpmnElement="Flow_0t34mwx">
+        <omgdi:waypoint x="900" y="385" />
+        <omgdi:waypoint x="900" y="430" />
+        <omgdi:waypoint x="770" y="430" />
+        <omgdi:waypoint x="770" y="520" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="827" y="412" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_11_di" bpmnElement="SequenceFlow_11">
+        <omgdi:waypoint x="820" y="560" />
+        <omgdi:waypoint x="860" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_12_di" bpmnElement="SequenceFlow_12">
+        <omgdi:waypoint x="960" y="560" />
+        <omgdi:waypoint x="1005" y="560" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0veqe1j_di" bpmnElement="Flow_0veqe1j">
+        <omgdi:waypoint x="655" y="360" />
+        <omgdi:waypoint x="750" y="360" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="695" y="342" width="16" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1t98q90_di" bpmnElement="Flow_1t98q90">
+        <omgdi:waypoint x="630" y="335" />
+        <omgdi:waypoint x="630" y="250" />
+        <omgdi:waypoint x="850" y="250" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="638" y="291" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tc3x28_di" bpmnElement="Flow_0tc3x28">
+        <omgdi:waypoint x="1370" y="320" />
+        <omgdi:waypoint x="1370" y="250" />
+        <omgdi:waypoint x="950" y="250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0mbdfgz_di" bpmnElement="Flow_0mbdfgz">
+        <omgdi:waypoint x="950" y="230" />
+        <omgdi:waypoint x="1432" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09q97to_di" bpmnElement="Flow_09q97to">
+        <omgdi:waypoint x="1150" y="360" />
+        <omgdi:waypoint x="1170" y="360" />
+        <omgdi:waypoint x="1170" y="300" />
+        <omgdi:waypoint x="1190" y="300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_Software_Repo_di" bpmnElement="Participant_Software_Repo" isHorizontal="true">
+        <omgdc:Bounds x="160" y="80" width="570" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_10ol4wa" bpmnElement="Participant_17d3h81" isHorizontal="true">
+        <omgdc:Bounds x="810" y="80" width="690" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="MessageFlow_SoftwarePackage_di" bpmnElement="MessageFlow_SoftwarePackage">
+        <omgdi:waypoint x="370" y="160" />
+        <omgdi:waypoint x="370" y="320" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zvulw7_di" bpmnElement="Flow_0zvulw7">
+        <omgdi:waypoint x="900" y="210" />
+        <omgdi:waypoint x="900" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0gbre8p_di" bpmnElement="Flow_0gbre8p">
+        <omgdi:waypoint x="1240" y="260" />
+        <omgdi:waypoint x="1240" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

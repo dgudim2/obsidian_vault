@@ -1,0 +1,10 @@
+
+Transitioning services from on-premise to cloud can possibly lead to reduced expenses and increased scalability leading to more revenue and growth.
+According to Oracle (2025), their customers are achieving significant business benefits, including reduced financial close times, deep insights from machine learning and AI, faster deployments and updates. Atlassian (2024) states that in 2024, 9 out of 10 new Atlassian customers choose cloud over on-premise, and even long term on-premise users are starting to make the move. For example, a photography company called VSCO transitioned to using cloud services instead of hosting them on-premise and saw a 25% cost decrease. (Microsoft, 2024). Overall, the evidence seems to suggest that transitioning to cloud deployments can improve scalability, cost and flexibility.
+
+
+
+EXAMPLE:
+
+Corporate Social Responsibility (CSR) can generate a positive reputation for a company leading to possibly more sales and growth. According to Jones et al (2019), a corporation that invests in the environmental and ethical approaches of CSR will demonstrate to the public and the media that they are a responsible company. Watson (2018) provides evidence that this improves consumer sales as customers tend to support ethical green business practice thus improving profitability and encouraging growth. For example, a yoghurt company called Yeo Valley has been investing in making its products organic, creating fully recyclable packaging and reducing itsCO2 output. As a result, profits have doubled within the last two years providing the company with a range of opportunities to expand (Peterson, 2019). Overall, the evidence seems to suggest that investing in
+CSR can improve brand image and productivity.

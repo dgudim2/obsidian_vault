@@ -1,0 +1,29 @@
+---
+config:
+  theme: forest
+---
+sequenceDiagram
+
+    loop Every hour
+        opt Internet available
+            BackgroundWorker->>VilniusTech_API: Request new events
+            VilniusTech_API-->>BackgroundWorker: Return new events
+            BackgroundWorker-->>AppStorage: Store updated events
+            alt New event - grade
+                BackgroundWorker->>NotificationSystem: Notify user
+            else New event - university news
+                BackgroundWorker->>NotificationSystem: Notify user
+            else New event - timetable update
+                BackgroundWorker->>NotificationSystem: Notify user
+                BackgroundWorker->>CalendarProvider: Update stored timetable
+            else New event - course update
+                BackgroundWorker->>CourseProvider: Update course contents
+            end
+        end
+        BackgroundWorker->>CourseProvider: Get deadlines
+        CourseProvider-->>BackgroundWorker: Return deadlines
+        opt Deadline near
+            BackgroundWorker->>NotificationSystem: Notify user
+        end
+    end
+    

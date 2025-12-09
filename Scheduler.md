@@ -24,6 +24,9 @@ kanban-plugin: board
     changing 'blend with background' on a specific entry does not work
     
     @{2024-08-31}
+- [ ] "No events" buggy when enabling and disabling calendar
+    
+    @{2025-12-09}
 
 
 ## Features
@@ -193,6 +196,45 @@ kanban-plugin: board
     Option to apply styles based on regex rules
     
     @{2024-08-31}
+- [ ] ability to mark calendar events as completed for the day
+    
+    @{2025-12-09}
+- [ ] ability to mark calendar events as completed for the day
+    
+    @{2025-12-09}
+- [ ] font boldness, blur effect for text as well, blur bleed out for 'glow in the dark' effect
+    
+    @{2025-12-09}
+- [ ] option to clear logcat, clear Pictures (cached crops) and export zip periodically
+    
+    @{2025-12-09}
+- [ ] implement search + integrate with system search
+    
+    @{2025-12-09}
+- [ ] option to use a system calendar as the backing store
+    
+    @{2025-12-09}
+- [ ] save creation datetime of events
+    
+    @{2025-12-09}
+- [ ] scheduler wallpaper integration with weather (breeze weather)
+    
+    @{2025-12-09}
+- [ ] shortcut to settings on system app info page
+    
+    @{2025-12-09}
+- [ ] statistics on completed events
+    
+    @{2025-12-09}
+- [ ] style calendar days if some event is present
+    
+    @{2025-12-09}
+- [ ] tasks support
+    
+    @{2025-12-09}
+- [ ] when editing event text, show event color in the corner/with border
+    
+    @{2025-12-09}
 
 
 ## Fixed bugs

@@ -1,0 +1,29 @@
+---
+config:
+  theme: forest
+---
+sequenceDiagram
+    User->>Ui: Select course list in menu
+    Ui->>CourseProvider: Request course list
+    CourseProvider->>CacheStorage: Try to get course list from cache
+    
+    alt Cache is valid
+        CacheStorage-->>CourseProvider: Return course list
+        CourseProvider-->>Ui: Show course list
+    else No cache or cache is expired
+        alt Cache exists
+            CacheStorage-->>CourseProvider: Return course list
+            CourseProvider-->>Ui: Show course list
+        else
+            CourseProvider-->>Ui: Show a loading indicator
+        end
+        
+        alt Internet available
+            CourseProvider->>VilniusTech_API: Request course list in the background
+            VilniusTech_API-->>CourseProvider: Return course list
+            CourseProvider->>CacheStorage: Update cache
+            CourseProvider-->>Ui: Update course list
+        else
+            CourseProvider-->>Ui: Show a warning
+        end
+    end

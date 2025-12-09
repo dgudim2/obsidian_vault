@@ -1,0 +1,26 @@
+---
+config:
+  theme: forest
+---
+sequenceDiagram
+    User->>Ui: Enter login data
+    Ui->>LoginController: Forward data
+    LoginController->>Vilniustech_SSO: Verify username/password
+    
+    alt Username/pass valid
+        Vilniustech_SSO-->>LoginController: Return otp request
+        LoginController-->>Ui: Show OTP prompt
+        User->>Ui: Enter OTP
+        Ui->>LoginController: Forward OTP
+        LoginController->>Vilniustech_SSO: Validate OTP
+        alt OTP valid
+            Vilniustech_SSO-->>LoginController: Return access token
+            LoginController-->>Ui: Show a success message and login
+        else OTP invalid
+            Vilniustech_SSO-->>LoginController: Return error response
+            LoginController-->>Ui: Prompt to enter otp again
+        end
+    else Username/pass invalid
+        Vilniustech_SSO-->>LoginController: Return error response
+        LoginController-->>Ui: Prompt to enter login credentials
+    end

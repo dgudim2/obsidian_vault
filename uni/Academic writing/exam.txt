@@ -1,0 +1,72 @@
+
+
+
+The impact of AI on industrial decision-making
+
+The integration of AI (artificial intelligence) and ML (machine learning) has fundamentally changed modern business landscapes by improving decision-making strategies and automating complex tasks. As organizations grow, so does their data, so naturally, the adoption of more complex modeling techniques has become wide-spread. Khang et al. (2024) explains that AI-centric modeling and analytics provide the necessary methodologies to process and use AI, ML, and IoT (Internet of Things) data, thereby driving innovation and business development in both government and private sectors. This shift is mostly driven by the flexible nature of these technologies. Zivkovic et al. (2022) highlight these usecases, stating that "ML facilitates decision making process because models can be created from sample data, and decision-making process can be automated using data inputs" (p. 56). These systems allow for the deployment of complex frameworks to solve real-world challenges. In technical terms, this often involves the use of Artificial Neural Networks (ANNs), which are modeled after biological brain structures, specifically, feed-forward networks are frequently used to process inputs through stacked layers to interpret complex data streams (Rajora et al., 2024). It can be argued that the transition to such automated systems not only improves efficiency but also shapes the managerial scope, allowing for close to real-time responsiveness that is s impossible to achieve with manual methods. All-in-all, the successful implementation of these systems is a major step in modern management, ensuring that industries can move from traditional manual methods towards more autonomous, data-driven ones.
+
+
+
+References
+
+Khang, A., Abdullayev, V., & Jadhav, B. (2025). Ai-centric modeling and analytics: Concepts, technologies, and applications. CRC PRESS. https://vb.vilniustech.lt/discovery/fulldisplay?docid=cdi_informaworld_taylorfrancisbooks_10_1201_9781003400110_version2&context=PC&vid=370LABT_VGTU:VGTU&lang=lt
+
+Rajora, G. L., Sanz-Bobi, M. A., Tjernberg, L. B., & Cabu, J. E. U. (2024). A review of asset management using artificial intelligence-based machine learning models: Applications for the electric power and energy system. IET Generation, Transmission & Distribution, 18(13), 2635-2656. https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049%2Fgtd2.13183
+
+Zivkovic, M., Bacanin, N., Arandjelovic, J., Strumberger, I., & Venkatachalam, K. (2022). Firefly algorithm and deep neural network approach for intrusion detection. In Proceedings of Third International Conference on Computing, Communications, and Cyber-Security (Lecture Notes in Networks and Systems). Springer. https://link.springer.com/book/10.1007/978-981-19-4831-2
+
+
+
+----------------------
+
+Using the citations provided below, write one academic paragraph of approximately 250 words on the given topic.
+
+Your paragraph must demonstrate proper academic writing skills and include:
+
+    A reference list at the end in APA style
+
+    At least three different types of sourcing techniques, including:
+        Direct quotation
+        Paraphrasing
+        Summarizing
+    Correct in-text citations
+
+    Use of appropriate academic phrases (e.g., According to…, The findings suggest that…, It can be argued that…, In contrast…)
+
+Structure:
+ The topic sentence: States the main idea or area to be covered by the paragraph.
+ Explanation or definitions (optional): Can be used to clarify any difficult or uncertain terminology introduced in the topic sentence.
+ Evidence and examples: One or more sentences introducing key ideas, sources, quotes, case studies, evidence or data.
+ Comment: Explores what the evidence means, how it can be summarised or whether it needs to be challenged.
+ Concluding sentence: Relates the paragraph to your overall argument and links forward to the next paragraph.
+
+References:
+
+"In the context of industrial and business applications, AI-centric modeling and analytics provide methodologies for leveraging AI, machine learning, and IoT-driven data to support decision-making and innovation. These approaches include real-time analysis systems and robotic process automation, which are applicable across government and private sectors, facilitating business development and management."
+AI-Centric Modeling and Analytics. Alex Khang, Vugar  Abdullayev,  Babasaheb Jadhav. and others, 2024
+
+https://vb.vilniustech.lt/discovery/fulldisplay?docid=cdi_informaworld_taylorfrancisbooks_10_1201_9781003400110_version2&context=PC&vid=370LABT_VGTU:VGTU&lang=lt
+
+----
+
+"Artificial neural networks are a framework that many machine learning techniques employ to interpret complex input data.Artiﬁcial neural networks (ANNs), a popular machine learning tool, are modeled after the biological neural network seen in the human brain. Feed-forward neural networks, which process inputs from artificial neurons in the layer below and send the weight values of each input neuron as output to the layer above, are ANNs that are often utilized."
+
+A review of asset management using artiﬁcial intelligence-based machine learning models: Applications for the electric power and energy system
+
+Gopal Lal Rajora, Miguel A. Sanz-Bobi, Lina Bertling Tjernberg, José Eduardo Urrea Cabu
+
+https://ietresearch.onlinelibrary.wiley.com/doi/epdf/10.1049%2Fgtd2.13183
+
+----
+
+"Machine learning (ML) refers to computer systems and programs that adapt and improve their performance by learning from a given task. ML methods enable computers to learn from data inputs and then use statistical analysis to generate outputs within a specific range. As a result, ML facilitates decision making process because models can be created from sample data, and decision-making process can be automated using data inputs. Deep learning (DL) has recently become a key machine learning area that can be successfully applied for many real-life challenges. Deep learning may utilize labeled datasets to educate the system (supervised learning), although it does not always require a datasets with labels to train itself (unsupervised learning)."
+
+Firefly Algorithm and Deep Neural Network Approach for Intrusion Detection
+
+Miodrag Zivkovic, Nebojsa Bacanin, Jelena Arandjelovic, Ivana Strumberger, and K. Venkatachalam
+
+https://link.springer.com/book/10.1007/978-981-19-4831-2
+
+----
+
+

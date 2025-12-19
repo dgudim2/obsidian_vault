@@ -72,6 +72,7 @@
 + Скотт Пилигрим жмёт на газ (после фильма)
 + darker than black
 + Ergo proxy
++ texhnolyze
 + Cowboy bebop
 + Синдуальность: Нуар
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419

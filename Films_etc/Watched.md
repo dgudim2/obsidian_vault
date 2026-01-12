@@ -63,6 +63,7 @@
 6. it croud (7/10)
 7. Altered carbon (8/10)
 8. Altered carbon 2 (8/10)
+9. Minuscles (10/10)
 
 ## Anime
 

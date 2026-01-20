@@ -3,6 +3,13 @@ config:
   theme: forest
 ---
 sequenceDiagram
+  autonumber
+  participant BackgroundWorker as Background worker
+  participant VilniusTech_API as Vilniustech API
+  participant AppStorage@{ type: "database" } as App storage
+  participant NotificationSystem as Notifications system
+  participant CalendarProvider as Calendar provider
+  participant CourseProvider as Course provider
 
     loop Every hour
         opt Internet available
@@ -26,4 +33,3 @@ sequenceDiagram
             BackgroundWorker->>NotificationSystem: Notify user
         end
     end
-    

@@ -3,10 +3,14 @@ config:
   theme: forest
 ---
 sequenceDiagram
+    autonumber
+    actor User
+    participant Ui
+    participant LoginController as Login controller
+    participant Vilniustech_SSO as Vilniustech API
     User->>Ui: Enter login data
     Ui->>LoginController: Forward data
     LoginController->>Vilniustech_SSO: Verify username/password
-    
     alt Username/pass valid
         Vilniustech_SSO-->>LoginController: Return otp request
         LoginController-->>Ui: Show OTP prompt

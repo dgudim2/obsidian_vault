@@ -3,22 +3,23 @@ config:
   theme: forest
 ---
 sequenceDiagram
+    autonumber
     actor User
     participant Ui
     participant CourseProvider as Course provider
     participant CacheStorage@{ "type": "database" } as Cache storage
-    participant VilniusTech_API
-    autonumber
-    User->>Ui: Select course list in menu
-    Ui->>CourseProvider: Request course list
+    participant CourseAdapter as Course adapter
+    participant VilniusTech_API as Vilniustech API
+    User->>Ui: Select "grades" or open course material list section
+    CourseProvider->>CourseProvider: Fetch course list internally
     CourseProvider->>CacheStorage: Try to get course list from cache
     alt Cache is valid
         CacheStorage-->>CourseProvider: Return course list
-        CourseProvider-->>Ui: Show course list
+        CourseProvider-->>CourseAdapter: Pass course list
     else No cache or cache is expired
         alt Cache exists
             CacheStorage-->>CourseProvider: Return course list
-            CourseProvider-->>Ui: Show course list
+            CourseProvider-->>CourseAdapter: Pass course list
         else
             CourseProvider-->>Ui: Show a loading indicator
         end
@@ -27,8 +28,20 @@ sequenceDiagram
             CourseProvider->>VilniusTech_API: Request course list in the background
             VilniusTech_API-->>CourseProvider: Return course list
             CourseProvider->>CacheStorage: Update cache
-            CourseProvider-->>Ui: Update course list
+            CourseProvider-->>CourseAdapter: Update course list
         else
             CourseProvider-->>Ui: Show a warning
         end
+    end
+
+    opt User wants course grades:
+        CourseAdapter-->>Ui: Return grades for courses
+    end
+
+    opt User wants exam grades:
+        CourseAdapter-->>Ui: Return exam grades for courses
+    end
+
+    opt User wants course material:
+        CourseAdapter-->>Ui: Return materials for courses
     end

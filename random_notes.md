@@ -83,9 +83,6 @@ exec 1> >(ccze -A)
 
 setcap 'cap_net_bind_service=+ep' /path/to/program
 
-## Images
-https://pomf2.lain.la/f/0hvkp6v.tar.gz
-
 ## Kwin shortcuts
 https://gist.github.com/tm9k1/2972988f8ccd920b37284ffc20a2f835
 qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.shortcutNames

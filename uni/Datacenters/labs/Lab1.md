@@ -64,6 +64,8 @@ This is their backup datacenter
 
 ![[Pasted image 20260208210303.png]]
 
+> Uptime institute link: https://uptimeinstitute.com/uptime-institute-awards/list/client/duomenu-logistikos-centras/223
+
 ```` 
 `````
 
@@ -132,6 +134,8 @@ Which means:
 - **Three days of independent power** 
 - **No more than 1.6 hours of downtime per year** (99.982% uptime)
 
+> Uptime institute link: https://uptimeinstitute.com/uptime-institute-awards/list/client/jsc-baltnetos-komunikacijos/316
+
 `````col 
 ````col-md 
 flexGrow=1
@@ -194,7 +198,7 @@ The datacenter they are colocating in is certified **Tier 3**, I won't repeat wh
 
 ### Datacenters
 
-They have *1 datacenter in Vilnius* and in 6 other countries. They don't mention the location of their datacenter on their website, just say that it is Tier-3 and not theirs. I think it's a **DELSKA** datacenter, like one used by [[#Hostline]]
+They have *1 datacenter in Vilnius* and in 6 other countries. They don't mention the location of their datacenter on their website, just say that it is Tier-3 and not theirs, but a **DELSKA** one, the same one used by [[#Hostline]]
 
 ![[Pasted image 20260208231530.png]]
 

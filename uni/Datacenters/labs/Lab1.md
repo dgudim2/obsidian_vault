@@ -5,6 +5,39 @@
 
 ```toc
 ```
+
+# Tier levels
+
+> There are 4 datacenter tier levels
+
+## Tier 1
+
+- **Basic capacity and infrastructure requirements.** May be in an office setting and *may include* a UPS, a designated area for IT systems, dedicated cooling system, and a generator
+- **No redundancy.** The facility *may* help protect from downtime caused by human error, but maintenance requires system shutdown.
+- **No more than 28.8 hours of downtime per year.** (99.671% uptime)
+
+## Tier 2
+
+- **Partial power and cooling redundancy.** There are some redundant components in place to help prevent downtime.
+- **No more than 22 hours of downtime per year.** (99.741% uptime)
+
+## Tier 3
+
+> [!note] 
+> This is the most wide-spread datacenter pair
+
+- **N+1 redundancy**. Tier 3 data centers provide N+1 redundant power and cooling distribution paths to allow for routine **maintenance without downtime**
+- **Three days of independent power** that is not connected to any outside source is required
+- **No more than 1.6 hours of downtime per year** (99.982% uptime)
+
+## Tier 4
+
+- **2N+1 redundancy.** Full redundancy with double the amount of distribution paths needed plus a backup.
+- **96-hour outage protection.** Four days of independent power that is not connected to any outside source is required.
+- **No more than 0.5 hours of downtime per year.** (99.995% uptime)
+- **All IT equipment follows a fault-tolerant power design.** When a piece of equipment fails or there is an interruption in a distribution path, IT operations are not impacted.
+- **Continuous cooling to maintain safe operating environment.** The environment is maintained at an ideal temperature to increase efficiency and extend the useful life of hardware.
+
 # Companies
 
 ## Hostline, UAB
@@ -30,11 +63,7 @@ So you can get **physical dedicated servers** from them (for *storage*, *compute
 
 They have *2 datacenters in Vilnius*, one owned by them, and another, by **DELSKA (DEAC European Data Center)**. They have 5 more datacenters in other parts of the world
 
-All their datacenters are certified **Tier 3** datacenters. 
-Which means:
-- **N+1 redundancy**. Tier 3 data centers provide N+1 redundant power and cooling distribution paths to allow for routine **maintenance without downtime**
-- **Three days of independent power** that is not connected to any outside source is required
-- No more than 1.6 hours of downtime per year (99.982% uptime)
+All their datacenters are certified [[#Tier 3]] datacenters. Those 2 datacenters could work as an Active-Active pair as well.
 
 `````col 
 ````col-md 
@@ -128,11 +157,7 @@ They provide quite a lot of different services. While [[#Hostline]] provides mos
 
 They have *3 datacenters in Vilnius*, all owned by them.
 
-All their datacenters are certified **Tier 3** datacenters as well. 
-Which means:
-- **N+1 redundancy**
-- **Three days of independent power** 
-- **No more than 1.6 hours of downtime per year** (99.982% uptime)
+All their datacenters are certified [[#Tier 3]] datacenters as well.
 
 > Uptime institute link: https://uptimeinstitute.com/uptime-institute-awards/list/client/jsc-baltnetos-komunikacijos/316
 
@@ -194,7 +219,7 @@ flexGrow=1
 
 Their datacenter is not owned by them, so there is no colocation service provided, but they provide web hosting, physical and virtual server renting and DNS registration with ssl certificates.
 
-The datacenter they are colocating in is certified **Tier 3**, I won't repeat what this means here.
+The datacenter they are colocating in is certified [[#Tier 3]].
 
 ### Datacenters
 

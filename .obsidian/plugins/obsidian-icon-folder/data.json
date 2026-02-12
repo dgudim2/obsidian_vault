@@ -6,6 +6,7 @@
     "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
+      "LiPickaxe",
       "TiRobot",
       "IbDatabse",
       "LiEthernetPort",
@@ -24,8 +25,7 @@
       "IbMoneyNote",
       "FabJava",
       "🇱🇹",
-      "LiScreenShare",
-      "RiMoneyEuroBoxLine"
+      "LiScreenShare"
     ],
     "recentlyUsedIconsSize": 20,
     "rules": [
@@ -124,5 +124,6 @@
   "uni/IOT": "SiEsphome",
   "uni/ISP services": "LiEthernetPort",
   "uni/Data communication and networking": "IbDatabse",
-  "uni/Process automation": "TiRobot"
+  "uni/Process automation": "TiRobot",
+  "uni/Data mining": "LiPickaxe"
 }

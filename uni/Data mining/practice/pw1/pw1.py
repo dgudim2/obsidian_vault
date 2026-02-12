@@ -175,7 +175,7 @@ def scrape_quotes():
     plt.show()
     
     seaborn.displot(num_tags_per_quote)
-    plt.title("Tag distribution per book")
+    plt.title("Tag distribution per quote")
     plt.show()
     
     seaborn.boxplot(x=all_authors, y=num_tags_per_quote)
@@ -184,5 +184,5 @@ def scrape_quotes():
         
     # Note. Most of the graphs here are pretty crap since there is not enough data
     
-    
+# scrape_books()
 scrape_quotes()

@@ -24,20 +24,4 @@ If even more racks are required, it's possible to add 4 more at the top or botto
 
 https://www.racksolutions.eu/rack-mount-enclosure.html#attr-instructions_drawings
 
-`````col 
-````col-md 
-flexGrow=1
-===
-
-![[RACK-151_data_sheets_rev3.pdf#page=1&rect=5,5,607,792|RACK-151_data_sheets_rev3, p.1]]
-
-```` 
-````col-md 
-flexGrow=1
-===
-
-![[RACK-151_data_sheets_rev3.pdf#page=2&rect=6,11,605,775|RACK-151_data_sheets_rev3, p.2]]
-
-```` 
-`````
 

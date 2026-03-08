@@ -27,6 +27,8 @@ from sklearn.metrics import accuracy_score, classification_report, mean_squared_
 
 from sklearn.metrics import ConfusionMatrixDisplay
 
+from typing import Any
+
 adult_dataset = pl.read_csv(Path("./adult.csv"))
 titanic_dataset = pl.read_csv(Path("./titanic.csv"))
 
@@ -137,7 +139,7 @@ def test_mlps_for_dataset(dataset: pl.DataFrame, prediction_column: str):
     accuracies = []
     activations = ["relu", "logistic", "tanh"]
 
-    best_params = {}
+    best_params: dict[str, Any] = {}
     best_accuracy = 0
 
     for activation in activations:
@@ -209,35 +211,20 @@ def test_mlps_for_dataset(dataset: pl.DataFrame, prediction_column: str):
 
     plt.show()
 
-    epochs = best_params["max_iter"]
     mlp = MLPClassifier(
         hidden_layer_sizes=best_params["hidden_layer_sizes"],
-        max_iter=1,
+        max_iter=best_params["max_iter"],
         activation=best_params["activation"],
-        random_state=42,
-        early_stopping=True
+        random_state=42
     )
-    training_mse = []
-    testing_mse = []
-    for epoch in epochs:
-        mlp.fit(X_train, y_train)
-        
-        y_pred = mlp.predict(X_train)
-        curr_train_score = mean_squared_error(y_train, y_pred)  # training performances
-        
-        y_pred = mlp.predict(X_test)
-        curr_valid_score = mean_squared_error(y_test, y_pred)  # validation performances
-        
-        training_mse.append(curr_train_score)
-        testing_mse.append(curr_valid_score)
-        
-    sb.lineplot(training_mse)
-    sb.lineplot(testing_mse)
+    
+    sb.lineplot(mlp.fit(X_train, y_train).loss_curve_)
+    sb.lineplot(mlp.fit(X_test, y_test).loss_curve_)
     plt.legend()
     plt.show()
 
 
-test_mlps_for_dataset(adult_dataset, "income")
+#test_mlps_for_dataset(adult_dataset, "income")
 test_mlps_for_dataset(titanic_dataset, "Survived")
 
 

@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Data Center PuE Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-page: #f4f6fb;
+      --bg-card: #ffffff;
+      --bg-soft: #edf2fb;
+      --accent: #0051a3;
+      --accent-light: #e0ecff;
+      --accent-soft: rgba(0, 81, 163, 0.08);
+      --border: #d1d5db;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --danger: #e11d48;
+      --ok: #16a34a;
+      --warn: #eab308;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        sans-serif;
+      background: var(--bg-page);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .app {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 22px 20px;
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    h1 span.badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--text-muted);
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      max-width: 520px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .pill strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Electricity price */
+
+    .price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .price-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .price-input {
+      max-width: 130px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text);
+      background: #ffffff;
+    }
+
+    .price-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .price-help {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    /* Tooltip */
+
+    .tooltip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: #ffffff;
+      cursor: help;
+    }
+
+    .tooltip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Preset buttons */
+
+    .presets-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 8px 0 4px;
+    }
+
+    .presets {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .preset-btn {
+      font-size: 0.78rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      padding: 5px 10px;
+      background: #ffffff;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: background 0.12s ease-out, color 0.12s ease-out,
+        border-color 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    .preset-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent-soft);
+    }
+
+    .preset-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4);
+    }
+
+    .scenario-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .scenario-note strong {
+      color: var(--text);
+    }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 10px 0 4px;
+    }
+
+    .sliders {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .slider-row {
+      border-radius: var(--radius-lg);
+      padding: 12px 12px 10px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+    }
+
+    .slider-row.main {
+      background: linear-gradient(90deg, #e0ecff, #ffffff);
+      border-color: #c4d6f5;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .slider-label {
+      font-size: 0.92rem;
+      font-weight: 550;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .slider-chip {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      background: var(--bg-soft);
+    }
+
+    .slider-chip.main {
+      border-color: #2563eb;
+      color: #1d4ed8;
+      background: #e0ecff;
+    }
+
+    .slider-value {
+      font-size: 0.9rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .slider-value span.unit {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-left: 2px;
+    }
+
+    .slider-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      outline: none;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 4px var(--accent-soft);
+      cursor: pointer;
+      transition: transform 0.12s ease-out, box-shadow 0.12s ease-out;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 4px var(--accent-soft);
+      cursor: pointer;
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+      transform: scale(1.05);
+    }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* Summary / PuE card */
+
+    .summary-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .summary-main {
+      background: linear-gradient(135deg, #0051a3 0%, #0f5fb8 45%, #ffffff 180%);
+      border-radius: var(--radius-xl);
+      padding: 16px 16px 14px;
+      border: 1px solid #0f5fb8;
+      color: #f9fafb;
+    }
+
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .summary-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    .PuE-badge {
+      font-variant-numeric: tabular-nums;
+      font-size: 1.7rem;
+      font-weight: 650;
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+
+    .PuE-badge span.label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+    }
+
+    .PuE-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.25);
+      border: 1px solid rgba(239, 246, 255, 0.5);
+    }
+
+    .PuE-chip .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.35);
+    }
+
+    .bar-wrap {
+      margin-top: 8px;
+      margin-bottom: 6px;
+    }
+
+    .bar-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      opacity: 0.9;
+      margin-bottom: 2px;
+    }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(15, 23, 42, 0.15);
+      border: 1px solid rgba(15, 23, 42, 0.15);
+      display: flex;
+    }
+
+    .bar-it {
+      background: #16a34a;
+      transition: width 0.18s ease-out;
+    }
+
+    .bar-oh {
+      background: #f97316;
+      transition: width 0.18s ease-out;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      opacity: 0.9;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.15);
+      border: 1px solid rgba(239, 246, 255, 0.35);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+    }
+
+    .legend-it {
+      background: #16a34a;
+    }
+
+    .legend-oh {
+      background: #f97316;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .summary-item {
+      font-size: 0.8rem;
+      padding: 6px 8px;
+      border-radius: 12px;
+      background: rgba(15, 23, 42, 0.1);
+      border: 1px solid rgba(239, 246, 255, 0.45);
+    }
+
+    .summary-item-label {
+      font-size: 0.7rem;
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    .summary-item-value {
+      font-variant-numeric: tabular-nums;
+      font-size: 0.92rem;
+    }
+
+    .summary-item-unit {
+      font-size: 0.7rem;
+      opacity: 0.85;
+      margin-left: 2px;
+    }
+
+    /* Live formula */
+
+    .formula {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(239, 246, 255, 0.4);
+      font-size: 0.78rem;
+    }
+
+    .formula-title {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.9;
+      margin-bottom: 2px;
+    }
+
+    .formula-line {
+      font-variant-numeric: tabular-nums;
+      opacity: 0.95;
+    }
+
+    .formula-line.code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
+        Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.77rem;
+    }
+
+    .breakdown-card {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      border: 1px dashed var(--border);
+      font-size: 0.8rem;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+    }
+
+    .cost-card {
+      margin-top: 8px;
+      padding: 10px;
+      border-radius: var(--radius-lg);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-muted);
+    }
+
+    .cost-row strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .note strong {
+      color: var(--text);
+    }
+
+    /* Footer */
+
+    footer {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #e5e7eb;
+      border: 1px solid #d1d5db;
+      font-size: 0.78rem;
+      color: #374151;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    footer span {
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-radius: 14px;
+      }
+      footer span {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <!-- Left: calculator + scenarios -->
+    <div class="card">
+      <h1>
+        Data Center PuE Calculator
+        <span class="badge">5 MW example</span>
+      </h1>
+      <p class="subtitle">
+        Adjust power categories (MW) and see how
+        <strong>PuE</strong>, energy consumption, and electricity costs change.
+      </p>
+
+      <!-- Electricity price -->
+      <div class="price-row">
+        <label for="priceInput" class="price-label">
+          Electricity price (€/MWh)
+          <span
+            class="tooltip"
+            title="Enter spot or average price, for example from the Nord Pool market."
+            >?</span
+          >
+        </label>
+        <input
+          type="number"
+          id="priceInput"
+          class="price-input"
+          value="100"
+          step="1"
+          min="0"
+        />
+      </div>
+      <p class="price-help">
+        For example, you can use today’s Nord Pool Lithuania zone price and enter it here.
+      </p>
+
+      <div class="pill-row">
+        <div class="pill">Baseline design: <strong>PuE 1.40</strong></div>
+        <div class="pill">Total data center: <strong>7.0 MW</strong></div>
+        <div class="pill">IT load: <strong>5.0 MW</strong></div>
+      </div>
+
+      <div class="presets-title">Scenarios (real-world examples)</div>
+      <div class="presets">
+        <button class="preset-btn" id="presetLegacy">
+          Legacy server room (~2.0)
+        </button>
+        <button class="preset-btn" id="presetColo">
+          Modern colocation DC (~1.4)
+        </button>
+        <button class="preset-btn" id="presetHyper">
+          Hyperscale DC (~1.15)
+        </button>
+        <button class="preset-btn" id="presetLTFree">
+          Lithuania climate - free cooling (~1.25)
+        </button>
+      </div>
+      <p class="scenario-note" id="scenarioDescription">
+        <strong>Scenario:</strong> modern colocation data center, typical PuE around
+        1.4. Fits many commercial DCs in Europe.
+      </p>
+
+      <div class="section-title">IT load</div>
+      <div class="sliders">
+        <!-- IT equipment -->
+        <div class="slider-row main">
+          <div class="slider-header">
+            <div class="slider-label">
+              IT equipment
+              <span
+                class="tooltip"
+                title="IT equipment - servers, storage, and network devices in racks."
+                >?</span
+              >
+              <span class="slider-chip main">PuE denominator</span>
+            </div>
+            <div class="slider-value">
+              <span id="itValue">5.00</span>
+              <span class="unit">MW</span>
+            </div>
+          </div>
+          <div class="slider-sub">
+            Servers, storage, and network devices in racks.
+          </div>
+          <input
+            id="itSlider"
+            type="range"
+            min="1"
+            max="20"
+            step="0.01"
+            value="5.0"
+          />
+        </div>
+      </div>
+
+      <div class="section-title">Overhead (non-IT power)</div>
+      <div class="sliders">
+        <!-- Cooling systems -->
+        <div class="slider-row">
+          <div class="slider-header">
+            <div class="slider-label">
+              Cooling systems
+              <span
+                class="tooltip"
+                title="Cooling systems - includes chillers, dry coolers, pumps, fans, cooling towers, and humidification."
+                >?</span
+              >
+              <span class="slider-chip">Overhead</span>
+            </div>
+            <div class="slider-value">
+              <span id="coolingValue">1.15</span>
+              <span class="unit">MW</span>
+            </div>
+          </div>
+          <div class="slider-sub">
+            Chillers, CRAH/CRAC, pumps, cooling towers, humidification.
+          </div>
+          <input
+            id="coolingSlider"
+            type="range"
+            min="0"
+            max="5"
+            step="0.01"
+            value="1.15"
+          />
+        </div>
+
+        <!-- Electrical losses -->
+        <div class="slider-row">
+          <div class="slider-header">
+            <div class="slider-label">
+              Electrical losses
+              <span
+                class="tooltip"
+                title="Electrical losses - UPS, transformers, PDU, cable losses, switchgear, battery charging."
+                >?</span
+              >
+              <span class="slider-chip">Overhead</span>
+            </div>
+            <div class="slider-value">
+              <span id="electricalValue">0.50</span>
+              <span class="unit">MW</span>
+            </div>
+          </div>
+          <div class="slider-sub">
+            UPS, PDU, transformer losses, switchgear, battery charging.
+          </div>
+          <input
+            id="electricalSlider"
+            type="range"
+            min="0"
+            max="3"
+            step="0.01"
+            value="0.50"
+          />
+        </div>
+
+        <!-- Building infrastructure -->
+        <div class="slider-row">
+          <div class="slider-header">
+            <div class="slider-label">
+              Building infrastructure
+              <span
+                class="tooltip"
+                title="Building infrastructure - lighting, security and fire alarms, office spaces, BMS and monitoring systems."
+                >?</span
+              >
+              <span class="slider-chip">Overhead</span>
+            </div>
+            <div class="slider-value">
+              <span id="buildingValue">0.25</span>
+              <span class="unit">MW</span>
+            </div>
+          </div>
+          <div class="slider-sub">
+            Lighting, security, office spaces, control and monitoring systems.
+          </div>
+          <input
+            id="buildingSlider"
+            type="range"
+            min="0"
+            max="2"
+            step="0.01"
+            value="0.25"
+          />
+        </div>
+
+        <!-- Backup systems -->
+        <div class="slider-row">
+          <div class="slider-header">
+            <div class="slider-label">
+              Backup systems
+              <span
+                class="tooltip"
+                title="Backup systems - diesel generators, pre-heating, fuel systems, emission control, battery maintenance."
+                >?</span
+              >
+              <span class="slider-chip">Overhead</span>
+            </div>
+            <div class="slider-value">
+              <span id="backupValue">0.10</span>
+              <span class="unit">MW</span>
+            </div>
+          </div>
+          <div class="slider-sub">
+            Diesel generator pre-heating, fuel systems, emission control,
+            battery maintenance.
+          </div>
+          <input
+            id="backupSlider"
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.10"
+          />
+        </div>
+      </div>
+
+      <p class="hint">
+        Try reducing <strong>cooling</strong> or
+        <strong>electrical losses</strong> (more efficient UPS/PDU,
+        free cooling, better airflow) and watch PuE
+        move toward hyperscale data center values.
+      </p>
+    </div>
+
+    <!-- Right: PuE summary + energy + costs -->
+    <div class="card summary-card">
+      <div class="summary-main">
+        <div class="summary-header">
+          <div>
+            <div class="summary-title">Real-time PuE</div>
+            <div class="PuE-chip">
+              <span class="dot" id="PuEDot"></span>
+              <span id="PuERatingLabel">Good efficiency</span>
+            </div>
+          </div>
+          <div class="PuE-badge">
+            <span id="PuEValue">1.40</span>
+            <span class="label">PuE</span>
+          </div>
+        </div>
+
+        <div class="bar-wrap">
+          <div class="bar-label-row">
+            <span>Energy distribution</span>
+            <span id="overheadPercentLabel">Overhead: 29%</span>
+          </div>
+          <div class="bar">
+            <div id="barIT" class="bar-it" style="width: 71%;"></div>
+            <div id="barOverhead" class="bar-oh" style="width: 29%;"></div>
+          </div>
+          <div class="legend">
+            <span><span class="legend-dot legend-it"></span>IT equipment</span>
+            <span><span class="legend-dot legend-oh"></span>Overhead</span>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-item-label">IT load</div>
+            <div class="summary-item-value">
+              <span id="itSummary">5.00</span>
+              <span class="summary-item-unit">MW</span>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-item-label">Total data center</div>
+            <div class="summary-item-value">
+              <span id="totalSummary">7.00</span>
+              <span class="summary-item-unit">MW</span>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-item-label">Overhead</div>
+            <div class="summary-item-value">
+              <span id="overheadSummary">2.00</span>
+              <span class="summary-item-unit">MW</span>
+            </div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-item-label">Overhead</div>
+            <div class="summary-item-value">
+              <span id="overheadPercentSummary">29</span>
+              <span class="summary-item-unit">% of total energy</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live formula block -->
+        <div class="formula">
+          <div class="formula-title">PuE formula</div>
+          <div class="formula-line">
+            PuE = (IT + Cooling + Electrical losses + Building infra + Backup) / IT
+          </div>
+          <div class="formula-line code" id="PuEFormulaNumeric">
+            <!-- filled by JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <div class="breakdown-card">
+        <div><strong>Overhead breakdown</strong></div>
+        <div class="breakdown-row">
+          <span>Cooling systems</span>
+          <span><span id="coolingBreakdown">1.15</span> MW</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Electrical losses</span>
+          <span><span id="electricalBreakdown">0.50</span> MW</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Building infrastructure</span>
+          <span><span id="buildingBreakdown">0.25</span> MW</span>
+        </div>
+        <div class="breakdown-row">
+          <span>Backup systems</span>
+          <span><span id="backupBreakdown">0.10</span> MW</span>
+        </div>
+      </div>
+
+      <div class="cost-card">
+        <div><strong>Electricity use (24/7, 365 days per year)</strong></div>
+        <div class="cost-row">
+          <span>Annual IT energy use</span>
+          <span><span id="annualItMWh">0</span> MWh</span>
+        </div>
+        <div class="cost-row">
+          <span>Annual total DC consumption</span>
+          <span><span id="annualTotalMWh">0</span> MWh</span>
+        </div>
+        <div class="cost-row">
+          <span>Annual electricity bill</span>
+          <span><span id="annualCost">0</span> €</span>
+        </div>
+        <div class="cost-row">
+          <span>Monthly bill (average)</span>
+          <span><span id="monthlyCost">0</span> €</span>
+        </div>
+      </div>
+
+      <p class="note">
+        <strong>PuE = total data center energy / IT equipment energy.</strong><br />
+        This calculator assumes the DC runs 24/7 all year
+        (8760 h). Real analyses use measured kWh for a selected period.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <span>Course code: <strong>ELKRB20713</strong></span>
+    <span>Course name: <strong>Data Center Technologies</strong></span>
+    <span>Vilniaus Gedimino technikos universitetas</span>
+  </footer>
+
+  <script>
+    const HOURS_YEAR = 24 * 365;
+
+    const itSlider = document.getElementById("itSlider");
+    const coolingSlider = document.getElementById("coolingSlider");
+    const electricalSlider = document.getElementById("electricalSlider");
+    const buildingSlider = document.getElementById("buildingSlider");
+    const backupSlider = document.getElementById("backupSlider");
+
+    const priceInput = document.getElementById("priceInput");
+
+    const itValue = document.getElementById("itValue");
+    const coolingValue = document.getElementById("coolingValue");
+    const electricalValue = document.getElementById("electricalValue");
+    const buildingValue = document.getElementById("buildingValue");
+    const backupValue = document.getElementById("backupValue");
+
+    const PuEValue = document.getElementById("PuEValue");
+    const PuEDot = document.getElementById("PuEDot");
+    const PuERatingLabel = document.getElementById("PuERatingLabel");
+    const barIT = document.getElementById("barIT");
+    const barOverhead = document.getElementById("barOverhead");
+    const overheadPercentLabel = document.getElementById("overheadPercentLabel");
+
+    const itSummary = document.getElementById("itSummary");
+    const totalSummary = document.getElementById("totalSummary");
+    const overheadSummary = document.getElementById("overheadSummary");
+    const overheadPercentSummary = document.getElementById("overheadPercentSummary");
+
+    const coolingBreakdown = document.getElementById("coolingBreakdown");
+    const electricalBreakdown = document.getElementById("electricalBreakdown");
+    const buildingBreakdown = document.getElementById("buildingBreakdown");
+    const backupBreakdown = document.getElementById("backupBreakdown");
+
+    const annualItMWhEl = document.getElementById("annualItMWh");
+    const annualTotalMWhEl = document.getElementById("annualTotalMWh");
+    const annualCostEl = document.getElementById("annualCost");
+    const monthlyCostEl = document.getElementById("monthlyCost");
+
+    const PuEFormulaNumeric = document.getElementById("PuEFormulaNumeric");
+
+    const presetLegacy = document.getElementById("presetLegacy");
+    const presetColo = document.getElementById("presetColo");
+    const presetHyper = document.getElementById("presetHyper");
+    const presetLTFree = document.getElementById("presetLTFree");
+    const scenarioDescription = document.getElementById("scenarioDescription");
+
+    const presetButtons = [presetLegacy, presetColo, presetHyper, presetLTFree];
+
+    function formatMW(num) {
+      return Number(num).toFixed(2);
+    }
+
+    function formatMWh(num) {
+      return Math.round(num).toLocaleString("en-US");
+    }
+
+    function formatEuro(num) {
+      return Math.round(num).toLocaleString("en-US");
+    }
+
+    function setActivePreset(button) {
+      presetButtons.forEach((btn) => btn.classList.remove("active"));
+      if (button) button.classList.add("active");
+    }
+
+    function applyScenario(type) {
+      if (type === "legacy") {
+        // Legacy server room (~PuE 2.0, IT ~3 MW)
+        itSlider.value = 3.0;
+        coolingSlider.value = 1.8;
+        electricalSlider.value = 0.7;
+        buildingSlider.value = 0.4;
+        backupSlider.value = 0.1;
+        scenarioDescription.innerHTML =
+          "<strong>Scenario:</strong> legacy server room or small DC with PuE around 2.0. Large cooling and electrical overhead share.";
+        setActivePreset(presetLegacy);
+      } else if (type === "colo") {
+        // Modern colocation DC (~PuE 1.4)
+        itSlider.value = 5.0;
+        coolingSlider.value = 1.15;
+        electricalSlider.value = 0.5;
+        buildingSlider.value = 0.25;
+        backupSlider.value = 0.1;
+        scenarioDescription.innerHTML =
+          "<strong>Scenario:</strong> modern colocation data center, typical PuE around 1.4.";
+        setActivePreset(presetColo);
+      } else if (type === "hyper") {
+        // Hyperscale DC (~PuE 1.15)
+        itSlider.value = 5.0;
+        coolingSlider.value = 0.4;
+        electricalSlider.value = 0.2;
+        buildingSlider.value = 0.1;
+        backupSlider.value = 0.05;
+        scenarioDescription.innerHTML =
+          "<strong>Scenario:</strong> hyperscale data center (e.g., hyperscaler campus) with very low overhead losses, PuE around 1.15.";
+        setActivePreset(presetHyper);
+      } else if (type === "ltfree") {
+        // Lithuania climate - free cooling (~PuE 1.25)
+        itSlider.value = 5.0;
+        coolingSlider.value = 0.7;
+        electricalSlider.value = 0.4;
+        buildingSlider.value = 0.1;
+        backupSlider.value = 0.05;
+        scenarioDescription.innerHTML =
+          "<strong>Scenario:</strong> data center in Lithuania using free cooling for much of the year. PuE around 1.25.";
+        setActivePreset(presetLTFree);
+      }
+      update();
+    }
+
+    function update() {
+      const it = parseFloat(itSlider.value);
+      const cooling = parseFloat(coolingSlider.value);
+      const electrical = parseFloat(electricalSlider.value);
+      const building = parseFloat(buildingSlider.value);
+      const backup = parseFloat(backupSlider.value);
+
+      const overhead = cooling + electrical + building + backup;
+      const total = it + overhead;
+      const PuE = total / (it || 0.0001); // guard against division by zero
+
+      const price = parseFloat(priceInput.value) || 0; // €/MWh
+
+      // Slider values
+      itValue.textContent = formatMW(it);
+      coolingValue.textContent = formatMW(cooling);
+      electricalValue.textContent = formatMW(electrical);
+      buildingValue.textContent = formatMW(building);
+      backupValue.textContent = formatMW(backup);
+
+      // Summary values
+      itSummary.textContent = formatMW(it);
+      totalSummary.textContent = formatMW(total);
+      overheadSummary.textContent = formatMW(overhead);
+
+      const overheadPercent = total > 0 ? (overhead / total) * 100 : 0;
+      overheadPercentSummary.textContent = overheadPercent.toFixed(0);
+      overheadPercentLabel.textContent =
+        "Overhead: " + overheadPercent.toFixed(0) + "%";
+
+      // PuE and rating
+      PuEValue.textContent = PuE.toFixed(2);
+
+      let dotColor, glowColor, ratingText;
+      if (PuE <= 1.2) {
+        dotColor = "#16a34a";
+        glowColor = "rgba(22, 163, 74, 0.35)";
+        ratingText = "Hyperscale-level efficiency";
+      } else if (PuE <= 1.4) {
+        dotColor = "#22c55e";
+        glowColor = "rgba(34, 197, 94, 0.35)";
+        ratingText = "Good efficiency";
+      } else if (PuE <= 1.7) {
+        dotColor = "#eab308";
+        glowColor = "rgba(234, 179, 8, 0.35)";
+        ratingText = "Typical older DC";
+      } else {
+        dotColor = "#e11d48";
+        glowColor = "rgba(225, 29, 72, 0.35)";
+        ratingText = "High overhead - optimization needed";
+      }
+
+      PuEDot.style.background = dotColor;
+      PuEDot.style.boxShadow = "0 0 0 4px " + glowColor;
+      PuERatingLabel.textContent = ratingText;
+
+      // Bar widths
+      const itPercent = total > 0 ? (it / total) * 100 : 0;
+      const overheadBarPercent = 100 - itPercent;
+
+      barIT.style.width = itPercent.toFixed(1) + "%";
+      barOverhead.style.width = overheadBarPercent.toFixed(1) + "%";
+
+      // Overhead breakdown
+      coolingBreakdown.textContent = formatMW(cooling);
+      electricalBreakdown.textContent = formatMW(electrical);
+      buildingBreakdown.textContent = formatMW(building);
+      backupBreakdown.textContent = formatMW(backup);
+
+      // Annual energy consumption (MW * 8760 h = MWh)
+      const annualItMWh = it * HOURS_YEAR;
+      const annualTotalMWh = total * HOURS_YEAR;
+
+      annualItMWhEl.textContent = formatMWh(annualItMWh);
+      annualTotalMWhEl.textContent = formatMWh(annualTotalMWh);
+
+      // Annual and monthly bill
+      const annualCost = annualTotalMWh * price;
+      const monthlyCost = annualCost / 12;
+
+      annualCostEl.textContent = formatEuro(annualCost);
+      monthlyCostEl.textContent = formatEuro(monthlyCost);
+
+      // Live PuE formula
+      const itStr = formatMW(it);
+      const coolingStr = formatMW(cooling);
+      const electricalStr = formatMW(electrical);
+      const buildingStr = formatMW(building);
+      const backupStr = formatMW(backup);
+      const PuEStr = PuE.toFixed(2);
+
+      PuEFormulaNumeric.textContent =
+        "PuE = (" +
+        itStr +
+        " + " +
+        coolingStr +
+        " + " +
+        electricalStr +
+        " + " +
+        buildingStr +
+        " + " +
+        backupStr +
+        ") / " +
+        itStr +
+        " = " +
+        PuEStr;
+    }
+
+    itSlider.addEventListener("input", update);
+    coolingSlider.addEventListener("input", update);
+    electricalSlider.addEventListener("input", update);
+    buildingSlider.addEventListener("input", update);
+    backupSlider.addEventListener("input", update);
+    priceInput.addEventListener("input", update);
+
+    presetLegacy.addEventListener("click", () => applyScenario("legacy"));
+    presetColo.addEventListener("click", () => applyScenario("colo"));
+    presetHyper.addEventListener("click", () => applyScenario("hyper"));
+    presetLTFree.addEventListener("click", () => applyScenario("ltfree"));
+
+    // Initial scenario - colocation DC
+    applyScenario("colo");
+  </script>
+</body>
+</html>

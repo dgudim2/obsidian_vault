@@ -21,6 +21,16 @@
       "id": "BXZsl6DxZP38x-6hkJhf-",
       "name": "green",
       "value": "#b7ba25"
+    },
+    {
+      "id": "9-QekfIFNPWzaoTH2rJSy",
+      "name": "blue",
+      "value": "#769589"
+    },
+    {
+      "id": "ScTbU_nxyWgVWJbLgYPMK",
+      "name": "orange",
+      "value": "#f87d3a"
     }
   ],
   "fileColors": [
@@ -39,6 +49,10 @@
     {
       "path": "uni/Extra",
       "color": "T9OsHwUPZ080iU-o2tnmp"
+    },
+    {
+      "path": "uni/Datacenters",
+      "color": "ScTbU_nxyWgVWJbLgYPMK"
     }
   ]
 }

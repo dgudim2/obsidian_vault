@@ -1,7 +1,7 @@
 # Lab 5 - Ethernet Internet Module 2
 
 > [!seealso] 
-> This is a continuation of [[lab4]]
+> This is a continuation of [[uni/IOT/labs/lab4+5/lab4]]
 
 ## Task 1
 

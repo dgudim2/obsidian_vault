@@ -1,0 +1,10 @@
+@media print  {
+    @page {
+        padding-top: 60px;
+        margin: 0 !important;
+    }
+    hr {
+        height: -20px;
+        border: none !important;
+    }
+}

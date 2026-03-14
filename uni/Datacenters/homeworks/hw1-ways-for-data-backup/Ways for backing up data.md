@@ -1,5 +1,7 @@
 
-<br><br><br><br><br><br>
+<br><br><br><br><br>
+<br>
+<br>
 
 `````col 
 ````col-md 
@@ -42,12 +44,6 @@ flexGrow=1
 > Backup is a **copy** of data **stored somewhere else** used for restoring the system after an unexpected **data loss** event
 
 
-> [!note] 
-> Only the **critical data** is usually backed up, *cache or runtime* data that can be reconstructed on the fly does not always make sense to backup
-
-
-> [!note] 
-> **RAID** is **NOT** a backup, it will protect you from a *physical* failure of one or two drives, but not from any other unexpected data loss events
 
 
 ```` 
@@ -55,7 +51,30 @@ flexGrow=1
 flexGrow=1.2
 ===
 
+> [!note] 
+> Only the **critical data** is usually backed up, *cache or runtime* data that can be reconstructed on the fly does not always make sense to backup
+> 
+```` 
+`````
+
+<br>
+
+`````col 
+````col-md 
+flexGrow=1
+===
+
+```` 
+````col-md 
+flexGrow=4
+===
+
 ![[Pasted image 20260314123456.png]]
+
+```` 
+````col-md 
+flexGrow=1
+===
 
 ```` 
 `````
@@ -75,7 +94,7 @@ flexGrow=1
 - Type of data
 - Frequency of data updated
 - Importance of the data
-- Company strategy 
+- Regulatory requirements
 - Cost constraints
 - Etc.
 

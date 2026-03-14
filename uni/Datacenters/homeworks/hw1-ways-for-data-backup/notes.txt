@@ -1,0 +1,288 @@
+# Slide 0
+
+HellOwO
+
+-------------------------------------------------------------
+# Slide 1 - Backups? What? (Basics)
+
+Let's start with the basics, what even is a backup and why would you want to do it.
+
+A backup is a copy of some data that is stored somewhere else other than the system that its being used by.
+This data is used to restore the functionality of the said system in the case of some system failure or data corruption,
+or an engineer accidentally nuking the production database.
+
+Nobody is safe from any of those events, so without backups data loss is not a question of 'if', but 'when'.
+
+Though, it doesn't always make sense to back up everything, typically only the critical data is backed up,
+without any caches or runtime data.
+
+-------------------------------------------------------------
+# Slide 2 - How?
+
+So, how do you backup?
+
+The strategy largely depends on the type of data you are backing up, how important it is,
+how frequently it's updated, cost constraints and a lot of other factors.
+
+As a general advice you should follow the 3-2-1 rule. Keep at least 3 copies of data,
+2 of them should be on different mediums (2 different models of hard drives of hdd and an ssd) and 1 copy should be off-site
+
+Having copies on different mediums protects you from failure of 2 mediums at the same time (they wear out at the same time of get damaged the same way)
+Having a copy off-site protects you from natural disasters or any other kinds of disasters happening to the space where your backups are stored
+And having a third copy protects you from loosing the other 2, it's your last resort
+
+There are different ways to back up the data as well
+You could do periodic backups where you run the backup routine every N time units
+The routine way then create a full, incremental or a differential backup, we will talk about them more later
+
+Another way is to continuously replicate the data onto another storage device keeping only the latest version backed up
+
+-------------------------------------------------------------
+# Slide 3 - Backup strategy. Periodic backups
+
+This is the most used and quite simple strategy.
+
+Before implementing this strategy, you need to define your priorities
+- How often and how do you want to back up? (backup type and frequency)
+- How long you want to keep the backups for? (retention)
+- Do you want to optimise for backup time, storage space, cpu usage of network bandwidth?
+
+--
+Backup frequency depends on the volume of data written and how fresh your latest backup needs to be
+(how costly is the recovery), regulatory compliance and some other minor factors
+
+Retention is typically set by some regulations, by storage constraints or common sense.
+
+A good approach is to have a daily, weekly and monthly backups with different retention intervals for each
+
+In some cases, like in financial or health sectors, some data may need to be backed up more frequently, e.g: hourly or even every few minutes.
+Because it's very critical
+
+And in other cases like in document management systems, where the data is mostly static, weekly backups may be enough
+
+Depending on your priorities and constraints, you should choose a backup type or several
+There are three types: full, differential and incremental. Each one good and bad in their own ways
+
+///
+Full backup is the easiest of them all, this is just a full copy, like you copying a file and naming it
+
+- Pros:
+= Complete copy is available with everything in it, the backup is portable
+= Time to restore is minimal if you are not constrained by transfer speed
+
+- Cons:
+= Every backup is as large as your entire dataset
+= Slow to perform since you need to read the entire dataset
+
+///
+Next one is differential backup, in this type we don't copy the whole dataset,
+but only the difference since the last full backup. So this is used between full backups
+to save space and time.
+
+- Pros:
+= Less space required since you don't store complete copies of the dataset. Especially
+if your data doesn't change frequently
+= It is faster to perform as well, since you don't need to copy everything, just compare
+modification dates and checksums
+
+- Cons:
+= Slightly longer restore times, but not by much, since now you have to reconstruct your
+dataset from the latest full backup and the desired incremental one.
+= The backup is less portable, you need 2 backups if you want to restore to a non-full backed-up point
+
+
+///
+And the third type is incremental. In this type we don't store differences from the last FULL backup,
+but to the previous backup, effectively recording just the delta.
+This backup works more like version control (git).
+
+- Pros:
+= The least amount of space is used since there is no duplicated data between backups expect for full
+backup checkpoints.
+= The fastest to perform as well. The organization can therefore do them more often without requiring
+beefy systems or a lot of storage
+
+- Cons:
+= Even longer restore times than differential backups since you have to combine ALL
+the incremental parts to restore. This can cost a fair amount of cpu time as well
+= The backup is not portable at all since you have to carry all the previous
+incremental backups up until the restore point.
+= The backup is more fragile. If any backup in the incremental chain gets corrupted or deleted, you won't be able to restore
+everything
+
+
+
+-------------------------------------------------------------
+# Slide 4 - Backup strategy. Streaming backups
+
+
+In some cases, having periodic backups doesn't make sense, for example if your data moves too fast
+for a periodic backup. Or maybe you want to use your backup as a replica.
+
+In this case, streaming backups, or replication may be a better option.
+
+This is typically used in databases or other storage systems with high volume of data flowing.
+And as the name suggests, in this case you only have the latest copy of your data that is constantly
+being updated from you source dataset in realtime. You may still want to make periodic backups
+for the cases of all the data being deleted somehow and deletes replicating to all the replicas.
+This gives you the ability to use your backup as a readonly copy for you service improving read performance.
+And in the cases when your source dataset becomes corrupted or unavailable, your backup can become the new source of
+truth almost immediately (low downtime), this is called fail-over.
+
+You may even want to have several read-replicas in different regions for both a more robust
+backup solution and for faster access for all users across the globe
+
+
+-------------------------------------------------------------
+# Slide 5 - Hot and cold storage
+
+Ok, you are done with choosing how you are going to back up your data.
+Another important thing to consider is where this data is going to be stored.
+
+There are 2 types of data storage: hot and cold.
+
+Hot storage is when after writing the data, accessing and reading the data is just as fast
+When you need frequent access to the data, this is what you use
+
+Cold storage is the opposite of hot storage obviously, this is when the data you have written
+can't be access directly of fast because it is moved to a slow storage device, disconnected
+from the server and literally stored somewhere on the shelf.
+
+
+-------------------------------------------------------------
+# Slide 6 - Hot storage
+
+Hot storage mediums are more expensive, faster and more dense than cold storage mediums
+You can use ssds or hdds for your hot storage. With ssds being the more expensive and the fastest option
+while being the least durable, but very power efficient.
+Hdds are slower, especially for random reads and writes, less power efficient, but cheaper and more
+long-lasting storage mediums.
+
+In a general purpose storage array hdds are used together with ssds, with the ssds serving as a read-write
+cache for the system, effectively raising the performance to ssd-like speed while keeping the cost reasonably low.
+
+
+-------------------------------------------------------------
+# Slide 7 - Storage mediums for cold storage
+
+Cold storage doesn't have to be fast or energy efficient. It just has to be durable for long-term
+storage with the second consideration being density.
+
+So for this LTO (magnetic) tape or optical discs.
+
+Tape storage is slow to read and write, but is very durable while being relatively cheap
+and offering densities comparable to enterprise hdds.
+Shelf life for the magnetic tape is up to 30 years. The price per TB is about 3x less.
+The largest tape I found on sale right now is 22TB and the largest hdd is 32TB
+
+Optical storage is another option. Optical disks have an even longer shelf life
+extending up to 150 years, but their density is not impressive at all.
+You'll be paying 10x for the same amount of data, as you would if you bought tape.
+
+You could of course store hard drives, but they are more fragile and have more moving parts
+than tape or optical. While the data on the magnetic platers inside will stay there for quite a while,
+the electronics and moving parts may stop working after a very long time of just laying.
+
+
+-------------------------------------------------------------
+# Slide 8 - Importance of testing your backups
+
+Testing you backups is as important as having them in the first place.
+If the backup can't be restored, then what's the point in having it in the first place.
+
+So it's a good idea to regularly test recovery on a dummy system to make sure that you actually back up everything
+that is required for the system to operate and that restoring it actually works anc can be done in the desired time-frame.
+It's also a good idea to test the intergrity of your backups.
+
+
+-------------------------------------------------------------
+# Slide 9 - Backup compression
+
+A note on compression.
+
+When you back up your data, you may want to compress the backups. This trades cpu time
+and RAM usage when backing up and restoring for storage the backup takes.
+
+It's possible to compress the data itself inside the backup.
+And it's possible to deduplicate files across backups as well on the filesystem level.
+Compression ratio will largely depend on the type and nature of your data as well as on the
+algorithm used.
+
+For storing data on a cold storage device, a very high compression ratio might be set,
+because all we care in that case is storing as much data as possible on the device and extra cpu time cost is acceptable.
+
+
+-------------------------------------------------------------
+# Slide 10 - Backup tools used in enterprise
+
+The backups are usually managed by the service (software) operator, not the datacenter (hardware) operator
+except maybe for some special cases. So when renting hardware in a datacenter, it's
+your responsibility to back up your data. The datacenter operator only protects you from
+hardware failure on their side using RAID and preemptive disk swapping.
+
+Some of the tools you can use in a enterprise setting are:
+- Native filesystem snapshots if you manage the filesystem and are running on ZFS of BTRFS,
+This is closest to an incremental backup, but managed at the filesystem level.
+- HYCU
+- Rubrik
+- Acronis
+- etc.
+
+I frankly haven't tried or seen any of those, at my workplace (Penki) we have python script that copies files
+using rsync, and block-level nightly disk backups for some critical systems since we manage our own hardware.
+
+
+-------------------------------------------------------------
+# Slide 11 - Backup tools for you to use
+
+Of course you as a consumer should back up your data as well to protect yourself from
+losing your phone or computer.
+
+On the modern phones some data is already backed up by default for you if you log into
+your google or apple account. This includes your contacts, phone settings, installed applications,
+sometimes application data as well.
+You can also set up photo backups as well with the same provider with a few clicks if you don't
+mind paying for a subscription that provides more cloud storage for your account.
+
+On devices running windows, if you are logged into a microsoft account,
+computer settings and wifi passwords are already backed up by default.
+
+And it's possible to set up file backups using OneDrive. But I would
+strongly recommend against doing that because microsoft's implementation is confusing
+and subpar. They try to frame onedrive as an extension of your physical drive and
+you may not know whether your files are in the cloud or physically on your disk or both when using a
+onedrive synced folder leading to confusion and lost files.
+
+Instead, for file backups I would recommend a standalone tool like
+- FreeFileSync - Supports multiple cloud providers and is flexible with
+what you want to back up, how often and when
+- FolderSync - This is like the previous opition, but with a simpler UI and a little less flexible
+- Syncthing - If you prefer to store data on your own devices, this may be an option for you,
+this tool provides one-way or two-way peer-to-peer syncing between your devices.
+
+These tools apply to you if you are running macos or linux as well, they are cross-platform.
+
+FolderSync and Syncthing are available for android as well, so you can have the same tool
+across all of your devices. And with syncthing you can have your files synced between your devices without
+relying on a cloud or paying anyone.
+
+On a mac, you can also use the icloud for backups and TimeMachine for periodic backups.
+
+On an iphone you are more limited, you can't even browse the filesystem on there. But you can use
+iCloud for backups or back up your phone from a PC using iTunes or iMazing.
+
+-------------------------------------------------------------
+# Slide 12 - A note about RAID
+
+RAID (redundant array of inexpensive disks) is not a backup,
+it only protects you from a physical failure of one or 2 drives in
+a storage array, but does not protect you from any other unexpected events
+
+While it is not a backup, it is still very useful for protecting against drive failure in
+a storage array and should be used when dealing with large amounts of data across multiple drives.
+
+
+-------------------------------------------------------------
+# Slide N
+
+Thanks. Questions?

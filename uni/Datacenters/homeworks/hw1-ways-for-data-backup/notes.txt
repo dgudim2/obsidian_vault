@@ -153,17 +153,16 @@ from the server and literally stored somewhere on the shelf.
 # Slide 6 - Hot storage
 
 Hot storage mediums are more expensive, faster and more dense than cold storage mediums
-You can use ssds or hdds for your hot storage. With ssds being the more expensive and the fastest option
-while being the least durable, but very power efficient.
-Hdds are slower, especially for random reads and writes, less power efficient, but cheaper and more
-long-lasting storage mediums.
+You can use ssds or hdds for your hot storage. With ssds being the fastest, very power efficient
+but the more expensive option.
+Hdds are slower, especially for random reads and writes, less power efficient, but cheaper per TB.
 
 In a general purpose storage array hdds are used together with ssds, with the ssds serving as a read-write
 cache for the system, effectively raising the performance to ssd-like speed while keeping the cost reasonably low.
 
 
 -------------------------------------------------------------
-# Slide 7 - Storage mediums for cold storage
+# Slide 7 - Cold storage
 
 Cold storage doesn't have to be fast or energy efficient. It just has to be durable for long-term
 storage with the second consideration being density.
@@ -270,6 +269,10 @@ On a mac, you can also use the icloud for backups and TimeMachine for periodic b
 
 On an iphone you are more limited, you can't even browse the filesystem on there. But you can use
 iCloud for backups or back up your phone from a PC using iTunes or iMazing.
+
+On linux you can use whatewer you like, there are way too many options to list here,
+but since 90% of the servers run linux, you can imagine there are a lot of options.
+Filesystem snapshots I mentioned earlier, borg backup, rsync, rclone, etc.
 
 -------------------------------------------------------------
 # Slide 12 - A note about RAID

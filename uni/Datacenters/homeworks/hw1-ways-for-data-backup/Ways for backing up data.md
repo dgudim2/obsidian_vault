@@ -175,7 +175,7 @@ flexGrow=1
 
 #### Differential
 - ! Longer restore times and less portable
-- $ Take less space and fater to perform than full
+- $ Take less space and faster to perform than full
 
 #### Incremental
 - ! Slowest restore time and high cpu usage
@@ -289,7 +289,6 @@ flexGrow=1
 - $ Power efficient
 - $ Fast
 - ! Expensive
-- ! Shorter lifespan
 `````` 
 
 ``````col-md 
@@ -297,8 +296,7 @@ flexGrow=1
 ===
 ### HDD
 
-- $ More dense
-- $ Cheaper and longer-lasting
+- $ Cheaper
 - ! Less power efficient
 - ! Slower especially for random load
 `````` 

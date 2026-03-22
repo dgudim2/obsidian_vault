@@ -34,21 +34,7 @@ def clean_df(df: pl.DataFrame, columns: list[str]):
     len_before = len(df)
 
     df = df.unique().select(columns).drop_nans().drop_nulls()
-
-    for col in df.select(pl.col(pl.Float64, pl.Int64, pl.Float32, pl.Int32)).columns:
-        q1, q3 = cast(list[float], df[col].quantile([0.25, 0.75], interpolation="linear"))
-        iqr = q3 - q1
-
-        if iqr == 0:
-            continue
-
-        low = q1 - 1.5 * iqr
-        high = q3 + 1.5 * iqr
-
-        df = df.filter((df[col] >= low) & (df[col] <= high))
-
     len_after = len(df)
-
     dropped = len_before - len_after
 
     print(f"Cleaned df, before: {len_before}, after: {len_after} ({dropped} dropped, {dropped / len_before * 100:.4}%)")
@@ -118,7 +104,7 @@ def graphs():
     
     
 
-# graphs()
+graphs()
     
 
 zscore = StandardScaler()
@@ -127,13 +113,12 @@ X = breast_dataset.drop("diagnosis")
 y = breast_dataset["diagnosis"]
 
 
-
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-X_validate, X_test, y_validate, y_test = train_test_split(X_test, y_test, test_size=2/3.0, random_state=42)
+# X_validate, X_test, y_validate, y_test = train_test_split(X_test, y_test, test_size=0.5, random_state=42)
 
 
 mlp = MLPClassifier(
-    hidden_layer_sizes=(200, 200),
+    hidden_layer_sizes=(100, 100),
     max_iter=2000,
     activation='relu',
     random_state=42,
@@ -141,13 +126,13 @@ mlp = MLPClassifier(
 
 mlp.fit(X_train, y_train)
 
-y_pred_valid = mlp.predict(X_validate)
-accuracy_valid = accuracy_score(y_validate, y_pred_valid)
+# y_pred_valid = mlp.predict(X_validate)
+# accuracy_valid = accuracy_score(y_validate, y_pred_valid)
 
 y_pred_test = mlp.predict(X_test)
 accuracy_test = accuracy_score(y_test, y_pred_test)
 
-print(f"Accuracy for MLP is [validate: {accuracy_valid}] [test: {accuracy_test * 100}]")
+print(f"Accuracy for MLP is [validate: {0 * 100}] [test: {accuracy_test * 100}]")
 
 class_report = classification_report(y_test, y_pred_test)
 print("Classification Report:\n", class_report)
@@ -168,23 +153,27 @@ plt.show()
 
 minmax = MinMaxScaler()
 breast_dataset_minmax = minmax.fit_transform(X)
-lr = linear_model.LogisticRegression()
+lr = linear_model.LogisticRegression(max_iter=10000)
 
-skf = StratifiedKFold(n_splits=10, shuffle=True, random_state=1)
+skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=1)
 lst_accu_stratified = []
 
 best_y_pred: np.ndarray
+best_y_pred_input: np.ndarray
 best_accuracy = 0
 
 for train_index, test_index in skf.split(X, y):
-    x_train_fold, x_test_fold = breast_dataset_minmax[train_index], breast_dataset_minmax[test_index]
+    x_train_fold, x_test_fold = X[train_index], X[test_index]
     y_train_fold, y_test_fold = y[train_index], y[test_index]
     lr.fit(x_train_fold, y_train_fold)
     accuracy = lr.score(x_test_fold, y_test_fold)
     lst_accu_stratified.append(accuracy)
     
     if accuracy != 1:
-        lr.predict(x_test_fold)
+        if best_accuracy <= accuracy:
+            best_accuracy = accuracy
+            best_y_pred_input = y_test_fold
+            best_y_pred = lr.predict(x_test_fold)
 
 
 print('List of possible accuracies:', lst_accu_stratified)
@@ -193,5 +182,17 @@ print(f'Minimum Accuracy: {min(lst_accu_stratified)*100} %')
 print(f'Overall Accuracy: {mean(lst_accu_stratified)*100}%')
 print(f'Standard Deviation is: {stdev(lst_accu_stratified)}')
 
-class_report = classification_report(y_test, y_pred_test)
+class_report = classification_report(best_y_pred_input, best_y_pred)
 print("Classification Report:\n", class_report)
+
+disp = ConfusionMatrixDisplay.from_estimator(
+    lr,
+    X_test,
+    y_test,
+    display_labels=y.unique(maintain_order=True),
+    normalize="true",
+)
+disp.ax_.set_title("Confusion matrix")
+
+plt.show()
+

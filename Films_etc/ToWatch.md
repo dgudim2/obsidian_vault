@@ -4,49 +4,22 @@
 # Stuff to watch 
 
 ## Random 
-+ They see
-+ Gattaca
-+ Падение луны
-+ black mirror
 + Навстречу шторму
-+ Everything Everywhere all at once
-+ Knives out, glass onion
-+ bullet train 
-+ the prestige
-+ ghost in the shell
-+ whoami
-+ дивергент
-+ создатель (the creator)
 + The Three Body Problem
 + Slice of life (2019)
 + Fanboys
-+ austin powers
-+ Офис
 + Peeky blinders
-+ monster trucks
 + Blade runner 2049
 + Другая земля
 + Blade runner (orig)
-+ Forrest Gump
 + The Grand Budapest Hotel
-+ Memento
-+ Короткое замыкание
 + Тринадцатый этаж
 + Стальной гигант
 + Области тьмы
-+ Love death robots
-+ tom cruise - oblivion
-+ pandorum
-+ grommit and ...
 + flow (поток)
-+ gemini
-+ Tales of the loop
-+ Hot tub time machine
 + the severance
 + Семейка адамс
-+ tron legacy
 + The thing
-+ naked gun
 
 ## Anime
 + 91 день
@@ -77,7 +50,6 @@
 + Cowboy bebop
 + Синдуальность: Нуар
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
-+ My Deer Friend Nokotan
 + delicious in dungeon 
 + panteema inverted
 + Lupin 3rd

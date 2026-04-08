@@ -13,6 +13,10 @@
 # ]
 # ///
 
+import sys
+
+from subprocess import Popen
+
 import polars as pl
 import numpy as np
 from sklearn.cluster import KMeans, DBSCAN, AgglomerativeClustering
@@ -21,11 +25,14 @@ from clarans import CLARANS
 from sklearn_som.som import SOM
 from sklearn.metrics import silhouette_score, davies_bouldin_score, calinski_harabasz_score
 import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import dendrogram, linkage
+import subprocess
 
-dataset = pl.read_csv('./data.csv').head(3000)
+dataset = pl.read_csv('./data.csv').head(50_000)
 
 dataset_only_numerical = dataset.drop("artists", "id", "name", "release_date")
+
+args = sys.argv
+algo_id = int(args[-1])
 
 def test_using_method(cls: type):
     
@@ -79,14 +86,16 @@ def test_using_method(cls: type):
     ax4.set(xlabel="Number of clusters (K)", ylabel="Harabasz for K")
 
     plt.show()
+    
+    return 1
 
+algos = [KMeans, KMedoids, CLARA, CLARANS, DBSCAN, SOM, AgglomerativeClustering]
 
-test_using_method(KMeans)
-test_using_method(KMedoids)
-test_using_method(CLARA)
-test_using_method(CLARANS)
-test_using_method(DBSCAN)
-test_using_method(SOM)
-test_using_method(AgglomerativeClustering)
-
+if algo_id == -1:
+    processes: list[Popen] = []
+    for algo_index in range(len(algos)):
+        subprocess.Popen(["python", "pw6.py", f"{algo_index}"])
+else:
+    test_using_method(algos[algo_id])
+        
 

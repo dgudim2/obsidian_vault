@@ -8,10 +8,12 @@
 #   "xgboost-cpu",
 #   "transformers",
 #   "torch",
+#   "contractions",
+#   "plotly",
+#   "pandas",
+#   "matplotlib"
 # ]
 #
-# [[tool.uv.index]]
-# url = "https://download.pytorch.org/whl/cpu"
 # ///
 
 import polars as pl
@@ -35,7 +37,10 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
 from transformers import BertTokenizer, BertModel, get_linear_schedule_with_warmup
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import ConfusionMatrixDisplay, accuracy_score, classification_report
+from sklearn.manifold import TSNE
+import plotly.express as px
+import matplotlib.pyplot as plt
 
 nltk.download('stopwords')
 nltk.download('wordnet')
@@ -63,7 +68,8 @@ category_map = {
     'not_cyberbullying': 5
 }
 
-dataset = pl.read_csv("./cyberbullying_tweets.csv").sample(n=5000, shuffle=True, seed=10)
+dataset = pl.read_csv("./cyberbullying_tweets.csv")
+# .sample(n=5000, shuffle=True, seed=10)
 dataset = dataset.with_columns(
     pl.Series("cyberbullying_type", [category_map[cat] for cat in dataset['cyberbullying_type']]).cast(pl.UInt32)
 ).sort("cyberbullying_type") # https://stackoverflow.com/questions/71996617/invalid-classes-inferred-from-unique-values-of-y-expected-0-1-2-3-4-5-got
@@ -103,14 +109,37 @@ vectorizer = TfidfVectorizer()
 X_train_tfid = vectorizer.fit_transform(X_train)
 X_test_tfid = vectorizer.transform(X_test)
 
+# https://medium.com/@RobuRishabh/clustering-text-data-with-k-means-and-visualizing-with-t-sne-9bc1fe7d8fed
+# https://www.datacamp.com/tutorial/introduction-t-sne
+
+tsne = TSNE(n_components=2, random_state=42)
+X_tsne = tsne.fit_transform(vectorizer.fit_transform(X))
+fig = px.scatter(x=X_tsne[:, 0], y=X_tsne[:, 1], color=Y)
+fig.update_layout(
+    title="t-SNE visualization of Cyberbullying dataset",
+    xaxis_title="First t-SNE",
+    yaxis_title="Second t-SNE",
+)
+fig.show()
+
 random_forest_model = RandomForestClassifier(n_estimators=100, random_state=42)
 
 random_forest_model.fit(X_train_tfid, Y_train)
 y_pred_forest = random_forest_model.predict(X_test_tfid)
 
 accuracy_forest = metrics.accuracy_score(Y_test, y_pred_forest)
-
 print(f"Accuracy of Random Forest: {accuracy_forest * 100:.2f}")
+print(metrics.classification_report(Y_test, y_pred_forest))
+
+disp = ConfusionMatrixDisplay.from_estimator(
+    random_forest_model,
+    X_test_tfid,
+    Y_test,
+    display_labels=category_map.keys(),
+    normalize='true',
+)
+disp.ax_.set_title("Confusion matrix for random forest")
+plt.show()
 
 xgboost_model = xgb.XGBClassifier(n_jobs=-1)
 xgboost_model.fit(X_train_tfid, Y_train)
@@ -119,8 +148,17 @@ y_pred_xgboost = xgboost_model.predict(X_test_tfid)
 
 accuracy_xgboost = metrics.accuracy_score(Y_test, y_pred_xgboost)
 print(f"Accuracy of XgBoost: {accuracy_xgboost * 100:.2f}%")
+print(metrics.classification_report(Y_test, y_pred_xgboost))
 
-
+disp = ConfusionMatrixDisplay.from_estimator(
+    xgboost_model,
+    X_test_tfid,
+    Y_test,
+    display_labels=category_map.keys(),
+    normalize='true',
+)
+disp.ax_.set_title("Confusion matrix for xgboost")
+plt.show()
 
 # https://scribe.rip/@khang.pham.exxact/text-classification-with-bert-7afaacc5e49b
 
@@ -195,14 +233,14 @@ def predict_sentiment(text: str, model: BERTClassifier, tokenizer: BertTokenizer
         outputs = model(input_ids=input_ids, attention_mask=attention_mask)
         _, preds = torch.max(outputs, dim=1)
 
-        return category_map.keys(preds.item())
+        return list(category_map.keys())[preds.item()]
 
 
 bert_model_name = 'bert-base-uncased'
 num_classes = len(category_map)
 max_length = 128
 batch_size = 16
-num_epochs = 4
+num_epochs = 2
 learning_rate = 2e-5
 
 tokenizer = BertTokenizer.from_pretrained(bert_model_name)
@@ -211,7 +249,7 @@ val_dataset = TextClassificationDataset(X_test, Y_test, tokenizer, max_length)
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_dataloader = DataLoader(val_dataset, batch_size=batch_size)
 
-device = "cpu"
+device = "cuda"
 
 model = BERTClassifier(bert_model_name, num_classes).to(device)
 
@@ -228,7 +266,7 @@ for epoch in range(num_epochs):
     print(report)
 
 
-test_text = "Hello, test"
-sentiment = predict_sentiment(test_text, model, tokenizer, device)
-print(test_text)
-print(f"Predicted sentiment: {sentiment}")
+# test_text = "Hello, test"
+# sentiment = predict_sentiment(test_text, model, tokenizer, device)
+# print(test_text)
+# print(f"Predicted sentiment: {sentiment}")

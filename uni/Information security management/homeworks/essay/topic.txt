@@ -1,1 +1,1 @@
-15. Cyber attacks: classification, overview, methods, threats, consequences
+Vulnerability scanning methods, classification, tools

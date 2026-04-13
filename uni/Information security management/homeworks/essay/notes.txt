@@ -1,0 +1,128 @@
+Slide 1 ========= What are vulnerabilities
+
+While a piece of software of a system can't be vulnerable the same way you as a human can be,
+it still can be vulnerable.
+
+Vulnerabilities are flaws or bugs in the system or a piece of software (or hardware).
+Either in the design or the implementation.
+These flaws can be exploited by bad actors to interact with the system in unwanted ways
+ranging from temporary downtime to account takeover, to full system takeover
+depending on the severity and scope of the vulnerability.
+
+
+// TODO: talk about patching
+
+
+Slide 2 ========= Vulnerability classification with examples
+
+
+Slide 3 ========= How to make sure that your system has THE MOST vulnerabilities
+
+- Make your system as complex as possible.
+Split your system into as many micro-services as possible, but each one should handle several unrelated tasks.
+This ways the engineers will be confused the most and in turn create more bugs.
+
+- Don't document your systems
+If you don't document your systems, engineers will forget how everything works after some time
+
+- Don't use battle tested libraries for cryprography, encoding, data manipulation and so on.
+Write your own implementations, this way there are more fundamental ways your system can break
+
+- Don't hash-pin your dependencies, use the latest version all the time
+This way your system stays very secure and free from supply chain attacks (no)
+
+- Depend on as many packages as possible, bigger is better
+Make your dependency tree as big as possible so it looks more impressive
+
+- Run everything as root user, who needs permissions?
+
+- Don't sanitize user input, use it directly
+Your users are good guys, trust them.
+
+- Connect your system to the internet and rely on cloud services even if you don't have to
+
+- Vibe code everything, make no mistakes.
+
+
+Slide 4 ========= Vulnerability classification
+
+Hardware
+Software
+Firmware (also software)
+
+Slide 4.1 ========= Vulnerability classification - hardware
+
+These types of vulnerabilities lie in the hardware itself (physical chips), the lowest level of the system.
+Software doesn't know that it's being exploited it this case.
+
+These vulnerabilities are the hardest to fix if it's even possible.
+
+If we talk about computers, these vulnerabilities are mostly found in CPUs and RAM,
+since these are he components doing 90% of the work in a computer.
+
+If we talk about other devices, embedded for example, these vulnerabilities may be found in dedicated
+security coprocessors or wireless controllers.
+
+With the increased usage of LLMs, some researchers search for flaws in the GPUs as well
+
+Some examples:
+
+CPU side-channel attacks:
+- Spectre
+- Meltdown
+- Retbleed
+These target the branch predictor inside the CPU making it possible to read the memory of another process.
+
+DRAM attacks
+Rowhammer
+RAMBleed
+
+These exploit the physical properties of the memory cells making it possible to yet again - read the memory you are not supposed to see.
+
+As said before, mitigating these vulnerabilities is very hard.
+- In the case of CPUs, a microcode update is required and the corresponding patch in the running OS.
+ And after the patch CPU performance typically decreases
+- And in the cases of RAM, a physical redesign is required and all vulnerable devices stay vulnerable.
+
+These vulnerabilities require a very sophisticated setup to be exploited, so you shouldn't be worried unless you're a president
+
+Slide 5 ========= Discovering hardware vulnerabilities
+
+Ho you discover such vulnerabilities?
+Well, you have to be a physicist and a software engineer at the same time
+You need to understand how the computer executes your program down to the operations at the CPU level.
+
+Both manual and automated approaches are possible.
+
+With a manual approach you come up with theories and methodically test them.
+There are no well-known tools for that, they are usually custom-made by the researcher
+
+With automated approach you either give a computer a set of parameters and let it try every combination
+or in the modern world you can try asking an LLM for theories and then test them
+
+One of the examples of an automated attack is 'power glitching'.
+This attack is usually targeted towards embedded devices (for example car controllers or crypto wallets)
+The aim of this attack is to bypass the hardware security mechanisms in the early boot process of a controller
+making it possible to extract the program and manipulate memory (extracting you cryptocurrency key or making your car controller modifiable)
+
+In this attack the attacker turns off the power to the controller in a very precise and controlled way for
+very short amount of time (microseconds), making the controller skip parts of the code it executes.
+The automated part is finding those timings, there are millions of combinations and so, it's done in an automated way.
+
+Slide 6 ========= Discovering software/firmware vulnerabilities
+
+Discovering these is much simpler since software runs on the layer much more accessible to the average person.
+
+Note, firmware is also software which runs on an embedded controller.
+For example you wifi chip has a separate controller running its own software, your GPU has its own
+controller with its own BIOS, you computer has BIOS (EFI) as well.
+
+
+
+Slide 6.1 ========= Discovering software/firmware vulnerabilities - tools
+
+Slide 7 ========= Disclosing vulnerabilities
+
+Slide 8 ========= Using vulnerabilities for good
+
+Slide 9 ========= Using vulnerabilities for bad

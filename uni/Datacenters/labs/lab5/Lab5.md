@@ -57,7 +57,7 @@ flexGrow=1
     
 - **None**. This is "local" or "intra-rack" traffic. The leaf switch will handle the switching/routing on its own without sending the packet up to the spine layer.
         
-> **Question:** If multiple flows are sent from L1 to L5, how does the fabric ensure both Spines are used?
+> If multiple flows are sent from L1 to L5, how does the fabric ensure both Spines are used?
     
 - Using **ECMP (Equal-Cost Multi-Pathing)**. The leaf will distribute different traffic flows across all available paths to the spines.
 

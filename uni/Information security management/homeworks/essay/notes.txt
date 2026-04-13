@@ -13,7 +13,7 @@ depending on the severity and scope of the vulnerability.
 // TODO: talk about patching
 
 
-Slide 2 ========= Vulnerability classification with examples
+Slide 2 ========= Vulnerability severity classification with examples
 
 
 Slide 3 ========= How to make sure that your system has THE MOST vulnerabilities
@@ -50,7 +50,9 @@ Hardware
 Software
 Firmware (also software)
 
-Slide 4.1 ========= Vulnerability classification - hardware
+Slide 4.1 ========= Vulnerability classification - software
+
+Slide 4.1 ========= Hardware vulnerabilities
 
 These types of vulnerabilities lie in the hardware itself (physical chips), the lowest level of the system.
 Software doesn't know that it's being exploited it this case.

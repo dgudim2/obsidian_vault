@@ -10,11 +10,25 @@ ranging from temporary downtime to account takeover, to full system takeover
 depending on the severity and scope of the vulnerability.
 
 
-// TODO: talk about patching
+A fix for a vulnerability is called a patch.
 
 
 Slide 2 ========= Vulnerability severity classification with examples
 
+There is a central database with known vulnerabilities - the CVE database.
+
+CVE - Common vulnerabilities and exposures
+
+Vulnerabilities are ranked by their severity from 0.1 to 10
+Low, Medium, High, Critical.
+with 0.1 being not really a vulnerability and 10 being a vulnerability that can be exploited without any user actions which leads to full system compromise.
+
+They are also classified based of the attack vector and some other parameters.
+
+Examples:
+react server component RCE: CVE-2025-55182, score: 10
+buffer overflow in IOS leading to system crash: CVE-2026-28875, score 7.5
+local privilege escalation via path traversal (android): CVE-2025-48636, score 8.4
 
 Slide 3 ========= How to make sure that your system has THE MOST vulnerabilities
 
@@ -28,7 +42,7 @@ If you don't document your systems, engineers will forget how everything works a
 - Don't use battle tested libraries for cryprography, encoding, data manipulation and so on.
 Write your own implementations, this way there are more fundamental ways your system can break
 
-- Don't hash-pin your dependencies, use the latest version all the time
+- Don't pin your dependencies, use the latest version all the time
 This way your system stays very secure and free from supply chain attacks (no)
 
 - Depend on as many packages as possible, bigger is better
@@ -52,7 +66,65 @@ Firmware (also software)
 
 Slide 4.1 ========= Vulnerability classification - software
 
-Slide 4.1 ========= Hardware vulnerabilities
+- Buffer overflow
+  May lead to: privilege escalation, system crash, code execution, information leakage
+
+- Sql injection:
+  May lead to: privilege escalation, authentication bypass, information leakage
+
+- XSS (cross-site scripting)
+  May lead to: remote code execution, malware delivery
+
+- Path traversal
+  May lead to: data leakage, authentication bypass, privilege escalation
+
+
+Slide 5 ========= Discovering software/firmware vulnerabilities
+
+Discovering these is much simpler since software runs on the layer much more accessible to the average person.
+
+Note, firmware is also software which runs on an embedded controller.
+For example you wifi chip has a separate controller running its own software, your GPU has its own
+controller with its own BIOS, you computer has BIOS (EFI nowadays) as well.
+
+You can use automated tools for getting an overview of what you a working with (fuzzers, scanners, LLMs, static analysis tools),
+then you will narrow down your search based on the discovered information and use a more specific tools for the job.
+
+If you are looking for a vulnerability in a application, the first step would probably be decompilation of the application,
+understanding its architecture and moving parts. You might want to hook into the application too to inspect it in runtime.
+
+Slide 5.1 ========= Discovering software/firmware vulnerabilities - tools
+
+Decompilers:
+ghidra - any language
+fernflower - java
+ILSpy - C#
+malimite - plugin for ghidra to decompile swift
+
+Hooking frameworks:
+Frida
+Dobbyhook
+Easyhook
+
+Fuzzing tools:
+oss-fuzz - general purpose fuzzing
+AFL++ - general purpose fuzzing
+dartbuster / dir buster - url fuzzing
+sqlmap - sql fuzzing
+
+Network tools:
+nmap - network mapping
+sslscan - certificate and cipher info
+wafw00f - firewall checker
+
+All-in-one tools:
+Metasploit
+ZAP
+Nikto
+nuclei
+
+
+Slide 6 ========= Hardware vulnerabilities
 
 These types of vulnerabilities lie in the hardware itself (physical chips), the lowest level of the system.
 Software doesn't know that it's being exploited it this case.
@@ -88,7 +160,9 @@ As said before, mitigating these vulnerabilities is very hard.
 
 These vulnerabilities require a very sophisticated setup to be exploited, so you shouldn't be worried unless you're a president
 
-Slide 5 ========= Discovering hardware vulnerabilities
+A missing door in your server room is also a physical vulnerability.
+
+Slide 7 ========= Discovering hardware vulnerabilities
 
 Ho you discover such vulnerabilities?
 Well, you have to be a physicist and a software engineer at the same time
@@ -111,20 +185,81 @@ In this attack the attacker turns off the power to the controller in a very prec
 very short amount of time (microseconds), making the controller skip parts of the code it executes.
 The automated part is finding those timings, there are millions of combinations and so, it's done in an automated way.
 
-Slide 6 ========= Discovering software/firmware vulnerabilities
+Slide 8 ========= Disclosing vulnerabilities
 
-Discovering these is much simpler since software runs on the layer much more accessible to the average person.
+After you find a vulnerability, you can either use it for you own purposes, whatever those may be, but in most cases it's best to report
+it to the company. Some companies even host bug bounty programs so you can get paid for finding and reporting vulnerabilities.
+After disclosing the vulnerability, there is a timeframe during which the company must fix the vulnerability (And report it to official organs if it's an actively exploied one)
+Timeframe depends on the severity of the vulnerability, inspect official guidelines for your country before submitting vulnerabilities.
+After the timeframe, you can make the vulnerability public.
 
-Note, firmware is also software which runs on an embedded controller.
-For example you wifi chip has a separate controller running its own software, your GPU has its own
-controller with its own BIOS, you computer has BIOS (EFI) as well.
+Slide 9 ========= Using vulnerabilities for good
+
+Vulnerabilities are not always bad though and can be used to do useful stuff as well.
+
+For example you run a repair center, but the the manufacturer arbitrarily locks the diagnostic mode/developer menu
+of a device or locks the parts of a device so they only work only on this exact device, making it impossible to repair.
+In this case having some kind of vulnerability would be very beneficial to the repair center.
+
+Real example: I have a samsung washing machine and it sometimes refused to start saying that the door is open.
+An obvious move for some people is to call support and just pay them for a new door or something.
+I tried diagnosing the issue myself, but the diagnostic mode is locked behind some random combination of button presses
+that only the manufacturer knows. Fortunately some people before me already extracted the code for this particular model
+and I was able to diagnose and repair it (it was a broken latch sensor inside the door.)
+
+Another scenario. You bought a smart device that only works with the cloud, and not for real functionality,
+but because the company watch you to use their app and pay them a subscription. In the cases where you don't want that
+or in the when the company goes bankrupt or the device is no longer supported, the device turns into a brick.
+Having a vulnerability somewhere that would allow uploading a custom firmware so the device works again without a cloud
+would be amazing for the consumer.
+
+Real example: I have a xiaomi robot vacuum that is (was) connected to the cloud and when the cloud was unavailable
+the robot became a very dumb machine, it would forget the map of the house and its settings. The solution: vulnerability
+in the bootloader that allowed me to flash a community firmware and not my robot works locally and more reliably, and I can install
+custom voicelines onto it and even play doom because the OS on the robot is just linux.
+I did the same with my smart sockets as well.
+
+And the last example. You bought a device, used it for a bit and like it, but the device is missing some settings that you want
+and is just too restricted for you. Solution: root it! (Gain access to system files like on a proper computer)
+
+Example: I have an amazon kindle paperwhite e-book that is no longer supported by amazon and besides that, putting books on
+it is not really convenient and it supports only a few proprietary formats. But fortunately for me, there is a vulnerability in the
+ad rendering code that allowed me to gain root privileges on the book and install a custom reader application that supports more formats,
+works faster and has way more features. I was able to remove the ads as well.
+
+
+Slide 10 ========= Using vulnerabilities for bad
+
+And now for the bad uses.
+
+There are far more bad usecases unfortunately.
+From bad actors stealing all the data from a company and selling it, to full system shutdowns,
+to state-sponsored hackers targeting individuals and spying on them. These usecases are plenty and well understood,
+I don't think it makes much sense to talk about them a lot here. Some previous presentation already discussed some attacks that used vulnerabilities to gain access to the systems.
+
+I have 3 examples from my life though.
+
+First one. There was a vulnerability in apple's fast-pair protocol. (Responsible for showing those popups when you first pair your headphones).
+The vulnerability allowed spamming the target device (all devices in range for that matter) with special bluetooth packets that would trigger those
+popups over and over again sometimes even rebooting the phone. It was quite fun to try on my friends.
+
+And another one was with an e-shop here in lithuania. They had a bug in the system where you could apply a coupon several times, the check was only client-side.
+This allowed me to apply a coupon with a 10% discount 20 times effectively putting the final price in the negative range. I didn't do anything malicious with it, but I could've.
+I didn't report it either because the company ignored my emails and I just forgot about it.
+
+And the last one happened here, well, not here specifically, but in the university. There was, maybe still is a gitlab instance for hosting student projects.
+When I was told about it my first instinct was to test it a little. It turned out that the gitlab version that the university was running was a very old one and
+a remote code execution vulnerability was present, which allowed me and my friend to do some harmless exploiting and put up a banner on the main page saying
+"Please update your system!" and then we actually went ahead and updated the system xddd, that surely was fun.
+
+Slide 11 ========= Thanks!
 
 
 
-Slide 6.1 ========= Discovering software/firmware vulnerabilities - tools
 
-Slide 7 ========= Disclosing vulnerabilities
-
-Slide 8 ========= Using vulnerabilities for good
-
-Slide 9 ========= Using vulnerabilities for bad
+REFS:
+https://www.enisa.europa.eu/topics/vulnerability-disclosure
+https://www.ceps.eu/ceps-task-forces/software-vulnerability-disclosure-in-europe/
+https://nexus.ingroupe.com/how-to-find-software-vulnerabilities/
+https://www.csoonline.com/article/567525/hardware-and-firmware-vulnerabilities-a-guide-to-the-threats.html
+https://en.wikipedia.org/wiki/Vulnerability_(computer_security)

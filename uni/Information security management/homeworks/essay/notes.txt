@@ -30,6 +30,11 @@ react server component RCE: CVE-2025-55182, score: 10
 buffer overflow in IOS leading to system crash: CVE-2026-28875, score 7.5
 local privilege escalation via path traversal (android): CVE-2025-48636, score 8.4
 
+
+
+
+
+
 Slide 3 ========= How to make sure that your system has THE MOST vulnerabilities
 
 - Make your system as complex as possible.
@@ -58,6 +63,9 @@ Your users are good guys, trust them.
 - Vibe code everything, make no mistakes.
 
 
+
+
+
 Slide 4 ========= Vulnerability classification
 
 Hardware
@@ -79,6 +87,10 @@ Slide 4.1 ========= Vulnerability classification - software
   May lead to: data leakage, authentication bypass, privilege escalation
 
 
+
+
+
+
 Slide 5 ========= Discovering software/firmware vulnerabilities
 
 Discovering these is much simpler since software runs on the layer much more accessible to the average person.
@@ -92,6 +104,7 @@ then you will narrow down your search based on the discovered information and us
 
 If you are looking for a vulnerability in a application, the first step would probably be decompilation of the application,
 understanding its architecture and moving parts. You might want to hook into the application too to inspect it in runtime.
+
 
 Slide 5.1 ========= Discovering software/firmware vulnerabilities - tools
 
@@ -122,6 +135,9 @@ Metasploit
 ZAP
 Nikto
 nuclei
+
+
+
 
 
 Slide 6 ========= Hardware vulnerabilities
@@ -162,6 +178,10 @@ These vulnerabilities require a very sophisticated setup to be exploited, so you
 
 A missing door in your server room is also a physical vulnerability.
 
+
+
+
+
 Slide 7 ========= Discovering hardware vulnerabilities
 
 Ho you discover such vulnerabilities?
@@ -185,6 +205,10 @@ In this attack the attacker turns off the power to the controller in a very prec
 very short amount of time (microseconds), making the controller skip parts of the code it executes.
 The automated part is finding those timings, there are millions of combinations and so, it's done in an automated way.
 
+
+
+
+
 Slide 8 ========= Disclosing vulnerabilities
 
 After you find a vulnerability, you can either use it for you own purposes, whatever those may be, but in most cases it's best to report
@@ -192,6 +216,10 @@ it to the company. Some companies even host bug bounty programs so you can get p
 After disclosing the vulnerability, there is a timeframe during which the company must fix the vulnerability (And report it to official organs if it's an actively exploied one)
 Timeframe depends on the severity of the vulnerability, inspect official guidelines for your country before submitting vulnerabilities.
 After the timeframe, you can make the vulnerability public.
+
+Companies do internal pentests as well, so you can even work full time essentially trying to hack the company and get paid for it.
+
+
 
 Slide 9 ========= Using vulnerabilities for good
 
@@ -228,6 +256,9 @@ ad rendering code that allowed me to gain root privileges on the book and instal
 works faster and has way more features. I was able to remove the ads as well.
 
 
+
+
+
 Slide 10 ========= Using vulnerabilities for bad
 
 And now for the bad uses.
@@ -251,6 +282,10 @@ And the last one happened here, well, not here specifically, but in the universi
 When I was told about it my first instinct was to test it a little. It turned out that the gitlab version that the university was running was a very old one and
 a remote code execution vulnerability was present, which allowed me and my friend to do some harmless exploiting and put up a banner on the main page saying
 "Please update your system!" and then we actually went ahead and updated the system xddd, that surely was fun.
+
+
+
+
 
 Slide 11 ========= Thanks!
 

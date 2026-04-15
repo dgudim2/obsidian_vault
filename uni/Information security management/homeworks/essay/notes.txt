@@ -10,7 +10,7 @@ ranging from temporary downtime to account takeover, to full system takeover
 depending on the severity and scope of the vulnerability.
 
 
-A fix for a vulnerability is called a patch.
+A fix for a vulnerability is called a patch and the process - patching
 
 
 Slide 2 ========= Vulnerability severity classification with examples
@@ -23,10 +23,10 @@ Vulnerabilities are ranked by their severity from 0.1 to 10
 Low, Medium, High, Critical.
 with 0.1 being not really a vulnerability and 10 being a vulnerability that can be exploited without any user actions which leads to full system compromise.
 
-They are also classified based of the attack vector and some other parameters.
+They are also assigned an attack vector and some other parameters.
 
 Examples:
-react server component RCE: CVE-2025-55182, score: 10
+react server component remote code exec: CVE-2025-55182, score: 10
 buffer overflow in IOS leading to system crash: CVE-2026-28875, score 7.5
 local privilege escalation via path traversal (android): CVE-2025-48636, score 8.4
 
@@ -92,8 +92,6 @@ Slide 4.1 ========= Vulnerability classification - software
 
 
 Slide 5 ========= Discovering software/firmware vulnerabilities
-
-Discovering these is much simpler since software runs on the layer much more accessible to the average person.
 
 Note, firmware is also software which runs on an embedded controller.
 For example you wifi chip has a separate controller running its own software, your GPU has its own

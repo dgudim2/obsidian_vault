@@ -44,6 +44,7 @@
     "**/Extra": "git",
     "*_ng_*": "git",
     "*.gz": "git",
+    "*.dwarfs": "git",
     "/uni/Computer\\ networks/GNS3": "git",
     "/LaTeX\\ docs": "git"
 }

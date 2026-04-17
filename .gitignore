@@ -43,5 +43,6 @@
 **/Extra
 *_ng_*
 *.gz
+*.dwarfs
 /uni/Computer\ networks/GNS3
 /LaTeX\ docs

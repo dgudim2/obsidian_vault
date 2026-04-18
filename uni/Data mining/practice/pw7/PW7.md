@@ -27,14 +27,14 @@ ef split_and_clean(text: str):
 return fixed
 ```
 
-which tokenizes by word boundary, lemmatizes all the tokens, removes he stop words and expands the contraction. It also lowercases the tokens and removes punctuation
+which tokenizes by word boundary, lemmatizes all the tokens, removes the stop words and expands the contractions. It also lowercases the tokens and removes punctuation
 
 
 The dataset has **6** classes: `'age', 'gender', 'other_cyberbullying', 'ethnicity', 'not_cyberbullying', 'religion'` and **14k** samples
 
 ## Data vectorization
 
-Because the data is text and non numbers, vectorization is required, I used **TFID vertorizer** for this:
+Because the data is text and not numbers, vectorization is required, I used **TFID vertorizer** for this:
 
 ```python
 vectorizer = TfidfVectorizer()

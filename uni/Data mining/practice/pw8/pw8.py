@@ -40,8 +40,9 @@ import numpy.typing as npt
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision.models import ResNet50_Weights, resnet50
-from torch.utils.data import TensorDataset, DataLoader
+from torchvision.models import MaxVit, ResNet, ResNet50_Weights, VisionTransformer, resnet50
+from torchvision.models import vit_b_16, ViT_B_16_Weights
+from torchvision.models import maxvit_t, MaxVit_T_Weights
 import torchvision
 from torchvision import transforms
 
@@ -53,6 +54,8 @@ random.seed(42)
 random.shuffle(images)
 
 images = images[:7000]
+
+print("loaded images")
 
 classes = ["_".join(image.stem.split("_")[:-1]).lower() for image in images]
 classes_categorical_map = {
@@ -106,16 +109,17 @@ def get_pixel_count(p: Path):
     return res[0] * res[1]
 
 
-resolutions = [get_pixel_count(image) for image in images]
-
-print(set(classes))
-
+# resolutions = [get_pixel_count(image) for image in images]
+# print(set(classes))
+#
 # sb.displot(classes)
 # plt.xticks(rotation=45)
 # plt.show()
-
+#
 # sb.displot(resolutions, bins=500, kde=True)
 # plt.show()
+#
+# exit(1)
 
 
 def resize_with_pad(image: npt.NDArray, new_shape: tuple[int, int]) -> npt.NDArray:
@@ -139,14 +143,18 @@ def define_model():
     model = Sequential()
     model.add(Input(shape=(image_size, image_size, 1)))
     model.add(
-        Conv2D(filters=32, kernel_size=(3, 3), activation="relu", padding="Same", kernel_initializer="he_uniform")
+        Conv2D(filters=64, kernel_size=(6, 6), activation="relu", padding="Same")
+    )
+    model.add(MaxPooling2D((8, 8), strides=(1, 1)))
+    model.add(
+        Conv2D(filters=32, kernel_size=(6, 6), activation="relu", padding="Same")
     )
     model.add(MaxPooling2D((2, 2), strides=(1, 1)))
     model.add(Conv2D(filters=16, kernel_size=(3, 3), padding="Same", activation="relu"))
     model.add(MaxPooling2D((2, 2), strides=(1, 1)))
     model.add(Conv2D(filters=8, kernel_size=(3, 3), padding="Same", activation="relu"))
     model.add(Flatten())
-    model.add(Dense(100, activation="relu", kernel_initializer="he_uniform"))
+    model.add(Dense(200, activation="relu", kernel_initializer="he_uniform"))
     model.add(Dense(len(classes_categorical_map), activation="softmax"))
     # https://keras.io/api/optimizers/sgd/
     opt = SGD(learning_rate=0.01, momentum=0.9)
@@ -176,7 +184,7 @@ def evaluate_model(dataXlist: list[npt.NDArray], dataYlist: list[int], n_folds=5
         testX = testX.reshape(-1, image_size, image_size, 1)
 
         # https://github.com/tensorflow/tensorflow/issues/65237
-        history = model.fit(trainX, trainY, epochs=10, batch_size=500, validation_data=(testX, testY), verbose="1")
+        history = model.fit(trainX, trainY, epochs=25, batch_size=100, validation_data=(testX, testY), verbose="1")
 
         _, acc = model.evaluate(testX, testY, verbose="1")
         y_pred = np.argmax(model.predict(testX), axis=1)
@@ -197,7 +205,7 @@ def summarize_diagnostics(histories: list):
     for i in range(len(histories)):
         # plot loss
         plt.subplot(211)
-        plt.title("Cross Entropy Loss")
+        plt.title("Loss")
         plt.plot(histories[i].history["loss"], color="blue", label="train")
         plt.plot(histories[i].history["val_loss"], color="orange", label="test")
         # plot accuracy
@@ -213,40 +221,21 @@ def summarize_performance(scores: list, f1_scores: list, recalls: list):
     print("Accuracy: mean=%.3f std=%.3f, n=%d" % (np.mean(scores) * 100, np.std(scores) * 100, len(scores)))
     print("F1: mean=%.3f std=%.3f, n=%d" % (np.mean(f1_scores) * 100, np.std(f1_scores) * 100, len(f1_scores)))
     print("Recall: mean=%.3f std=%.3f, n=%d" % (np.mean(recalls) * 100, np.std(recalls) * 100, len(recalls)))
-    plt.boxplot(scores)
-    plt.show()
-    plt.boxplot(f1_scores)
-    plt.show()
-    plt.boxplot(recalls)
-    plt.show()
-
-
-prepared_images = [normalize_image(p) for p in images]
-
+    # plt.boxplot(scores)
+    # plt.show()
+    # plt.boxplot(f1_scores)
+    # plt.show()
+    # plt.boxplot(recalls)
+    # plt.show()
 
 def run_baseline_cnn():
+    prepared_images = [normalize_image(p) for p in images]
+    
     scores, histories, f1_scores, recalls = evaluate_model(prepared_images, classes_categorical)
     summarize_diagnostics(histories)
     summarize_performance(scores, f1_scores, recalls)
 
 
-# run_baseline_cnn()
-
-
-# Define the model
-model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V1)
-
-# Replace the last layer
-num_features = model.fc.in_features
-model.fc = nn.Linear(num_features, len(classes_categorical_map))
-
-# Define the loss function and optimizer
-criterion = nn.CrossEntropyLoss()
-optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
-
-# Move the model to the device
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-model = model.to(device)
 
 train_transform = transforms.Compose(
     [
@@ -273,7 +262,6 @@ split_point = 4500
 train_image_tuples = list(zip([str(p) for p in images[:split_point]], classes_categorical[:split_point]))
 test_image_tuples = list(zip([str(p) for p in images[split_point:]], classes_categorical[split_point:]))
 
-# Load the data
 train_data = torchvision.datasets.ImageFolder(root=".", transform=train_transform)
 train_data.samples = train_image_tuples
 train_data.imgs = train_image_tuples
@@ -291,25 +279,28 @@ test_data.targets = [s[1] for s in test_data.imgs]
 print(len(train_data))
 print(len(test_data))
 
-# Define the dataloaders
-train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True, num_workers=4)
-test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, shuffle=False, num_workers=4)
+train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True, num_workers=12)
+test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, shuffle=False, num_workers=12)
 
-train_losses = []
-test_losses = []
-accuracy_ = []
+def run_torch_generic(lr: float, momentum: float, num_epochs: int, model: MaxVit | VisionTransformer | ResNet):
+    
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+    
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(model.parameters(), lr=lr, momentum=momentum)
 
-
-def run_resnet():
-    # Define the number of epochs
-    num_epochs = 10
-
+    train_losses = []
+    test_losses = []
+    f1_scores = []
+    recall_scores = []
+    accuracies = []
+    
     # Train the model
     for epoch in range(num_epochs):
-        # Train the model on the training set
         model.train()
         train_loss = 0.0
-        for i, (inputs, labels) in enumerate(train_loader):
+        for inputs, labels in train_loader:
             # Move the data to the device
             inputs = inputs.to(device)
             labels = labels.to(device)
@@ -330,8 +321,12 @@ def run_resnet():
         model.eval()
         test_loss = 0.0
         test_acc = 0.0
+        
+        all_preds = []
+        all_labels = []
+        
         with torch.no_grad():
-            for i, (inputs, labels) in enumerate(test_loader):
+            for inputs, labels in test_loader:
                 # Move the data to the device
                 inputs = inputs.to(device)
                 labels = labels.to(device)
@@ -344,26 +339,75 @@ def run_resnet():
                 test_loss += loss.item() * inputs.size(0)
                 _, preds = torch.max(outputs, 1)
                 test_acc += torch.sum(preds == labels.data)
+                
+                # Store for F1/Recall
+                all_preds.extend(preds.cpu().numpy())
+                all_labels.extend(labels.cpu().numpy())
 
         # Print the training and test loss and accuracy
         train_loss /= len(train_data)
         test_loss /= len(test_data)
         test_acc = test_acc.double() / len(test_data)
-        print(
-            f"Epoch [{epoch + 1}/{num_epochs}] Train Loss: {train_loss:.4f} Test Loss: {test_loss:.4f} Test Acc: {test_acc:.4f}"
-        )
+        
+        epoch_f1 = f1_score(all_labels, all_preds, average='weighted')
+        epoch_recall = recall_score(all_labels, all_preds, average='weighted')
+
+        print(f"Epoch [{epoch + 1}/{num_epochs}]")
+        print(f"Loss: [Train: {train_loss:.4f}, Test: {test_loss:.4f}]")
+        print(f"Metrics: [Acc: {test_acc:.4f}, F1: {epoch_f1:.4f}, Recall: {epoch_recall:.4f}]")
+        print("-" * 30)
 
         train_losses.append(train_loss)
         test_losses.append(test_loss)
-        accuracy_.append(float(test_acc))
+        accuracies.append(float(test_acc))
+        recall_scores.append(float(epoch_recall))
+        f1_scores.append(float(epoch_f1))
 
+    sb.lineplot(train_losses)
+    sb.lineplot(test_losses)
 
-run_resnet()
+    plt.show()
 
-sb.lineplot(train_losses)
-sb.lineplot(test_losses)
+    sb.lineplot(accuracies)
+    plt.show()
 
-plt.show()
+    sb.lineplot(f1_scores)
+    plt.show()
 
-sb.lineplot(accuracy_)
-plt.show()
+    sb.lineplot(recall_scores)
+    plt.show()
+
+def run_resnet():
+    print("Runnnig Resnet")
+    
+    model = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+
+    num_features = model.fc.in_features
+    model.fc = nn.Linear(num_features, len(classes_categorical_map))
+
+    run_torch_generic(0.0005, 0.9, 10, model)
+
+def run_vit():
+    print("Running VIT")
+
+    vit_model = vit_b_16(weights=ViT_B_16_Weights.IMAGENET1K_V1)
+
+    num_features = cast(nn.Linear, vit_model.heads.head).in_features
+    vit_model.heads.head = nn.Linear(num_features, len(classes_categorical_map))
+
+    run_torch_generic(0.0005, 0.9, 10, vit_model)
+    
+def run_maxvit():
+    print("Running MaxViT (Hybrid)...")
+
+    model = maxvit_t(weights=MaxVit_T_Weights.IMAGENET1K_V1)
+
+    num_ftrs = cast(nn.Linear, model.classifier[-1]).in_features
+    model.classifier[-1] = nn.Linear(num_ftrs, len(classes_categorical_map))
+
+    run_torch_generic(0.0005, 0.9, 10, model)
+
+# run_maxvit()
+run_vit()
+# run_baseline_cnn()
+# run_resnet()

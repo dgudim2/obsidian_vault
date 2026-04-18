@@ -9,7 +9,9 @@
 #   "sklearn",
 #   "keras",
 #   "numpy",
-#   "scikit-learn"
+#   "scikit-learn",
+#   "torchvision",
+#   "torch"
 # ]
 # ///
 
@@ -45,10 +47,11 @@ from torchvision.models import vit_b_16, ViT_B_16_Weights
 from torchvision.models import maxvit_t, MaxVit_T_Weights
 import torchvision
 from torchvision import transforms
+import torchvision.ops as ops
 
 image_size = 100
 
-images = list(Path("/home/kloud/.local/share/dwarfs-mounts/images-c6a89f84e9/images-mount/").glob("*"))
+images = list(Path("/tmp/images").glob("*"))
 
 random.seed(42)
 random.shuffle(images)
@@ -282,6 +285,17 @@ print(len(test_data))
 train_loader = torch.utils.data.DataLoader(train_data, batch_size=32, shuffle=True, num_workers=12)
 test_loader = torch.utils.data.DataLoader(test_data, batch_size=32, shuffle=False, num_workers=12)
 
+# Sanity checks
+all_targets = [s[1] for s in train_data.samples]
+if min(all_targets) < 0 or max(all_targets) >= len(classes_categorical_map):
+    print(f"Error: Label out of range! Range: {min(all_targets)}-{max(all_targets)}")
+    exit(1)
+
+for inputs, labels in train_loader:
+    if torch.isnan(inputs).any():
+        print("Detected NaN in input batch!")
+        exit(1)
+
 def run_torch_generic(lr: float, momentum: float, num_epochs: int, model: MaxVit | VisionTransformer | ResNet):
     
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -338,7 +352,7 @@ def run_torch_generic(lr: float, momentum: float, num_epochs: int, model: MaxVit
                 # Update the test loss and accuracy
                 test_loss += loss.item() * inputs.size(0)
                 _, preds = torch.max(outputs, 1)
-                test_acc += torch.sum(preds == labels.data)
+                test_acc += (preds == labels).sum().item()
                 
                 # Store for F1/Recall
                 all_preds.extend(preds.cpu().numpy())
@@ -347,7 +361,7 @@ def run_torch_generic(lr: float, momentum: float, num_epochs: int, model: MaxVit
         # Print the training and test loss and accuracy
         train_loss /= len(train_data)
         test_loss /= len(test_data)
-        test_acc = test_acc.double() / len(test_data)
+        test_acc /= len(test_data)
         
         epoch_f1 = f1_score(all_labels, all_preds, average='weighted')
         epoch_recall = recall_score(all_labels, all_preds, average='weighted')
@@ -402,12 +416,22 @@ def run_maxvit():
 
     model = maxvit_t(weights=MaxVit_T_Weights.IMAGENET1K_V1)
 
+    def remove_stochastic_depth(model):
+        for name, child in model.named_children():
+            if isinstance(child, ops.StochasticDepth):
+                setattr(model, name, nn.Identity())
+            else:
+                remove_stochastic_depth(child)
+
+    # These layers cause crashes, remove them
+    remove_stochastic_depth(model)
+
     num_ftrs = cast(nn.Linear, model.classifier[-1]).in_features
     model.classifier[-1] = nn.Linear(num_ftrs, len(classes_categorical_map))
 
     run_torch_generic(0.0005, 0.9, 10, model)
 
-# run_maxvit()
-run_vit()
+run_maxvit()
+# run_vit()
 # run_baseline_cnn()
 # run_resnet()

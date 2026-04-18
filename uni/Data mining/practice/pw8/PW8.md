@@ -203,15 +203,44 @@ The *augmentation* was the same as in the previous model
 flexGrow=1
 ===
 
+### Loss
+
+![[Screenshot_20260418_180641.png]]
+
+blue - training
+orange - testing
+
 ```` 
 ````col-md 
 flexGrow=1
 ===
 
+### Accuracy
+
+![[Screenshot_20260418_180701.png]]
+
+It jumps around a bit, maybe lowering the learning rate and increasing iterations would help. Ching the optimizer might help as well
+
 ```` 
 `````
 
-This model takes more resources to train and more time too (because there is no inherent correlation of close pixels like it a convolutional network)
+This model takes more resources to train and more time too (because there is no inherent correlation of close pixels like it a convolutional network). A thing to note though, the model seems to converge faster at the start then ResNet.
+
+The final accuracy is **94.4%** Which is the best among all the models
+
+Final epoch result:
+
+```
+Epoch [10/10]
+Loss: [Train: 0.3884, Test: 0.1898]
+Metrics: [Acc: 0.9448, F1: 0.9447, Recall: 0.9448]
+```
 
 > [!note]
 > Training time: **20 minutes**
+
+## MaxViT
+
+I tried training a *hybrid model* as well, but I didn't have enought video memory, I only have 6GB. I even tried disabling some layers, that didn't help either.
+
+But this model should in theory outperform all of the previous models.

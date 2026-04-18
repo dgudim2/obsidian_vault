@@ -34,24 +34,15 @@
 + Клинок, рассекающий демонов
 + Ночные стражи
 + Arcane
-+ Gunsmith cats
-+ Магический индекс
 + Шарлотта
-+ Mashle magic and muscles
-+ sonny boy
 + trigun stampede
 + kiznavier
 + Крутой учитель Онидзука
 + food wars
 + Скотт Пилигрим жмёт на газ (после фильма)
-+ darker than black
-+ Ergo proxy
-+ texhnolyze
 + Cowboy bebop
 + Синдуальность: Нуар
 +  https://animego.org/anime/ron-kamonohasi-nevmenyaemyy-detektiv-2419
-+ delicious in dungeon 
-+ panteema inverted
 + Lupin 3rd
 + city hunter 2
 + shiko

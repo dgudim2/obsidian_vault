@@ -3,24 +3,6 @@
 
 # Stuff to watch 
 
-## Random 
-+ Навстречу шторму
-+ The Three Body Problem
-+ Slice of life (2019)
-+ Fanboys
-+ Peeky blinders
-+ Blade runner 2049
-+ Другая земля
-+ Blade runner (orig)
-+ The Grand Budapest Hotel
-+ Тринадцатый этаж
-+ Стальной гигант
-+ Области тьмы
-+ flow (поток)
-+ the severance
-+ Семейка адамс
-+ The thing
-
 ## Anime
 + 91 день
 + Хантер x хантер

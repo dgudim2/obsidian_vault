@@ -25,6 +25,7 @@
 !*.mpp
 !*.webm
 !*.mp4
+!*.mkv
 !*.mp3
 !*.ogg
 !*.aac

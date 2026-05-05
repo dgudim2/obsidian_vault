@@ -26,6 +26,7 @@
     "*.mpp": "git",
     "*.webm": "git",
     "*.mp4": "git",
+    "*.mkv": "git",
     "*.mp3": "git",
     "*.ogg": "git",
     "*.aac": "git",

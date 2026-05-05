@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?plantuml 1.2026.2?><svg
+   contentStyleType="text/css"
+   data-diagram-type="DESCRIPTION"
+   height="189px"
+   preserveAspectRatio="none"
+   style="width:860px;height:189px;background:#FDFDFD;"
+   version="1.1"
+   viewBox="0 0 860 189"
+   width="860px"
+   zoomAndPan="magnify"
+   id="svg30"
+   sodipodi:docname="concept-level-component.svg"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview30"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.0406977"
+     inkscape:cx="430"
+     inkscape:cy="94.575499"
+     inkscape:window-width="1920"
+     inkscape:window-height="1040"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg30" />
+  <defs
+     id="defs1" />
+  <g
+     id="g30">
+    <!--entity Root-->
+    <g
+       class="entity"
+       data-qualified-name="Root"
+       data-source-line="16"
+       id="ent0002">
+      <rect
+         fill="#C8E6C9"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="463.5824"
+         x="182.98"
+         y="7"
+         id="rect2" />
+      <rect
+         fill="#C8E6C9"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="626.5624"
+         y="12"
+         id="rect3" />
+      <rect
+         fill="#C8E6C9"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="624.5624"
+         y="14"
+         id="rect4" />
+      <rect
+         fill="#C8E6C9"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="624.5624"
+         y="18"
+         id="rect5" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="367.0014"
+         y="41.9659"
+         id="text5">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="423.5824"
+         x="197.98"
+         y="61.0339"
+         id="text6">Mobile Application for Integrating Academic Systems &quot;VTHelper&quot;</text>
+    </g>
+    <!--entity DB-->
+    <g
+       class="entity"
+       data-qualified-name="DB"
+       data-source-line="18"
+       id="ent0003">
+      <rect
+         fill="#FFF9C4"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="127.5397"
+         x="7"
+         y="115.13"
+         id="rect6" />
+      <rect
+         fill="#FFF9C4"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="114.5397"
+         y="120.13"
+         id="rect7" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="112.5397"
+         y="122.13"
+         id="rect8" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="112.5397"
+         y="126.13"
+         id="rect9" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="23"
+         y="150.0959"
+         id="text9">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="62.0478"
+         x="34.746"
+         y="169.1639"
+         id="text10">Database</text>
+    </g>
+    <!--entity UI-->
+    <g
+       class="entity"
+       data-qualified-name="UI"
+       data-source-line="19"
+       id="ent0004">
+      <rect
+         fill="#FFF9C4"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="127.5397"
+         x="170"
+         y="115.13"
+         id="rect10" />
+      <rect
+         fill="#FFF9C4"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="277.5397"
+         y="120.13"
+         id="rect11" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="275.5397"
+         y="122.13"
+         id="rect12" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="275.5397"
+         y="126.13"
+         id="rect13" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="186"
+         y="150.0959"
+         id="text13">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="14.9799"
+         x="221.2799"
+         y="169.1639"
+         id="text14">UI</text>
+    </g>
+    <!--entity UniSys-->
+    <g
+       class="entity"
+       data-qualified-name="UniSys"
+       data-source-line="20"
+       id="ent0005">
+      <rect
+         fill="#F8BBD0"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="163.7175"
+         x="332.91"
+         y="115.13"
+         id="rect14" />
+      <rect
+         fill="#F8BBD0"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="476.6275"
+         y="120.13"
+         id="rect15" />
+      <rect
+         fill="#F8BBD0"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="474.6275"
+         y="122.13"
+         id="rect16" />
+      <rect
+         fill="#F8BBD0"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="474.6275"
+         y="126.13"
+         id="rect17" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="366.9989"
+         y="150.0959"
+         id="text17">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="123.7175"
+         x="347.91"
+         y="169.1639"
+         id="text18">University Systems</text>
+    </g>
+    <!--entity Logic-->
+    <g
+       class="entity"
+       data-qualified-name="Logic"
+       data-source-line="21"
+       id="ent0006">
+      <rect
+         fill="#FFF9C4"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="136.4176"
+         x="531.56"
+         y="115.13"
+         id="rect18" />
+      <rect
+         fill="#FFF9C4"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="647.9776"
+         y="120.13"
+         id="rect19" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="645.9776"
+         y="122.13"
+         id="rect20" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="645.9776"
+         y="126.13"
+         id="rect21" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="551.999"
+         y="150.0959"
+         id="text21">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="96.4176"
+         x="546.56"
+         y="169.1639"
+         id="text22">Business Logic</text>
+    </g>
+    <!--entity Net-->
+    <g
+       class="entity"
+       data-qualified-name="Net"
+       data-source-line="22"
+       id="ent0007">
+      <rect
+         fill="#FFF9C4"
+         height="68.1358"
+         rx="2.5"
+         ry="2.5"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="151.8596"
+         x="702.84"
+         y="115.13"
+         id="rect22" />
+      <rect
+         fill="#FFF9C4"
+         height="10"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="15"
+         x="834.6996"
+         y="120.13"
+         id="rect23" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="832.6996"
+         y="122.13"
+         id="rect24" />
+      <rect
+         fill="#FFF9C4"
+         height="2"
+         style="stroke:#2C3E50;stroke-width:0.5;"
+         width="4"
+         x="832.6996"
+         y="126.13"
+         id="rect25" />
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         font-style="italic"
+         lengthAdjust="spacing"
+         textLength="85.5397"
+         x="730.9999"
+         y="150.0959"
+         id="text25">«Component»</text>
+      <text
+         fill="#000000"
+         font-family="sans-serif"
+         font-size="14"
+         lengthAdjust="spacing"
+         textLength="111.8596"
+         x="717.84"
+         y="169.1639"
+         id="text26">Networking logic</text>
+    </g>
+    <!--link Root to UI-->
+    <g
+       class="link"
+       data-entity-1="ent0002"
+       data-entity-2="ent0004"
+       data-link-type="dependency"
+       data-source-line="24"
+       id="lnk8">
+      <path
+         d="M240.26,75.58 C240.26,88.06 240.26,96.16 240.26,108.65"
+         fill="none"
+         id="Root-to-UI"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="240.26,114.65,244.26,105.65,240.26,109.65,236.26,105.65,240.26,114.65"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon26" />
+    </g>
+    <!--link Root to Logic-->
+    <g
+       class="link"
+       data-entity-1="ent0002"
+       data-entity-2="ent0006"
+       data-link-type="dependency"
+       data-source-line="25"
+       id="lnk9">
+      <path
+         d="M589.06,75.58 C589.06,88.06 589.06,96.16 589.06,108.65"
+         fill="none"
+         id="Root-to-Logic"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="589.06,114.65,593.06,105.65,589.06,109.65,585.06,105.65,589.06,114.65"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon27" />
+    </g>
+    <!--link Root to Net-->
+    <g
+       class="link"
+       data-entity-1="ent0002"
+       data-entity-2="ent0007"
+       data-link-type="dependency"
+       data-source-line="26"
+       id="lnk10">
+      <path
+         d="M646.84,41.27 C718.41,41.27 778.77,41.27 778.77,41.27 C778.77,41.27 778.77,77.17 778.77,108.75"
+         fill="none"
+         id="Root-to-Net"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="778.77,114.75,782.77,105.75,778.77,109.75,774.77,105.75,778.77,114.75"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon28" />
+    </g>
+    <!--link Root to DB-->
+    <g
+       class="link"
+       data-entity-1="ent0002"
+       data-entity-2="ent0003"
+       data-link-type="dependency"
+       data-source-line="27"
+       id="lnk11">
+      <path
+         d="M182.93,41.27 C120.92,41.27 70.77,41.27 70.77,41.27 C70.77,41.27 70.77,77.17 70.77,108.75"
+         fill="none"
+         id="Root-to-DB"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="70.77,114.75,74.77,105.75,70.77,109.75,66.77,105.75,70.77,114.75"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon29" />
+    </g>
+    <!--link Root to UniSys-->
+    <g
+       class="link"
+       data-entity-1="ent0002"
+       data-entity-2="ent0005"
+       data-link-type="dependency"
+       data-source-line="28"
+       id="lnk12">
+      <path
+         d="M414.77,75.58 C414.77,88.06 414.77,96.16 414.77,108.65"
+         fill="none"
+         id="Root-to-UniSys"
+         style="stroke:#181818;stroke-width:1;" />
+      <polygon
+         fill="#181818"
+         points="414.77,114.65,418.77,105.65,414.77,109.65,410.77,105.65,414.77,114.65"
+         style="stroke:#181818;stroke-width:1;"
+         id="polygon30" />
+    </g>
+<?plantuml-src ZP5TIyCm58RlyoiEtVMWpaqs68Fr2mVgXNFUY1TPUwoXQKv9CaSH_xjPTRET5KokyfxdFLynXL0Lrxo4WAT5hccdif0aQHWaqU4oSo9IAYjIgEpQrX9XLyeHQuMbK6Zh2e6qVQLMG5661YlmMvhcgZXeOv_rLO1t1kwSzJIVXqTWiO31U3dpur439gHi3xALBi4_CiKNoII9lq3I6Uhl5Op2otZYim_6dcvfAzpGowgI8kLMa88NXwoKnLoxjyfXcV8CIv72kZOMImFUuyCroWgrzmpTYjp0FP65GJYDhy8POp-JUn6tVCiDUhyzKU2-9KbcuRXjsAnwqCsg5rNY3RKHjZussMTLmWMTVHe4aT-s1plZFjaOkA5Sf3tMHkyhV8TsJxeuh4d-uNN8oScQxGmpsglXmitIVJTLkf8pTuKeEClH3CK-0G00?>  </g>
+</svg>

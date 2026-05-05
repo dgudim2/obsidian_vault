@@ -1,0 +1,31 @@
+@startuml
+
+skinparam BackgroundColor #FDFDFD
+skinparam componentStyle uml2
+
+skinparam linetype ortho
+skinparam nodesep 0
+skinparam ranksep 40
+
+skinparam component {
+    BackgroundColor<<Component>> #4A90E2
+    FontColor<<Component>> black
+    BackgroundColor<<Component>> #E1F5FE
+    BorderColor #2C3E50
+}
+
+[Mobile Application for Integrating Academic Systems "VTHelper"] <<Component>> as Root #C8E6C9
+
+component "Database" <<Component>> as DB #FFF9C4
+component "UI" <<Component>> as UI #FFF9C4
+component "University Systems" <<Component>> as UniSys #F8BBD0
+component "Business Logic" <<Component>> as Logic #FFF9C4
+component "Networking logic" <<Component>> as Net #FFF9C4
+
+Root -down-> UI
+Root -down-> Logic
+Root -down-> Net
+Root -down-> DB
+Root -down-> UniSys
+
+@enduml

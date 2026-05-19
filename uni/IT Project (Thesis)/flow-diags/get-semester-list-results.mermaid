@@ -1,0 +1,43 @@
+---
+config:
+  theme: forest
+---
+sequenceDiagram
+    actor User
+    participant Ui as UI
+    participant SemesterProvider as Business logic layer
+    participant CacheStorage@{ "type": "database" } as Cache storage
+    participant VilniusTech_API as Vilnius Tech API
+    autonumber
+    User->>Ui: Select semester list in menu
+    Ui->>SemesterProvider: Request semester list
+    SemesterProvider->>CacheStorage: Try to get semester list from cache
+    alt Cache is valid
+        CacheStorage-->>SemesterProvider: Return semester list
+        SemesterProvider-->>Ui: Show semester list
+    else No cache or cache is expired
+        alt Cache exists
+            CacheStorage-->>SemesterProvider: Return semester list
+            SemesterProvider-->>Ui: Show semester list
+        else
+            SemesterProvider-->>Ui: Show a loading indicator
+        end
+
+        alt Internet available
+        par
+            SemesterProvider->>VilniusTech_API: Request semester list in the background (completed semesters)
+            VilniusTech_API-->>SemesterProvider: Return semester list (completed semesters)
+        and
+            SemesterProvider->>VilniusTech_API: Request data for current semester
+            VilniusTech_API-->>SemesterProvider: Return data for the current semester
+        and
+            SemesterProvider->>VilniusTech_API: Request grade data for semesters
+            VilniusTech_API-->>SemesterProvider: Return semester grades
+        end
+            SemesterProvider->>SemesterProvider: Merge received data
+            SemesterProvider->>CacheStorage: Update cache
+            SemesterProvider-->>Ui: Update semester list
+        else
+            SemesterProvider-->>Ui: Show a warning
+        end
+    end

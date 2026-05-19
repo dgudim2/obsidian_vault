@@ -4,10 +4,10 @@ config:
 ---
 sequenceDiagram
     actor User
-    participant Ui
-    participant CourseProvider as Course provider
+    participant Ui as UI
+    participant CourseProvider as Business logic layer
     participant CacheStorage@{ "type": "database" } as Cache storage
-    participant VilniusTech_API
+    participant VilniusTech_API as Vilnius Tech API
     autonumber
     User->>Ui: Select course list in menu
     Ui->>CourseProvider: Request course list

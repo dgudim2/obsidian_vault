@@ -1,0 +1,8 @@
+Aim - to improve the study experience at Vilnius Tech for both full-time and Erasmus students by integrating university systems into a mobile application
+Analyze existing system integration solutions from other universities, colleges, and schools.
+At the end of chaper 1: The following chapters analyze system integrations implemented by other universities to assess existing approaches and identify components suitable for adaptation in the Vilnius Tech solution.
+Jurate — 09:07
+1.1.3 chapter start: Several universities have developed their own applications. One example is an application specifically designed for the systems of the University of Plymouth in the UK.
+
+
+Annotations: https://vilniustech.lt/fundamentiniu-mokslu-fakultetas/fakulteto-padaliniai/informaciniu-technologiju-katedra/

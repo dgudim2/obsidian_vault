@@ -1,0 +1,126 @@
+@startuml
+skinparam packageStyle rectangle
+skinparam linetype ortho
+hide empty members
+package "UI / ViewModels" {
+  class CalendarViewModel <<ViewModel>> {
+    +loadMoodleEventsFromFileIfAvailable()
+    +fetchMoodleEvents(showSnack)
+    +fetchManoExams(showSnack)
+  }
+  class LoggedInUserAndInternetViewModel <<ViewModel>> {
+    +logout(showSnack)
+    +login(studentId, plainPassword, mfaCode, showSnack)
+    +initLocalValuesFromFlowIfNeeded(loggedInUser)
+    +updateStudentId(newStudentId)
+    +updatePassword(newPassword)
+    +updateMfa(newMfa)
+  }
+  class ManoEmployeeViewModel <<ViewModel>> {
+    +selectEmployeeById(showSnack, employeeId)
+    +deselectEmployee()
+  }
+  class ManoSemesterViewModel <<ViewModel>> {
+    +fetchAllSemestersFromApi(showSnack, includeSubjects)
+    +fetchCurrentSemester(showSnack, includeSubjects)
+    +fetchSettlementGroupsFromApi(semesterAbsoluteSequenceNum, subjectModId, showSnack)
+    +getSubjectsForSemesterAsStateFlow(semesterAbsoluteSequence)
+    +getSettlementGroupsForSubjectAsStateFlow(semAbsoluteSequenceNum, subjectModId)
+  }
+  class MoodleCoursesViewModel <<ViewModel>> {
+    +fetchCourses(showSnack)
+  }
+  class ManoCalloutsViewModel <<ViewModel>> {
+    +fetchAllCallouts(showSnack)
+  }
+}
+package "Data / Providers" {
+  class CalendarProvider <<DataProvider>> {
+    +loadFromFileIfAvailable()
+    +fetchMoodleEventsIfNeeded(expiryDuration)
+    +getEventType(title, description)
+    +loadFromFile(filepath)
+  }
+  class LoggedInUserProvider <<DataProvider>> {
+    +logout()
+    +login(studentId, plainPassword, mfaCode)
+    +getCurrentUserInfo()
+  }
+  class ManoEmployeeProvider <<DataProvider>> {
+    +fetchEmployeeListFromApi()
+    +fetchEmployeeDetailsFromApi(employeeId)
+    +getAllEmployeesAsFlow()
+    +getEmployeeById(employeeId)
+  }
+  class ManoSemesterAndSubjectProvider <<DataProvider>> {
+    +fetchAllSemestersAndSubjectsFromApiIfNeeded(includeSubjects)
+    +fetchCurrentSemesterAndSubjectsFromApi(includeSubjects)
+    +fetchMediateResultsForSemester(semesterAbsoluteSequenceNum)
+    +fetchSettlementGroupsForSubjectInSemester(semesterAbsoluteSequenceNum, subjectModId)
+    +getAllSemesters()
+    +getCurrentSemester()
+    +getSubjectsForSemester(semesterAbsoluteSequence)
+    +getAllSubjects()
+    +getSettlementGroupsForSubjectInSemester(semAbsoluteSequenceNum, subjectModId)
+    +fetchExamTimetable()
+    +getExamTimetableEvents()
+  }
+  class MoodleCoursesProvider <<DataProvider>> {
+    +fetchCoursesFromApi()
+    +getAllCourses()
+  }
+  class ManoCalloutsProvider <<DataProvider>> {
+    +fetchAllCallouts()
+    +getAllCalloutsAsFlow()
+  }
+}
+package "API" {
+  class VTBaseApi <<API>> {
+    {static} +loginIfNeeded(...)
+    {static} +logout()
+  }
+  class ManoApi <<API>> {
+    {static} +loginIfNeeded(...)
+    {static} +getStudentInfo(...)
+    {static} +getThisSemesterInfo(...)
+    {static} +getEmployees(...)
+    {static} +getEmployeeDetails(...)
+    {static} +getCompletedSemesterResults(...)
+    {static} +getSemesterMediateResults(...)
+    {static} +getSubjectSettlementGroups(...)
+    {static} +getSettlementGrades(...)
+    {static} +getExamTimetable(...)
+    {static} +getCallouts(...)
+  }
+  class MoodleApi <<API>> {
+    {static} +loginIfNeeded(...)
+    {static} +updateSessionInfo()
+    {static} +getCalendarUrl()
+    {static} +getCourses()
+  }
+}
+' ViewModel -> Provider dependencies
+CalendarViewModel ..> CalendarProvider
+CalendarViewModel ..> MoodleCoursesProvider
+CalendarViewModel ..> ManoSemesterAndSubjectProvider
+LoggedInUserAndInternetViewModel ..> LoggedInUserProvider
+ManoEmployeeViewModel ..> ManoEmployeeProvider
+ManoSemesterViewModel ..> ManoSemesterAndSubjectProvider
+MoodleCoursesViewModel ..> MoodleCoursesProvider
+MoodleCoursesViewModel ..> ManoSemesterAndSubjectProvider
+ManoCalloutsViewModel ..> ManoCalloutsProvider
+' Provider -> Provider dependencies
+ManoSemesterAndSubjectProvider ..> ManoEmployeeProvider
+' Provider -> API dependencies
+CalendarProvider ..> MoodleApi
+LoggedInUserProvider ..> VTBaseApi
+LoggedInUserProvider ..> ManoApi
+LoggedInUserProvider ..> MoodleApi
+ManoEmployeeProvider ..> ManoApi
+ManoSemesterAndSubjectProvider ..> ManoApi
+MoodleCoursesProvider ..> MoodleApi
+ManoCalloutsProvider ..> ManoApi
+' API -> API dependencies
+ManoApi ..> VTBaseApi
+MoodleApi ..> VTBaseApi
+@enduml

@@ -1,0 +1,5980 @@
+﻿1
+00:00:39,420 --> 00:00:39,920
+Speaker 1: Hi.
+
+2
+00:00:40,620 --> 00:00:40,860
+Speaker 1: Hello.
+
+3
+00:00:44,940 --> 00:00:45,560
+Speaker 1: Hey, is it good now?
+
+4
+00:00:45,680 --> 00:00:46,360
+Speaker 1: Yeah, it works.
+
+5
+00:00:47,000 --> 00:00:48,460
+Speaker 1: Out of all the options, teams.
+
+6
+00:00:48,740 --> 00:00:48,920
+Speaker 1: Okay.
+
+7
+00:00:48,960 --> 00:00:51,600
+Speaker 0: Yeah, as you can see.
+
+8
+00:00:51,660 --> 00:00:52,200
+Speaker 1: But it works.
+
+9
+00:00:52,340 --> 00:00:53,520
+Speaker 1: Okay, that's good.
+
+10
+00:00:53,940 --> 00:00:58,420
+Speaker 1: Gods of something don't want us to meet today, but...
+
+11
+00:00:59,620 --> 00:01:01,480
+Speaker 0: Okay, so... It is what it is.
+
+12
+00:01:01,660 --> 00:01:03,360
+Speaker 0: Okay, hold on.
+
+13
+00:01:03,780 --> 00:01:10,160
+Speaker 0: I will... Just my thought.
+
+14
+00:01:11,820 --> 00:01:13,620
+Speaker 0: About your final thesis.
+
+15
+00:01:14,320 --> 00:01:20,960
+Speaker 0: I did write my comments about it, but I'm going to go through these a little bit more.
+
+16
+00:01:22,100 --> 00:01:22,520
+Speaker 0: Okay.
+
+17
+00:01:23,280 --> 00:01:24,780
+Speaker 0: The content that you have is good.
+
+18
+00:01:24,820 --> 00:01:25,780
+Speaker 0: What do you have to... Are you sharing the screen?
+
+19
+00:01:25,820 --> 00:01:26,600
+Speaker 0: Yeah, yeah, yeah.
+
+20
+00:01:27,620 --> 00:01:34,060
+Speaker 0: What do you... No, not yet, not yet.
+
+21
+00:01:34,300 --> 00:01:35,980
+Speaker 0: Hold on.
+
+22
+00:01:36,020 --> 00:01:41,420
+Speaker 0: I'm trying to find the screen to share, because I have too many.
+
+23
+00:01:43,780 --> 00:01:44,820
+Speaker 0: Yes, I am...
+
+24
+00:01:47,780 --> 00:01:48,260
+Speaker 1: Yeah, okay, I see.
+
+25
+00:01:48,340 --> 00:01:53,320
+Speaker 0: Yeah, I have stuff to do.
+
+26
+00:01:53,740 --> 00:01:55,780
+Speaker 0: Right, so, what is important?
+
+27
+00:01:56,100 --> 00:02:02,300
+Speaker 0: Make sure, like, based on requirements, like on thesis requirements, like title pages.
+
+28
+00:02:03,320 --> 00:02:05,380
+Speaker 0: Make sure those sparkle, okay?
+
+29
+00:02:06,440 --> 00:02:11,720
+Speaker 0: Like, you know, full name, full surname of supervisor.
+
+30
+00:02:12,180 --> 00:02:15,300
+Speaker 0: Do not number if it's not required to number these.
+
+31
+00:02:15,540 --> 00:02:16,720
+Speaker 1: Yeah, I did not number them.
+
+32
+00:02:16,860 --> 00:02:19,320
+Speaker 1: They were just in the template.
+
+33
+00:02:19,740 --> 00:02:21,240
+Speaker 0: Okay, I'll just remove those.
+
+34
+00:02:22,060 --> 00:02:24,480
+Speaker 0: I don't think that the title pages should be numbered.
+
+35
+00:02:25,000 --> 00:02:25,180
+Speaker 0: Okay.
+
+36
+00:02:25,420 --> 00:02:29,300
+Speaker 0: Because if they are, usually they are never numbered.
+
+37
+00:02:29,340 --> 00:02:34,080
+Speaker 0: I can double check the requirements of...
+
+38
+00:02:34,900 --> 00:02:40,420
+Speaker 1: So, the numbering will start from 1 or from 3?
+
+39
+00:02:40,820 --> 00:02:46,760
+Speaker 0: No, it will start from 3, not even 3, not even 3.
+
+40
+00:02:47,160 --> 00:02:52,640
+Speaker 0: It'll start with a content, so it will be number 6.
+
+41
+00:02:53,740 --> 00:02:54,220
+Speaker 1: Number 6?
+
+42
+00:02:54,720 --> 00:02:57,260
+Speaker 1: Okay, so the first 5 pages are numbered.
+
+43
+00:02:57,360 --> 00:03:02,820
+Speaker 0: Yeah, because 5 pages, like the numbers are there, but they're not visible.
+
+44
+00:03:03,360 --> 00:03:09,560
+Speaker 0: At least in Lithuanian template, Lithuanian is definitely, definitely the correct one.
+
+45
+00:03:09,860 --> 00:03:10,280
+Speaker 1: Yeah, okay.
+
+46
+00:03:11,640 --> 00:03:12,840
+Speaker 0: I can... Do you have it?
+
+47
+00:03:13,220 --> 00:03:14,300
+Speaker 0: Lithuanian one?
+
+48
+00:03:14,440 --> 00:03:16,660
+Speaker 1: I only have the English one.
+
+49
+00:03:16,700 --> 00:03:18,600
+Speaker 1: I can have a look at it, but I think it has.
+
+50
+00:03:18,660 --> 00:03:18,820
+Speaker 0: Hold on.
+
+51
+00:03:26,180 --> 00:03:27,760
+Speaker 0: Check the Lithuanian version.
+
+52
+00:03:28,500 --> 00:03:29,240
+Speaker 0: This one, okay?
+
+53
+00:03:29,820 --> 00:03:30,780
+Speaker 1: Okay, let's see.
+
+54
+00:03:31,180 --> 00:03:32,800
+Speaker 0: Yeah, so we don't number.
+
+55
+00:03:32,940 --> 00:03:37,700
+Speaker 0: We start numbering from content only.
+
+56
+00:03:38,820 --> 00:03:40,200
+Speaker 0: So, these are not numbered.
+
+57
+00:03:40,800 --> 00:03:43,820
+Speaker 0: Another thing, go to Manovilnostech, okay?
+
+58
+00:03:44,740 --> 00:03:46,760
+Speaker 0: I already uploaded the task.
+
+59
+00:03:47,660 --> 00:03:54,980
+Speaker 0: Okay, so you just basically download the rendered PDF and just copy-paste as an image, the assignment, okay?
+
+60
+00:03:56,000 --> 00:03:59,420
+Speaker 0: Because I already have these prepared in the system.
+
+61
+00:03:59,860 --> 00:04:00,440
+Speaker 1: As an image?
+
+62
+00:04:01,400 --> 00:04:03,600
+Speaker 1: Not as a table, it's an image, but okay.
+
+63
+00:04:03,640 --> 00:04:03,840
+Speaker 1: No, no, no.
+
+64
+00:04:03,960 --> 00:04:08,120
+Speaker 0: It's just basically whatever PDF you have, you can insert it as an image and then just leave it.
+
+65
+00:04:08,200 --> 00:04:09,180
+Speaker 1: Okay, okay.
+
+66
+00:04:09,260 --> 00:04:13,400
+Speaker 0: The same will happen with annotation, about annotation.
+
+67
+00:04:13,440 --> 00:04:14,880
+Speaker 1: So, you write the annotation, not me?
+
+68
+00:04:15,000 --> 00:04:17,899
+Speaker 0: No, you write annotation.
+
+69
+00:04:18,019 --> 00:04:18,959
+Speaker 1: I write annotation, okay.
+
+70
+00:04:19,000 --> 00:04:25,680
+Speaker 0: You write an annotation, you enter it into Manovilnostech.
+
+71
+00:04:26,020 --> 00:04:26,220
+Speaker 1: Okay.
+
+72
+00:04:28,040 --> 00:04:33,900
+Speaker 0: Processes that save, likewise, just copy-paste the text over here.
+
+73
+00:04:34,680 --> 00:04:38,560
+Speaker 0: Not sure how... The thing is, I don't see the annotation form.
+
+74
+00:04:38,720 --> 00:04:40,960
+Speaker 0: I don't know how it's done.
+
+75
+00:04:41,020 --> 00:04:44,300
+Speaker 0: Let me quickly check a few things.
+
+76
+00:04:44,820 --> 00:04:51,400
+Speaker 0: I want to see if I have information about the final date.
+
+77
+00:04:53,760 --> 00:05:01,320
+Speaker 0: Right, so you fill in the bachelor... God damn it, how is this even working?
+
+78
+00:05:01,580 --> 00:05:05,920
+Speaker 0: If you fill in the annotation after you upload the bachelor thesis.
+
+79
+00:05:08,440 --> 00:05:09,280
+Speaker 0: You write it.
+
+80
+00:05:10,060 --> 00:05:10,920
+Speaker 1: Okay, so I...
+
+81
+00:05:11,300 --> 00:05:14,040
+Speaker 0: Can you double check on Manovilnostech?
+
+82
+00:05:14,260 --> 00:05:16,380
+Speaker 0: Do you have an option to upload the annotation?
+
+83
+00:05:16,680 --> 00:05:17,280
+Speaker 1: Okay, let's see.
+
+84
+00:05:17,500 --> 00:05:17,940
+Speaker 1: One moment.
+
+85
+00:05:18,460 --> 00:05:20,540
+Speaker 1: I probably have to log in again, so one moment.
+
+86
+00:05:21,360 --> 00:05:21,520
+Speaker 1: Okay.
+
+87
+00:05:23,780 --> 00:05:25,180
+Speaker 1: Let's see.
+
+88
+00:05:51,520 --> 00:05:52,540
+Speaker 1: This is where I have to go?
+
+89
+00:05:55,460 --> 00:05:55,600
+Speaker 0: What?
+
+90
+00:05:55,700 --> 00:05:56,080
+Speaker 0: No, no, no.
+
+91
+00:05:57,320 --> 00:05:58,420
+Speaker 0: You continue what you are doing.
+
+92
+00:05:58,460 --> 00:05:58,520
+Speaker 0: Okay.
+
+93
+00:05:58,560 --> 00:06:02,520
+Speaker 0: This is another thing that I will comment on.
+
+94
+00:06:16,680 --> 00:06:18,700
+Speaker 1: Okay, so... Because... I logged in?
+
+95
+00:06:19,280 --> 00:06:19,560
+Speaker 1: Because...
+
+96
+00:06:20,720 --> 00:06:24,380
+Speaker 0: Because I don't know what form is for you.
+
+97
+00:06:24,660 --> 00:06:29,580
+Speaker 0: Now go to studies, final thesis or something, I don't know how it's called.
+
+98
+00:06:29,620 --> 00:06:30,660
+Speaker 1: Okay, thesis subject, yeah.
+
+99
+00:06:32,120 --> 00:06:35,440
+Speaker 0: Like this one, click on it, and I have no idea what you have.
+
+100
+00:06:36,160 --> 00:06:39,760
+Speaker 1: I have view topic, view thesis task, I have...
+
+101
+00:06:40,200 --> 00:06:43,260
+Speaker 0: Yeah, so view thesis task, this is the one that I uploaded.
+
+102
+00:06:43,400 --> 00:06:44,980
+Speaker 1: Ah, okay, yeah.
+
+103
+00:06:46,600 --> 00:06:49,980
+Speaker 0: This one goes into your... Yes, and what about annotations, do you have one?
+
+104
+00:06:50,020 --> 00:06:53,400
+Speaker 1: I have write annotation and write declaration of good faith.
+
+105
+00:06:53,900 --> 00:07:00,240
+Speaker 0: Right, so... So you will write annotation.
+
+106
+00:07:01,540 --> 00:07:06,860
+Speaker 1: Annotation, it asks for Lithuanian, keywords, annotation in English, keywords in English.
+
+107
+00:07:08,160 --> 00:07:09,140
+Speaker 0: And options to print, okay.
+
+108
+00:07:09,220 --> 00:07:14,280
+Speaker 0: Right, so you will write in English and use CZPT to translate and then just send me the annotation.
+
+109
+00:07:14,680 --> 00:07:14,920
+Speaker 1: Okay.
+
+110
+00:07:15,680 --> 00:07:17,380
+Speaker 0: I will review if it's logical.
+
+111
+00:07:17,820 --> 00:07:18,080
+Speaker 1: Okay.
+
+112
+00:07:19,120 --> 00:07:20,060
+Speaker 0: Okay, so you have this.
+
+113
+00:07:20,420 --> 00:07:28,560
+Speaker 0: So my recommendation is to have your annotation, then you render it and then you just copy paste it to your thesis.
+
+114
+00:07:29,000 --> 00:07:34,840
+Speaker 0: Not sure about these forms, because these forms are all... I think you can just enter the annotation, okay.
+
+115
+00:07:34,980 --> 00:07:45,220
+Speaker 0: You have an annotation, you download it and again just like with task, supervisor task, just copy paste and add it as an image to your document, okay.
+
+116
+00:07:45,700 --> 00:07:45,960
+Speaker 1: Okay.
+
+117
+00:07:47,220 --> 00:07:51,000
+Speaker 0: Another thing, the link that I added to you, okay.
+
+118
+00:07:52,260 --> 00:07:56,680
+Speaker 0: So over here, if you scroll down, it's Lithuanian, I didn't check the English one.
+
+119
+00:07:57,220 --> 00:08:00,460
+Speaker 0: But we do have this final thesis annotations, okay.
+
+120
+00:08:01,160 --> 00:08:08,420
+Speaker 0: So if you select, for example, last year, choose qualification, which is batch lore, right.
+
+121
+00:08:08,680 --> 00:08:17,600
+Speaker 0: And then you get like a list of annotations that you can view.
+
+122
+00:08:17,900 --> 00:08:27,160
+Speaker 0: So for example, where you have Adil Akslan, Alexandra Pashkin, so they're foreign students.
+
+123
+00:08:27,200 --> 00:08:32,679
+Speaker 0: So you can click on any of these and you can look how annotations are written.
+
+124
+00:08:32,720 --> 00:08:32,860
+Speaker 1: Okay.
+
+125
+00:08:32,900 --> 00:08:34,200
+Speaker 1: Just to get an idea.
+
+126
+00:08:34,280 --> 00:08:34,559
+Speaker 1: Okay.
+
+127
+00:08:34,900 --> 00:08:35,120
+Speaker 1: Okay.
+
+128
+00:08:35,860 --> 00:08:42,480
+Speaker 0: So you will for sure use AI for this and you should use AI for this to beautify and so on.
+
+129
+00:08:42,740 --> 00:08:45,480
+Speaker 0: Besides like get the basic idea what should be in there.
+
+130
+00:08:45,560 --> 00:08:51,300
+Speaker 0: Because you can actually click on any of these because they have Lithuanian and they have English versions.
+
+131
+00:08:51,480 --> 00:08:51,660
+Speaker 1: Okay.
+
+132
+00:08:52,640 --> 00:08:52,820
+Speaker 0: Okay.
+
+133
+00:08:53,140 --> 00:08:55,500
+Speaker 0: So have these for a reference on how to do it.
+
+134
+00:08:55,600 --> 00:08:57,460
+Speaker 0: It's going to be easier for you.
+
+135
+00:08:57,960 --> 00:08:58,380
+Speaker 1: Understood.
+
+136
+00:08:58,460 --> 00:08:58,740
+Speaker 1: Thanks.
+
+137
+00:08:59,820 --> 00:08:59,940
+Speaker 0: Yeah.
+
+138
+00:09:00,200 --> 00:09:02,080
+Speaker 0: Now about, hold on.
+
+139
+00:09:06,280 --> 00:09:06,500
+Speaker 0: Wait.
+
+140
+00:09:10,460 --> 00:09:13,920
+Speaker 0: And teams are also amazed when it comes to sharing.
+
+141
+00:09:15,160 --> 00:09:16,200
+Speaker 1: Well, can't argue with that.
+
+142
+00:09:16,240 --> 00:09:18,840
+Speaker 0: God, this pain that I'm currently feeling is insane.
+
+143
+00:09:18,900 --> 00:09:19,240
+Speaker 0: Can I share this?
+
+144
+00:09:19,280 --> 00:09:19,680
+Speaker 0: Please let me know.
+
+145
+00:09:23,920 --> 00:09:29,260
+Speaker 0: I'm not about to share this.
+
+146
+00:09:29,300 --> 00:09:29,340
+Speaker 0: Why?
+
+147
+00:09:29,400 --> 00:09:37,760
+Speaker 0: This is like hell.
+
+148
+00:09:40,860 --> 00:09:41,020
+Speaker 0: Right.
+
+149
+00:09:41,060 --> 00:09:41,120
+Speaker 0: Okay.
+
+150
+00:09:41,180 --> 00:09:42,040
+Speaker 0: So this is your work.
+
+151
+00:09:42,160 --> 00:09:43,260
+Speaker 0: So you will fill in these.
+
+152
+00:09:43,560 --> 00:09:43,760
+Speaker 0: Okay.
+
+153
+00:09:43,880 --> 00:09:46,260
+Speaker 0: So numbering starts from here.
+
+154
+00:09:46,860 --> 00:09:51,260
+Speaker 0: Now a few comments about your web text.
+
+155
+00:09:51,440 --> 00:09:52,360
+Speaker 0: I did write this.
+
+156
+00:09:52,500 --> 00:09:52,780
+Speaker 0: Okay.
+
+157
+00:09:54,540 --> 00:09:55,980
+Speaker 0: Avoid abbreviation.
+
+158
+00:09:56,060 --> 00:09:56,200
+Speaker 1: Yeah.
+
+159
+00:09:56,300 --> 00:09:56,420
+Speaker 1: Yeah.
+
+160
+00:09:56,960 --> 00:10:01,480
+Speaker 1: I forgot like they were like several and probably just left one accidentally.
+
+161
+00:10:01,520 --> 00:10:01,600
+Speaker 0: Yeah.
+
+162
+00:10:02,640 --> 00:10:06,220
+Speaker 0: And this is like a requirement to have this super dry language.
+
+163
+00:10:06,600 --> 00:10:06,820
+Speaker 0: Okay.
+
+164
+00:10:07,940 --> 00:10:10,380
+Speaker 0: Again, don't write in such short sentences.
+
+165
+00:10:10,540 --> 00:10:12,200
+Speaker 0: Use AI to, you know, improve.
+
+166
+00:10:12,580 --> 00:10:14,140
+Speaker 0: Like, I don't know, fix my grammar.
+
+167
+00:10:14,460 --> 00:10:18,920
+Speaker 1: But here, for example, like I can just omit this part, I guess.
+
+168
+00:10:19,000 --> 00:10:19,320
+Speaker 1: And then.
+
+169
+00:10:20,620 --> 00:10:21,260
+Speaker 0: Yes, you can.
+
+170
+00:10:21,480 --> 00:10:21,720
+Speaker 1: Because.
+
+171
+00:10:22,760 --> 00:10:22,900
+Speaker 0: Yeah.
+
+172
+00:10:22,980 --> 00:10:27,160
+Speaker 0: What I'm trying to say, avoid absolution, which is bad UX.
+
+173
+00:10:27,560 --> 00:10:29,460
+Speaker 0: If you say it's bad UX.
+
+174
+00:10:29,720 --> 00:10:29,940
+Speaker 1: Why?
+
+175
+00:10:30,160 --> 00:10:30,520
+Speaker 1: Expand.
+
+176
+00:10:30,600 --> 00:10:30,820
+Speaker 1: Okay.
+
+177
+00:10:31,560 --> 00:10:32,260
+Speaker 0: Oh, my goodness.
+
+178
+00:10:32,320 --> 00:10:32,760
+Speaker 0: You will have.
+
+179
+00:10:32,880 --> 00:10:35,040
+Speaker 0: Did you do a research that this is a bad UX?
+
+180
+00:10:35,080 --> 00:10:37,680
+Speaker 0: Is this your opinion?
+
+181
+00:10:37,960 --> 00:10:39,060
+Speaker 0: Did you do a questionnaire?
+
+182
+00:10:39,400 --> 00:10:41,620
+Speaker 0: It's like don't deal in apps like this.
+
+183
+00:10:42,160 --> 00:10:42,700
+Speaker 0: Yeah.
+
+184
+00:10:43,380 --> 00:10:47,000
+Speaker 0: For example, some lecturers do not put grades there at all.
+
+185
+00:10:47,360 --> 00:10:49,520
+Speaker 0: Also, to accusatory, avoid this.
+
+186
+00:10:49,660 --> 00:10:49,920
+Speaker 0: Okay.
+
+187
+00:10:50,260 --> 00:10:50,440
+Speaker 1: Okay.
+
+188
+00:10:50,520 --> 00:10:52,000
+Speaker 1: This is just from my personal experience.
+
+189
+00:10:52,960 --> 00:10:53,160
+Speaker 0: Yes.
+
+190
+00:10:53,360 --> 00:10:53,520
+Speaker 0: Yes.
+
+191
+00:10:53,740 --> 00:10:56,320
+Speaker 0: But avoid this because you will run into trouble.
+
+192
+00:10:56,600 --> 00:10:56,900
+Speaker 1: Understood.
+
+193
+00:10:56,940 --> 00:10:57,040
+Speaker 1: Okay.
+
+194
+00:10:57,460 --> 00:11:14,120
+Speaker 0: Because you are kind of like the punishment of few lectures goes to the whole system, which will basically bring tension, like avoid these accusatory expressions.
+
+195
+00:11:14,160 --> 00:11:14,380
+Speaker 0: Understood.
+
+196
+00:11:14,420 --> 00:11:14,580
+Speaker 0: Okay.
+
+197
+00:11:15,080 --> 00:11:16,020
+Speaker 0: Just admit this.
+
+198
+00:11:16,640 --> 00:11:27,660
+Speaker 0: Or for example, maybe the grades are entered into the system unevenly based on the lecture, which is more to truth.
+
+199
+00:11:29,080 --> 00:11:32,620
+Speaker 0: Like you see grades in Moodle, but you don't see in Manla Vilnostech.
+
+200
+00:11:32,660 --> 00:11:32,720
+Speaker 0: Okay.
+
+201
+00:11:32,760 --> 00:11:42,820
+Speaker 0: For example, the way I do it because students are constantly updating the grades and it's just another work for me to update in both systems.
+
+202
+00:11:42,900 --> 00:11:44,160
+Speaker 0: So I avoid this bother.
+
+203
+00:11:44,780 --> 00:11:45,000
+Speaker 1: Okay.
+
+204
+00:11:45,880 --> 00:11:47,140
+Speaker 0: But like soften the language.
+
+205
+00:11:47,620 --> 00:11:51,580
+Speaker 0: Also, accusatory, like as a technical university, lack of convenience.
+
+206
+00:11:51,620 --> 00:11:51,960
+Speaker 1: Yeah.
+
+207
+00:11:52,140 --> 00:11:52,340
+Speaker 1: Okay.
+
+208
+00:11:52,740 --> 00:11:59,640
+Speaker 0: Also, oh my God, just don't unless you wish to live an interesting life.
+
+209
+00:11:59,880 --> 00:12:00,620
+Speaker 1: No, not really.
+
+210
+00:12:00,940 --> 00:12:02,360
+Speaker 1: I already experienced this.
+
+211
+00:12:04,240 --> 00:12:04,380
+Speaker 1: Yeah.
+
+212
+00:12:05,740 --> 00:12:20,540
+Speaker 0: So avoid these claims that reflect your understandable personal frustration, but that are not substantiated by proof.
+
+213
+00:12:21,340 --> 00:12:21,600
+Speaker 0: Okay.
+
+214
+00:12:22,640 --> 00:12:27,460
+Speaker 0: Because if it's like a lack of convenient access, that means you have to have proof for this.
+
+215
+00:12:27,880 --> 00:12:28,100
+Speaker 1: Okay.
+
+216
+00:12:28,380 --> 00:12:28,620
+Speaker 1: Okay.
+
+217
+00:12:29,600 --> 00:12:33,420
+Speaker 1: If it's my personal experience or my personal belief, then don't include it at all.
+
+218
+00:12:33,540 --> 00:12:33,740
+Speaker 1: Yeah.
+
+219
+00:12:34,580 --> 00:12:48,140
+Speaker 0: Or you could water it down, as I say, for example, which is sometimes, which is often inconvenient for students who wish to have a quick, you know, access to their grades in one system.
+
+220
+00:12:48,180 --> 00:12:48,820
+Speaker 0: Yada, yada, yada.
+
+221
+00:12:48,900 --> 00:12:49,100
+Speaker 1: Okay.
+
+222
+00:12:49,300 --> 00:12:49,500
+Speaker 1: Okay.
+
+223
+00:12:49,700 --> 00:12:49,860
+Speaker 1: Okay.
+
+224
+00:12:50,220 --> 00:12:51,980
+Speaker 0: AI is incredibly good at this.
+
+225
+00:12:52,280 --> 00:12:52,460
+Speaker 0: Okay.
+
+226
+00:12:52,800 --> 00:13:02,580
+Speaker 0: So if you still wish to express, like avoid accusations, this one though, this one, remove this at all costs.
+
+227
+00:13:02,680 --> 00:13:04,100
+Speaker 1: This sentence is not needed.
+
+228
+00:13:04,400 --> 00:13:04,540
+Speaker 1: Yeah.
+
+229
+00:13:04,700 --> 00:13:04,940
+Speaker 1: Okay.
+
+230
+00:13:05,720 --> 00:13:05,900
+Speaker 0: Right.
+
+231
+00:13:06,080 --> 00:13:10,800
+Speaker 0: So I did improve a little bit the formulation of this aim.
+
+232
+00:13:11,560 --> 00:13:12,880
+Speaker 1: I paste it in the discord.
+
+233
+00:13:12,920 --> 00:13:13,220
+Speaker 1: Yeah.
+
+234
+00:13:13,300 --> 00:13:13,660
+Speaker 1: I saw.
+
+235
+00:13:14,540 --> 00:13:14,680
+Speaker 0: Yeah.
+
+236
+00:13:14,880 --> 00:13:24,360
+Speaker 0: Also a recommendation, although your tasks are good, but it depends on the defense committee that will be in the final defense.
+
+237
+00:13:25,000 --> 00:13:45,260
+Speaker 0: It's best to be as precise as possible, like develop and test model system integration application or something like basically cross platform app for students, for university in exact name of your application.
+
+238
+00:13:45,640 --> 00:13:45,780
+Speaker 1: Okay.
+
+239
+00:13:45,860 --> 00:13:47,980
+Speaker 1: So include it in both three and four, right?
+
+240
+00:13:48,080 --> 00:13:48,240
+Speaker 1: Yeah.
+
+241
+00:13:48,680 --> 00:13:48,780
+Speaker 1: Yes.
+
+242
+00:13:49,160 --> 00:13:50,320
+Speaker 0: Yes, yes, yes, yes, yes.
+
+243
+00:13:50,560 --> 00:13:51,320
+Speaker 0: This one is good.
+
+244
+00:13:51,400 --> 00:13:52,080
+Speaker 0: This one is good.
+
+245
+00:13:52,260 --> 00:13:54,340
+Speaker 0: It depends on the modeling and when you're developing.
+
+246
+00:13:54,520 --> 00:14:00,740
+Speaker 0: So be very precise on what you're developing, the way your app is named, called, and so on.
+
+247
+00:14:01,320 --> 00:14:01,520
+Speaker 1: Okay.
+
+248
+00:14:02,360 --> 00:14:02,460
+Speaker 0: Yeah.
+
+249
+00:14:02,920 --> 00:14:06,040
+Speaker 0: Because sometimes the committee doesn't say anything.
+
+250
+00:14:06,260 --> 00:14:19,540
+Speaker 0: Others say that your tasks are imprecise, so I tend to avoid, they will most likely still say something about the tasks because they have to do so, but it's best to minimize the comments.
+
+251
+00:14:19,860 --> 00:14:23,120
+Speaker 1: But what will they say about the tasks even if they're okay?
+
+252
+00:14:24,080 --> 00:14:30,180
+Speaker 0: They're not specific, incorrect formulation, too generic or something like that.
+
+253
+00:14:30,620 --> 00:14:32,620
+Speaker 1: And how do I answer to that?
+
+254
+00:14:32,660 --> 00:14:32,820
+Speaker 1: Nothing.
+
+255
+00:14:32,920 --> 00:14:33,180
+Speaker 1: Nothing.
+
+256
+00:14:33,240 --> 00:14:33,440
+Speaker 1: Okay.
+
+257
+00:14:35,700 --> 00:14:36,120
+Speaker 0: That's it.
+
+258
+00:14:36,220 --> 00:14:36,600
+Speaker 0: You're done.
+
+259
+00:14:36,760 --> 00:14:37,000
+Speaker 0: Okay.
+
+260
+00:14:37,540 --> 00:14:47,280
+Speaker 0: You can just say, yes, I could agree that this could be, you know, yes, your remark is correct, but there's nothing you can do about it.
+
+261
+00:14:48,900 --> 00:14:49,060
+Speaker 0: Right.
+
+262
+00:14:49,700 --> 00:14:51,860
+Speaker 0: Also check the Lithuanian one.
+
+263
+00:14:51,960 --> 00:14:56,360
+Speaker 0: I'm not sure, but I think these should be in caps, in all capital letters.
+
+264
+00:14:56,400 --> 00:14:56,800
+Speaker 0: Okay.
+
+265
+00:14:58,080 --> 00:14:58,160
+Speaker 0: Yeah.
+
+266
+00:14:58,220 --> 00:14:58,440
+Speaker 0: Yeah.
+
+267
+00:14:58,580 --> 00:14:59,860
+Speaker 0: I'm not sure.
+
+268
+00:14:59,900 --> 00:15:01,120
+Speaker 0: Maybe I'm hallucinating.
+
+269
+00:15:02,180 --> 00:15:02,800
+Speaker 1: Hallucinating?
+
+270
+00:15:03,480 --> 00:15:03,680
+Speaker 0: Okay.
+
+271
+00:15:03,780 --> 00:15:04,540
+Speaker 0: I'm hallucinating.
+
+272
+00:15:04,640 --> 00:15:04,880
+Speaker 0: Fine.
+
+273
+00:15:05,240 --> 00:15:10,200
+Speaker 0: It doesn't matter because master's students did this and now I got confused.
+
+274
+00:15:10,280 --> 00:15:10,480
+Speaker 0: Okay.
+
+275
+00:15:11,820 --> 00:15:12,060
+Speaker 0: Right.
+
+276
+00:15:12,200 --> 00:15:14,240
+Speaker 0: So these are just reductions.
+
+277
+00:15:14,320 --> 00:15:14,560
+Speaker 0: Okay.
+
+278
+00:15:15,540 --> 00:15:16,560
+Speaker 1: Avoid first person.
+
+279
+00:15:16,720 --> 00:15:17,020
+Speaker 1: Yeah.
+
+280
+00:15:18,800 --> 00:15:19,540
+Speaker 0: Immediately.
+
+281
+00:15:20,580 --> 00:15:22,160
+Speaker 0: Yes, I did write this one.
+
+282
+00:15:22,660 --> 00:15:22,800
+Speaker 0: Yeah.
+
+283
+00:15:23,040 --> 00:15:23,500
+Speaker 0: Precision.
+
+284
+00:15:23,960 --> 00:15:30,120
+Speaker 0: Review of existing systems for university, I don't know, integration problems.
+
+285
+00:15:30,160 --> 00:15:30,240
+Speaker 1: Yeah.
+
+286
+00:15:30,380 --> 00:15:32,100
+Speaker 1: For accessing university systems.
+
+287
+00:15:32,740 --> 00:15:36,740
+Speaker 0: Like few more words, you don't need to expand, but being super precise.
+
+288
+00:15:38,980 --> 00:15:41,280
+Speaker 0: All this, you could say seen in figure one.
+
+289
+00:15:41,320 --> 00:15:42,400
+Speaker 1: So just figure one.
+
+290
+00:15:42,480 --> 00:15:45,000
+Speaker 0: Just see figure one, see figure two.
+
+291
+00:15:45,040 --> 00:15:45,140
+Speaker 0: Okay.
+
+292
+00:15:45,180 --> 00:15:45,580
+Speaker 0: And that's it.
+
+293
+00:15:46,680 --> 00:15:51,920
+Speaker 0: This one, either enlarge these a little bit.
+
+294
+00:15:52,380 --> 00:15:53,820
+Speaker 1: I cannot enlarge those.
+
+295
+00:15:54,040 --> 00:15:54,540
+Speaker 0: You cannot.
+
+296
+00:15:55,020 --> 00:15:57,300
+Speaker 1: Because they will flow to the next page, it will look awful.
+
+297
+00:15:57,620 --> 00:15:57,820
+Speaker 0: Right.
+
+298
+00:15:57,980 --> 00:15:58,760
+Speaker 0: So cut it.
+
+299
+00:15:59,540 --> 00:16:04,060
+Speaker 0: Move this text after this one.
+
+300
+00:16:04,140 --> 00:16:04,400
+Speaker 0: Okay.
+
+301
+00:16:04,800 --> 00:16:06,320
+Speaker 0: So you will have more space.
+
+302
+00:16:07,220 --> 00:16:11,320
+Speaker 0: Or you can just, because it's the calendar that is important, right?
+
+303
+00:16:12,120 --> 00:16:12,300
+Speaker 1: Okay.
+
+304
+00:16:12,440 --> 00:16:12,540
+Speaker 1: Yeah.
+
+305
+00:16:12,660 --> 00:16:13,600
+Speaker 1: Mostly the calendar.
+
+306
+00:16:13,700 --> 00:16:13,800
+Speaker 1: Yeah.
+
+307
+00:16:13,940 --> 00:16:19,180
+Speaker 0: So just snip only this section and you can enlarge this.
+
+308
+00:16:19,300 --> 00:16:19,520
+Speaker 0: Okay.
+
+309
+00:16:19,960 --> 00:16:20,560
+Speaker 0: So two ways.
+
+310
+00:16:20,760 --> 00:16:24,500
+Speaker 0: Either you make one figure because you have this figure and this figure.
+
+311
+00:16:24,620 --> 00:16:28,880
+Speaker 0: Maybe if you, you know, you, you could have more space over here.
+
+312
+00:16:30,000 --> 00:16:36,140
+Speaker 0: Or just snip a little bit like the most essential parts and then large this one.
+
+313
+00:16:36,260 --> 00:16:36,480
+Speaker 0: Okay.
+
+314
+00:16:36,680 --> 00:16:40,420
+Speaker 0: You don't have to add this whole, you just need this, these sections.
+
+315
+00:16:40,640 --> 00:16:40,800
+Speaker 1: Okay.
+
+316
+00:16:40,920 --> 00:16:41,160
+Speaker 1: Right.
+
+317
+00:16:41,440 --> 00:16:41,600
+Speaker 1: Yeah.
+
+318
+00:16:42,180 --> 00:16:42,340
+Speaker 1: Okay.
+
+319
+00:16:43,120 --> 00:16:50,220
+Speaker 0: So the current moment, I mean, zoom does work, but you might get comments about this.
+
+320
+00:16:50,380 --> 00:16:50,540
+Speaker 1: Okay.
+
+321
+00:16:51,260 --> 00:16:51,440
+Speaker 1: Okay.
+
+322
+00:16:51,720 --> 00:16:52,780
+Speaker 1: Yeah.
+
+323
+00:16:52,820 --> 00:16:56,820
+Speaker 0: All advantages and disadvantages would look better in a table.
+
+324
+00:16:57,100 --> 00:16:57,540
+Speaker 1: Understood.
+
+325
+00:16:57,780 --> 00:16:57,880
+Speaker 1: Yes.
+
+326
+00:16:58,840 --> 00:16:59,040
+Speaker 0: Yeah.
+
+327
+00:16:59,220 --> 00:17:02,460
+Speaker 0: It would just look more like fine, I guess.
+
+328
+00:17:04,720 --> 00:17:04,920
+Speaker 0: Right.
+
+329
+00:17:05,000 --> 00:17:05,339
+Speaker 0: This one.
+
+330
+00:17:05,540 --> 00:17:06,500
+Speaker 0: Is this claim official?
+
+331
+00:17:07,099 --> 00:17:12,579
+Speaker 1: I mean, I wrote an email to them asking for APIs and they said, okay, we don't support them anymore.
+
+332
+00:17:12,980 --> 00:17:15,579
+Speaker 1: So that's why I wrote, there is no one to support them anymore.
+
+333
+00:17:15,619 --> 00:17:15,680
+Speaker 0: Okay.
+
+334
+00:17:15,720 --> 00:17:15,920
+Speaker 0: Okay.
+
+335
+00:17:16,119 --> 00:17:16,339
+Speaker 0: Okay.
+
+336
+00:17:17,200 --> 00:17:17,380
+Speaker 0: Good.
+
+337
+00:17:17,660 --> 00:17:17,800
+Speaker 0: Good.
+
+338
+00:17:18,000 --> 00:17:19,660
+Speaker 0: So basically this was a question for me.
+
+339
+00:17:19,819 --> 00:17:24,460
+Speaker 0: If you wrote an email and somebody asks you, you can say I wrote an email, but that's it.
+
+340
+00:17:24,859 --> 00:17:25,359
+Speaker 0: That is done.
+
+341
+00:17:25,520 --> 00:17:27,940
+Speaker 0: I'm just, uh, uh, it was a question for you.
+
+342
+00:17:27,980 --> 00:17:31,320
+Speaker 0: Uh, are you able to defend this statement if somebody sees it?
+
+343
+00:17:31,840 --> 00:17:31,980
+Speaker 1: Yeah.
+
+344
+00:17:32,940 --> 00:17:33,160
+Speaker 0: Okay.
+
+345
+00:17:33,680 --> 00:17:33,800
+Speaker 1: Good.
+
+346
+00:17:33,860 --> 00:17:39,800
+Speaker 1: I mean, if, if the claim that I wrote an email and got such a response is a good justification.
+
+347
+00:17:39,860 --> 00:17:39,940
+Speaker 1: Yes.
+
+348
+00:17:40,100 --> 00:17:40,160
+Speaker 1: Yes.
+
+349
+00:17:40,200 --> 00:17:51,860
+Speaker 0: So you have to put it in a, into, into texts and that's it again, a table, um, language like avoid these.
+
+350
+00:17:52,160 --> 00:17:53,020
+Speaker 0: This is one of them.
+
+351
+00:17:53,340 --> 00:17:55,240
+Speaker 1: I did add how to write this.
+
+352
+00:17:55,280 --> 00:17:59,860
+Speaker 1: So instead of this, I should write one of the examples and another, another example.
+
+353
+00:18:00,140 --> 00:18:08,120
+Speaker 0: Basically I think I copy pasted, I copy pasted this text for, for, for example, eh, check discord.
+
+354
+00:18:08,380 --> 00:18:12,580
+Speaker 0: So today, start, several universities have developed their own application.
+
+355
+00:18:12,960 --> 00:18:15,820
+Speaker 1: One example is eh, eh, eh.
+
+356
+00:18:15,860 --> 00:18:15,940
+Speaker 1: Yeah.
+
+357
+00:18:15,980 --> 00:18:17,960
+Speaker 1: I mean for this first one, yes.
+
+358
+00:18:18,100 --> 00:18:19,660
+Speaker 1: And for the next one, so it will be.
+
+359
+00:18:20,000 --> 00:18:21,940
+Speaker 1: another example is here.
+
+360
+00:18:22,240 --> 00:18:22,380
+Speaker 1: Yes.
+
+361
+00:18:22,420 --> 00:18:22,460
+Speaker 1: Yes.
+
+362
+00:18:22,520 --> 00:18:23,460
+Speaker 1: Like this.
+
+363
+00:18:23,660 --> 00:18:23,780
+Speaker 0: Yeah.
+
+364
+00:18:23,820 --> 00:18:24,220
+Speaker 0: Yeah.
+
+365
+00:18:24,260 --> 00:18:24,320
+Speaker 0: Yeah.
+
+366
+00:18:24,360 --> 00:18:24,420
+Speaker 0: Yeah.
+
+367
+00:18:24,460 --> 00:18:24,520
+Speaker 0: Yeah.
+
+368
+00:18:24,560 --> 00:18:35,420
+Speaker 0: Basically, um, the way you present the text, the fluency, uh, another thing is with these advantages and disadvantages, yes, but the table is going to be, uh, rather like short.
+
+369
+00:18:36,000 --> 00:18:37,560
+Speaker 0: What I would like for these?
+
+370
+00:18:38,000 --> 00:18:41,380
+Speaker 0: make a little bit more descriptive text.
+
+371
+00:18:41,680 --> 00:18:43,720
+Speaker 1: So more functionality or, or what?
+
+372
+00:18:43,840 --> 00:18:43,980
+Speaker 1: Yeah.
+
+373
+00:18:44,080 --> 00:18:44,980
+Speaker 0: Like what I can do.
+
+374
+00:18:45,140 --> 00:18:45,300
+Speaker 0: Yes.
+
+375
+00:18:45,560 --> 00:18:45,700
+Speaker 0: Yes.
+
+376
+00:18:45,820 --> 00:18:45,940
+Speaker 0: Yes.
+
+377
+00:18:46,040 --> 00:18:46,720
+Speaker 0: More functional.
+
+378
+00:18:47,020 --> 00:18:47,160
+Speaker 0: Okay.
+
+379
+00:18:47,380 --> 00:18:48,640
+Speaker 0: Students are able to do this.
+
+380
+00:18:49,080 --> 00:19:01,480
+Speaker 0: You don't need to add, uh, probably, uh, images unless it's very specific function that you like, but a little more description, especially on university apps.
+
+381
+00:19:01,760 --> 00:19:02,020
+Speaker 0: Okay.
+
+382
+00:19:02,300 --> 00:19:04,060
+Speaker 0: Such a, like this one is legacy.
+
+383
+00:19:04,180 --> 00:19:16,360
+Speaker 0: You can't do too much, uh, Moodle standard procedure also, like it's clear and the table, these advantages and disadvantages is, uh, more, uh, complete.
+
+384
+00:19:16,420 --> 00:19:16,940
+Speaker 0: Let's say so.
+
+385
+00:19:17,120 --> 00:19:25,660
+Speaker 0: Like you like analysis is there, but for this one, more descriptive text and the same applies over here for university of Fabian.
+
+386
+00:19:26,320 --> 00:19:37,140
+Speaker 0: because what you're trying to do, you're trying to say the functionality that I have developed is based on what I analyze.
+
+387
+00:19:37,460 --> 00:19:37,560
+Speaker 1: Yeah.
+
+388
+00:19:37,660 --> 00:19:37,960
+Speaker 1: Okay.
+
+389
+00:19:38,440 --> 00:19:56,060
+Speaker 0: And if it's going to be a picky reviewer or a committee member, they might say that I don't see enough argumentation for your developed system because it seems to me that you did this, you know, like a little bit of, you know, walking around, uh, print screening and that's it.
+
+390
+00:19:56,420 --> 00:19:56,640
+Speaker 0: Okay.
+
+391
+00:19:56,760 --> 00:19:59,000
+Speaker 0: So this will help you to avoid such a case.
+
+392
+00:19:59,040 --> 00:19:59,320
+Speaker 1: Understood.
+
+393
+00:19:59,360 --> 00:19:59,440
+Speaker 1: Yes.
+
+394
+00:19:59,500 --> 00:20:05,360
+Speaker 0: This is again, it's just the same, uh, same comments.
+
+395
+00:20:05,540 --> 00:20:06,020
+Speaker 0: Uh, yeah.
+
+396
+00:20:06,120 --> 00:20:07,240
+Speaker 0: Double check the spacing.
+
+397
+00:20:07,400 --> 00:20:10,700
+Speaker 0: I'm not sure about, uh, should it be like zero?
+
+398
+00:20:12,200 --> 00:20:12,920
+Speaker 0: I think it's zero.
+
+399
+00:20:13,360 --> 00:20:13,520
+Speaker 1: Okay.
+
+400
+00:20:13,660 --> 00:20:16,080
+Speaker 0: Because if you look into the other three and one, I think it's zero.
+
+401
+00:20:17,940 --> 00:20:24,660
+Speaker 0: Another comment, another comment that I made, uh, so it's six and then it begins with eight.
+
+402
+00:20:26,500 --> 00:20:26,740
+Speaker 1: Okay.
+
+403
+00:20:27,220 --> 00:20:27,580
+Speaker 1: Okay.
+
+404
+00:20:27,660 --> 00:20:30,220
+Speaker 1: So seven is a bit, a bit like lower.
+
+405
+00:20:30,380 --> 00:20:31,400
+Speaker 1: it's eight and then seven.
+
+406
+00:20:32,180 --> 00:20:36,440
+Speaker 0: It's always, always, uh, in the same order.
+
+407
+00:20:36,720 --> 00:20:41,460
+Speaker 0: The numerical order is the way that the reference appear in the list.
+
+408
+00:20:41,740 --> 00:20:42,180
+Speaker 1: Understood.
+
+409
+00:20:42,360 --> 00:20:43,200
+Speaker 1: Like, okay.
+
+410
+00:20:43,520 --> 00:20:52,840
+Speaker 0: If, if it goes like Java fix goes before Jetpack Compose, it should be seven Jetpack Compose nine.
+
+411
+00:20:53,020 --> 00:20:54,320
+Speaker 0: And this one should be eight.
+
+412
+00:20:54,920 --> 00:20:55,140
+Speaker 0: Okay.
+
+413
+00:20:55,500 --> 00:20:59,020
+Speaker 0: The way they are a reference in the text the first time.
+
+414
+00:20:59,660 --> 00:20:59,880
+Speaker 1: Okay.
+
+415
+00:21:00,060 --> 00:21:00,260
+Speaker 1: Okay.
+
+416
+00:21:00,980 --> 00:21:06,260
+Speaker 0: For example, this one, number six, because you already had it here, it poses no issue.
+
+417
+00:21:06,800 --> 00:21:07,120
+Speaker 1: Okay.
+
+418
+00:21:07,320 --> 00:21:07,560
+Speaker 1: Okay.
+
+419
+00:21:07,740 --> 00:21:07,980
+Speaker 1: Yes.
+
+420
+00:21:08,480 --> 00:21:09,000
+Speaker 0: Yes, yes, yes.
+
+421
+00:21:09,080 --> 00:21:26,320
+Speaker 0: For example, over here, like immediately 27, uh, you will get a remark from a reviewer and from the comedy that your text is, is, is, uh, Is it necessary to include the references at all in hyperlinks or just remove them?
+
+422
+00:21:27,480 --> 00:21:39,920
+Speaker 0: Not necessary, but what I did mention here, like over here, make sure either you add references everywhere or you add nowhere and just fix the numbering.
+
+423
+00:21:40,160 --> 00:21:43,640
+Speaker 1: Is it bad if I don't because add them everywhere?
+
+424
+00:21:43,720 --> 00:21:44,160
+Speaker 1: Yes.
+
+425
+00:21:44,200 --> 00:21:44,760
+Speaker 0: Yes.
+
+426
+00:21:45,100 --> 00:21:45,140
+Speaker 0: Yes.
+
+427
+00:21:45,240 --> 00:21:45,380
+Speaker 0: Yes.
+
+428
+00:21:45,420 --> 00:21:50,320
+Speaker 0: It's bad because over here I can click on it and over here I cannot.
+
+429
+00:21:50,920 --> 00:21:51,040
+Speaker 1: Yeah.
+
+430
+00:21:51,240 --> 00:21:57,720
+Speaker 1: I mean, if I like, does it really matter for the committee, if I include the hyperlinks or just the references, less text.
+
+431
+00:21:58,580 --> 00:21:59,320
+Speaker 0: It matters.
+
+432
+00:21:59,540 --> 00:22:01,600
+Speaker 0: It matters if you are consistent.
+
+433
+00:22:02,600 --> 00:22:02,820
+Speaker 1: Okay.
+
+434
+00:22:03,560 --> 00:22:05,320
+Speaker 1: So I'll do the easy one.
+
+435
+00:22:05,740 --> 00:22:09,720
+Speaker 1: I'll just don't take it because it's linking, linking is too many references.
+
+436
+00:22:09,760 --> 00:22:17,880
+Speaker 0: Because if I look at the template, we don't have, you can add references, but, but it's not mandatory.
+
+437
+00:22:18,060 --> 00:22:18,260
+Speaker 1: Okay.
+
+438
+00:22:18,300 --> 00:22:20,120
+Speaker 0: So this is what I was trying to say.
+
+439
+00:22:20,340 --> 00:22:27,140
+Speaker 0: Either you fix everywhere with references or you add nowhere because it shows inconsistency.
+
+440
+00:22:27,480 --> 00:22:27,940
+Speaker 0: Okay.
+
+441
+00:22:29,220 --> 00:22:29,440
+Speaker 0: Right.
+
+442
+00:22:29,560 --> 00:22:32,140
+Speaker 0: So yes.
+
+443
+00:22:32,200 --> 00:22:33,100
+Speaker 0: Double check the references.
+
+444
+00:22:33,140 --> 00:22:33,520
+Speaker 1: The order.
+
+445
+00:22:33,720 --> 00:22:33,900
+Speaker 1: Okay.
+
+446
+00:22:34,140 --> 00:22:34,560
+Speaker 1: There was, okay.
+
+447
+00:22:34,660 --> 00:22:35,560
+Speaker 1: There was another comment.
+
+448
+00:22:35,600 --> 00:22:35,680
+Speaker 0: Yes.
+
+449
+00:22:35,740 --> 00:22:41,380
+Speaker 0: The order and the references, some formatting, again, consistency.
+
+450
+00:22:42,060 --> 00:22:47,500
+Speaker 0: If you say binary serialization is a method and they say JSON dot, okay.
+
+451
+00:22:47,620 --> 00:22:48,420
+Speaker 0: It's inconsistent.
+
+452
+00:22:48,480 --> 00:22:52,900
+Speaker 0: So binary serialization dot, this is a method, yada, yada, yada.
+
+453
+00:22:53,320 --> 00:22:54,760
+Speaker 1: Okay.
+
+454
+00:22:54,820 --> 00:22:54,940
+Speaker 0: Okay.
+
+455
+00:22:54,980 --> 00:22:55,140
+Speaker 0: Yeah.
+
+456
+00:22:55,280 --> 00:22:58,140
+Speaker 0: Always maintain the same logic.
+
+457
+00:22:58,280 --> 00:23:00,840
+Speaker 0: It can be different in different sub chapters.
+
+458
+00:23:01,200 --> 00:23:03,140
+Speaker 0: Like over here, I have no issues.
+
+459
+00:23:03,480 --> 00:23:04,200
+Speaker 0: This one is nice.
+
+460
+00:23:04,520 --> 00:23:10,840
+Speaker 0: Flutter is, is, is, this one is good, but with this one, you have two distinct variations.
+
+461
+00:23:11,020 --> 00:23:13,740
+Speaker 1: So just remove the dot and make it, okay.
+
+462
+00:23:13,780 --> 00:23:13,880
+Speaker 1: Yes.
+
+463
+00:23:13,940 --> 00:23:14,460
+Speaker 1: Yes, yes, yes.
+
+464
+00:23:14,780 --> 00:23:23,600
+Speaker 0: I might say that, uh, this is a kind of nitpicking, but trust me, you will run into people.
+
+465
+00:23:24,260 --> 00:23:24,460
+Speaker 1: Can you?
+
+466
+00:23:25,080 --> 00:23:25,240
+Speaker 1: Yeah.
+
+467
+00:23:25,780 --> 00:23:28,140
+Speaker 1: Can you go back for a second on the, on the trip?
+
+468
+00:23:29,620 --> 00:23:32,620
+Speaker 1: So here, for example, for the custom format, is this okay or not?
+
+469
+00:23:33,280 --> 00:23:48,180
+Speaker 0: custom format it's possible with a special blah, blah, blah, custom format, custom format is, um, it is possible, basically it is possible, but you just add dot and then it is possible to, as you can see, like the languages.
+
+470
+00:23:48,500 --> 00:23:48,600
+Speaker 1: Yeah.
+
+471
+00:23:48,680 --> 00:23:50,420
+Speaker 1: But it should be the same.
+
+472
+00:23:50,460 --> 00:23:50,600
+Speaker 1: Yes.
+
+473
+00:23:50,820 --> 00:24:00,880
+Speaker 0: It's like SQLite dot, it is, uh, I would, I would stick it because dot, it is small custom format dot.
+
+474
+00:24:01,460 --> 00:24:04,920
+Speaker 0: It is possible to implement with a special custom format.
+
+475
+00:24:05,180 --> 00:24:05,360
+Speaker 1: Okay.
+
+476
+00:24:06,120 --> 00:24:08,500
+Speaker 1: So it matters only one section, right?
+
+477
+00:24:08,920 --> 00:24:10,280
+Speaker 1: In the previous section I didn't use dot?
+
+478
+00:24:10,340 --> 00:24:10,400
+Speaker 1: Yeah.
+
+479
+00:24:10,720 --> 00:24:11,280
+Speaker 0: It doesn't matter.
+
+480
+00:24:11,380 --> 00:24:12,060
+Speaker 0: No, no, no, no, no.
+
+481
+00:24:12,180 --> 00:24:12,900
+Speaker 0: It doesn't.
+
+482
+00:24:13,040 --> 00:24:13,260
+Speaker 0: Okay.
+
+483
+00:24:13,360 --> 00:24:22,700
+Speaker 0: It's basically, basically, since you are discussing storing data in a cross-platform way, and basically here you are providing proof and augmentation.
+
+484
+00:24:23,220 --> 00:24:25,980
+Speaker 0: So these have to be identical.
+
+485
+00:24:26,380 --> 00:24:26,760
+Speaker 1: Understood.
+
+486
+00:24:27,320 --> 00:24:27,460
+Speaker 1: Okay.
+
+487
+00:24:27,540 --> 00:24:27,680
+Speaker 1: Yes.
+
+488
+00:24:27,920 --> 00:24:52,080
+Speaker 0: The way they are given, uh, now chapter number two, uh, before all the larger, like chapters add a small paragraph like this, uh, paragraph is intended to show use case diagram, corresponding sequence diagrams, which are required to, uh, you know, uh, refine functional and unfunctional requirements.
+
+489
+00:24:52,620 --> 00:24:53,660
+Speaker 0: like a short description.
+
+490
+00:24:53,900 --> 00:24:55,540
+Speaker 0: What is presented in this chapter?
+
+491
+00:24:55,600 --> 00:24:55,780
+Speaker 1: Okay.
+
+492
+00:24:56,380 --> 00:24:56,520
+Speaker 1: Okay.
+
+493
+00:24:56,760 --> 00:25:01,080
+Speaker 0: Again, depends on a reviewer and a committee member.
+
+494
+00:25:01,860 --> 00:25:09,940
+Speaker 0: Uh, sometimes they say that you cannot begin a chapter with a sub-chapter, for example, I don't care at all.
+
+495
+00:25:10,480 --> 00:25:13,500
+Speaker 0: This one is fine for me, but I'm being careful.
+
+496
+00:25:14,080 --> 00:25:14,460
+Speaker 1: Understood.
+
+497
+00:25:14,760 --> 00:25:14,900
+Speaker 1: Okay.
+
+498
+00:25:15,080 --> 00:25:16,800
+Speaker 0: So it's a better safe.
+
+499
+00:25:16,840 --> 00:25:18,840
+Speaker 0: It's safer to add something.
+
+500
+00:25:18,920 --> 00:25:20,320
+Speaker 0: Uh, right.
+
+501
+00:25:20,560 --> 00:25:23,020
+Speaker 0: Uh, another comment remake with draw IO.
+
+502
+00:25:23,200 --> 00:25:23,340
+Speaker 1: Yeah.
+
+503
+00:25:23,500 --> 00:25:23,700
+Speaker 1: Okay.
+
+504
+00:25:23,840 --> 00:25:28,240
+Speaker 0: Because you have this animated stick figure, you will definitely get comments.
+
+505
+00:25:28,640 --> 00:25:28,900
+Speaker 1: Okay.
+
+506
+00:25:29,920 --> 00:25:31,080
+Speaker 0: Oh my goodness.
+
+507
+00:25:31,120 --> 00:25:31,760
+Speaker 0: For sure.
+
+508
+00:25:32,340 --> 00:25:33,600
+Speaker 0: A few more things.
+
+509
+00:25:34,200 --> 00:25:35,520
+Speaker 0: All these are extents.
+
+510
+00:25:36,060 --> 00:25:37,120
+Speaker 1: There were extents.
+
+511
+00:25:37,240 --> 00:25:37,380
+Speaker 1: Yeah.
+
+512
+00:25:37,480 --> 00:25:39,640
+Speaker 1: They replace them with includes.
+
+513
+00:25:40,080 --> 00:25:41,780
+Speaker 1: I don't know why they were extents.
+
+514
+00:25:41,900 --> 00:25:42,520
+Speaker 1: The first question.
+
+515
+00:25:42,560 --> 00:25:43,840
+Speaker 1: No, no, no, no, no, no.
+
+516
+00:25:44,560 --> 00:25:49,620
+Speaker 0: Basically if you view a course list, I am not required to view course Greeks.
+
+517
+00:25:49,980 --> 00:25:50,380
+Speaker 1: I can.
+
+518
+00:25:51,180 --> 00:25:51,340
+Speaker 1: Yeah.
+
+519
+00:25:51,900 --> 00:25:52,000
+Speaker 1: Yeah.
+
+520
+00:25:52,140 --> 00:25:52,340
+Speaker 1: Okay.
+
+521
+00:25:52,680 --> 00:25:54,380
+Speaker 0: Like it extends the function.
+
+522
+00:25:54,560 --> 00:25:55,940
+Speaker 1: I have a question about this as well.
+
+523
+00:25:56,260 --> 00:25:58,880
+Speaker 1: Not about the extent, but about the functionality.
+
+524
+00:25:58,980 --> 00:26:02,040
+Speaker 1: So in the developed app, I don't have some parts.
+
+525
+00:26:02,080 --> 00:26:03,400
+Speaker 1: For example, I don't have the chat.
+
+526
+00:26:04,160 --> 00:26:08,060
+Speaker 1: Do I redraw the diagram with the actual implemented functionality or I leave it as is?
+
+527
+00:26:09,620 --> 00:26:11,940
+Speaker 0: You have to have what you implemented.
+
+528
+00:26:12,500 --> 00:26:12,700
+Speaker 1: Okay.
+
+529
+00:26:12,740 --> 00:26:14,060
+Speaker 1: Yeah.
+
+530
+00:26:14,200 --> 00:26:14,700
+Speaker 0: So remove it.
+
+531
+00:26:15,120 --> 00:26:19,240
+Speaker 0: Another comment, for example, if you have view course list, okay.
+
+532
+00:26:19,740 --> 00:26:26,220
+Speaker 0: You don't need to add a line to view course materials because this one is access through view course list.
+
+533
+00:26:26,740 --> 00:26:26,940
+Speaker 0: Okay.
+
+534
+00:26:27,560 --> 00:26:27,720
+Speaker 1: Okay.
+
+535
+00:26:27,840 --> 00:26:34,180
+Speaker 0: So if you have a smaller number of these lines, yeah, because this one is not required.
+
+536
+00:26:34,400 --> 00:26:35,580
+Speaker 0: This one is not required.
+
+537
+00:26:35,760 --> 00:26:35,940
+Speaker 0: Why?
+
+538
+00:26:36,120 --> 00:26:39,020
+Speaker 0: Because it's accessed through this one.
+
+539
+00:26:39,220 --> 00:26:39,940
+Speaker 0: View exam list.
+
+540
+00:26:40,080 --> 00:26:40,300
+Speaker 0: Okay.
+
+541
+00:26:41,300 --> 00:26:41,460
+Speaker 1: Okay.
+
+542
+00:26:41,540 --> 00:26:43,180
+Speaker 1: So I only have one to the core ones.
+
+543
+00:26:43,460 --> 00:26:44,120
+Speaker 1: View course list.
+
+544
+00:26:44,160 --> 00:26:44,840
+Speaker 0: View exam list.
+
+545
+00:26:44,900 --> 00:26:44,960
+Speaker 0: Yeah.
+
+546
+00:26:45,000 --> 00:26:50,400
+Speaker 0: Because if you add it like this, that means I can view exam list and then I can view exam table.
+
+547
+00:26:50,820 --> 00:26:54,400
+Speaker 0: And if you add it like this, that means I can view exam table immediately.
+
+548
+00:26:56,480 --> 00:26:56,580
+Speaker 1: Yeah.
+
+549
+00:26:56,780 --> 00:26:56,920
+Speaker 1: Okay.
+
+550
+00:26:56,960 --> 00:26:57,400
+Speaker 1: Yeah.
+
+551
+00:26:57,860 --> 00:26:57,980
+Speaker 0: Yeah.
+
+552
+00:26:58,100 --> 00:26:58,920
+Speaker 0: You see the logic.
+
+553
+00:26:59,440 --> 00:26:59,620
+Speaker 0: Okay.
+
+554
+00:26:59,780 --> 00:27:04,460
+Speaker 0: Because if it has direct access, that means it's like directly, it can live as a separate one.
+
+555
+00:27:05,060 --> 00:27:06,900
+Speaker 0: And you can just say, I can do it like this.
+
+556
+00:27:07,280 --> 00:27:15,200
+Speaker 0: I can go to exam list and I will go to the same page, which I can access directly through here, which I, which in your case, I don't think this is the case.
+
+557
+00:27:15,440 --> 00:27:16,560
+Speaker 0: This is the option.
+
+558
+00:27:16,640 --> 00:27:19,600
+Speaker 0: You just go to exam list and then view exam time table.
+
+559
+00:27:21,120 --> 00:27:25,320
+Speaker 1: In my case, you go to the calendar and it's, you see the exam time table.
+
+560
+00:27:26,560 --> 00:27:26,840
+Speaker 0: Right.
+
+561
+00:27:27,660 --> 00:27:27,940
+Speaker 0: Okay.
+
+562
+00:27:28,220 --> 00:27:33,920
+Speaker 0: So if you say that it's a calendar, so you can say view, I don't know, calendar and then view exam table.
+
+563
+00:27:34,100 --> 00:27:34,320
+Speaker 0: Okay.
+
+564
+00:27:35,160 --> 00:27:35,260
+Speaker 1: Yeah.
+
+565
+00:27:35,440 --> 00:27:38,460
+Speaker 1: I'll redraw it based on the functionality that I actually did.
+
+566
+00:27:38,500 --> 00:27:38,560
+Speaker 0: Yeah.
+
+567
+00:27:38,600 --> 00:27:39,640
+Speaker 0: Based on the functionality.
+
+568
+00:27:39,740 --> 00:27:39,860
+Speaker 0: Yeah.
+
+569
+00:27:39,980 --> 00:27:41,620
+Speaker 0: And what you can do and what you cannot do.
+
+570
+00:27:41,760 --> 00:27:50,140
+Speaker 0: And again, if you say, again, the way that this arrow is pointing, it means it extends.
+
+571
+00:27:50,400 --> 00:27:50,600
+Speaker 0: Okay.
+
+572
+00:27:50,820 --> 00:27:58,240
+Speaker 0: So if it includes, arrow is in another line and that means it's, it's like mandatory.
+
+573
+00:27:58,760 --> 00:27:58,820
+Speaker 1: Yeah.
+
+574
+00:27:59,120 --> 00:27:59,900
+Speaker 1: Must happen.
+
+575
+00:28:00,020 --> 00:28:00,160
+Speaker 0: Okay.
+
+576
+00:28:00,260 --> 00:28:00,620
+Speaker 0: Yeah.
+
+577
+00:28:00,660 --> 00:28:01,020
+Speaker 0: Example.
+
+578
+00:28:01,160 --> 00:28:01,420
+Speaker 0: I don't know.
+
+579
+00:28:01,540 --> 00:28:03,560
+Speaker 0: Let's say you say view course.
+
+580
+00:28:03,740 --> 00:28:03,980
+Speaker 0: I don't know.
+
+581
+00:28:04,200 --> 00:28:05,140
+Speaker 0: View recipe.
+
+582
+00:28:05,840 --> 00:28:06,020
+Speaker 0: Okay.
+
+583
+00:28:06,180 --> 00:28:15,960
+Speaker 0: View recipe list and includes like AI component to recommend based on your previous, I don't know, recipes or something like that.
+
+584
+00:28:16,040 --> 00:28:17,240
+Speaker 0: I'm just giving you an example.
+
+585
+00:28:17,460 --> 00:28:17,580
+Speaker 1: Okay.
+
+586
+00:28:17,620 --> 00:28:18,820
+Speaker 1: Not related to your topic.
+
+587
+00:28:19,340 --> 00:28:19,520
+Speaker 0: Okay.
+
+588
+00:28:20,640 --> 00:28:20,860
+Speaker 0: Right.
+
+589
+00:28:20,940 --> 00:28:21,180
+Speaker 0: Okay.
+
+590
+00:28:21,300 --> 00:28:21,940
+Speaker 0: This one's good.
+
+591
+00:28:22,620 --> 00:28:23,640
+Speaker 0: Just fixing.
+
+592
+00:28:23,780 --> 00:28:23,920
+Speaker 1: Yeah.
+
+593
+00:28:24,100 --> 00:28:24,300
+Speaker 1: Why?
+
+594
+00:28:26,640 --> 00:28:37,360
+Speaker 0: Again, I think you can leave your, usually I recommend for students to have, you know, like user UI, web server and the database, but yours is a little bit different.
+
+595
+00:28:37,660 --> 00:28:37,900
+Speaker 0: Okay.
+
+596
+00:28:38,000 --> 00:28:39,260
+Speaker 0: So you can leave it as it is.
+
+597
+00:28:39,880 --> 00:28:43,720
+Speaker 1: And also I think redraw some of them because the architecture is a bit different.
+
+598
+00:28:44,360 --> 00:28:44,500
+Speaker 0: Yeah.
+
+599
+00:28:44,640 --> 00:28:45,620
+Speaker 0: So you have to fix this.
+
+600
+00:28:46,360 --> 00:28:50,700
+Speaker 0: What I was a bit confused, loop polls, polling or pools.
+
+601
+00:28:51,580 --> 00:28:52,240
+Speaker 1: I mean polling.
+
+602
+00:28:52,340 --> 00:28:52,480
+Speaker 1: Yeah.
+
+603
+00:28:54,140 --> 00:28:54,220
+Speaker 1: So.
+
+604
+00:28:54,400 --> 00:28:55,440
+Speaker 1: It's called polling?
+
+605
+00:28:55,860 --> 00:28:56,120
+Speaker 1: Maybe.
+
+606
+00:28:57,800 --> 00:29:00,080
+Speaker 1: So just periodic calling, not.
+
+607
+00:29:01,440 --> 00:29:03,400
+Speaker 0: I think it's called polling, not polling.
+
+608
+00:29:04,400 --> 00:29:04,840
+Speaker 1: One moment.
+
+609
+00:29:05,800 --> 00:29:10,180
+Speaker 1: Polling is taking something from a pool, from database pool or something.
+
+610
+00:29:10,760 --> 00:29:10,960
+Speaker 0: Yes.
+
+611
+00:29:11,900 --> 00:29:14,980
+Speaker 1: But poll is a periodic pinging.
+
+612
+00:29:16,120 --> 00:29:16,620
+Speaker 1: Okay.
+
+613
+00:29:16,680 --> 00:29:17,700
+Speaker 1: Maybe I'm wrong.
+
+614
+00:29:17,840 --> 00:29:18,420
+Speaker 1: It's okay.
+
+615
+00:29:18,460 --> 00:29:18,760
+Speaker 1: It's okay.
+
+616
+00:29:18,800 --> 00:29:30,240
+Speaker 0: I, it's just that I was unfamiliar with this term that it's known as polling because polls is a questionnaire.
+
+617
+00:29:30,320 --> 00:29:32,120
+Speaker 0: Like it just confused.
+
+618
+00:29:32,160 --> 00:29:33,260
+Speaker 1: It's also a questionnaire.
+
+619
+00:29:33,300 --> 00:29:33,420
+Speaker 1: Yeah.
+
+620
+00:29:34,460 --> 00:29:34,580
+Speaker 0: Yeah.
+
+621
+00:29:34,660 --> 00:29:37,260
+Speaker 0: So basically just double check the term.
+
+622
+00:29:37,520 --> 00:29:37,660
+Speaker 1: Yeah.
+
+623
+00:29:38,020 --> 00:29:38,240
+Speaker 1: Okay.
+
+624
+00:29:38,560 --> 00:29:43,800
+Speaker 0: Because I wasn't familiar with this and I just underscored it, like just double check.
+
+625
+00:29:44,060 --> 00:29:44,180
+Speaker 0: Okay.
+
+626
+00:29:44,260 --> 00:29:46,460
+Speaker 0: Because I wasn't familiar with this term.
+
+627
+00:29:47,720 --> 00:29:53,860
+Speaker 0: For example, when you have such a huge diagram, more descriptive text, basically what is going on.
+
+628
+00:29:54,240 --> 00:29:54,740
+Speaker 1: Okay.
+
+629
+00:29:54,780 --> 00:29:54,840
+Speaker 1: Yeah.
+
+630
+00:29:54,920 --> 00:29:55,100
+Speaker 1: Okay.
+
+631
+00:29:55,160 --> 00:29:58,440
+Speaker 0: For example, then depending on user choice, one of the metadata, okay.
+
+632
+00:29:58,840 --> 00:30:04,500
+Speaker 0: And you can just say a user can get this, he gets an error, if he clicks that, it happens this way.
+
+633
+00:30:04,560 --> 00:30:04,940
+Speaker 1: Understood.
+
+634
+00:30:05,220 --> 00:30:05,380
+Speaker 1: Okay.
+
+635
+00:30:05,720 --> 00:30:07,560
+Speaker 0: Like in more detail what is happening.
+
+636
+00:30:08,520 --> 00:30:08,800
+Speaker 0: Right.
+
+637
+00:30:09,520 --> 00:30:14,300
+Speaker 0: So this is just a semicolon, no space.
+
+638
+00:30:14,500 --> 00:30:18,740
+Speaker 1: What do I do if the table is split across pages?
+
+639
+00:30:22,200 --> 00:30:22,720
+Speaker 1: Is it fine?
+
+640
+00:30:23,700 --> 00:30:24,080
+Speaker 0: Oh yeah.
+
+641
+00:30:24,120 --> 00:30:24,700
+Speaker 0: It's fine.
+
+642
+00:30:25,320 --> 00:30:36,060
+Speaker 0: Usually there are certain requirements such as basically you say you make a table fit one page, okay.
+
+643
+00:30:36,780 --> 00:30:42,920
+Speaker 0: And then you create another table, which is known as continuation of table seven, but in another page.
+
+644
+00:30:43,480 --> 00:30:46,160
+Speaker 1: So with the same header and with the same label.
+
+645
+00:30:46,200 --> 00:30:46,720
+Speaker 1: Yes.
+
+646
+00:30:46,980 --> 00:30:47,320
+Speaker 0: Yes.
+
+647
+00:30:47,760 --> 00:30:47,940
+Speaker 0: Yes.
+
+648
+00:30:48,620 --> 00:30:50,100
+Speaker 0: Usually such as a recommendation.
+
+649
+00:30:50,300 --> 00:30:50,580
+Speaker 1: Okay.
+
+650
+00:30:51,960 --> 00:30:53,680
+Speaker 0: If we're being extremely pedantic.
+
+651
+00:30:54,040 --> 00:30:57,660
+Speaker 1: That's why I put the space here because I think it looked ugly without the space.
+
+652
+00:30:58,600 --> 00:30:59,440
+Speaker 0: No, you cannot.
+
+653
+00:30:59,580 --> 00:31:01,780
+Speaker 0: Only the bigger chapters are with space.
+
+654
+00:31:01,940 --> 00:31:03,240
+Speaker 1: Understood.
+
+655
+00:31:03,320 --> 00:31:03,500
+Speaker 0: Okay.
+
+656
+00:31:03,540 --> 00:31:03,600
+Speaker 0: Yes.
+
+657
+00:31:03,640 --> 00:31:05,240
+Speaker 0: Only the biggest chapters.
+
+658
+00:31:05,320 --> 00:31:05,520
+Speaker 0: Okay.
+
+659
+00:31:06,180 --> 00:31:06,500
+Speaker 0: All right.
+
+660
+00:31:06,740 --> 00:31:07,600
+Speaker 0: I added a comment.
+
+661
+00:31:08,580 --> 00:31:12,960
+Speaker 0: Your non-functional requirements are also development environment requirements.
+
+662
+00:31:13,000 --> 00:31:13,100
+Speaker 1: Okay.
+
+663
+00:31:13,260 --> 00:31:14,180
+Speaker 1: Okay.
+
+664
+00:31:14,640 --> 00:31:14,780
+Speaker 1: Okay.
+
+665
+00:31:14,840 --> 00:31:16,060
+Speaker 1: So what exactly?
+
+666
+00:31:17,540 --> 00:31:24,720
+Speaker 0: Such as you're using this EDE, you're using, I don't know, some kind of other tools.
+
+667
+00:31:25,160 --> 00:31:25,280
+Speaker 1: Yeah.
+
+668
+00:31:25,880 --> 00:31:32,020
+Speaker 1: But like non-functional is an application must be on some requirement, but for the EDE.
+
+669
+00:31:32,080 --> 00:31:32,240
+Speaker 0: No, no, no.
+
+670
+00:31:32,340 --> 00:31:37,720
+Speaker 0: This is like development requirements because it isn't, you can use various tools.
+
+671
+00:31:37,960 --> 00:31:38,200
+Speaker 0: Okay.
+
+672
+00:31:38,800 --> 00:31:43,660
+Speaker 0: So one of non-functional requirements is development environment requirements.
+
+673
+00:31:43,740 --> 00:31:49,280
+Speaker 0: Like what set of tools you are using to create your software.
+
+674
+00:31:49,580 --> 00:31:51,540
+Speaker 1: So I should just write something like...
+
+675
+00:31:51,600 --> 00:31:51,760
+Speaker 0: Yes.
+
+676
+00:31:51,900 --> 00:31:57,440
+Speaker 0: It's for, it's, nobody's going to do that, but this is for reproducibility.
+
+677
+00:31:58,460 --> 00:31:58,760
+Speaker 1: Okay.
+
+678
+00:31:59,940 --> 00:32:00,120
+Speaker 1: Yes.
+
+679
+00:32:01,360 --> 00:32:05,760
+Speaker 1: So which like, which version of language, which version of Gradle, which version of... Yes.
+
+680
+00:32:06,220 --> 00:32:06,400
+Speaker 0: Yes.
+
+681
+00:32:06,780 --> 00:32:06,900
+Speaker 1: Yes.
+
+682
+00:32:07,040 --> 00:32:11,560
+Speaker 1: And it shouldn't be in the, in the same table, like one requirement or a separate thing?
+
+683
+00:32:12,500 --> 00:32:16,300
+Speaker 0: No, it's, it's, it's going to be NF, let's say six.
+
+684
+00:32:16,540 --> 00:32:16,780
+Speaker 1: Okay.
+
+685
+00:32:17,040 --> 00:32:24,980
+Speaker 0: And just list what you're using and this type is the development environment and that's nothing.
+
+686
+00:32:25,040 --> 00:32:25,160
+Speaker 1: Okay.
+
+687
+00:32:25,280 --> 00:32:25,700
+Speaker 1: Understood.
+
+688
+00:32:25,820 --> 00:32:25,980
+Speaker 1: Okay.
+
+689
+00:32:26,020 --> 00:32:26,880
+Speaker 1: Yeah.
+
+690
+00:32:27,120 --> 00:32:29,060
+Speaker 0: It's, it's being pedantic.
+
+691
+00:32:30,600 --> 00:32:44,560
+Speaker 0: I mean, logic wise, your work is good, but points are deduced if your work is not properly prepared, like it's basically like this.
+
+692
+00:32:45,080 --> 00:32:49,580
+Speaker 0: If something is not fixed according to requirements, it's like minus one.
+
+693
+00:32:50,740 --> 00:32:53,700
+Speaker 0: If it's a total mess, you can even get minus two.
+
+694
+00:32:54,460 --> 00:32:54,760
+Speaker 1: Okay.
+
+695
+00:32:56,460 --> 00:32:57,080
+Speaker 0: At least from me.
+
+696
+00:32:57,280 --> 00:32:57,460
+Speaker 0: Okay.
+
+697
+00:32:57,660 --> 00:32:57,920
+Speaker 0: I'm evil.
+
+698
+00:32:57,960 --> 00:33:01,440
+Speaker 0: No, I'm joking.
+
+699
+00:33:01,480 --> 00:33:01,920
+Speaker 0: I'm joking.
+
+700
+00:33:01,960 --> 00:33:02,160
+Speaker 0: I'm joking.
+
+701
+00:33:02,200 --> 00:33:16,000
+Speaker 0: Every one is like every one you get, basically you're developing, you're argumentate, providing argumentation on what you did and then you describe properly.
+
+702
+00:33:16,120 --> 00:33:30,680
+Speaker 0: It's like, it's necessary because somehow when it's, you know, submitted, submitting project reports to national agencies, everybody understands that the documents must be nice.
+
+703
+00:33:31,540 --> 00:33:41,800
+Speaker 0: Yet somehow, if it's a thesis, it can be garbage, which is exactly the same document as any kind of document that has to be prepared according to requirements.
+
+704
+00:33:42,420 --> 00:33:42,600
+Speaker 0: Right.
+
+705
+00:33:42,640 --> 00:33:45,660
+Speaker 0: Again, short paragraph, like this section describes conceptual level.
+
+706
+00:33:45,780 --> 00:33:49,260
+Speaker 1: But I think the conceptual level should be at the conceptual architecture, no?
+
+707
+00:33:50,780 --> 00:33:50,840
+Speaker 0: No.
+
+708
+00:33:52,720 --> 00:33:53,860
+Speaker 0: No, this one is okay.
+
+709
+00:33:54,020 --> 00:33:55,200
+Speaker 0: I'm just telling you, you begin.
+
+710
+00:33:55,320 --> 00:34:07,740
+Speaker 0: This chapter, it describes conceptual architecture, database structure, such as data, basically expanding like short description, what a user should expect in this chapter.
+
+711
+00:34:08,219 --> 00:34:08,820
+Speaker 0: That's it.
+
+712
+00:34:09,100 --> 00:34:09,320
+Speaker 1: Okay.
+
+713
+00:34:10,219 --> 00:34:10,360
+Speaker 0: Yes.
+
+714
+00:34:10,500 --> 00:34:12,320
+Speaker 0: See, I figured I had no issues.
+
+715
+00:34:12,600 --> 00:34:12,960
+Speaker 0: Right.
+
+716
+00:34:13,139 --> 00:34:13,639
+Speaker 0: Notation.
+
+717
+00:34:14,880 --> 00:34:18,139
+Speaker 1: This is an export from Android studio or from something, I don't remember.
+
+718
+00:34:18,179 --> 00:34:23,540
+Speaker 0: I don't know why it gives you that, but the thing is, if you have, do you have foreign keys?
+
+719
+00:34:23,940 --> 00:34:25,040
+Speaker 1: I have foreign keys.
+
+720
+00:34:26,480 --> 00:34:29,600
+Speaker 1: Those arrows are foreign keys, basically connections.
+
+721
+00:34:29,639 --> 00:34:29,739
+Speaker 1: Yes.
+
+722
+00:34:29,780 --> 00:34:30,440
+Speaker 0: Here's the thing.
+
+723
+00:34:30,800 --> 00:34:38,900
+Speaker 0: Usually, my recommendation is to add, because database, I can't show you, I don't know why.
+
+724
+00:34:38,940 --> 00:34:39,320
+Speaker 1: One too many.
+
+725
+00:34:39,360 --> 00:34:39,659
+Speaker 1: Yes, yes, yes.
+
+726
+00:34:39,699 --> 00:34:43,659
+Speaker 1: I want to... Database, ER, diagram.
+
+727
+00:34:43,739 --> 00:34:43,940
+Speaker 0: Okay.
+
+728
+00:34:44,139 --> 00:34:44,340
+Speaker 0: Yes.
+
+729
+00:34:45,300 --> 00:34:50,620
+Speaker 0: Basically, not this crap over here, but this one.
+
+730
+00:34:51,940 --> 00:34:52,659
+Speaker 0: Like, you see?
+
+731
+00:34:52,940 --> 00:35:01,660
+Speaker 0: It has these notations, like one too many, and I recommend to add even numbers, one, two, many, zero, many.
+
+732
+00:35:01,700 --> 00:35:02,360
+Speaker 1: One too star.
+
+733
+00:35:02,660 --> 00:35:02,960
+Speaker 1: Okay.
+
+734
+00:35:03,300 --> 00:35:04,320
+Speaker 0: Yes, yes, yes, yes.
+
+735
+00:35:04,420 --> 00:35:04,800
+Speaker 0: Like that.
+
+736
+00:35:05,220 --> 00:35:07,160
+Speaker 0: This would be the most precise.
+
+737
+00:35:10,260 --> 00:35:11,240
+Speaker 0: I can see that this one.
+
+738
+00:35:11,480 --> 00:35:13,500
+Speaker 0: Can I look at it?
+
+739
+00:35:14,160 --> 00:35:16,080
+Speaker 0: No, it's a question, so it's wrong.
+
+740
+00:35:17,180 --> 00:35:21,920
+Speaker 0: Yeah, because if you can, if you look at this, yeah, they all have these.
+
+741
+00:35:22,780 --> 00:35:22,960
+Speaker 1: Okay.
+
+742
+00:35:23,140 --> 00:35:23,960
+Speaker 0: These specifics.
+
+743
+00:35:24,180 --> 00:35:25,480
+Speaker 0: So, you just basically update it.
+
+744
+00:35:25,860 --> 00:35:26,300
+Speaker 1: That's okay.
+
+745
+00:35:27,240 --> 00:35:27,600
+Speaker 0: Yeah.
+
+746
+00:35:27,640 --> 00:35:27,920
+Speaker 0: Right.
+
+747
+00:35:28,160 --> 00:35:31,220
+Speaker 0: Now, this one's okay.
+
+748
+00:35:31,640 --> 00:35:32,820
+Speaker 0: Also, double check spacing.
+
+749
+00:35:32,980 --> 00:35:33,840
+Speaker 0: I didn't check this one.
+
+750
+00:35:34,280 --> 00:35:34,500
+Speaker 0: Okay.
+
+751
+00:35:34,860 --> 00:35:36,960
+Speaker 0: Just... Another thing.
+
+752
+00:35:37,120 --> 00:35:41,040
+Speaker 0: The data is encrypted with AES 256.
+
+753
+00:35:42,760 --> 00:35:44,400
+Speaker 0: A few sentences.
+
+754
+00:35:44,500 --> 00:35:44,680
+Speaker 0: Why?
+
+755
+00:35:45,240 --> 00:35:45,440
+Speaker 0: Okay.
+
+756
+00:35:45,760 --> 00:35:47,420
+Speaker 0: Because if somebody...
+
+757
+00:35:47,480 --> 00:35:50,840
+Speaker 1: I just... Okay, I describe it in the... At the end.
+
+758
+00:35:51,080 --> 00:35:51,300
+Speaker 1: For...
+
+759
+00:35:51,900 --> 00:35:52,900
+Speaker 0: At the end, yes.
+
+760
+00:35:53,320 --> 00:36:10,140
+Speaker 0: But provide a few sentences over here because if it's going to be a reviewer and it's going to be a strict reviewer, he might say that argumentation is provided at the end of the chapter instead of the first chapter or, for example, over here.
+
+761
+00:36:10,640 --> 00:36:15,660
+Speaker 0: And it is not immediately apparent why such argumentation was chosen.
+
+762
+00:36:16,760 --> 00:36:16,980
+Speaker 1: Okay.
+
+763
+00:36:17,940 --> 00:36:18,200
+Speaker 0: Okay.
+
+764
+00:36:18,880 --> 00:36:19,760
+Speaker 0: This is how it goes.
+
+765
+00:36:20,920 --> 00:36:24,740
+Speaker 0: I mean, I'm not even making this up.
+
+766
+00:36:25,100 --> 00:36:25,620
+Speaker 1: Yeah, okay.
+
+767
+00:36:25,660 --> 00:36:28,460
+Speaker 1: This is how all the views are being done.
+
+768
+00:36:28,500 --> 00:36:31,080
+Speaker 0: This is how I operate because this is how I operate.
+
+769
+00:36:31,160 --> 00:36:31,480
+Speaker 0: Okay.
+
+770
+00:36:33,420 --> 00:36:34,320
+Speaker 0: Also, a question.
+
+771
+00:36:34,480 --> 00:36:38,780
+Speaker 0: Did you use AI like mermaids or this one?
+
+772
+00:36:38,820 --> 00:36:40,620
+Speaker 1: This is advancement, but no, not AI.
+
+773
+00:36:40,800 --> 00:36:43,400
+Speaker 1: I think this is also an export from somewhere.
+
+774
+00:36:46,360 --> 00:36:49,500
+Speaker 0: What I dislike about this... Okay, this is okay.
+
+775
+00:36:50,480 --> 00:36:57,540
+Speaker 0: What I'm confused about, I'm confused about the relationships between classes, okay?
+
+776
+00:36:57,680 --> 00:37:00,740
+Speaker 1: The relationships are the class dependencies, basically.
+
+777
+00:37:01,740 --> 00:37:07,580
+Speaker 0: Only, you mean no inheritance, no aggregation, no composition?
+
+778
+00:37:07,620 --> 00:37:08,860
+Speaker 1: So it's aggregation, basically.
+
+779
+00:37:09,060 --> 00:37:09,380
+Speaker 1: There is no...
+
+780
+00:37:09,980 --> 00:37:14,040
+Speaker 0: But aggregation is not a black arrow.
+
+781
+00:37:14,160 --> 00:37:16,320
+Speaker 0: Aggregation is a white diamond.
+
+782
+00:37:16,360 --> 00:37:17,220
+Speaker 0: Okay.
+
+783
+00:37:17,260 --> 00:37:17,560
+Speaker 1: Okay.
+
+784
+00:37:19,220 --> 00:37:25,680
+Speaker 1: So if I... Basically, most of the classes take some other classes in their constructor.
+
+785
+00:37:26,880 --> 00:37:26,960
+Speaker 1: So...
+
+786
+00:37:28,360 --> 00:37:29,580
+Speaker 0: Basically, it goes like this.
+
+787
+00:37:29,620 --> 00:37:30,320
+Speaker 0: If you have a class...
+
+788
+00:37:30,360 --> 00:37:31,380
+Speaker 1: It's called composition, I think.
+
+789
+00:37:32,720 --> 00:37:34,540
+Speaker 0: Now, the difference.
+
+790
+00:37:34,980 --> 00:37:37,800
+Speaker 0: Composition means their life cycles are the same.
+
+791
+00:37:39,200 --> 00:37:45,600
+Speaker 0: Aggregation basically means that a part of a class structure is another class.
+
+792
+00:37:47,380 --> 00:37:47,620
+Speaker 0: Okay?
+
+793
+00:37:48,040 --> 00:37:49,460
+Speaker 0: Another class object, let's say.
+
+794
+00:37:49,520 --> 00:37:55,200
+Speaker 0: So, for example, I have... Okay, let's open your work, okay?
+
+795
+00:37:57,360 --> 00:37:58,260
+Speaker 0: For example...
+
+796
+00:37:59,940 --> 00:38:04,360
+Speaker 1: For example, this view model, calendar view model takes a calendar provider in its constructor.
+
+797
+00:38:04,400 --> 00:38:09,980
+Speaker 0: Yeah, but if it takes in that constructor, that means you have a class.
+
+798
+00:38:10,780 --> 00:38:12,720
+Speaker 0: Also, what is missing?
+
+799
+00:38:14,000 --> 00:38:15,500
+Speaker 0: You have here only methods.
+
+800
+00:38:15,940 --> 00:38:16,100
+Speaker 1: Yeah?
+
+801
+00:38:16,540 --> 00:38:18,400
+Speaker 1: I should include some other stuff?
+
+802
+00:38:18,680 --> 00:38:19,260
+Speaker 0: Attributes.
+
+803
+00:38:19,500 --> 00:38:20,320
+Speaker 0: Attributes should go.
+
+804
+00:38:20,680 --> 00:38:21,300
+Speaker 1: Ah, okay.
+
+805
+00:38:21,980 --> 00:38:22,220
+Speaker 1: Always.
+
+806
+00:38:22,960 --> 00:38:27,580
+Speaker 0: That's why I'm telling you, if you have a class, you need to have a class structure.
+
+807
+00:38:27,720 --> 00:38:29,560
+Speaker 0: So that means I need to see attributes.
+
+808
+00:38:30,480 --> 00:38:32,460
+Speaker 0: And then I also need to see methods.
+
+809
+00:38:32,780 --> 00:38:33,000
+Speaker 0: Okay?
+
+810
+00:38:33,740 --> 00:38:47,840
+Speaker 0: If my class has an attribute, which is a type of another class... For example, my, let's say, user class has an attribute address, which is also a class.
+
+811
+00:38:48,420 --> 00:38:48,500
+Speaker 1: Okay?
+
+812
+00:38:49,200 --> 00:38:52,580
+Speaker 0: So, address is a part of the structure of my user class.
+
+813
+00:38:53,020 --> 00:39:00,440
+Speaker 0: That means I have aggregation between user and address classes.
+
+814
+00:39:00,800 --> 00:39:01,240
+Speaker 1: Okay.
+
+815
+00:39:01,280 --> 00:39:01,500
+Speaker 1: Okay?
+
+816
+00:39:02,180 --> 00:39:04,360
+Speaker 1: So, in my case, this is aggregation everywhere then.
+
+817
+00:39:04,400 --> 00:39:07,020
+Speaker 0: Yeah, so you just need to double check.
+
+818
+00:39:07,260 --> 00:39:12,460
+Speaker 0: What kind of... if you're using IntelliJ, IntelliJ actually draws these very well.
+
+819
+00:39:13,720 --> 00:39:16,240
+Speaker 1: IntelliJ does not draw them for Kotlin.
+
+820
+00:39:16,840 --> 00:39:17,800
+Speaker 0: Okay.
+
+821
+00:39:18,220 --> 00:39:18,460
+Speaker 0: Okay.
+
+822
+00:39:19,240 --> 00:39:20,300
+Speaker 0: I didn't check with Kotlin.
+
+823
+00:39:20,420 --> 00:39:20,600
+Speaker 0: Okay.
+
+824
+00:39:20,660 --> 00:39:22,120
+Speaker 0: Then it's Satter.
+
+825
+00:39:22,880 --> 00:39:23,360
+Speaker 1: Yeah.
+
+826
+00:39:23,420 --> 00:39:28,220
+Speaker 1: I had... I don't remember, but I spent like two hours making this because I was trying... Yeah.
+
+827
+00:39:28,780 --> 00:39:31,360
+Speaker 1: I was trying to IntelliJ to make IntelliJ spit out.
+
+828
+00:39:31,500 --> 00:39:33,140
+Speaker 1: I even compiled some Kotlin to Java.
+
+829
+00:39:33,220 --> 00:39:33,700
+Speaker 1: It was crap.
+
+830
+00:39:35,380 --> 00:39:35,500
+Speaker 0: Yeah.
+
+831
+00:39:35,660 --> 00:39:41,460
+Speaker 0: So, this is basically these notations that we have here.
+
+832
+00:39:41,840 --> 00:39:42,600
+Speaker 1: Okay.
+
+833
+00:39:42,700 --> 00:39:44,000
+Speaker 1: Maybe I'll just withdraw it.
+
+834
+00:39:44,320 --> 00:39:44,580
+Speaker 1: Right.
+
+835
+00:39:45,060 --> 00:39:45,860
+Speaker 0: And here's the thing.
+
+836
+00:39:46,120 --> 00:39:47,980
+Speaker 0: Association is also possible.
+
+837
+00:39:48,440 --> 00:39:55,800
+Speaker 0: Then you have dependency, but when you have dependency, it's a bit different from aggregation.
+
+838
+00:39:56,080 --> 00:39:56,320
+Speaker 1: Okay?
+
+839
+00:39:57,080 --> 00:40:01,740
+Speaker 0: Because aggregation means that it's a part of a structure.
+
+840
+00:40:01,920 --> 00:40:02,180
+Speaker 0: I can...
+
+841
+00:40:04,380 --> 00:40:04,980
+Speaker 1: Aggregation.
+
+842
+00:40:05,440 --> 00:40:05,920
+Speaker 1: Aggregation.
+
+843
+00:40:05,960 --> 00:40:06,460
+Speaker 0: The special type.
+
+844
+00:40:06,540 --> 00:40:06,580
+Speaker 0: Yes.
+
+845
+00:40:07,040 --> 00:40:10,320
+Speaker 0: Class two is part of class one, like part.
+
+846
+00:40:10,880 --> 00:40:11,240
+Speaker 0: All right.
+
+847
+00:40:11,960 --> 00:40:18,520
+Speaker 0: And if we have dependency, it's again, a special type of association.
+
+848
+00:40:18,860 --> 00:40:20,140
+Speaker 1: Depends on class two.
+
+849
+00:40:20,340 --> 00:40:24,780
+Speaker 0: But one may cause changes to the other, but not the other way around.
+
+850
+00:40:25,000 --> 00:40:25,100
+Speaker 0: Right.
+
+851
+00:40:25,160 --> 00:40:28,140
+Speaker 0: Class one depends... Basically, just double check.
+
+852
+00:40:28,980 --> 00:40:29,220
+Speaker 0: Okay.
+
+853
+00:40:31,980 --> 00:40:33,620
+Speaker 1: Changes in the definition.
+
+854
+00:40:33,660 --> 00:40:34,960
+Speaker 0: Maybe yours is correct.
+
+855
+00:40:35,220 --> 00:40:36,440
+Speaker 0: Mine was a question.
+
+856
+00:40:36,860 --> 00:40:39,560
+Speaker 1: Are you sure that this is the correct... I am not sure, but...
+
+857
+00:40:40,460 --> 00:40:40,580
+Speaker 0: Yeah.
+
+858
+00:40:40,740 --> 00:40:41,560
+Speaker 0: So, double check.
+
+859
+00:40:41,720 --> 00:40:41,900
+Speaker 0: Okay.
+
+860
+00:40:42,020 --> 00:40:49,100
+Speaker 0: Based on these definitions, descriptions, you will be... It's going to be clear.
+
+861
+00:40:49,300 --> 00:40:49,500
+Speaker 0: Okay?
+
+862
+00:40:49,580 --> 00:40:52,240
+Speaker 0: Because I didn't check.
+
+863
+00:40:52,660 --> 00:40:59,640
+Speaker 0: For example, dependency, when you have association, like this one.
+
+864
+00:40:59,780 --> 00:40:59,980
+Speaker 0: Okay?
+
+865
+00:41:00,380 --> 00:41:08,080
+Speaker 0: So, if it's an association, that means between classes, one may cause changes to the other, but not the other way around.
+
+866
+00:41:08,280 --> 00:41:08,600
+Speaker 1: Damn it.
+
+867
+00:41:08,680 --> 00:41:09,000
+Speaker 1: Associations.
+
+868
+00:41:09,080 --> 00:41:09,900
+Speaker 1: What does it mean, right?
+
+869
+00:41:09,960 --> 00:41:11,460
+Speaker 1: Changes to the definition.
+
+870
+00:41:11,500 --> 00:41:12,640
+Speaker 1: A structural link.
+
+871
+00:41:12,740 --> 00:41:14,220
+Speaker 0: There is an association.
+
+872
+00:41:15,520 --> 00:41:19,420
+Speaker 0: For example, you can say that... Let's say you have a class.
+
+873
+00:41:19,640 --> 00:41:19,900
+Speaker 0: Okay?
+
+874
+00:41:21,020 --> 00:41:28,880
+Speaker 0: And then you have a method, which, for example, takes data from another object.
+
+875
+00:41:28,920 --> 00:41:28,980
+Speaker 0: Okay?
+
+876
+00:41:29,100 --> 00:41:29,440
+Speaker 0: I don't know.
+
+877
+00:41:30,800 --> 00:41:31,860
+Speaker 1: I have a bunch of those here.
+
+878
+00:41:32,700 --> 00:41:32,860
+Speaker 0: Yeah.
+
+879
+00:41:33,020 --> 00:41:48,720
+Speaker 0: So, it's an association, such as there are methods in this class that are using objects of other classes in their computations or logic or something like this.
+
+880
+00:41:49,300 --> 00:41:56,000
+Speaker 0: And you just basically say that either this association is two-sided or one-sided or something like this.
+
+881
+00:41:56,240 --> 00:41:56,960
+Speaker 1: That's right.
+
+882
+00:41:57,500 --> 00:42:02,640
+Speaker 1: So, then I have association and the composition, or how is it called?
+
+883
+00:42:03,520 --> 00:42:03,640
+Speaker 1: Both?
+
+884
+00:42:03,700 --> 00:42:04,480
+Speaker 1: Association.
+
+885
+00:42:04,740 --> 00:42:08,980
+Speaker 0: Now, you have... If it's a simple association, then it's a simple association.
+
+886
+00:42:09,200 --> 00:42:09,420
+Speaker 0: Okay?
+
+887
+00:42:11,460 --> 00:42:13,380
+Speaker 0: A part of the relationship of parts.
+
+888
+00:42:13,420 --> 00:42:16,680
+Speaker 0: in many instances, it's a segregation.
+
+889
+00:42:16,960 --> 00:42:29,140
+Speaker 0: So, basically, I think this is where you will have... So, if you have a simple association, in your situation is going to be dependency, because dependency is a special type of association.
+
+890
+00:42:29,540 --> 00:42:29,740
+Speaker 0: Okay?
+
+891
+00:42:30,760 --> 00:42:41,920
+Speaker 0: So, in your case, you will definitely have these arrows like this, because this is what association signifies.
+
+892
+00:42:42,340 --> 00:42:51,160
+Speaker 0: But I want you to double check those cases where you have one class, which is a structure of another class.
+
+893
+00:42:51,620 --> 00:42:57,040
+Speaker 0: Because if you have this situation, dependency is not part of the structure.
+
+894
+00:42:57,180 --> 00:42:57,640
+Speaker 0: It depends.
+
+895
+00:42:57,720 --> 00:43:04,700
+Speaker 0: Let's say I am updating user, and I don't know, address also must be updated.
+
+896
+00:43:04,740 --> 00:43:06,560
+Speaker 0: I have a dependence.
+
+897
+00:43:06,600 --> 00:43:08,320
+Speaker 0: Okay?
+
+898
+00:43:08,360 --> 00:43:09,700
+Speaker 0: Okay, wrong example.
+
+899
+00:43:09,740 --> 00:43:11,180
+Speaker 1: User and address is an aggregation.
+
+900
+00:43:11,220 --> 00:43:11,280
+Speaker 1: Okay.
+
+901
+00:43:11,320 --> 00:43:12,440
+Speaker 1: Can I just provide the example?
+
+902
+00:43:12,740 --> 00:43:17,120
+Speaker 1: All of my class structure is the same across all the ViewModels providers and API stack.
+
+903
+00:43:18,140 --> 00:43:20,760
+Speaker 1: So it's like, in the API, I only get the data.
+
+904
+00:43:20,980 --> 00:43:28,200
+Speaker 1: In the provider, I depend on the database and on the API, I fetch from the API and put into the DB.
+
+905
+00:43:28,360 --> 00:43:32,500
+Speaker 1: There is one field that exposes the fetch data in an array.
+
+906
+00:43:33,120 --> 00:43:40,320
+Speaker 1: And then in a ViewModel, I listen to that data and then convert it to the data format for the UI.
+
+907
+00:43:40,360 --> 00:43:41,800
+Speaker 1: But you're explaining the logic.
+
+908
+00:43:42,260 --> 00:43:46,980
+Speaker 0: What you need to look into, you need to look into the code and the class structure, basically.
+
+909
+00:43:48,500 --> 00:43:48,700
+Speaker 0: Okay.
+
+910
+00:43:48,960 --> 00:43:52,000
+Speaker 0: So now you need to update this because I need to see attributes.
+
+911
+00:43:52,300 --> 00:43:52,700
+Speaker 1: Yeah, okay.
+
+912
+00:43:52,880 --> 00:43:55,500
+Speaker 1: There are one attribute per class, I think, or two.
+
+913
+00:43:56,420 --> 00:43:56,740
+Speaker 0: Hold on.
+
+914
+00:43:57,460 --> 00:44:00,400
+Speaker 0: I will open you one of the thesis works.
+
+915
+00:44:01,060 --> 00:44:02,280
+Speaker 0: You will see what I have.
+
+916
+00:44:08,780 --> 00:44:17,980
+Speaker 0: So Lithuanian work, but it doesn't matter because I'm going to scroll down to the class diagram, which is in... Yeah.
+
+917
+00:44:18,880 --> 00:44:19,080
+Speaker 0: Yes.
+
+918
+00:44:19,240 --> 00:44:21,240
+Speaker 0: We have a class diagram over here.
+
+919
+00:44:21,800 --> 00:44:22,060
+Speaker 0: Okay.
+
+920
+00:44:22,140 --> 00:44:22,920
+Speaker 0: And then add...
+
+921
+00:44:24,200 --> 00:44:25,080
+Speaker 1: It's all association.
+
+922
+00:44:25,160 --> 00:44:26,600
+Speaker 1: Most of it is association.
+
+923
+00:44:26,860 --> 00:44:30,060
+Speaker 0: But for example, you see, yeah, but you see email confirmation.
+
+924
+00:44:30,420 --> 00:44:33,720
+Speaker 0: It's an attribute over here.
+
+925
+00:44:34,120 --> 00:44:38,640
+Speaker 0: So you still need attributes and methods because not everywhere we have this.
+
+926
+00:44:39,080 --> 00:44:41,280
+Speaker 0: I don't... Example, default, quiz size.
+
+927
+00:44:41,760 --> 00:44:44,520
+Speaker 0: It's not a Java class, but it doesn't matter.
+
+928
+00:44:44,820 --> 00:44:50,300
+Speaker 0: But as you can see, it has inheritance such as, you know, of course, limiter extends limiter.
+
+929
+00:44:50,580 --> 00:44:50,700
+Speaker 1: Yeah.
+
+930
+00:44:51,640 --> 00:45:00,120
+Speaker 0: Like mailable, like this received mail extends mailable, something like this, then it's just an association.
+
+931
+00:45:00,540 --> 00:45:13,920
+Speaker 0: Like these two do not have, for example, forum reaction service doesn't have a part of the structure as a structure, like as an attribute reactable object.
+
+932
+00:45:14,620 --> 00:45:19,880
+Speaker 0: But let's say if it does something like register reaction, reactable also changes.
+
+933
+00:45:20,620 --> 00:45:23,320
+Speaker 0: Like they know about each other.
+
+934
+00:45:25,660 --> 00:45:25,880
+Speaker 1: Okay.
+
+935
+00:45:26,660 --> 00:45:26,740
+Speaker 0: Yeah.
+
+936
+00:45:26,920 --> 00:45:28,800
+Speaker 0: Just double check these things.
+
+937
+00:45:29,420 --> 00:45:31,720
+Speaker 0: Also I can open another one.
+
+938
+00:45:31,820 --> 00:45:33,120
+Speaker 1: Let me check.
+
+939
+00:45:35,780 --> 00:45:36,140
+Speaker 1: Okay.
+
+940
+00:45:36,340 --> 00:45:39,500
+Speaker 0: This one's not... You need to remember.
+
+941
+00:45:39,820 --> 00:45:47,620
+Speaker 0: where exactly do I have class diagrams for this one.
+
+942
+00:45:47,700 --> 00:45:48,080
+Speaker 0: Hold on.
+
+943
+00:45:49,760 --> 00:45:56,680
+Speaker 0: I'm searching my infinite stash of things.
+
+944
+00:45:56,840 --> 00:46:02,120
+Speaker 0: I have so many, so many stuff from mine.
+
+945
+00:46:02,240 --> 00:46:02,460
+Speaker 0: Okay.
+
+946
+00:46:02,560 --> 00:46:05,480
+Speaker 0: This one is a bit smaller.
+
+947
+00:46:05,620 --> 00:46:10,020
+Speaker 0: Again, English group, sequence diagrams.
+
+948
+00:46:10,300 --> 00:46:12,520
+Speaker 0: Again, the same as yours.
+
+949
+00:46:13,420 --> 00:46:14,980
+Speaker 0: Data, for example, like this.
+
+950
+00:46:15,220 --> 00:46:15,420
+Speaker 1: Okay.
+
+951
+00:46:16,620 --> 00:46:22,960
+Speaker 0: Monthly payment is part of the place structure, place class.
+
+952
+00:46:25,000 --> 00:46:31,840
+Speaker 0: For example, over here, it wasn't complete because he didn't provide with all the classes with all the methods.
+
+953
+00:46:32,920 --> 00:46:45,960
+Speaker 0: Actually no, it's a good diagram for a simple reason because only model classes, he had way more classes, which had other methods, but he didn't add this into the class diagram.
+
+954
+00:46:47,560 --> 00:46:47,760
+Speaker 0: Okay.
+
+955
+00:46:47,900 --> 00:46:50,020
+Speaker 0: But basically, yeah, you need to double check these.
+
+956
+00:46:50,280 --> 00:46:50,480
+Speaker 0: Okay.
+
+957
+00:46:52,420 --> 00:46:56,900
+Speaker 0: Maybe yours, your current notation is correct.
+
+958
+00:46:58,280 --> 00:46:58,480
+Speaker 0: Okay.
+
+959
+00:46:59,420 --> 00:47:08,280
+Speaker 0: But I'm just giving you an idea because if I'm asking these questions, you will be asked by others or more technical people.
+
+960
+00:47:08,760 --> 00:47:09,960
+Speaker 0: Are you sure about this?
+
+961
+00:47:10,580 --> 00:47:11,720
+Speaker 1: And how do I justify that?
+
+962
+00:47:11,860 --> 00:47:12,260
+Speaker 1: I'm sure?
+
+963
+00:47:13,160 --> 00:47:17,580
+Speaker 1: I will just say the class depends on- Yeah, but my code indicates this.
+
+964
+00:47:18,200 --> 00:47:18,300
+Speaker 1: Ah.
+
+965
+00:47:18,720 --> 00:47:18,940
+Speaker 1: Okay.
+
+966
+00:47:19,300 --> 00:47:19,620
+Speaker 0: Yes.
+
+967
+00:47:19,740 --> 00:47:19,920
+Speaker 0: Yes.
+
+968
+00:47:20,180 --> 00:47:23,020
+Speaker 0: Such as, and you will answer this.
+
+969
+00:47:23,140 --> 00:47:23,300
+Speaker 0: Yes.
+
+970
+00:47:23,360 --> 00:47:31,360
+Speaker 0: It's an association because my Moodle courses provider depends on Moodle courses.
+
+971
+00:47:31,500 --> 00:47:36,780
+Speaker 0: No, my calendar view model depends on Moodle courses provider.
+
+972
+00:47:36,900 --> 00:47:37,140
+Speaker 0: Yes.
+
+973
+00:47:37,780 --> 00:47:38,200
+Speaker 1: It does.
+
+974
+00:47:38,340 --> 00:47:39,480
+Speaker 1: Yeah.
+
+975
+00:47:39,740 --> 00:47:42,620
+Speaker 0: So you can say, but it is not part of the structure.
+
+976
+00:47:43,160 --> 00:47:57,500
+Speaker 0: So it's a special type of an association where like changes in this class, I don't know, this object of this class has an effect on another object of that class.
+
+977
+00:47:58,100 --> 00:47:58,560
+Speaker 0: Just like that.
+
+978
+00:47:59,460 --> 00:48:03,180
+Speaker 0: It's about demonstrating that you know the differences, okay?
+
+979
+00:48:03,940 --> 00:48:12,800
+Speaker 0: Most likely it will not be asked, but for example, if all of them are dependencies, you will get questions, are you sure that they're all only dependencies?
+
+980
+00:48:13,780 --> 00:48:14,000
+Speaker 0: Okay.
+
+981
+00:48:14,520 --> 00:48:14,720
+Speaker 1: Okay.
+
+982
+00:48:15,180 --> 00:48:27,140
+Speaker 0: So, so the thing that I asked you, the reviewers might also ask, so be, and the committee also might ask, so be prepared to answer this and double check this dialogue.
+
+983
+00:48:27,220 --> 00:48:27,400
+Speaker 1: Okay.
+
+984
+00:48:27,840 --> 00:48:28,040
+Speaker 0: Okay.
+
+985
+00:48:28,660 --> 00:48:31,700
+Speaker 0: Because it's entirely possible that this is the correct one.
+
+986
+00:48:32,760 --> 00:48:44,940
+Speaker 0: But I've seen students, for example, feed all the codes to mermaid, mermaid generates some kind of diagrams with wrong notations.
+
+987
+00:48:45,860 --> 00:48:46,060
+Speaker 1: Okay.
+
+988
+00:48:46,700 --> 00:48:49,340
+Speaker 0: And then I give a question to hold on, but I checked your codes.
+
+989
+00:48:50,060 --> 00:48:55,480
+Speaker 0: You have this object as part of the structure of this object.
+
+990
+00:48:56,260 --> 00:48:57,560
+Speaker 0: Why it's only the dependency?
+
+991
+00:48:57,820 --> 00:49:00,560
+Speaker 0: It should be not dependency, it should be aggregation.
+
+992
+00:49:01,780 --> 00:49:03,480
+Speaker 0: And then they ask what is aggregation?
+
+993
+00:49:03,600 --> 00:49:04,520
+Speaker 0: So please don't do this.
+
+994
+00:49:05,660 --> 00:49:05,840
+Speaker 1: Okay.
+
+995
+00:49:07,760 --> 00:49:07,860
+Speaker 0: Yeah.
+
+996
+00:49:08,000 --> 00:49:08,780
+Speaker 0: So just double check.
+
+997
+00:49:08,880 --> 00:49:09,060
+Speaker 1: Okay.
+
+998
+00:49:11,220 --> 00:49:11,420
+Speaker 1: I will.
+
+999
+00:49:11,520 --> 00:49:11,600
+Speaker 1: Yeah.
+
+1000
+00:49:11,900 --> 00:49:12,100
+Speaker 1: Okay.
+
+1001
+00:49:13,740 --> 00:49:19,860
+Speaker 0: I mean, in no way am I asking, am I telling you that this is wrong?
+
+1002
+00:49:20,020 --> 00:49:21,840
+Speaker 0: I know for sure that you did your work on your own.
+
+1003
+00:49:22,220 --> 00:49:27,720
+Speaker 0: It's about preparing you for the reviewer and for the committee.
+
+1004
+00:49:28,820 --> 00:49:35,460
+Speaker 0: Because if I say AI, we're already very nitpicking because a lot of students use AI.
+
+1005
+00:49:36,500 --> 00:49:39,540
+Speaker 0: So make sure that you will say, no, I use this and this tool.
+
+1006
+00:49:39,860 --> 00:49:42,880
+Speaker 1: So far, I haven't used any in the... I know.
+
+1007
+00:49:43,120 --> 00:49:43,340
+Speaker 0: I know.
+
+1008
+00:49:43,620 --> 00:49:43,860
+Speaker 0: I know.
+
+1009
+00:49:44,060 --> 00:49:44,220
+Speaker 0: I know.
+
+1010
+00:49:44,540 --> 00:49:45,180
+Speaker 0: But that's the thing.
+
+1011
+00:49:45,360 --> 00:49:55,000
+Speaker 0: What I'm trying to tell you, AI has been abused so badly by students.
+
+1012
+00:49:55,280 --> 00:49:55,820
+Speaker 1: Unfortunately.
+
+1013
+00:49:55,900 --> 00:49:56,040
+Speaker 1: Yeah.
+
+1014
+00:49:57,920 --> 00:50:05,260
+Speaker 0: That now we as supervisors, because we're making the final verdict, we're a little bit over paranoid.
+
+1015
+00:50:06,080 --> 00:50:06,460
+Speaker 1: Understood.
+
+1016
+00:50:06,680 --> 00:50:06,800
+Speaker 1: Yeah.
+
+1017
+00:50:07,380 --> 00:50:07,500
+Speaker 0: Yeah.
+
+1018
+00:50:07,660 --> 00:50:09,640
+Speaker 0: So, so make sure that you fix this.
+
+1019
+00:50:10,580 --> 00:50:10,840
+Speaker 0: Right.
+
+1020
+00:50:11,040 --> 00:50:13,120
+Speaker 0: This one, this one is... Wait.
+
+1021
+00:50:13,180 --> 00:50:13,880
+Speaker 0: What was that?
+
+1022
+00:50:14,260 --> 00:50:15,160
+Speaker 0: Okay.
+
+1023
+00:50:15,200 --> 00:50:17,720
+Speaker 1: The, there was a comment, small comment about the diagram.
+
+1024
+00:50:18,840 --> 00:50:19,340
+Speaker 1: What was that?
+
+1025
+00:50:19,860 --> 00:50:22,860
+Speaker 0: I make vector image because if I scroll in it...
+
+1026
+00:50:23,120 --> 00:50:23,900
+Speaker 1: Ah, yeah.
+
+1027
+00:50:24,240 --> 00:50:24,440
+Speaker 1: Okay.
+
+1028
+00:50:24,600 --> 00:50:24,740
+Speaker 1: Yes.
+
+1029
+00:50:26,280 --> 00:50:26,640
+Speaker 0: No pixels.
+
+1030
+00:50:27,040 --> 00:50:27,200
+Speaker 1: Yeah.
+
+1031
+00:50:27,240 --> 00:50:27,460
+Speaker 1: Okay.
+
+1032
+00:50:29,120 --> 00:50:30,740
+Speaker 0: So you figure this one is okay.
+
+1033
+00:50:31,420 --> 00:50:33,740
+Speaker 0: I have little, right.
+
+1034
+00:50:34,360 --> 00:50:35,040
+Speaker 0: Check notations.
+
+1035
+00:50:35,140 --> 00:50:35,300
+Speaker 0: Okay.
+
+1036
+00:50:35,380 --> 00:50:38,820
+Speaker 0: Because if you're quoting, it's not single quotes.
+
+1037
+00:50:39,200 --> 00:50:39,380
+Speaker 0: Okay.
+
+1038
+00:50:41,160 --> 00:50:43,680
+Speaker 0: You can just go to, I don't know, Chai GPT and double check.
+
+1039
+00:50:43,880 --> 00:50:51,780
+Speaker 0: If I have this sentence and my current label is the title, how should I separate it in the text?
+
+1040
+00:50:52,240 --> 00:51:00,260
+Speaker 0: And it will tell you based on, um, let's say like common requirements.
+
+1041
+00:51:00,300 --> 00:51:00,500
+Speaker 1: Okay.
+
+1042
+00:51:00,640 --> 00:51:00,800
+Speaker 1: Okay.
+
+1043
+00:51:01,560 --> 00:51:07,100
+Speaker 0: Because as far as I remember, it is in quotes, but I cannot guarantee this.
+
+1044
+00:51:07,280 --> 00:51:07,460
+Speaker 1: Okay.
+
+1045
+00:51:07,740 --> 00:51:08,160
+Speaker 1: I'll check it.
+
+1046
+00:51:08,420 --> 00:51:08,580
+Speaker 0: Okay.
+
+1047
+00:51:08,940 --> 00:51:10,300
+Speaker 0: So just double check that one.
+
+1048
+00:51:11,120 --> 00:51:11,280
+Speaker 0: Okay.
+
+1049
+00:51:11,400 --> 00:51:12,520
+Speaker 0: So this one is okay.
+
+1050
+00:51:12,720 --> 00:51:12,960
+Speaker 0: Okay.
+
+1051
+00:51:13,080 --> 00:51:13,640
+Speaker 0: Okay.
+
+1052
+00:51:14,800 --> 00:51:15,040
+Speaker 0: Yes.
+
+1053
+00:51:15,160 --> 00:51:16,260
+Speaker 0: Minor fixes.
+
+1054
+00:51:17,420 --> 00:51:17,660
+Speaker 1: Right.
+
+1055
+00:51:18,040 --> 00:51:18,540
+Speaker 1: The comment.
+
+1056
+00:51:18,860 --> 00:51:18,940
+Speaker 0: Yeah.
+
+1057
+00:51:19,100 --> 00:51:20,040
+Speaker 0: New page.
+
+1058
+00:51:20,500 --> 00:51:22,600
+Speaker 0: There are other solutions, but not too much.
+
+1059
+00:51:22,840 --> 00:51:26,260
+Speaker 0: So basically you did add the system security.
+
+1060
+00:51:26,560 --> 00:51:26,700
+Speaker 1: Yeah.
+
+1061
+00:51:27,300 --> 00:51:27,380
+Speaker 1: Yeah.
+
+1062
+00:51:28,340 --> 00:51:32,940
+Speaker 0: Um, but like this one is good at what you might get.
+
+1063
+00:51:33,040 --> 00:51:40,440
+Speaker 0: You might get questions actually, um, about did you do analysis of other security?
+
+1064
+00:51:40,480 --> 00:51:47,540
+Speaker 1: You know, and if I answer, I just used what is good enough.
+
+1065
+00:51:47,960 --> 00:51:49,860
+Speaker 1: And this is, this will be a better answer, right?
+
+1066
+00:51:50,720 --> 00:51:52,740
+Speaker 0: This is a bad answer.
+
+1067
+00:51:52,780 --> 00:51:54,500
+Speaker 0: I mean, you will probably answer this.
+
+1068
+00:51:54,660 --> 00:52:03,920
+Speaker 0: No, unfortunately I did not look into this, uh, as it seemed the most known and suitable, you know, no choice, something like this.
+
+1069
+00:52:04,100 --> 00:52:04,240
+Speaker 1: Okay.
+
+1070
+00:52:04,560 --> 00:52:11,740
+Speaker 0: You might get asked, uh, why didn't you do this analysis?
+
+1071
+00:52:11,860 --> 00:52:17,260
+Speaker 0: This serves, uh, as a theoretical research or something like this.
+
+1072
+00:52:17,300 --> 00:52:34,780
+Speaker 0: Uh, this could be answered that once you have developed the system and the whole functionality, you decided to add a layer of security, which became apparent, you know, during the development.
+
+1073
+00:52:34,960 --> 00:52:43,500
+Speaker 0: And this is the reason why you have this sub chapter at the end of your third chapter like this.
+
+1074
+00:52:44,000 --> 00:52:44,220
+Speaker 0: Okay.
+
+1075
+00:52:46,160 --> 00:52:57,120
+Speaker 0: Uh, so basically expand a little bit more on other solutions, such as why this one is good, why this one is not, why this one is easier to implement and why this was chosen.
+
+1076
+00:52:57,280 --> 00:52:57,480
+Speaker 0: Okay.
+
+1077
+00:52:57,840 --> 00:53:07,800
+Speaker 0: So you don't expand too much, but like more argumentation so that it would not look like I knew this or this was easy to implement and that's why I used it.
+
+1078
+00:53:08,400 --> 00:53:08,580
+Speaker 1: Okay.
+
+1079
+00:53:09,180 --> 00:53:09,360
+Speaker 0: Right.
+
+1080
+00:53:09,440 --> 00:53:10,740
+Speaker 0: This one is new page.
+
+1081
+00:53:11,520 --> 00:53:11,980
+Speaker 0: Uh, yes.
+
+1082
+00:53:12,280 --> 00:53:13,120
+Speaker 0: Ability testing.
+
+1083
+00:53:13,520 --> 00:53:17,580
+Speaker 0: I don't think I had any issues like spacing, check the spacing, like minor corrections.
+
+1084
+00:53:17,940 --> 00:53:21,020
+Speaker 0: These are just beautification stuff.
+
+1085
+00:53:21,660 --> 00:53:22,780
+Speaker 0: What you need to fix.
+
+1086
+00:53:22,920 --> 00:53:24,320
+Speaker 0: You need to fix your conclusions.
+
+1087
+00:53:24,960 --> 00:53:25,160
+Speaker 0: Okay.
+
+1088
+00:53:25,880 --> 00:53:26,660
+Speaker 1: Numbering.
+
+1089
+00:53:26,720 --> 00:53:27,000
+Speaker 1: Okay.
+
+1090
+00:53:32,560 --> 00:53:32,840
+Speaker 1: Hi.
+
+1091
+00:53:33,680 --> 00:53:33,820
+Speaker 1: Hello.
+
+1092
+00:53:34,280 --> 00:53:34,540
+Speaker 0: No, no, no.
+
+1093
+00:53:34,620 --> 00:53:34,980
+Speaker 0: It's okay.
+
+1094
+00:53:35,020 --> 00:53:35,320
+Speaker 0: It's okay.
+
+1095
+00:53:35,360 --> 00:53:41,900
+Speaker 0: It's just, I have another meeting after you and I'm already being asked to like, it's okay.
+
+1096
+00:53:42,300 --> 00:53:42,480
+Speaker 0: Right.
+
+1097
+00:53:43,740 --> 00:53:48,800
+Speaker 0: Yours are incomplete and because your compute conclusions should be like this.
+
+1098
+00:53:49,260 --> 00:54:04,360
+Speaker 0: You take your, uh, my tasks, yes, you take your task and you answer it such as hold on.
+
+1099
+00:54:04,500 --> 00:54:20,840
+Speaker 0: I will close this such as, uh, analysis of existing university solutions showed that there is no common, you know, architecture solution or something like that.
+
+1100
+00:54:21,400 --> 00:54:25,740
+Speaker 0: Although model did proved to have something like this, but it is incomplete.
+
+1101
+00:54:25,800 --> 00:54:25,980
+Speaker 1: Okay.
+
+1102
+00:54:26,080 --> 00:54:27,980
+Speaker 0: So yes.
+
+1103
+00:54:28,260 --> 00:54:37,980
+Speaker 0: Other universities have their own, uh, solutions, uh, which are based on, I don't know, university, you know, what it is.
+
+1104
+00:54:38,440 --> 00:54:38,800
+Speaker 0: Jesus.
+
+1105
+00:54:41,480 --> 00:54:43,160
+Speaker 0: I forgot the English word.
+
+1106
+00:54:43,560 --> 00:54:44,580
+Speaker 1: University systems.
+
+1107
+00:54:44,780 --> 00:54:45,280
+Speaker 0: Demands.
+
+1108
+00:54:46,100 --> 00:54:46,260
+Speaker 1: Okay.
+
+1109
+00:54:46,460 --> 00:54:46,580
+Speaker 1: Yeah.
+
+1110
+00:54:46,660 --> 00:54:56,020
+Speaker 0: And something like this, uh, which proved that, uh, I don't know, certain functionalities like this and this are useful for students.
+
+1111
+00:54:56,180 --> 00:54:59,780
+Speaker 0: Therefore they should be present in the developed system.
+
+1112
+00:55:00,320 --> 00:55:00,460
+Speaker 1: Okay.
+
+1113
+00:55:01,220 --> 00:55:01,340
+Speaker 0: Yeah.
+
+1114
+00:55:01,440 --> 00:55:02,060
+Speaker 0: Something like this.
+
+1115
+00:55:03,240 --> 00:55:24,120
+Speaker 0: Oh, task number two, analysis of existing cross-platform of technologies used for cross-platform development showed that, um, there is a huge variety of, I don't know, languages, technologies, backend solutions and so on.
+
+1116
+00:55:24,540 --> 00:55:36,620
+Speaker 0: Um, for this work, it was decided to choose, for example, my SQL, like for this reason, front end, certain set of technologies.
+
+1117
+00:55:36,660 --> 00:55:37,300
+Speaker 1: For this reason?
+
+1118
+00:55:37,340 --> 00:55:37,940
+Speaker 0: For this reason.
+
+1119
+00:55:38,280 --> 00:55:38,460
+Speaker 0: Yeah.
+
+1120
+00:55:38,540 --> 00:55:40,700
+Speaker 1: Like short, but.
+
+1121
+00:55:41,100 --> 00:55:41,740
+Speaker 1: That's three.
+
+1122
+00:55:42,100 --> 00:55:44,140
+Speaker 1: Two is about the requirements.
+
+1123
+00:55:44,340 --> 00:55:44,440
+Speaker 0: No.
+
+1124
+00:55:44,600 --> 00:55:47,140
+Speaker 0: Third is the requirements.
+
+1125
+00:55:47,180 --> 00:55:47,320
+Speaker 1: Wait.
+
+1126
+00:55:47,360 --> 00:55:47,600
+Speaker 1: What?
+
+1127
+00:55:48,080 --> 00:55:49,780
+Speaker 0: Two is analyze technologies.
+
+1128
+00:55:50,240 --> 00:55:53,080
+Speaker 0: The first one is existing apps.
+
+1129
+00:55:53,800 --> 00:55:55,560
+Speaker 0: Second one is about technologies.
+
+1130
+00:55:55,620 --> 00:55:56,420
+Speaker 1: Maybe I moved them.
+
+1131
+00:55:56,600 --> 00:55:56,840
+Speaker 1: Okay.
+
+1132
+00:55:57,840 --> 00:56:05,880
+Speaker 1: But then the, I mean, yeah, I did the conclusions in the first and then, and then I changed maybe the tasks.
+
+1133
+00:56:05,960 --> 00:56:06,140
+Speaker 1: Okay.
+
+1134
+00:56:08,120 --> 00:56:08,180
+Speaker 1: Yes.
+
+1135
+00:56:08,220 --> 00:56:11,180
+Speaker 1: In the conclusions, the third one is, uh, is about.
+
+1136
+00:56:11,360 --> 00:56:11,540
+Speaker 1: Okay.
+
+1137
+00:56:11,740 --> 00:56:12,340
+Speaker 0: So, okay.
+
+1138
+00:56:12,480 --> 00:56:13,680
+Speaker 0: So, but basically fine.
+
+1139
+00:56:13,800 --> 00:56:15,820
+Speaker 0: Just make sure that you have these compatible.
+
+1140
+00:56:16,240 --> 00:56:27,180
+Speaker 0: And then the third one, um, what was modeled, like how many functional non-functional requirements and what the developed app should solve.
+
+1141
+00:56:28,060 --> 00:56:29,400
+Speaker 0: Like you're answering this.
+
+1142
+00:56:30,480 --> 00:56:45,920
+Speaker 0: and then number four, the app, you know, like title app was developed, uh, tested, testing showed that, uh, you know, all base, uh, testings were successful.
+
+1143
+00:56:46,360 --> 00:56:55,180
+Speaker 0: You know, how many tests all of them passed, for example, uh, the developed solution allows this, this, this, and that.
+
+1144
+00:56:55,540 --> 00:56:55,740
+Speaker 1: Okay.
+
+1145
+00:56:56,840 --> 00:56:57,000
+Speaker 0: Okay.
+
+1146
+00:56:57,040 --> 00:56:57,540
+Speaker 0: I like this.
+
+1147
+00:56:58,640 --> 00:57:00,460
+Speaker 0: I could open once more.
+
+1148
+00:57:00,520 --> 00:57:00,840
+Speaker 0: Hold on.
+
+1149
+00:57:01,900 --> 00:57:02,460
+Speaker 0: Let's see.
+
+1150
+00:57:04,980 --> 00:57:05,080
+Speaker 1: Okay.
+
+1151
+00:57:05,160 --> 00:57:05,480
+Speaker 1: Quickly.
+
+1152
+00:57:05,520 --> 00:57:08,000
+Speaker 0: Let's go to conclusions.
+
+1153
+00:57:12,020 --> 00:57:12,240
+Speaker 0: Okay.
+
+1154
+00:57:12,360 --> 00:57:13,460
+Speaker 0: Like this.
+
+1155
+00:57:14,620 --> 00:57:14,840
+Speaker 0: Okay.
+
+1156
+00:57:15,300 --> 00:57:24,600
+Speaker 0: This would be improved, but for example, uh, the formulation, I think this is not the final version of the student's work, so this was changed, but the idea is closed.
+
+1157
+00:57:24,640 --> 00:57:30,560
+Speaker 0: Like analysis of technology show the two most operating, uh, systems, you don't know where Eleanor is.
+
+1158
+00:57:30,600 --> 00:57:31,320
+Speaker 0: It was figured out.
+
+1159
+00:57:31,360 --> 00:57:32,440
+Speaker 0: that's yada yada.
+
+1160
+00:57:32,880 --> 00:57:37,420
+Speaker 0: as for pattern was used because it was fast convenient and simple language and something like this.
+
+1161
+00:57:37,600 --> 00:57:37,760
+Speaker 0: Okay.
+
+1162
+00:57:38,360 --> 00:57:38,740
+Speaker 1: Understood.
+
+1163
+00:57:38,820 --> 00:57:39,000
+Speaker 1: Okay.
+
+1164
+00:57:40,040 --> 00:57:40,160
+Speaker 0: Yeah.
+
+1165
+00:57:40,420 --> 00:58:02,220
+Speaker 0: You take a task and then you answer it, but not in generic terms such as, uh, students love this, uh, analysis of existing platforms show that there is a wide variety, for example, of university management systems, each of them having their own pros and cons.
+
+1166
+00:58:03,240 --> 00:58:04,200
+Speaker 0: This is not a conclusion.
+
+1167
+00:58:04,960 --> 00:58:05,940
+Speaker 1: Yeah.
+
+1168
+00:58:05,980 --> 00:58:06,060
+Speaker 0: Okay.
+
+1169
+00:58:06,100 --> 00:58:06,680
+Speaker 0: Too generic.
+
+1170
+00:58:07,980 --> 00:58:08,200
+Speaker 1: Okay.
+
+1171
+00:58:08,680 --> 00:58:17,200
+Speaker 0: Like, and then you go into details, what they have, what they lack, what should the developed app must include.
+
+1172
+00:58:18,680 --> 00:58:18,860
+Speaker 1: Okay.
+
+1173
+00:58:18,940 --> 00:58:19,300
+Speaker 1: Understood.
+
+1174
+00:58:19,540 --> 00:58:19,700
+Speaker 1: Okay.
+
+1175
+00:58:20,360 --> 00:58:20,660
+Speaker 0: Yeah.
+
+1176
+00:58:20,700 --> 00:58:21,080
+Speaker 0: Like this.
+
+1177
+00:58:21,400 --> 00:58:22,300
+Speaker 0: And basically that's all.
+
+1178
+00:58:25,200 --> 00:58:25,460
+Speaker 1: Okay.
+
+1179
+00:58:25,700 --> 00:58:30,360
+Speaker 1: I have, I have some questions about the final defense if you have some time.
+
+1180
+00:58:31,260 --> 00:58:36,600
+Speaker 1: Uh, so we have seven minutes for the presentation if I'm correct, right?
+
+1181
+00:58:37,600 --> 00:58:38,240
+Speaker 0: How many?
+
+1182
+00:58:38,500 --> 00:58:40,060
+Speaker 1: Seven minutes or ten minutes or something.
+
+1183
+00:58:40,560 --> 00:58:44,440
+Speaker 0: I have something, actually it's like five minutes for presentation.
+
+1184
+00:58:44,500 --> 00:58:51,420
+Speaker 0: My recommendation is to have a five minute presentation, uh, because you will not fit into five minutes.
+
+1185
+00:58:52,400 --> 00:58:57,240
+Speaker 0: You will have, you will talk a little bit more, so it's better to not talk too much.
+
+1186
+00:58:57,540 --> 00:58:57,740
+Speaker 1: Okay.
+
+1187
+00:58:57,940 --> 00:58:58,320
+Speaker 1: Understood.
+
+1188
+00:58:58,460 --> 00:59:00,100
+Speaker 1: Because it's, because it's panelized.
+
+1189
+00:59:00,720 --> 00:59:01,000
+Speaker 1: Yeah.
+
+1190
+00:59:01,040 --> 00:59:01,300
+Speaker 0: Okay.
+
+1191
+00:59:01,600 --> 00:59:04,040
+Speaker 0: Because, yeah.
+
+1192
+00:59:04,080 --> 00:59:04,440
+Speaker 0: Amazing.
+
+1193
+00:59:04,500 --> 00:59:04,680
+Speaker 0: Right.
+
+1194
+00:59:04,720 --> 00:59:14,520
+Speaker 0: So, uh, basically, uh, if you talk too long, it is entirely possible that you will be said, okay, you're taking too long.
+
+1195
+00:59:14,740 --> 00:59:16,180
+Speaker 0: Let's go see conclusions.
+
+1196
+00:59:17,920 --> 00:59:24,200
+Speaker 0: And for example, demonstration is skipped because you talked too much on theoretical part.
+
+1197
+00:59:24,500 --> 00:59:24,740
+Speaker 1: Okay.
+
+1198
+00:59:25,360 --> 00:59:26,200
+Speaker 0: So yeah.
+
+1199
+00:59:26,820 --> 00:59:27,740
+Speaker 0: And manage your time.
+
+1200
+00:59:27,920 --> 00:59:28,100
+Speaker 1: Yeah.
+
+1201
+00:59:28,440 --> 00:59:34,420
+Speaker 1: In the presentation should I include like only the accomplished tasks or also like developed.
+
+1202
+00:59:34,660 --> 00:59:38,220
+Speaker 0: Your presentation will be something like this.
+
+1203
+00:59:38,340 --> 00:59:40,140
+Speaker 0: Let me quickly open.
+
+1204
+00:59:40,520 --> 00:59:40,740
+Speaker 0: Okay.
+
+1205
+00:59:44,100 --> 00:59:44,280
+Speaker 0: Okay.
+
+1206
+00:59:44,600 --> 00:59:45,660
+Speaker 0: I'm going to give you this.
+
+1207
+00:59:45,820 --> 00:59:49,060
+Speaker 0: This is a Lithuanian one, but still the idea is the same.
+
+1208
+00:59:50,120 --> 00:59:51,860
+Speaker 0: So title, okay.
+
+1209
+00:59:52,320 --> 00:59:53,880
+Speaker 0: The problem.
+
+1210
+00:59:54,660 --> 00:59:55,480
+Speaker 1: Yeah.
+
+1211
+00:59:55,560 --> 00:59:55,720
+Speaker 0: Yes.
+
+1212
+00:59:55,960 --> 00:59:57,240
+Speaker 0: Don't dwell too long on it.
+
+1213
+00:59:57,420 --> 00:59:57,660
+Speaker 0: Okay.
+
+1214
+00:59:58,460 --> 01:00:00,240
+Speaker 0: Uh, aim and tasks.
+
+1215
+01:00:00,920 --> 01:00:04,680
+Speaker 0: One slide, copy paste what you have in your bachelor thesis.
+
+1216
+01:00:04,840 --> 01:00:05,100
+Speaker 1: Okay.
+
+1217
+01:00:05,140 --> 01:00:11,620
+Speaker 0: Uh, then we have, uh, results of analytical part.
+
+1218
+01:00:12,120 --> 01:00:18,860
+Speaker 0: For example, you can make a table of your analyzed, uh, apps, what they have, what they don't have.
+
+1219
+01:00:18,980 --> 01:00:19,420
+Speaker 0: And so on.
+
+1220
+01:00:19,700 --> 01:00:19,900
+Speaker 1: Okay.
+
+1221
+01:00:20,460 --> 01:00:20,620
+Speaker 1: Okay.
+
+1222
+01:00:20,720 --> 01:00:20,920
+Speaker 1: Okay.
+
+1223
+01:00:20,960 --> 01:00:28,120
+Speaker 0: Uh, another slide, a summary of technologies, like what did you choose?
+
+1224
+01:00:29,020 --> 01:00:29,700
+Speaker 0: Use logos.
+
+1225
+01:00:29,780 --> 01:00:29,840
+Speaker 0: Okay.
+
+1226
+01:00:29,920 --> 01:00:31,340
+Speaker 0: These are really nice.
+
+1227
+01:00:31,900 --> 01:00:32,160
+Speaker 1: Okay.
+
+1228
+01:00:32,400 --> 01:00:32,640
+Speaker 1: Okay.
+
+1229
+01:00:32,820 --> 01:00:34,940
+Speaker 0: Uh, so these are short.
+
+1230
+01:00:35,340 --> 01:00:35,600
+Speaker 0: Okay.
+
+1231
+01:00:35,940 --> 01:00:36,720
+Speaker 0: There are yours.
+
+1232
+01:00:36,980 --> 01:00:44,420
+Speaker 0: These, uh, one, two, three, and four, in my opinion, two minutes stops.
+
+1233
+01:00:45,040 --> 01:00:45,400
+Speaker 1: Understood.
+
+1234
+01:00:45,460 --> 01:00:45,880
+Speaker 1: No longer.
+
+1235
+01:00:46,140 --> 01:00:46,360
+Speaker 1: Okay.
+
+1236
+01:00:46,580 --> 01:00:46,760
+Speaker 1: Yes.
+
+1237
+01:00:47,460 --> 01:00:51,880
+Speaker 0: Then you go to your, uh, what you have implemented.
+
+1238
+01:00:52,720 --> 01:00:52,960
+Speaker 0: Okay.
+
+1239
+01:00:53,460 --> 01:00:57,340
+Speaker 0: So I always recommend students to add use case diagram.
+
+1240
+01:00:58,760 --> 01:01:07,720
+Speaker 0: Again, 15 seconds, commenting on use case diagram, then adding component relationship diagrams, database ER diagrams.
+
+1241
+01:01:08,060 --> 01:01:11,460
+Speaker 0: You can add key diagrams to your slides.
+
+1242
+01:01:11,600 --> 01:01:12,740
+Speaker 0: Just don't talk too much.
+
+1243
+01:01:12,800 --> 01:01:16,760
+Speaker 0: You don't have to talk in detail about every single diagram.
+
+1244
+01:01:17,180 --> 01:01:26,960
+Speaker 0: You can say generic, uh, sentences, what has been done, stopping on more important parts.
+
+1245
+01:01:27,140 --> 01:01:31,920
+Speaker 0: Let's say what was difficult for example, to implement or synchronize.
+
+1246
+01:01:32,280 --> 01:01:35,120
+Speaker 0: comment on those aspects more.
+
+1247
+01:01:35,680 --> 01:01:35,900
+Speaker 0: Okay.
+
+1248
+01:01:36,460 --> 01:01:46,060
+Speaker 0: Like demonstrating what you have done and putting accent on the complexity, then you add a video of your developed app.
+
+1249
+01:01:46,980 --> 01:01:52,340
+Speaker 0: So basically you record how your app works without a sound.
+
+1250
+01:01:53,820 --> 01:01:55,880
+Speaker 0: You insert it, not as a YouTube.
+
+1251
+01:01:56,080 --> 01:01:59,180
+Speaker 0: You insert it as a video directly to the slides.
+
+1252
+01:02:00,260 --> 01:02:06,800
+Speaker 0: You click play and then you talk real time and the demonstration just plays.
+
+1253
+01:02:06,940 --> 01:02:10,700
+Speaker 0: If you need to stop it on comment on something, you just stop it and then continue.
+
+1254
+01:02:10,860 --> 01:02:11,560
+Speaker 1: I wanted to do this.
+
+1255
+01:02:11,620 --> 01:02:11,820
+Speaker 1: Yeah.
+
+1256
+01:02:12,060 --> 01:02:13,140
+Speaker 1: I already recorded the video.
+
+1257
+01:02:13,280 --> 01:02:15,020
+Speaker 1: I was just, I was just not sure.
+
+1258
+01:02:15,140 --> 01:02:15,320
+Speaker 1: Yes.
+
+1259
+01:02:15,380 --> 01:02:16,220
+Speaker 1: You have to do this.
+
+1260
+01:02:16,360 --> 01:02:25,260
+Speaker 0: So my recommendation is to have a theory, a minute and a half, uh, structural diagrams, another minute.
+
+1261
+01:02:25,340 --> 01:02:29,840
+Speaker 0: So you have 2.5 minutes, this one video.
+
+1262
+01:02:30,220 --> 01:02:33,160
+Speaker 0: leave two minutes up to two minutes for demonstration.
+
+1263
+01:02:33,460 --> 01:02:38,080
+Speaker 1: I think is something like two minutes, 20 seconds for me.
+
+1264
+01:02:38,280 --> 01:02:38,500
+Speaker 0: Yeah.
+
+1265
+01:02:38,740 --> 01:02:38,940
+Speaker 0: Good.
+
+1266
+01:02:39,140 --> 01:02:39,280
+Speaker 0: Good.
+
+1267
+01:02:39,340 --> 01:02:40,960
+Speaker 0: But like concentrated.
+
+1268
+01:02:41,080 --> 01:02:51,360
+Speaker 0: So you have two, four, 4.5 minutes or like 4.7 minutes at this point, um, test results.
+
+1269
+01:02:52,700 --> 01:02:59,200
+Speaker 0: You can add a summary, how many test cases test results or something like this, probably a table table would look better.
+
+1270
+01:02:59,580 --> 01:02:59,740
+Speaker 0: Yes.
+
+1271
+01:03:00,260 --> 01:03:07,720
+Speaker 0: And then you have conclusions, which is copy pasting directly from your thesis.
+
+1272
+01:03:08,440 --> 01:03:08,640
+Speaker 1: Okay.
+
+1273
+01:03:09,160 --> 01:03:13,420
+Speaker 0: And should I just identical, identical, do not shorten them.
+
+1274
+01:03:13,720 --> 01:03:16,620
+Speaker 0: You will shorten them verbally.
+
+1275
+01:03:16,960 --> 01:03:17,180
+Speaker 0: Okay.
+
+1276
+01:03:17,700 --> 01:03:17,920
+Speaker 1: Okay.
+
+1277
+01:03:18,280 --> 01:03:22,120
+Speaker 1: And I have something like 10 seconds per conclusion in this case or 20 seconds.
+
+1278
+01:03:22,220 --> 01:03:22,560
+Speaker 1: Yeah.
+
+1279
+01:03:22,740 --> 01:03:28,540
+Speaker 0: But basically you can, you can give like short sentences, uh, you don't have to read those conclusions.
+
+1280
+01:03:28,860 --> 01:03:29,040
+Speaker 0: Okay.
+
+1281
+01:03:29,140 --> 01:03:35,300
+Speaker 0: Because we see as a committee, those conclusions, but they have to be there in the slides.
+
+1282
+01:03:35,380 --> 01:03:35,540
+Speaker 1: Okay.
+
+1283
+01:03:35,580 --> 01:03:36,020
+Speaker 1: And that's it.
+
+1284
+01:03:36,240 --> 01:03:36,460
+Speaker 1: Okay.
+
+1285
+01:03:36,900 --> 01:03:37,960
+Speaker 0: Yes.
+
+1286
+01:03:38,240 --> 01:03:38,400
+Speaker 0: Yes.
+
+1287
+01:03:38,780 --> 01:03:39,360
+Speaker 0: That's all.
+
+1288
+01:03:39,660 --> 01:03:39,900
+Speaker 1: Okay.
+
+1289
+01:03:40,780 --> 01:03:42,140
+Speaker 1: So go fix your work.
+
+1290
+01:03:42,180 --> 01:03:42,300
+Speaker 1: Yeah.
+
+1291
+01:03:42,480 --> 01:03:44,800
+Speaker 1: I have one more question.
+
+1292
+01:03:44,860 --> 01:03:46,660
+Speaker 1: Sorry about the questions.
+
+1293
+01:03:47,000 --> 01:03:50,760
+Speaker 1: So in the pre-defense, uh, do you know the newest Kondalov or no?
+
+1294
+01:03:50,860 --> 01:03:52,220
+Speaker 0: Yes.
+
+1295
+01:03:52,480 --> 01:03:52,700
+Speaker 1: Oh yeah.
+
+1296
+01:03:52,780 --> 01:03:53,020
+Speaker 1: Okay.
+
+1297
+01:03:53,660 --> 01:03:58,020
+Speaker 1: So he asked the question, maybe you rather don't know, he asked, uh, what's the difference?
+
+1298
+01:03:58,320 --> 01:03:59,440
+Speaker 1: and that's verbatim.
+
+1299
+01:03:59,560 --> 01:04:00,860
+Speaker 1: So I'm just copying what you said.
+
+1300
+01:04:01,360 --> 01:04:06,760
+Speaker 1: What's the difference between opening your, uh, the calendar on the website and in your app.
+
+1301
+01:04:07,700 --> 01:04:11,520
+Speaker 1: And what I said is, uh, the website cannot work offline.
+
+1302
+01:04:11,560 --> 01:04:12,800
+Speaker 1: The app can work offline.
+
+1303
+01:04:12,840 --> 01:04:15,020
+Speaker 1: So you can view cache data in the app.
+
+1304
+01:04:15,600 --> 01:04:15,780
+Speaker 1: Yes.
+
+1305
+01:04:15,960 --> 01:04:18,340
+Speaker 1: And the second part I said, I don't remember what I answered.
+
+1306
+01:04:19,040 --> 01:04:31,480
+Speaker 1: And the second part, uh, one moment, I said, uh, the website load slower because it needs to load the whole webpage and then only the calendar.
+
+1307
+01:04:31,940 --> 01:04:37,720
+Speaker 1: and on the app you only make like two network calls to view the calendar.
+
+1308
+01:04:38,400 --> 01:04:41,980
+Speaker 1: And he said that it's not what he wanted to hear.
+
+1309
+01:04:42,380 --> 01:04:51,180
+Speaker 1: So I confirmed, like I tried to clarify what he meant on the, on the, on the, in the browser.
+
+1310
+01:04:51,520 --> 01:05:00,040
+Speaker 1: I asked, do you mean our current Moodle website or some theoretical app that I would have developed instead of this native one?
+
+1311
+01:05:00,700 --> 01:05:02,500
+Speaker 1: And he said, no, just in the browser.
+
+1312
+01:05:02,580 --> 01:05:05,520
+Speaker 1: So I don't know how to answer.
+
+1313
+01:05:05,740 --> 01:05:18,520
+Speaker 0: I'm unable to answer this one as well, because in my opinion, your answer was correct, unless he, the question, the way he formulated, why?
+
+1314
+01:05:20,020 --> 01:05:24,160
+Speaker 1: I then, I then wrote him an email trying to like confirm stuff.
+
+1315
+01:05:24,860 --> 01:05:39,540
+Speaker 1: And he said, uh, he said that he meant somehow he interpreted that, um, in the, in the thesis or in the presentation, I wrote that the application makes the APIs faster, which I didn't write.
+
+1316
+01:05:40,160 --> 01:05:43,080
+Speaker 1: And he didn't ask about that, but he meant that somehow.
+
+1317
+01:05:43,180 --> 01:05:46,400
+Speaker 0: The application makes the APIs faster.
+
+1318
+01:05:46,440 --> 01:05:46,880
+Speaker 1: It doesn't.
+
+1319
+01:05:47,280 --> 01:06:02,800
+Speaker 1: I mean, the speed is the same, it's still the same network calls, but, okay, yes, but he, does he always make questions like that or, um, I don't know.
+
+1320
+01:06:02,940 --> 01:06:04,200
+Speaker 0: I think you answered properly.
+
+1321
+01:06:04,740 --> 01:06:08,400
+Speaker 0: So the comment, the comment is going to be five to six people.
+
+1322
+01:06:08,620 --> 01:06:08,780
+Speaker 1: Yeah.
+
+1323
+01:06:08,940 --> 01:06:09,140
+Speaker 1: Okay.
+
+1324
+01:06:10,060 --> 01:06:16,880
+Speaker 0: So we have a discussion and it's not one person who is determined this.
+
+1325
+01:06:17,280 --> 01:06:17,480
+Speaker 0: Okay.
+
+1326
+01:06:18,560 --> 01:06:18,680
+Speaker 1: Yeah.
+
+1327
+01:06:18,720 --> 01:06:18,940
+Speaker 1: Okay.
+
+1328
+01:06:19,060 --> 01:06:20,440
+Speaker 0: One might ask the question.
+
+1329
+01:06:20,580 --> 01:06:32,900
+Speaker 0: sometimes even comedy members, uh, object or intercept and they say, I think he meant this and that, or something like this or no, this is not what we're asking.
+
+1330
+01:06:33,060 --> 01:06:37,840
+Speaker 0: I think what the question is being asked this and that, uh, don't worry about this.
+
+1331
+01:06:38,180 --> 01:06:38,400
+Speaker 0: Okay.
+
+1332
+01:06:38,760 --> 01:06:38,960
+Speaker 1: Okay.
+
+1333
+01:06:39,980 --> 01:06:41,080
+Speaker 0: Who is making the decision?
+
+1334
+01:06:41,240 --> 01:06:44,480
+Speaker 0: The grades are written by different people.
+
+1335
+01:06:45,380 --> 01:06:52,100
+Speaker 0: And there were occasions where like comedy members strongly disagree about the quality of the work or answers.
+
+1336
+01:06:52,520 --> 01:06:53,980
+Speaker 0: And one is writing, for example.
+
+1337
+01:06:54,100 --> 01:06:54,180
+Speaker 0: Yeah.
+
+1338
+01:06:54,360 --> 01:06:59,940
+Speaker 0: I think it's not too strong, like eight and another is saying, I think you're, I disagree.
+
+1339
+01:07:00,460 --> 01:07:02,020
+Speaker 0: I think this is a 10.
+
+1340
+01:07:02,480 --> 01:07:02,720
+Speaker 1: Okay.
+
+1341
+01:07:03,080 --> 01:07:05,020
+Speaker 0: So you get nine it's average.
+
+1342
+01:07:05,260 --> 01:07:05,500
+Speaker 0: Okay.
+
+1343
+01:07:05,540 --> 01:07:10,460
+Speaker 0: You never know which comedy team member, what grade mode, but you will get an average.
+
+1344
+01:07:10,640 --> 01:07:10,840
+Speaker 0: Okay.
+
+1345
+01:07:10,900 --> 01:07:11,700
+Speaker 0: So it's a discussion.
+
+1346
+01:07:11,780 --> 01:07:12,780
+Speaker 0: It's not a one person.
+
+1347
+01:07:13,520 --> 01:07:15,880
+Speaker 0: So, uh, don't worry about this.
+
+1348
+01:07:15,920 --> 01:07:17,380
+Speaker 0: I think you answered it properly.
+
+1349
+01:07:18,000 --> 01:07:25,160
+Speaker 0: Maybe the question was why not to have a web app, but you kind of answered this because you have this caching.
+
+1350
+01:07:25,200 --> 01:07:33,800
+Speaker 1: Well, in theory, I can, I can make it work in a, like in a, how it's called PWA, progressive web app.
+
+1351
+01:07:34,600 --> 01:07:42,080
+Speaker 0: But I know, but, but, but I think your answer, like all the caching stops in synchronization.
+
+1352
+01:07:42,120 --> 01:07:46,400
+Speaker 0: So when it's on in one go, no, it's, don't worry about this.
+
+1353
+01:07:46,480 --> 01:07:46,680
+Speaker 1: Okay.
+
+1354
+01:07:47,040 --> 01:07:48,380
+Speaker 1: Then I think, no,
+
+1355
+01:07:48,960 --> 01:08:14,860
+Speaker 0: in my opinion, I, I look, the questions that comedy asks, uh, sometimes, uh, for example, when a student is defending a work, which is related to, for example, work infrastructure, which is not mine area of specialty, uh, I sometimes ask questions that students interpret as, I don't know.
+
+1356
+01:08:15,540 --> 01:08:20,240
+Speaker 0: I wonder what she meant when I literally meant, I have no idea what this does.
+
+1357
+01:08:20,300 --> 01:08:21,479
+Speaker 0: Could you please explain it to me?
+
+1358
+01:08:21,899 --> 01:08:22,140
+Speaker 1: Okay.
+
+1359
+01:08:23,319 --> 01:08:23,500
+Speaker 0: Yes.
+
+1360
+01:08:23,880 --> 01:08:25,240
+Speaker 0: Like no hard feelings.
+
+1361
+01:08:25,359 --> 01:08:26,240
+Speaker 0: It's not my area.
+
+1362
+01:08:26,380 --> 01:08:27,640
+Speaker 0: Could you please explain this to me?
+
+1363
+01:08:28,399 --> 01:08:31,260
+Speaker 0: Not because I think you're wrong and I'm going to prove this.
+
+1364
+01:08:32,420 --> 01:08:38,279
+Speaker 0: More often than not, it's, uh, it depends on how much experience a person has in certain fields.
+
+1365
+01:08:38,380 --> 01:08:41,960
+Speaker 0: That's why the comedy is very varied in their experience.
+
+1366
+01:08:43,100 --> 01:08:45,680
+Speaker 0: And I think you answered properly.
+
+1367
+01:08:46,359 --> 01:08:46,540
+Speaker 1: Okay.
+
+1368
+01:08:46,840 --> 01:08:48,540
+Speaker 1: Then I hope it will be all right.
+
+1369
+01:08:49,279 --> 01:08:50,279
+Speaker 0: No, no, it'll be fine.
+
+1370
+01:08:50,340 --> 01:08:50,859
+Speaker 0: It'll be fine.
+
+1371
+01:08:50,899 --> 01:08:54,740
+Speaker 0: Just fix, fix your work on the things that I told you to fix.
+
+1372
+01:08:55,040 --> 01:08:58,740
+Speaker 0: Uh, cause it has to be squeaky clean and sparkling.
+
+1373
+01:08:59,040 --> 01:08:59,359
+Speaker 1: All right.
+
+1374
+01:09:00,220 --> 01:09:03,279
+Speaker 1: Can I send it to you or do I just fix it and hope for the best?
+
+1375
+01:09:03,640 --> 01:09:05,600
+Speaker 1: No, send it to me before the upload.
+
+1376
+01:09:05,680 --> 01:09:08,819
+Speaker 1: Because like it's the four days until the upload.
+
+1377
+01:09:09,080 --> 01:09:19,260
+Speaker 0: If you, if you have time, if you finish this sooner, you can send it to me like earlier and I will review it once more.
+
+1378
+01:09:19,500 --> 01:09:22,580
+Speaker 0: because you know, every time you review, you see something new.
+
+1379
+01:09:22,960 --> 01:09:23,220
+Speaker 1: Right.
+
+1380
+01:09:24,100 --> 01:09:24,300
+Speaker 0: Yeah.
+
+1381
+01:09:24,560 --> 01:09:25,700
+Speaker 0: And it's always like this.
+
+1382
+01:09:25,899 --> 01:09:28,260
+Speaker 0: I like fixed my master thesis work.
+
+1383
+01:09:28,359 --> 01:09:28,600
+Speaker 0: I don't know.
+
+1384
+01:09:28,680 --> 01:09:31,000
+Speaker 0: I've seen that, that work like eight times.
+
+1385
+01:09:31,120 --> 01:09:34,240
+Speaker 0: I don't want to look at it anymore and I still find something.
+
+1386
+01:09:34,319 --> 01:09:34,540
+Speaker 1: Okay.
+
+1387
+01:09:35,580 --> 01:09:42,479
+Speaker 0: So, so it's virtually impossible to do squeaky clean, but like as much as possible.
+
+1388
+01:09:42,660 --> 01:09:43,720
+Speaker 0: Okay.
+
+1389
+01:09:43,760 --> 01:09:44,240
+Speaker 1: Yeah.
+
+1390
+01:09:44,279 --> 01:09:44,460
+Speaker 1: Okay.
+
+1391
+01:09:44,779 --> 01:09:48,140
+Speaker 1: So I'll finish this then today or tomorrow and send it to you.
+
+1392
+01:09:48,180 --> 01:09:48,240
+Speaker 1: Sure.
+
+1393
+01:09:48,300 --> 01:09:48,359
+Speaker 1: Sure.
+
+1394
+01:09:48,399 --> 01:09:48,979
+Speaker 0: And then let me know.
+
+1395
+01:09:49,020 --> 01:09:49,100
+Speaker 0: Okay.
+
+1396
+01:09:49,140 --> 01:09:49,300
+Speaker 0: Yeah.
+
+1397
+01:09:49,660 --> 01:09:59,580
+Speaker 1: Like one of the curators of all my colleagues, I think you are the only one who does actual feedback.
+
+1398
+01:09:59,740 --> 01:09:59,980
+Speaker 1: Oh, no way.
+
+1399
+01:10:01,860 --> 01:10:02,040
+Speaker 1: Yeah.
+
+1400
+01:10:02,700 --> 01:10:16,460
+Speaker 1: Like one of the, one of the curators of Mykola, of my friend, he literally just ignores most of the emails and then just replies two weeks later or something with generic answers.
+
+1401
+01:10:17,480 --> 01:10:17,860
+Speaker 1: So, yeah.
+
+1402
+01:10:18,340 --> 01:10:18,880
+Speaker 1: So thank you.
+
+1403
+01:10:20,040 --> 01:10:20,720
+Speaker 0: No, no, no, no.
+
+1404
+01:10:22,440 --> 01:10:24,340
+Speaker 0: Depends on what people are doing.
+
+1405
+01:10:24,460 --> 01:10:29,660
+Speaker 0: Maybe they are, they have a lot of words, but I think I also have a lot of work.
+
+1406
+01:10:30,620 --> 01:10:31,420
+Speaker 0: I'm pretty sure.
+
+1407
+01:10:32,740 --> 01:10:32,820
+Speaker 1: Yeah.
+
+1408
+01:10:32,860 --> 01:10:40,340
+Speaker 0: So, but it's, it's difficult for me to say because I don't know, it's, it's, it's a nature.
+
+1409
+01:10:40,580 --> 01:10:42,440
+Speaker 0: or for example, I like quality.
+
+1410
+01:10:43,220 --> 01:10:50,280
+Speaker 0: So if I'm going to require quality from others, I have to deliver quality myself.
+
+1411
+01:10:51,340 --> 01:10:51,880
+Speaker 1: So.
+
+1412
+01:10:51,920 --> 01:10:52,100
+Speaker 1: Okay.
+
+1413
+01:10:52,480 --> 01:10:52,620
+Speaker 1: Okay.
+
+1414
+01:10:52,660 --> 01:10:53,080
+Speaker 0: That's one.
+
+1415
+01:10:54,500 --> 01:10:57,680
+Speaker 0: Plus I like when students get good grades.
+
+1416
+01:10:58,760 --> 01:10:59,200
+Speaker 1: Yeah.
+
+1417
+01:10:59,240 --> 01:10:59,400
+Speaker 1: Okay.
+
+1418
+01:10:59,440 --> 01:11:00,540
+Speaker 1: Yeah.
+
+1419
+01:11:00,600 --> 01:11:00,940
+Speaker 1: Fair enough.
+
+1420
+01:11:01,400 --> 01:11:02,200
+Speaker 1: I like that one.
+
+1421
+01:11:02,240 --> 01:11:03,780
+Speaker 1: I like that one.
+
+1422
+01:11:03,840 --> 01:11:06,320
+Speaker 1: I'll try to make sure that they get a good grade.
+
+1423
+01:11:06,400 --> 01:11:07,060
+Speaker 0: Yeah, you will.
+
+1424
+01:11:07,220 --> 01:11:07,560
+Speaker 0: You will.
+
+1425
+01:11:07,620 --> 01:11:08,000
+Speaker 0: Don't worry.
+
+1426
+01:11:08,160 --> 01:11:08,520
+Speaker 0: Don't worry.
+
+1427
+01:11:08,680 --> 01:11:10,200
+Speaker 0: You will, you will get a good grade.
+
+1428
+01:11:10,540 --> 01:11:19,180
+Speaker 0: It's just depends entirely on the defense, on the committee, on many factors and so on.
+
+1429
+01:11:19,220 --> 01:11:20,360
+Speaker 0: So don't stress about it.
+
+1430
+01:11:20,980 --> 01:11:21,260
+Speaker 0: Really.
+
+1431
+01:11:21,500 --> 01:11:40,000
+Speaker 0: It's not something that you can control because there were situations where I was 100% sure that a student shouldn't get a 10, like no questions asked, but he got nine because the defense decided, you know, well, they thought that it's not enough.
+
+1432
+01:11:40,980 --> 01:11:47,700
+Speaker 0: And at that point I was just thinking, Hey, what is enough in your opinion from a bachelor student?
+
+1433
+01:11:48,720 --> 01:11:48,920
+Speaker 0: Okay.
+
+1434
+01:11:48,980 --> 01:11:59,980
+Speaker 0: Because there's the limit where you, you know, where you check the way the document was prepared, the way the software was implemented, is it logical and, or are we going for a product level development?
+
+1435
+01:12:00,400 --> 01:12:01,460
+Speaker 0: There's a limit for that.
+
+1436
+01:12:01,600 --> 01:12:08,300
+Speaker 0: And you cannot ask a person that much, but again, it depends on people, entirely depends on people.
+
+1437
+01:12:08,720 --> 01:12:10,660
+Speaker 0: And on the phase of the moon or something.
+
+1438
+01:12:10,860 --> 01:12:11,500
+Speaker 1: Phase of the moon.
+
+1439
+01:12:12,940 --> 01:12:13,720
+Speaker 0: I'm joking.
+
+1440
+01:12:13,840 --> 01:12:18,500
+Speaker 0: I'm exaggerating, but, but really it's not something that you should worry about.
+
+1441
+01:12:18,620 --> 01:12:18,820
+Speaker 1: Okay.
+
+1442
+01:12:18,960 --> 01:12:23,800
+Speaker 0: Because if you were allowed to defend, you already have your diploma.
+
+1443
+01:12:24,840 --> 01:12:27,220
+Speaker 0: It's only the grade that matters.
+
+1444
+01:12:28,020 --> 01:12:41,740
+Speaker 0: It's only the grade that matters because, I don't know, unless a student goes insane during the defense and is unable to defend anything, but that's, that has never happened in my life.
+
+1445
+01:12:41,800 --> 01:12:45,900
+Speaker 0: Okay.
+
+1446
+01:12:47,160 --> 01:12:47,240
+Speaker 1: Yeah.
+
+1447
+01:12:47,340 --> 01:12:48,180
+Speaker 1: So I think that's it.
+
+1448
+01:12:48,320 --> 01:12:48,420
+Speaker 1: Yeah.
+
+1449
+01:12:50,560 --> 01:12:51,080
+Speaker 1: Send it to you.
+
+1450
+01:12:51,120 --> 01:12:51,480
+Speaker 0: No problem.
+
+1451
+01:12:52,140 --> 01:12:52,280
+Speaker 0: Yeah.
+
+1452
+01:12:52,340 --> 01:12:52,480
+Speaker 0: Yeah.
+
+1453
+01:12:52,600 --> 01:12:52,940
+Speaker 0: Send it.
+
+1454
+01:12:53,040 --> 01:13:05,540
+Speaker 0: And if you have questions, you know, like write it, write to me again for a language, because you wrote everything on your own, just use a GPT to check spelling and grammar.
+
+1455
+01:13:06,480 --> 01:13:07,860
+Speaker 1: Is that one?
+
+1456
+01:13:07,900 --> 01:13:07,960
+Speaker 1: Yeah.
+
+1457
+01:13:08,020 --> 01:13:10,420
+Speaker 1: I have a spell checker inside the document.
+
+1458
+01:13:10,580 --> 01:13:10,840
+Speaker 1: Yeah.
+
+1459
+01:13:10,980 --> 01:13:17,440
+Speaker 0: But like for, based on the structure or something, for this one, you can use chatgpt.
+
+1460
+01:13:17,480 --> 01:13:17,760
+Speaker 1: Okay.
+
+1461
+01:13:18,680 --> 01:13:21,420
+Speaker 1: Do they check after the, do they check the documents?
+
+1462
+01:13:21,460 --> 01:13:34,840
+Speaker 0: Yes, we do check the documents, turn it in, but things like writing on your own words and then using chatgpt to check spelling and grammar, this one is not going to be registered.
+
+1463
+01:13:35,040 --> 01:13:48,140
+Speaker 0: Actually, even scientific papers say if you're using, you know, AI for text redaction and error checking, don't even add to references, you know.
+
+1464
+01:13:48,240 --> 01:13:53,640
+Speaker 0: This was generated, but you don't even add it because it was your own words and you're just checking spelling and grammar.
+
+1465
+01:13:54,320 --> 01:14:00,120
+Speaker 0: So unless you are using AI to, you know, synthesize data, only then you have to specify it.
+
+1466
+01:14:00,160 --> 01:14:10,620
+Speaker 1: So if it does register and like, do I have to, and I say that I didn't, so they detect and it's some internal number, I don't have to worry about it.
+
+1467
+01:14:11,640 --> 01:14:14,560
+Speaker 0: No, you don't have to worry about it because they check other things.
+
+1468
+01:14:14,600 --> 01:14:21,100
+Speaker 0: They check plagiarism, they do check AI, AI is allowed up to a certain amount.
+
+1469
+01:14:21,140 --> 01:14:21,300
+Speaker 1: Yeah.
+
+1470
+01:14:21,440 --> 01:14:25,380
+Speaker 1: But I mean, those checkers are unreliable sometimes on some of my texts.
+
+1471
+01:14:26,300 --> 01:14:29,760
+Speaker 0: It's very difficult to prove.
+
+1472
+01:14:30,060 --> 01:14:30,840
+Speaker 0: It's very difficult.
+
+1473
+01:14:30,920 --> 01:14:36,700
+Speaker 0: Like in effect, we have this, but it's very difficult to prove.
+
+1474
+01:14:38,580 --> 01:14:46,020
+Speaker 0: I mean, sometimes it's evident because AIs write in general sentences, which mean nothing.
+
+1475
+01:14:46,820 --> 01:14:51,020
+Speaker 0: But if you use it on your own words to improve the language, it's okay.
+
+1476
+01:14:51,720 --> 01:14:54,620
+Speaker 0: And this is not registered as AI plagiarism or something.
+
+1477
+01:14:54,740 --> 01:14:54,920
+Speaker 1: Okay.
+
+1478
+01:14:56,120 --> 01:14:59,020
+Speaker 1: So if it does, I'll just say that I'm actually right.
+
+1479
+01:14:59,220 --> 01:14:59,380
+Speaker 1: Okay.
+
+1480
+01:14:59,420 --> 01:14:59,460
+Speaker 1: Yes.
+
+1481
+01:14:59,560 --> 01:14:59,640
+Speaker 1: Yes.
+
+1482
+01:14:59,680 --> 01:14:59,840
+Speaker 1: Yes.
+
+1483
+01:15:00,460 --> 01:15:01,820
+Speaker 1: Yes.
+
+1484
+01:15:03,220 --> 01:15:03,420
+Speaker 1: Okay.
+
+1485
+01:15:03,920 --> 01:15:04,460
+Speaker 1: So yeah.
+
+1486
+01:15:05,240 --> 01:15:06,580
+Speaker 0: Running to another meeting.
+
+1487
+01:15:06,620 --> 01:15:06,760
+Speaker 1: Yeah.
+
+1488
+01:15:06,940 --> 01:15:07,260
+Speaker 1: No, no, no.
+
+1489
+01:15:07,300 --> 01:15:07,760
+Speaker 1: It's okay.
+
+1490
+01:15:07,920 --> 01:15:08,340
+Speaker 1: It's okay.
+
+1491
+01:15:08,380 --> 01:15:09,000
+Speaker 1: Okay, then.
+
+1492
+01:15:11,980 --> 01:15:12,160
+Speaker 1: Okay.
+
+1493
+01:15:12,240 --> 01:15:13,300
+Speaker 1: See you.
+
+1494
+01:15:13,480 --> 01:15:13,740
+Speaker 1: See you.
+
+1495
+01:15:14,000 --> 01:15:17,880
+Speaker 1: Bye.
+

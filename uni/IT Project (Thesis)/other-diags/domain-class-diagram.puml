@@ -1,14 +1,30 @@
 @startuml
 skinparam packageStyle rectangle
 skinparam linetype ortho
-hide empty members
+skinparam defaultFontSize 15
+skinparam classFontSize 20
+left to right direction
 package "UI / ViewModels" {
   class CalendarViewModel <<ViewModel>> {
+    -calendarProvider: CalendarProvider
+    -manoSemesterAndSubjectProvider: ManoSemesterAndSubjectProvider
+    -_manoEvents: MutableStateFlow<List<LocalManoCalendarEvent>>
+    -_moodleEvents: MutableStateFlow<List<LocalMoodleCalendarEvent>>
+    +events: StateFlow<List<...>>
     +loadMoodleEventsFromFileIfAvailable()
     +fetchMoodleEvents(showSnack)
     +fetchManoExams(showSnack)
   }
   class LoggedInUserAndInternetViewModel <<ViewModel>> {
+    -loggedInUserProvider: LoggedInUserProvider
+    -_mfaCode: MutableStateFlow<String>
+    -_studentId: MutableStateFlow<String>
+    -_plainPassword: MutableStateFlow<String>
+    +userState: StateFlow<ProvidedLoggedInUserEntity>
+    +internetState: StateFlow<Status>
+    +mfaCode: StateFlow<String>
+    +studentId: StateFlow<String>
+    +plainPassword: StateFlow<String>
     +logout(showSnack)
     +login(studentId, plainPassword, mfaCode, showSnack)
     +initLocalValuesFromFlowIfNeeded(loggedInUser)
@@ -17,10 +33,17 @@ package "UI / ViewModels" {
     +updateMfa(newMfa)
   }
   class ManoEmployeeViewModel <<ViewModel>> {
+    -manoEmployeeProvider: ManoEmployeeProvider
+    -currentFetchJob: AtomicRef<Job?>
+    -_selectedEmployee: MutableStateFlow<SelectedEmployeeData>
+    +selectedEmployee: StateFlow<SelectedEmployeeData>
     +selectEmployeeById(showSnack, employeeId)
     +deselectEmployee()
   }
   class ManoSemesterViewModel <<ViewModel>> {
+    -manoSemesterAndSubjectProvider: ManoSemesterAndSubjectProvider
+    +semesters: StateFlow<List<ProvidedManoSemesterEntity>>
+    +currentSemester: StateFlow<ProvidedManoSemesterEntity?>
     +fetchAllSemestersFromApi(showSnack, includeSubjects)
     +fetchCurrentSemester(showSnack, includeSubjects)
     +fetchSettlementGroupsFromApi(semesterAbsoluteSequenceNum, subjectModId, showSnack)
@@ -28,31 +51,58 @@ package "UI / ViewModels" {
     +getSettlementGroupsForSubjectAsStateFlow(semAbsoluteSequenceNum, subjectModId)
   }
   class MoodleCoursesViewModel <<ViewModel>> {
+    -moodleCoursesProvider: MoodleCoursesProvider
+    -manoSemesterAndSubjectProvider: ManoSemesterAndSubjectProvider
+    -currentSemesterSubjectModCodes: Flow<Set<String>>
+    +courses: StateFlow<List<ProvidedMoodleCourseEntity>>
     +fetchCourses(showSnack)
   }
   class ManoCalloutsViewModel <<ViewModel>> {
+    -manoCalloutsProvider: ManoCalloutsProvider
+    +callouts: StateFlow<List<...>>
     +fetchAllCallouts(showSnack)
   }
 }
 package "Data / Providers" {
   class CalendarProvider <<DataProvider>> {
+    -appDataDir: Path
+    -icsFileLocation: Path
+    -markerFileLocation: Path
+    +iCalUTCFormat: DateTimeComponents.Format
     +loadFromFileIfAvailable()
     +fetchMoodleEventsIfNeeded(expiryDuration)
     +getEventType(title, description)
     +loadFromFile(filepath)
   }
   class LoggedInUserProvider <<DataProvider>> {
+    -loggedInUserDao: LoggedInUserDao
+    +appDataDir: Path
+    -fetchUserDataFromApi(studentId, plainPassword)
     +logout()
     +login(studentId, plainPassword, mfaCode)
     +getCurrentUserInfo()
   }
   class ManoEmployeeProvider <<DataProvider>> {
+    -manoEmployeeDao: ManoEmployeeDao
+    +appDataDir: Path
+    -mapDbToProvider(model)
     +fetchEmployeeListFromApi()
     +fetchEmployeeDetailsFromApi(employeeId)
     +getAllEmployeesAsFlow()
     +getEmployeeById(employeeId)
   }
   class ManoSemesterAndSubjectProvider <<DataProvider>> {
+    -manoSemesterDao: ManoSemesterDao
+    -manoSubjectDao: ManoSubjectDao
+    -manoSettlementGradeDao: ManoSettlementGradeDao
+    -manoSettlementGroupDao: ManoSettlementGroupDao
+    -manoSubjectExamTimetableDao: ManoSubjectExamTimetableDao
+    -manoEmployeeProvider: ManoEmployeeProvider
+    -employeeList: MutableList<DBManoBareEmployeeData>
+    -currentSemesterNumber: AtomicRef<DBManoSemesterEntity?>
+    -fetchEmployeesIfNeeded()
+    -getCurrentSemesterDataCached()
+    -fetchCompletedSemestersWithResultsFromApi(includeSubjects)
     +fetchAllSemestersAndSubjectsFromApiIfNeeded(includeSubjects)
     +fetchCurrentSemesterAndSubjectsFromApi(includeSubjects)
     +fetchMediateResultsForSemester(semesterAbsoluteSequenceNum)
@@ -66,33 +116,67 @@ package "Data / Providers" {
     +getExamTimetableEvents()
   }
   class MoodleCoursesProvider <<DataProvider>> {
+    -moodleCourseDao: MoodleCourseDao
+    +appDataDir: Path
     +fetchCoursesFromApi()
     +getAllCourses()
   }
   class ManoCalloutsProvider <<DataProvider>> {
+    -manoCalloutsDao: ManoCalloutsDao
     +fetchAllCallouts()
     +getAllCalloutsAsFlow()
   }
 }
 package "API" {
   class VTBaseApi <<API>> {
-    {static} +loginIfNeeded(...)
+    {static} +cookieStorage: InMemoryCookieStorage
+    {static} +authDomainBaseUrl: Url
+    {static} -mfaExtractionRegex: Regex
+    {static} +samlResponseRegex: Regex
+    {static} +samlUrlRegex: Regex
+    {static} +clientWithRedirects: HttpClient
+    {static} +clientWithoutRedirects: HttpClient
+    {static} -baseHeaders: Map<String, String>
+    {static} -initialRequestHeaders: Map<String, String>
+    {static} -loginHeaders: Map<String, String>
     {static} +logout()
+    {static} +loginIfNeeded(...)
+    {static} +refreshSamlForPageIfNeededUnsafe(...)
+    {static} +getPageWithSamlRefresh(...)
   }
   class ManoApi <<API>> {
+    {static} -baseUrl: Url
+    {static} -jsonSerializer: Json
+    {static} -UPDATE_SESSION_OP: String
+    {static} -unicodeUnescapeRegex: Regex
+    {static} -csrfTokenExtractionRegex: Regex
+    {static} -extractionRegex: Regex (student, semester, timetable, exam, employee, grades, callouts)
+    {static} -csrfToken: String
+    {static} -sessionRefreshMutex: Mutex
+    {static} +addCsrfHeaders()
     {static} +loginIfNeeded(...)
+    {static} +client: HttpClient
     {static} +getStudentInfo(...)
     {static} +getThisSemesterInfo(...)
+    {static} +getSubjectTimetable(...)
+    {static} +getExamTimetable(...)
     {static} +getEmployees(...)
     {static} +getEmployeeDetails(...)
     {static} +getCompletedSemesterResults(...)
     {static} +getSemesterMediateResults(...)
     {static} +getSubjectSettlementGroups(...)
     {static} +getSettlementGrades(...)
-    {static} +getExamTimetable(...)
     {static} +getCallouts(...)
   }
   class MoodleApi <<API>> {
+    {static} -baseUrl: Url
+    {static} -sessionKeyExtractionRegex: Regex
+    {static} -userIdExtractionRegex: Regex
+    {static} -calendarExportUrlExtractionRegex: Regex
+    {static} -sessionKey: String
+    {static} +userId: Int?
+    {static} +client: HttpClient
+    {static} -sessionRefreshMutex: Mutex
     {static} +loginIfNeeded(...)
     {static} +updateSessionInfo()
     {static} +getCalendarUrl()
@@ -100,27 +184,27 @@ package "API" {
   }
 }
 ' ViewModel -> Provider dependencies
-CalendarViewModel ..> CalendarProvider
-CalendarViewModel ..> MoodleCoursesProvider
-CalendarViewModel ..> ManoSemesterAndSubjectProvider
-LoggedInUserAndInternetViewModel ..> LoggedInUserProvider
-ManoEmployeeViewModel ..> ManoEmployeeProvider
-ManoSemesterViewModel ..> ManoSemesterAndSubjectProvider
-MoodleCoursesViewModel ..> MoodleCoursesProvider
-MoodleCoursesViewModel ..> ManoSemesterAndSubjectProvider
-ManoCalloutsViewModel ..> ManoCalloutsProvider
+CalendarViewModel o-- "1" CalendarProvider
+CalendarViewModel o-- "1" MoodleCoursesProvider
+CalendarViewModel o-- "1" ManoSemesterAndSubjectProvider
+LoggedInUserAndInternetViewModel o-- "1" LoggedInUserProvider
+ManoEmployeeViewModel o-- "1" ManoEmployeeProvider
+ManoSemesterViewModel o-- "1" ManoSemesterAndSubjectProvider
+MoodleCoursesViewModel o-- "1" MoodleCoursesProvider
+MoodleCoursesViewModel o-- "1" ManoSemesterAndSubjectProvider
+ManoCalloutsViewModel o-- "1" ManoCalloutsProvider
 ' Provider -> Provider dependencies
-ManoSemesterAndSubjectProvider ..> ManoEmployeeProvider
+ManoSemesterAndSubjectProvider --> ManoEmployeeProvider
 ' Provider -> API dependencies
-CalendarProvider ..> MoodleApi
-LoggedInUserProvider ..> VTBaseApi
-LoggedInUserProvider ..> ManoApi
-LoggedInUserProvider ..> MoodleApi
-ManoEmployeeProvider ..> ManoApi
-ManoSemesterAndSubjectProvider ..> ManoApi
-MoodleCoursesProvider ..> MoodleApi
-ManoCalloutsProvider ..> ManoApi
+CalendarProvider -- MoodleApi
+LoggedInUserProvider -r-> VTBaseApi
+LoggedInUserProvider -r-> ManoApi
+LoggedInUserProvider -r-> MoodleApi
+ManoEmployeeProvider -r-> ManoApi
+ManoSemesterAndSubjectProvider -r-> ManoApi
+MoodleCoursesProvider -r-> MoodleApi
+ManoCalloutsProvider -r-> ManoApi
 ' API -> API dependencies
-ManoApi ..> VTBaseApi
-MoodleApi ..> VTBaseApi
+ManoApi -r-> VTBaseApi
+MoodleApi -r-> VTBaseApi
 @enduml

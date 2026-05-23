@@ -1,0 +1,937 @@
+﻿Dan: Hi.  Hello.  Hey, is it good now?  Yeah, it works.  Out of all the options, teams.  Okay.
+
+Jur: Yeah, as you can see.
+
+Dan: But it works.  Okay, that's good.  Gods of something don't want us to meet today, but...
+
+Jur: Okay, so... It is what it is.  Okay, hold on.  I will... Just my thought.  About your final thesis.  I did write my comments about it, but I'm going to go through these a little bit more.  Okay.  The content that you have is good.  What do you have to... Are you sharing the screen?  Yeah, yeah, yeah.  What do you... No, not yet, not yet.  Hold on.  I'm trying to find the screen to share, because I have too many.  Yes, I am...
+
+Dan: Yeah, okay, I see.
+
+Jur: Yeah, I have stuff to do.  Right, so, what is important?  Make sure, like, based on requirements, like on thesis requirements, like title pages.  Make sure those sparkle, okay?  Like, you know, full name, full surname of supervisor.  Do not number if it's not required to number these.
+
+Dan: Yeah, I did not number them.  They were just in the template.
+
+Jur: Okay, I'll just remove those.  I don't think that the title pages should be numbered.  Okay.  Because if they are, usually they are never numbered.  I can double check the requirements of...
+
+Dan: So, the numbering will start from 1 or from 3?
+
+Jur: No, it will start from 3, not even 3, not even 3.  It'll start with a content, so it will be number 6.
+
+Dan: Number 6?  Okay, so the first 5 pages are numbered.
+
+Jur: Yeah, because 5 pages, like the numbers are there, but they're not visible.  At least in Lithuanian template, Lithuanian is definitely, definitely the correct one.
+
+Dan: Yeah, okay.
+
+Jur: I can... Do you have it?  Lithuanian one?
+
+Dan: I only have the English one.  I can have a look at it, but I think it has.
+
+Jur: Hold on.  Check the Lithuanian version.  This one, okay?
+
+Dan: Okay, let's see.
+
+Jur: Yeah, so we don't number.  We start numbering from content only.  So, these are not numbered.  Another thing, go to Manovilnostech, okay?  I already uploaded the task.  Okay, so you just basically download the rendered PDF and just copy-paste as an image, the assignment, okay?  Because I already have these prepared in the system.
+
+Dan: As an image?  Not as a table, it's an image, but okay.  No, no, no.
+
+Jur: It's just basically whatever PDF you have, you can insert it as an image and then just leave it.
+
+Dan: Okay, okay.
+
+Jur: The same will happen with annotation, about annotation.
+
+Dan: So, you write the annotation, not me?
+
+Jur: No, you write annotation.
+
+Dan: I write annotation, okay.
+
+Jur: You write an annotation, you enter it into Manovilnostech.
+
+Dan: Okay.
+
+Jur: Processes that save, likewise, just copy-paste the text over here.  Not sure how... The thing is, I don't see the annotation form.  I don't know how it's done.  Let me quickly check a few things.  I want to see if I have information about the final date.  Right, so you fill in the bachelor... God damn it, how is this even working?  If you fill in the annotation after you upload the bachelor thesis.  You write it.
+
+Dan: Okay, so I...
+
+Jur: Can you double check on Manovilnostech?  Do you have an option to upload the annotation?
+
+Dan: Okay, let's see.  One moment.  I probably have to log in again, so one moment.  Okay.  Let's see.  This is where I have to go?
+
+Jur: What?  No, no, no.  You continue what you are doing.  Okay.  This is another thing that I will comment on.
+
+Dan: Okay, so... Because... I logged in?  Because...
+
+Jur: Because I don't know what form is for you.  Now go to studies, final thesis or something, I don't know how it's called.
+
+Dan: Okay, thesis subject, yeah.
+
+Jur: Like this one, click on it, and I have no idea what you have.
+
+Dan: I have view topic, view thesis task, I have...
+
+Jur: Yeah, so view thesis task, this is the one that I uploaded.
+
+Dan: Ah, okay, yeah.
+
+Jur: This one goes into your... Yes, and what about annotations, do you have one?
+
+Dan: I have write annotation and write declaration of good faith.
+
+Jur: Right, so... So you will write annotation.
+
+Dan: Annotation, it asks for Lithuanian, keywords, annotation in English, keywords in English.
+
+Jur: And options to print, okay.  Right, so you will write in English and use CZPT to translate and then just send me the annotation.
+
+Dan: Okay.
+
+Jur: I will review if it's logical.
+
+Dan: Okay.
+
+Jur: Okay, so you have this.  So my recommendation is to have your annotation, then you render it and then you just copy paste it to your thesis.  Not sure about these forms, because these forms are all... I think you can just enter the annotation, okay.  You have an annotation, you download it and again just like with task, supervisor task, just copy paste and add it as an image to your document, okay.
+
+Dan: Okay.
+
+Jur: Another thing, the link that I added to you, okay.  So over here, if you scroll down, it's Lithuanian, I didn't check the English one.  But we do have this final thesis annotations, okay.  So if you select, for example, last year, choose qualification, which is batch lore, right.  And then you get like a list of annotations that you can view.  So for example, where you have Adil Akslan, Alexandra Pashkin, so they're foreign students.  So you can click on any of these and you can look how annotations are written.
+
+Dan: Okay.  Just to get an idea.  Okay.  Okay.
+
+Jur: So you will for sure use AI for this and you should use AI for this to beautify and so on.  Besides like get the basic idea what should be in there.  Because you can actually click on any of these because they have Lithuanian and they have English versions.
+
+Dan: Okay.
+
+Jur: Okay.  So have these for a reference on how to do it.  It's going to be easier for you.
+
+Dan: Understood.  Thanks.
+
+Jur: Yeah.  Now about, hold on.  Wait.  And teams are also amazed when it comes to sharing.
+
+Dan: Well, can't argue with that.
+
+Jur: God, this pain that I'm currently feeling is insane.  Can I share this?  Please let me know.  I'm not about to share this.  Why?  This is like hell.  Right.  Okay.  So this is your work.  So you will fill in these.  Okay.  So numbering starts from here.  Now a few comments about your web text.  I did write this.  Okay.  Avoid abbreviation.
+
+Dan: Yeah.  Yeah.  I forgot like they were like several and probably just left one accidentally.
+
+Jur: Yeah.  And this is like a requirement to have this super dry language.  Okay.  Again, don't write in such short sentences.  Use AI to, you know, improve.  Like, I don't know, fix my grammar.
+
+Dan: But here, for example, like I can just omit this part, I guess.  And then.
+
+Jur: Yes, you can.
+
+Dan: Because.
+
+Jur: Yeah.  What I'm trying to say, avoid absolution, which is bad UX.  If you say it's bad UX.
+
+Dan: Why?  Expand.  Okay.
+
+Jur: Oh, my goodness.  You will have.  Did you do a research that this is a bad UX?  Is this your opinion?  Did you do a questionnaire?  It's like don't deal in apps like this.  Yeah.  For example, some lecturers do not put grades there at all.  Also, to accusatory, avoid this.  Okay.
+
+Dan: Okay.  This is just from my personal experience.
+
+Jur: Yes.  Yes.  But avoid this because you will run into trouble.
+
+Dan: Understood.  Okay.
+
+Jur: Because you are kind of like the punishment of few lectures goes to the whole system, which will basically bring tension, like avoid these accusatory expressions.  Understood.  Okay.  Just admit this.  Or for example, maybe the grades are entered into the system unevenly based on the lecture, which is more to truth.  Like you see grades in Moodle, but you don't see in Manla Vilnostech.  Okay.  For example, the way I do it because students are constantly updating the grades and it's just another work for me to update in both systems.  So I avoid this bother.
+
+Dan: Okay.
+
+Jur: But like soften the language.  Also, accusatory, like as a technical university, lack of convenience.
+
+Dan: Yeah.  Okay.
+
+Jur: Also, oh my God, just don't unless you wish to live an interesting life.
+
+Dan: No, not really.  I already experienced this.  Yeah.
+
+Jur: So avoid these claims that reflect your understandable personal frustration, but that are not substantiated by proof.  Okay.  Because if it's like a lack of convenient access, that means you have to have proof for this.
+
+Dan: Okay.  Okay.  If it's my personal experience or my personal belief, then don't include it at all.  Yeah.
+
+Jur: Or you could water it down, as I say, for example, which is sometimes, which is often inconvenient for students who wish to have a quick, you know, access to their grades in one system.  Yada, yada, yada.
+
+Dan: Okay.  Okay.  Okay.
+
+Jur: AI is incredibly good at this.  Okay.  So if you still wish to express, like avoid accusations, this one though, this one, remove this at all costs.
+
+Dan: This sentence is not needed.  Yeah.  Okay.
+
+Jur: Right.  So I did improve a little bit the formulation of this aim.
+
+Dan: I paste it in the discord.  Yeah.  I saw.
+
+Jur: Yeah.  Also a recommendation, although your tasks are good, but it depends on the defense committee that will be in the final defense.  It's best to be as precise as possible, like develop and test model system integration application or something like basically cross platform app for students, for university in exact name of your application.
+
+Dan: Okay.  So include it in both three and four, right?  Yeah.  Yes.
+
+Jur: Yes, yes, yes, yes, yes.  This one is good.  This one is good.  It depends on the modeling and when you're developing.  So be very precise on what you're developing, the way your app is named, called, and so on.
+
+Dan: Okay.
+
+Jur: Yeah.  Because sometimes the committee doesn't say anything.  Others say that your tasks are imprecise, so I tend to avoid, they will most likely still say something about the tasks because they have to do so, but it's best to minimize the comments.
+
+Dan: But what will they say about the tasks even if they're okay?
+
+Jur: They're not specific, incorrect formulation, too generic or something like that.
+
+Dan: And how do I answer to that?  Nothing.  Nothing.  Okay.
+
+Jur: That's it.  You're done.  Okay.  You can just say, yes, I could agree that this could be, you know, yes, your remark is correct, but there's nothing you can do about it.  Right.  Also check the Lithuanian one.  I'm not sure, but I think these should be in caps, in all capital letters.  Okay.  Yeah.  Yeah.  I'm not sure.  Maybe I'm hallucinating.
+
+Dan: Hallucinating?
+
+Jur: Okay.  I'm hallucinating.  Fine.  It doesn't matter because master's students did this and now I got confused.  Okay.  Right.  So these are just reductions.  Okay.
+
+Dan: Avoid first person.  Yeah.
+
+Jur: Immediately.  Yes, I did write this one.  Yeah.  Precision.  Review of existing systems for university, I don't know, integration problems.
+
+Dan: Yeah.  For accessing university systems.
+
+Jur: Like few more words, you don't need to expand, but being super precise.  All this, you could say seen in figure one.
+
+Dan: So just figure one.
+
+Jur: Just see figure one, see figure two.  Okay.  And that's it.  This one, either enlarge these a little bit.
+
+Dan: I cannot enlarge those.
+
+Jur: You cannot.
+
+Dan: Because they will flow to the next page, it will look awful.
+
+Jur: Right.  So cut it.  Move this text after this one.  Okay.  So you will have more space.  Or you can just, because it's the calendar that is important, right?
+
+Dan: Okay.  Yeah.  Mostly the calendar.  Yeah.
+
+Jur: So just snip only this section and you can enlarge this.  Okay.  So two ways.  Either you make one figure because you have this figure and this figure.  Maybe if you, you know, you, you could have more space over here.  Or just snip a little bit like the most essential parts and then large this one.  Okay.  You don't have to add this whole, you just need this, these sections.
+
+Dan: Okay.  Right.  Yeah.  Okay.
+
+Jur: So the current moment, I mean, zoom does work, but you might get comments about this.
+
+Dan: Okay.  Okay.  Yeah.
+
+Jur: All advantages and disadvantages would look better in a table.
+
+Dan: Understood.  Yes.
+
+Jur: Yeah.  It would just look more like fine, I guess.  Right.  This one.  Is this claim official?
+
+Dan: I mean, I wrote an email to them asking for APIs and they said, okay, we don't support them anymore.  So that's why I wrote, there is no one to support them anymore.
+
+Jur: Okay.  Okay.  Okay.  Good.  Good.  So basically this was a question for me.  If you wrote an email and somebody asks you, you can say I wrote an email, but that's it.  That is done.  I'm just, uh, uh, it was a question for you.  Uh, are you able to defend this statement if somebody sees it?
+
+Dan: Yeah.
+
+Jur: Okay.
+
+Dan: Good.  I mean, if, if the claim that I wrote an email and got such a response is a good justification.  Yes.  Yes.
+
+Jur: So you have to put it in a, into, into texts and that's it again, a table, um, language like avoid these.  This is one of them.
+
+Dan: I did add how to write this.  So instead of this, I should write one of the examples and another, another example.
+
+Jur: Basically I think I copy pasted, I copy pasted this text for, for, for example, eh, check discord.  So today, start, several universities have developed their own application.
+
+Dan: One example is eh, eh, eh.  Yeah.  I mean for this first one, yes.  And for the next one, so it will be.  another example is here.  Yes.  Yes.  Like this.
+
+Jur: Yeah.  Yeah.  Yeah.  Yeah.  Yeah.  Basically, um, the way you present the text, the fluency, uh, another thing is with these advantages and disadvantages, yes, but the table is going to be, uh, rather like short.  What I would like for these?  make a little bit more descriptive text.
+
+Dan: So more functionality or, or what?  Yeah.
+
+Jur: Like what I can do.  Yes.  Yes.  Yes.  More functional.  Okay.  Students are able to do this.  You don't need to add, uh, probably, uh, images unless it's very specific function that you like, but a little more description, especially on university apps.  Okay.  Such a, like this one is legacy.  You can't do too much, uh, Moodle standard procedure also, like it's clear and the table, these advantages and disadvantages is, uh, more, uh, complete.  Let's say so.  Like you like analysis is there, but for this one, more descriptive text and the same applies over here for university of Fabian.  because what you're trying to do, you're trying to say the functionality that I have developed is based on what I analyze.
+
+Dan: Yeah.  Okay.
+
+Jur: And if it's going to be a picky reviewer or a committee member, they might say that I don't see enough argumentation for your developed system because it seems to me that you did this, you know, like a little bit of, you know, walking around, uh, print screening and that's it.  Okay.  So this will help you to avoid such a case.
+
+Dan: Understood.  Yes.
+
+Jur: This is again, it's just the same, uh, same comments.  Uh, yeah.  Double check the spacing.  I'm not sure about, uh, should it be like zero?  I think it's zero.
+
+Dan: Okay.
+
+Jur: Because if you look into the other three and one, I think it's zero.  Another comment, another comment that I made, uh, so it's six and then it begins with eight.
+
+Dan: Okay.  Okay.  So seven is a bit, a bit like lower.  it's eight and then seven.
+
+Jur: It's always, always, uh, in the same order.  The numerical order is the way that the reference appear in the list.
+
+Dan: Understood.  Like, okay.
+
+Jur: If, if it goes like Java fix goes before Jetpack Compose, it should be seven Jetpack Compose nine.  And this one should be eight.  Okay.  The way they are a reference in the text the first time.
+
+Dan: Okay.  Okay.
+
+Jur: For example, this one, number six, because you already had it here, it poses no issue.
+
+Dan: Okay.  Okay.  Yes.
+
+Jur: Yes, yes, yes.  For example, over here, like immediately 27, uh, you will get a remark from a reviewer and from the comedy that your text is, is, is, uh, Is it necessary to include the references at all in hyperlinks or just remove them?  Not necessary, but what I did mention here, like over here, make sure either you add references everywhere or you add nowhere and just fix the numbering.
+
+Dan: Is it bad if I don't because add them everywhere?  Yes.
+
+Jur: Yes.  Yes.  Yes.  It's bad because over here I can click on it and over here I cannot.
+
+Dan: Yeah.  I mean, if I like, does it really matter for the committee, if I include the hyperlinks or just the references, less text.
+
+Jur: It matters.  It matters if you are consistent.
+
+Dan: Okay.  So I'll do the easy one.  I'll just don't take it because it's linking, linking is too many references.
+
+Jur: Because if I look at the template, we don't have, you can add references, but, but it's not mandatory.
+
+Dan: Okay.
+
+Jur: So this is what I was trying to say.  Either you fix everywhere with references or you add nowhere because it shows inconsistency.  Okay.  Right.  So yes.  Double check the references.
+
+Dan: The order.  Okay.  There was, okay.  There was another comment.
+
+Jur: Yes.  The order and the references, some formatting, again, consistency.  If you say binary serialization is a method and they say JSON dot, okay.  It's inconsistent.  So binary serialization dot, this is a method, yada, yada, yada.
+
+Dan: Okay.
+
+Jur: Okay.  Yeah.  Always maintain the same logic.  It can be different in different sub chapters.  Like over here, I have no issues.  This one is nice.  Flutter is, is, is, this one is good, but with this one, you have two distinct variations.
+
+Dan: So just remove the dot and make it, okay.  Yes.  Yes, yes, yes.
+
+Jur: I might say that, uh, this is a kind of nitpicking, but trust me, you will run into people.
+
+Dan: Can you?  Yeah.  Can you go back for a second on the, on the trip?  So here, for example, for the custom format, is this okay or not?
+
+Jur: custom format it's possible with a special blah, blah, blah, custom format, custom format is, um, it is possible, basically it is possible, but you just add dot and then it is possible to, as you can see, like the languages.
+
+Dan: Yeah.  But it should be the same.  Yes.
+
+Jur: It's like SQLite dot, it is, uh, I would, I would stick it because dot, it is small custom format dot.  It is possible to implement with a special custom format.
+
+Dan: Okay.  So it matters only one section, right?  In the previous section I didn't use dot?  Yeah.
+
+Jur: It doesn't matter.  No, no, no, no, no.  It doesn't.  Okay.  It's basically, basically, since you are discussing storing data in a cross-platform way, and basically here you are providing proof and augmentation.  So these have to be identical.
+
+Dan: Understood.  Okay.  Yes.
+
+Jur: The way they are given, uh, now chapter number two, uh, before all the larger, like chapters add a small paragraph like this, uh, paragraph is intended to show use case diagram, corresponding sequence diagrams, which are required to, uh, you know, uh, refine functional and unfunctional requirements.  like a short description.  What is presented in this chapter?
+
+Dan: Okay.  Okay.
+
+Jur: Again, depends on a reviewer and a committee member.  Uh, sometimes they say that you cannot begin a chapter with a sub-chapter, for example, I don't care at all.  This one is fine for me, but I'm being careful.
+
+Dan: Understood.  Okay.
+
+Jur: So it's a better safe.  It's safer to add something.  Uh, right.  Uh, another comment remake with draw IO.
+
+Dan: Yeah.  Okay.
+
+Jur: Because you have this animated stick figure, you will definitely get comments.
+
+Dan: Okay.
+
+Jur: Oh my goodness.  For sure.  A few more things.  All these are extents.
+
+Dan: There were extents.  Yeah.  They replace them with includes.  I don't know why they were extents.  The first question.  No, no, no, no, no, no.
+
+Jur: Basically if you view a course list, I am not required to view course Greeks.
+
+Dan: I can.  Yeah.  Yeah.  Okay.
+
+Jur: Like it extends the function.
+
+Dan: I have a question about this as well.  Not about the extent, but about the functionality.  So in the developed app, I don't have some parts.  For example, I don't have the chat.  Do I redraw the diagram with the actual implemented functionality or I leave it as is?
+
+Jur: You have to have what you implemented.
+
+Dan: Okay.  Yeah.
+
+Jur: So remove it.  Another comment, for example, if you have view course list, okay.  You don't need to add a line to view course materials because this one is access through view course list.  Okay.
+
+Dan: Okay.
+
+Jur: So if you have a smaller number of these lines, yeah, because this one is not required.  This one is not required.  Why?  Because it's accessed through this one.  View exam list.  Okay.
+
+Dan: Okay.  So I only have one to the core ones.  View course list.
+
+Jur: View exam list.  Yeah.  Because if you add it like this, that means I can view exam list and then I can view exam table.  And if you add it like this, that means I can view exam table immediately.
+
+Dan: Yeah.  Okay.  Yeah.
+
+Jur: Yeah.  You see the logic.  Okay.  Because if it has direct access, that means it's like directly, it can live as a separate one.  And you can just say, I can do it like this.  I can go to exam list and I will go to the same page, which I can access directly through here, which I, which in your case, I don't think this is the case.  This is the option.  You just go to exam list and then view exam time table.
+
+Dan: In my case, you go to the calendar and it's, you see the exam time table.
+
+Jur: Right.  Okay.  So if you say that it's a calendar, so you can say view, I don't know, calendar and then view exam table.  Okay.
+
+Dan: Yeah.  I'll redraw it based on the functionality that I actually did.
+
+Jur: Yeah.  Based on the functionality.  Yeah.  And what you can do and what you cannot do.  And again, if you say, again, the way that this arrow is pointing, it means it extends.  Okay.  So if it includes, arrow is in another line and that means it's, it's like mandatory.
+
+Dan: Yeah.  Must happen.
+
+Jur: Okay.  Yeah.  Example.  I don't know.  Let's say you say view course.  I don't know.  View recipe.  Okay.  View recipe list and includes like AI component to recommend based on your previous, I don't know, recipes or something like that.  I'm just giving you an example.
+
+Dan: Okay.  Not related to your topic.
+
+Jur: Okay.  Right.  Okay.  This one's good.  Just fixing.
+
+Dan: Yeah.  Why?
+
+Jur: Again, I think you can leave your, usually I recommend for students to have, you know, like user UI, web server and the database, but yours is a little bit different.  Okay.  So you can leave it as it is.
+
+Dan: And also I think redraw some of them because the architecture is a bit different.
+
+Jur: Yeah.  So you have to fix this.  What I was a bit confused, loop polls, polling or pools.
+
+Dan: I mean polling.  Yeah.  So.  It's called polling?  Maybe.  So just periodic calling, not.
+
+Jur: I think it's called polling, not polling.
+
+Dan: One moment.  Polling is taking something from a pool, from database pool or something.
+
+Jur: Yes.
+
+Dan: But poll is a periodic pinging.  Okay.  Maybe I'm wrong.  It's okay.  It's okay.
+
+Jur: I, it's just that I was unfamiliar with this term that it's known as polling because polls is a questionnaire.  Like it just confused.
+
+Dan: It's also a questionnaire.  Yeah.
+
+Jur: Yeah.  So basically just double check the term.
+
+Dan: Yeah.  Okay.
+
+Jur: Because I wasn't familiar with this and I just underscored it, like just double check.  Okay.  Because I wasn't familiar with this term.  For example, when you have such a huge diagram, more descriptive text, basically what is going on.
+
+Dan: Okay.  Yeah.  Okay.
+
+Jur: For example, then depending on user choice, one of the metadata, okay.  And you can just say a user can get this, he gets an error, if he clicks that, it happens this way.
+
+Dan: Understood.  Okay.
+
+Jur: Like in more detail what is happening.  Right.  So this is just a semicolon, no space.
+
+Dan: What do I do if the table is split across pages?  Is it fine?
+
+Jur: Oh yeah.  It's fine.  Usually there are certain requirements such as basically you say you make a table fit one page, okay.  And then you create another table, which is known as continuation of table seven, but in another page.
+
+Dan: So with the same header and with the same label.  Yes.
+
+Jur: Yes.  Yes.  Usually such as a recommendation.
+
+Dan: Okay.
+
+Jur: If we're being extremely pedantic.
+
+Dan: That's why I put the space here because I think it looked ugly without the space.
+
+Jur: No, you cannot.  Only the bigger chapters are with space.
+
+Dan: Understood.
+
+Jur: Okay.  Yes.  Only the biggest chapters.  Okay.  All right.  I added a comment.  Your non-functional requirements are also development environment requirements.
+
+Dan: Okay.  Okay.  Okay.  So what exactly?
+
+Jur: Such as you're using this EDE, you're using, I don't know, some kind of other tools.
+
+Dan: Yeah.  But like non-functional is an application must be on some requirement, but for the EDE.
+
+Jur: No, no, no.  This is like development requirements because it isn't, you can use various tools.  Okay.  So one of non-functional requirements is development environment requirements.  Like what set of tools you are using to create your software.
+
+Dan: So I should just write something like...
+
+Jur: Yes.  It's for, it's, nobody's going to do that, but this is for reproducibility.
+
+Dan: Okay.  Yes.  So which like, which version of language, which version of Gradle, which version of... Yes.
+
+Jur: Yes.
+
+Dan: Yes.  And it shouldn't be in the, in the same table, like one requirement or a separate thing?
+
+Jur: No, it's, it's, it's going to be NF, let's say six.
+
+Dan: Okay.
+
+Jur: And just list what you're using and this type is the development environment and that's nothing.
+
+Dan: Okay.  Understood.  Okay.  Yeah.
+
+Jur: It's, it's being pedantic.  I mean, logic wise, your work is good, but points are deduced if your work is not properly prepared, like it's basically like this.  If something is not fixed according to requirements, it's like minus one.  If it's a total mess, you can even get minus two.
+
+Dan: Okay.
+
+Jur: At least from me.  Okay.  I'm evil.  No, I'm joking.  I'm joking.  I'm joking.  Every one is like every one you get, basically you're developing, you're argumentate, providing argumentation on what you did and then you describe properly.  It's like, it's necessary because somehow when it's, you know, submitted, submitting project reports to national agencies, everybody understands that the documents must be nice.  Yet somehow, if it's a thesis, it can be garbage, which is exactly the same document as any kind of document that has to be prepared according to requirements.  Right.  Again, short paragraph, like this section describes conceptual level.
+
+Dan: But I think the conceptual level should be at the conceptual architecture, no?
+
+Jur: No.  No, this one is okay.  I'm just telling you, you begin.  This chapter, it describes conceptual architecture, database structure, such as data, basically expanding like short description, what a user should expect in this chapter.  That's it.
+
+Dan: Okay.
+
+Jur: Yes.  See, I figured I had no issues.  Right.  Notation.
+
+Dan: This is an export from Android studio or from something, I don't remember.
+
+Jur: I don't know why it gives you that, but the thing is, if you have, do you have foreign keys?
+
+Dan: I have foreign keys.  Those arrows are foreign keys, basically connections.  Yes.
+
+Jur: Here's the thing.  Usually, my recommendation is to add, because database, I can't show you, I don't know why.
+
+Dan: One too many.  Yes, yes, yes.  I want to... Database, ER, diagram.
+
+Jur: Okay.  Yes.  Basically, not this crap over here, but this one.  Like, you see?  It has these notations, like one too many, and I recommend to add even numbers, one, two, many, zero, many.
+
+Dan: One too star.  Okay.
+
+Jur: Yes, yes, yes, yes.  Like that.  This would be the most precise.  I can see that this one.  Can I look at it?  No, it's a question, so it's wrong.  Yeah, because if you can, if you look at this, yeah, they all have these.
+
+Dan: Okay.
+
+Jur: These specifics.  So, you just basically update it.
+
+Dan: That's okay.
+
+Jur: Yeah.  Right.  Now, this one's okay.  Also, double check spacing.  I didn't check this one.  Okay.  Just... Another thing.  The data is encrypted with AES 256.  A few sentences.  Why?  Okay.  Because if somebody...
+
+Dan: I just... Okay, I describe it in the... At the end.  For...
+
+Jur: At the end, yes.  But provide a few sentences over here because if it's going to be a reviewer and it's going to be a strict reviewer, he might say that argumentation is provided at the end of the chapter instead of the first chapter or, for example, over here.  And it is not immediately apparent why such argumentation was chosen.
+
+Dan: Okay.
+
+Jur: Okay.  This is how it goes.  I mean, I'm not even making this up.
+
+Dan: Yeah, okay.  This is how all the views are being done.
+
+Jur: This is how I operate because this is how I operate.  Okay.  Also, a question.  Did you use AI like mermaids or this one?
+
+Dan: This is advancement, but no, not AI.  I think this is also an export from somewhere.
+
+Jur: What I dislike about this... Okay, this is okay.  What I'm confused about, I'm confused about the relationships between classes, okay?
+
+Dan: The relationships are the class dependencies, basically.
+
+Jur: Only, you mean no inheritance, no aggregation, no composition?
+
+Dan: So it's aggregation, basically.  There is no...
+
+Jur: But aggregation is not a black arrow.  Aggregation is a white diamond.  Okay.
+
+Dan: Okay.  So if I... Basically, most of the classes take some other classes in their constructor.  So...
+
+Jur: Basically, it goes like this.  If you have a class...
+
+Dan: It's called composition, I think.
+
+Jur: Now, the difference.  Composition means their life cycles are the same.  Aggregation basically means that a part of a class structure is another class.  Okay?  Another class object, let's say.  So, for example, I have... Okay, let's open your work, okay?  For example...
+
+Dan: For example, this view model, calendar view model takes a calendar provider in its constructor.
+
+Jur: Yeah, but if it takes in that constructor, that means you have a class.  Also, what is missing?  You have here only methods.
+
+Dan: Yeah?  I should include some other stuff?
+
+Jur: Attributes.  Attributes should go.
+
+Dan: Ah, okay.  Always.
+
+Jur: That's why I'm telling you, if you have a class, you need to have a class structure.  So that means I need to see attributes.  And then I also need to see methods.  Okay?  If my class has an attribute, which is a type of another class... For example, my, let's say, user class has an attribute address, which is also a class.
+
+Dan: Okay?
+
+Jur: So, address is a part of the structure of my user class.  That means I have aggregation between user and address classes.
+
+Dan: Okay.  Okay?  So, in my case, this is aggregation everywhere then.
+
+Jur: Yeah, so you just need to double check.  What kind of... if you're using IntelliJ, IntelliJ actually draws these very well.
+
+Dan: IntelliJ does not draw them for Kotlin.
+
+Jur: Okay.  Okay.  I didn't check with Kotlin.  Okay.  Then it's Satter.
+
+Dan: Yeah.  I had... I don't remember, but I spent like two hours making this because I was trying... Yeah.  I was trying to IntelliJ to make IntelliJ spit out.  I even compiled some Kotlin to Java.  It was crap.
+
+Jur: Yeah.  So, this is basically these notations that we have here.
+
+Dan: Okay.  Maybe I'll just withdraw it.  Right.
+
+Jur: And here's the thing.  Association is also possible.  Then you have dependency, but when you have dependency, it's a bit different from aggregation.
+
+Dan: Okay?
+
+Jur: Because aggregation means that it's a part of a structure.  I can...
+
+Dan: Aggregation.  Aggregation.
+
+Jur: The special type.  Yes.  Class two is part of class one, like part.  All right.  And if we have dependency, it's again, a special type of association.
+
+Dan: Depends on class two.
+
+Jur: But one may cause changes to the other, but not the other way around.  Right.  Class one depends... Basically, just double check.  Okay.
+
+Dan: Changes in the definition.
+
+Jur: Maybe yours is correct.  Mine was a question.
+
+Dan: Are you sure that this is the correct... I am not sure, but...
+
+Jur: Yeah.  So, double check.  Okay.  Based on these definitions, descriptions, you will be... It's going to be clear.  Okay?  Because I didn't check.  For example, dependency, when you have association, like this one.  Okay?  So, if it's an association, that means between classes, one may cause changes to the other, but not the other way around.
+
+Dan: Damn it.  Associations.  What does it mean, right?  Changes to the definition.  A structural link.
+
+Jur: There is an association.  For example, you can say that... Let's say you have a class.  Okay?  And then you have a method, which, for example, takes data from another object.  Okay?  I don't know.
+
+Dan: I have a bunch of those here.
+
+Jur: Yeah.  So, it's an association, such as there are methods in this class that are using objects of other classes in their computations or logic or something like this.  And you just basically say that either this association is two-sided or one-sided or something like this.
+
+Dan: That's right.  So, then I have association and the composition, or how is it called?  Both?  Association.
+
+Jur: Now, you have... If it's a simple association, then it's a simple association.  Okay?  A part of the relationship of parts.  in many instances, it's a segregation.  So, basically, I think this is where you will have... So, if you have a simple association, in your situation is going to be dependency, because dependency is a special type of association.  Okay?  So, in your case, you will definitely have these arrows like this, because this is what association signifies.  But I want you to double check those cases where you have one class, which is a structure of another class.  Because if you have this situation, dependency is not part of the structure.  It depends.  Let's say I am updating user, and I don't know, address also must be updated.  I have a dependence.  Okay?  Okay, wrong example.
+
+Dan: User and address is an aggregation.  Okay.  Can I just provide the example?  All of my class structure is the same across all the ViewModels providers and API stack.  So it's like, in the API, I only get the data.  In the provider, I depend on the database and on the API, I fetch from the API and put into the DB.  There is one field that exposes the fetch data in an array.  And then in a ViewModel, I listen to that data and then convert it to the data format for the UI.  But you're explaining the logic.
+
+Jur: What you need to look into, you need to look into the code and the class structure, basically.  Okay.  So now you need to update this because I need to see attributes.
+
+Dan: Yeah, okay.  There are one attribute per class, I think, or two.
+
+Jur: Hold on.  I will open you one of the thesis works.  You will see what I have.  So Lithuanian work, but it doesn't matter because I'm going to scroll down to the class diagram, which is in... Yeah.  Yes.  We have a class diagram over here.  Okay.  And then add...
+
+Dan: It's all association.  Most of it is association.
+
+Jur: But for example, you see, yeah, but you see email confirmation.  It's an attribute over here.  So you still need attributes and methods because not everywhere we have this.  I don't... Example, default, quiz size.  It's not a Java class, but it doesn't matter.  But as you can see, it has inheritance such as, you know, of course, limiter extends limiter.
+
+Dan: Yeah.
+
+Jur: Like mailable, like this received mail extends mailable, something like this, then it's just an association.  Like these two do not have, for example, forum reaction service doesn't have a part of the structure as a structure, like as an attribute reactable object.  But let's say if it does something like register reaction, reactable also changes.  Like they know about each other.
+
+Dan: Okay.
+
+Jur: Yeah.  Just double check these things.  Also I can open another one.
+
+Dan: Let me check.  Okay.
+
+Jur: This one's not... You need to remember.  where exactly do I have class diagrams for this one.  Hold on.  I'm searching my infinite stash of things.  I have so many, so many stuff from mine.  Okay.  This one is a bit smaller.  Again, English group, sequence diagrams.  Again, the same as yours.  Data, for example, like this.
+
+Dan: Okay.
+
+Jur: Monthly payment is part of the place structure, place class.  For example, over here, it wasn't complete because he didn't provide with all the classes with all the methods.  Actually no, it's a good diagram for a simple reason because only model classes, he had way more classes, which had other methods, but he didn't add this into the class diagram.  Okay.  But basically, yeah, you need to double check these.  Okay.  Maybe yours, your current notation is correct.  Okay.  But I'm just giving you an idea because if I'm asking these questions, you will be asked by others or more technical people.  Are you sure about this?
+
+Dan: And how do I justify that?  I'm sure?  I will just say the class depends on- Yeah, but my code indicates this.  Ah.  Okay.
+
+Jur: Yes.  Yes.  Such as, and you will answer this.  Yes.  It's an association because my Moodle courses provider depends on Moodle courses.  No, my calendar view model depends on Moodle courses provider.  Yes.
+
+Dan: It does.  Yeah.
+
+Jur: So you can say, but it is not part of the structure.  So it's a special type of an association where like changes in this class, I don't know, this object of this class has an effect on another object of that class.  Just like that.  It's about demonstrating that you know the differences, okay?  Most likely it will not be asked, but for example, if all of them are dependencies, you will get questions, are you sure that they're all only dependencies?  Okay.
+
+Dan: Okay.
+
+Jur: So, so the thing that I asked you, the reviewers might also ask, so be, and the committee also might ask, so be prepared to answer this and double check this dialogue.
+
+Dan: Okay.
+
+Jur: Okay.  Because it's entirely possible that this is the correct one.  But I've seen students, for example, feed all the codes to mermaid, mermaid generates some kind of diagrams with wrong notations.
+
+Dan: Okay.
+
+Jur: And then I give a question to hold on, but I checked your codes.  You have this object as part of the structure of this object.  Why it's only the dependency?  It should be not dependency, it should be aggregation.  And then they ask what is aggregation?  So please don't do this.
+
+Dan: Okay.
+
+Jur: Yeah.  So just double check.
+
+Dan: Okay.  I will.  Yeah.  Okay.
+
+Jur: I mean, in no way am I asking, am I telling you that this is wrong?  I know for sure that you did your work on your own.  It's about preparing you for the reviewer and for the committee.  Because if I say AI, we're already very nitpicking because a lot of students use AI.  So make sure that you will say, no, I use this and this tool.
+
+Dan: So far, I haven't used any in the... I know.
+
+Jur: I know.  I know.  I know.  But that's the thing.  What I'm trying to tell you, AI has been abused so badly by students.
+
+Dan: Unfortunately.  Yeah.
+
+Jur: That now we as supervisors, because we're making the final verdict, we're a little bit over paranoid.
+
+Dan: Understood.  Yeah.
+
+Jur: Yeah.  So, so make sure that you fix this.  Right.  This one, this one is... Wait.  What was that?  Okay.
+
+Dan: The, there was a comment, small comment about the diagram.  What was that?
+
+Jur: I make vector image because if I scroll in it...
+
+Dan: Ah, yeah.  Okay.  Yes.
+
+Jur: No pixels.
+
+Dan: Yeah.  Okay.
+
+Jur: So you figure this one is okay.  I have little, right.  Check notations.  Okay.  Because if you're quoting, it's not single quotes.  Okay.  You can just go to, I don't know, Chai GPT and double check.  If I have this sentence and my current label is the title, how should I separate it in the text?  And it will tell you based on, um, let's say like common requirements.
+
+Dan: Okay.  Okay.
+
+Jur: Because as far as I remember, it is in quotes, but I cannot guarantee this.
+
+Dan: Okay.  I'll check it.
+
+Jur: Okay.  So just double check that one.  Okay.  So this one is okay.  Okay.  Okay.  Yes.  Minor fixes.
+
+Dan: Right.  The comment.
+
+Jur: Yeah.  New page.  There are other solutions, but not too much.  So basically you did add the system security.
+
+Dan: Yeah.  Yeah.
+
+Jur: Um, but like this one is good at what you might get.  You might get questions actually, um, about did you do analysis of other security?
+
+Dan: You know, and if I answer, I just used what is good enough.  And this is, this will be a better answer, right?
+
+Jur: This is a bad answer.  I mean, you will probably answer this.  No, unfortunately I did not look into this, uh, as it seemed the most known and suitable, you know, no choice, something like this.
+
+Dan: Okay.
+
+Jur: You might get asked, uh, why didn't you do this analysis?  This serves, uh, as a theoretical research or something like this.  Uh, this could be answered that once you have developed the system and the whole functionality, you decided to add a layer of security, which became apparent, you know, during the development.  And this is the reason why you have this sub chapter at the end of your third chapter like this.  Okay.  Uh, so basically expand a little bit more on other solutions, such as why this one is good, why this one is not, why this one is easier to implement and why this was chosen.  Okay.  So you don't expand too much, but like more argumentation so that it would not look like I knew this or this was easy to implement and that's why I used it.
+
+Dan: Okay.
+
+Jur: Right.  This one is new page.  Uh, yes.  Ability testing.  I don't think I had any issues like spacing, check the spacing, like minor corrections.  These are just beautification stuff.  What you need to fix.  You need to fix your conclusions.  Okay.
+
+Dan: Numbering.  Okay.  Hi.  Hello.
+
+Jur: No, no, no.  It's okay.  It's okay.  It's just, I have another meeting after you and I'm already being asked to like, it's okay.  Right.  Yours are incomplete and because your compute conclusions should be like this.  You take your, uh, my tasks, yes, you take your task and you answer it such as hold on.  I will close this such as, uh, analysis of existing university solutions showed that there is no common, you know, architecture solution or something like that.  Although model did proved to have something like this, but it is incomplete.
+
+Dan: Okay.
+
+Jur: So yes.  Other universities have their own, uh, solutions, uh, which are based on, I don't know, university, you know, what it is.  Jesus.  I forgot the English word.
+
+Dan: University systems.
+
+Jur: Demands.
+
+Dan: Okay.  Yeah.
+
+Jur: And something like this, uh, which proved that, uh, I don't know, certain functionalities like this and this are useful for students.  Therefore they should be present in the developed system.
+
+Dan: Okay.
+
+Jur: Yeah.  Something like this.  Oh, task number two, analysis of existing cross-platform of technologies used for cross-platform development showed that, um, there is a huge variety of, I don't know, languages, technologies, backend solutions and so on.  Um, for this work, it was decided to choose, for example, my SQL, like for this reason, front end, certain set of technologies.
+
+Dan: For this reason?
+
+Jur: For this reason.  Yeah.
+
+Dan: Like short, but.  That's three.  Two is about the requirements.
+
+Jur: No.  Third is the requirements.
+
+Dan: Wait.  What?
+
+Jur: Two is analyze technologies.  The first one is existing apps.  Second one is about technologies.
+
+Dan: Maybe I moved them.  Okay.  But then the, I mean, yeah, I did the conclusions in the first and then, and then I changed maybe the tasks.  Okay.  Yes.  In the conclusions, the third one is, uh, is about.  Okay.
+
+Jur: So, okay.  So, but basically fine.  Just make sure that you have these compatible.  And then the third one, um, what was modeled, like how many functional non-functional requirements and what the developed app should solve.  Like you're answering this.  and then number four, the app, you know, like title app was developed, uh, tested, testing showed that, uh, you know, all base, uh, testings were successful.  You know, how many tests all of them passed, for example, uh, the developed solution allows this, this, this, and that.
+
+Dan: Okay.
+
+Jur: Okay.  I like this.  I could open once more.  Hold on.  Let's see.
+
+Dan: Okay.  Quickly.
+
+Jur: Let's go to conclusions.  Okay.  Like this.  Okay.  This would be improved, but for example, uh, the formulation, I think this is not the final version of the student's work, so this was changed, but the idea is closed.  Like analysis of technology show the two most operating, uh, systems, you don't know where Eleanor is.  It was figured out.  that's yada yada.  as for pattern was used because it was fast convenient and simple language and something like this.  Okay.
+
+Dan: Understood.  Okay.
+
+Jur: Yeah.  You take a task and then you answer it, but not in generic terms such as, uh, students love this, uh, analysis of existing platforms show that there is a wide variety, for example, of university management systems, each of them having their own pros and cons.  This is not a conclusion.
+
+Dan: Yeah.
+
+Jur: Okay.  Too generic.
+
+Dan: Okay.
+
+Jur: Like, and then you go into details, what they have, what they lack, what should the developed app must include.
+
+Dan: Okay.  Understood.  Okay.
+
+Jur: Yeah.  Like this.  And basically that's all.
+
+Dan: Okay.  I have, I have some questions about the final defense if you have some time.  Uh, so we have seven minutes for the presentation if I'm correct, right?
+
+Jur: How many?
+
+Dan: Seven minutes or ten minutes or something.
+
+Jur: I have something, actually it's like five minutes for presentation.  My recommendation is to have a five minute presentation, uh, because you will not fit into five minutes.  You will have, you will talk a little bit more, so it's better to not talk too much.
+
+Dan: Okay.  Understood.  Because it's, because it's panelized.  Yeah.
+
+Jur: Okay.  Because, yeah.  Amazing.  Right.  So, uh, basically, uh, if you talk too long, it is entirely possible that you will be said, okay, you're taking too long.  Let's go see conclusions.  And for example, demonstration is skipped because you talked too much on theoretical part.
+
+Dan: Okay.
+
+Jur: So yeah.  And manage your time.
+
+Dan: Yeah.  In the presentation should I include like only the accomplished tasks or also like developed.
+
+Jur: Your presentation will be something like this.  Let me quickly open.  Okay.  Okay.  I'm going to give you this.  This is a Lithuanian one, but still the idea is the same.  So title, okay.  The problem.
+
+Dan: Yeah.
+
+Jur: Yes.  Don't dwell too long on it.  Okay.  Uh, aim and tasks.  One slide, copy paste what you have in your bachelor thesis.
+
+Dan: Okay.
+
+Jur: Uh, then we have, uh, results of analytical part.  For example, you can make a table of your analyzed, uh, apps, what they have, what they don't have.  And so on.
+
+Dan: Okay.  Okay.  Okay.
+
+Jur: Uh, another slide, a summary of technologies, like what did you choose?  Use logos.  Okay.  These are really nice.
+
+Dan: Okay.  Okay.
+
+Jur: Uh, so these are short.  Okay.  There are yours.  These, uh, one, two, three, and four, in my opinion, two minutes stops.
+
+Dan: Understood.  No longer.  Okay.  Yes.
+
+Jur: Then you go to your, uh, what you have implemented.  Okay.  So I always recommend students to add use case diagram.  Again, 15 seconds, commenting on use case diagram, then adding component relationship diagrams, database ER diagrams.  You can add key diagrams to your slides.  Just don't talk too much.  You don't have to talk in detail about every single diagram.  You can say generic, uh, sentences, what has been done, stopping on more important parts.  Let's say what was difficult for example, to implement or synchronize.  comment on those aspects more.  Okay.  Like demonstrating what you have done and putting accent on the complexity, then you add a video of your developed app.  So basically you record how your app works without a sound.  You insert it, not as a YouTube.  You insert it as a video directly to the slides.  You click play and then you talk real time and the demonstration just plays.  If you need to stop it on comment on something, you just stop it and then continue.
+
+Dan: I wanted to do this.  Yeah.  I already recorded the video.  I was just, I was just not sure.  Yes.  You have to do this.
+
+Jur: So my recommendation is to have a theory, a minute and a half, uh, structural diagrams, another minute.  So you have 2.5 minutes, this one video.  leave two minutes up to two minutes for demonstration.
+
+Dan: I think is something like two minutes, 20 seconds for me.
+
+Jur: Yeah.  Good.  Good.  But like concentrated.  So you have two, four, 4.5 minutes or like 4.7 minutes at this point, um, test results.  You can add a summary, how many test cases test results or something like this, probably a table table would look better.  Yes.  And then you have conclusions, which is copy pasting directly from your thesis.
+
+Dan: Okay.
+
+Jur: And should I just identical, identical, do not shorten them.  You will shorten them verbally.  Okay.
+
+Dan: Okay.  And I have something like 10 seconds per conclusion in this case or 20 seconds.  Yeah.
+
+Jur: But basically you can, you can give like short sentences, uh, you don't have to read those conclusions.  Okay.  Because we see as a committee, those conclusions, but they have to be there in the slides.
+
+Dan: Okay.  And that's it.  Okay.
+
+Jur: Yes.  Yes.  That's all.
+
+Dan: Okay.  So go fix your work.  Yeah.  I have one more question.  Sorry about the questions.  So in the pre-defense, uh, do you know the newest Kondalov or no?
+
+Jur: Yes.
+
+Dan: Oh yeah.  Okay.  So he asked the question, maybe you rather don't know, he asked, uh, what's the difference?  and that's verbatim.  So I'm just copying what you said.  What's the difference between opening your, uh, the calendar on the website and in your app.  And what I said is, uh, the website cannot work offline.  The app can work offline.  So you can view cache data in the app.  Yes.  And the second part I said, I don't remember what I answered.  And the second part, uh, one moment, I said, uh, the website load slower because it needs to load the whole webpage and then only the calendar.  and on the app you only make like two network calls to view the calendar.  And he said that it's not what he wanted to hear.  So I confirmed, like I tried to clarify what he meant on the, on the, on the, in the browser.  I asked, do you mean our current Moodle website or some theoretical app that I would have developed instead of this native one?  And he said, no, just in the browser.  So I don't know how to answer.
+
+Jur: I'm unable to answer this one as well, because in my opinion, your answer was correct, unless he, the question, the way he formulated, why?
+
+Dan: I then, I then wrote him an email trying to like confirm stuff.  And he said, uh, he said that he meant somehow he interpreted that, um, in the, in the thesis or in the presentation, I wrote that the application makes the APIs faster, which I didn't write.  And he didn't ask about that, but he meant that somehow.
+
+Jur: The application makes the APIs faster.
+
+Dan: It doesn't.  I mean, the speed is the same, it's still the same network calls, but, okay, yes, but he, does he always make questions like that or, um, I don't know.
+
+Jur: I think you answered properly.  So the comment, the comment is going to be five to six people.
+
+Dan: Yeah.  Okay.
+
+Jur: So we have a discussion and it's not one person who is determined this.  Okay.
+
+Dan: Yeah.  Okay.
+
+Jur: One might ask the question.  sometimes even comedy members, uh, object or intercept and they say, I think he meant this and that, or something like this or no, this is not what we're asking.  I think what the question is being asked this and that, uh, don't worry about this.  Okay.
+
+Dan: Okay.
+
+Jur: Who is making the decision?  The grades are written by different people.  And there were occasions where like comedy members strongly disagree about the quality of the work or answers.  And one is writing, for example.  Yeah.  I think it's not too strong, like eight and another is saying, I think you're, I disagree.  I think this is a 10.
+
+Dan: Okay.
+
+Jur: So you get nine it's average.  Okay.  You never know which comedy team member, what grade mode, but you will get an average.  Okay.  So it's a discussion.  It's not a one person.  So, uh, don't worry about this.  I think you answered it properly.  Maybe the question was why not to have a web app, but you kind of answered this because you have this caching.
+
+Dan: Well, in theory, I can, I can make it work in a, like in a, how it's called PWA, progressive web app.
+
+Jur: But I know, but, but, but I think your answer, like all the caching stops in synchronization.  So when it's on in one go, no, it's, don't worry about this.
+
+Dan: Okay.  Then I think, no,
+
+Jur: in my opinion, I, I look, the questions that comedy asks, uh, sometimes, uh, for example, when a student is defending a work, which is related to, for example, work infrastructure, which is not mine area of specialty, uh, I sometimes ask questions that students interpret as, I don't know.  I wonder what she meant when I literally meant, I have no idea what this does.  Could you please explain it to me?
+
+Dan: Okay.
+
+Jur: Yes.  Like no hard feelings.  It's not my area.  Could you please explain this to me?  Not because I think you're wrong and I'm going to prove this.  More often than not, it's, uh, it depends on how much experience a person has in certain fields.  That's why the comedy is very varied in their experience.  And I think you answered properly.
+
+Dan: Okay.  Then I hope it will be all right.
+
+Jur: No, no, it'll be fine.  It'll be fine.  Just fix, fix your work on the things that I told you to fix.  Uh, cause it has to be squeaky clean and sparkling.
+
+Dan: All right.  Can I send it to you or do I just fix it and hope for the best?  No, send it to me before the upload.  Because like it's the four days until the upload.
+
+Jur: If you, if you have time, if you finish this sooner, you can send it to me like earlier and I will review it once more.  because you know, every time you review, you see something new.
+
+Dan: Right.
+
+Jur: Yeah.  And it's always like this.  I like fixed my master thesis work.  I don't know.  I've seen that, that work like eight times.  I don't want to look at it anymore and I still find something.
+
+Dan: Okay.
+
+Jur: So, so it's virtually impossible to do squeaky clean, but like as much as possible.  Okay.
+
+Dan: Yeah.  Okay.  So I'll finish this then today or tomorrow and send it to you.  Sure.  Sure.
+
+Jur: And then let me know.  Okay.  Yeah.
+
+Dan: Like one of the curators of all my colleagues, I think you are the only one who does actual feedback.  Oh, no way.  Yeah.  Like one of the, one of the curators of Mykola, of my friend, he literally just ignores most of the emails and then just replies two weeks later or something with generic answers.  So, yeah.  So thank you.
+
+Jur: No, no, no, no.  Depends on what people are doing.  Maybe they are, they have a lot of words, but I think I also have a lot of work.  I'm pretty sure.
+
+Dan: Yeah.
+
+Jur: So, but it's, it's difficult for me to say because I don't know, it's, it's, it's a nature.  or for example, I like quality.  So if I'm going to require quality from others, I have to deliver quality myself.
+
+Dan: So.  Okay.  Okay.
+
+Jur: That's one.  Plus I like when students get good grades.
+
+Dan: Yeah.  Okay.  Yeah.  Fair enough.  I like that one.  I like that one.  I'll try to make sure that they get a good grade.
+
+Jur: Yeah, you will.  You will.  Don't worry.  Don't worry.  You will, you will get a good grade.  It's just depends entirely on the defense, on the committee, on many factors and so on.  So don't stress about it.  Really.  It's not something that you can control because there were situations where I was 100% sure that a student shouldn't get a 10, like no questions asked, but he got nine because the defense decided, you know, well, they thought that it's not enough.  And at that point I was just thinking, Hey, what is enough in your opinion from a bachelor student?  Okay.  Because there's the limit where you, you know, where you check the way the document was prepared, the way the software was implemented, is it logical and, or are we going for a product level development?  There's a limit for that.  And you cannot ask a person that much, but again, it depends on people, entirely depends on people.  And on the phase of the moon or something.
+
+Dan: Phase of the moon.
+
+Jur: I'm joking.  I'm exaggerating, but, but really it's not something that you should worry about.
+
+Dan: Okay.
+
+Jur: Because if you were allowed to defend, you already have your diploma.  It's only the grade that matters.  It's only the grade that matters because, I don't know, unless a student goes insane during the defense and is unable to defend anything, but that's, that has never happened in my life.  Okay.
+
+Dan: Yeah.  So I think that's it.  Yeah.  Send it to you.
+
+Jur: No problem.  Yeah.  Yeah.  Send it.  And if you have questions, you know, like write it, write to me again for a language, because you wrote everything on your own, just use a GPT to check spelling and grammar.
+
+Dan: Is that one?  Yeah.  I have a spell checker inside the document.  Yeah.
+
+Jur: But like for, based on the structure or something, for this one, you can use chatgpt.
+
+Dan: Okay.  Do they check after the, do they check the documents?
+
+Jur: Yes, we do check the documents, turn it in, but things like writing on your own words and then using chatgpt to check spelling and grammar, this one is not going to be registered.  Actually, even scientific papers say if you're using, you know, AI for text redaction and error checking, don't even add to references, you know.  This was generated, but you don't even add it because it was your own words and you're just checking spelling and grammar.  So unless you are using AI to, you know, synthesize data, only then you have to specify it.
+
+Dan: So if it does register and like, do I have to, and I say that I didn't, so they detect and it's some internal number, I don't have to worry about it.
+
+Jur: No, you don't have to worry about it because they check other things.  They check plagiarism, they do check AI, AI is allowed up to a certain amount.
+
+Dan: Yeah.  But I mean, those checkers are unreliable sometimes on some of my texts.
+
+Jur: It's very difficult to prove.  It's very difficult.  Like in effect, we have this, but it's very difficult to prove.  I mean, sometimes it's evident because AIs write in general sentences, which mean nothing.  But if you use it on your own words to improve the language, it's okay.  And this is not registered as AI plagiarism or something.
+
+Dan: Okay.  So if it does, I'll just say that I'm actually right.  Okay.  Yes.  Yes.  Yes.  Yes.  Okay.  So yeah.
+
+Jur: Running to another meeting.
+
+Dan: Yeah.  No, no, no.  It's okay.  It's okay.  Okay, then.  Okay.  See you.  See you.  Bye.

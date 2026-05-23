@@ -6,3 +6,4 @@ Jurate — 09:07
 
 
 Annotations: https://vilniustech.lt/fundamentiniu-mokslu-fakultetas/fakulteto-padaliniai/informaciniu-technologiju-katedra/
+Class diagram connectors: https://www.visual-paradigm.com/guide/uml-unified-modeling-language/uml-class-diagram-tutorial/

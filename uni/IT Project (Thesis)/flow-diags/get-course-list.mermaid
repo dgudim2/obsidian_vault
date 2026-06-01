@@ -15,12 +15,15 @@ sequenceDiagram
     alt Cache is valid
         CacheStorage-->>CourseProvider: Return course list
         CourseProvider-->>Ui: Show course list
+        Ui->>User: Display the list
     else No cache or cache is expired
         alt Cache exists
             CacheStorage-->>CourseProvider: Return course list
             CourseProvider-->>Ui: Show course list
+            Ui->>User: Display the list
         else
             CourseProvider-->>Ui: Show a loading indicator
+            Ui->>User: Show loading in the header
         end
 
         alt Internet available
@@ -28,7 +31,10 @@ sequenceDiagram
             VilniusTech_API-->>CourseProvider: Return course list
             CourseProvider->>CacheStorage: Update cache
             CourseProvider-->>Ui: Update course list
+            Ui->>User: Display the list
         else
             CourseProvider-->>Ui: Show a warning
+            Ui->>User: Display toast
         end
     end
+%%

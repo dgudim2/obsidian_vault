@@ -16,6 +16,7 @@
 !*.doc
 !*.docx
 !*.pptx
+!*.potx
 !*.xlsx
 !*.ppt
 !*.odt

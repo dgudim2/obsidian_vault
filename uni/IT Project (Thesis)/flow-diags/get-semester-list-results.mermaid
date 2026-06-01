@@ -15,12 +15,15 @@ sequenceDiagram
     alt Cache is valid
         CacheStorage-->>SemesterProvider: Return semester list
         SemesterProvider-->>Ui: Show semester list
+        Ui->>User: Display the list
     else No cache or cache is expired
         alt Cache exists
             CacheStorage-->>SemesterProvider: Return semester list
             SemesterProvider-->>Ui: Show semester list
+            Ui->>User: Display the list
         else
             SemesterProvider-->>Ui: Show a loading indicator
+            Ui->>User: Display loading indicator in the header
         end
 
         alt Internet available
@@ -34,10 +37,11 @@ sequenceDiagram
             SemesterProvider->>VilniusTech_API: Request grade data for semesters
             VilniusTech_API-->>SemesterProvider: Return semester grades
         end
-            SemesterProvider->>SemesterProvider: Merge received data
             SemesterProvider->>CacheStorage: Update cache
             SemesterProvider-->>Ui: Update semester list
+            Ui->>User: Display the list
         else
             SemesterProvider-->>Ui: Show a warning
+            Ui->>User: Display toast
         end
     end

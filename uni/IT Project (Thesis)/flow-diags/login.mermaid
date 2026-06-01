@@ -17,11 +17,14 @@ sequenceDiagram
         alt OTP valid
             Vilniustech_SSO-->>LoginController: Return access token
             LoginController-->>Ui: Show a success message and login
+            Ui->>User: Display toast message
         else OTP invalid
             Vilniustech_SSO-->>LoginController: Return error response
             LoginController-->>Ui: Prompt to check the OTP code
+            Ui->>User: Display toast message
         end
     else Username/pass invalid
         Vilniustech_SSO-->>LoginController: Return error response
         LoginController-->>Ui: Prompt to check login credentials
+        Ui->>User: Display toast message
     end

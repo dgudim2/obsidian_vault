@@ -7,27 +7,28 @@ if you want to view the source, please visit the github repository of this plugi
 
 var __defProp = Object.defineProperty, __getOwnPropDesc = Object.getOwnPropertyDescriptor, __getOwnPropNames = Object.getOwnPropertyNames, __hasOwnProp = Object.prototype.hasOwnProperty, __typeError = msg => {
   throw TypeError(msg);
-}, __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, {
+}, __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, {
   enumerable: true,
   configurable: true,
   writable: true,
   value
-}) : obj[key] = value, __export = (target, all) => {
+}) : obj[key2] = value, __export = (target, all) => {
   for (var name in all) __defProp(target, name, {
     get: all[name],
     enumerable: true
   });
 }, __copyProps = (to, from, except, desc) => {
-  if (from && "object" == typeof from || "function" == typeof from) for (let key of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
-    get: () => from[key],
-    enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+  if (from && "object" == typeof from || "function" == typeof from) for (let key2 of __getOwnPropNames(from)) if (!__hasOwnProp.call(to, key2) && key2 !== except) __defProp(to, key2, {
+    get: () => from[key2],
+    enumerable: !(desc = __getOwnPropDesc(from, key2)) || desc.enumerable
   });
   return to;
 }, __toCommonJS = mod => __copyProps(__defProp({}, "__esModule", {
   value: true
-}), mod), __publicField = (obj, key, value) => __defNormalProp(obj, "symbol" != typeof key ? key + "" : key, value), __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg), __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), 
+}), mod), __publicField = (obj, key2, value) => __defNormalProp(obj, "symbol" != typeof key2 ? key2 + "" : key2, value), __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg), __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), 
 getter ? getter.call(obj) : member.get(obj)), __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value), __privateSet = (obj, member, value, setter) => (__accessCheck(obj, member, "write to private field"), 
-setter ? setter.call(obj, value) : member.set(obj, value), value), main_exports = {};
+setter ? setter.call(obj, value) : member.set(obj, value), value), __privateMethod = (obj, member, method) => (__accessCheck(obj, member, "access private method"), 
+method), main_exports = {};
 
 __export(main_exports, {
   default: () => TagFolderPlugin5
@@ -35,7 +36,427 @@ __export(main_exports, {
 
 module.exports = __toCommonJS(main_exports);
 
-var _a, _b, import_obsidian8 = require("obsidian"), enumShowListIn = {
+var import_obsidian11 = require("obsidian");
+
+function invalidResponse(request, detail) {
+  const id = void 0 === request.interactionId ? "" : ` (${request.interactionId})`;
+  throw new TypeError(`Invalid automated response for ${request.kind}${id}: ${detail}`);
+}
+
+function unavailable(request) {
+  const id = void 0 === request.interactionId ? "" : ` (${request.interactionId})`;
+  throw new Error(`No UI fallback is available for ${request.kind}${id}`);
+}
+
+var DrivenUiInteractions = class {
+  constructor(options = {}) {
+    __publicField(this, "driver");
+    __publicField(this, "fallback");
+    this.driver = options.driver;
+    this.fallback = options.fallback;
+  }
+  async promptText(options, interactionId) {
+    const request = {
+      kind: "promptText",
+      interactionId,
+      options
+    }, automated = await this.handle(request);
+    if (!automated.handled) {
+      if (void 0 === this.fallback) unavailable(request);
+      return this.fallback.promptText(options, interactionId);
+    }
+    if (null !== automated.value && "string" != typeof automated.value) invalidResponse(request, "expected a string or null");
+    return automated.value;
+  }
+  async promptPassword(options, interactionId) {
+    const request = {
+      kind: "promptPassword",
+      interactionId,
+      options
+    }, automated = await this.handle(request);
+    if (!automated.handled) {
+      if (void 0 === this.fallback) unavailable(request);
+      return this.fallback.promptPassword(options, interactionId);
+    }
+    if (null !== automated.value && "string" != typeof automated.value) invalidResponse(request, "expected a string or null");
+    return automated.value;
+  }
+  async pickOne(options, interactionId) {
+    const request = {
+      kind: "pickOne",
+      interactionId,
+      options
+    }, automated = await this.handle(request);
+    if (!automated.handled) {
+      if (void 0 === this.fallback) unavailable(request);
+      return this.fallback.pickOne(options, interactionId);
+    }
+    if (null !== automated.value && !options.items.includes(automated.value)) invalidResponse(request, "expected null or one of the supplied items");
+    return automated.value;
+  }
+  async confirmAction(options, interactionId) {
+    const request = {
+      kind: "confirmAction",
+      interactionId,
+      options
+    }, automated = await this.handle(request);
+    if (!automated.handled) {
+      if (void 0 === this.fallback) unavailable(request);
+      return this.fallback.confirmAction(options, interactionId);
+    }
+    if (null !== automated.value && !options.actions.includes(automated.value)) invalidResponse(request, "expected null or one of the supplied actions");
+    return automated.value;
+  }
+  async showMessage(options, interactionId) {
+    const request = {
+      kind: "showMessage",
+      interactionId,
+      options
+    }, automated = await this.handle(request);
+    if (automated.handled) {
+      if (void 0 !== automated.value) invalidResponse(request, "expected no response value");
+    } else {
+      if (void 0 === this.fallback) unavailable(request);
+      await this.fallback.showMessage(options, interactionId);
+    }
+  }
+  async handle(request) {
+    if (void 0 === this.driver) return {
+      handled: false
+    }; else return this.driver.handle(request);
+  }
+}, import_obsidian = require("obsidian"), TextPromptModal = class extends import_obsidian.Modal {
+  constructor(app, options, resolveResult) {
+    var _a5;
+    super(app);
+    __publicField(this, "options");
+    __publicField(this, "resolveResult");
+    __publicField(this, "value");
+    __publicField(this, "input");
+    this.options = options;
+    this.resolveResult = resolveResult;
+    this.value = null != (_a5 = options.initialValue) ? _a5 : "";
+  }
+  onOpen() {
+    var _a5, _b3;
+    this.setTitle(this.options.title);
+    const inputSetting = new import_obsidian.Setting(this.contentEl);
+    if (void 0 !== this.options.label) inputSetting.setName(this.options.label);
+    if (void 0 !== this.options.description) inputSetting.setDesc(this.options.description);
+    inputSetting.addText(input => {
+      var _a6;
+      this.input = input;
+      input.setValue(this.value);
+      input.setPlaceholder(null != (_a6 = this.options.placeholder) ? _a6 : "");
+      input.inputEl.type = this.options.password ? "password" : "text";
+      input.onChange(value => {
+        this.value = value;
+      });
+      input.inputEl.addEventListener("keydown", event2 => {
+        if ("Enter" === event2.key && !event2.isComposing) {
+          event2.preventDefault();
+          this.submit();
+        }
+      });
+    });
+    new import_obsidian.Setting(this.contentEl).addButton(button => {
+      var _a6;
+      return button.setButtonText(null != (_a6 = this.options.submitLabel) ? _a6 : "OK").setCta().onClick(() => this.submit());
+    }).addButton(button => {
+      var _a6;
+      return button.setButtonText(null != (_a6 = this.options.cancelLabel) ? _a6 : "Cancel").onClick(() => this.close());
+    });
+    null == (_a5 = this.input) || _a5.inputEl.focus();
+    if (this.options.selectInitialValue && this.value.length > 0) null == (_b3 = this.input) || _b3.inputEl.select();
+  }
+  onClose() {
+    this.settle(null);
+    this.input = void 0;
+    this.contentEl.empty();
+  }
+  submit() {
+    this.settle(this.value);
+    this.close();
+  }
+  settle(result) {
+    const resolve = this.resolveResult;
+    if (void 0 !== resolve) {
+      this.resolveResult = void 0;
+      resolve(result);
+    }
+  }
+};
+
+function promptText(app, options) {
+  return new Promise(resolve => {
+    new TextPromptModal(app, {
+      ...options,
+      password: false
+    }, resolve).open();
+  });
+}
+
+function promptPassword(app, options) {
+  return new Promise(resolve => {
+    new TextPromptModal(app, {
+      ...options,
+      password: true
+    }, resolve).open();
+  });
+}
+
+var PickOneModal = class extends import_obsidian.FuzzySuggestModal {
+  constructor(app, options, resolveResult) {
+    var _a5;
+    super(app);
+    __publicField(this, "items");
+    __publicField(this, "itemText");
+    __publicField(this, "itemDescription");
+    __publicField(this, "resolveResult");
+    this.items = options.items;
+    this.itemText = options.getText;
+    this.itemDescription = options.getDescription;
+    this.resolveResult = resolveResult;
+    this.setPlaceholder(null != (_a5 = options.placeholder) ? _a5 : "Select an item");
+  }
+  getItems() {
+    return [ ...this.items ];
+  }
+  getItemText(item) {
+    return this.itemText(item);
+  }
+  renderSuggestion(match, element2) {
+    var _a5;
+    super.renderSuggestion(match, element2);
+    const description = null == (_a5 = this.itemDescription) ? void 0 : _a5.call(this, match.item);
+    if (void 0 !== description && "" !== description) element2.createDiv({
+      text: description,
+      cls: "suggestion-note"
+    });
+  }
+  onChooseItem(item, _event) {
+    this.settle(item);
+  }
+  onClose() {
+    globalThis.setTimeout(() => this.settle(null), 0);
+  }
+  settle(result) {
+    const resolve = this.resolveResult;
+    if (void 0 !== resolve) {
+      this.resolveResult = void 0;
+      resolve(result);
+    }
+  }
+};
+
+function pickOne(app, options) {
+  return new Promise(resolve => {
+    new PickOneModal(app, options, resolve).open();
+  });
+}
+
+var ActionDialog = class extends import_obsidian.Modal {
+  constructor(app, options, resolveResult) {
+    super(app);
+    __publicField(this, "options");
+    __publicField(this, "renderer", new import_obsidian.Component);
+    __publicField(this, "resolveResult");
+    __publicField(this, "timeout");
+    this.options = options;
+    this.resolveResult = resolveResult;
+  }
+  onOpen() {
+    var _a5;
+    this.setTitle(this.options.title);
+    this.renderer.load();
+    const messageEl = this.contentEl.createDiv();
+    import_obsidian.MarkdownRenderer.render(this.app, this.options.message, messageEl, null != (_a5 = this.options.sourcePath) ? _a5 : "", this.renderer);
+    const actions = new import_obsidian.Setting(this.contentEl);
+    for (const action2 of this.options.actions) actions.addButton(button => {
+      var _a6, _b3;
+      button.setButtonText(null != (_b3 = null == (_a6 = this.options.labels) ? void 0 : _a6[action2]) ? _b3 : action2).onClick(() => this.choose(action2));
+      if (action2 === this.options.defaultAction) button.setCta();
+    });
+    if (void 0 !== this.options.timeoutMs && void 0 !== this.options.defaultAction) this.timeout = globalThis.setTimeout(() => this.choose(this.options.defaultAction), this.options.timeoutMs);
+  }
+  onClose() {
+    this.clearTimeout();
+    this.renderer.unload();
+    this.settle(null);
+    this.contentEl.empty();
+  }
+  choose(action2) {
+    this.settle(action2);
+    this.close();
+  }
+  settle(result) {
+    const resolve = this.resolveResult;
+    if (void 0 !== resolve) {
+      this.resolveResult = void 0;
+      resolve(result);
+    }
+  }
+  clearTimeout() {
+    if (void 0 !== this.timeout) {
+      globalThis.clearTimeout(this.timeout);
+      this.timeout = void 0;
+    }
+  }
+};
+
+function confirmAction(app, options) {
+  return new Promise(resolve => {
+    new ActionDialog(app, options, resolve).open();
+  });
+}
+
+async function showMessage(app, options) {
+  var _a5;
+  const close = "close";
+  await confirmAction(app, {
+    title: options.title,
+    message: options.message,
+    actions: [ "close" ],
+    labels: {
+      [close]: null != (_a5 = options.closeLabel) ? _a5 : "Close"
+    },
+    defaultAction: "close",
+    sourcePath: options.sourcePath
+  });
+}
+
+function createObsidianFallback(app) {
+  return {
+    promptText: options => promptText(app, options),
+    promptPassword: options => promptPassword(app, options),
+    pickOne: options => pickOne(app, options),
+    confirmAction: options => confirmAction(app, options),
+    showMessage: options => showMessage(app, options)
+  };
+}
+
+var UiContext = class extends DrivenUiInteractions {
+  constructor(app, options = {}) {
+    super({
+      driver: options.driver,
+      fallback: createObsidianFallback(app)
+    });
+    __publicField(this, "app");
+    this.app = app;
+  }
+};
+
+function createObsidianUi(app, options = {}) {
+  return new UiContext(app, options);
+}
+
+var _vault, import_obsidian2 = require("obsidian"), VaultTextFileNotFoundError = class extends Error {
+  constructor(path) {
+    super(`Vault text file was not found: ${path}`);
+    __publicField(this, "path");
+    this.name = "VaultTextFileNotFoundError";
+    this.path = path;
+  }
+}, VaultTextFileExistsError = class extends Error {
+  constructor(path) {
+    super(`Vault path already exists: ${path}`);
+    __publicField(this, "path");
+    this.name = "VaultTextFileExistsError";
+    this.path = path;
+  }
+}, VaultFrontmatterFileNotFoundError = class extends Error {
+  constructor(path) {
+    super(`Vault frontmatter file was not found: ${path}`);
+    __publicField(this, "path");
+    this.name = "VaultFrontmatterFileNotFoundError";
+    this.path = path;
+  }
+}, VaultFrontmatterUnsupportedFileError = class extends Error {
+  constructor(path) {
+    super(`Vault frontmatter requires a Markdown file: ${path}`);
+    __publicField(this, "path");
+    this.name = "VaultFrontmatterUnsupportedFileError";
+    this.path = path;
+  }
+}, VaultFrontmatterAsyncUpdaterError = class extends Error {
+  constructor(path) {
+    super(`Vault frontmatter updater must be synchronous: ${path}`);
+    __publicField(this, "path");
+    this.name = "VaultFrontmatterAsyncUpdaterError";
+    this.path = path;
+  }
+};
+
+function isThenable(value) {
+  return ("object" == typeof value && null !== value || "function" == typeof value) && "then" in value && "function" == typeof value.then;
+}
+
+function invokeVaultFrontmatterUpdater(path, updater, frontmatter) {
+  const result = updater(frontmatter);
+  if (isThenable(result)) {
+    Promise.resolve(result).catch(() => {});
+    throw new VaultFrontmatterAsyncUpdaterError(path);
+  }
+}
+
+function requireTextFile(vault, path) {
+  const file = vault.getAbstractFileByPath(path);
+  if (!(file instanceof import_obsidian2.TFile)) throw new VaultTextFileNotFoundError(path);
+  return file;
+}
+
+var _host, ObsidianVaultTextAccess = class {
+  constructor(vault) {
+    __privateAdd(this, _vault);
+    __privateSet(this, _vault, vault);
+  }
+  async readText(path) {
+    const normalisedPath = (0, import_obsidian2.normalizePath)(path);
+    return await __privateGet(this, _vault).read(requireTextFile(__privateGet(this, _vault), normalisedPath));
+  }
+  async createText(path, content) {
+    const normalisedPath = (0, import_obsidian2.normalizePath)(path);
+    if (null !== __privateGet(this, _vault).getAbstractFileByPath(normalisedPath)) throw new VaultTextFileExistsError(normalisedPath);
+    await __privateGet(this, _vault).create(normalisedPath, content);
+  }
+  async modifyText(path, content) {
+    const normalisedPath = (0, import_obsidian2.normalizePath)(path);
+    await __privateGet(this, _vault).modify(requireTextFile(__privateGet(this, _vault), normalisedPath), content);
+  }
+  async appendText(path, content) {
+    const normalisedPath = (0, import_obsidian2.normalizePath)(path);
+    await __privateGet(this, _vault).append(requireTextFile(__privateGet(this, _vault), normalisedPath), content);
+  }
+};
+
+_vault = new WeakMap;
+
+function createObsidianVaultTextAccess(vault) {
+  return new ObsidianVaultTextAccess(vault);
+}
+
+var ObsidianVaultFrontmatterAccess = class {
+  constructor(host) {
+    __privateAdd(this, _host);
+    __privateSet(this, _host, host);
+  }
+  async updateFrontmatter(path, updater) {
+    const normalisedPath = (0, import_obsidian2.normalizePath)(path), file = __privateGet(this, _host).vault.getAbstractFileByPath(normalisedPath);
+    if (!(file instanceof import_obsidian2.TFile)) throw new VaultFrontmatterFileNotFoundError(normalisedPath);
+    if ("md" !== file.extension.toLowerCase()) throw new VaultFrontmatterUnsupportedFileError(normalisedPath);
+    await __privateGet(this, _host).fileManager.processFrontMatter(file, frontmatter => {
+      invokeVaultFrontmatterUpdater(normalisedPath, updater, frontmatter);
+    });
+  }
+};
+
+_host = new WeakMap;
+
+function createObsidianVaultFrontmatterAccess(host) {
+  return new ObsidianVaultFrontmatterAccess(host);
+}
+
+var _a, _b, enumShowListIn = {
   "": "Sidebar",
   CURRENT_PANE: "Current pane",
   SPLIT_PANE: "New pane"
@@ -62,6 +483,7 @@ var _a, _b, import_obsidian8 = require("obsidian"), enumShowListIn = {
   mergeRedundantCombination: false,
   useVirtualTag: false,
   useFrontmatterTagsForNewNotes: false,
+  newNoteTemplate: "",
   doNotSimplifyTags: false,
   overrideTagClicking: false,
   useMultiPaneList: false,
@@ -104,40 +526,42 @@ var _a, _b, import_obsidian8 = require("obsidian"), enumShowListIn = {
   MTIME: "Modified time",
   CTIME: "Created time",
   FULLPATH: "Fullpath of the file"
-}, node_env = null == (_b = null == (_a = globalThis.process) ? void 0 : _a.env) ? void 0 : _b.NODE_ENV, dev_fallback_default = node_env && !node_env.toLowerCase().startsWith("prod"), is_array = Array.isArray, index_of = Array.prototype.indexOf, array_from = Array.from, object_keys = Object.keys, define_property = Object.defineProperty, get_descriptor = Object.getOwnPropertyDescriptor, get_descriptors = Object.getOwnPropertyDescriptors, object_prototype = Object.prototype, array_prototype = Array.prototype, get_prototype_of = Object.getPrototypeOf, is_extensible = Object.isExtensible, noop = () => {};
+}, node_env = null == (_b = null == (_a = globalThis.process) ? void 0 : _a.env) ? void 0 : _b.NODE_ENV, dev_fallback_default = node_env && !node_env.toLowerCase().startsWith("prod"), is_array = Array.isArray, index_of = Array.prototype.indexOf, includes = Array.prototype.includes, array_from = Array.from, object_keys = Object.keys, define_property = Object.defineProperty, get_descriptor = Object.getOwnPropertyDescriptor, get_descriptors = Object.getOwnPropertyDescriptors, object_prototype = Object.prototype, array_prototype = Array.prototype, get_prototype_of = Object.getPrototypeOf, is_extensible = Object.isExtensible, noop = () => {};
 
 function run_all(arr) {
   for (var i = 0; i < arr.length; i++) arr[i]();
 }
 
-var DERIVED = 2, EFFECT = 4, RENDER_EFFECT = 8, BLOCK_EFFECT = 16, BRANCH_EFFECT = 32, ROOT_EFFECT = 64, BOUNDARY_EFFECT = 128, UNOWNED = 256, DISCONNECTED = 512, CLEAN = 1024, DIRTY = 2048, MAYBE_DIRTY = 4096, INERT = 8192, DESTROYED = 16384, EFFECT_RAN = 32768, EFFECT_TRANSPARENT = 65536, LEGACY_DERIVED_PROP = 1 << 17, INSPECT_EFFECT = 1 << 18, HEAD_EFFECT = 1 << 19, EFFECT_HAS_DERIVED = 1 << 20, EFFECT_IS_UPDATING = 1 << 21, STATE_SYMBOL = Symbol("$state"), LEGACY_PROPS = Symbol("legacy props"), LOADING_ATTR_SYMBOL = Symbol(""), request_idle_callback = "undefined" == typeof requestIdleCallback ? cb => setTimeout(cb, 1) : requestIdleCallback, micro_tasks = [], idle_tasks = [];
-
-function run_micro_tasks() {
-  var tasks = micro_tasks;
-  micro_tasks = [];
-  run_all(tasks);
+function deferred() {
+  var resolve, reject;
+  return {
+    promise: new Promise((res, rej) => {
+      resolve = res;
+      reject = rej;
+    }),
+    resolve,
+    reject
+  };
 }
 
-function run_idle_tasks() {
-  var tasks = idle_tasks;
-  idle_tasks = [];
-  run_all(tasks);
+function to_array(value, n) {
+  if (Array.isArray(value)) return value;
+  if (void 0 === n || !(Symbol.iterator in value)) return Array.from(value);
+  const array = [];
+  for (const element2 of value) {
+    array.push(element2);
+    if (array.length === n) break;
+  }
+  return array;
 }
 
-function queue_micro_task(fn) {
-  if (0 === micro_tasks.length) queueMicrotask(run_micro_tasks);
-  micro_tasks.push(fn);
-}
-
-function queue_idle_task(fn) {
-  if (0 === idle_tasks.length) request_idle_callback(run_idle_tasks);
-  idle_tasks.push(fn);
-}
-
-function flush_tasks() {
-  if (micro_tasks.length > 0) run_micro_tasks();
-  if (idle_tasks.length > 0) run_idle_tasks();
-}
+var _a2, DERIVED = 2, EFFECT = 4, RENDER_EFFECT = 8, MANAGED_EFFECT = 1 << 24, BLOCK_EFFECT = 16, BRANCH_EFFECT = 32, ROOT_EFFECT = 64, BOUNDARY_EFFECT = 128, CONNECTED = 512, CLEAN = 1024, DIRTY = 2048, MAYBE_DIRTY = 4096, INERT = 8192, DESTROYED = 16384, REACTION_RAN = 32768, DESTROYING = 1 << 25, EFFECT_TRANSPARENT = 65536, EAGER_EFFECT = 1 << 17, HEAD_EFFECT = 1 << 18, EFFECT_PRESERVED = 1 << 19, USER_EFFECT = 1 << 20, EFFECT_OFFSCREEN = 1 << 25, WAS_MARKED = 65536, REACTION_IS_UPDATING = 1 << 21, ASYNC = 1 << 22, ERROR_VALUE = 1 << 23, STATE_SYMBOL = Symbol("$state"), LEGACY_PROPS = Symbol("legacy props"), LOADING_ATTR_SYMBOL = Symbol(""), PROXY_PATH_SYMBOL = Symbol("proxy path"), ATTRIBUTES_CACHE = Symbol("attributes"), CLASS_CACHE = Symbol("class"), STYLE_CACHE = Symbol("style"), TEXT_CACHE = Symbol("text"), FORM_RESET_HANDLER = Symbol("form reset"), HMR_ANCHOR = Symbol("hmr anchor"), STALE_REACTION = new class StaleReactionError extends Error {
+  constructor() {
+    super(...arguments);
+    __publicField(this, "name", "StaleReactionError");
+    __publicField(this, "message", "The reaction that called `getAbortSignal()` was re-run or destroyed");
+  }
+}, IS_XHTML = !!(null == (_a2 = globalThis.document) ? void 0 : _a2.contentType) && globalThis.document.contentType.includes("xml"), TEXT_NODE = 3, COMMENT_NODE = 8;
 
 function equals(value) {
   return value === this.v;
@@ -149,6 +573,30 @@ function safe_not_equal(a, b) {
 
 function safe_equals(value) {
   return !safe_not_equal(value, this.v);
+}
+
+function invariant_violation(message) {
+  if (dev_fallback_default) {
+    const error = new Error(`invariant_violation\nAn invariant violation occurred, meaning Svelte's internal assumptions were flawed. This is a bug in Svelte, not your app — please open an issue at https://github.com/sveltejs/svelte, citing the following message: "${message}"\nhttps://svelte.dev/e/invariant_violation`);
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/invariant_violation");
+}
+
+function lifecycle_outside_component(name) {
+  if (dev_fallback_default) {
+    const error = new Error(`lifecycle_outside_component\n\`${name}(...)\` can only be used during component initialisation\nhttps://svelte.dev/e/lifecycle_outside_component`);
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/lifecycle_outside_component");
+}
+
+function async_derived_orphan() {
+  if (dev_fallback_default) {
+    const error = new Error("async_derived_orphan\nCannot create a `$derived(...)` with an `await` expression outside of an effect tree\nhttps://svelte.dev/e/async_derived_orphan");
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/async_derived_orphan");
 }
 
 function bind_invalid_checkbox_value() {
@@ -165,6 +613,22 @@ function derived_references_self() {
     error.name = "Svelte error";
     throw error;
   } else throw new Error("https://svelte.dev/e/derived_references_self");
+}
+
+function each_key_duplicate(a, b, value) {
+  if (dev_fallback_default) {
+    const error = new Error(`each_key_duplicate\n${value ? `Keyed each block has duplicate key \`${value}\` at indexes ${a} and ${b}` : `Keyed each block has duplicate key at indexes ${a} and ${b}`}\nhttps://svelte.dev/e/each_key_duplicate`);
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/each_key_duplicate");
+}
+
+function each_key_volatile(index2, a, b) {
+  if (dev_fallback_default) {
+    const error = new Error(`each_key_volatile\nKeyed each block has key that is not idempotent — the key for item at index ${index2} was \`${a}\` but is now \`${b}\`. Keys must be the same each time for a given item\nhttps://svelte.dev/e/each_key_volatile`);
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/each_key_volatile");
 }
 
 function effect_in_teardown(rune) {
@@ -193,7 +657,7 @@ function effect_orphan(rune) {
 
 function effect_update_depth_exceeded() {
   if (dev_fallback_default) {
-    const error = new Error("effect_update_depth_exceeded\nMaximum update depth exceeded. This can happen when a reactive block or effect repeatedly sets a new value. Svelte limits the number of nested updates to prevent infinite loops\nhttps://svelte.dev/e/effect_update_depth_exceeded");
+    const error = new Error("effect_update_depth_exceeded\nMaximum update depth exceeded. This typically indicates that an effect reads and writes the same piece of state\nhttps://svelte.dev/e/effect_update_depth_exceeded");
     error.name = "Svelte error";
     throw error;
   } else throw new Error("https://svelte.dev/e/effect_update_depth_exceeded");
@@ -215,9 +679,9 @@ function invalid_snippet() {
   } else throw new Error("https://svelte.dev/e/invalid_snippet");
 }
 
-function props_invalid_value(key) {
+function props_invalid_value(key2) {
   if (dev_fallback_default) {
-    const error = new Error(`props_invalid_value\nCannot do \`bind:${key}={undefined}\` when \`${key}\` has a fallback value\nhttps://svelte.dev/e/props_invalid_value`);
+    const error = new Error(`props_invalid_value\nCannot do \`bind:${key2}={undefined}\` when \`${key2}\` has a fallback value\nhttps://svelte.dev/e/props_invalid_value`);
     error.name = "Svelte error";
     throw error;
   } else throw new Error("https://svelte.dev/e/props_invalid_value");
@@ -229,6 +693,14 @@ function rune_outside_svelte(rune) {
     error.name = "Svelte error";
     throw error;
   } else throw new Error("https://svelte.dev/e/rune_outside_svelte");
+}
+
+function set_context_after_init() {
+  if (dev_fallback_default) {
+    const error = new Error("set_context_after_init\n`setContext` must be called when a component first initializes, not in a subsequent effect or after an `await` expression\nhttps://svelte.dev/e/set_context_after_init");
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/set_context_after_init");
 }
 
 function state_descriptors_fixed() {
@@ -249,43 +721,67 @@ function state_prototype_fixed() {
 
 function state_unsafe_mutation() {
   if (dev_fallback_default) {
-    const error = new Error("state_unsafe_mutation\nUpdating state inside a derived or a template expression is forbidden. If the value should not be reactive, declare it without `$state`\nhttps://svelte.dev/e/state_unsafe_mutation");
+    const error = new Error("state_unsafe_mutation\nUpdating state inside `$derived(...)`, `$inspect(...)` or a template expression is forbidden. If the value should not be reactive, declare it without `$state`\nhttps://svelte.dev/e/state_unsafe_mutation");
     error.name = "Svelte error";
     throw error;
   } else throw new Error("https://svelte.dev/e/state_unsafe_mutation");
 }
 
-var legacy_mode_flag = false, tracing_mode_flag = false, EACH_ITEM_REACTIVE = 1, EACH_INDEX_REACTIVE = 2, EACH_IS_CONTROLLED = 4, EACH_IS_ANIMATED = 8, EACH_ITEM_IMMUTABLE = 16, PROPS_IS_IMMUTABLE = 1, PROPS_IS_RUNES = 2, PROPS_IS_UPDATED = 4, PROPS_IS_BINDABLE = 8, PROPS_IS_LAZY_INITIAL = 16, TRANSITION_OUT = 2, TRANSITION_GLOBAL = 4, TEMPLATE_FRAGMENT = 1, TEMPLATE_USE_IMPORT_NODE = 2, HYDRATION_START = "[", HYDRATION_START_ELSE = "[!", HYDRATION_END = "]", HYDRATION_ERROR = {}, ELEMENT_PRESERVE_ATTRIBUTE_CASE = 2, UNINITIALIZED = Symbol(), FILENAME = Symbol("filename"), HMR = Symbol("hmr"), NAMESPACE_HTML = "http://www.w3.org/1999/xhtml", tracing_expressions = null;
+function svelte_boundary_reset_onerror() {
+  if (dev_fallback_default) {
+    const error = new Error("svelte_boundary_reset_onerror\nA `<svelte:boundary>` `reset` function cannot be called while an error is still being handled\nhttps://svelte.dev/e/svelte_boundary_reset_onerror");
+    error.name = "Svelte error";
+    throw error;
+  } else throw new Error("https://svelte.dev/e/svelte_boundary_reset_onerror");
+}
 
-function get_stack(label) {
-  let error = Error();
-  const stack2 = error.stack;
-  if (stack2) {
-    const lines = stack2.split("\n"), new_lines = [ "\n" ];
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      if ("Error" !== line) {
-        if (line.includes("validate_each_keys")) return null;
-        if (!line.includes("svelte/src/internal")) new_lines.push(line);
-      }
-    }
-    if (1 === new_lines.length) return null;
-    define_property(error, "stack", {
-      value: new_lines.join("\n")
-    });
-    define_property(error, "name", {
-      value: `${label}Error`
-    });
-  }
+var async_mode_flag = false, legacy_mode_flag = false, tracing_mode_flag = false, EACH_ITEM_REACTIVE = 1, EACH_INDEX_REACTIVE = 2, EACH_IS_CONTROLLED = 4, EACH_IS_ANIMATED = 8, EACH_ITEM_IMMUTABLE = 16, PROPS_IS_IMMUTABLE = 1, PROPS_IS_RUNES = 2, PROPS_IS_UPDATED = 4, PROPS_IS_BINDABLE = 8, PROPS_IS_LAZY_INITIAL = 16, TRANSITION_OUT = 2, TRANSITION_GLOBAL = 4, TEMPLATE_FRAGMENT = 1, TEMPLATE_USE_IMPORT_NODE = 2, TEMPLATE_USE_SVG = 4, TEMPLATE_USE_MATHML = 8, HYDRATION_START = "[", HYDRATION_START_ELSE = "[!", HYDRATION_START_FAILED = "[?", HYDRATION_END = "]", HYDRATION_ERROR = {}, ELEMENT_PRESERVE_ATTRIBUTE_CASE = 2, ELEMENT_IS_INPUT = 4, UNINITIALIZED = Symbol("uninitialized"), FILENAME = Symbol("filename"), NAMESPACE_HTML = "http://www.w3.org/1999/xhtml", NAMESPACE_SVG = "http://www.w3.org/2000/svg", NAMESPACE_MATHML = "http://www.w3.org/1998/Math/MathML", tracing_expressions = null;
+
+function tag(source2, label) {
+  source2.label = label;
+  tag_proxy(source2.v, label);
+  return source2;
+}
+
+function tag_proxy(value, label) {
+  var _a5;
+  null == (_a5 = null == value ? void 0 : value[PROXY_PATH_SYMBOL]) || _a5.call(value, label);
+  return value;
+}
+
+function get_error(label) {
+  const error = new Error, stack2 = get_stack();
+  if (0 === stack2.length) return null;
+  stack2.unshift("\n");
+  define_property(error, "stack", {
+    value: stack2.join("\n")
+  });
+  define_property(error, "name", {
+    value: label
+  });
   return error;
 }
 
-function lifecycle_outside_component(name) {
-  if (dev_fallback_default) {
-    const error = new Error(`lifecycle_outside_component\n\`${name}(...)\` can only be used during component initialisation\nhttps://svelte.dev/e/lifecycle_outside_component`);
-    error.name = "Svelte error";
-    throw error;
-  } else throw new Error("https://svelte.dev/e/lifecycle_outside_component");
+function get_stack() {
+  const limit = Error.stackTraceLimit;
+  Error.stackTraceLimit = 1 / 0;
+  const stack2 = (new Error).stack;
+  Error.stackTraceLimit = limit;
+  if (!stack2) return [];
+  const lines = stack2.split("\n"), new_lines = [];
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i], posixified = line.replaceAll("\\", "/");
+    if ("Error" !== line.trim()) {
+      if (line.includes("validate_each_keys")) return [];
+      if (!posixified.includes("svelte/src/internal") && !posixified.includes("node_modules/.vite")) new_lines.push(line);
+    }
+  }
+  return new_lines;
+}
+
+function invariant(condition, message) {
+  if (!dev_fallback_default) throw new Error("invariant(...) was not guarded by if (DEV)");
+  if (!condition) invariant_violation(message);
 }
 
 var component_context = null;
@@ -294,41 +790,47 @@ function set_component_context(context) {
   component_context = context;
 }
 
+var dev_stack = null;
+
+function set_dev_stack(stack2) {
+  dev_stack = stack2;
+}
+
 var dev_current_component_function = null;
 
 function set_dev_current_component_function(fn) {
   dev_current_component_function = fn;
 }
 
-function getContext(key) {
-  return get_or_init_context_map("getContext").get(key);
+function getContext(key2) {
+  return get_or_init_context_map("getContext").get(key2);
 }
 
-function setContext(key, context) {
-  get_or_init_context_map("setContext").set(key, context);
+function setContext(key2, context) {
+  const context_map = get_or_init_context_map("setContext");
+  if (async_mode_flag) {
+    var flags2 = active_effect.f;
+    if (!(!active_reaction && 0 !== (flags2 & BRANCH_EFFECT) && !component_context.i)) set_context_after_init();
+  }
+  context_map.set(key2, context);
   return context;
 }
 
 function push(props, runes = false, fn) {
-  var ctx = component_context = {
+  component_context = {
     p: component_context,
+    i: false,
     c: null,
-    d: false,
     e: null,
-    m: false,
     s: props,
     x: null,
-    l: null
+    r: active_effect,
+    l: legacy_mode_flag && !runes ? {
+      s: null,
+      u: null,
+      $: []
+    } : null
   };
-  if (legacy_mode_flag && !runes) component_context.l = {
-    s: null,
-    u: null,
-    r1: [],
-    r2: source(false)
-  };
-  teardown((() => {
-    ctx.d = true;
-  }));
   if (dev_fallback_default) {
     component_context.function = fn;
     dev_current_component_function = fn;
@@ -336,31 +838,16 @@ function push(props, runes = false, fn) {
 }
 
 function pop(component2) {
-  var _a3, _b3;
-  const context_stack_item = component_context;
-  if (null !== context_stack_item) {
-    if (void 0 !== component2) context_stack_item.x = component2;
-    const component_effects = context_stack_item.e;
-    if (null !== component_effects) {
-      var previous_effect = active_effect, previous_reaction = active_reaction;
-      context_stack_item.e = null;
-      try {
-        for (var i = 0; i < component_effects.length; i++) {
-          var component_effect = component_effects[i];
-          set_active_effect(component_effect.effect);
-          set_active_reaction(component_effect.reaction);
-          effect(component_effect.fn);
-        }
-      } finally {
-        set_active_effect(previous_effect);
-        set_active_reaction(previous_reaction);
-      }
-    }
-    component_context = context_stack_item.p;
-    if (dev_fallback_default) dev_current_component_function = null != (_b3 = null == (_a3 = context_stack_item.p) ? void 0 : _a3.function) ? _b3 : null;
-    context_stack_item.m = true;
+  var _a5, context = component_context, effects = context.e;
+  if (null !== effects) {
+    context.e = null;
+    for (var fn of effects) create_user_effect(fn);
   }
-  return component2 || {};
+  if (void 0 !== component2) context.x = component2;
+  context.i = true;
+  component_context = context.p;
+  if (dev_fallback_default) dev_current_component_function = null != (_a5 = null == component_context ? void 0 : component_context.function) ? _a5 : null;
+  return null != component2 ? component2 : {};
 }
 
 function is_runes() {
@@ -368,9 +855,9 @@ function is_runes() {
 }
 
 function get_or_init_context_map(name) {
-  var _a3;
+  var _a5;
   if (null === component_context) lifecycle_outside_component(name);
-  return null != (_a3 = component_context.c) ? _a3 : component_context.c = new Map(get_parent_context(component_context) || void 0);
+  return null != (_a5 = component_context.c) ? _a5 : component_context.c = new Map(get_parent_context(component_context) || void 0);
 }
 
 function get_parent_context(component_context2) {
@@ -383,309 +870,41 @@ function get_parent_context(component_context2) {
   return null;
 }
 
-function proxy(value) {
-  if ("object" != typeof value || null === value || STATE_SYMBOL in value) return value;
-  const prototype = get_prototype_of(value);
-  if (prototype !== object_prototype && prototype !== array_prototype) return value;
-  var sources = new Map, is_proxied_array = is_array(value), version = state(0), stack2 = dev_fallback_default && tracing_mode_flag ? get_stack("CreatedAt") : null, reaction = active_reaction, with_parent = fn => {
-    var previous_reaction = active_reaction;
-    set_active_reaction(reaction);
-    var result = fn();
-    set_active_reaction(previous_reaction);
-    return result;
-  };
-  if (is_proxied_array) sources.set("length", state(value.length, stack2));
-  return new Proxy(value, {
-    defineProperty(_, prop2, descriptor) {
-      if (!("value" in descriptor) || false === descriptor.configurable || false === descriptor.enumerable || false === descriptor.writable) state_descriptors_fixed();
-      var s = sources.get(prop2);
-      if (void 0 === s) {
-        s = with_parent((() => state(descriptor.value, stack2)));
-        sources.set(prop2, s);
-      } else set(s, with_parent((() => proxy(descriptor.value))));
-      return true;
-    },
-    deleteProperty(target, prop2) {
-      var s = sources.get(prop2);
-      if (void 0 === s) {
-        if (prop2 in target) sources.set(prop2, with_parent((() => state(UNINITIALIZED, stack2))));
-      } else {
-        if (is_proxied_array && "string" == typeof prop2) {
-          var ls = sources.get("length"), n = Number(prop2);
-          if (Number.isInteger(n) && n < ls.v) set(ls, n);
-        }
-        set(s, UNINITIALIZED);
-        update_version(version);
-      }
-      return true;
-    },
-    get(target, prop2, receiver) {
-      var _a3;
-      if (prop2 === STATE_SYMBOL) return value;
-      var s = sources.get(prop2), exists = prop2 in target;
-      if (void 0 === s && (!exists || (null == (_a3 = get_descriptor(target, prop2)) ? void 0 : _a3.writable))) {
-        s = with_parent((() => state(proxy(exists ? target[prop2] : UNINITIALIZED), stack2)));
-        sources.set(prop2, s);
-      }
-      if (void 0 !== s) {
-        var v = get(s);
-        return v === UNINITIALIZED ? void 0 : v;
-      }
-      return Reflect.get(target, prop2, receiver);
-    },
-    getOwnPropertyDescriptor(target, prop2) {
-      var descriptor = Reflect.getOwnPropertyDescriptor(target, prop2);
-      if (descriptor && "value" in descriptor) {
-        var s = sources.get(prop2);
-        if (s) descriptor.value = get(s);
-      } else if (void 0 === descriptor) {
-        var source2 = sources.get(prop2), value2 = null == source2 ? void 0 : source2.v;
-        if (void 0 !== source2 && value2 !== UNINITIALIZED) return {
-          enumerable: true,
-          configurable: true,
-          value: value2,
-          writable: true
-        };
-      }
-      return descriptor;
-    },
-    has(target, prop2) {
-      var _a3;
-      if (prop2 === STATE_SYMBOL) return true;
-      var s = sources.get(prop2), has = void 0 !== s && s.v !== UNINITIALIZED || Reflect.has(target, prop2);
-      if (void 0 !== s || null !== active_effect && (!has || (null == (_a3 = get_descriptor(target, prop2)) ? void 0 : _a3.writable))) {
-        if (void 0 === s) {
-          s = with_parent((() => state(has ? proxy(target[prop2]) : UNINITIALIZED, stack2)));
-          sources.set(prop2, s);
-        }
-        if (get(s) === UNINITIALIZED) return false;
-      }
-      return has;
-    },
-    set(target, prop2, value2, receiver) {
-      var _a3, s = sources.get(prop2), has = prop2 in target;
-      if (is_proxied_array && "length" === prop2) for (var i = value2; i < s.v; i += 1) {
-        var other_s = sources.get(i + "");
-        if (void 0 !== other_s) set(other_s, UNINITIALIZED); else if (i in target) {
-          other_s = with_parent((() => state(UNINITIALIZED, stack2)));
-          sources.set(i + "", other_s);
-        }
-      }
-      if (void 0 === s) {
-        if (!has || (null == (_a3 = get_descriptor(target, prop2)) ? void 0 : _a3.writable)) {
-          set(s = with_parent((() => state(void 0, stack2))), with_parent((() => proxy(value2))));
-          sources.set(prop2, s);
-        }
-      } else {
-        has = s.v !== UNINITIALIZED;
-        set(s, with_parent((() => proxy(value2))));
-      }
-      var descriptor = Reflect.getOwnPropertyDescriptor(target, prop2);
-      if (null == descriptor ? void 0 : descriptor.set) descriptor.set.call(receiver, value2);
-      if (!has) {
-        if (is_proxied_array && "string" == typeof prop2) {
-          var ls = sources.get("length"), n = Number(prop2);
-          if (Number.isInteger(n) && n >= ls.v) set(ls, n + 1);
-        }
-        update_version(version);
-      }
-      return true;
-    },
-    ownKeys(target) {
-      get(version);
-      var own_keys = Reflect.ownKeys(target).filter((key2 => {
-        var source3 = sources.get(key2);
-        return void 0 === source3 || source3.v !== UNINITIALIZED;
-      }));
-      for (var [key, source2] of sources) if (source2.v !== UNINITIALIZED && !(key in target)) own_keys.push(key);
-      return own_keys;
-    },
-    setPrototypeOf() {
-      state_prototype_fixed();
-    }
-  });
+var micro_tasks = [];
+
+function run_micro_tasks() {
+  var tasks = micro_tasks;
+  micro_tasks = [];
+  run_all(tasks);
 }
 
-function update_version(signal, d = 1) {
-  set(signal, signal.v + d);
-}
-
-function get_proxied_value(value) {
-  try {
-    if (null !== value && "object" == typeof value && STATE_SYMBOL in value) return value[STATE_SYMBOL];
-  } catch (e) {}
-  return value;
-}
-
-function derived(fn) {
-  var flags = DERIVED | DIRTY, parent_derived = null !== active_reaction && !!(active_reaction.f & DERIVED) ? active_reaction : null;
-  if (null === active_effect || null !== parent_derived && !!(parent_derived.f & UNOWNED)) flags |= UNOWNED; else active_effect.f |= EFFECT_HAS_DERIVED;
-  const signal = {
-    ctx: component_context,
-    deps: null,
-    effects: null,
-    equals,
-    f: flags,
-    fn,
-    reactions: null,
-    rv: 0,
-    v: null,
-    wv: 0,
-    parent: null != parent_derived ? parent_derived : active_effect
-  };
-  if (dev_fallback_default && tracing_mode_flag) signal.created = get_stack("CreatedAt");
-  return signal;
-}
-
-function user_derived(fn) {
-  const d = derived(fn);
-  push_reaction_value(d);
-  return d;
-}
-
-function derived_safe_equal(fn) {
-  const signal = derived(fn);
-  signal.equals = safe_equals;
-  return signal;
-}
-
-function destroy_derived_effects(derived3) {
-  var effects = derived3.effects;
-  if (null !== effects) {
-    derived3.effects = null;
-    for (var i = 0; i < effects.length; i += 1) destroy_effect(effects[i]);
+function queue_micro_task(fn) {
+  if (0 === micro_tasks.length && !is_flushing_sync) {
+    var tasks = micro_tasks;
+    queueMicrotask(() => {
+      if (tasks === micro_tasks) run_micro_tasks();
+    });
   }
+  micro_tasks.push(fn);
 }
 
-var stack = [];
-
-function get_derived_parent_effect(derived3) {
-  for (var parent = derived3.parent; null !== parent; ) {
-    if (!(parent.f & DERIVED)) return parent;
-    parent = parent.parent;
-  }
-  return null;
-}
-
-function execute_derived(derived3) {
-  var value, prev_active_effect = active_effect;
-  set_active_effect(get_derived_parent_effect(derived3));
-  if (dev_fallback_default) {
-    let prev_inspect_effects = inspect_effects;
-    set_inspect_effects(new Set);
-    try {
-      if (stack.includes(derived3)) derived_references_self();
-      stack.push(derived3);
-      destroy_derived_effects(derived3);
-      value = update_reaction(derived3);
-    } finally {
-      set_active_effect(prev_active_effect);
-      set_inspect_effects(prev_inspect_effects);
-      stack.pop();
-    }
-  } else try {
-    destroy_derived_effects(derived3);
-    value = update_reaction(derived3);
-  } finally {
-    set_active_effect(prev_active_effect);
-  }
-  return value;
-}
-
-function update_derived(derived3) {
-  var value = execute_derived(derived3);
-  set_signal_status(derived3, (skip_reaction || !!(derived3.f & UNOWNED)) && null !== derived3.deps ? MAYBE_DIRTY : CLEAN);
-  if (!derived3.equals(value)) {
-    derived3.v = value;
-    derived3.wv = increment_write_version();
-  }
-}
-
-var inspect_effects = new Set, old_values = new Map;
-
-function set_inspect_effects(v) {
-  inspect_effects = v;
-}
-
-function source(v, stack2) {
-  var signal = {
-    f: 0,
-    v,
-    reactions: null,
-    equals,
-    rv: 0,
-    wv: 0
-  };
-  if (dev_fallback_default && tracing_mode_flag) {
-    signal.created = null != stack2 ? stack2 : get_stack("CreatedAt");
-    signal.debug = null;
-  }
-  return signal;
-}
-
-function state(v, stack2) {
-  const s = source(v, stack2);
-  push_reaction_value(s);
-  return s;
-}
-
-function mutable_source(initial_value, immutable = false) {
-  var _a3, _b3;
-  const s = source(initial_value);
-  if (!immutable) s.equals = safe_equals;
-  if (legacy_mode_flag && null !== component_context && null !== component_context.l) (null != (_b3 = (_a3 = component_context.l).s) ? _b3 : _a3.s = []).push(s);
-  return s;
-}
-
-function set(source2, value, should_proxy = false) {
-  var _a3;
-  if (null !== active_reaction && !untracking && is_runes() && !!(active_reaction.f & (DERIVED | BLOCK_EFFECT)) && !(null == (_a3 = reaction_sources) ? void 0 : _a3.includes(source2))) state_unsafe_mutation();
-  return internal_set(source2, should_proxy ? proxy(value) : value);
-}
-
-function internal_set(source2, value) {
-  if (!source2.equals(value)) {
-    var old_value = source2.v;
-    if (is_destroying_effect) old_values.set(source2, value); else old_values.set(source2, old_value);
-    source2.v = value;
-    if (dev_fallback_default && tracing_mode_flag) {
-      source2.updated = get_stack("UpdatedAt");
-      if (null != active_effect) {
-        source2.trace_need_increase = true;
-        null != source2.trace_v || (source2.trace_v = old_value);
-      }
-    }
-    if (!!(source2.f & DERIVED)) {
-      if (!!(source2.f & DIRTY)) execute_derived(source2);
-      set_signal_status(source2, !(source2.f & UNOWNED) ? CLEAN : MAYBE_DIRTY);
-    }
-    source2.wv = increment_write_version();
-    mark_reactions(source2, DIRTY);
-    if (is_runes() && null !== active_effect && !!(active_effect.f & CLEAN) && !(active_effect.f & (BRANCH_EFFECT | ROOT_EFFECT))) if (null === untracked_writes) set_untracked_writes([ source2 ]); else untracked_writes.push(source2);
-    if (dev_fallback_default && inspect_effects.size > 0) {
-      const inspects = Array.from(inspect_effects);
-      for (const effect2 of inspects) {
-        if (!!(effect2.f & CLEAN)) set_signal_status(effect2, MAYBE_DIRTY);
-        if (check_dirtiness(effect2)) update_effect(effect2);
-      }
-      inspect_effects.clear();
-    }
-  }
-  return value;
-}
-
-function mark_reactions(signal, status) {
-  var reactions = signal.reactions;
-  if (null !== reactions) for (var runes = is_runes(), length = reactions.length, i = 0; i < length; i++) {
-    var reaction = reactions[i], flags = reaction.f;
-    if (!(flags & DIRTY)) if (runes || reaction !== active_effect) if (!(dev_fallback_default && flags & INSPECT_EFFECT)) {
-      set_signal_status(reaction, status);
-      if (!!(flags & (CLEAN | UNOWNED))) if (!!(flags & DERIVED)) mark_reactions(reaction, MAYBE_DIRTY); else schedule_effect(reaction);
-    } else inspect_effects.add(reaction);
-  }
+function flush_tasks() {
+  for (;micro_tasks.length > 0; ) run_micro_tasks();
 }
 
 var bold = "font-weight: bold", normal = "font-weight: normal";
+
+function await_reactivity_loss(name) {
+  if (dev_fallback_default) console.warn(`%c[svelte] await_reactivity_loss\n%cDetected reactivity loss when reading \`${name}\`. This happens when state is read in an async function after an earlier \`await\`\nhttps://svelte.dev/e/await_reactivity_loss`, bold, normal); else console.warn("https://svelte.dev/e/await_reactivity_loss");
+}
+
+function await_waterfall(name, location) {
+  if (dev_fallback_default) console.warn(`%c[svelte] await_waterfall\n%cAn async derived, \`${name}\` (${location}) was not read immediately after it resolved. This often indicates an unnecessary waterfall, which can slow down your app\nhttps://svelte.dev/e/await_waterfall`, bold, normal); else console.warn("https://svelte.dev/e/await_waterfall");
+}
+
+function derived_inert() {
+  if (dev_fallback_default) console.warn("%c[svelte] derived_inert\n%cReading a derived belonging to a now-destroyed effect may result in stale values\nhttps://svelte.dev/e/derived_inert", bold, normal); else console.warn("https://svelte.dev/e/derived_inert");
+}
 
 function hydration_attribute_changed(attribute, html2, value) {
   if (dev_fallback_default) console.warn(`%c[svelte] hydration_attribute_changed\n%cThe \`${attribute}\` attribute on \`${html2}\` changed its value between server and client renders. The client value, \`${value}\`, will be ignored in favour of the server value\nhttps://svelte.dev/e/hydration_attribute_changed`, bold, normal); else console.warn("https://svelte.dev/e/hydration_attribute_changed");
@@ -707,7 +926,15 @@ function state_proxy_equality_mismatch(operator) {
   if (dev_fallback_default) console.warn(`%c[svelte] state_proxy_equality_mismatch\n%cReactive \`$state(...)\` proxies and the values they proxy have different identities. Because of this, comparisons with \`${operator}\` will produce unexpected results\nhttps://svelte.dev/e/state_proxy_equality_mismatch`, bold, normal); else console.warn("https://svelte.dev/e/state_proxy_equality_mismatch");
 }
 
-var hydrate_node, $window, $document, is_firefox, first_child_getter, next_sibling_getter, hydrating = false;
+function state_proxy_unmount() {
+  if (dev_fallback_default) console.warn("%c[svelte] state_proxy_unmount\n%cTried to unmount a state proxy, rather than a component\nhttps://svelte.dev/e/state_proxy_unmount", bold, normal); else console.warn("https://svelte.dev/e/state_proxy_unmount");
+}
+
+function svelte_boundary_reset_noop() {
+  if (dev_fallback_default) console.warn("%c[svelte] svelte_boundary_reset_noop\n%cA `<svelte:boundary>` `reset` function only resets the boundary the first time it is called\nhttps://svelte.dev/e/svelte_boundary_reset_noop", bold, normal); else console.warn("https://svelte.dev/e/svelte_boundary_reset_noop");
+}
+
+var hydrate_node, hydrating = false;
 
 function set_hydrating(value) {
   hydrating = value;
@@ -742,25 +969,218 @@ function next(count = 1) {
   }
 }
 
-function remove_nodes() {
+function skip_nodes(remove = true) {
   for (var depth = 0, node = hydrate_node; ;) {
-    if (8 === node.nodeType) {
+    if (node.nodeType === COMMENT_NODE) {
       var data = node.data;
       if (data === HYDRATION_END) {
         if (0 === depth) return node;
         depth -= 1;
-      } else if (data === HYDRATION_START || data === HYDRATION_START_ELSE) depth += 1;
+      } else if (data === HYDRATION_START || data === HYDRATION_START_ELSE || "[" === data[0] && !isNaN(Number(data.slice(1)))) depth += 1;
     }
     var next2 = get_next_sibling(node);
-    node.remove();
+    if (remove) node.remove();
     node = next2;
   }
+}
+
+function read_hydration_instruction(node) {
+  if (!node || node.nodeType !== COMMENT_NODE) {
+    hydration_mismatch();
+    throw HYDRATION_ERROR;
+  }
+  return node.data;
+}
+
+var regex_is_valid_identifier = /^[a-zA-Z_$][a-zA-Z_$0-9]*$/;
+
+function proxy(value) {
+  if ("object" != typeof value || null === value || STATE_SYMBOL in value) return value;
+  const prototype = get_prototype_of(value);
+  if (prototype !== object_prototype && prototype !== array_prototype) return value;
+  var sources = new Map, is_proxied_array = is_array(value), version = state(0), stack2 = dev_fallback_default && tracing_mode_flag ? get_error("created at") : null, parent_version = update_version, with_parent = fn => {
+    if (update_version === parent_version) return fn();
+    var reaction = active_reaction, version2 = update_version;
+    set_active_reaction(null);
+    set_update_version(parent_version);
+    var result = fn();
+    set_active_reaction(reaction);
+    set_update_version(version2);
+    return result;
+  };
+  if (is_proxied_array) {
+    sources.set("length", state(value.length, stack2));
+    if (dev_fallback_default) value = inspectable_array(value);
+  }
+  var path = "";
+  let updating = false;
+  function update_path(new_path) {
+    if (!updating) {
+      updating = true;
+      tag(version, `${path = new_path} version`);
+      for (const [prop2, source2] of sources) tag(source2, get_label(path, prop2));
+      updating = false;
+    }
+  }
+  return new Proxy(value, {
+    defineProperty(_, prop2, descriptor) {
+      if (!("value" in descriptor) || false === descriptor.configurable || false === descriptor.enumerable || false === descriptor.writable) state_descriptors_fixed();
+      var s = sources.get(prop2);
+      if (void 0 === s) with_parent(() => {
+        var s2 = state(descriptor.value, stack2);
+        sources.set(prop2, s2);
+        if (dev_fallback_default && "string" == typeof prop2) tag(s2, get_label(path, prop2));
+        return s2;
+      }); else set(s, descriptor.value, true);
+      return true;
+    },
+    deleteProperty(target, prop2) {
+      var s = sources.get(prop2);
+      if (void 0 === s) {
+        if (prop2 in target) {
+          const s2 = with_parent(() => state(UNINITIALIZED, stack2));
+          sources.set(prop2, s2);
+          increment(version);
+          if (dev_fallback_default) tag(s2, get_label(path, prop2));
+        }
+      } else {
+        set(s, UNINITIALIZED);
+        increment(version);
+      }
+      return true;
+    },
+    get(target, prop2, receiver) {
+      var _a5;
+      if (prop2 === STATE_SYMBOL) return value;
+      if (dev_fallback_default && prop2 === PROXY_PATH_SYMBOL) return update_path;
+      var s = sources.get(prop2), exists = prop2 in target;
+      if (void 0 === s && (!exists || (null == (_a5 = get_descriptor(target, prop2)) ? void 0 : _a5.writable))) {
+        s = with_parent(() => {
+          var s2 = state(proxy(exists ? target[prop2] : UNINITIALIZED), stack2);
+          if (dev_fallback_default) tag(s2, get_label(path, prop2));
+          return s2;
+        });
+        sources.set(prop2, s);
+      }
+      if (void 0 !== s) {
+        var v = get(s);
+        return v === UNINITIALIZED ? void 0 : v;
+      }
+      return Reflect.get(target, prop2, receiver);
+    },
+    getOwnPropertyDescriptor(target, prop2) {
+      var descriptor = Reflect.getOwnPropertyDescriptor(target, prop2);
+      if (descriptor && "value" in descriptor) {
+        var s = sources.get(prop2);
+        if (s) descriptor.value = get(s);
+      } else if (void 0 === descriptor) {
+        var source2 = sources.get(prop2), value2 = null == source2 ? void 0 : source2.v;
+        if (void 0 !== source2 && value2 !== UNINITIALIZED) return {
+          enumerable: true,
+          configurable: true,
+          value: value2,
+          writable: true
+        };
+      }
+      return descriptor;
+    },
+    has(target, prop2) {
+      var _a5;
+      if (prop2 === STATE_SYMBOL) return true;
+      var s = sources.get(prop2), has = void 0 !== s && s.v !== UNINITIALIZED || Reflect.has(target, prop2);
+      if (void 0 !== s || null !== active_effect && (!has || (null == (_a5 = get_descriptor(target, prop2)) ? void 0 : _a5.writable))) {
+        if (void 0 === s) {
+          s = with_parent(() => {
+            var s2 = state(has ? proxy(target[prop2]) : UNINITIALIZED, stack2);
+            if (dev_fallback_default) tag(s2, get_label(path, prop2));
+            return s2;
+          });
+          sources.set(prop2, s);
+        }
+        if (get(s) === UNINITIALIZED) return false;
+      }
+      return has;
+    },
+    set(target, prop2, value2, receiver) {
+      var _a5, s = sources.get(prop2), has = prop2 in target;
+      if (is_proxied_array && "length" === prop2) for (var i = value2; i < s.v; i += 1) {
+        var other_s = sources.get(i + "");
+        if (void 0 !== other_s) set(other_s, UNINITIALIZED); else if (i in target) {
+          other_s = with_parent(() => state(UNINITIALIZED, stack2));
+          sources.set(i + "", other_s);
+          if (dev_fallback_default) tag(other_s, get_label(path, i));
+        }
+      }
+      if (void 0 === s) {
+        if (!has || (null == (_a5 = get_descriptor(target, prop2)) ? void 0 : _a5.writable)) {
+          s = with_parent(() => state(void 0, stack2));
+          if (dev_fallback_default) tag(s, get_label(path, prop2));
+          set(s, proxy(value2));
+          sources.set(prop2, s);
+        }
+      } else {
+        has = s.v !== UNINITIALIZED;
+        set(s, with_parent(() => proxy(value2)));
+      }
+      var descriptor = Reflect.getOwnPropertyDescriptor(target, prop2);
+      if (null == descriptor ? void 0 : descriptor.set) descriptor.set.call(receiver, value2);
+      if (!has) {
+        if (is_proxied_array && "string" == typeof prop2) {
+          var ls = sources.get("length"), n = Number(prop2);
+          if (Number.isInteger(n) && n >= ls.v) set(ls, n + 1);
+        }
+        increment(version);
+      }
+      return true;
+    },
+    ownKeys(target) {
+      get(version);
+      var own_keys = Reflect.ownKeys(target).filter(key3 => {
+        var source3 = sources.get(key3);
+        return void 0 === source3 || source3.v !== UNINITIALIZED;
+      });
+      for (var [key2, source2] of sources) if (source2.v !== UNINITIALIZED && !(key2 in target)) own_keys.push(key2);
+      return own_keys;
+    },
+    setPrototypeOf() {
+      state_prototype_fixed();
+    }
+  });
+}
+
+function get_label(path, prop2) {
+  var _a5;
+  if ("symbol" == typeof prop2) return `${path}[Symbol(${null != (_a5 = prop2.description) ? _a5 : ""})]`;
+  if (regex_is_valid_identifier.test(prop2)) return `${path}.${prop2}`; else return /^\d+$/.test(prop2) ? `${path}[${prop2}]` : `${path}['${prop2}']`;
+}
+
+function get_proxied_value(value) {
+  try {
+    if (null !== value && "object" == typeof value && STATE_SYMBOL in value) return value[STATE_SYMBOL];
+  } catch (e) {}
+  return value;
+}
+
+var $window, $document, is_firefox, first_child_getter, next_sibling_getter, ARRAY_MUTATING_METHODS = new Set([ "copyWithin", "fill", "pop", "push", "reverse", "shift", "sort", "splice", "unshift" ]);
+
+function inspectable_array(array) {
+  return new Proxy(array, {
+    get(target, prop2, receiver) {
+      var value = Reflect.get(target, prop2, receiver);
+      if (!ARRAY_MUTATING_METHODS.has(prop2)) return value; else return function(...args) {
+        set_eager_effects_deferred();
+        var result = value.apply(this, args);
+        flush_eager_effects();
+        return result;
+      };
+    }
+  });
 }
 
 function init_array_prototype_warnings() {
   const array_prototype2 = Array.prototype, cleanup = Array.__svelte_cleanup;
   if (cleanup) cleanup();
-  const {indexOf, lastIndexOf, includes} = array_prototype2;
+  const {indexOf, lastIndexOf, includes: includes2} = array_prototype2;
   array_prototype2.indexOf = function(item, from_index) {
     const index2 = indexOf.call(this, item, from_index);
     if (-1 === index2) for (let i = null != from_index ? from_index : 0; i < this.length; i += 1) if (get_proxied_value(this[i]) === item) {
@@ -778,7 +1198,7 @@ function init_array_prototype_warnings() {
     return index2;
   };
   array_prototype2.includes = function(item, from_index) {
-    const has = includes.call(this, item, from_index);
+    const has = includes2.call(this, item, from_index);
     if (!has) for (let i = 0; i < this.length; i += 1) if (get_proxied_value(this[i]) === item) {
       state_proxy_equality_mismatch("array.includes(...)");
       break;
@@ -788,7 +1208,7 @@ function init_array_prototype_warnings() {
   Array.__svelte_cleanup = () => {
     array_prototype2.indexOf = indexOf;
     array_prototype2.lastIndexOf = lastIndexOf;
-    array_prototype2.includes = includes;
+    array_prototype2.includes = includes2;
   };
 }
 
@@ -801,13 +1221,12 @@ function init_operations() {
     first_child_getter = get_descriptor(node_prototype, "firstChild").get;
     next_sibling_getter = get_descriptor(node_prototype, "nextSibling").get;
     if (is_extensible(element_prototype)) {
-      element_prototype.__click = void 0;
-      element_prototype.__className = void 0;
-      element_prototype.__attributes = null;
-      element_prototype.__style = void 0;
+      element_prototype[CLASS_CACHE] = void 0;
+      element_prototype[ATTRIBUTES_CACHE] = null;
+      element_prototype[STYLE_CACHE] = void 0;
       element_prototype.__e = void 0;
     }
-    if (is_extensible(text_prototype)) text_prototype.__t = void 0;
+    if (is_extensible(text_prototype)) text_prototype[TEXT_CACHE] = void 0;
     if (dev_fallback_default) {
       element_prototype.__svelte_meta = null;
       init_array_prototype_warnings();
@@ -830,27 +1249,31 @@ function get_next_sibling(node) {
 function child(node, is_text) {
   if (!hydrating) return get_first_child(node);
   var child2 = get_first_child(hydrate_node);
-  if (null === child2) child2 = hydrate_node.appendChild(create_text()); else if (is_text && 3 !== child2.nodeType) {
+  if (null === child2) child2 = hydrate_node.appendChild(create_text()); else if (is_text && child2.nodeType !== TEXT_NODE) {
     var text2 = create_text();
     null == child2 || child2.before(text2);
     set_hydrate_node(text2);
     return text2;
   }
+  if (is_text) merge_text_nodes(child2);
   set_hydrate_node(child2);
   return child2;
 }
 
-function first_child(fragment, is_text) {
-  var _a3, _b3;
+function first_child(node, is_text = false) {
+  var _a5, _b3;
   if (!hydrating) {
-    var first = get_first_child(fragment);
+    var first = get_first_child(node);
     if (first instanceof Comment && "" === first.data) return get_next_sibling(first); else return first;
   }
-  if (is_text && 3 !== (null == (_a3 = hydrate_node) ? void 0 : _a3.nodeType)) {
-    var text2 = create_text();
-    null == (_b3 = hydrate_node) || _b3.before(text2);
-    set_hydrate_node(text2);
-    return text2;
+  if (is_text) {
+    if ((null == (_a5 = hydrate_node) ? void 0 : _a5.nodeType) !== TEXT_NODE) {
+      var text2 = create_text();
+      null == (_b3 = hydrate_node) || _b3.before(text2);
+      set_hydrate_node(text2);
+      return text2;
+    }
+    merge_text_nodes(hydrate_node);
   }
   return hydrate_node;
 }
@@ -862,12 +1285,14 @@ function sibling(node, count = 1, is_text = false) {
     next_sibling = get_next_sibling(next_sibling);
   }
   if (!hydrating) return next_sibling;
-  var type = null == next_sibling ? void 0 : next_sibling.nodeType;
-  if (is_text && 3 !== type) {
-    var text2 = create_text();
-    if (null === next_sibling) null == last_sibling || last_sibling.after(text2); else next_sibling.before(text2);
-    set_hydrate_node(text2);
-    return text2;
+  if (is_text) {
+    if ((null == next_sibling ? void 0 : next_sibling.nodeType) !== TEXT_NODE) {
+      var text2 = create_text();
+      if (null === next_sibling) null == last_sibling || last_sibling.after(text2); else next_sibling.before(text2);
+      set_hydrate_node(text2);
+      return text2;
+    }
+    merge_text_nodes(next_sibling);
   }
   set_hydrate_node(next_sibling);
   return next_sibling;
@@ -877,13 +1302,1564 @@ function clear_text_content(node) {
   node.textContent = "";
 }
 
-var handled_errors = new WeakSet, is_throwing_error = false, is_flushing = false, last_scheduled_effect = null, is_updating_effect = false, is_destroying_effect = false;
+function should_defer_append() {
+  if (!async_mode_flag) return false;
+  if (null !== eager_block_effects) return false; else return 0 !== (active_effect.f & REACTION_RAN);
+}
+
+function create_element(tag2, namespace, is2) {
+  if (null == namespace || namespace === NAMESPACE_HTML) return is2 ? document.createElement(tag2, {
+    is: is2
+  }) : document.createElement(tag2); else return is2 ? document.createElementNS(namespace, tag2, {
+    is: is2
+  }) : document.createElementNS(namespace, tag2);
+}
+
+function merge_text_nodes(text2) {
+  if (text2.nodeValue.length < 65536) return;
+  let next2 = text2.nextSibling;
+  for (;null !== next2 && next2.nodeType === TEXT_NODE; ) {
+    next2.remove();
+    text2.nodeValue += next2.nodeValue;
+    next2 = text2.nextSibling;
+  }
+}
+
+var adjustments = new WeakMap;
+
+function handle_error(error) {
+  var effect2 = active_effect;
+  if (null === effect2) {
+    active_reaction.f |= ERROR_VALUE;
+    return error;
+  }
+  if (dev_fallback_default && error instanceof Error && !adjustments.has(error)) adjustments.set(error, get_adjustments(error, effect2));
+  if (0 === (effect2.f & REACTION_RAN) && 0 === (effect2.f & EFFECT)) {
+    if (dev_fallback_default && !effect2.parent && error instanceof Error) apply_adjustments(error);
+    throw error;
+  }
+  invoke_error_boundary(error, effect2);
+}
+
+function invoke_error_boundary(error, effect2) {
+  if (null === effect2 || 0 === (effect2.f & DESTROYED)) {
+    for (;null !== effect2; ) {
+      if (0 !== (effect2.f & BOUNDARY_EFFECT)) {
+        if (0 === (effect2.f & REACTION_RAN)) throw error;
+        try {
+          effect2.b.error(error);
+          return;
+        } catch (e) {
+          error = e;
+        }
+      }
+      effect2 = effect2.parent;
+    }
+    if (dev_fallback_default && error instanceof Error) apply_adjustments(error);
+    throw error;
+  }
+}
+
+function get_adjustments(error, effect2) {
+  var _a5, _b3, _c2;
+  const message_descriptor = get_descriptor(error, "message");
+  if (!message_descriptor || message_descriptor.configurable) {
+    for (var indent = is_firefox ? "  " : "\t", component_stack = `\n${indent}in ${(null == (_a5 = effect2.fn) ? void 0 : _a5.name) || "<unknown>"}`, context = effect2.ctx; null !== context; ) {
+      component_stack += `\n${indent}in ${null == (_b3 = context.function) ? void 0 : _b3[FILENAME].split("/").pop()}`;
+      context = context.p;
+    }
+    return {
+      message: error.message + `\n${component_stack}\n`,
+      stack: null == (_c2 = error.stack) ? void 0 : _c2.split("\n").filter(line => !line.includes("svelte/src/internal")).join("\n")
+    };
+  }
+}
+
+function apply_adjustments(error) {
+  const adjusted = adjustments.get(error);
+  if (adjusted) {
+    define_property(error, "message", {
+      value: adjusted.message
+    });
+    define_property(error, "stack", {
+      value: adjusted.stack
+    });
+  }
+}
+
+var STATUS_MASK = ~(DIRTY | MAYBE_DIRTY | CLEAN);
+
+function set_signal_status(signal, status) {
+  signal.f = signal.f & STATUS_MASK | status;
+}
+
+function update_derived_status(derived3) {
+  if (0 !== (derived3.f & CONNECTED) || null === derived3.deps) set_signal_status(derived3, CLEAN); else set_signal_status(derived3, MAYBE_DIRTY);
+}
+
+function clear_marked(deps) {
+  if (null !== deps) for (const dep of deps) if (0 !== (dep.f & DERIVED) && 0 !== (dep.f & WAS_MARKED)) {
+    dep.f ^= WAS_MARKED;
+    clear_marked(dep.deps);
+  }
+}
+
+function defer_effect(effect2, dirty_effects, maybe_dirty_effects) {
+  if (0 !== (effect2.f & DIRTY)) dirty_effects.add(effect2); else if (0 !== (effect2.f & MAYBE_DIRTY)) maybe_dirty_effects.add(effect2);
+  clear_marked(effect2.deps);
+  set_signal_status(effect2, CLEAN);
+}
+
+function subscribe_to_store(store, run3, invalidate) {
+  if (null == store) {
+    run3(void 0);
+    if (invalidate) invalidate(void 0);
+    return noop;
+  }
+  const unsub = untrack(() => store.subscribe(run3, invalidate));
+  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
+
+var subscriber_queue = [];
+
+function writable(value, start = noop) {
+  let stop = null;
+  const subscribers = new Set;
+  function set2(new_value) {
+    if (safe_not_equal(value, new_value)) {
+      value = new_value;
+      if (stop) {
+        const run_queue = !subscriber_queue.length;
+        for (const subscriber of subscribers) {
+          subscriber[1]();
+          subscriber_queue.push(subscriber, value);
+        }
+        if (run_queue) {
+          for (let i = 0; i < subscriber_queue.length; i += 2) subscriber_queue[i][0](subscriber_queue[i + 1]);
+          subscriber_queue.length = 0;
+        }
+      }
+    }
+  }
+  function update2(fn) {
+    set2(fn(value));
+  }
+  return {
+    set: set2,
+    update: update2,
+    subscribe: function subscribe(run3, invalidate = noop) {
+      const subscriber = [ run3, invalidate ];
+      subscribers.add(subscriber);
+      if (1 === subscribers.size) stop = start(set2, update2) || noop;
+      run3(value);
+      return () => {
+        subscribers.delete(subscriber);
+        if (0 === subscribers.size && stop) {
+          stop();
+          stop = null;
+        }
+      };
+    }
+  };
+}
+
+function get2(store) {
+  let value;
+  subscribe_to_store(store, _ => value = _)();
+  return value;
+}
+
+var legacy_is_updating_store = false, is_store_binding = false, IS_UNMOUNTED = Symbol("unmounted");
+
+function store_get(store, store_name, stores) {
+  var _a5;
+  const entry = null != (_a5 = stores[store_name]) ? _a5 : stores[store_name] = {
+    store: null,
+    source: mutable_source(void 0),
+    unsubscribe: noop
+  };
+  if (dev_fallback_default) entry.source.label = store_name;
+  if (entry.store !== store && !(IS_UNMOUNTED in stores)) {
+    entry.unsubscribe();
+    entry.store = null != store ? store : null;
+    if (null == store) {
+      entry.source.v = void 0;
+      entry.unsubscribe = noop;
+    } else {
+      var is_synchronous_callback = true;
+      entry.unsubscribe = subscribe_to_store(store, v => {
+        if (is_synchronous_callback) entry.source.v = v; else set(entry.source, v);
+      });
+      is_synchronous_callback = false;
+    }
+  }
+  if (store && IS_UNMOUNTED in stores) return get2(store); else return get(entry.source);
+}
+
+function store_set(store, value) {
+  update_with_flag(store, value);
+  return value;
+}
+
+function setup_stores() {
+  const stores = {};
+  return [ stores, function cleanup() {
+    teardown(() => {
+      for (var store_name in stores) stores[store_name].unsubscribe();
+      define_property(stores, IS_UNMOUNTED, {
+        enumerable: false,
+        value: true
+      });
+    });
+  } ];
+}
+
+function update_with_flag(store, value) {
+  legacy_is_updating_store = true;
+  try {
+    store.set(value);
+  } finally {
+    legacy_is_updating_store = false;
+  }
+}
+
+function capture_store_binding(fn) {
+  var previous_is_store_binding = is_store_binding;
+  try {
+    is_store_binding = false;
+    return [ fn(), is_store_binding ];
+  } finally {
+    is_store_binding = previous_is_store_binding;
+  }
+}
+
+function createSubscriber(start) {
+  let stop, subscribers = 0, version = source(0);
+  if (dev_fallback_default) tag(version, "createSubscriber version");
+  return () => {
+    if (effect_tracking()) {
+      get(version);
+      render_effect(() => {
+        if (0 === subscribers) stop = untrack(() => start(() => increment(version)));
+        subscribers += 1;
+        return () => {
+          queue_micro_task(() => {
+            subscribers -= 1;
+            if (0 === subscribers) {
+              null == stop || stop();
+              stop = void 0;
+              increment(version);
+            }
+          });
+        };
+      });
+    }
+  };
+}
+
+var _anchor, _hydrate_open, _props, _children, _effect, _main_effect, _pending_effect, _failed_effect, _offscreen_fragment, _local_pending_count, _pending_count, _pending_count_update_queued, _dirty_effects, _maybe_dirty_effects, _effect_pending, _effect_pending_subscriber, _Boundary_instances, hydrate_resolved_content_fn, hydrate_failed_content_fn, hydrate_pending_content_fn, render_fn, resolve_fn, run_fn, update_pending_count_fn, handle_error_fn, flags = EFFECT_TRANSPARENT | EFFECT_PRESERVED;
+
+function boundary(node, props, children, transform_error) {
+  new Boundary(node, props, children, transform_error);
+}
+
+var Boundary = class {
+  constructor(node, props, children, transform_error) {
+    __privateAdd(this, _Boundary_instances);
+    __publicField(this, "parent");
+    __publicField(this, "is_pending", false);
+    __publicField(this, "transform_error");
+    __privateAdd(this, _anchor);
+    __privateAdd(this, _hydrate_open, hydrating ? hydrate_node : null);
+    __privateAdd(this, _props);
+    __privateAdd(this, _children);
+    __privateAdd(this, _effect);
+    __privateAdd(this, _main_effect, null);
+    __privateAdd(this, _pending_effect, null);
+    __privateAdd(this, _failed_effect, null);
+    __privateAdd(this, _offscreen_fragment, null);
+    __privateAdd(this, _local_pending_count, 0);
+    __privateAdd(this, _pending_count, 0);
+    __privateAdd(this, _pending_count_update_queued, false);
+    __privateAdd(this, _dirty_effects, new Set);
+    __privateAdd(this, _maybe_dirty_effects, new Set);
+    __privateAdd(this, _effect_pending, null);
+    __privateAdd(this, _effect_pending_subscriber, createSubscriber(() => {
+      __privateSet(this, _effect_pending, source(__privateGet(this, _local_pending_count)));
+      if (dev_fallback_default) tag(__privateGet(this, _effect_pending), "$effect.pending()");
+      return () => {
+        __privateSet(this, _effect_pending, null);
+      };
+    }));
+    var _a5, _b3;
+    __privateSet(this, _anchor, node);
+    __privateSet(this, _props, props);
+    __privateSet(this, _children, anchor => {
+      var effect2 = active_effect;
+      effect2.b = this;
+      effect2.f |= BOUNDARY_EFFECT;
+      children(anchor);
+    });
+    this.parent = active_effect.b;
+    this.transform_error = null != (_b3 = null != transform_error ? transform_error : null == (_a5 = this.parent) ? void 0 : _a5.transform_error) ? _b3 : e => e;
+    __privateSet(this, _effect, block(() => {
+      if (hydrating) {
+        const comment2 = __privateGet(this, _hydrate_open);
+        hydrate_next();
+        const server_rendered_pending = comment2.data === HYDRATION_START_ELSE;
+        if (comment2.data.startsWith(HYDRATION_START_FAILED)) {
+          const serialized_error = JSON.parse(comment2.data.slice(HYDRATION_START_FAILED.length));
+          __privateMethod(this, _Boundary_instances, hydrate_failed_content_fn).call(this, serialized_error);
+        } else if (server_rendered_pending) __privateMethod(this, _Boundary_instances, hydrate_pending_content_fn).call(this); else __privateMethod(this, _Boundary_instances, hydrate_resolved_content_fn).call(this);
+      } else __privateMethod(this, _Boundary_instances, render_fn).call(this);
+    }, flags));
+    if (hydrating) __privateSet(this, _anchor, hydrate_node);
+  }
+  defer_effect(effect2) {
+    defer_effect(effect2, __privateGet(this, _dirty_effects), __privateGet(this, _maybe_dirty_effects));
+  }
+  is_rendered() {
+    return !this.is_pending && (!this.parent || this.parent.is_rendered());
+  }
+  has_pending_snippet() {
+    return !!__privateGet(this, _props).pending;
+  }
+  update_pending_count(d, batch) {
+    __privateMethod(this, _Boundary_instances, update_pending_count_fn).call(this, d, batch);
+    __privateSet(this, _local_pending_count, __privateGet(this, _local_pending_count) + d);
+    if (__privateGet(this, _effect_pending) && !__privateGet(this, _pending_count_update_queued)) {
+      __privateSet(this, _pending_count_update_queued, true);
+      queue_micro_task(() => {
+        __privateSet(this, _pending_count_update_queued, false);
+        if (__privateGet(this, _effect_pending)) internal_set(__privateGet(this, _effect_pending), __privateGet(this, _local_pending_count));
+      });
+    }
+  }
+  get_effect_pending() {
+    __privateGet(this, _effect_pending_subscriber).call(this);
+    return get(__privateGet(this, _effect_pending));
+  }
+  error(error) {
+    var _a5;
+    if (!__privateGet(this, _props).onerror && !__privateGet(this, _props).failed) throw error;
+    if (null == (_a5 = current_batch) ? void 0 : _a5.is_fork) {
+      if (__privateGet(this, _main_effect)) current_batch.skip_effect(__privateGet(this, _main_effect));
+      if (__privateGet(this, _pending_effect)) current_batch.skip_effect(__privateGet(this, _pending_effect));
+      if (__privateGet(this, _failed_effect)) current_batch.skip_effect(__privateGet(this, _failed_effect));
+      current_batch.oncommit(() => {
+        __privateMethod(this, _Boundary_instances, handle_error_fn).call(this, error);
+      });
+    } else __privateMethod(this, _Boundary_instances, handle_error_fn).call(this, error);
+  }
+};
+
+_anchor = new WeakMap;
+
+_hydrate_open = new WeakMap;
+
+_props = new WeakMap;
+
+_children = new WeakMap;
+
+_effect = new WeakMap;
+
+_main_effect = new WeakMap;
+
+_pending_effect = new WeakMap;
+
+_failed_effect = new WeakMap;
+
+_offscreen_fragment = new WeakMap;
+
+_local_pending_count = new WeakMap;
+
+_pending_count = new WeakMap;
+
+_pending_count_update_queued = new WeakMap;
+
+_dirty_effects = new WeakMap;
+
+_maybe_dirty_effects = new WeakMap;
+
+_effect_pending = new WeakMap;
+
+_effect_pending_subscriber = new WeakMap;
+
+_Boundary_instances = new WeakSet;
+
+hydrate_resolved_content_fn = function() {
+  try {
+    __privateSet(this, _main_effect, branch(() => __privateGet(this, _children).call(this, __privateGet(this, _anchor))));
+  } catch (error) {
+    this.error(error);
+  }
+};
+
+hydrate_failed_content_fn = function(error) {
+  const failed = __privateGet(this, _props).failed;
+  if (failed) __privateSet(this, _failed_effect, branch(() => {
+    failed(__privateGet(this, _anchor), () => error, () => () => {});
+  }));
+};
+
+hydrate_pending_content_fn = function() {
+  const pending2 = __privateGet(this, _props).pending;
+  if (pending2) {
+    this.is_pending = true;
+    __privateSet(this, _pending_effect, branch(() => pending2(__privateGet(this, _anchor))));
+    queue_micro_task(() => {
+      var fragment = __privateSet(this, _offscreen_fragment, document.createDocumentFragment()), anchor = create_text();
+      fragment.append(anchor);
+      __privateSet(this, _main_effect, __privateMethod(this, _Boundary_instances, run_fn).call(this, () => branch(() => __privateGet(this, _children).call(this, anchor))));
+      if (0 === __privateGet(this, _pending_count)) {
+        __privateGet(this, _anchor).before(fragment);
+        __privateSet(this, _offscreen_fragment, null);
+        pause_effect(__privateGet(this, _pending_effect), () => {
+          __privateSet(this, _pending_effect, null);
+        });
+        __privateMethod(this, _Boundary_instances, resolve_fn).call(this, current_batch);
+      }
+    });
+  }
+};
+
+render_fn = function() {
+  try {
+    this.is_pending = this.has_pending_snippet();
+    __privateSet(this, _pending_count, 0);
+    __privateSet(this, _local_pending_count, 0);
+    __privateSet(this, _main_effect, branch(() => {
+      __privateGet(this, _children).call(this, __privateGet(this, _anchor));
+    }));
+    if (__privateGet(this, _pending_count) > 0) {
+      var fragment = __privateSet(this, _offscreen_fragment, document.createDocumentFragment());
+      move_effect(__privateGet(this, _main_effect), fragment);
+      const pending2 = __privateGet(this, _props).pending;
+      __privateSet(this, _pending_effect, branch(() => pending2(__privateGet(this, _anchor))));
+    } else __privateMethod(this, _Boundary_instances, resolve_fn).call(this, current_batch);
+  } catch (error) {
+    this.error(error);
+  }
+};
+
+resolve_fn = function(batch) {
+  this.is_pending = false;
+  batch.transfer_effects(__privateGet(this, _dirty_effects), __privateGet(this, _maybe_dirty_effects));
+};
+
+run_fn = function(fn) {
+  var previous_effect = active_effect, previous_reaction = active_reaction, previous_ctx = component_context;
+  set_active_effect(__privateGet(this, _effect));
+  set_active_reaction(__privateGet(this, _effect));
+  set_component_context(__privateGet(this, _effect).ctx);
+  try {
+    Batch.ensure();
+    return fn();
+  } catch (e) {
+    handle_error(e);
+    return null;
+  } finally {
+    set_active_effect(previous_effect);
+    set_active_reaction(previous_reaction);
+    set_component_context(previous_ctx);
+  }
+};
+
+update_pending_count_fn = function(d, batch) {
+  var _a5;
+  if (this.has_pending_snippet()) {
+    __privateSet(this, _pending_count, __privateGet(this, _pending_count) + d);
+    if (0 === __privateGet(this, _pending_count)) {
+      __privateMethod(this, _Boundary_instances, resolve_fn).call(this, batch);
+      if (__privateGet(this, _pending_effect)) pause_effect(__privateGet(this, _pending_effect), () => {
+        __privateSet(this, _pending_effect, null);
+      });
+      if (__privateGet(this, _offscreen_fragment)) {
+        __privateGet(this, _anchor).before(__privateGet(this, _offscreen_fragment));
+        __privateSet(this, _offscreen_fragment, null);
+      }
+    }
+  } else if (this.parent) __privateMethod(_a5 = this.parent, _Boundary_instances, update_pending_count_fn).call(_a5, d, batch);
+};
+
+handle_error_fn = function(error) {
+  if (__privateGet(this, _main_effect)) {
+    destroy_effect(__privateGet(this, _main_effect));
+    __privateSet(this, _main_effect, null);
+  }
+  if (__privateGet(this, _pending_effect)) {
+    destroy_effect(__privateGet(this, _pending_effect));
+    __privateSet(this, _pending_effect, null);
+  }
+  if (__privateGet(this, _failed_effect)) {
+    destroy_effect(__privateGet(this, _failed_effect));
+    __privateSet(this, _failed_effect, null);
+  }
+  if (hydrating) {
+    set_hydrate_node(__privateGet(this, _hydrate_open));
+    next();
+    set_hydrate_node(skip_nodes());
+  }
+  var onerror = __privateGet(this, _props).onerror;
+  let failed = __privateGet(this, _props).failed;
+  var did_reset = false, calling_on_error = false;
+  const reset2 = () => {
+    if (!did_reset) {
+      did_reset = true;
+      if (calling_on_error) svelte_boundary_reset_onerror();
+      if (null !== __privateGet(this, _failed_effect)) pause_effect(__privateGet(this, _failed_effect), () => {
+        __privateSet(this, _failed_effect, null);
+      });
+      __privateMethod(this, _Boundary_instances, run_fn).call(this, () => {
+        __privateMethod(this, _Boundary_instances, render_fn).call(this);
+      });
+    } else svelte_boundary_reset_noop();
+  }, handle_error_result = transformed_error => {
+    try {
+      calling_on_error = true;
+      null == onerror || onerror(transformed_error, reset2);
+      calling_on_error = false;
+    } catch (error2) {
+      invoke_error_boundary(error2, __privateGet(this, _effect) && __privateGet(this, _effect).parent);
+    }
+    if (failed) __privateSet(this, _failed_effect, __privateMethod(this, _Boundary_instances, run_fn).call(this, () => {
+      try {
+        return branch(() => {
+          var effect2 = active_effect;
+          effect2.b = this;
+          effect2.f |= BOUNDARY_EFFECT;
+          failed(__privateGet(this, _anchor), () => transformed_error, () => reset2);
+        });
+      } catch (error2) {
+        invoke_error_boundary(error2, __privateGet(this, _effect).parent);
+        return null;
+      }
+    }));
+  };
+  queue_micro_task(() => {
+    var result;
+    try {
+      result = this.transform_error(error);
+    } catch (e) {
+      invoke_error_boundary(e, __privateGet(this, _effect) && __privateGet(this, _effect).parent);
+      return;
+    }
+    if (null !== result && "object" == typeof result && "function" == typeof result.then) result.then(handle_error_result, e => invoke_error_boundary(e, __privateGet(this, _effect) && __privateGet(this, _effect).parent)); else handle_error_result(result);
+  });
+};
+
+function flatten(blockers, sync, async2, fn) {
+  const d = is_runes() ? derived : derived_safe_equal;
+  var pending2 = blockers.filter(b => !b.settled), deriveds = sync.map(d);
+  if (dev_fallback_default) deriveds.forEach((d2, i) => {
+    d2.label = sync[i].toString().replace("() => ", "").replaceAll("$.eager(() => ", "$state.eager(").replace(/\$\.get\((.+?)\)/g, (_, id) => id);
+  });
+  if (0 !== async2.length || 0 !== pending2.length) {
+    var parent = active_effect, restore = capture(), blocker_promise = 1 === pending2.length ? pending2[0].promise : pending2.length > 1 ? Promise.all(pending2.map(b => b.promise)) : null, decrement_pending = increment_pending();
+    if (0 !== async2.length) if (blocker_promise) blocker_promise.then(() => {
+      restore();
+      run3();
+      unset_context();
+    }); else run3(); else blocker_promise.then(() => finish([])).finally(decrement_pending);
+  } else fn(deriveds);
+  function finish(async3) {
+    if (0 === (parent.f & DESTROYED)) {
+      restore();
+      try {
+        fn([ ...deriveds, ...async3 ]);
+      } catch (error) {
+        invoke_error_boundary(error, parent);
+      }
+      unset_context();
+    }
+  }
+  function run3() {
+    Promise.all(async2.map(expression => async_derived(expression))).then(finish).catch(error => invoke_error_boundary(error, parent)).finally(decrement_pending);
+  }
+}
+
+function capture() {
+  var previous_effect = active_effect, previous_reaction = active_reaction, previous_component_context = component_context, previous_batch2 = current_batch;
+  if (dev_fallback_default) var previous_dev_stack = dev_stack;
+  return function restore(activate_batch = true) {
+    set_active_effect(previous_effect);
+    set_active_reaction(previous_reaction);
+    set_component_context(previous_component_context);
+    if (activate_batch && 0 === (previous_effect.f & DESTROYED)) {
+      null == previous_batch2 || previous_batch2.activate();
+      null == previous_batch2 || previous_batch2.apply();
+    }
+    if (dev_fallback_default) {
+      set_reactivity_loss_tracker(null);
+      set_dev_stack(previous_dev_stack);
+    }
+  };
+}
+
+function unset_context(deactivate_batch = true) {
+  var _a5;
+  set_active_effect(null);
+  set_active_reaction(null);
+  set_component_context(null);
+  if (deactivate_batch) null == (_a5 = current_batch) || _a5.deactivate();
+  if (dev_fallback_default) {
+    set_reactivity_loss_tracker(null);
+    set_dev_stack(null);
+  }
+}
+
+function increment_pending() {
+  var effect2 = active_effect, boundary2 = effect2.b, batch = current_batch, blocking = !!(null == boundary2 ? void 0 : boundary2.is_rendered());
+  null == boundary2 || boundary2.update_pending_count(1, batch);
+  batch.increment(blocking, effect2);
+  return () => {
+    null == boundary2 || boundary2.update_pending_count(-1, batch);
+    batch.decrement(blocking, effect2);
+  };
+}
+
+var reactivity_loss_tracker = null;
+
+function set_reactivity_loss_tracker(v) {
+  reactivity_loss_tracker = v;
+}
+
+var recent_async_deriveds = new Set;
+
+function derived(fn) {
+  var flags2 = DERIVED | DIRTY;
+  if (null !== active_effect) active_effect.f |= EFFECT_PRESERVED;
+  const signal = {
+    ctx: component_context,
+    deps: null,
+    effects: null,
+    equals,
+    f: flags2,
+    fn,
+    reactions: null,
+    rv: 0,
+    v: UNINITIALIZED,
+    wv: 0,
+    parent: active_effect,
+    ac: null
+  };
+  if (dev_fallback_default && tracing_mode_flag) signal.created = get_error("created at");
+  return signal;
+}
+
+var OBSOLETE = Symbol("obsolete");
+
+function async_derived(fn, label, location) {
+  let parent = active_effect;
+  if (null === parent) async_derived_orphan();
+  var promise = void 0, signal = source(UNINITIALIZED);
+  if (dev_fallback_default) signal.label = null != label ? label : fn.toString();
+  var should_suspend = !active_reaction, deferreds = new Set;
+  async_effect(() => {
+    var _a5, _b3, effect2 = active_effect;
+    if (dev_fallback_default) reactivity_loss_tracker = {
+      effect: effect2,
+      effect_deps: new Set,
+      warned: false
+    };
+    var d = deferred();
+    promise = d.promise;
+    try {
+      Promise.resolve(fn()).then(d.resolve, e => {
+        if (e !== STALE_REACTION) d.reject(e);
+      }).finally(unset_context);
+    } catch (error) {
+      d.reject(error);
+      unset_context();
+    }
+    if (dev_fallback_default) {
+      if (reactivity_loss_tracker) {
+        if (null !== effect2.deps) for (let i = 0; i < skipped_deps; i += 1) reactivity_loss_tracker.effect_deps.add(effect2.deps[i]);
+        if (null !== new_deps) for (let i = 0; i < new_deps.length; i += 1) reactivity_loss_tracker.effect_deps.add(new_deps[i]);
+      }
+      reactivity_loss_tracker = null;
+    }
+    var batch = current_batch;
+    if (should_suspend) {
+      if (0 !== (effect2.f & REACTION_RAN)) var decrement_pending = increment_pending();
+      if (null == (_a5 = parent.b) ? void 0 : _a5.is_rendered()) null == (_b3 = batch.async_deriveds.get(effect2)) || _b3.reject(OBSOLETE); else for (const d2 of deferreds.values()) d2.reject(OBSOLETE);
+      deferreds.add(d);
+      batch.async_deriveds.set(effect2, d);
+    }
+    const handler = (value, error = void 0) => {
+      if (dev_fallback_default) reactivity_loss_tracker = null;
+      null == decrement_pending || decrement_pending();
+      deferreds.delete(d);
+      if (error !== OBSOLETE) {
+        batch.activate();
+        if (error) {
+          signal.f |= ERROR_VALUE;
+          internal_set(signal, error);
+        } else {
+          if (0 !== (signal.f & ERROR_VALUE)) signal.f ^= ERROR_VALUE;
+          if (dev_fallback_default && void 0 !== location && !signal.equals(value)) {
+            recent_async_deriveds.add(signal);
+            setTimeout(() => {
+              if (recent_async_deriveds.has(signal) && 0 === (effect2.f & DESTROYED)) {
+                await_waterfall(signal.label, location);
+                recent_async_deriveds.delete(signal);
+              }
+            });
+          }
+          internal_set(signal, value);
+        }
+        batch.deactivate();
+      }
+    };
+    d.promise.then(handler, e => handler(null, e || "unknown"));
+  });
+  teardown(() => {
+    for (const d of deferreds) d.reject(OBSOLETE);
+  });
+  if (dev_fallback_default) signal.f |= ASYNC;
+  return new Promise(fulfil => {
+    (function next2(p) {
+      function go() {
+        if (p === promise) fulfil(signal); else next2(promise);
+      }
+      p.then(go, go);
+    })(promise);
+  });
+}
+
+function user_derived(fn) {
+  const d = derived(fn);
+  if (!async_mode_flag) push_reaction_value(d);
+  return d;
+}
+
+function derived_safe_equal(fn) {
+  const signal = derived(fn);
+  signal.equals = safe_equals;
+  return signal;
+}
+
+function destroy_derived_effects(derived3) {
+  var effects = derived3.effects;
+  if (null !== effects) {
+    derived3.effects = null;
+    for (var i = 0; i < effects.length; i += 1) destroy_effect(effects[i]);
+  }
+}
+
+var stack = [];
+
+function execute_derived(derived3) {
+  var value, prev_active_effect = active_effect, parent = derived3.parent;
+  if (!is_destroying_effect && null !== parent && derived3.v !== UNINITIALIZED && 0 !== (parent.f & (DESTROYED | INERT))) {
+    derived_inert();
+    return derived3.v;
+  }
+  set_active_effect(parent);
+  if (dev_fallback_default) {
+    let prev_eager_effects = eager_effects;
+    set_eager_effects(new Set);
+    try {
+      if (includes.call(stack, derived3)) derived_references_self();
+      stack.push(derived3);
+      derived3.f &= ~WAS_MARKED;
+      destroy_derived_effects(derived3);
+      value = update_reaction(derived3);
+    } finally {
+      set_active_effect(prev_active_effect);
+      set_eager_effects(prev_eager_effects);
+      stack.pop();
+    }
+  } else try {
+    derived3.f &= ~WAS_MARKED;
+    destroy_derived_effects(derived3);
+    value = update_reaction(derived3);
+  } finally {
+    set_active_effect(prev_active_effect);
+  }
+  return value;
+}
+
+function update_derived(derived3) {
+  var _a5, _b3, _c2, value = execute_derived(derived3);
+  if (!derived3.equals(value)) {
+    derived3.wv = increment_write_version();
+    if (!(null == (_a5 = current_batch) ? void 0 : _a5.is_fork) || null === derived3.deps) {
+      if (null !== current_batch) {
+        current_batch.capture(derived3, value, true);
+        null == (_b3 = previous_batch) || _b3.capture(derived3, value, true);
+      } else derived3.v = value;
+      if (null === derived3.deps) {
+        set_signal_status(derived3, CLEAN);
+        return;
+      }
+    }
+  }
+  if (!is_destroying_effect) if (null !== batch_values) {
+    if (effect_tracking() || (null == (_c2 = current_batch) ? void 0 : _c2.is_fork)) batch_values.set(derived3, value);
+  } else update_derived_status(derived3);
+}
+
+function freeze_derived_effects(derived3) {
+  var _a5, _b3;
+  if (null !== derived3.effects) for (const e of derived3.effects) if (e.teardown || e.ac) {
+    null == (_a5 = e.teardown) || _a5.call(e);
+    null == (_b3 = e.ac) || _b3.abort(STALE_REACTION);
+    if (null !== e.fn) e.teardown = noop;
+    e.ac = null;
+    remove_reactions(e, 0);
+    destroy_effect_children(e);
+  }
+}
+
+function unfreeze_derived_effects(derived3) {
+  if (null !== derived3.effects) for (const e of derived3.effects) if (e.teardown && null !== e.fn) update_effect(e);
+}
+
+var _started, _prev, _next, _commit_callbacks, _discard_callbacks, _pending, _blocking_pending, _deferred, _roots, _new_effects, _dirty_effects2, _maybe_dirty_effects2, _skipped_branches, _unskipped_branches, _decrement_queued, _Batch_instances, is_deferred_fn, process_fn, traverse_fn, find_earlier_batch_fn, merge_fn, defer_effects_fn, commit_fn, unlink_fn, first_batch = null, last_batch = null, current_batch = null, previous_batch = null, batch_values = null, last_scheduled_effect = null, is_flushing_sync = false, is_processing = false, collected_effects = null, legacy_updates = null, flush_count = 0, source_stacks = new Set, uid = 1, _Batch = class _Batch {
+  constructor() {
+    __privateAdd(this, _Batch_instances);
+    __publicField(this, "id", uid++);
+    __privateAdd(this, _started, false);
+    __publicField(this, "linked", true);
+    __privateAdd(this, _prev, null);
+    __privateAdd(this, _next, null);
+    __publicField(this, "async_deriveds", new Map);
+    __publicField(this, "current", new Map);
+    __publicField(this, "previous", new Map);
+    __privateAdd(this, _commit_callbacks, new Set);
+    __privateAdd(this, _discard_callbacks, new Set);
+    __privateAdd(this, _pending, 0);
+    __privateAdd(this, _blocking_pending, new Map);
+    __privateAdd(this, _deferred, null);
+    __privateAdd(this, _roots, []);
+    __privateAdd(this, _new_effects, []);
+    __privateAdd(this, _dirty_effects2, new Set);
+    __privateAdd(this, _maybe_dirty_effects2, new Set);
+    __privateAdd(this, _skipped_branches, new Map);
+    __privateAdd(this, _unskipped_branches, new Set);
+    __publicField(this, "is_fork", false);
+    __privateAdd(this, _decrement_queued, false);
+    if (null === last_batch) first_batch = last_batch = this; else {
+      __privateSet(last_batch, _next, this);
+      __privateSet(this, _prev, last_batch);
+    }
+    last_batch = this;
+  }
+  skip_effect(effect2) {
+    if (!__privateGet(this, _skipped_branches).has(effect2)) __privateGet(this, _skipped_branches).set(effect2, {
+      d: [],
+      m: []
+    });
+    __privateGet(this, _unskipped_branches).delete(effect2);
+  }
+  unskip_effect(effect2, callback = e => this.schedule(e)) {
+    var tracked = __privateGet(this, _skipped_branches).get(effect2);
+    if (tracked) {
+      __privateGet(this, _skipped_branches).delete(effect2);
+      for (var e of tracked.d) {
+        set_signal_status(e, DIRTY);
+        callback(e);
+      }
+      for (e of tracked.m) {
+        set_signal_status(e, MAYBE_DIRTY);
+        callback(e);
+      }
+    }
+    __privateGet(this, _unskipped_branches).add(effect2);
+  }
+  capture(source2, value, is_derived = false) {
+    if (source2.v !== UNINITIALIZED && !this.previous.has(source2)) this.previous.set(source2, source2.v);
+    if (0 === (source2.f & ERROR_VALUE)) {
+      this.current.set(source2, [ value, is_derived ]);
+      null == batch_values || batch_values.set(source2, value);
+    }
+    if (!this.is_fork) source2.v = value;
+  }
+  activate() {
+    current_batch = this;
+  }
+  deactivate() {
+    current_batch = null;
+    batch_values = null;
+  }
+  flush() {
+    try {
+      if (dev_fallback_default) source_stacks.clear();
+      is_processing = true;
+      current_batch = this;
+      __privateMethod(this, _Batch_instances, process_fn).call(this);
+    } finally {
+      flush_count = 0;
+      last_scheduled_effect = null;
+      collected_effects = null;
+      legacy_updates = null;
+      is_processing = false;
+      current_batch = null;
+      batch_values = null;
+      old_values.clear();
+      if (dev_fallback_default) for (const source2 of source_stacks) source2.updated = null;
+    }
+  }
+  discard() {
+    var _a5;
+    for (const fn of __privateGet(this, _discard_callbacks)) fn(this);
+    __privateGet(this, _discard_callbacks).clear();
+    for (const deferred2 of this.async_deriveds.values()) deferred2.reject(OBSOLETE);
+    __privateMethod(this, _Batch_instances, unlink_fn).call(this);
+    null == (_a5 = __privateGet(this, _deferred)) || _a5.resolve();
+  }
+  register_created_effect(effect2) {
+    __privateGet(this, _new_effects).push(effect2);
+  }
+  increment(blocking, effect2) {
+    var _a5;
+    __privateSet(this, _pending, __privateGet(this, _pending) + 1);
+    if (blocking) {
+      let blocking_pending_count = null != (_a5 = __privateGet(this, _blocking_pending).get(effect2)) ? _a5 : 0;
+      __privateGet(this, _blocking_pending).set(effect2, blocking_pending_count + 1);
+    }
+  }
+  decrement(blocking, effect2) {
+    var _a5;
+    __privateSet(this, _pending, __privateGet(this, _pending) - 1);
+    if (blocking) {
+      let blocking_pending_count = null != (_a5 = __privateGet(this, _blocking_pending).get(effect2)) ? _a5 : 0;
+      if (1 === blocking_pending_count) __privateGet(this, _blocking_pending).delete(effect2); else __privateGet(this, _blocking_pending).set(effect2, blocking_pending_count - 1);
+    }
+    if (!__privateGet(this, _decrement_queued)) {
+      __privateSet(this, _decrement_queued, true);
+      queue_micro_task(() => {
+        __privateSet(this, _decrement_queued, false);
+        if (this.linked) this.flush();
+      });
+    }
+  }
+  transfer_effects(dirty_effects, maybe_dirty_effects) {
+    for (const e of dirty_effects) __privateGet(this, _dirty_effects2).add(e);
+    for (const e of maybe_dirty_effects) __privateGet(this, _maybe_dirty_effects2).add(e);
+    dirty_effects.clear();
+    maybe_dirty_effects.clear();
+  }
+  oncommit(fn) {
+    __privateGet(this, _commit_callbacks).add(fn);
+  }
+  ondiscard(fn) {
+    __privateGet(this, _discard_callbacks).add(fn);
+  }
+  settled() {
+    var _a5;
+    return (null != (_a5 = __privateGet(this, _deferred)) ? _a5 : __privateSet(this, _deferred, deferred())).promise;
+  }
+  static ensure() {
+    if (null === current_batch) {
+      const batch = current_batch = new _Batch;
+      if (!is_processing && !is_flushing_sync) queue_micro_task(() => {
+        if (!__privateGet(batch, _started)) batch.flush();
+      });
+    }
+    return current_batch;
+  }
+  apply() {
+    if (async_mode_flag && (this.is_fork || null !== __privateGet(this, _prev) || null !== __privateGet(this, _next))) {
+      batch_values = new Map;
+      for (const [source2, [value]] of this.current) batch_values.set(source2, value);
+      for (let batch = first_batch; null !== batch; batch = __privateGet(batch, _next)) if (batch !== this && !batch.is_fork) {
+        var intersects = false;
+        if (batch.id < this.id) for (const [source2, [, is_derived]] of batch.current) if (!is_derived) if (this.current.has(source2)) {
+          intersects = true;
+          break;
+        }
+        if (!intersects) for (const [source2, previous] of batch.previous) if (!batch_values.has(source2)) batch_values.set(source2, previous);
+      }
+    } else batch_values = null;
+  }
+  schedule(effect2) {
+    var _a5;
+    last_scheduled_effect = effect2;
+    if (!(null == (_a5 = effect2.b) ? void 0 : _a5.is_pending) || 0 === (effect2.f & (EFFECT | RENDER_EFFECT | MANAGED_EFFECT)) || 0 !== (effect2.f & REACTION_RAN)) {
+      for (var e = effect2; null !== e.parent; ) {
+        var flags2 = (e = e.parent).f;
+        if (null !== collected_effects && e === active_effect) {
+          if (async_mode_flag) return;
+          if ((null === active_reaction || 0 === (active_reaction.f & DERIVED)) && !legacy_is_updating_store) return;
+        }
+        if (0 !== (flags2 & (ROOT_EFFECT | BRANCH_EFFECT))) {
+          if (0 === (flags2 & CLEAN)) return;
+          e.f ^= CLEAN;
+        }
+      }
+      __privateGet(this, _roots).push(e);
+    } else effect2.b.defer_effect(effect2);
+  }
+};
+
+_started = new WeakMap;
+
+_prev = new WeakMap;
+
+_next = new WeakMap;
+
+_commit_callbacks = new WeakMap;
+
+_discard_callbacks = new WeakMap;
+
+_pending = new WeakMap;
+
+_blocking_pending = new WeakMap;
+
+_deferred = new WeakMap;
+
+_roots = new WeakMap;
+
+_new_effects = new WeakMap;
+
+_dirty_effects2 = new WeakMap;
+
+_maybe_dirty_effects2 = new WeakMap;
+
+_skipped_branches = new WeakMap;
+
+_unskipped_branches = new WeakMap;
+
+_decrement_queued = new WeakMap;
+
+_Batch_instances = new WeakSet;
+
+is_deferred_fn = function() {
+  if (this.is_fork) return true;
+  for (const effect2 of __privateGet(this, _blocking_pending).keys()) {
+    for (var e = effect2, skipped = false; null !== e.parent; ) {
+      if (__privateGet(this, _skipped_branches).has(e)) {
+        skipped = true;
+        break;
+      }
+      e = e.parent;
+    }
+    if (!skipped) return true;
+  }
+  return false;
+};
+
+process_fn = function() {
+  var _a5, _b3, _c2, _d;
+  __privateSet(this, _started, true);
+  if (flush_count++ > 1e3) {
+    __privateMethod(this, _Batch_instances, unlink_fn).call(this);
+    infinite_loop_guard();
+  }
+  if (dev_fallback_default) for (const value of this.current.keys()) source_stacks.add(value);
+  for (const e of __privateGet(this, _dirty_effects2)) {
+    __privateGet(this, _maybe_dirty_effects2).delete(e);
+    set_signal_status(e, DIRTY);
+    this.schedule(e);
+  }
+  for (const e of __privateGet(this, _maybe_dirty_effects2)) {
+    set_signal_status(e, MAYBE_DIRTY);
+    this.schedule(e);
+  }
+  const roots = __privateGet(this, _roots);
+  __privateSet(this, _roots, []);
+  this.apply();
+  var effects = collected_effects = [], render_effects = [], updates = legacy_updates = [];
+  for (const root8 of roots) try {
+    __privateMethod(this, _Batch_instances, traverse_fn).call(this, root8, effects, render_effects);
+  } catch (e) {
+    reset_all(root8);
+    if (!__privateMethod(this, _Batch_instances, is_deferred_fn).call(this)) this.discard();
+    throw e;
+  }
+  current_batch = null;
+  if (updates.length > 0) {
+    var batch = _Batch.ensure();
+    for (const e of updates) batch.schedule(e);
+  }
+  collected_effects = null;
+  legacy_updates = null;
+  if (__privateMethod(this, _Batch_instances, is_deferred_fn).call(this)) {
+    __privateMethod(this, _Batch_instances, defer_effects_fn).call(this, render_effects);
+    __privateMethod(this, _Batch_instances, defer_effects_fn).call(this, effects);
+    for (const [e, t] of __privateGet(this, _skipped_branches)) reset_branch(e, t);
+    if (updates.length > 0) __privateMethod(_a5 = current_batch, _Batch_instances, process_fn).call(_a5);
+    return;
+  }
+  const earlier_batch = __privateMethod(this, _Batch_instances, find_earlier_batch_fn).call(this);
+  if (!earlier_batch) {
+    __privateGet(this, _dirty_effects2).clear();
+    __privateGet(this, _maybe_dirty_effects2).clear();
+    for (const fn of __privateGet(this, _commit_callbacks)) fn(this);
+    __privateGet(this, _commit_callbacks).clear();
+    previous_batch = this;
+    flush_queued_effects(render_effects);
+    flush_queued_effects(effects);
+    previous_batch = null;
+    null == (_c2 = __privateGet(this, _deferred)) || _c2.resolve();
+    var next_batch = current_batch;
+    if (0 === __privateGet(this, _pending) && (0 === __privateGet(this, _roots).length || null !== next_batch)) {
+      __privateMethod(this, _Batch_instances, unlink_fn).call(this);
+      if (async_mode_flag) {
+        __privateMethod(this, _Batch_instances, commit_fn).call(this);
+        current_batch = next_batch;
+      }
+    }
+    if (__privateGet(this, _roots).length > 0) if (null !== next_batch) {
+      const batch2 = next_batch;
+      __privateGet(batch2, _roots).push(...__privateGet(this, _roots).filter(r2 => !__privateGet(batch2, _roots).includes(r2)));
+    } else next_batch = this;
+    if (null !== next_batch) __privateMethod(_d = next_batch, _Batch_instances, process_fn).call(_d);
+  } else {
+    __privateMethod(this, _Batch_instances, defer_effects_fn).call(this, render_effects);
+    __privateMethod(this, _Batch_instances, defer_effects_fn).call(this, effects);
+    __privateMethod(_b3 = earlier_batch, _Batch_instances, merge_fn).call(_b3, this);
+  }
+};
+
+traverse_fn = function(root8, effects, render_effects) {
+  root8.f ^= CLEAN;
+  for (var effect2 = root8.first; null !== effect2; ) {
+    var flags2 = effect2.f, is_branch = 0 !== (flags2 & (BRANCH_EFFECT | ROOT_EFFECT));
+    if (!(is_branch && 0 !== (flags2 & CLEAN) || 0 !== (flags2 & INERT) || __privateGet(this, _skipped_branches).has(effect2)) && null !== effect2.fn) {
+      if (is_branch) effect2.f ^= CLEAN; else if (0 !== (flags2 & EFFECT)) effects.push(effect2); else if (async_mode_flag && 0 !== (flags2 & (RENDER_EFFECT | MANAGED_EFFECT))) render_effects.push(effect2); else if (is_dirty(effect2)) {
+        if (0 !== (flags2 & BLOCK_EFFECT)) __privateGet(this, _maybe_dirty_effects2).add(effect2);
+        update_effect(effect2);
+      }
+      var child2 = effect2.first;
+      if (null !== child2) {
+        effect2 = child2;
+        continue;
+      }
+    }
+    for (;null !== effect2; ) {
+      var next2 = effect2.next;
+      if (null !== next2) {
+        effect2 = next2;
+        break;
+      }
+      effect2 = effect2.parent;
+    }
+  }
+};
+
+find_earlier_batch_fn = function() {
+  for (var batch = __privateGet(this, _prev); null !== batch; ) {
+    if (!batch.is_fork) for (const [value, [, is_derived]] of this.current) if (batch.current.has(value) && !is_derived) return batch;
+    batch = __privateGet(batch, _prev);
+  }
+  return null;
+};
+
+merge_fn = function(batch) {
+  var _a5;
+  for (const [source2, value] of batch.current) {
+    if (!this.previous.has(source2) && batch.previous.has(source2)) this.previous.set(source2, batch.previous.get(source2));
+    this.current.set(source2, value);
+  }
+  for (const [effect2, deferred2] of batch.async_deriveds) {
+    const d = this.async_deriveds.get(effect2);
+    if (d) deferred2.promise.then(d.resolve).catch(d.reject);
+  }
+  batch.async_deriveds.clear();
+  this.transfer_effects(__privateGet(batch, _dirty_effects2), __privateGet(batch, _maybe_dirty_effects2));
+  const mark = value => {
+    var reactions = value.reactions;
+    if (null !== reactions) for (const reaction of reactions) {
+      var flags2 = reaction.f;
+      if (0 !== (flags2 & DERIVED)) mark(reaction); else {
+        var effect2 = reaction;
+        if (flags2 & (ASYNC | BLOCK_EFFECT) && !this.async_deriveds.has(effect2)) {
+          __privateGet(this, _maybe_dirty_effects2).delete(effect2);
+          set_signal_status(effect2, DIRTY);
+          this.schedule(effect2);
+        }
+      }
+    }
+  };
+  for (const source2 of this.current.keys()) mark(source2);
+  this.oncommit(() => batch.discard());
+  __privateMethod(_a5 = batch, _Batch_instances, unlink_fn).call(_a5);
+  current_batch = this;
+  __privateMethod(this, _Batch_instances, process_fn).call(this);
+};
+
+defer_effects_fn = function(effects) {
+  for (var i = 0; i < effects.length; i += 1) defer_effect(effects[i], __privateGet(this, _dirty_effects2), __privateGet(this, _maybe_dirty_effects2));
+};
+
+commit_fn = function() {
+  var _a5;
+  for (let batch = first_batch; null !== batch; batch = __privateGet(batch, _next)) {
+    var is_earlier = batch.id < this.id, sources = [];
+    for (const [source3, [value, is_derived]] of this.current) {
+      if (batch.current.has(source3)) {
+        var batch_value = batch.current.get(source3)[0];
+        if (is_earlier && value !== batch_value) batch.current.set(source3, [ value, is_derived ]); else continue;
+      }
+      sources.push(source3);
+    }
+    if (is_earlier) for (const [effect2, deferred2] of this.async_deriveds) {
+      const d = batch.async_deriveds.get(effect2);
+      if (d) deferred2.promise.then(d.resolve).catch(d.reject);
+    }
+    var current = [ ...batch.current.keys() ].filter(source3 => !batch.current.get(source3)[1]);
+    if (__privateGet(batch, _started) && 0 !== current.length) {
+      var others = current.filter(source3 => !this.current.has(source3));
+      if (0 === others.length) {
+        if (is_earlier) batch.discard();
+      } else if (sources.length > 0) {
+        if (dev_fallback_default && !__privateGet(batch, _decrement_queued)) invariant(0 === __privateGet(batch, _roots).length, "Batch has scheduled roots");
+        if (is_earlier) for (const unskipped of __privateGet(this, _unskipped_branches)) batch.unskip_effect(unskipped, e => {
+          var _a6;
+          if (0 !== (e.f & (BLOCK_EFFECT | ASYNC))) batch.schedule(e); else __privateMethod(_a6 = batch, _Batch_instances, defer_effects_fn).call(_a6, [ e ]);
+        });
+        batch.activate();
+        var marked = new Set, checked = new Map;
+        for (var source2 of sources) mark_effects(source2, others, marked, checked);
+        checked = new Map;
+        var current_unequal = [ ...batch.current ].filter(([c, v1]) => {
+          const v2 = this.current.get(c);
+          if (!v2) return true; else return v2[0] !== v1[0] || v2[1] !== v1[1];
+        }).map(([c]) => c);
+        if (current_unequal.length > 0) for (const effect2 of __privateGet(this, _new_effects)) if (0 === (effect2.f & (DESTROYED | INERT | EAGER_EFFECT)) && depends_on(effect2, current_unequal, checked)) if (0 !== (effect2.f & (ASYNC | BLOCK_EFFECT))) {
+          set_signal_status(effect2, DIRTY);
+          batch.schedule(effect2);
+        } else __privateGet(batch, _dirty_effects2).add(effect2);
+        if (__privateGet(batch, _roots).length > 0 && !__privateGet(batch, _decrement_queued)) {
+          batch.apply();
+          for (var root8 of __privateGet(batch, _roots)) __privateMethod(_a5 = batch, _Batch_instances, traverse_fn).call(_a5, root8, [], []);
+          __privateSet(batch, _roots, []);
+        }
+        batch.deactivate();
+      }
+    }
+  }
+};
+
+unlink_fn = function() {
+  if (this.linked) {
+    var prev = __privateGet(this, _prev), next2 = __privateGet(this, _next);
+    if (null === prev) first_batch = next2; else __privateSet(prev, _next, next2);
+    if (null === next2) last_batch = prev; else __privateSet(next2, _prev, prev);
+    this.linked = false;
+  }
+};
+
+var Batch = _Batch;
+
+function flushSync(fn) {
+  var was_flushing_sync = is_flushing_sync;
+  is_flushing_sync = true;
+  try {
+    var result;
+    if (fn) {
+      if (null !== current_batch && !current_batch.is_fork) current_batch.flush();
+      result = fn();
+    }
+    for (;;) {
+      flush_tasks();
+      if (null === current_batch) return result;
+      current_batch.flush();
+    }
+  } finally {
+    is_flushing_sync = was_flushing_sync;
+  }
+}
+
+function infinite_loop_guard() {
+  var _a5;
+  if (dev_fallback_default) {
+    var updates = new Map;
+    for (const source2 of current_batch.current.keys()) for (const [stack2, update2] of null != (_a5 = source2.updated) ? _a5 : []) {
+      var entry = updates.get(stack2);
+      if (!entry) {
+        entry = {
+          error: update2.error,
+          count: 0
+        };
+        updates.set(stack2, entry);
+      }
+      entry.count += update2.count;
+    }
+    for (const update2 of updates.values()) if (update2.error) console.error(update2.error);
+  }
+  try {
+    effect_update_depth_exceeded();
+  } catch (error) {
+    if (dev_fallback_default) define_property(error, "stack", {
+      value: ""
+    });
+    invoke_error_boundary(error, last_scheduled_effect);
+  }
+}
+
+var eager_block_effects = null;
+
+function flush_queued_effects(effects) {
+  var length = effects.length;
+  if (0 !== length) {
+    for (var i = 0; i < length; ) {
+      var effect2 = effects[i++];
+      if (0 === (effect2.f & (DESTROYED | INERT)) && is_dirty(effect2)) {
+        eager_block_effects = new Set;
+        update_effect(effect2);
+        if (null === effect2.deps && null === effect2.first && null === effect2.nodes && null === effect2.teardown && null === effect2.ac) unlink_effect(effect2);
+        if ((null == eager_block_effects ? void 0 : eager_block_effects.size) > 0) {
+          old_values.clear();
+          for (const e of eager_block_effects) {
+            if (0 !== (e.f & (DESTROYED | INERT))) continue;
+            const ordered_effects = [ e ];
+            let ancestor = e.parent;
+            for (;null !== ancestor; ) {
+              if (eager_block_effects.has(ancestor)) {
+                eager_block_effects.delete(ancestor);
+                ordered_effects.push(ancestor);
+              }
+              ancestor = ancestor.parent;
+            }
+            for (let j = ordered_effects.length - 1; j >= 0; j--) {
+              const e2 = ordered_effects[j];
+              if (0 === (e2.f & (DESTROYED | INERT))) update_effect(e2);
+            }
+          }
+          eager_block_effects.clear();
+        }
+      }
+    }
+    eager_block_effects = null;
+  }
+}
+
+function mark_effects(value, sources, marked, checked) {
+  if (!marked.has(value)) {
+    marked.add(value);
+    if (null !== value.reactions) for (const reaction of value.reactions) {
+      const flags2 = reaction.f;
+      if (0 !== (flags2 & DERIVED)) mark_effects(reaction, sources, marked, checked); else if (0 !== (flags2 & (ASYNC | BLOCK_EFFECT)) && 0 === (flags2 & DIRTY) && depends_on(reaction, sources, checked)) {
+        set_signal_status(reaction, DIRTY);
+        schedule_effect(reaction);
+      }
+    }
+  }
+}
+
+function depends_on(reaction, sources, checked) {
+  const depends = checked.get(reaction);
+  if (void 0 !== depends) return depends;
+  if (null !== reaction.deps) for (const dep of reaction.deps) {
+    if (includes.call(sources, dep)) return true;
+    if (0 !== (dep.f & DERIVED) && depends_on(dep, sources, checked)) {
+      checked.set(dep, true);
+      return true;
+    }
+  }
+  checked.set(reaction, false);
+  return false;
+}
+
+function schedule_effect(effect2) {
+  current_batch.schedule(effect2);
+}
+
+function reset_branch(effect2, tracked) {
+  if (0 === (effect2.f & BRANCH_EFFECT) || 0 === (effect2.f & CLEAN)) {
+    if (0 !== (effect2.f & DIRTY)) tracked.d.push(effect2); else if (0 !== (effect2.f & MAYBE_DIRTY)) tracked.m.push(effect2);
+    set_signal_status(effect2, CLEAN);
+    for (var e = effect2.first; null !== e; ) {
+      reset_branch(e, tracked);
+      e = e.next;
+    }
+  }
+}
+
+function reset_all(effect2) {
+  set_signal_status(effect2, CLEAN);
+  for (var e = effect2.first; null !== e; ) {
+    reset_all(e);
+    e = e.next;
+  }
+}
+
+var eager_effects = new Set, old_values = new Map;
+
+function set_eager_effects(v) {
+  eager_effects = v;
+}
+
+var eager_effects_deferred = false;
+
+function set_eager_effects_deferred() {
+  eager_effects_deferred = true;
+}
+
+function source(v, stack2) {
+  var signal = {
+    f: 0,
+    v,
+    reactions: null,
+    equals,
+    rv: 0,
+    wv: 0
+  };
+  if (dev_fallback_default && tracing_mode_flag) {
+    signal.created = null != stack2 ? stack2 : get_error("created at");
+    signal.updated = null;
+    signal.set_during_effect = false;
+    signal.trace = null;
+  }
+  return signal;
+}
+
+function state(v, stack2) {
+  const s = source(v, stack2);
+  push_reaction_value(s);
+  return s;
+}
+
+function mutable_source(initial_value, immutable = false, trackable = true) {
+  var _a5, _b3;
+  const s = source(initial_value);
+  if (!immutable) s.equals = safe_equals;
+  if (legacy_mode_flag && trackable && null !== component_context && null !== component_context.l) (null != (_b3 = (_a5 = component_context.l).s) ? _b3 : _a5.s = []).push(s);
+  return s;
+}
+
+function set(source2, value, should_proxy = false) {
+  if (null !== active_reaction && (!untracking || 0 !== (active_reaction.f & EAGER_EFFECT)) && is_runes() && 0 !== (active_reaction.f & (DERIVED | BLOCK_EFFECT | ASYNC | EAGER_EFFECT)) && (null === current_sources || !current_sources.has(source2))) state_unsafe_mutation();
+  let new_value = should_proxy ? proxy(value) : value;
+  if (dev_fallback_default) tag_proxy(new_value, source2.label);
+  return internal_set(source2, new_value, legacy_updates);
+}
+
+function internal_set(source2, value, updated_during_traversal = null) {
+  var _b3, _c2;
+  if (!source2.equals(value)) {
+    old_values.set(source2, is_destroying_effect ? value : source2.v);
+    var batch = Batch.ensure();
+    batch.capture(source2, value);
+    if (dev_fallback_default) {
+      if (tracing_mode_flag || null !== active_effect) {
+        null != source2.updated || (source2.updated = new Map);
+        const count = (null != (_c2 = null == (_b3 = source2.updated.get("")) ? void 0 : _b3.count) ? _c2 : 0) + 1;
+        source2.updated.set("", {
+          error: null,
+          count
+        });
+        if (tracing_mode_flag || count > 5) {
+          const error = get_error("updated at");
+          if (null !== error) {
+            let entry = source2.updated.get(error.stack);
+            if (!entry) {
+              entry = {
+                error,
+                count: 0
+              };
+              source2.updated.set(error.stack, entry);
+            }
+            entry.count++;
+          }
+        }
+      }
+      if (null !== active_effect) source2.set_during_effect = true;
+    }
+    if (0 !== (source2.f & DERIVED)) {
+      const derived3 = source2;
+      if (0 !== (source2.f & DIRTY)) execute_derived(derived3);
+      if (null === batch_values) update_derived_status(derived3);
+    }
+    source2.wv = increment_write_version();
+    mark_reactions(source2, DIRTY, updated_during_traversal);
+    if (is_runes() && null !== active_effect && 0 !== (active_effect.f & CLEAN) && 0 === (active_effect.f & (BRANCH_EFFECT | ROOT_EFFECT))) if (null === untracked_writes) set_untracked_writes([ source2 ]); else untracked_writes.push(source2);
+    if (!batch.is_fork && eager_effects.size > 0 && !eager_effects_deferred) flush_eager_effects();
+  }
+  return value;
+}
+
+function flush_eager_effects() {
+  eager_effects_deferred = false;
+  for (const effect2 of eager_effects) {
+    if (0 !== (effect2.f & CLEAN)) set_signal_status(effect2, MAYBE_DIRTY);
+    let dirty;
+    try {
+      dirty = is_dirty(effect2);
+    } catch (e) {
+      dirty = true;
+    }
+    if (dirty) update_effect(effect2);
+  }
+  eager_effects.clear();
+}
+
+function increment(source2) {
+  set(source2, source2.v + 1);
+}
+
+function mark_reactions(signal, status, updated_during_traversal) {
+  var _a5, reactions = signal.reactions;
+  if (null !== reactions) for (var runes = is_runes(), length = reactions.length, i = 0; i < length; i++) {
+    var reaction = reactions[i], flags2 = reaction.f;
+    if (runes || reaction !== active_effect) {
+      var not_dirty = 0 === (flags2 & DIRTY);
+      if (not_dirty) set_signal_status(reaction, status);
+      if (0 !== (flags2 & EAGER_EFFECT)) eager_effects.add(reaction); else if (0 !== (flags2 & DERIVED)) {
+        var derived3 = reaction;
+        null == (_a5 = batch_values) || _a5.delete(derived3);
+        if (0 === (flags2 & WAS_MARKED)) {
+          if (flags2 & CONNECTED && (null === active_effect || 0 === (active_effect.f & REACTION_IS_UPDATING))) reaction.f |= WAS_MARKED;
+          mark_reactions(derived3, MAYBE_DIRTY, updated_during_traversal);
+        }
+      } else if (not_dirty) {
+        var effect2 = reaction;
+        if (0 !== (flags2 & BLOCK_EFFECT) && null !== eager_block_effects) eager_block_effects.add(effect2);
+        if (null !== updated_during_traversal) updated_during_traversal.push(effect2); else schedule_effect(effect2);
+      }
+    }
+  }
+}
+
+var captured_signals = null, listening_to_form_reset = false;
+
+function add_form_reset_listener() {
+  if (!listening_to_form_reset) {
+    listening_to_form_reset = true;
+    document.addEventListener("reset", evt => {
+      Promise.resolve().then(() => {
+        var _a5;
+        if (!evt.defaultPrevented) for (const e of evt.target.elements) null == (_a5 = e[FORM_RESET_HANDLER]) || _a5.call(e);
+      });
+    }, {
+      capture: true
+    });
+  }
+}
+
+function without_reactive_context(fn) {
+  var previous_reaction = active_reaction, previous_effect = active_effect;
+  set_active_reaction(null);
+  set_active_effect(null);
+  try {
+    return fn();
+  } finally {
+    set_active_reaction(previous_reaction);
+    set_active_effect(previous_effect);
+  }
+}
+
+function listen_to_event_and_reset_event(element2, event2, handler, on_reset = handler) {
+  element2.addEventListener(event2, () => without_reactive_context(handler));
+  const prev = element2[FORM_RESET_HANDLER];
+  if (prev) element2[FORM_RESET_HANDLER] = () => {
+    prev();
+    on_reset(true);
+  }; else element2[FORM_RESET_HANDLER] = () => on_reset(true);
+  add_form_reset_listener();
+}
+
+var is_updating_effect = false, is_destroying_effect = false;
 
 function set_is_destroying_effect(value) {
   is_destroying_effect = value;
 }
 
-var queued_root_effects = [], dev_effect_stack = [], active_reaction = null, untracking = false;
+var active_reaction = null, untracking = false;
 
 function set_active_reaction(reaction) {
   active_reaction = reaction;
@@ -895,10 +2871,10 @@ function set_active_effect(effect2) {
   active_effect = effect2;
 }
 
-var reaction_sources = null;
+var current_sources = null;
 
 function push_reaction_value(value) {
-  if (null !== active_reaction && active_reaction.f & EFFECT_IS_UPDATING) if (null === reaction_sources) reaction_sources = [ value ]; else reaction_sources.push(value);
+  if (null !== active_reaction && (!async_mode_flag || 0 !== (active_reaction.f & DERIVED))) (null != current_sources ? current_sources : current_sources = new Set).add(value);
 }
 
 var new_deps = null, skipped_deps = 0, untracked_writes = null;
@@ -907,157 +2883,96 @@ function set_untracked_writes(value) {
   untracked_writes = value;
 }
 
-var write_version = 1, read_version = 0, skip_reaction = false, captured_signals = null;
+var write_version = 1, read_version = 0, update_version = read_version;
+
+function set_update_version(value) {
+  update_version = value;
+}
 
 function increment_write_version() {
   return ++write_version;
 }
 
-function check_dirtiness(reaction) {
-  var _a3, _b3, flags = reaction.f;
-  if (!!(flags & DIRTY)) return true;
-  if (!!(flags & MAYBE_DIRTY)) {
-    var dependencies = reaction.deps, is_unowned = !!(flags & UNOWNED);
-    if (null !== dependencies) {
-      var i, dependency, is_disconnected = !!(flags & DISCONNECTED), is_unowned_connected = is_unowned && null !== active_effect && !skip_reaction, length = dependencies.length;
-      if (is_disconnected || is_unowned_connected) {
-        var derived3 = reaction, parent = derived3.parent;
-        for (i = 0; i < length; i++) {
-          dependency = dependencies[i];
-          if (is_disconnected || !(null == (_a3 = null == dependency ? void 0 : dependency.reactions) ? void 0 : _a3.includes(derived3))) (null != (_b3 = dependency.reactions) ? _b3 : dependency.reactions = []).push(derived3);
-        }
-        if (is_disconnected) derived3.f ^= DISCONNECTED;
-        if (is_unowned_connected && null !== parent && !(parent.f & UNOWNED)) derived3.f ^= UNOWNED;
-      }
-      for (i = 0; i < length; i++) {
-        if (check_dirtiness(dependency = dependencies[i])) update_derived(dependency);
-        if (dependency.wv > reaction.wv) return true;
-      }
+function is_dirty(reaction) {
+  var flags2 = reaction.f;
+  if (0 !== (flags2 & DIRTY)) return true;
+  if (flags2 & DERIVED) reaction.f &= ~WAS_MARKED;
+  if (0 !== (flags2 & MAYBE_DIRTY)) {
+    for (var dependencies = reaction.deps, length = dependencies.length, i = 0; i < length; i++) {
+      var dependency = dependencies[i];
+      if (is_dirty(dependency)) update_derived(dependency);
+      if (dependency.wv > reaction.wv) return true;
     }
-    if (!is_unowned || null !== active_effect && !skip_reaction) set_signal_status(reaction, CLEAN);
+    if (0 !== (flags2 & CONNECTED) && null === batch_values) set_signal_status(reaction, CLEAN);
   }
   return false;
 }
 
-function propagate_error(error, effect2) {
-  for (var current = effect2; null !== current; ) {
-    if (!!(current.f & BOUNDARY_EFFECT)) try {
-      current.fn(error);
-      return;
-    } catch (e) {
-      current.f ^= BOUNDARY_EFFECT;
-    }
-    current = current.parent;
-  }
-  is_throwing_error = false;
-  throw error;
-}
-
-function should_rethrow_error(effect2) {
-  return !(effect2.f & DESTROYED || null !== effect2.parent && effect2.parent.f & BOUNDARY_EFFECT);
-}
-
-function handle_error(error, effect2, previous_effect, component_context2) {
-  var _a3, _b3;
-  if (is_throwing_error) {
-    if (null === previous_effect) is_throwing_error = false;
-    if (should_rethrow_error(effect2)) throw error;
-    return;
-  }
-  if (null !== previous_effect) is_throwing_error = true;
-  if (!dev_fallback_default || null === component_context2 || !(error instanceof Error) || handled_errors.has(error)) {
-    propagate_error(error, effect2);
-    return;
-  }
-  handled_errors.add(error);
-  const component_stack = [], effect_name = null == (_a3 = effect2.fn) ? void 0 : _a3.name;
-  if (effect_name) component_stack.push(effect_name);
-  let current_context = component_context2;
-  for (;null !== current_context; ) {
-    if (dev_fallback_default) {
-      var filename = null == (_b3 = current_context.function) ? void 0 : _b3[FILENAME];
-      if (filename) {
-        const file = filename.split("/").pop();
-        component_stack.push(file);
-      }
-    }
-    current_context = current_context.p;
-  }
-  const indent = is_firefox ? "  " : "\t";
-  define_property(error, "message", {
-    value: error.message + `\n${component_stack.map((name => `\n${indent}in ${name}`)).join("")}\n`
-  });
-  define_property(error, "component_stack", {
-    value: component_stack
-  });
-  const stack2 = error.stack;
-  if (stack2) {
-    const lines = stack2.split("\n"), new_lines = [];
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      if (!line.includes("svelte/src/internal")) new_lines.push(line);
-    }
-    define_property(error, "stack", {
-      value: new_lines.join("\n")
-    });
-  }
-  propagate_error(error, effect2);
-  if (should_rethrow_error(effect2)) throw error;
-}
-
-function schedule_possible_effect_self_invalidation(signal, effect2, root6 = true) {
+function schedule_possible_effect_self_invalidation(signal, effect2, root8 = true) {
   var reactions = signal.reactions;
-  if (null !== reactions) for (var i = 0; i < reactions.length; i++) {
+  if (null !== reactions) if (async_mode_flag || null === current_sources || !current_sources.has(signal)) for (var i = 0; i < reactions.length; i++) {
     var reaction = reactions[i];
-    if (!(null == reaction_sources ? void 0 : reaction_sources.includes(signal))) if (!!(reaction.f & DERIVED)) schedule_possible_effect_self_invalidation(reaction, effect2, false); else if (effect2 === reaction) {
-      if (root6) set_signal_status(reaction, DIRTY); else if (!!(reaction.f & CLEAN)) set_signal_status(reaction, MAYBE_DIRTY);
+    if (0 !== (reaction.f & DERIVED)) schedule_possible_effect_self_invalidation(reaction, effect2, false); else if (effect2 === reaction) {
+      if (root8) set_signal_status(reaction, DIRTY); else if (0 !== (reaction.f & CLEAN)) set_signal_status(reaction, MAYBE_DIRTY);
       schedule_effect(reaction);
     }
   }
 }
 
 function update_reaction(reaction) {
-  var _a3, _b3, previous_deps = new_deps, previous_skipped_deps = skipped_deps, previous_untracked_writes = untracked_writes, previous_reaction = active_reaction, previous_skip_reaction = skip_reaction, previous_reaction_sources = reaction_sources, previous_component_context = component_context, previous_untracking = untracking, flags = reaction.f;
+  var _a5, _b3, _c2, previous_deps = new_deps, previous_skipped_deps = skipped_deps, previous_untracked_writes = untracked_writes, previous_reaction = active_reaction, previous_sources = current_sources, previous_component_context = component_context, previous_untracking = untracking, previous_update_version = update_version, flags2 = reaction.f;
   new_deps = null;
   skipped_deps = 0;
   untracked_writes = null;
-  skip_reaction = !!(flags & UNOWNED) && (untracking || !is_updating_effect || null === active_reaction);
-  active_reaction = !(flags & (BRANCH_EFFECT | ROOT_EFFECT)) ? reaction : null;
-  reaction_sources = null;
+  active_reaction = 0 === (flags2 & (BRANCH_EFFECT | ROOT_EFFECT)) ? reaction : null;
+  current_sources = null;
   set_component_context(reaction.ctx);
   untracking = false;
-  read_version++;
-  reaction.f |= EFFECT_IS_UPDATING;
+  update_version = ++read_version;
+  if (null !== reaction.ac) {
+    without_reactive_context(() => {
+      reaction.ac.abort(STALE_REACTION);
+    });
+    reaction.ac = null;
+  }
   try {
-    var result = (0, reaction.fn)(), deps = reaction.deps;
+    reaction.f |= REACTION_IS_UPDATING;
+    var result = (0, reaction.fn)();
+    reaction.f |= REACTION_RAN;
+    var deps = reaction.deps, is_fork = null == (_a5 = current_batch) ? void 0 : _a5.is_fork;
     if (null !== new_deps) {
       var i;
-      remove_reactions(reaction, skipped_deps);
+      if (!is_fork) remove_reactions(reaction, skipped_deps);
       if (null !== deps && skipped_deps > 0) {
         deps.length = skipped_deps + new_deps.length;
         for (i = 0; i < new_deps.length; i++) deps[skipped_deps + i] = new_deps[i];
       } else reaction.deps = deps = new_deps;
-      if (!skip_reaction) for (i = skipped_deps; i < deps.length; i++) (null != (_b3 = (_a3 = deps[i]).reactions) ? _b3 : _a3.reactions = []).push(reaction);
-    } else if (null !== deps && skipped_deps < deps.length) {
+      if (effect_tracking() && 0 !== (reaction.f & CONNECTED)) for (i = skipped_deps; i < deps.length; i++) (null != (_c2 = (_b3 = deps[i]).reactions) ? _c2 : _b3.reactions = []).push(reaction);
+    } else if (!is_fork && null !== deps && skipped_deps < deps.length) {
       remove_reactions(reaction, skipped_deps);
       deps.length = skipped_deps;
     }
-    if (is_runes() && null !== untracked_writes && !untracking && null !== deps && !(reaction.f & (DERIVED | MAYBE_DIRTY | DIRTY))) for (i = 0; i < untracked_writes.length; i++) schedule_possible_effect_self_invalidation(untracked_writes[i], reaction);
-    if (previous_reaction !== reaction) {
+    if (is_runes() && null !== untracked_writes && !untracking && null !== deps && 0 === (reaction.f & (DERIVED | MAYBE_DIRTY | DIRTY))) for (i = 0; i < untracked_writes.length; i++) schedule_possible_effect_self_invalidation(untracked_writes[i], reaction);
+    if (null !== previous_reaction && previous_reaction !== reaction) {
       read_version++;
+      if (null !== previous_reaction.deps) for (let i2 = 0; i2 < previous_skipped_deps; i2 += 1) previous_reaction.deps[i2].rv = read_version;
+      if (null !== previous_deps) for (const dep of previous_deps) dep.rv = read_version;
       if (null !== untracked_writes) if (null === previous_untracked_writes) previous_untracked_writes = untracked_writes; else previous_untracked_writes.push(...untracked_writes);
     }
+    if (0 !== (reaction.f & ERROR_VALUE)) reaction.f ^= ERROR_VALUE;
     return result;
+  } catch (error) {
+    return handle_error(error);
   } finally {
+    reaction.f ^= REACTION_IS_UPDATING;
     new_deps = previous_deps;
     skipped_deps = previous_skipped_deps;
     untracked_writes = previous_untracked_writes;
     active_reaction = previous_reaction;
-    skip_reaction = previous_skip_reaction;
-    reaction_sources = previous_reaction_sources;
+    current_sources = previous_sources;
     set_component_context(previous_component_context);
     untracking = previous_untracking;
-    reaction.f ^= EFFECT_IS_UPDATING;
+    update_version = previous_update_version;
   }
 }
 
@@ -1073,11 +2988,15 @@ function remove_reaction(signal, dependency) {
       }
     }
   }
-  if (!(null !== reactions || !(dependency.f & DERIVED) || null !== new_deps && new_deps.includes(dependency))) {
-    set_signal_status(dependency, MAYBE_DIRTY);
-    if (!(dependency.f & (UNOWNED | DISCONNECTED))) dependency.f ^= DISCONNECTED;
-    destroy_derived_effects(dependency);
-    remove_reactions(dependency, 0);
+  if (null === reactions && 0 !== (dependency.f & DERIVED) && (null === new_deps || !includes.call(new_deps, dependency))) {
+    var derived3 = dependency;
+    if (0 !== (derived3.f & CONNECTED)) {
+      derived3.f ^= CONNECTED;
+      derived3.f &= ~WAS_MARKED;
+    }
+    if (derived3.v !== UNINITIALIZED) update_derived_status(derived3);
+    freeze_derived_effects(derived3);
+    remove_reactions(derived3, 0);
   }
 }
 
@@ -1087,190 +3006,129 @@ function remove_reactions(signal, start_index) {
 }
 
 function update_effect(effect2) {
-  var flags = effect2.f;
-  if (!(flags & DESTROYED)) {
+  var _a5, flags2 = effect2.f;
+  if (0 === (flags2 & DESTROYED)) {
     set_signal_status(effect2, CLEAN);
-    var previous_effect = active_effect, previous_component_context = component_context, was_updating_effect = is_updating_effect;
+    var previous_effect = active_effect, was_updating_effect = is_updating_effect;
     active_effect = effect2;
     is_updating_effect = true;
     if (dev_fallback_default) {
       var previous_component_fn = dev_current_component_function;
       set_dev_current_component_function(effect2.component_function);
+      var previous_stack = dev_stack;
+      set_dev_stack(null != (_a5 = effect2.dev_stack) ? _a5 : dev_stack);
     }
     try {
-      if (!!(flags & BLOCK_EFFECT)) destroy_block_effect_children(effect2); else destroy_effect_children(effect2);
+      if (0 !== (flags2 & (BLOCK_EFFECT | MANAGED_EFFECT))) destroy_block_effect_children(effect2); else destroy_effect_children(effect2);
       execute_effect_teardown(effect2);
       var teardown2 = update_reaction(effect2);
       effect2.teardown = "function" == typeof teardown2 ? teardown2 : null;
       effect2.wv = write_version;
-      var deps = effect2.deps;
-      if (dev_fallback_default && tracing_mode_flag && !!(effect2.f & DIRTY) && null !== deps) for (let i = 0; i < deps.length; i++) {
-        var dep = deps[i];
-        if (dep.trace_need_increase) {
-          dep.wv = increment_write_version();
-          dep.trace_need_increase = void 0;
-          dep.trace_v = void 0;
-        }
+      if (dev_fallback_default && tracing_mode_flag && 0 !== (effect2.f & DIRTY) && null !== effect2.deps) for (var dep of effect2.deps) if (dep.set_during_effect) {
+        dep.wv = increment_write_version();
+        dep.set_during_effect = false;
       }
-      if (dev_fallback_default) dev_effect_stack.push(effect2);
-    } catch (error) {
-      handle_error(error, effect2, previous_effect, previous_component_context || effect2.ctx);
     } finally {
       is_updating_effect = was_updating_effect;
       active_effect = previous_effect;
-      if (dev_fallback_default) set_dev_current_component_function(previous_component_fn);
-    }
-  }
-}
-
-function log_effect_stack() {
-  console.error("Last ten effects were: ", dev_effect_stack.slice(-10).map((d => d.fn)));
-  dev_effect_stack = [];
-}
-
-function infinite_loop_guard() {
-  try {
-    effect_update_depth_exceeded();
-  } catch (error) {
-    if (dev_fallback_default) define_property(error, "stack", {
-      value: ""
-    });
-    if (null !== last_scheduled_effect) if (dev_fallback_default) try {
-      handle_error(error, last_scheduled_effect, null, null);
-    } catch (e) {
-      log_effect_stack();
-      throw e;
-    } else handle_error(error, last_scheduled_effect, null, null); else {
-      if (dev_fallback_default) log_effect_stack();
-      throw error;
-    }
-  }
-}
-
-function flush_queued_root_effects() {
-  var was_updating_effect = is_updating_effect;
-  try {
-    var flush_count = 0;
-    is_updating_effect = true;
-    for (;queued_root_effects.length > 0; ) {
-      if (flush_count++ > 1e3) infinite_loop_guard();
-      var root_effects = queued_root_effects, length = root_effects.length;
-      queued_root_effects = [];
-      for (var i = 0; i < length; i++) flush_queued_effects(process_effects(root_effects[i]));
-      old_values.clear();
-    }
-  } finally {
-    is_flushing = false;
-    is_updating_effect = was_updating_effect;
-    last_scheduled_effect = null;
-    if (dev_fallback_default) dev_effect_stack = [];
-  }
-}
-
-function flush_queued_effects(effects) {
-  var length = effects.length;
-  if (0 !== length) for (var i = 0; i < length; i++) {
-    var effect2 = effects[i];
-    if (!(effect2.f & (DESTROYED | INERT))) try {
-      if (check_dirtiness(effect2)) {
-        update_effect(effect2);
-        if (null === effect2.deps && null === effect2.first && null === effect2.nodes_start) if (null === effect2.teardown) unlink_effect(effect2); else effect2.fn = null;
-      }
-    } catch (error) {
-      handle_error(error, effect2, null, effect2.ctx);
-    }
-  }
-}
-
-function schedule_effect(signal) {
-  if (!is_flushing) {
-    is_flushing = true;
-    queueMicrotask(flush_queued_root_effects);
-  }
-  for (var effect2 = last_scheduled_effect = signal; null !== effect2.parent; ) {
-    var flags = (effect2 = effect2.parent).f;
-    if (!!(flags & (ROOT_EFFECT | BRANCH_EFFECT))) {
-      if (!(flags & CLEAN)) return;
-      effect2.f ^= CLEAN;
-    }
-  }
-  queued_root_effects.push(effect2);
-}
-
-function process_effects(root6) {
-  for (var effects = [], effect2 = root6; null !== effect2; ) {
-    var flags = effect2.f, is_branch = !!(flags & (BRANCH_EFFECT | ROOT_EFFECT));
-    if (!(is_branch && !!(flags & CLEAN) || flags & INERT)) {
-      if (!!(flags & EFFECT)) effects.push(effect2); else if (is_branch) effect2.f ^= CLEAN; else {
-        var previous_active_reaction = active_reaction;
-        try {
-          active_reaction = effect2;
-          if (check_dirtiness(effect2)) update_effect(effect2);
-        } catch (error) {
-          handle_error(error, effect2, null, effect2.ctx);
-        } finally {
-          active_reaction = previous_active_reaction;
-        }
-      }
-      var child2 = effect2.first;
-      if (null !== child2) {
-        effect2 = child2;
-        continue;
+      if (dev_fallback_default) {
+        set_dev_current_component_function(previous_component_fn);
+        set_dev_stack(previous_stack);
       }
     }
-    var parent = effect2.parent;
-    effect2 = effect2.next;
-    for (;null === effect2 && null !== parent; ) {
-      effect2 = parent.next;
-      parent = parent.parent;
-    }
   }
-  return effects;
 }
 
-function flushSync(fn) {
-  var result;
-  if (fn) {
-    is_flushing = true;
-    flush_queued_root_effects();
-    result = fn();
-  }
-  flush_tasks();
-  for (;queued_root_effects.length > 0; ) {
-    is_flushing = true;
-    flush_queued_root_effects();
-    flush_tasks();
-  }
-  return result;
+async function tick() {
+  if (async_mode_flag) return new Promise(f => {
+    requestAnimationFrame(() => f());
+    setTimeout(() => f());
+  });
+  await Promise.resolve();
+  flushSync();
 }
 
 function get(signal) {
-  var is_derived = !!(signal.f & DERIVED);
-  if (null !== captured_signals) captured_signals.add(signal);
-  if (null !== active_reaction && !untracking) {
-    if (!(null == reaction_sources ? void 0 : reaction_sources.includes(signal))) {
-      var deps = active_reaction.deps;
+  var _a5, _c2, is_derived = 0 !== (signal.f & DERIVED);
+  null == (_a5 = captured_signals) || _a5.add(signal);
+  if (null !== active_reaction && !untracking) if (!(null !== active_effect && 0 !== (active_effect.f & DESTROYED) || null !== current_sources && current_sources.has(signal))) {
+    var deps = active_reaction.deps;
+    if (0 !== (active_reaction.f & REACTION_IS_UPDATING)) {
       if (signal.rv < read_version) {
         signal.rv = read_version;
-        if (null === new_deps && null !== deps && deps[skipped_deps] === signal) skipped_deps++; else if (null === new_deps) new_deps = [ signal ]; else if (!skip_reaction || !new_deps.includes(signal)) new_deps.push(signal);
+        if (null === new_deps && null !== deps && deps[skipped_deps] === signal) skipped_deps++; else if (null === new_deps) new_deps = [ signal ]; else new_deps.push(signal);
       }
+    } else {
+      null != active_reaction.deps || (active_reaction.deps = []);
+      if (!includes.call(active_reaction.deps, signal)) active_reaction.deps.push(signal);
+      var reactions = signal.reactions;
+      if (null === reactions) signal.reactions = [ active_reaction ]; else if (!includes.call(reactions, active_reaction)) reactions.push(active_reaction);
     }
-  } else if (is_derived && null === signal.deps && null === signal.effects) {
-    var derived3 = signal, parent = derived3.parent;
-    if (null !== parent && !(parent.f & UNOWNED)) derived3.f ^= UNOWNED;
   }
-  if (is_derived) if (check_dirtiness(derived3 = signal)) update_derived(derived3);
-  if (dev_fallback_default && tracing_mode_flag && null !== tracing_expressions && null !== active_reaction && tracing_expressions.reaction === active_reaction) if (signal.debug) signal.debug(); else if (signal.created) {
-    var entry = tracing_expressions.entries.get(signal);
-    if (void 0 === entry) {
-      entry = {
-        read: []
-      };
-      tracing_expressions.entries.set(signal, entry);
+  if (dev_fallback_default) {
+    if (!untracking && reactivity_loss_tracker && null === current_batch && null === previous_batch && !reactivity_loss_tracker.warned && 0 === (reactivity_loss_tracker.effect.f & REACTION_IS_UPDATING) && !reactivity_loss_tracker.effect_deps.has(signal)) {
+      reactivity_loss_tracker.warned = true;
+      await_reactivity_loss(signal.label);
+      var trace2 = get_error("traced at");
+      if (trace2) console.warn(trace2);
     }
-    entry.read.push(get_stack("TracedAt"));
+    recent_async_deriveds.delete(signal);
+    if (tracing_mode_flag && !untracking && null !== tracing_expressions && null !== active_reaction && tracing_expressions.reaction === active_reaction) if (signal.trace) signal.trace(); else if (trace2 = get_error("traced at")) {
+      var entry = tracing_expressions.entries.get(signal);
+      if (void 0 === entry) {
+        entry = {
+          traces: []
+        };
+        tracing_expressions.entries.set(signal, entry);
+      }
+      var last = entry.traces[entry.traces.length - 1];
+      if (trace2.stack !== (null == last ? void 0 : last.stack)) entry.traces.push(trace2);
+    }
   }
-  if (is_destroying_effect && old_values.has(signal)) return old_values.get(signal); else return signal.v;
+  if (is_destroying_effect && old_values.has(signal)) return old_values.get(signal);
+  if (is_derived) {
+    var derived3 = signal;
+    if (is_destroying_effect) {
+      var value = derived3.v;
+      if (0 === (derived3.f & CLEAN) && null !== derived3.reactions || depends_on_old_values(derived3)) value = execute_derived(derived3);
+      old_values.set(derived3, value);
+      return value;
+    }
+    var should_connect = 0 === (derived3.f & CONNECTED) && !untracking && null !== active_reaction && (is_updating_effect || 0 !== (active_reaction.f & CONNECTED)), is_new = 0 === (derived3.f & REACTION_RAN);
+    if (is_dirty(derived3)) {
+      if (should_connect) derived3.f |= CONNECTED;
+      update_derived(derived3);
+    }
+    if (should_connect && !is_new) {
+      unfreeze_derived_effects(derived3);
+      reconnect(derived3);
+    }
+  }
+  if (null == (_c2 = batch_values) ? void 0 : _c2.has(signal)) return batch_values.get(signal);
+  if (0 !== (signal.f & ERROR_VALUE)) throw signal.v;
+  return signal.v;
+}
+
+function reconnect(derived3) {
+  var _a5;
+  derived3.f |= CONNECTED;
+  if (null !== derived3.deps) for (const dep of derived3.deps) {
+    (null != (_a5 = dep.reactions) ? _a5 : dep.reactions = []).push(derived3);
+    if (0 !== (dep.f & DERIVED) && 0 === (dep.f & CONNECTED)) {
+      unfreeze_derived_effects(dep);
+      reconnect(dep);
+    }
+  }
+}
+
+function depends_on_old_values(derived3) {
+  if (derived3.v === UNINITIALIZED) return true;
+  if (null === derived3.deps) return false;
+  for (const dep of derived3.deps) {
+    if (old_values.has(dep)) return true;
+    if (0 !== (dep.f & DERIVED) && depends_on_old_values(dep)) return true;
+  }
+  return false;
 }
 
 function untrack(fn) {
@@ -1283,15 +3141,11 @@ function untrack(fn) {
   }
 }
 
-var STATUS_MASK = ~(DIRTY | MAYBE_DIRTY | CLEAN);
-
-function set_signal_status(signal, status) {
-  signal.f = signal.f & STATUS_MASK | status;
-}
-
 function validate_effect(rune) {
-  if (null === active_effect && null === active_reaction) effect_orphan(rune);
-  if (null !== active_reaction && !!(active_reaction.f & UNOWNED) && null === active_effect) effect_in_unowned_derived();
+  if (null === active_effect) {
+    if (null === active_reaction) effect_orphan(rune);
+    effect_in_unowned_derived();
+  }
   if (is_destroying_effect) effect_in_teardown(rune);
 }
 
@@ -1304,109 +3158,130 @@ function push_effect(effect2, parent_effect) {
   }
 }
 
-function create_effect(type, fn, sync, push2 = true) {
-  var _a3, parent = active_effect;
-  if (dev_fallback_default) for (;null !== parent && !!(parent.f & INSPECT_EFFECT); ) parent = parent.parent;
+function create_effect(type, fn) {
+  var _a5, _b3, parent = active_effect;
+  if (dev_fallback_default) for (;null !== parent && 0 !== (parent.f & EAGER_EFFECT); ) parent = parent.parent;
+  if (null !== parent && 0 !== (parent.f & INERT)) type |= INERT;
   var effect2 = {
     ctx: component_context,
     deps: null,
-    nodes_start: null,
-    nodes_end: null,
-    f: type | DIRTY,
+    nodes: null,
+    f: type | DIRTY | CONNECTED,
     first: null,
     fn,
     last: null,
     next: null,
     parent,
+    b: parent && parent.b,
     prev: null,
     teardown: null,
-    transitions: null,
-    wv: 0
+    wv: 0,
+    ac: null
   };
   if (dev_fallback_default) effect2.component_function = dev_current_component_function;
-  if (sync) try {
-    update_effect(effect2);
-    effect2.f |= EFFECT_RAN;
-  } catch (e) {
-    destroy_effect(effect2);
-    throw e;
-  } else if (null !== fn) schedule_effect(effect2);
-  if (!(sync && null === effect2.deps && null === effect2.first && null === effect2.nodes_start && null === effect2.teardown && !(effect2.f & (EFFECT_HAS_DERIVED | BOUNDARY_EFFECT))) && push2) {
-    if (null !== parent) push_effect(effect2, parent);
-    if (null !== active_reaction && !!(active_reaction.f & DERIVED)) {
+  null == (_a5 = current_batch) || _a5.register_created_effect(effect2);
+  var e = effect2;
+  if (0 !== (type & EFFECT)) if (null !== collected_effects) collected_effects.push(effect2); else Batch.ensure().schedule(effect2); else if (null !== fn) {
+    try {
+      update_effect(effect2);
+    } catch (e2) {
+      destroy_effect(effect2);
+      throw e2;
+    }
+    if (null === e.deps && null === e.teardown && null === e.nodes && e.first === e.last && 0 === (e.f & EFFECT_PRESERVED)) {
+      e = e.first;
+      if (0 !== (type & BLOCK_EFFECT) && 0 !== (type & EFFECT_TRANSPARENT) && null !== e) e.f |= EFFECT_TRANSPARENT;
+    }
+  }
+  if (null !== e) {
+    e.parent = parent;
+    if (null !== parent) push_effect(e, parent);
+    if (null !== active_reaction && 0 !== (active_reaction.f & DERIVED) && 0 === (type & ROOT_EFFECT)) {
       var derived3 = active_reaction;
-      (null != (_a3 = derived3.effects) ? _a3 : derived3.effects = []).push(effect2);
+      (null != (_b3 = derived3.effects) ? _b3 : derived3.effects = []).push(e);
     }
   }
   return effect2;
 }
 
+function effect_tracking() {
+  return null !== active_reaction && !untracking;
+}
+
 function teardown(fn) {
-  const effect2 = create_effect(RENDER_EFFECT, null, false);
+  const effect2 = create_effect(RENDER_EFFECT, null);
   set_signal_status(effect2, CLEAN);
   effect2.teardown = fn;
   return effect2;
 }
 
 function user_effect(fn) {
-  var _a3;
+  var _a5;
   validate_effect("$effect");
-  var defer = null !== active_effect && !!(active_effect.f & BRANCH_EFFECT) && null !== component_context && !component_context.m;
   if (dev_fallback_default) define_property(fn, "name", {
     value: "$effect"
   });
-  if (defer) {
+  var flags2 = active_effect.f;
+  if (!active_reaction && 0 !== (flags2 & BRANCH_EFFECT) && null !== component_context && !component_context.i) {
     var context = component_context;
-    (null != (_a3 = context.e) ? _a3 : context.e = []).push({
-      fn,
-      effect: active_effect,
-      reaction: active_reaction
-    });
-  } else return effect(fn);
+    (null != (_a5 = context.e) ? _a5 : context.e = []).push(fn);
+  } else return create_user_effect(fn);
+}
+
+function create_user_effect(fn) {
+  return create_effect(EFFECT | USER_EFFECT, fn);
 }
 
 function effect_root(fn) {
-  const effect2 = create_effect(ROOT_EFFECT, fn, true);
+  Batch.ensure();
+  const effect2 = create_effect(ROOT_EFFECT | EFFECT_PRESERVED, fn);
   return () => {
     destroy_effect(effect2);
   };
 }
 
 function component_root(fn) {
-  const effect2 = create_effect(ROOT_EFFECT, fn, true);
-  return (options = {}) => new Promise((fulfil => {
-    if (options.outro) pause_effect(effect2, (() => {
+  Batch.ensure();
+  const effect2 = create_effect(ROOT_EFFECT | EFFECT_PRESERVED, fn);
+  return (options = {}) => new Promise(fulfil => {
+    if (options.outro) pause_effect(effect2, () => {
       destroy_effect(effect2);
       fulfil(void 0);
-    })); else {
+    }); else {
       destroy_effect(effect2);
       fulfil(void 0);
     }
-  }));
+  });
 }
 
 function effect(fn) {
-  return create_effect(EFFECT, fn, false);
+  return create_effect(EFFECT, fn);
 }
 
-function render_effect(fn) {
-  return create_effect(RENDER_EFFECT, fn, true);
+function async_effect(fn) {
+  return create_effect(ASYNC | EFFECT_PRESERVED, fn);
 }
 
-function template_effect(fn, thunks = [], d = derived) {
-  const deriveds = thunks.map(d), effect2 = () => fn(...deriveds.map(get));
-  if (dev_fallback_default) define_property(effect2, "name", {
-    value: "{expression}"
+function render_effect(fn, flags2 = 0) {
+  return create_effect(RENDER_EFFECT | flags2, fn);
+}
+
+function template_effect(fn, sync = [], async2 = [], blockers = []) {
+  flatten(blockers, sync, async2, values => {
+    create_effect(RENDER_EFFECT, () => {
+      fn(...values.map(get));
+    });
   });
-  return block(effect2);
 }
 
-function block(fn, flags = 0) {
-  return create_effect(RENDER_EFFECT | BLOCK_EFFECT | flags, fn, true);
+function block(fn, flags2 = 0) {
+  var effect2 = create_effect(BLOCK_EFFECT | flags2, fn);
+  if (dev_fallback_default) effect2.dev_stack = dev_stack;
+  return effect2;
 }
 
-function branch(fn, push2 = true) {
-  return create_effect(RENDER_EFFECT | BRANCH_EFFECT, fn, true, push2);
+function branch(fn) {
+  return create_effect(BRANCH_EFFECT | EFFECT_PRESERVED, fn);
 }
 
 function execute_effect_teardown(effect2) {
@@ -1428,8 +3303,12 @@ function destroy_effect_children(signal, remove_dom = false) {
   var effect2 = signal.first;
   signal.first = signal.last = null;
   for (;null !== effect2; ) {
+    const controller = effect2.ac;
+    if (null !== controller) without_reactive_context(() => {
+      controller.abort(STALE_REACTION);
+    });
     var next2 = effect2.next;
-    if (!!(effect2.f & ROOT_EFFECT)) effect2.parent = null; else destroy_effect(effect2, remove_dom);
+    if (0 !== (effect2.f & ROOT_EFFECT)) effect2.parent = null; else destroy_effect(effect2, remove_dom);
     effect2 = next2;
   }
 }
@@ -1437,31 +3316,37 @@ function destroy_effect_children(signal, remove_dom = false) {
 function destroy_block_effect_children(signal) {
   for (var effect2 = signal.first; null !== effect2; ) {
     var next2 = effect2.next;
-    if (!(effect2.f & BRANCH_EFFECT)) destroy_effect(effect2);
+    if (0 === (effect2.f & BRANCH_EFFECT)) destroy_effect(effect2);
     effect2 = next2;
   }
 }
 
 function destroy_effect(effect2, remove_dom = true) {
   var removed = false;
-  if ((remove_dom || !!(effect2.f & HEAD_EFFECT)) && null !== effect2.nodes_start) {
-    for (var node = effect2.nodes_start, end = effect2.nodes_end; null !== node; ) {
-      var next2 = node === end ? null : get_next_sibling(node);
-      node.remove();
-      node = next2;
-    }
+  if ((remove_dom || 0 !== (effect2.f & HEAD_EFFECT)) && null !== effect2.nodes && null !== effect2.nodes.end) {
+    remove_effect_dom(effect2.nodes.start, effect2.nodes.end);
     removed = true;
   }
+  effect2.f |= DESTROYING;
   destroy_effect_children(effect2, remove_dom && !removed);
   remove_reactions(effect2, 0);
-  set_signal_status(effect2, DESTROYED);
-  var transitions = effect2.transitions;
+  var transitions = effect2.nodes && effect2.nodes.t;
   if (null !== transitions) for (const transition2 of transitions) transition2.stop();
   execute_effect_teardown(effect2);
+  effect2.f ^= DESTROYING;
+  effect2.f |= DESTROYED;
   var parent = effect2.parent;
   if (null !== parent && null !== parent.first) unlink_effect(effect2);
   if (dev_fallback_default) effect2.component_function = null;
-  effect2.next = effect2.prev = effect2.teardown = effect2.ctx = effect2.deps = effect2.fn = effect2.nodes_start = effect2.nodes_end = null;
+  effect2.next = effect2.prev = effect2.teardown = effect2.ctx = effect2.deps = effect2.fn = effect2.nodes = effect2.ac = effect2.b = null;
+}
+
+function remove_effect_dom(node, end) {
+  for (;null !== node; ) {
+    var next2 = node === end ? null : get_next_sibling(node);
+    node.remove();
+    node = next2;
+  }
 }
 
 function unlink_effect(effect2) {
@@ -1474,17 +3359,13 @@ function unlink_effect(effect2) {
   }
 }
 
-function pause_effect(effect2, callback) {
+function pause_effect(effect2, callback, destroy = true) {
   var transitions = [];
   pause_children(effect2, transitions, true);
-  run_out_transitions(transitions, (() => {
-    destroy_effect(effect2);
+  var fn = () => {
+    if (destroy) destroy_effect(effect2);
     if (callback) callback();
-  }));
-}
-
-function run_out_transitions(transitions, fn) {
-  var remaining = transitions.length;
+  }, remaining = transitions.length;
   if (remaining > 0) {
     var check = () => --remaining || fn();
     for (var transition2 of transitions) transition2.out(check);
@@ -1492,12 +3373,13 @@ function run_out_transitions(transitions, fn) {
 }
 
 function pause_children(effect2, transitions, local) {
-  if (!(effect2.f & INERT)) {
+  if (0 === (effect2.f & INERT)) {
     effect2.f ^= INERT;
-    if (null !== effect2.transitions) for (const transition2 of effect2.transitions) if (transition2.is_global || local) transitions.push(transition2);
+    var t = effect2.nodes && effect2.nodes.t;
+    if (null !== t) for (const transition2 of t) if (transition2.is_global || local) transitions.push(transition2);
     for (var child2 = effect2.first; null !== child2; ) {
       var sibling2 = child2.next;
-      pause_children(child2, transitions, !!(child2.f & EFFECT_TRANSPARENT) || !!(child2.f & BRANCH_EFFECT) ? local : false);
+      if (0 === (child2.f & ROOT_EFFECT)) pause_children(child2, transitions, 0 !== (child2.f & EFFECT_TRANSPARENT) || 0 !== (child2.f & BRANCH_EFFECT) && 0 !== (effect2.f & BLOCK_EFFECT) ? local : false);
       child2 = sibling2;
     }
   }
@@ -1508,110 +3390,425 @@ function resume_effect(effect2) {
 }
 
 function resume_children(effect2, local) {
-  if (effect2.f & INERT) {
+  if (0 !== (effect2.f & INERT)) {
     effect2.f ^= INERT;
-    if (!(effect2.f & CLEAN)) effect2.f ^= CLEAN;
-    if (check_dirtiness(effect2)) {
+    if (0 === (effect2.f & CLEAN)) {
       set_signal_status(effect2, DIRTY);
-      schedule_effect(effect2);
+      Batch.ensure().schedule(effect2);
     }
     for (var child2 = effect2.first; null !== child2; ) {
       var sibling2 = child2.next;
-      resume_children(child2, !!(child2.f & EFFECT_TRANSPARENT) || !!(child2.f & BRANCH_EFFECT) ? local : false);
+      resume_children(child2, 0 !== (child2.f & EFFECT_TRANSPARENT) || 0 !== (child2.f & BRANCH_EFFECT) ? local : false);
       child2 = sibling2;
     }
-    if (null !== effect2.transitions) for (const transition2 of effect2.transitions) if (transition2.is_global || local) transition2.in();
+    var t = effect2.nodes && effect2.nodes.t;
+    if (null !== t) for (const transition2 of t) if (transition2.is_global || local) transition2.in();
   }
 }
 
-var regex_return_characters = /\r/g;
-
-function hash(str) {
-  let hash2 = 5381, i = (str = str.replace(regex_return_characters, "")).length;
-  for (;i--; ) hash2 = (hash2 << 5) - hash2 ^ str.charCodeAt(i);
-  return (hash2 >>> 0).toString(36);
-}
-
-var DOM_BOOLEAN_ATTRIBUTES = [ "allowfullscreen", "async", "autofocus", "autoplay", "checked", "controls", "default", "disabled", "formnovalidate", "hidden", "indeterminate", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "seamless", "selected", "webkitdirectory", "defer", "disablepictureinpicture", "disableremoteplayback" ], DOM_PROPERTIES = [ ...DOM_BOOLEAN_ATTRIBUTES, "formNoValidate", "isMap", "noModule", "playsInline", "readOnly", "value", "volume", "defaultValue", "defaultChecked", "srcObject", "noValidate", "allowFullscreen", "disablePictureInPicture", "disableRemotePlayback" ], PASSIVE_EVENTS = [ "touchstart", "touchmove" ];
-
-function is_passive_event(name) {
-  return PASSIVE_EVENTS.includes(name);
-}
-
-function sanitize_location(location) {
-  return null == location ? void 0 : location.replace(/\//g, "/​");
-}
-
-var all_styles = new Map;
-
-function register_style(hash2, style) {
-  var styles = all_styles.get(hash2);
-  if (!styles) {
-    styles = new Set;
-    all_styles.set(hash2, styles);
-  }
-  styles.add(style);
-}
-
-var listening_to_form_reset = false;
-
-function add_form_reset_listener() {
-  if (!listening_to_form_reset) {
-    listening_to_form_reset = true;
-    document.addEventListener("reset", (evt => {
-      Promise.resolve().then((() => {
-        var _a3;
-        if (!evt.defaultPrevented) for (const e of evt.target.elements) null == (_a3 = e.__on_r) || _a3.call(e);
-      }));
-    }), {
-      capture: true
-    });
+function move_effect(effect2, fragment) {
+  if (effect2.nodes) for (var node = effect2.nodes.start, end = effect2.nodes.end; null !== node; ) {
+    var next2 = node === end ? null : get_next_sibling(node);
+    fragment.append(node);
+    node = next2;
   }
 }
 
-function without_reactive_context(fn) {
-  var previous_reaction = active_reaction, previous_effect = active_effect;
-  set_active_reaction(null);
-  set_active_effect(null);
-  try {
-    return fn();
+var currentFile = writable(""), maxDepth = writable(0), searchString = writable(""), tagInfo = writable({}), tagFolderSetting = writable(DEFAULT_SETTINGS), selectedTags = writable(), allViewItems = writable(), allViewItemsByLink = writable(), appliedFiles = writable(), v2expandedTags = writable(new Set), performHide = writable(0), pluginInstance = writable(void 0);
+
+function unique(items) {
+  return [ ...new Set([ ...items ]) ];
+}
+
+function trimSlash(src, keepStart = false, keepEnd = false) {
+  const st = keepStart ? 0 : "/" == src[0] ? 1 : 0, end = keepEnd ? void 0 : src.endsWith("/") ? -1 : void 0;
+  if (0 == st && null == end) return src; else return src.slice(st, end);
+}
+
+function trimPrefix(source2, prefix) {
+  if (source2.startsWith(prefix)) return source2.substring(prefix.length); else return source2;
+}
+
+function ancestorToTags(ancestors) {
+  return [ ...ancestors ].reduce((p, i) => "/" != i[0] ? [ ...p, i ] : [ ...p, p.pop() + "/" + i.substring(1) ], []);
+}
+
+function ancestorToLongestTag(ancestors) {
+  return ancestors.reduceRight((a, e) => {
+    var _a5;
+    return !a ? [ e ] : (null == (_a5 = a[0]) ? void 0 : _a5.startsWith(e)) ? a : [ e, ...a ];
+  }, []);
+}
+
+function isSpecialTag(tagSrc) {
+  const tag2 = trimSlash(tagSrc);
+  return "_untagged" == tag2 || tag2 in tagDispDict;
+}
+
+var tagDispAlternativeDict = {};
+
+tagInfo.subscribe(tagInfo2 => {
+  tagDispAlternativeDict = {
+    ...tagDispDict
+  };
+  if (null == tagInfo2) return;
+  const items = Object.entries(tagInfo2);
+  for (const [key2, info] of items) if (null == info ? void 0 : info.alt) tagDispAlternativeDict[key2] = info.alt;
+});
+
+function renderSpecialTag(tagSrc) {
+  const tag2 = trimSlash(tagSrc);
+  return tag2 in tagDispAlternativeDict ? tagDispAlternativeDict[tag2] : tagSrc;
+}
+
+function secondsToFreshness(totalAsMSec) {
+  const totalAsSec = ~~(totalAsMSec / 1e3), totalSec = ~~(totalAsSec * (totalAsSec / Math.abs(totalAsSec)));
+  if (totalSec < EPOCH_HOUR) return FRESHNESS_1;
+  if (totalSec < 6 * EPOCH_HOUR) return FRESHNESS_2;
+  if (totalSec < 3 * EPOCH_DAY) return FRESHNESS_3;
+  if (totalSec < 7 * EPOCH_DAY) return FRESHNESS_4; else return FRESHNESS_5;
+}
+
+var queues = [];
+
+function waitForRequestAnimationFrame() {
+  return new Promise(res => window.requestAnimationFrame(() => res()));
+}
+
+function delay(num) {
+  return new Promise(res => window.setTimeout(() => res(), num || 5));
+}
+
+function nextTick() {
+  return new Promise(res => window.setTimeout(() => res(), 0));
+}
+
+var waits = [ nextTick, delay, nextTick, delay, delay, nextTick ], waitIdx = 0, pumping = false, startContinuousProcessing = Date.now();
+
+async function pump() {
+  if (!pumping) try {
+    pumping = true;
+    let proc = queues.shift();
+    for (;proc; ) {
+      proc();
+      if (Date.now() - startContinuousProcessing > 120) {
+        const w = waits[waitIdx];
+        waitIdx = (waitIdx + 1) % waits.length;
+        await w();
+        startContinuousProcessing = Date.now();
+      }
+      proc = queues.shift();
+    }
   } finally {
-    set_active_reaction(previous_reaction);
-    set_active_effect(previous_effect);
+    pumping = false;
   }
 }
 
-function listen_to_event_and_reset_event(element2, event2, handler, on_reset = handler) {
-  element2.addEventListener(event2, (() => without_reactive_context(handler)));
-  const prev = element2.__on_r;
-  if (prev) element2.__on_r = () => {
-    prev();
-    on_reset(true);
-  }; else element2.__on_r = () => on_reset(true);
-  add_form_reset_listener();
+var doEvents = () => new Promise(res => {
+  queues.push(() => {
+    res();
+  });
+  pump();
+});
+
+function compare(x, y) {
+  return `${x || ""}`.localeCompare(y, void 0, {
+    numeric: true
+  });
 }
 
-var head_anchor, all_registered_events = new Set, root_event_handles = new Set;
+function getTagName(tagName, subtreePrefix, tagInfo2, invert) {
+  if (null == tagInfo2) return tagName;
+  const prefix = -1 == invert ? "￿" : "", unpinned = 1 == invert ? "￿" : "";
+  if (tagName in tagInfo2 && tagInfo2[tagName]) if ("key" in tagInfo2[tagName]) return `${prefix}_${subtreePrefix}_-${tagInfo2[tagName].key}__${tagName}`;
+  return `${prefix}_${subtreePrefix}_${unpinned}_${tagName}`;
+}
+
+function removeIntermediatePath(paths) {
+  const passed = [];
+  for (const v of paths) {
+    const last = passed.pop();
+    if (void 0 !== last) if (!(trimTrailingSlash(v.toLowerCase()) + "/").startsWith(trimTrailingSlash(last.toLowerCase()) + "/")) passed.push(last);
+    passed.push(v);
+  }
+  return passed.reverse();
+}
+
+function getTagMark(tagInfo2) {
+  if (!tagInfo2) return "";
+  if ("key" in tagInfo2) if ("mark" in tagInfo2 && "" != tagInfo2.mark) return tagInfo2.mark; else return "📌"; else if ("mark" in tagInfo2 && "" != tagInfo2.mark) return tagInfo2.mark; else return "";
+}
+
+function escapeStringToHTML(str) {
+  if (!str) return ""; else return str.replace(/[<>&"'`]/g, match => ({
+    "<": "&lt;",
+    ">": "&gt;",
+    "&": "&amp;",
+    '"': "&quot;",
+    "'": "&#39;",
+    "`": "&#x60;"
+  }[match]));
+}
+
+var V2FI_IDX_TAG = 0, V2FI_IDX_TAGNAME = 1, V2FI_IDX_TAGDISP = 2, V2FI_IDX_CHILDREN = 3;
+
+function selectCompareMethodTags(settings, tagInfo2) {
+  const _tagInfo = tagInfo2, invert = settings.sortTypeTag.contains("_DESC") ? -1 : 1, subTreeChar = {
+    [-1]: "􏿿",
+    [1]: "_"
+  }, sortByName = (a, b) => {
+    const isASubTree = "" == a[V2FI_IDX_TAGDISP][0], isBSubTree = "" == b[V2FI_IDX_TAGDISP][0], aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME], aPrefix = isASubTree ? subTreeChar[invert] : "", bPrefix = isBSubTree ? subTreeChar[invert] : "";
+    return compare(getTagName(aName, aPrefix, settings.useTagInfo ? _tagInfo : void 0, invert), getTagName(bName, bPrefix, settings.useTagInfo ? _tagInfo : void 0, invert)) * invert;
+  };
+  switch (settings.sortTypeTag) {
+   case "ITEMS_ASC":
+   case "ITEMS_DESC":
+    return (a, b) => {
+      const aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME], aCount = a[V2FI_IDX_CHILDREN].length - (settings.useTagInfo && aName in _tagInfo && "key" in _tagInfo[aName] ? 1e5 * invert : 0), bCount = b[V2FI_IDX_CHILDREN].length - (settings.useTagInfo && bName in _tagInfo && "key" in _tagInfo[bName] ? 1e5 * invert : 0);
+      if (aCount == bCount) return sortByName(a, b); else return (aCount - bCount) * invert;
+    };
+
+   case "NAME_ASC":
+   case "NAME_DESC":
+    return sortByName;
+
+   default:
+    console.warn("Compare method (tags) corrupted");
+    return (a, b) => {
+      const isASubTree = "" == a[V2FI_IDX_TAGDISP][0], isBSubTree = "" == b[V2FI_IDX_TAGDISP][0], aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME];
+      return compare((isASubTree ? subTreeChar[invert] : "") + aName, (isBSubTree ? subTreeChar[invert] : "") + bName) * invert;
+    };
+  }
+}
+
+function uniqueCaseIntensive(pieces) {
+  const delMap = new Set, ret = [];
+  for (const piece of pieces) if (!delMap.has(piece.toLowerCase())) {
+    ret.push(piece);
+    delMap.add(piece.toLowerCase());
+  }
+  return ret;
+}
+
+function _sorterTagLength(a, b, invert) {
+  const diff = a.split("/").length - b.split("/").length;
+  if (0 != diff) return diff * (invert ? -1 : 1); else return (a.length - b.length) * (invert ? -1 : 1);
+}
+
+function getExtraTags(tags, trail, reduceNestedParent) {
+  let tagsLeft = uniqueCaseIntensive(tags), removeTrailItems = [];
+  if (reduceNestedParent) removeTrailItems = trail.sort((a, b) => _sorterTagLength(a, b, true)); else removeTrailItems = removeIntermediatePath(trail);
+  for (const t of removeTrailItems) {
+    const trimLength = t.endsWith("/") ? t.length : t.length;
+    if (reduceNestedParent) tagsLeft = tagsLeft.map(e => (e + "/").toLowerCase().startsWith(t.toLowerCase()) ? e.substring(trimLength) : e); else {
+      const f = tagsLeft.findIndex(e => (e + "/").toLowerCase().startsWith(t.toLowerCase()));
+      if (-1 !== f) tagsLeft[f] = tagsLeft[f].substring(trimLength);
+    }
+  }
+  return tagsLeft.filter(e => "" != e.trim());
+}
+
+function trimTrailingSlash(src) {
+  return trimSlash(src, true, false);
+}
+
+function joinPartialPath(path) {
+  return path.reduce((p, c) => c.endsWith("/") && p.length > 0 ? [ c + p[0], ...p.slice(1) ] : [ c, ...p ], []);
+}
+
+function pathMatch(haystackLC, needleLC) {
+  if (haystackLC == needleLC) return true;
+  if ("/" == needleLC[needleLC.length - 1]) if (0 === (haystackLC + "/").indexOf(needleLC)) return true;
+  return false;
+}
+
+function parseTagName(thisName, _tagInfo) {
+  let tagNameDisp = [ "" ];
+  const names = thisName.split("/").filter(e => "" != e.trim());
+  let inSubTree = false, tagName = "";
+  if (names.length > 1) {
+    tagName = `${names[names.length - 1]}`;
+    inSubTree = true;
+  } else tagName = thisName;
+  if (tagName.endsWith("/")) tagName = tagName.substring(0, tagName.length - 1);
+  const tagMark = getTagMark(tagName in _tagInfo ? _tagInfo[tagName] : void 0);
+  tagNameDisp = [ `${tagMark}${renderSpecialTag(tagName)}` ];
+  if (inSubTree) tagNameDisp = [ `${tagMark}`, `${renderSpecialTag(tagName)}` ];
+  return [ tagName, tagNameDisp ];
+}
+
+function parseAllForwardReference(metaCache, filename, passed) {
+  var _a5;
+  return unique(Object.keys(null != (_a5 = null == metaCache ? void 0 : metaCache[filename]) ? _a5 : {}).filter(e => !passed.contains(e)));
+}
+
+function parseAllReverseReference(metaCache, filename, passed) {
+  return unique(Object.entries(metaCache).filter(([, links]) => filename in links).map(([name]) => name).filter(e => !passed.contains(e)));
+}
+
+function parseAllReference(metaCache, filename, conf) {
+  var _a5, _b3;
+  let linked = [ ...!(null == (_a5 = null == conf ? void 0 : conf.outgoing) ? void 0 : _a5.enabled) ? [] : parseAllForwardReference(metaCache, filename, []), ...!(null == (_b3 = null == conf ? void 0 : conf.incoming) ? void 0 : _b3.enabled) ? [] : parseAllReverseReference(metaCache, filename, []) ];
+  if (0 != linked.length) linked = unique([ filename, ...linked ]);
+  return linked;
+}
+
+function fileCacheToCompare(cache) {
+  if (!cache) return ""; else return {
+    l: cache.links,
+    t: cache.tags
+  };
+}
+
+var allViewItemsMap = new Map;
+
+allViewItemsByLink.subscribe(e => {
+  updateItemsLinkMap(e);
+});
+
+function updateItemsLinkMap(e) {
+  allViewItemsMap.clear();
+  if (e) e.forEach(item => allViewItemsMap.set(item.path, item));
+}
+
+function getViewItemFromPath(path) {
+  return allViewItemsMap.get(path);
+}
+
+function getAllLinksRecursive(item, trail) {
+  const leftLinks = item.links.filter(e => !trail.contains(e)), allChildLinks = leftLinks.flatMap(itemName => {
+    const item2 = getViewItemFromPath(itemName);
+    if (!item2) return []; else return getAllLinksRecursive(item2, [ ...trail, itemName ]);
+  });
+  return unique([ ...leftLinks, ...allChildLinks ]);
+}
+
+var waitingProcess = new Map, runningProcess = new Set;
+
+async function scheduleOnceIfDuplicated(key2, proc) {
+  if (!runningProcess.has(key2)) try {
+    runningProcess.add(key2);
+    await delay(3);
+    if (waitingProcess.has(key2)) {
+      const nextProc = waitingProcess.get(key2);
+      waitingProcess.delete(key2);
+      runningProcess.delete(key2);
+      return scheduleOnceIfDuplicated(key2, nextProc);
+    } else await proc();
+  } finally {
+    runningProcess.delete(key2);
+  } else waitingProcess.set(key2, proc);
+}
+
+function isSameAny(a, b) {
+  if (typeof a != typeof b) return false;
+  switch (typeof a) {
+   case "string":
+   case "number":
+   case "bigint":
+   case "boolean":
+   case "symbol":
+   case "function":
+   case "undefined":
+    return a == b;
+
+   case "object":
+    if (a === b) return true;
+    if (a instanceof Map || a instanceof Set) {
+      if (a.size != b.size) return false;
+      const v = [ ...a ], w = [ ...b ];
+      for (let i = 0; i < v.length; i++) if (v[i] != w[i]) return false;
+      return true;
+    }
+    if (Array.isArray(a)) {
+      for (let i = 0; i < a.length; i++) if (!isSameAny(a[i], b[i])) return false;
+      return true;
+    }
+    {
+      const x = Object.values(a), y = Object.values(b);
+      if (x.length != y.length) return false;
+      for (let i = 0; i < x.length; i++) if (!isSameAny(x[i], y[i])) return false;
+      return true;
+    }
+
+   default:
+    return false;
+  }
+}
+
+function renderTagFolderTemplateVariables(template, expandedTagsAll, expandedTags) {
+  var _a5;
+  const plainTags = expandedTagsAll.filter(e => !isSpecialTag(e)), replacements = {
+    expandedTags,
+    tags: expandedTags,
+    tagList: plainTags.join(", "),
+    tagPath: plainTags.join("/"),
+    tagName: null != (_a5 = plainTags[plainTags.length - 1]) ? _a5 : "",
+    tagsJson: JSON.stringify(plainTags),
+    tagsYaml: plainTags.map(tag2 => `  - ${tag2}`).join("\n")
+  };
+  return template.replace(/\{\{(expandedTags|tags|tagList|tagPath|tagName|tagsJson|tagsYaml)\}\}/g, (_, key2) => replacements[key2]);
+}
+
+var NEW_NOTE_TEMPLATE_INTERACTION_ID = "new-note-template";
+
+function filterNewNoteTemplateChoices(templates, query) {
+  const normalizedQuery = query.toLowerCase();
+  return templates.filter(template => template.path.toLowerCase().includes(normalizedQuery) || template.name.toLowerCase().includes(normalizedQuery));
+}
+
+async function chooseNewNoteTemplate(ui, templates) {
+  if (0 != templates.length) return await ui.pickOne({
+    items: templates,
+    getText: template => template.name,
+    getDescription: template => template.path,
+    placeholder: "Type to search templates..."
+  }, NEW_NOTE_TEMPLATE_INTERACTION_ID);
+}
+
+async function populateNewNote(options) {
+  if (null !== options.template) {
+    const renderedTemplate = renderTagFolderTemplateVariables(await options.vault.readText(options.template.path), [ ...options.expandedTagsAll ], options.expandedTags);
+    if ("" != renderedTemplate.trim()) await options.vault.modifyText(options.notePath, renderedTemplate);
+    return;
+  }
+  if (!options.useFrontmatterTags) await options.vault.appendText(options.notePath, options.expandedTags); else await options.frontmatter.updateFrontmatter(options.notePath, value => {
+    var _a5;
+    const currentTags = null != (_a5 = value.tags) ? _a5 : [];
+    value.tags = options.frontmatterTags.filter(tag2 => currentTags.indexOf(tag2) < 0).concat(currentTags);
+  });
+}
+
+var _a3, _b2, _c, import_obsidian4 = require("obsidian"), PUBLIC_VERSION = "5";
+
+if ("undefined" != typeof window) (null != (_c = (_b2 = null != (_a3 = window.__svelte) ? _a3 : window.__svelte = {}).v) ? _c : _b2.v = new Set).add(PUBLIC_VERSION);
+
+var event_symbol = Symbol("events"), all_registered_events = new Set, root_event_handles = new Set;
 
 function create_event(event_name, dom, handler, options = {}) {
   function target_handler(event2) {
     if (!options.capture) handle_event_propagation.call(dom, event2);
-    if (!event2.cancelBubble) return without_reactive_context((() => null == handler ? void 0 : handler.call(this, event2)));
+    if (!event2.cancelBubble) return without_reactive_context(() => null == handler ? void 0 : handler.call(this, event2));
   }
-  if (event_name.startsWith("pointer") || event_name.startsWith("touch") || "wheel" === event_name) queue_micro_task((() => {
+  if (event_name.startsWith("pointer") || event_name.startsWith("touch") || "wheel" === event_name) queue_micro_task(() => {
     dom.addEventListener(event_name, target_handler, options);
-  })); else dom.addEventListener(event_name, target_handler, options);
+  }); else dom.addEventListener(event_name, target_handler, options);
   return target_handler;
 }
 
-function event(event_name, dom, handler, capture, passive2) {
+function event(event_name, dom, handler, capture2, passive2) {
   var options = {
-    capture,
+    capture: capture2,
     passive: passive2
   }, target_handler = create_event(event_name, dom, handler, options);
-  if (dom === document.body || dom === window || dom === document) teardown((() => {
+  if (dom === document.body || dom === window || dom === document || dom instanceof HTMLMediaElement) teardown(() => {
     dom.removeEventListener(event_name, target_handler, options);
-  }));
+  });
+}
+
+function delegated(event_name, element2, handler) {
+  var _a5;
+  (null != (_a5 = element2[event_symbol]) ? _a5 : element2[event_symbol] = {})[event_name] = handler;
 }
 
 function delegate(events) {
@@ -1619,12 +3816,14 @@ function delegate(events) {
   for (var fn of root_event_handles) fn(events);
 }
 
+var _a4, last_propagated_event = null;
+
 function handle_event_propagation(event2) {
-  var _a3, owner_document = this.ownerDocument, event_name = event2.type, path = (null == (_a3 = event2.composedPath) ? void 0 : _a3.call(event2)) || [], current_target = path[0] || event2.target, path_idx = 0, handled_at = event2.__root;
+  var _a5, _b3, owner_document = this.ownerDocument, event_name = event2.type, path = (null == (_a5 = event2.composedPath) ? void 0 : _a5.call(event2)) || [], current_target = path[0] || event2.target, path_idx = 0, handled_at = (last_propagated_event = event2) === event2 && event2[event_symbol];
   if (handled_at) {
     var at_idx = path.indexOf(handled_at);
     if (-1 !== at_idx && (this === document || this === window)) {
-      event2.__root = this;
+      event2[event_symbol] = this;
       return;
     }
     var handler_idx = path.indexOf(this);
@@ -1640,28 +3839,25 @@ function handle_event_propagation(event2) {
     set_active_reaction(null);
     set_active_effect(null);
     try {
-      for (var throw_error, other_errors = []; null !== current_target; ) {
-        var parent_element = current_target.assignedSlot || current_target.parentNode || current_target.host || null;
+      for (var throw_error, other_errors = []; null !== current_target && current_target !== this; ) {
         try {
-          var delegated = current_target["__" + event_name];
-          if (null != delegated && (!current_target.disabled || event2.target === current_target)) if (is_array(delegated)) {
-            var [fn, ...data] = delegated;
-            fn.apply(current_target, [ event2, ...data ]);
-          } else delegated.call(current_target, event2);
+          var delegated2 = null == (_b3 = current_target[event_symbol]) ? void 0 : _b3[event_name];
+          if (null != delegated2 && (!current_target.disabled || event2.target === current_target)) delegated2.call(current_target, event2);
         } catch (error) {
           if (throw_error) other_errors.push(error); else throw_error = error;
         }
-        if (event2.cancelBubble || parent_element === this || null === parent_element) break;
-        current_target = parent_element;
+        if (event2.cancelBubble) break;
+        path_idx++;
+        current_target = path_idx < path.length ? path[path_idx] : null;
       }
       if (throw_error) {
-        for (let error of other_errors) queueMicrotask((() => {
+        for (let error of other_errors) queueMicrotask(() => {
           throw error;
-        }));
+        });
         throw throw_error;
       }
     } finally {
-      event2.__root = this;
+      event2[event_symbol] = this;
       delete event2.currentTarget;
       set_active_reaction(previous_reaction);
       set_active_effect(previous_effect);
@@ -1669,26 +3865,33 @@ function handle_event_propagation(event2) {
   }
 }
 
-function reset_head_anchor() {
-  head_anchor = void 0;
+var policy = (null == (_a4 = null == globalThis ? void 0 : globalThis.window) ? void 0 : _a4.trustedTypes) && globalThis.window.trustedTypes.createPolicy("svelte-trusted-html", {
+  createHTML: html2 => html2
+});
+
+function create_trusted_html(html2) {
+  var _a5;
+  return null != (_a5 = null == policy ? void 0 : policy.createHTML(html2)) ? _a5 : html2;
 }
 
 function create_fragment_from_html(html2) {
-  var elem = document.createElement("template");
-  elem.innerHTML = html2;
+  var elem = create_element("template");
+  elem.innerHTML = create_trusted_html(html2.replaceAll("<!>", "\x3c!----\x3e"));
   return elem.content;
 }
 
 function assign_nodes(start, end) {
   var effect2 = active_effect;
-  if (null === effect2.nodes_start) {
-    effect2.nodes_start = start;
-    effect2.nodes_end = end;
-  }
+  if (null === effect2.nodes) effect2.nodes = {
+    start,
+    end,
+    a: null,
+    t: null
+  };
 }
 
-function template(content, flags) {
-  var node, is_fragment = !!(flags & TEMPLATE_FRAGMENT), use_import_node = !!(flags & TEMPLATE_USE_IMPORT_NODE), has_start = !content.startsWith("<!>");
+function from_html(content, flags2) {
+  var node, is_fragment = 0 !== (flags2 & TEMPLATE_FRAGMENT), use_import_node = 0 !== (flags2 & TEMPLATE_USE_IMPORT_NODE), has_start = !content.startsWith("<!>");
   return () => {
     if (hydrating) {
       assign_nodes(hydrate_node, null);
@@ -1704,24 +3907,28 @@ function template(content, flags) {
   };
 }
 
-function ns_template(content, flags, ns = "svg") {
-  var node, has_start = !content.startsWith("<!>"), is_fragment = !!(flags & TEMPLATE_FRAGMENT), wrapped = `<${ns}>${has_start ? content : "<!>" + content}</${ns}>`;
+function from_namespace(content, flags2, ns = "svg") {
+  var node, has_start = !content.startsWith("<!>"), is_fragment = 0 !== (flags2 & TEMPLATE_FRAGMENT), wrapped = `<${ns}>${has_start ? content : "<!>" + content}</${ns}>`;
   return () => {
     if (hydrating) {
       assign_nodes(hydrate_node, null);
       return hydrate_node;
     }
     if (!node) {
-      var root6 = get_first_child(create_fragment_from_html(wrapped));
+      var root8 = get_first_child(create_fragment_from_html(wrapped));
       if (is_fragment) {
         node = document.createDocumentFragment();
-        for (;get_first_child(root6); ) node.appendChild(get_first_child(root6));
-      } else node = get_first_child(root6);
+        for (;get_first_child(root8); ) node.appendChild(get_first_child(root8));
+      } else node = get_first_child(root8);
     }
     var clone = node.cloneNode(true);
     if (is_fragment) assign_nodes(get_first_child(clone), clone.lastChild); else assign_nodes(clone, clone);
     return clone;
   };
+}
+
+function from_svg(content, flags2) {
+  return from_namespace(content, flags2, "svg");
 }
 
 function comment() {
@@ -1739,18 +3946,39 @@ function append(anchor, dom) {
   if (!hydrating) {
     if (null !== anchor) anchor.before(dom);
   } else {
-    active_effect.nodes_end = hydrate_node;
+    var effect2 = active_effect;
+    if (0 === (effect2.f & REACTION_RAN) || null === effect2.nodes.end) effect2.nodes.end = hydrate_node;
     hydrate_next();
   }
+}
+
+var regex_return_characters = /\r/g;
+
+function hash(str) {
+  let hash2 = 5381, i = (str = str.replace(regex_return_characters, "")).length;
+  for (;i--; ) hash2 = (hash2 << 5) - hash2 ^ str.charCodeAt(i);
+  return (hash2 >>> 0).toString(36);
+}
+
+var DOM_BOOLEAN_ATTRIBUTES = [ "allowfullscreen", "async", "autofocus", "autoplay", "checked", "controls", "default", "disabled", "formnovalidate", "indeterminate", "inert", "ismap", "loop", "multiple", "muted", "nomodule", "novalidate", "open", "playsinline", "readonly", "required", "reversed", "seamless", "selected", "webkitdirectory", "defer", "disablepictureinpicture", "disableremoteplayback" ], DOM_PROPERTIES = [ ...DOM_BOOLEAN_ATTRIBUTES, "formNoValidate", "isMap", "noModule", "playsInline", "readOnly", "value", "volume", "defaultValue", "defaultChecked", "srcObject", "noValidate", "allowFullscreen", "disablePictureInPicture", "disableRemotePlayback" ], PASSIVE_EVENTS = [ "touchstart", "touchmove" ];
+
+function is_passive_event(name) {
+  return PASSIVE_EVENTS.includes(name);
+}
+
+var STATE_CREATION_RUNES = [ "$state", "$state.raw", "$derived", "$derived.by" ], RUNES = [ ...STATE_CREATION_RUNES, "$state.eager", "$state.snapshot", "$props", "$props.id", "$bindable", "$effect", "$effect.pre", "$effect.tracking", "$effect.root", "$effect.pending", "$inspect", "$inspect().with", "$inspect.trace", "$host" ];
+
+function sanitize_location(location) {
+  return null == location ? void 0 : location.replace(/\//g, "/​");
 }
 
 var should_intro = true;
 
 function set_text(text2, value) {
-  var _a3, str = null == value ? "" : "object" == typeof value ? value + "" : value;
-  if (str !== (null != (_a3 = text2.__t) ? _a3 : text2.__t = text2.nodeValue)) {
-    text2.__t = str;
-    text2.nodeValue = str + "";
+  var _a5, _b3, str = null == value ? "" : "object" == typeof value ? `${value}` : value;
+  if (str !== (null != (_b3 = text2[_a5 = TEXT_CACHE]) ? _b3 : text2[_a5] = text2.nodeValue)) {
+    text2[TEXT_CACHE] = str;
+    text2.nodeValue = `${str}`;
   }
 }
 
@@ -1759,101 +3987,104 @@ function mount(component2, options) {
 }
 
 function hydrate(component2, options) {
-  var _a3;
+  var _a5;
   init_operations();
-  options.intro = null != (_a3 = options.intro) ? _a3 : false;
+  options.intro = null != (_a5 = options.intro) ? _a5 : false;
   const target = options.target, was_hydrating = hydrating, previous_hydrate_node = hydrate_node;
   try {
-    for (var anchor = get_first_child(target); anchor && (8 !== anchor.nodeType || anchor.data !== HYDRATION_START); ) anchor = get_next_sibling(anchor);
+    for (var anchor = get_first_child(target); anchor && (anchor.nodeType !== COMMENT_NODE || anchor.data !== HYDRATION_START); ) anchor = get_next_sibling(anchor);
     if (!anchor) throw HYDRATION_ERROR;
     set_hydrating(true);
     set_hydrate_node(anchor);
-    hydrate_next();
     const instance = _mount(component2, {
       ...options,
       anchor
     });
-    if (null === hydrate_node || 8 !== hydrate_node.nodeType || hydrate_node.data !== HYDRATION_END) {
-      hydration_mismatch();
-      throw HYDRATION_ERROR;
-    }
     set_hydrating(false);
     return instance;
   } catch (error) {
-    if (error === HYDRATION_ERROR) {
-      if (false === options.recover) hydration_failed();
-      init_operations();
-      clear_text_content(target);
-      set_hydrating(false);
-      return mount(component2, options);
-    }
-    throw error;
+    if (error instanceof Error && error.message.split("\n").some(line => line.startsWith("https://svelte.dev/e/"))) throw error;
+    if (error !== HYDRATION_ERROR) console.warn("Failed to hydrate: ", error);
+    if (false === options.recover) hydration_failed();
+    init_operations();
+    clear_text_content(target);
+    set_hydrating(false);
+    return mount(component2, options);
   } finally {
     set_hydrating(was_hydrating);
     set_hydrate_node(previous_hydrate_node);
-    reset_head_anchor();
   }
 }
 
-var document_listeners = new Map;
+var listeners = new Map;
 
-function _mount(Component, {target, anchor, props = {}, events, context, intro = true}) {
+function _mount(Component2, {target, anchor, props = {}, events, context, intro = true, transformError}) {
   init_operations();
-  var registered_events = new Set, event_handle = events2 => {
-    for (var i = 0; i < events2.length; i++) {
-      var event_name = events2[i];
-      if (!registered_events.has(event_name)) {
-        registered_events.add(event_name);
-        var passive2 = is_passive_event(event_name);
-        target.addEventListener(event_name, handle_event_propagation, {
-          passive: passive2
-        });
-        var n = document_listeners.get(event_name);
-        if (void 0 === n) {
-          document.addEventListener(event_name, handle_event_propagation, {
-            passive: passive2
-          });
-          document_listeners.set(event_name, 1);
-        } else document_listeners.set(event_name, n + 1);
-      }
-    }
-  };
-  event_handle(array_from(all_registered_events));
-  root_event_handles.add(event_handle);
-  var component2 = void 0, unmount2 = component_root((() => {
+  var component2 = void 0, unmount2 = component_root(() => {
     var anchor_node = null != anchor ? anchor : target.appendChild(create_text());
-    branch((() => {
-      if (context) {
-        push({});
-        component_context.c = context;
-      }
+    boundary(anchor_node, {
+      pending: () => {}
+    }, anchor_node2 => {
+      push({});
+      if (context) component_context.c = context;
       if (events) props.$$events = events;
-      if (hydrating) assign_nodes(anchor_node, null);
+      if (hydrating) assign_nodes(anchor_node2, null);
       should_intro = intro;
-      component2 = Component(anchor_node, props) || {};
+      component2 = Component2(anchor_node2, props) || {};
       should_intro = true;
-      if (hydrating) active_effect.nodes_end = hydrate_node;
-      if (context) pop();
-    }));
+      if (hydrating) {
+        active_effect.nodes.end = hydrate_node;
+        if (null === hydrate_node || hydrate_node.nodeType !== COMMENT_NODE || hydrate_node.data !== HYDRATION_END) {
+          hydration_mismatch();
+          throw HYDRATION_ERROR;
+        }
+      }
+      pop();
+    }, transformError);
+    var registered_events = new Set, event_handle = events2 => {
+      for (var i = 0; i < events2.length; i++) {
+        var event_name = events2[i];
+        if (!registered_events.has(event_name)) {
+          registered_events.add(event_name);
+          var passive2 = is_passive_event(event_name);
+          for (const node of [ target, document ]) {
+            var counts = listeners.get(node);
+            if (void 0 === counts) {
+              counts = new Map;
+              listeners.set(node, counts);
+            }
+            var count = counts.get(event_name);
+            if (void 0 === count) {
+              node.addEventListener(event_name, handle_event_propagation, {
+                passive: passive2
+              });
+              counts.set(event_name, 1);
+            } else counts.set(event_name, count + 1);
+          }
+        }
+      }
+    };
+    event_handle(array_from(all_registered_events));
+    root_event_handles.add(event_handle);
     return () => {
-      var _a3;
-      for (var event_name of registered_events) {
-        target.removeEventListener(event_name, handle_event_propagation);
-        var n = document_listeners.get(event_name);
-        if (0 == --n) {
-          document.removeEventListener(event_name, handle_event_propagation);
-          document_listeners.delete(event_name);
-        } else document_listeners.set(event_name, n);
+      var _a5;
+      for (var event_name of registered_events) for (const node of [ target, document ]) {
+        var counts = listeners.get(node), count = counts.get(event_name);
+        if (0 == --count) {
+          node.removeEventListener(event_name, handle_event_propagation);
+          counts.delete(event_name);
+          if (0 === counts.size) listeners.delete(node);
+        } else counts.set(event_name, count);
       }
       root_event_handles.delete(event_handle);
-      if (anchor_node !== anchor) null == (_a3 = anchor_node.parentNode) || _a3.removeChild(anchor_node);
+      if (anchor_node !== anchor) null == (_a5 = anchor_node.parentNode) || _a5.removeChild(anchor_node);
     };
-  }));
+  });
   mounted_components.set(component2, unmount2);
   return component2;
 }
 
-var mounted_components = new WeakMap;
+var _batches, _onscreen, _offscreen, _outroing, _transition, _commit, _discard, mounted_components = new WeakMap;
 
 function unmount(component2, options) {
   const fn = mounted_components.get(component2);
@@ -1861,348 +4092,571 @@ function unmount(component2, options) {
     mounted_components.delete(component2);
     return fn(options);
   }
-  if (dev_fallback_default) lifecycle_double_unmount();
+  if (dev_fallback_default) if (STATE_SYMBOL in component2) state_proxy_unmount(); else lifecycle_double_unmount();
   return Promise.resolve();
 }
 
-function if_block(node, fn, [root_index, hydrate_index] = [ 0, 0 ]) {
-  if (hydrating && 0 === root_index) hydrate_next();
-  var anchor = node, consequent_effect = null, alternate_effect = null, condition = UNINITIALIZED, has_branch = false;
-  const set_branch = (fn2, flag = true) => {
-    has_branch = true;
-    update_branch(flag, fn2);
-  }, update_branch = (new_condition, fn2) => {
-    if (condition === (condition = new_condition)) return;
-    let mismatch = false;
-    if (hydrating && -1 !== hydrate_index) {
-      if (0 === root_index) {
-        const data = anchor.data;
-        if (data === HYDRATION_START) hydrate_index = 0; else if (data === HYDRATION_START_ELSE) hydrate_index = 1 / 0; else if ((hydrate_index = parseInt(data.substring(1))) != hydrate_index) hydrate_index = condition ? 1 / 0 : -1;
+var BranchManager = class {
+  constructor(anchor, transition2 = true) {
+    __publicField(this, "anchor");
+    __privateAdd(this, _batches, new Map);
+    __privateAdd(this, _onscreen, new Map);
+    __privateAdd(this, _offscreen, new Map);
+    __privateAdd(this, _outroing, new Set);
+    __privateAdd(this, _transition, true);
+    __privateAdd(this, _commit, batch => {
+      if (__privateGet(this, _batches).has(batch)) {
+        var key2 = __privateGet(this, _batches).get(batch), onscreen = __privateGet(this, _onscreen).get(key2);
+        if (onscreen) {
+          resume_effect(onscreen);
+          __privateGet(this, _outroing).delete(key2);
+        } else {
+          var offscreen = __privateGet(this, _offscreen).get(key2);
+          if (offscreen) {
+            resume_effect(offscreen.effect);
+            __privateGet(this, _onscreen).set(key2, offscreen.effect);
+            __privateGet(this, _offscreen).delete(key2);
+            if (dev_fallback_default) offscreen.fragment.lastChild[HMR_ANCHOR] = this.anchor;
+            offscreen.fragment.lastChild.remove();
+            this.anchor.before(offscreen.fragment);
+            onscreen = offscreen.effect;
+          }
+        }
+        for (const [b, k] of __privateGet(this, _batches)) {
+          __privateGet(this, _batches).delete(b);
+          if (b === batch) break;
+          const offscreen2 = __privateGet(this, _offscreen).get(k);
+          if (offscreen2) {
+            destroy_effect(offscreen2.effect);
+            __privateGet(this, _offscreen).delete(k);
+          }
+        }
+        for (const [k, effect2] of __privateGet(this, _onscreen)) {
+          if (k === key2 || __privateGet(this, _outroing).has(k)) continue;
+          const on_destroy = () => {
+            if (Array.from(__privateGet(this, _batches).values()).includes(k)) {
+              var fragment = document.createDocumentFragment();
+              move_effect(effect2, fragment);
+              fragment.append(create_text());
+              __privateGet(this, _offscreen).set(k, {
+                effect: effect2,
+                fragment
+              });
+            } else destroy_effect(effect2);
+            __privateGet(this, _outroing).delete(k);
+            __privateGet(this, _onscreen).delete(k);
+          };
+          if (__privateGet(this, _transition) || !onscreen) {
+            __privateGet(this, _outroing).add(k);
+            pause_effect(effect2, on_destroy, false);
+          } else on_destroy();
+        }
       }
-      if (!!condition == hydrate_index > root_index) {
-        set_hydrate_node(anchor = remove_nodes());
-        set_hydrating(false);
-        mismatch = true;
-        hydrate_index = -1;
+    });
+    __privateAdd(this, _discard, batch => {
+      __privateGet(this, _batches).delete(batch);
+      const keys = Array.from(__privateGet(this, _batches).values());
+      for (const [k, branch2] of __privateGet(this, _offscreen)) if (!keys.includes(k)) {
+        destroy_effect(branch2.effect);
+        __privateGet(this, _offscreen).delete(k);
       }
-    }
-    if (condition) {
-      if (consequent_effect) resume_effect(consequent_effect); else if (fn2) consequent_effect = branch((() => fn2(anchor)));
-      if (alternate_effect) pause_effect(alternate_effect, (() => {
-        alternate_effect = null;
-      }));
+    });
+    this.anchor = anchor;
+    __privateSet(this, _transition, transition2);
+  }
+  ensure(key2, fn) {
+    var batch = current_batch, defer = should_defer_append();
+    if (fn && !__privateGet(this, _onscreen).has(key2) && !__privateGet(this, _offscreen).has(key2)) if (defer) {
+      var fragment = document.createDocumentFragment(), target = create_text();
+      fragment.append(target);
+      __privateGet(this, _offscreen).set(key2, {
+        effect: branch(() => fn(target)),
+        fragment
+      });
+    } else __privateGet(this, _onscreen).set(key2, branch(() => fn(this.anchor)));
+    __privateGet(this, _batches).set(batch, key2);
+    if (defer) {
+      for (const [k, effect2] of __privateGet(this, _onscreen)) if (k === key2) batch.unskip_effect(effect2); else batch.skip_effect(effect2);
+      for (const [k, branch2] of __privateGet(this, _offscreen)) if (k === key2) batch.unskip_effect(branch2.effect); else batch.skip_effect(branch2.effect);
+      batch.oncommit(__privateGet(this, _commit));
+      batch.ondiscard(__privateGet(this, _discard));
     } else {
-      if (alternate_effect) resume_effect(alternate_effect); else if (fn2) alternate_effect = branch((() => fn2(anchor, [ root_index + 1, hydrate_index ])));
-      if (consequent_effect) pause_effect(consequent_effect, (() => {
-        consequent_effect = null;
-      }));
+      if (hydrating) this.anchor = hydrate_node;
+      __privateGet(this, _commit).call(this, batch);
     }
-    if (mismatch) set_hydrating(true);
-  };
-  block((() => {
-    has_branch = false;
-    fn(set_branch);
-    if (!has_branch) update_branch(null, null);
-  }), root_index > 0 ? EFFECT_TRANSPARENT : 0);
-  if (hydrating) anchor = hydrate_node;
+  }
+};
+
+_batches = new WeakMap;
+
+_onscreen = new WeakMap;
+
+_offscreen = new WeakMap;
+
+_outroing = new WeakMap;
+
+_transition = new WeakMap;
+
+_commit = new WeakMap;
+
+_discard = new WeakMap;
+
+function snippet(node, get_snippet, ...args) {
+  var branches = new BranchManager(node);
+  block(() => {
+    var _a5;
+    const snippet2 = null != (_a5 = get_snippet()) ? _a5 : null;
+    if (dev_fallback_default && null == snippet2) invalid_snippet();
+    branches.ensure(snippet2, snippet2 && (anchor => snippet2(anchor, ...args)));
+  }, EFFECT_TRANSPARENT);
 }
 
-var current_each_item = null;
+if (dev_fallback_default) {
+  let throw_rune_error = function(rune) {
+    if (!(rune in globalThis)) {
+      let value;
+      Object.defineProperty(globalThis, rune, {
+        configurable: true,
+        get: () => {
+          if (void 0 !== value) return value;
+          rune_outside_svelte(rune);
+        },
+        set: v => {
+          value = v;
+        }
+      });
+    }
+  };
+  throw_rune_error("$state");
+  throw_rune_error("$effect");
+  throw_rune_error("$derived");
+  throw_rune_error("$inspect");
+  throw_rune_error("$props");
+  throw_rune_error("$bindable");
+}
+
+function onMount(fn) {
+  if (null === component_context) lifecycle_outside_component("onMount");
+  if (legacy_mode_flag && null !== component_context.l) init_update_callbacks(component_context).m.push(fn); else user_effect(() => {
+    const cleanup = untrack(fn);
+    if ("function" == typeof cleanup) return cleanup;
+  });
+}
+
+function onDestroy(fn) {
+  if (null === component_context) lifecycle_outside_component("onDestroy");
+  onMount(() => () => untrack(fn));
+}
+
+function init_update_callbacks(context) {
+  var _a5, l = context.l;
+  return null != (_a5 = l.u) ? _a5 : l.u = {
+    a: [],
+    b: [],
+    m: []
+  };
+}
+
+var offscreen_anchor, all_styles = new Map;
+
+function register_style(hash2, style) {
+  var styles = all_styles.get(hash2);
+  if (!styles) {
+    styles = new Set;
+    all_styles.set(hash2, styles);
+  }
+  styles.add(style);
+}
+
+function if_block(node, fn, elseif = false) {
+  var marker;
+  if (hydrating) {
+    marker = hydrate_node;
+    hydrate_next();
+  }
+  var branches = new BranchManager(node);
+  function update_branch(key2, fn2) {
+    if (hydrating) {
+      var data = read_hydration_instruction(marker);
+      if (key2 !== parseInt(data.substring(1))) {
+        var anchor = skip_nodes();
+        set_hydrate_node(anchor);
+        branches.anchor = anchor;
+        set_hydrating(false);
+        branches.ensure(key2, fn2);
+        set_hydrating(true);
+        return;
+      }
+    }
+    branches.ensure(key2, fn2);
+  }
+  block(() => {
+    var has_branch = false;
+    fn((fn2, key2 = 0) => {
+      has_branch = true;
+      update_branch(key2, fn2);
+    });
+    if (!has_branch) update_branch(-1, null);
+  }, elseif ? EFFECT_TRANSPARENT : 0);
+}
 
 function index(_, i) {
   return i;
 }
 
-function pause_effects(state2, items, controlled_anchor, items_map) {
-  for (var transitions = [], length = items.length, i = 0; i < length; i++) pause_children(items[i].e, transitions, true);
-  var is_controlled = length > 0 && 0 === transitions.length && null !== controlled_anchor;
-  if (is_controlled) {
-    var parent_node = controlled_anchor.parentNode;
-    clear_text_content(parent_node);
-    parent_node.append(controlled_anchor);
-    items_map.clear();
-    link(state2, items[0].prev, items[length - 1].next);
+function pause_effects(state2, to_destroy, controlled_anchor) {
+  for (var _a5, group, length = to_destroy.length, remaining = to_destroy.length, i = 0; i < length; i++) {
+    let effect2 = to_destroy[i];
+    pause_effect(effect2, () => {
+      if (group) {
+        group.pending.delete(effect2);
+        group.done.add(effect2);
+        if (0 === group.pending.size) {
+          var groups = state2.outrogroups;
+          destroy_effects(state2, array_from(group.done));
+          groups.delete(group);
+          if (0 === groups.size) state2.outrogroups = null;
+        }
+      } else remaining -= 1;
+    }, false);
   }
-  run_out_transitions(transitions, (() => {
-    for (var i2 = 0; i2 < length; i2++) {
-      var item = items[i2];
-      if (!is_controlled) {
-        items_map.delete(item.k);
-        link(state2, item.prev, item.next);
-      }
-      destroy_effect(item.e, !is_controlled);
+  if (0 === remaining) {
+    var fast_path = null !== controlled_anchor;
+    if (fast_path) {
+      var anchor = controlled_anchor, parent_node = anchor.parentNode;
+      clear_text_content(parent_node);
+      parent_node.append(anchor);
+      state2.items.clear();
     }
-  }));
+    destroy_effects(state2, to_destroy, !fast_path);
+  } else {
+    group = {
+      pending: new Set(to_destroy),
+      done: new Set
+    };
+    (null != (_a5 = state2.outrogroups) ? _a5 : state2.outrogroups = new Set).add(group);
+  }
 }
 
-function each(node, flags, get_collection, get_key, render_fn, fallback_fn = null) {
-  var anchor = node, state2 = {
-    flags,
-    items: new Map,
-    first: null
-  };
-  if (!!(flags & EACH_IS_CONTROLLED)) {
+function destroy_effects(state2, to_destroy, remove_dom = true) {
+  var preserved_effects;
+  if (state2.pending.size > 0) {
+    preserved_effects = new Set;
+    for (const keys of state2.pending.values()) for (const key2 of keys) preserved_effects.add(state2.items.get(key2).e);
+  }
+  for (var i = 0; i < to_destroy.length; i++) {
+    var e = to_destroy[i];
+    if (null == preserved_effects ? void 0 : preserved_effects.has(e)) {
+      e.f |= EFFECT_OFFSCREEN;
+      move_effect(e, document.createDocumentFragment());
+    } else destroy_effect(to_destroy[i], remove_dom);
+  }
+}
+
+function each(node, flags2, get_collection, get_key, render_fn2, fallback_fn = null) {
+  var anchor = node, items = new Map;
+  if (0 !== (flags2 & EACH_IS_CONTROLLED)) {
     var parent_node = node;
     anchor = hydrating ? set_hydrate_node(get_first_child(parent_node)) : parent_node.appendChild(create_text());
   }
   if (hydrating) hydrate_next();
-  var fallback2 = null, was_empty = false, each_array = derived_safe_equal((() => {
+  var array, fallback2 = null, each_array = derived_safe_equal(() => {
     var collection = get_collection();
     return is_array(collection) ? collection : null == collection ? [] : array_from(collection);
-  }));
-  block((() => {
-    var array = get(each_array), length = array.length;
-    if (was_empty && 0 === length) return;
-    was_empty = 0 === length;
-    let mismatch = false;
-    if (hydrating) if (anchor.data === HYDRATION_START_ELSE != (0 === length)) {
-      set_hydrate_node(anchor = remove_nodes());
-      set_hydrating(false);
-      mismatch = true;
+  });
+  if (dev_fallback_default) tag(each_array, "{#each ...}");
+  var pending2 = new Map, first_run = true;
+  function commit(batch) {
+    if (0 === (state2.effect.f & DESTROYED)) {
+      state2.pending.delete(batch);
+      state2.fallback = fallback2;
+      reconcile(state2, array, anchor, flags2, get_key);
+      if (null !== fallback2) if (0 === array.length) if (0 === (fallback2.f & EFFECT_OFFSCREEN)) resume_effect(fallback2); else {
+        fallback2.f ^= EFFECT_OFFSCREEN;
+        move(fallback2, null, anchor);
+      } else pause_effect(fallback2, () => {
+        fallback2 = null;
+      });
     }
-    if (hydrating) {
-      for (var item, prev = null, i = 0; i < length; i++) {
-        if (8 === hydrate_node.nodeType && hydrate_node.data === HYDRATION_END) {
+  }
+  function discard(batch) {
+    state2.pending.delete(batch);
+  }
+  var state2 = {
+    effect: block(() => {
+      var length = (array = get(each_array)).length;
+      let mismatch = false;
+      if (hydrating) if (read_hydration_instruction(anchor) === HYDRATION_START_ELSE != (0 === length)) {
+        set_hydrate_node(anchor = skip_nodes());
+        set_hydrating(false);
+        mismatch = true;
+      }
+      for (var keys = new Set, batch = current_batch, defer = should_defer_append(), index2 = 0; index2 < length; index2 += 1) {
+        if (hydrating && hydrate_node.nodeType === COMMENT_NODE && hydrate_node.data === HYDRATION_END) {
           anchor = hydrate_node;
           mismatch = true;
           set_hydrating(false);
-          break;
         }
-        var value = array[i], key = get_key(value, i);
-        item = create_item(hydrate_node, state2, prev, null, value, key, i, render_fn, flags, get_collection);
-        state2.items.set(key, item);
-        prev = item;
+        var value = array[index2], key2 = get_key(value, index2);
+        if (dev_fallback_default) {
+          var key_again = get_key(value, index2);
+          if (key2 !== key_again) each_key_volatile(String(index2), String(key2), String(key_again));
+        }
+        var item = first_run ? null : items.get(key2);
+        if (item) {
+          if (item.v) internal_set(item.v, value);
+          if (item.i) internal_set(item.i, index2);
+          if (defer) batch.unskip_effect(item.e);
+        } else {
+          item = create_item(items, first_run ? anchor : null != offscreen_anchor ? offscreen_anchor : offscreen_anchor = create_text(), value, key2, index2, render_fn2, flags2, get_collection);
+          if (!first_run) item.e.f |= EFFECT_OFFSCREEN;
+          items.set(key2, item);
+        }
+        keys.add(key2);
       }
-      if (length > 0) set_hydrate_node(remove_nodes());
-    }
-    if (!hydrating) reconcile(array, state2, anchor, render_fn, flags, get_key, get_collection);
-    if (null !== fallback_fn) if (0 === length) if (fallback2) resume_effect(fallback2); else fallback2 = branch((() => fallback_fn(anchor))); else if (null !== fallback2) pause_effect(fallback2, (() => {
-      fallback2 = null;
-    }));
-    if (mismatch) set_hydrating(true);
-    get(each_array);
-  }));
+      if (0 === length && fallback_fn && !fallback2) if (first_run) fallback2 = branch(() => fallback_fn(anchor)); else (fallback2 = branch(() => fallback_fn(null != offscreen_anchor ? offscreen_anchor : offscreen_anchor = create_text()))).f |= EFFECT_OFFSCREEN;
+      if (length > keys.size) if (dev_fallback_default) validate_each_keys(array, get_key); else each_key_duplicate("", "", "");
+      if (hydrating && length > 0) set_hydrate_node(skip_nodes());
+      if (!first_run) {
+        pending2.set(batch, keys);
+        if (defer) {
+          for (const [key3, item2] of items) if (!keys.has(key3)) batch.skip_effect(item2.e);
+          batch.oncommit(commit);
+          batch.ondiscard(discard);
+        } else commit(batch);
+      }
+      if (mismatch) set_hydrating(true);
+      get(each_array);
+    }),
+    flags: flags2,
+    items,
+    pending: pending2,
+    outrogroups: null,
+    fallback: fallback2
+  };
+  first_run = false;
   if (hydrating) anchor = hydrate_node;
 }
 
-function reconcile(array, state2, anchor, render_fn, flags, get_key, get_collection) {
-  var _a3, _b3, _c2, _d, seen, to_animate, value, key, item, i, is_animated = !!(flags & EACH_IS_ANIMATED), should_update = !!(flags & (EACH_ITEM_REACTIVE | EACH_INDEX_REACTIVE)), length = array.length, items = state2.items, current = state2.first, prev = null, matched = [], stashed = [];
+function skip_to_branch(effect2) {
+  for (;null !== effect2 && 0 === (effect2.f & BRANCH_EFFECT); ) effect2 = effect2.next;
+  return effect2;
+}
+
+function reconcile(state2, array, anchor, flags2, get_key) {
+  var _a5, _b3, _c2, _d, _e, _f, _g, _h, _i, seen, to_animate, key2, effect2, i, is_animated = 0 !== (flags2 & EACH_IS_ANIMATED), length = array.length, items = state2.items, current = skip_to_branch(state2.effect.first), prev = null, matched = [], stashed = [];
   if (is_animated) for (i = 0; i < length; i += 1) {
-    key = get_key(value = array[i], i);
-    if (void 0 !== (item = items.get(key))) {
-      null == (_a3 = item.a) || _a3.measure();
-      (null != to_animate ? to_animate : to_animate = new Set).add(item);
+    key2 = get_key(array[i], i);
+    if (0 === ((effect2 = items.get(key2).e).f & EFFECT_OFFSCREEN)) {
+      null == (_b3 = null == (_a5 = effect2.nodes) ? void 0 : _a5.a) || _b3.measure();
+      (null != to_animate ? to_animate : to_animate = new Set).add(effect2);
     }
   }
   for (i = 0; i < length; i += 1) {
-    key = get_key(value = array[i], i);
-    if (void 0 !== (item = items.get(key))) {
-      if (should_update) update_item(item, value, i, flags);
-      if (!!(item.e.f & INERT)) {
-        resume_effect(item.e);
-        if (is_animated) {
-          null == (_b3 = item.a) || _b3.unfix();
-          (null != to_animate ? to_animate : to_animate = new Set).delete(item);
-        }
+    key2 = get_key(array[i], i);
+    effect2 = items.get(key2).e;
+    if (null !== state2.outrogroups) for (const group of state2.outrogroups) {
+      group.pending.delete(effect2);
+      group.done.delete(effect2);
+    }
+    if (0 !== (effect2.f & INERT)) {
+      resume_effect(effect2);
+      if (is_animated) {
+        null == (_d = null == (_c2 = effect2.nodes) ? void 0 : _c2.a) || _d.unfix();
+        (null != to_animate ? to_animate : to_animate = new Set).delete(effect2);
       }
-      if (item !== current) {
-        if (void 0 !== seen && seen.has(item)) {
-          if (matched.length < stashed.length) {
-            var j, start = stashed[0];
-            prev = start.prev;
-            var a = matched[0], b = matched[matched.length - 1];
-            for (j = 0; j < matched.length; j += 1) move(matched[j], start, anchor);
-            for (j = 0; j < stashed.length; j += 1) seen.delete(stashed[j]);
-            link(state2, a.prev, b.next);
-            link(state2, prev, a);
-            link(state2, b, start);
-            current = start;
-            prev = b;
-            i -= 1;
-            matched = [];
-            stashed = [];
-          } else {
-            seen.delete(item);
-            move(item, current, anchor);
-            link(state2, item.prev, item.next);
-            link(state2, item, null === prev ? state2.first : prev.next);
-            link(state2, prev, item);
-            prev = item;
-          }
-          continue;
-        }
+    }
+    if (0 !== (effect2.f & EFFECT_OFFSCREEN)) {
+      effect2.f ^= EFFECT_OFFSCREEN;
+      if (effect2 === current) move(effect2, null, anchor); else {
+        var next2 = prev ? prev.next : current;
+        if (effect2 === state2.effect.last) state2.effect.last = effect2.prev;
+        if (effect2.prev) effect2.prev.next = effect2.next;
+        if (effect2.next) effect2.next.prev = effect2.prev;
+        link(state2, prev, effect2);
+        link(state2, effect2, next2);
+        move(effect2, next2, anchor);
         matched = [];
         stashed = [];
-        for (;null !== current && current.k !== key; ) {
-          if (!(current.e.f & INERT)) (null != seen ? seen : seen = new Set).add(current);
-          stashed.push(current);
-          current = current.next;
-        }
-        if (null === current) continue;
-        item = current;
+        current = skip_to_branch((prev = effect2).next);
+        continue;
       }
-      matched.push(item);
-      prev = item;
-      current = item.next;
-    } else {
-      prev = create_item(current ? current.e.nodes_start : anchor, state2, prev, null === prev ? state2.first : prev.next, value, key, i, render_fn, flags, get_collection);
-      items.set(key, prev);
+    }
+    if (effect2 !== current) {
+      if (void 0 !== seen && seen.has(effect2)) {
+        if (matched.length < stashed.length) {
+          var j, start = stashed[0];
+          prev = start.prev;
+          var a = matched[0], b = matched[matched.length - 1];
+          for (j = 0; j < matched.length; j += 1) move(matched[j], start, anchor);
+          for (j = 0; j < stashed.length; j += 1) seen.delete(stashed[j]);
+          link(state2, a.prev, b.next);
+          link(state2, prev, a);
+          link(state2, b, start);
+          current = start;
+          prev = b;
+          i -= 1;
+          matched = [];
+          stashed = [];
+        } else {
+          seen.delete(effect2);
+          move(effect2, current, anchor);
+          link(state2, effect2.prev, effect2.next);
+          link(state2, effect2, null === prev ? state2.effect.first : prev.next);
+          link(state2, prev, effect2);
+          prev = effect2;
+        }
+        continue;
+      }
       matched = [];
       stashed = [];
-      current = prev.next;
+      for (;null !== current && current !== effect2; ) {
+        (null != seen ? seen : seen = new Set).add(current);
+        stashed.push(current);
+        current = skip_to_branch(current.next);
+      }
+      if (null === current) continue;
     }
+    if (0 === (effect2.f & EFFECT_OFFSCREEN)) matched.push(effect2);
+    prev = effect2;
+    current = skip_to_branch(effect2.next);
+  }
+  if (null !== state2.outrogroups) {
+    for (const group of state2.outrogroups) if (0 === group.pending.size) {
+      destroy_effects(state2, array_from(group.done));
+      null == (_e = state2.outrogroups) || _e.delete(group);
+    }
+    if (0 === state2.outrogroups.size) state2.outrogroups = null;
   }
   if (null !== current || void 0 !== seen) {
-    for (var to_destroy = void 0 === seen ? [] : array_from(seen); null !== current; ) {
-      if (!(current.e.f & INERT)) to_destroy.push(current);
-      current = current.next;
+    var to_destroy = [];
+    if (void 0 !== seen) for (effect2 of seen) if (0 === (effect2.f & INERT)) to_destroy.push(effect2);
+    for (;null !== current; ) {
+      if (0 === (current.f & INERT) && current !== state2.fallback) to_destroy.push(current);
+      current = skip_to_branch(current.next);
     }
     var destroy_length = to_destroy.length;
     if (destroy_length > 0) {
-      var controlled_anchor = !!(flags & EACH_IS_CONTROLLED) && 0 === length ? anchor : null;
+      var controlled_anchor = 0 !== (flags2 & EACH_IS_CONTROLLED) && 0 === length ? anchor : null;
       if (is_animated) {
-        for (i = 0; i < destroy_length; i += 1) null == (_c2 = to_destroy[i].a) || _c2.measure();
-        for (i = 0; i < destroy_length; i += 1) null == (_d = to_destroy[i].a) || _d.fix();
+        for (i = 0; i < destroy_length; i += 1) null == (_g = null == (_f = to_destroy[i].nodes) ? void 0 : _f.a) || _g.measure();
+        for (i = 0; i < destroy_length; i += 1) null == (_i = null == (_h = to_destroy[i].nodes) ? void 0 : _h.a) || _i.fix();
       }
-      pause_effects(state2, to_destroy, controlled_anchor, items);
+      pause_effects(state2, to_destroy, controlled_anchor);
     }
   }
-  if (is_animated) queue_micro_task((() => {
-    var _a4;
-    if (void 0 !== to_animate) for (item of to_animate) null == (_a4 = item.a) || _a4.apply();
-  }));
-  active_effect.first = state2.first && state2.first.e;
-  active_effect.last = prev && prev.e;
+  if (is_animated) queue_micro_task(() => {
+    var _a6, _b4;
+    if (void 0 !== to_animate) for (effect2 of to_animate) null == (_b4 = null == (_a6 = effect2.nodes) ? void 0 : _a6.a) || _b4.apply();
+  });
 }
 
-function update_item(item, value, index2, type) {
-  if (!!(type & EACH_ITEM_REACTIVE)) internal_set(item.v, value);
-  if (!!(type & EACH_INDEX_REACTIVE)) internal_set(item.i, index2); else item.i = index2;
-}
-
-function create_item(anchor, state2, prev, next2, value, key, index2, render_fn, flags, get_collection) {
-  var previous_each_item = current_each_item, reactive = !!(flags & EACH_ITEM_REACTIVE), v = reactive ? !(flags & EACH_ITEM_IMMUTABLE) ? mutable_source(value) : source(value) : value, i = !(flags & EACH_INDEX_REACTIVE) ? index2 : source(index2);
-  if (dev_fallback_default && reactive) v.debug = () => {
-    var collection_index = "number" == typeof i ? index2 : i.v;
-    get_collection()[collection_index];
+function create_item(items, anchor, value, key2, index2, render_fn2, flags2, get_collection) {
+  var v = 0 !== (flags2 & EACH_ITEM_REACTIVE) ? 0 === (flags2 & EACH_ITEM_IMMUTABLE) ? mutable_source(value, false, false) : source(value) : null, i = 0 !== (flags2 & EACH_INDEX_REACTIVE) ? source(index2) : null;
+  if (dev_fallback_default && v) v.trace = () => {
+    var _a5;
+    get_collection()[null != (_a5 = null == i ? void 0 : i.v) ? _a5 : index2];
   };
-  var item = {
-    i,
+  return {
     v,
-    k: key,
-    a: null,
-    e: null,
-    prev,
-    next: next2
+    i,
+    e: branch(() => {
+      render_fn2(anchor, null != v ? v : value, null != i ? i : index2, get_collection);
+      return () => {
+        items.delete(key2);
+      };
+    })
   };
-  current_each_item = item;
-  try {
-    item.e = branch((() => render_fn(anchor, v, i, get_collection)), hydrating);
-    item.e.prev = prev && prev.e;
-    item.e.next = next2 && next2.e;
-    if (null === prev) state2.first = item; else {
-      prev.next = item;
-      prev.e.next = item.e;
-    }
-    if (null !== next2) {
-      next2.prev = item;
-      next2.e.prev = item.e;
-    }
-    return item;
-  } finally {
-    current_each_item = previous_each_item;
-  }
 }
 
-function move(item, next2, anchor) {
-  for (var end = item.next ? item.next.e.nodes_start : anchor, dest = next2 ? next2.e.nodes_start : anchor, node = item.e.nodes_start; node !== end; ) {
+function move(effect2, next2, anchor) {
+  if (effect2.nodes) for (var node = effect2.nodes.start, end = effect2.nodes.end, dest = next2 && 0 === (next2.f & EFFECT_OFFSCREEN) ? next2.nodes.start : anchor; null !== node; ) {
     var next_node = get_next_sibling(node);
     dest.before(node);
+    if (node === end) return;
     node = next_node;
   }
 }
 
 function link(state2, prev, next2) {
-  if (null === prev) state2.first = next2; else {
-    prev.next = next2;
-    prev.e.next = next2 && next2.e;
-  }
-  if (null !== next2) {
-    next2.prev = prev;
-    next2.e.prev = prev && prev.e;
+  if (null === prev) state2.effect.first = next2; else prev.next = next2;
+  if (null === next2) state2.effect.last = prev; else next2.prev = prev;
+}
+
+function validate_each_keys(array, key_fn) {
+  const keys = new Map, length = array.length;
+  for (let i = 0; i < length; i++) {
+    const key2 = key_fn(array[i], i);
+    if (keys.has(key2)) {
+      const a = String(keys.get(key2)), b = String(i);
+      let k = String(key2);
+      if (k.startsWith("[object ")) k = null;
+      each_key_duplicate(a, b, k);
+    }
+    keys.set(key2, i);
   }
 }
 
 function check_hash(element2, server_hash, value) {
-  var _a3, _b3;
+  var _a5, _b3;
   if (!server_hash || server_hash === hash(String(null != value ? value : ""))) return;
   let location;
-  const loc = null == (_a3 = element2.__svelte_meta) ? void 0 : _a3.loc;
+  const loc = null == (_a5 = element2.__svelte_meta) ? void 0 : _a5.loc;
   if (loc) location = `near ${loc.file}:${loc.line}:${loc.column}`; else if (null == (_b3 = dev_current_component_function) ? void 0 : _b3[FILENAME]) location = `in ${dev_current_component_function[FILENAME]}`;
   hydration_html_changed(sanitize_location(location));
 }
 
-function html(node, get_value, svg, mathml, skip_warning) {
-  var effect2, anchor = node, value = "";
-  block((() => {
-    var _a3;
-    if (value !== (value = null != (_a3 = get_value()) ? _a3 : "")) {
-      if (void 0 !== effect2) {
-        destroy_effect(effect2);
-        effect2 = void 0;
+function html(node, get_value, is_controlled = false, svg = false, mathml = false, skip_warning = false) {
+  var anchor = node, value = "";
+  if (is_controlled) {
+    var parent_node = node;
+    if (hydrating) anchor = set_hydrate_node(get_first_child(parent_node));
+  }
+  template_effect(() => {
+    var _a5, effect2 = active_effect;
+    if (value !== (value = null != (_a5 = get_value()) ? _a5 : "")) if (!is_controlled || hydrating) {
+      if (null !== effect2.nodes) {
+        remove_effect_dom(effect2.nodes.start, effect2.nodes.end);
+        effect2.nodes = null;
       }
-      if ("" !== value) effect2 = branch((() => {
-        if (!hydrating) {
-          var html2 = value + "";
-          if (svg) html2 = `<svg>${html2}</svg>`; else if (mathml) html2 = `<math>${html2}</math>`;
-          var node2 = create_fragment_from_html(html2);
-          if (svg || mathml) node2 = get_first_child(node2);
-          assign_nodes(get_first_child(node2), node2.lastChild);
-          if (svg || mathml) for (;get_first_child(node2); ) anchor.before(get_first_child(node2)); else anchor.before(node2);
-        } else {
-          for (var hash2 = hydrate_node.data, next2 = hydrate_next(), last = next2; null !== next2 && (8 !== next2.nodeType || "" !== next2.data); ) {
-            last = next2;
-            next2 = get_next_sibling(next2);
-          }
-          if (null === next2) {
-            hydration_mismatch();
-            throw HYDRATION_ERROR;
-          }
-          if (dev_fallback_default && !skip_warning) check_hash(next2.parentNode, hash2, value);
-          assign_nodes(hydrate_node, last);
-          anchor = set_hydrate_node(next2);
+      if ("" !== value) if (!hydrating) {
+        var wrapper = create_element(svg ? "svg" : mathml ? "math" : "template", svg ? NAMESPACE_SVG : mathml ? NAMESPACE_MATHML : void 0);
+        wrapper.innerHTML = value;
+        var node2 = svg || mathml ? wrapper : wrapper.content;
+        assign_nodes(get_first_child(node2), node2.lastChild);
+        if (svg || mathml) for (;get_first_child(node2); ) anchor.before(get_first_child(node2)); else anchor.before(node2);
+      } else {
+        for (var hash2 = hydrate_node.data, next2 = hydrate_next(), last = next2; null !== next2 && (next2.nodeType !== COMMENT_NODE || "" !== next2.data); ) {
+          last = next2;
+          next2 = get_next_sibling(next2);
         }
-      }));
-    } else if (hydrating) hydrate_next();
-  }));
-}
-
-function snippet(node, get_snippet, ...args) {
-  var snippet_effect, anchor = node, snippet2 = noop;
-  block((() => {
-    if (snippet2 !== (snippet2 = get_snippet())) {
-      if (snippet_effect) {
-        destroy_effect(snippet_effect);
-        snippet_effect = null;
+        if (null === next2) {
+          hydration_mismatch();
+          throw HYDRATION_ERROR;
+        }
+        if (dev_fallback_default && !skip_warning) check_hash(next2.parentNode, hash2, value);
+        assign_nodes(hydrate_node, last);
+        anchor = set_hydrate_node(next2);
       }
-      if (dev_fallback_default && null == snippet2) invalid_snippet();
-      snippet_effect = branch((() => snippet2(anchor, ...args)));
-    }
-  }), EFFECT_TRANSPARENT);
-  if (hydrating) anchor = hydrate_node;
+    } else {
+      effect2.nodes = null;
+      parent_node.innerHTML = value;
+      if ("" !== value) assign_nodes(get_first_child(parent_node), parent_node.lastChild);
+    } else if (hydrating) hydrate_next();
+  });
 }
 
 function append_styles(anchor, css) {
-  queue_micro_task((() => {
-    var _a3, root6 = anchor.getRootNode(), target = root6.host ? root6 : null != (_a3 = root6.head) ? _a3 : root6.ownerDocument.head;
+  effect(() => {
+    var _a5, root8 = anchor.getRootNode(), target = root8.host ? root8 : null != (_a5 = root8.head) ? _a5 : root8.ownerDocument.head;
     if (!target.querySelector("#" + css.hash)) {
-      const style = document.createElement("style");
+      const style = create_element("style");
       style.id = css.hash;
       style.textContent = css.code;
       target.appendChild(style);
       if (dev_fallback_default) register_style(css.hash, style);
     }
-  }));
+  });
 }
 
 function r(e) {
@@ -2229,7 +4683,7 @@ var whitespace = [ ..." \t\n\r\f \v\ufeff" ];
 function to_class(value, hash2, directives) {
   var classname = null == value ? "" : "" + value;
   if (hash2) classname = classname ? classname + " " + hash2 : hash2;
-  if (directives) for (var key in directives) if (directives[key]) classname = classname ? classname + " " + key : key; else if (classname.length) for (var len = key.length, a = 0; (a = classname.indexOf(key, a)) >= 0; ) {
+  if (directives) for (var key2 of Object.keys(directives)) if (directives[key2]) classname = classname ? classname + " " + key2 : key2; else if (classname.length) for (var len = key2.length, a = 0; (a = classname.indexOf(key2, a)) >= 0; ) {
     var b = a + len;
     if ((0 === a || whitespace.includes(classname[a - 1])) && (b === classname.length || whitespace.includes(classname[b]))) classname = (0 === a ? "" : classname.substring(0, a)) + classname.substring(b + 1); else a = b;
   }
@@ -2238,9 +4692,9 @@ function to_class(value, hash2, directives) {
 
 function append_styles2(styles, important = false) {
   var separator = important ? " !important;" : ";", css = "";
-  for (var key in styles) {
-    var value = styles[key];
-    if (null != value && "" !== value) css += " " + key + ": " + value + separator;
+  for (var key2 of Object.keys(styles)) {
+    var value = styles[key2];
+    if (null != value && "" !== value) css += " " + key2 + ": " + value + separator;
   }
   return css;
 }
@@ -2291,31 +4745,31 @@ function to_style(value, styles) {
 }
 
 function set_class(dom, is_html, value, hash2, prev_classes, next_classes) {
-  var prev = dom.__className;
+  var prev = dom[CLASS_CACHE];
   if (hydrating || prev !== value || void 0 === prev) {
     var next_class_name = to_class(value, hash2, next_classes);
     if (!hydrating || next_class_name !== dom.getAttribute("class")) if (null == next_class_name) dom.removeAttribute("class"); else if (is_html) dom.className = next_class_name; else dom.setAttribute("class", next_class_name);
-    dom.__className = value;
-  } else if (next_classes && prev_classes !== next_classes) for (var key in next_classes) {
-    var is_present = !!next_classes[key];
-    if (null == prev_classes || is_present !== !!prev_classes[key]) dom.classList.toggle(key, is_present);
+    dom[CLASS_CACHE] = value;
+  } else if (next_classes && prev_classes !== next_classes) for (var key2 in next_classes) {
+    var is_present = !!next_classes[key2];
+    if (null == prev_classes || is_present !== !!prev_classes[key2]) dom.classList.toggle(key2, is_present);
   }
   return next_classes;
 }
 
 function update_styles(dom, prev = {}, next2, priority) {
-  for (var key in next2) {
-    var value = next2[key];
-    if (prev[key] !== value) if (null == next2[key]) dom.style.removeProperty(key); else dom.style.setProperty(key, value, priority);
+  for (var key2 in next2) {
+    var value = next2[key2];
+    if (prev[key2] !== value) if (null == next2[key2]) dom.style.removeProperty(key2); else dom.style.setProperty(key2, value, priority);
   }
 }
 
 function set_style(dom, value, prev_styles, next_styles) {
-  var prev = dom.__style;
+  var prev = dom[STYLE_CACHE];
   if (hydrating || prev !== value) {
     var next_style_attr = to_style(value, next_styles);
     if (!hydrating || next_style_attr !== dom.getAttribute("style")) if (null == next_style_attr) dom.removeAttribute("style"); else dom.style.cssText = next_style_attr;
-    dom.__style = value;
+    dom[STYLE_CACHE] = value;
   } else if (next_styles) if (Array.isArray(next_styles)) {
     update_styles(dom, null == prev_styles ? void 0 : prev_styles[0], next_styles[0]);
     update_styles(dom, null == prev_styles ? void 0 : prev_styles[1], next_styles[1], "important");
@@ -2323,7 +4777,7 @@ function set_style(dom, value, prev_styles, next_styles) {
   return next_styles;
 }
 
-var CLASS = Symbol("class"), STYLE = Symbol("style"), IS_CUSTOM_ELEMENT = Symbol("is custom element"), IS_HTML = Symbol("is html");
+var IS_CUSTOM_ELEMENT = Symbol("is custom element"), IS_HTML = Symbol("is html"), LINK_TAG = IS_XHTML ? "link" : "LINK";
 
 function remove_input_defaults(input) {
   if (hydrating) {
@@ -2332,27 +4786,27 @@ function remove_input_defaults(input) {
         already_removed = true;
         if (input.hasAttribute("value")) {
           var value = input.value;
-          set_attribute(input, "value", null);
+          set_attribute2(input, "value", null);
           input.value = value;
         }
         if (input.hasAttribute("checked")) {
           var checked = input.checked;
-          set_attribute(input, "checked", null);
+          set_attribute2(input, "checked", null);
           input.checked = checked;
         }
       }
     };
-    input.__on_r = remove_defaults;
-    queue_idle_task(remove_defaults);
+    input[FORM_RESET_HANDLER] = remove_defaults;
+    queue_micro_task(remove_defaults);
     add_form_reset_listener();
   }
 }
 
-function set_attribute(element2, attribute, value, skip_warning) {
+function set_attribute2(element2, attribute, value, skip_warning) {
   var attributes = get_attributes(element2);
   if (hydrating) {
     attributes[attribute] = element2.getAttribute(attribute);
-    if ("src" === attribute || "srcset" === attribute || "href" === attribute && "LINK" === element2.nodeName) {
+    if ("src" === attribute || "srcset" === attribute || "href" === attribute && element2.nodeName === LINK_TAG) {
       if (!skip_warning) check_src_in_dev_hydration(element2, attribute, null != value ? value : "");
       return;
     }
@@ -2364,30 +4818,30 @@ function set_attribute(element2, attribute, value, skip_warning) {
 }
 
 function get_attributes(element2) {
-  var _a3;
-  return null != (_a3 = element2.__attributes) ? _a3 : element2.__attributes = {
+  var _a5, _b3;
+  return null != (_b3 = element2[_a5 = ATTRIBUTES_CACHE]) ? _b3 : element2[_a5] = {
     [IS_CUSTOM_ELEMENT]: element2.nodeName.includes("-"),
     [IS_HTML]: element2.namespaceURI === NAMESPACE_HTML
   };
 }
 
-var setters_cache = new Map;
+var _events, _instance, setters_cache = new Map;
 
 function get_setters(element2) {
-  var descriptors, setters = setters_cache.get(element2.nodeName);
+  var descriptors, cache_key = element2.getAttribute("is") || element2.nodeName, setters = setters_cache.get(cache_key);
   if (setters) return setters;
-  setters_cache.set(element2.nodeName, setters = []);
+  setters_cache.set(cache_key, setters = []);
   for (var proto = element2, element_proto = Element.prototype; element_proto !== proto; ) {
     descriptors = get_descriptors(proto);
-    for (var key in descriptors) if (descriptors[key].set) setters.push(key);
+    for (var key2 in descriptors) if (descriptors[key2].set && "innerHTML" !== key2 && "textContent" !== key2 && "innerText" !== key2) setters.push(key2);
     proto = get_prototype_of(proto);
   }
   return setters;
 }
 
 function check_src_in_dev_hydration(element2, attribute, value) {
-  var _a3;
-  if (dev_fallback_default) if ("srcset" !== attribute || !srcset_url_equal(element2, value)) if (!src_url_equal(null != (_a3 = element2.getAttribute(attribute)) ? _a3 : "", value)) hydration_attribute_changed(attribute, element2.outerHTML.replace(element2.innerHTML, element2.innerHTML && "..."), String(value));
+  var _a5;
+  if (dev_fallback_default) if ("srcset" !== attribute || !srcset_url_equal(element2, value)) if (!src_url_equal(null != (_a5 = element2.getAttribute(attribute)) ? _a5 : "", value)) hydration_attribute_changed(attribute, element2.outerHTML.replace(element2.innerHTML, element2.innerHTML && "..."), String(value));
 }
 
 function src_url_equal(element_src, url) {
@@ -2395,36 +4849,51 @@ function src_url_equal(element_src, url) {
 }
 
 function split_srcset(srcset) {
-  return srcset.split(",").map((src => src.trim().split(" ").filter(Boolean)));
+  return srcset.split(",").map(src => src.trim().split(" ").filter(Boolean));
 }
 
 function srcset_url_equal(element2, srcset) {
   var element_urls = split_srcset(element2.srcset), urls = split_srcset(srcset);
-  return urls.length === element_urls.length && urls.every((([url, width], i) => width === element_urls[i][1] && (src_url_equal(element_urls[i][0], url) || src_url_equal(url, element_urls[i][0]))));
+  return urls.length === element_urls.length && urls.every(([url, width], i) => width === element_urls[i][1] && (src_url_equal(element_urls[i][0], url) || src_url_equal(url, element_urls[i][0])));
 }
 
 function bind_value(input, get3, set2 = get3) {
-  var runes = is_runes();
-  listen_to_event_and_reset_event(input, "input", (is_reset => {
+  var batches = new WeakSet;
+  listen_to_event_and_reset_event(input, "input", async is_reset => {
     if (dev_fallback_default && "checkbox" === input.type) bind_invalid_checkbox_value();
     var value = is_reset ? input.defaultValue : input.value;
     value = is_numberlike_input(input) ? to_number(value) : value;
     set2(value);
-    if (runes && value !== (value = get3())) {
-      var start = input.selectionStart, end = input.selectionEnd;
+    if (null !== current_batch) batches.add(current_batch);
+    await tick();
+    if (value !== (value = get3())) {
+      var start = input.selectionStart, end = input.selectionEnd, length = input.value.length;
       input.value = null != value ? value : "";
       if (null !== end) {
-        input.selectionStart = start;
-        input.selectionEnd = Math.min(end, input.value.length);
+        var new_length = input.value.length;
+        if (start === end && end === length && new_length > length) {
+          input.selectionStart = new_length;
+          input.selectionEnd = new_length;
+        } else {
+          input.selectionStart = start;
+          input.selectionEnd = Math.min(end, new_length);
+        }
       }
     }
-  }));
-  if (hydrating && input.defaultValue !== input.value || null == untrack(get3) && input.value) set2(is_numberlike_input(input) ? to_number(input.value) : input.value);
-  render_effect((() => {
+  });
+  if (hydrating && input.defaultValue !== input.value || null == untrack(get3) && input.value) {
+    set2(is_numberlike_input(input) ? to_number(input.value) : input.value);
+    if (null !== current_batch) batches.add(current_batch);
+  }
+  render_effect(() => {
     if (dev_fallback_default && "checkbox" === input.type) bind_invalid_checkbox_value();
     var value = get3();
+    if (input === document.activeElement) {
+      var batch = async_mode_flag ? previous_batch : current_batch;
+      if (batches.has(batch)) return;
+    }
     if (!is_numberlike_input(input) || value !== to_number(input.value)) if ("date" !== input.type || value || input.value) if (value !== input.value) input.value = null != value ? value : "";
-  }));
+  });
 }
 
 function is_numberlike_input(input) {
@@ -2441,157 +4910,97 @@ function is_bound_this(bound_value, element_or_component) {
 }
 
 function bind_this(element_or_component = {}, update2, get_value, get_parts) {
-  effect((() => {
+  var component_effect = component_context.r, parent = active_effect;
+  effect(() => {
     var old_parts, parts;
-    render_effect((() => {
+    render_effect(() => {
       old_parts = parts;
       parts = (null == get_parts ? void 0 : get_parts()) || [];
-      untrack((() => {
-        if (element_or_component !== get_value(...parts)) {
+      untrack(() => {
+        if (!is_bound_this(get_value(...parts), element_or_component)) {
           update2(element_or_component, ...parts);
           if (old_parts && is_bound_this(get_value(...old_parts), element_or_component)) update2(null, ...old_parts);
         }
-      }));
-    }));
+      });
+    });
     return () => {
-      queue_micro_task((() => {
-        if (parts && is_bound_this(get_value(...parts), element_or_component)) update2(null, ...parts);
-      }));
+      let p = parent;
+      for (;p !== component_effect && null !== p.parent && p.parent.f & DESTROYING; ) p = p.parent;
+      const original_teardown = p.teardown;
+      p.teardown = () => {
+        (() => {
+          if (parts && is_bound_this(get_value(...parts), element_or_component)) update2(null, ...parts);
+        })();
+        null == original_teardown || original_teardown();
+      };
     };
-  }));
+  });
   return element_or_component;
 }
 
-var _events, _instance, is_store_binding = false, IS_UNMOUNTED = Symbol();
-
-function store_get(store, store_name, stores) {
-  var _a3;
-  const entry = null != (_a3 = stores[store_name]) ? _a3 : stores[store_name] = {
-    store: null,
-    source: mutable_source(void 0),
-    unsubscribe: noop
-  };
-  if (entry.store !== store && !(IS_UNMOUNTED in stores)) {
-    entry.unsubscribe();
-    entry.store = null != store ? store : null;
-    if (null == store) {
-      entry.source.v = void 0;
-      entry.unsubscribe = noop;
-    } else {
-      var is_synchronous_callback = true;
-      entry.unsubscribe = subscribe_to_store(store, (v => {
-        if (is_synchronous_callback) entry.source.v = v; else set(entry.source, v);
-      }));
-      is_synchronous_callback = false;
+function prop(props, key2, flags2, fallback2) {
+  var _a5, _b3, runes = !legacy_mode_flag || 0 !== (flags2 & PROPS_IS_RUNES), bindable = 0 !== (flags2 & PROPS_IS_BINDABLE), lazy = 0 !== (flags2 & PROPS_IS_LAZY_INITIAL), fallback_value = fallback2, fallback_dirty = true, fallback_signal = void 0, get_fallback = () => {
+    if (lazy && runes) {
+      null != fallback_signal || (fallback_signal = derived(fallback2));
+      return get(fallback_signal);
     }
-  }
-  if (store && IS_UNMOUNTED in stores) return get2(store); else return get(entry.source);
-}
-
-function store_set(store, value) {
-  store.set(value);
-  return value;
-}
-
-function setup_stores() {
-  const stores = {};
-  return [ stores, function cleanup() {
-    teardown((() => {
-      for (var store_name in stores) stores[store_name].unsubscribe();
-      define_property(stores, IS_UNMOUNTED, {
-        enumerable: false,
-        value: true
-      });
-    }));
-  } ];
-}
-
-function capture_store_binding(fn) {
-  var previous_is_store_binding = is_store_binding;
-  try {
-    is_store_binding = false;
-    return [ fn(), is_store_binding ];
-  } finally {
-    is_store_binding = previous_is_store_binding;
-  }
-}
-
-function has_destroyed_component_ctx(current_value) {
-  var _a3, _b3;
-  return null != (_b3 = null == (_a3 = current_value.ctx) ? void 0 : _a3.d) ? _b3 : false;
-}
-
-function prop(props, key, flags, fallback2) {
-  var _a3, _b3, prop_value, immutable = !!(flags & PROPS_IS_IMMUTABLE), runes = !legacy_mode_flag || !!(flags & PROPS_IS_RUNES), bindable = !!(flags & PROPS_IS_BINDABLE), lazy = !!(flags & PROPS_IS_LAZY_INITIAL), is_store_sub = false;
-  if (bindable) [prop_value, is_store_sub] = capture_store_binding((() => props[key])); else prop_value = props[key];
-  var getter, is_entry_props = STATE_SYMBOL in props || LEGACY_PROPS in props, setter = bindable && (null != (_b3 = null == (_a3 = get_descriptor(props, key)) ? void 0 : _a3.set) ? _b3 : is_entry_props && key in props && (v => props[key] = v)) || void 0, fallback_value = fallback2, fallback_dirty = true, fallback_used = false, get_fallback = () => {
-    fallback_used = true;
     if (fallback_dirty) {
       fallback_dirty = false;
-      if (lazy) fallback_value = untrack(fallback2); else fallback_value = fallback2;
+      fallback_value = lazy ? untrack(fallback2) : fallback2;
     }
     return fallback_value;
   };
-  if (void 0 === prop_value && void 0 !== fallback2) {
-    if (setter && runes) props_invalid_value(key);
-    prop_value = get_fallback();
-    if (setter) setter(prop_value);
+  let setter;
+  if (bindable) {
+    var is_entry_props = STATE_SYMBOL in props || LEGACY_PROPS in props;
+    setter = null != (_b3 = null == (_a5 = get_descriptor(props, key2)) ? void 0 : _a5.set) ? _b3 : is_entry_props && key2 in props ? v => props[key2] = v : void 0;
+  }
+  var initial_value, getter, is_store_sub = false;
+  if (bindable) [initial_value, is_store_sub] = capture_store_binding(() => props[key2]); else initial_value = props[key2];
+  if (void 0 === initial_value && void 0 !== fallback2) {
+    initial_value = get_fallback();
+    if (setter) {
+      if (runes) props_invalid_value(key2);
+      setter(initial_value);
+    }
   }
   if (runes) getter = () => {
-    var value = props[key];
+    var value = props[key2];
     if (void 0 === value) return get_fallback();
     fallback_dirty = true;
-    fallback_used = false;
     return value;
-  }; else {
-    var derived_getter = (immutable ? derived : derived_safe_equal)((() => props[key]));
-    derived_getter.f |= LEGACY_DERIVED_PROP;
-    getter = () => {
-      var value = get(derived_getter);
-      if (void 0 !== value) fallback_value = void 0;
-      return void 0 === value ? fallback_value : value;
-    };
-  }
-  if (!(flags & PROPS_IS_UPDATED)) return getter;
+  }; else getter = () => {
+    var value = props[key2];
+    if (void 0 !== value) fallback_value = void 0;
+    return void 0 === value ? fallback_value : value;
+  };
+  if (runes && 0 === (flags2 & PROPS_IS_UPDATED)) return getter;
   if (setter) {
     var legacy_parent = props.$$legacy;
     return function(value, mutation) {
       if (arguments.length > 0) {
         if (!runes || !mutation || legacy_parent || is_store_sub) setter(mutation ? getter() : value);
         return value;
-      } else return getter();
+      }
+      return getter();
     };
   }
-  var from_child = false, was_from_child = false, inner_current_value = mutable_source(prop_value), current_value = derived((() => {
-    var parent_value = getter(), child_value = get(inner_current_value);
-    if (from_child) {
-      from_child = false;
-      was_from_child = true;
-      return child_value;
-    }
-    was_from_child = false;
-    return inner_current_value.v = parent_value;
-  }));
-  if (bindable) get(current_value);
-  if (!immutable) current_value.equals = safe_equals;
+  var overridden = false, d = (0 !== (flags2 & PROPS_IS_IMMUTABLE) ? derived : derived_safe_equal)(() => {
+    overridden = false;
+    return getter();
+  });
+  if (dev_fallback_default) d.label = key2;
+  if (bindable) get(d);
+  var parent_effect = active_effect;
   return function(value, mutation) {
-    if (null !== captured_signals) {
-      from_child = was_from_child;
-      getter();
-      get(inner_current_value);
-    }
     if (arguments.length > 0) {
-      const new_value = mutation ? get(current_value) : runes && bindable ? proxy(value) : value;
-      if (!current_value.equals(new_value)) {
-        from_child = true;
-        set(inner_current_value, new_value);
-        if (fallback_used && void 0 !== fallback_value) fallback_value = new_value;
-        if (has_destroyed_component_ctx(current_value)) return value;
-        untrack((() => get(current_value)));
-      }
+      const new_value = mutation ? get(d) : runes && bindable ? proxy(value) : value;
+      set(d, new_value);
+      overridden = true;
+      if (void 0 !== fallback_value) fallback_value = new_value;
       return value;
     }
-    if (has_destroyed_component_ctx(current_value)) return current_value.v; else return get(current_value);
+    if (is_destroying_effect && overridden || 0 !== (parent_effect.f & DESTROYED)) return d.v; else return get(d);
   };
 }
 
@@ -2603,9 +5012,9 @@ var SvelteElement, Svelte4Component = class {
   constructor(options) {
     __privateAdd(this, _events);
     __privateAdd(this, _instance);
-    var _a3, _b3, sources = new Map, add_source = (key, value) => {
-      var s = mutable_source(value);
-      sources.set(key, s);
+    var _a5, _b3, sources = new Map, add_source = (key2, value) => {
+      var s = mutable_source(value, false, false);
+      sources.set(key2, s);
       return s;
     };
     const props = new Proxy({
@@ -2613,18 +5022,18 @@ var SvelteElement, Svelte4Component = class {
       $$events: {}
     }, {
       get(target, prop2) {
-        var _a4;
-        return get(null != (_a4 = sources.get(prop2)) ? _a4 : add_source(prop2, Reflect.get(target, prop2)));
+        var _a6;
+        return get(null != (_a6 = sources.get(prop2)) ? _a6 : add_source(prop2, Reflect.get(target, prop2)));
       },
       has(target, prop2) {
-        var _a4;
+        var _a6;
         if (prop2 === LEGACY_PROPS) return true;
-        get(null != (_a4 = sources.get(prop2)) ? _a4 : add_source(prop2, Reflect.get(target, prop2)));
+        get(null != (_a6 = sources.get(prop2)) ? _a6 : add_source(prop2, Reflect.get(target, prop2)));
         return Reflect.has(target, prop2);
       },
       set(target, prop2, value) {
-        var _a4;
-        set(null != (_a4 = sources.get(prop2)) ? _a4 : add_source(prop2, value), value);
+        var _a6;
+        set(null != (_a6 = sources.get(prop2)) ? _a6 : add_source(prop2, value), value);
         return Reflect.set(target, prop2, value);
       }
     });
@@ -2633,17 +5042,18 @@ var SvelteElement, Svelte4Component = class {
       anchor: options.anchor,
       props,
       context: options.context,
-      intro: null != (_a3 = options.intro) ? _a3 : false,
-      recover: options.recover
+      intro: null != (_a5 = options.intro) ? _a5 : false,
+      recover: options.recover,
+      transformError: options.transformError
     }));
-    if (!(null == (_b3 = null == options ? void 0 : options.props) ? void 0 : _b3.$$host) || false === options.sync) flushSync();
+    if (!(async_mode_flag || (null == (_b3 = null == options ? void 0 : options.props) ? void 0 : _b3.$$host) && false !== options.sync)) flushSync();
     __privateSet(this, _events, props.$$events);
-    for (const key of Object.keys(__privateGet(this, _instance))) if ("$set" !== key && "$destroy" !== key && "$on" !== key) define_property(this, key, {
+    for (const key2 of Object.keys(__privateGet(this, _instance))) if ("$set" !== key2 && "$destroy" !== key2 && "$on" !== key2) define_property(this, key2, {
       get() {
-        return __privateGet(this, _instance)[key];
+        return __privateGet(this, _instance)[key2];
       },
       set(value) {
-        __privateGet(this, _instance)[key] = value;
+        __privateGet(this, _instance)[key2] = value;
       },
       enumerable: true
     });
@@ -2662,7 +5072,7 @@ var SvelteElement, Svelte4Component = class {
     const cb = (...args) => callback.call(this, ...args);
     __privateGet(this, _events)[event2].push(cb);
     return () => {
-      __privateGet(this, _events)[event2] = __privateGet(this, _events)[event2].filter((fn => fn !== cb));
+      __privateGet(this, _events)[event2] = __privateGet(this, _events)[event2].filter(fn => fn !== cb);
     };
   }
   $destroy() {
@@ -2675,7 +5085,7 @@ _events = new WeakMap;
 _instance = new WeakMap;
 
 if ("function" == typeof HTMLElement) SvelteElement = class extends HTMLElement {
-  constructor($$componentCtor, $$slots, use_shadow_dom) {
+  constructor($$componentCtor, $$slots, shadow_root_init) {
     super();
     __publicField(this, "$$ctor");
     __publicField(this, "$$s");
@@ -2687,11 +5097,10 @@ if ("function" == typeof HTMLElement) SvelteElement = class extends HTMLElement 
     __publicField(this, "$$l", {});
     __publicField(this, "$$l_u", new Map);
     __publicField(this, "$$me");
+    __publicField(this, "$$shadowRoot", null);
     this.$$ctor = $$componentCtor;
     this.$$s = $$slots;
-    if (use_shadow_dom) this.attachShadow({
-      mode: "open"
-    });
+    if (shadow_root_init) this.$$shadowRoot = this.attachShadow(shadow_root_init);
   }
   addEventListener(type, listener, options) {
     this.$$l[type] = this.$$l[type] || [];
@@ -2717,7 +5126,7 @@ if ("function" == typeof HTMLElement) SvelteElement = class extends HTMLElement 
     if (!this.$$c) {
       let create_slot = function(name) {
         return anchor => {
-          const slot2 = document.createElement("slot");
+          const slot2 = create_element("slot");
           if ("default" !== name) slot2.name = name;
           append(anchor, slot2);
         };
@@ -2733,32 +5142,32 @@ if ("function" == typeof HTMLElement) SvelteElement = class extends HTMLElement 
         const name = this.$$g_p(attribute.name);
         if (!(name in this.$$d)) this.$$d[name] = get_custom_element_value(name, attribute.value, this.$$p_d, "toProp");
       }
-      for (const key in this.$$p_d) if (!(key in this.$$d) && void 0 !== this[key]) {
-        this.$$d[key] = this[key];
-        delete this[key];
+      for (const key2 in this.$$p_d) if (!(key2 in this.$$d) && void 0 !== this[key2]) {
+        this.$$d[key2] = this[key2];
+        delete this[key2];
       }
       this.$$c = createClassComponent({
         component: this.$$ctor,
-        target: this.shadowRoot || this,
+        target: this.$$shadowRoot || this,
         props: {
           ...this.$$d,
           $$slots,
           $$host: this
         }
       });
-      this.$$me = effect_root((() => {
-        render_effect((() => {
-          var _a3;
+      this.$$me = effect_root(() => {
+        render_effect(() => {
+          var _a5;
           this.$$r = true;
-          for (const key of object_keys(this.$$c)) {
-            if (!(null == (_a3 = this.$$p_d[key]) ? void 0 : _a3.reflect)) continue;
-            this.$$d[key] = this.$$c[key];
-            const attribute_value = get_custom_element_value(key, this.$$d[key], this.$$p_d, "toAttribute");
-            if (null == attribute_value) this.removeAttribute(this.$$p_d[key].attribute || key); else this.setAttribute(this.$$p_d[key].attribute || key, attribute_value);
+          for (const key2 of object_keys(this.$$c)) {
+            if (!(null == (_a5 = this.$$p_d[key2]) ? void 0 : _a5.reflect)) continue;
+            this.$$d[key2] = this.$$c[key2];
+            const attribute_value = get_custom_element_value(key2, this.$$d[key2], this.$$p_d, "toAttribute");
+            if (null == attribute_value) this.removeAttribute(this.$$p_d[key2].attribute || key2); else this.setAttribute(this.$$p_d[key2].attribute || key2, attribute_value);
           }
           this.$$r = false;
-        }));
-      }));
+        });
+      });
       for (const type in this.$$l) for (const listener of this.$$l[type]) {
         const unsub = this.$$c.$on(type, listener);
         this.$$l_u.set(listener, unsub);
@@ -2767,33 +5176,33 @@ if ("function" == typeof HTMLElement) SvelteElement = class extends HTMLElement 
     }
   }
   attributeChangedCallback(attr2, _oldValue, newValue) {
-    var _a3;
+    var _a5;
     if (!this.$$r) {
       attr2 = this.$$g_p(attr2);
       this.$$d[attr2] = get_custom_element_value(attr2, newValue, this.$$p_d, "toProp");
-      null == (_a3 = this.$$c) || _a3.$set({
+      null == (_a5 = this.$$c) || _a5.$set({
         [attr2]: this.$$d[attr2]
       });
     }
   }
   disconnectedCallback() {
     this.$$cn = false;
-    Promise.resolve().then((() => {
+    Promise.resolve().then(() => {
       if (!this.$$cn && this.$$c) {
         this.$$c.$destroy();
         this.$$me();
         this.$$c = void 0;
       }
-    }));
+    });
   }
   $$g_p(attribute_name) {
-    return object_keys(this.$$p_d).find((key => this.$$p_d[key].attribute === attribute_name || !this.$$p_d[key].attribute && key.toLowerCase() === attribute_name)) || attribute_name;
+    return object_keys(this.$$p_d).find(key2 => this.$$p_d[key2].attribute === attribute_name || !this.$$p_d[key2].attribute && key2.toLowerCase() === attribute_name) || attribute_name;
   }
 };
 
 function get_custom_element_value(prop2, value, props_definition, transform) {
-  var _a3;
-  const type = null == (_a3 = props_definition[prop2]) ? void 0 : _a3.type;
+  var _a5;
+  const type = null == (_a5 = props_definition[prop2]) ? void 0 : _a5.type;
   value = "Boolean" === type && "boolean" != typeof value ? null != value : value;
   if (!transform || !props_definition[prop2]) return value; else if ("toAttribute" === transform) switch (type) {
    case "Object":
@@ -2826,532 +5235,94 @@ function get_custom_element_value(prop2, value, props_definition, transform) {
 
 function get_custom_elements_slots(element2) {
   const result = {};
-  element2.childNodes.forEach((node => {
+  element2.childNodes.forEach(node => {
     result[node.slot || "default"] = true;
-  }));
+  });
   return result;
 }
 
-if (dev_fallback_default) {
-  let throw_rune_error = function(rune) {
-    if (!(rune in globalThis)) {
-      let value;
-      Object.defineProperty(globalThis, rune, {
-        configurable: true,
-        get: () => {
-          if (void 0 !== value) return value;
-          rune_outside_svelte(rune);
-        },
-        set: v => {
-          value = v;
-        }
-      });
-    }
-  };
-  throw_rune_error("$state");
-  throw_rune_error("$effect");
-  throw_rune_error("$derived");
-  throw_rune_error("$inspect");
-  throw_rune_error("$props");
-  throw_rune_error("$bindable");
-}
-
-function onMount(fn) {
-  if (null === component_context) lifecycle_outside_component("onMount");
-  if (legacy_mode_flag && null !== component_context.l) init_update_callbacks(component_context).m.push(fn); else user_effect((() => {
-    const cleanup = untrack(fn);
-    if ("function" == typeof cleanup) return cleanup;
-  }));
-}
-
-function onDestroy(fn) {
-  if (null === component_context) lifecycle_outside_component("onDestroy");
-  onMount((() => () => untrack(fn)));
-}
-
-function init_update_callbacks(context) {
-  var _a3, l = context.l;
-  return null != (_a3 = l.u) ? _a3 : l.u = {
-    a: [],
-    b: [],
-    m: []
-  };
-}
-
-function subscribe_to_store(store, run2, invalidate) {
-  if (null == store) {
-    run2(void 0);
-    if (invalidate) invalidate(void 0);
-    return noop;
-  }
-  const unsub = untrack((() => store.subscribe(run2, invalidate)));
-  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
-}
-
-var subscriber_queue = [];
-
-function writable(value, start = noop) {
-  let stop = null;
-  const subscribers = new Set;
-  function set2(new_value) {
-    if (safe_not_equal(value, new_value)) {
-      value = new_value;
-      if (stop) {
-        const run_queue = !subscriber_queue.length;
-        for (const subscriber of subscribers) {
-          subscriber[1]();
-          subscriber_queue.push(subscriber, value);
-        }
-        if (run_queue) {
-          for (let i = 0; i < subscriber_queue.length; i += 2) subscriber_queue[i][0](subscriber_queue[i + 1]);
-          subscriber_queue.length = 0;
-        }
-      }
-    }
-  }
-  function update2(fn) {
-    set2(fn(value));
-  }
-  return {
-    set: set2,
-    update: update2,
-    subscribe: function subscribe(run2, invalidate = noop) {
-      const subscriber = [ run2, invalidate ];
-      subscribers.add(subscriber);
-      if (1 === subscribers.size) stop = start(set2, update2) || noop;
-      run2(value);
-      return () => {
-        subscribers.delete(subscriber);
-        if (0 === subscribers.size && stop) {
-          stop();
-          stop = null;
-        }
-      };
-    }
-  };
-}
-
-function get2(store) {
-  let value;
-  subscribe_to_store(store, (_ => value = _))();
-  return value;
-}
-
-var currentFile = writable(""), maxDepth = writable(0), searchString = writable(""), tagInfo = writable({}), tagFolderSetting = writable(DEFAULT_SETTINGS), selectedTags = writable(), allViewItems = writable(), allViewItemsByLink = writable(), appliedFiles = writable(), v2expandedTags = writable(new Set), performHide = writable(0), pluginInstance = writable(void 0);
-
-function unique(items) {
-  return [ ...new Set([ ...items ]) ];
-}
-
-function trimSlash(src, keepStart = false, keepEnd = false) {
-  const st = keepStart ? 0 : "/" == src[0] ? 1 : 0, end = keepEnd ? void 0 : src.endsWith("/") ? -1 : void 0;
-  if (0 == st && null == end) return src; else return src.slice(st, end);
-}
-
-function trimPrefix(source2, prefix) {
-  if (source2.startsWith(prefix)) return source2.substring(prefix.length); else return source2;
-}
-
-function ancestorToTags(ancestors) {
-  return [ ...ancestors ].reduce(((p, i) => "/" != i[0] ? [ ...p, i ] : [ ...p, p.pop() + "/" + i.substring(1) ]), []);
-}
-
-function ancestorToLongestTag(ancestors) {
-  return ancestors.reduceRight(((a, e) => {
-    var _a3;
-    return !a ? [ e ] : (null == (_a3 = a[0]) ? void 0 : _a3.startsWith(e)) ? a : [ e, ...a ];
-  }), []);
-}
-
-function isSpecialTag(tagSrc) {
-  const tag = trimSlash(tagSrc);
-  return "_untagged" == tag || tag in tagDispDict;
-}
-
-var tagDispAlternativeDict = {};
-
-tagInfo.subscribe((tagInfo2 => {
-  tagDispAlternativeDict = {
-    ...tagDispDict
-  };
-  if (null == tagInfo2) return;
-  const items = Object.entries(tagInfo2);
-  for (const [key, info] of items) if (null == info ? void 0 : info.alt) tagDispAlternativeDict[key] = info.alt;
-}));
-
-function renderSpecialTag(tagSrc) {
-  const tag = trimSlash(tagSrc);
-  return tag in tagDispAlternativeDict ? tagDispAlternativeDict[tag] : tagSrc;
-}
-
-function secondsToFreshness(totalAsMSec) {
-  const totalAsSec = ~~(totalAsMSec / 1e3), totalSec = ~~(totalAsSec * (totalAsSec / Math.abs(totalAsSec)));
-  if (totalSec < EPOCH_HOUR) return FRESHNESS_1;
-  if (totalSec < 6 * EPOCH_HOUR) return FRESHNESS_2;
-  if (totalSec < 3 * EPOCH_DAY) return FRESHNESS_3;
-  if (totalSec < 7 * EPOCH_DAY) return FRESHNESS_4; else return FRESHNESS_5;
-}
-
-var queues = [];
-
-function waitForRequestAnimationFrame() {
-  return new Promise((res => requestAnimationFrame((() => res()))));
-}
-
-function delay(num) {
-  return new Promise((res => setTimeout((() => res()), num || 5)));
-}
-
-function nextTick() {
-  return new Promise((res => setTimeout((() => res()), 0)));
-}
-
-var waits = [ nextTick, delay, nextTick, delay, delay, nextTick ], waitIdx = 0, pumping = false, startContinuousProcessing = Date.now();
-
-async function pump() {
-  if (!pumping) try {
-    pumping = true;
-    for (;;) {
-      const proc = queues.shift();
-      if (proc) {
-        proc();
-        if (Date.now() - startContinuousProcessing > 120) {
-          const w = waits[waitIdx];
-          waitIdx = (waitIdx + 1) % waits.length;
-          await w();
-          startContinuousProcessing = Date.now();
-        }
-      } else break;
-    }
-  } finally {
-    pumping = false;
-  }
-}
-
-var doEvents = () => new Promise((res => {
-  queues.push((() => {
-    res();
-  }));
-  pump();
-}));
-
-function compare(x, y) {
-  return `${x || ""}`.localeCompare(y, void 0, {
-    numeric: true
-  });
-}
-
-function getTagName(tagName, subtreePrefix, tagInfo2, invert) {
-  if (null == tagInfo2) return tagName;
-  const prefix = -1 == invert ? "￿" : "", unpinned = 1 == invert ? "￿" : "";
-  if (tagName in tagInfo2 && tagInfo2[tagName]) if ("key" in tagInfo2[tagName]) return `${prefix}_${subtreePrefix}_-${tagInfo2[tagName].key}__${tagName}`;
-  return `${prefix}_${subtreePrefix}_${unpinned}_${tagName}`;
-}
-
-function removeIntermediatePath(paths) {
-  const passed = [];
-  for (const v of paths) {
-    const last = passed.pop();
-    if (void 0 !== last) if (!(trimTrailingSlash(v.toLowerCase()) + "/").startsWith(trimTrailingSlash(last.toLowerCase()) + "/")) passed.push(last);
-    passed.push(v);
-  }
-  return passed.reverse();
-}
-
-function getTagMark(tagInfo2) {
-  if (!tagInfo2) return "";
-  if ("key" in tagInfo2) if ("mark" in tagInfo2 && "" != tagInfo2.mark) return tagInfo2.mark; else return "📌"; else if ("mark" in tagInfo2 && "" != tagInfo2.mark) return tagInfo2.mark; else return "";
-}
-
-function escapeStringToHTML(str) {
-  if (!str) return ""; else return str.replace(/[<>&"'`]/g, (match => ({
-    "<": "&lt;",
-    ">": "&gt;",
-    "&": "&amp;",
-    '"': "&quot;",
-    "'": "&#39;",
-    "`": "&#x60;"
-  }[match])));
-}
-
-var V2FI_IDX_TAG = 0, V2FI_IDX_TAGNAME = 1, V2FI_IDX_TAGDISP = 2, V2FI_IDX_CHILDREN = 3;
-
-function selectCompareMethodTags(settings, tagInfo2) {
-  const _tagInfo = tagInfo2, invert = settings.sortTypeTag.contains("_DESC") ? -1 : 1, subTreeChar = {
-    [-1]: "􏿿",
-    [1]: "_"
-  }, sortByName = (a, b) => {
-    const isASubTree = "" == a[V2FI_IDX_TAGDISP][0], isBSubTree = "" == b[V2FI_IDX_TAGDISP][0], aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME], aPrefix = isASubTree ? subTreeChar[invert] : "", bPrefix = isBSubTree ? subTreeChar[invert] : "";
-    return compare(getTagName(aName, aPrefix, settings.useTagInfo ? _tagInfo : void 0, invert), getTagName(bName, bPrefix, settings.useTagInfo ? _tagInfo : void 0, invert)) * invert;
-  };
-  switch (settings.sortTypeTag) {
-   case "ITEMS_ASC":
-   case "ITEMS_DESC":
-    return (a, b) => {
-      const aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME], aCount = a[V2FI_IDX_CHILDREN].length - (settings.useTagInfo && aName in _tagInfo && "key" in _tagInfo[aName] ? 1e5 * invert : 0), bCount = b[V2FI_IDX_CHILDREN].length - (settings.useTagInfo && bName in _tagInfo && "key" in _tagInfo[bName] ? 1e5 * invert : 0);
-      if (aCount == bCount) return sortByName(a, b); else return (aCount - bCount) * invert;
-    };
-
-   case "NAME_ASC":
-   case "NAME_DESC":
-    return sortByName;
-
-   default:
-    console.warn("Compare method (tags) corrupted");
-    return (a, b) => {
-      const isASubTree = "" == a[V2FI_IDX_TAGDISP][0], isBSubTree = "" == b[V2FI_IDX_TAGDISP][0], aName = a[V2FI_IDX_TAGNAME], bName = b[V2FI_IDX_TAGNAME];
-      return compare((isASubTree ? subTreeChar[invert] : "") + aName, (isBSubTree ? subTreeChar[invert] : "") + bName) * invert;
-    };
-  }
-}
-
-function uniqueCaseIntensive(pieces) {
-  const delMap = new Set, ret = [];
-  for (const piece of pieces) if (!delMap.has(piece.toLowerCase())) {
-    ret.push(piece);
-    delMap.add(piece.toLowerCase());
-  }
-  return ret;
-}
-
-function _sorterTagLength(a, b, invert) {
-  const diff = a.split("/").length - b.split("/").length;
-  if (0 != diff) return diff * (invert ? -1 : 1); else return (a.length - b.length) * (invert ? -1 : 1);
-}
-
-function getExtraTags(tags, trail, reduceNestedParent) {
-  let tagsLeft = uniqueCaseIntensive(tags), removeTrailItems = [];
-  if (reduceNestedParent) removeTrailItems = trail.sort(((a, b) => _sorterTagLength(a, b, true))); else removeTrailItems = removeIntermediatePath(trail);
-  for (const t of removeTrailItems) {
-    const trimLength = t.endsWith("/") ? t.length : t.length;
-    if (reduceNestedParent) tagsLeft = tagsLeft.map((e => (e + "/").toLowerCase().startsWith(t.toLowerCase()) ? e.substring(trimLength) : e)); else {
-      const f = tagsLeft.findIndex((e => (e + "/").toLowerCase().startsWith(t.toLowerCase())));
-      if (-1 !== f) tagsLeft[f] = tagsLeft[f].substring(trimLength);
-    }
-  }
-  return tagsLeft.filter((e => "" != e.trim()));
-}
-
-function trimTrailingSlash(src) {
-  return trimSlash(src, true, false);
-}
-
-function joinPartialPath(path) {
-  return path.reduce(((p, c) => c.endsWith("/") && p.length > 0 ? [ c + p[0], ...p.slice(1) ] : [ c, ...p ]), []);
-}
-
-function pathMatch(haystackLC, needleLC) {
-  if (haystackLC == needleLC) return true;
-  if ("/" == needleLC[needleLC.length - 1]) if (0 === (haystackLC + "/").indexOf(needleLC)) return true;
-  return false;
-}
-
-function parseTagName(thisName, _tagInfo) {
-  let tagNameDisp = [ "" ];
-  const names = thisName.split("/").filter((e => "" != e.trim()));
-  let inSubTree = false, tagName = "";
-  if (names.length > 1) {
-    tagName = `${names[names.length - 1]}`;
-    inSubTree = true;
-  } else tagName = thisName;
-  if (tagName.endsWith("/")) tagName = tagName.substring(0, tagName.length - 1);
-  const tagMark = getTagMark(tagName in _tagInfo ? _tagInfo[tagName] : void 0);
-  tagNameDisp = [ `${tagMark}${renderSpecialTag(tagName)}` ];
-  if (inSubTree) tagNameDisp = [ `${tagMark}`, `${renderSpecialTag(tagName)}` ];
-  return [ tagName, tagNameDisp ];
-}
-
-function parseAllForwardReference(metaCache, filename, passed) {
-  var _a3;
-  return unique(Object.keys(null != (_a3 = null == metaCache ? void 0 : metaCache[filename]) ? _a3 : {}).filter((e => !passed.contains(e))));
-}
-
-function parseAllReverseReference(metaCache, filename, passed) {
-  return unique(Object.entries(metaCache).filter((([, links]) => filename in links)).map((([name]) => name)).filter((e => !passed.contains(e))));
-}
-
-function parseAllReference(metaCache, filename, conf) {
-  var _a3, _b3;
-  let linked = [ ...!(null == (_a3 = null == conf ? void 0 : conf.outgoing) ? void 0 : _a3.enabled) ? [] : parseAllForwardReference(metaCache, filename, []), ...!(null == (_b3 = null == conf ? void 0 : conf.incoming) ? void 0 : _b3.enabled) ? [] : parseAllReverseReference(metaCache, filename, []) ];
-  if (0 != linked.length) linked = unique([ filename, ...linked ]);
-  return linked;
-}
-
-function fileCacheToCompare(cache) {
-  if (!cache) return ""; else return {
-    l: cache.links,
-    t: cache.tags
-  };
-}
-
-var allViewItemsMap = new Map;
-
-allViewItemsByLink.subscribe((e => {
-  updateItemsLinkMap(e);
-}));
-
-function updateItemsLinkMap(e) {
-  allViewItemsMap.clear();
-  if (e) e.forEach((item => allViewItemsMap.set(item.path, item)));
-}
-
-function getViewItemFromPath(path) {
-  return allViewItemsMap.get(path);
-}
-
-function getAllLinksRecursive(item, trail) {
-  const leftLinks = item.links.filter((e => !trail.contains(e))), allChildLinks = leftLinks.flatMap((itemName => {
-    const item2 = getViewItemFromPath(itemName);
-    if (!item2) return []; else return getAllLinksRecursive(item2, [ ...trail, itemName ]);
-  }));
-  return unique([ ...leftLinks, ...allChildLinks ]);
-}
-
-var waitingProcess = new Map, runningProcess = new Set;
-
-async function scheduleOnceIfDuplicated(key, proc) {
-  if (!runningProcess.has(key)) try {
-    runningProcess.add(key);
-    await delay(3);
-    if (waitingProcess.has(key)) {
-      const nextProc = waitingProcess.get(key);
-      waitingProcess.delete(key);
-      runningProcess.delete(key);
-      return scheduleOnceIfDuplicated(key, nextProc);
-    } else await proc();
-  } finally {
-    runningProcess.delete(key);
-  } else waitingProcess.set(key, proc);
-}
-
-function isSameAny(a, b) {
-  if (typeof a != typeof b) return false;
-  switch (typeof a) {
-   case "string":
-   case "number":
-   case "bigint":
-   case "boolean":
-   case "symbol":
-   case "function":
-   case "undefined":
-    return a == b;
-
-   case "object":
-    if (a === b) return true;
-    if (a instanceof Map || a instanceof Set) {
-      if (a.size != b.size) return false;
-      const v = [ ...a ], w = [ ...b ];
-      for (let i = 0; i < v.length; i++) if (v[i] != w[i]) return false;
-      return true;
-    }
-    if (Array.isArray(a)) {
-      for (let i = 0; i < a.length; i++) if (!isSameAny(a[i], b[i])) return false;
-      return true;
-    }
-    {
-      const x = Object.values(a), y = Object.values(b);
-      if (x.length != y.length) return false;
-      for (let i = 0; i < x.length; i++) if (!isSameAny(x[i], y[i])) return false;
-      return true;
-    }
-
-   default:
-    return false;
-  }
-}
-
-var _a2, _b2, _c, import_obsidian2 = require("obsidian"), PUBLIC_VERSION = "5";
-
-if ("undefined" != typeof window) (null != (_c = (_b2 = null != (_a2 = window.__svelte) ? _a2 : window.__svelte = {}).v) ? _c : _b2.v = new Set).add(PUBLIC_VERSION);
-
-var import_obsidian = require("obsidian"), root = template('<div class="markdownBody svelte-1qfikme" style="min-height: 1em;"></div>'), $$css = {
-  hash: "svelte-1qfikme",
-  code: ".markdownBody.svelte-1qfikme {user-select:text;-webkit-user-select:text;}"
+var import_obsidian3 = require("obsidian"), root = from_html('<div class="markdownBody svelte-164rifk" style="min-height: 1em;"></div>'), $$css = {
+  hash: "svelte-164rifk",
+  code: ".markdownBody.svelte-164rifk {user-select:text;-webkit-user-select:text;}"
 };
 
 function ScrollViewMarkdownComponent($$anchor, $$props) {
   push($$props, true);
   append_styles($$anchor, $$css);
-  let file = prop($$props, "file", 19, (() => ({
+  let file = prop($$props, "file", 19, () => ({
     path: ""
-  }))), el = state(void 0), renderedContent = state("");
+  })), el = state(void 0), renderedContent = state("");
   function onAppearing(_) {
     if (file().content && get(el) && get(renderedContent) != file().content) {
-      import_obsidian.MarkdownRenderer.render($$props.plugin.app, file().content, get(el), file().path, $$props.plugin);
+      import_obsidian3.MarkdownRenderer.render($$props.plugin.app, file().content, get(el), file().path, $$props.plugin);
       set(renderedContent, file().content, true);
     }
   }
-  onMount((() => {
+  onMount(() => {
     if (get(el) && $$props.observer) {
       $$props.observer.observe(get(el));
       get(el).addEventListener("appearing", onAppearing);
     }
-  }));
-  onDestroy((() => {
+  });
+  onDestroy(() => {
     if (get(el) && $$props.observer) {
       $$props.observer.unobserve(get(el));
       get(el).removeEventListener("appearing", onAppearing);
     }
-  }));
-  user_effect((() => {
+  });
+  user_effect(() => {
     if (get(renderedContent) && file() && file().content && get(el) && get(renderedContent) != file().content) {
       get(el).style.minHeight = `${get(el).clientHeight}px`;
       get(el).innerHTML = "";
-      import_obsidian.MarkdownRenderer.render($$props.plugin.app, file().content, get(el), file().path, $$props.plugin);
+      import_obsidian3.MarkdownRenderer.render($$props.plugin.app, file().content, get(el), file().path, $$props.plugin);
       set(renderedContent, file().content, true);
       get(el).style.minHeight = "20px";
     }
-  }));
+  });
   var div = root();
-  bind_this(div, ($$value => set(el, $$value)), (() => get(el)));
+  bind_this(div, $$value => set(el, $$value), () => get(el));
   append($$anchor, div);
   pop();
 }
 
-var on_click = (evt, handleOpenFile, file) => handleOpenFile(evt, get(file)), root_1 = template('<div class="file svelte-s1mg0b"><div class="header svelte-s1mg0b"><span> </span> <span class="path svelte-s1mg0b"> </span></div> <!> <hr class="svelte-s1mg0b"></div>'), root2 = template('<div class="x"><div class="header svelte-s1mg0b"> </div> <hr class="svelte-s1mg0b"> <!></div>'), $$css2 = {
-  hash: "svelte-s1mg0b",
-  code: ".header.svelte-s1mg0b {background-color:var(--background-secondary-alt);position:sticky;top:0;color:var(--text-normal);margin-bottom:8px;}.file.svelte-s1mg0b {cursor:pointer;}.path.svelte-s1mg0b {font-size:75%;}hr.svelte-s1mg0b {margin:8px auto;}"
+var root2 = from_html('<div class="file svelte-5gvkrt"><div class="header svelte-5gvkrt"><span> </span> <span class="path svelte-5gvkrt"> </span></div> <!> <hr class="svelte-5gvkrt"/></div>'), root_1 = from_html('<div class="x"><div class="header svelte-5gvkrt"> </div> <hr class="svelte-5gvkrt"/> <!></div>'), $$css2 = {
+  hash: "svelte-5gvkrt",
+  code: ".header.svelte-5gvkrt {background-color:var(--background-secondary-alt);position:sticky;top:0;color:var(--text-normal);margin-bottom:8px;}.file.svelte-5gvkrt {cursor:pointer;}.path.svelte-5gvkrt {font-size:75%;}hr.svelte-5gvkrt {margin:8px auto;}"
 };
 
 function ScrollViewComponent($$anchor, $$props) {
   push($$props, true);
   append_styles($$anchor, $$css2);
   const [$$stores, $$cleanup] = setup_stores();
-  let store = prop($$props, "store", 19, (() => writable({
+  let store = prop($$props, "store", 19, () => writable({
     files: [],
     title: "",
     tagPath: ""
-  })));
-  const _state = user_derived((() => store_get(store(), "$store", $$stores)));
-  let files = user_derived((() => get(_state).files));
-  const tagPath = user_derived((() => get(_state).tagPath.split(", ").map((e => "#" + trimTrailingSlash(e).split("/").map((e2 => renderSpecialTag(e2.trim()))).join("/"))).join(", ")));
-  function handleOpenFile(e, file) {
-    $$props.openfile(file.path, false);
-    e.preventDefault();
-  }
+  }));
+  const _state = user_derived(() => store_get(store(), "$store", $$stores));
+  let files = user_derived(() => get(_state).files);
+  const tagPath = user_derived(() => get(_state).tagPath.split(", ").map(e => "#" + trimTrailingSlash(e).split("/").map(e2 => renderSpecialTag(e2.trim())).join("/")).join(", "));
   let scrollEl = state(void 0), observer = state(void 0);
   const onAppearing = new CustomEvent("appearing", {
     detail: {}
   });
-  user_effect((() => {
+  user_effect(() => {
     const options = {
       root: get(scrollEl),
       rootMargin: "10px",
       threshold: 0
     };
-    set(observer, new IntersectionObserver((entries => {
+    set(observer, new IntersectionObserver(entries => {
       for (const entry of entries) if (entry.isIntersecting) entry.target.dispatchEvent(onAppearing);
-    }), options), true);
-  }));
-  onDestroy((() => {
+    }, options), true);
+  });
+  onDestroy(() => {
     null === get(observer) || void 0 === get(observer) || get(observer).disconnect();
-  }));
-  var div = root2(), div_1 = child(div), text2 = child(div_1);
+  });
+  var div = root_1(), div_1 = child(div), text2 = child(div_1);
   reset(div_1);
-  each(sibling(div_1, 4), 17, (() => get(files)), index, (($$anchor2, file) => {
-    var div_2 = root_1();
-    div_2.__click = [ on_click, handleOpenFile, file ];
-    var div_3 = child(div_2), span = child(div_3), text_1 = child(span, true);
+  each(sibling(div_1, 4), 17, () => get(files), index, ($$anchor2, file) => {
+    var div_2 = root2(), div_3 = child(div_2), span = child(div_3), text_1 = child(span, true);
     reset(span);
     var span_1 = sibling(span, 2), text_2 = child(span_1);
     reset(span_1);
@@ -3369,19 +5340,23 @@ function ScrollViewComponent($$anchor, $$props) {
     });
     next(2);
     reset(div_2);
-    bind_this(div_2, ($$value => set(scrollEl, $$value)), (() => get(scrollEl)));
-    template_effect((() => {
-      var _a3;
+    bind_this(div_2, $$value => set(scrollEl, $$value), () => get(scrollEl));
+    template_effect(() => {
+      var _a5;
       set_text(text_1, get(file).title);
-      set_text(text_2, `(${null != (_a3 = get(file).path) ? _a3 : ""})`);
-    }));
+      set_text(text_2, `(${null != (_a5 = get(file).path) ? _a5 : ""})`);
+    });
+    delegated("click", div_2, evt => function handleOpenFile(e, file) {
+      $$props.openfile(file.path, false);
+      e.preventDefault();
+    }(evt, get(file)));
     append($$anchor2, div_2);
-  }));
+  });
   reset(div);
-  template_effect((() => {
-    var _a3;
-    return set_text(text2, `Files with ${null != (_a3 = get(tagPath)) ? _a3 : ""}`);
-  }));
+  template_effect(() => {
+    var _a5;
+    return set_text(text2, `Files with ${null != (_a5 = get(tagPath)) ? _a5 : ""}`);
+  });
   append($$anchor, div);
   pop();
   $$cleanup();
@@ -3389,7 +5364,7 @@ function ScrollViewComponent($$anchor, $$props) {
 
 delegate([ "click" ]);
 
-var ScrollView = class extends import_obsidian2.ItemView {
+var ScrollView = class extends import_obsidian4.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
     this.icon = "sheets-in-box";
@@ -3434,7 +5409,7 @@ var ScrollView = class extends import_obsidian2.ItemView {
     return this.state;
   }
   isFileOpened(path) {
-    return this.state.files.some((e => e.path == path));
+    return this.state.files.some(e => e.path == path);
   }
   getScrollViewState() {
     return this.state;
@@ -3443,7 +5418,7 @@ var ScrollView = class extends import_obsidian2.ItemView {
     const items = [];
     for (const item of this.state.files) if (item.content) items.push(item); else {
       const f = this.app.vault.getAbstractFileByPath(item.path);
-      if (null == f || !(f instanceof import_obsidian2.TFile)) {
+      if (null == f || !(f instanceof import_obsidian4.TFile)) {
         console.log(`File not found:${item.path}`);
         items.push(item);
         continue;
@@ -3479,36 +5454,36 @@ var ScrollView = class extends import_obsidian2.ItemView {
     }
     return await Promise.resolve();
   }
-}, import_obsidian6 = require("obsidian");
+}, import_obsidian8 = require("obsidian");
 
 function performSortExactFirst(_items, children, leftOverItems) {
-  const childrenPathsArr = children.map((e => e[V2FI_IDX_CHILDREN].map((ee => ee.path)))).flat(), childrenPaths = new Set(childrenPathsArr), exactHerePaths = new Set(_items.map((e => e.path)));
-  childrenPaths.forEach((path => exactHerePaths.delete(path)));
-  return [ ...[ ...leftOverItems ].sort(((a, b) => (exactHerePaths.has(a.path) ? -1 : 0) + (exactHerePaths.has(b.path) ? 1 : 0))) ];
+  const childrenPathsArr = children.map(e => e[V2FI_IDX_CHILDREN].map(ee => ee.path)).flat(), childrenPaths = new Set(childrenPathsArr), exactHerePaths = new Set(_items.map(e => e.path));
+  childrenPaths.forEach(path => exactHerePaths.delete(path));
+  return [ ...[ ...leftOverItems ].sort((a, b) => (exactHerePaths.has(a.path) ? -1 : 0) + (exactHerePaths.has(b.path) ? 1 : 0)) ];
 }
 
 function delay2() {
-  return new Promise((res => setTimeout((() => res()), 5)));
+  return new Promise(res => window.setTimeout(() => res(), 5));
 }
 
 function nextTick2() {
-  return new Promise((res => setTimeout((() => res()), 0)));
+  return new Promise(res => window.setTimeout(() => res(), 0));
 }
 
 var delays = [ nextTick2, delay2, nextTick2, waitForRequestAnimationFrame ], delayIdx = 0;
 
 async function collectChildren(previousTrail, tags, _tagInfo, _items) {
   const previousTrailLC = previousTrail.toLowerCase(), children = [], tagPerItem = new Map, lowercaseMap = new Map;
-  for (const item of _items) item.tags.forEach((itemTag => {
-    var _a3;
-    const tagLc = null != (_a3 = lowercaseMap.get(itemTag)) ? _a3 : lowercaseMap.set(itemTag, itemTag.toLowerCase()).get(itemTag);
+  for (const item of _items) item.tags.forEach(itemTag => {
+    var _a5;
+    const tagLc = null != (_a5 = lowercaseMap.get(itemTag)) ? _a5 : lowercaseMap.set(itemTag, itemTag.toLowerCase()).get(itemTag);
     if (!tagPerItem.has(tagLc)) tagPerItem.set(tagLc, []);
     tagPerItem.get(tagLc).push(item);
-  }));
-  for (const tag of tags) {
-    const tagLC = tag.toLowerCase(), tagNestedLC = trimPrefix(tagLC, previousTrailLC), items = [];
-    for (const [itemTag, tempItems] of tagPerItem) if (pathMatch(itemTag, tagLC)) items.push(...tempItems); else if (pathMatch(itemTag, tagNestedLC)) items.push(...tempItems);
-    children.push([ tag, ...parseTagName(tag, _tagInfo), [ ...new Set(items) ] ]);
+  });
+  for (const tag2 of tags) {
+    const tagLC = tag2.toLowerCase(), tagNestedLC = previousTrailLC && !tagLC.startsWith(previousTrailLC) ? previousTrailLC + tagLC : "", items = [];
+    for (const [itemTag, tempItems] of tagPerItem) if (pathMatch(itemTag, tagLC)) items.push(...tempItems); else if (tagNestedLC && pathMatch(itemTag, tagNestedLC)) items.push(...tempItems);
+    children.push([ tag2, ...parseTagName(tag2, _tagInfo), [ ...new Set(items) ] ]);
     delayIdx++;
     delayIdx %= 4;
     await delays[delayIdx]();
@@ -3516,7 +5491,7 @@ async function collectChildren(previousTrail, tags, _tagInfo, _items) {
   return children;
 }
 
-async function collectTreeChildren({key, expandLimit, depth, tags, trailLower, _setting, isMainTree, isSuppressibleLevel, viewType, previousTrail, _tagInfo, _items, linkedItems, isRoot, sortFunc}) {
+async function collectTreeChildren({key: key2, expandLimit, depth, tags, trailLower, _setting, isMainTree, isSuppressibleLevel, viewType, previousTrail, _tagInfo, _items, linkedItems, isRoot, sortFunc}) {
   let suppressLevels = [], children = [];
   if (expandLimit && depth >= expandLimit) {
     children = [];
@@ -3526,27 +5501,30 @@ async function collectTreeChildren({key, expandLimit, depth, tags, trailLower, _
     suppressLevels = getExtraTags(tags, trailLower, _setting.reduceNestedParent);
   } else {
     let wChildren = [];
-    if ("tags" == viewType) wChildren = await collectChildren(previousTrail, tags, _tagInfo, _items); else if ("links" == viewType) wChildren = tags.map((tag => {
-      var _a3;
-      const selfInfo = getViewItemFromPath(tag), dispName = !selfInfo ? tag : selfInfo.displayName;
-      return [ tag, dispName, [ dispName ], null != (_a3 = linkedItems.get(tag)) ? _a3 : [] ];
-    }));
+    if ("tags" == viewType) wChildren = await collectChildren(previousTrail, tags, _tagInfo, _items); else if ("links" == viewType) wChildren = tags.map(tag2 => {
+      var _a5;
+      const selfInfo = getViewItemFromPath(tag2), dispName = !selfInfo ? tag2 : selfInfo.displayName;
+      return [ tag2, dispName, [ dispName ], null != (_a5 = linkedItems.get(tag2)) ? _a5 : [] ];
+    });
     if ("tags" == viewType) {
       if (_setting.mergeRedundantCombination) {
         const out = [], isShown = new Set;
-        for (const [tag, tagName, tagsDisp, items] of wChildren) {
+        for (const [tag2, tagName, tagsDisp, items] of wChildren) {
           const list = [];
           for (const v of items) if (!isShown.has(v.path)) {
             list.push(v);
             isShown.add(v.path);
           }
-          if (0 != list.length) out.push([ tag, tagName, tagsDisp, list ]);
+          if (0 != list.length) out.push([ tag2, tagName, tagsDisp, list ]);
         }
         wChildren = out;
       }
       if (isMainTree && isRoot) {
         const archiveTags = _setting.archiveTags.toLowerCase().replace(/[\n ]/g, "").split(",");
-        wChildren = wChildren.map((e => archiveTags.some((aTag => `${aTag}//`.startsWith(e[V2FI_IDX_TAG].toLowerCase() + "/"))) ? e : [ e[V2FI_IDX_TAG], e[V2FI_IDX_TAGNAME], e[V2FI_IDX_TAGDISP], e[V2FI_IDX_CHILDREN].filter((items => !items.tags.some((e2 => archiveTags.contains(e2.toLowerCase()))))) ])).filter((child2 => 0 != child2[V2FI_IDX_CHILDREN].length));
+        wChildren = wChildren.map(e => {
+          const childTagPath = `${trimTrailingSlash(e[V2FI_IDX_TAG].toLowerCase())}/`;
+          return archiveTags.some(aTag => `${trimTrailingSlash(aTag)}/`.startsWith(childTagPath)) ? e : [ e[V2FI_IDX_TAG], e[V2FI_IDX_TAGNAME], e[V2FI_IDX_TAGDISP], e[V2FI_IDX_CHILDREN].filter(items => !items.tags.some(e2 => archiveTags.contains(e2.toLowerCase()))) ];
+        }).filter(child2 => 0 != child2[V2FI_IDX_CHILDREN].length);
       }
     }
     wChildren = wChildren.sort(sortFunc);
@@ -3558,7 +5536,7 @@ async function collectTreeChildren({key, expandLimit, depth, tags, trailLower, _
   };
 }
 
-var root3 = template("<div><!></div>");
+var root3 = from_html("<div><!></div>");
 
 function OnDemandRender($$anchor, $$props) {
   push($$props, true);
@@ -3568,52 +5546,46 @@ function OnDemandRender($$anchor, $$props) {
     if (isVisible() != visibility) if (visibility) isVisible(visibility);
     set(hidingScheduled, !visibility);
   }
-  onMount((() => {
-    performHide.subscribe((() => {
+  onMount(() => {
+    performHide.subscribe(() => {
       if (get(hidingScheduled)) {
         isVisible(false);
         set(hidingScheduled, false);
       }
-    }));
-  }));
-  onDestroy((() => {
+    });
+  });
+  onDestroy(() => {
     if (get(_el)) unobserve(get(_el));
-  }));
+  });
   let _el = state(void 0), el = state(void 0);
-  user_effect((() => {
+  user_effect(() => {
     if (get(_el) != get(el)) {
       if (get(_el)) unobserve(get(_el));
       set(_el, get(el), true);
       if (get(el)) observe(get(el), setIsVisible);
     }
-  }));
+  });
   var div = root3();
-  snippet(child(div), (() => {
-    var _a3;
-    return null != (_a3 = $$props.children) ? _a3 : noop;
-  }), (() => ({
+  snippet(child(div), () => {
+    var _a5;
+    return null != (_a5 = $$props.children) ? _a5 : noop;
+  }, () => ({
     isVisible: isVisible()
-  })));
+  }));
   reset(div);
-  bind_this(div, ($$value => set(el, $$value)), (() => get(el)));
-  template_effect((() => set_class(div, 1, clsx2(cssClass()))));
+  bind_this(div, $$value => set(el, $$value), () => get(el));
+  template_effect(() => set_class(div, 1, clsx2(cssClass())));
   append($$anchor, div);
   pop();
 }
 
-var on_click2 = (evt, $$props) => $$props.openFile($$props.item.path, evt.metaKey || evt.ctrlKey), on_mouseover = (e, handleMouseover, $$props) => {
-  handleMouseover(e, $$props.item.path);
-}, on_contextmenu = (evt, $$props) => $$props.showMenu(evt, $$props.trail, void 0, [ $$props.item ]), root_2 = template('<div class="tf-taglist"><!></div>'), root_12 = template('<div><div class="tree-item-inner nav-file-title-content lsl-f"> </div> <!></div>');
+var root4 = from_html('<div class="tf-taglist"></div>'), root_12 = from_html('<div><div class="tree-item-inner nav-file-title-content lsl-f"> </div> <!></div>');
 
 function V2TreeItemComponent($$anchor, $$props) {
   push($$props, true);
-  const [$$stores, $$cleanup] = setup_stores(), $pluginInstance = () => store_get(pluginInstance, "$pluginInstance", $$stores);
-  function handleMouseover(e, path) {
-    $$props.hoverPreview(e, path);
-  }
-  const _setting = user_derived((() => store_get(tagFolderSetting, "$tagFolderSetting", $$stores))), _currentActiveFilePath = user_derived((() => store_get(currentFile, "$currentFile", $$stores)));
-  let isActive = user_derived((() => $$props.item.path == get(_currentActiveFilePath))), isItemVisible = state(false);
-  const tagsLeft = user_derived((() => get(isItemVisible) ? uniqueCaseIntensive([ ...getExtraTags($$props.item.tags, [ ...$$props.trail ], get(_setting).reduceNestedParent), ...$$props.item.extraTags ].map((e => trimSlash(e, false, true))).map((e => e.split("/").map((ee => renderSpecialTag(ee))).join("/"))).filter((e => "" != e))) : [])), extraTagsHtml = user_derived((() => `${get(tagsLeft).map((e => `<span class="tf-tag">${escapeStringToHTML(e)}</span>`)).join("")}`)), draggable = user_derived((() => !get(_setting).disableDragging)), app = user_derived((() => null === $pluginInstance() || void 0 === $pluginInstance() ? void 0 : $pluginInstance().app)), dm = user_derived((() => null === get(app) || void 0 === get(app) ? void 0 : get(app).dragManager));
+  const $pluginInstance = () => store_get(pluginInstance, "$pluginInstance", $$stores), [$$stores, $$cleanup] = setup_stores(), _setting = user_derived(() => store_get(tagFolderSetting, "$tagFolderSetting", $$stores)), _currentActiveFilePath = user_derived(() => store_get(currentFile, "$currentFile", $$stores));
+  let isActive = user_derived(() => $$props.item.path == get(_currentActiveFilePath)), isItemVisible = state(false);
+  const tagsLeft = user_derived(() => get(isItemVisible) ? uniqueCaseIntensive([ ...getExtraTags($$props.item.tags, [ ...$$props.trail ], get(_setting).reduceNestedParent), ...$$props.item.extraTags ].map(e => trimSlash(e, false, true)).map(e => e.split("/").map(ee => renderSpecialTag(ee)).join("/")).filter(e => "" != e)) : []), extraTagsHtml = user_derived(() => `${get(tagsLeft).map(e => `<span class="tf-tag">${escapeStringToHTML(e)}</span>`).join("")}`), draggable = user_derived(() => !get(_setting).disableDragging), app = user_derived(() => null === $pluginInstance() || void 0 === $pluginInstance() ? void 0 : $pluginInstance().app), dm = user_derived(() => null === get(app) || void 0 === get(app) ? void 0 : get(app).dragManager);
   function dragStartFile(args) {
     if (!get(draggable)) return;
     const file = get(app).vault.getAbstractFileByPath($$props.item.path), param = get(dm).dragFile(args, file);
@@ -3624,31 +5596,35 @@ function V2TreeItemComponent($$anchor, $$props) {
       let isVisible = () => null == $$arg0 ? void 0 : $$arg0().isVisible;
       var div = root_12();
       let classes;
-      div.__click = [ on_click2, $$props ];
-      div.__mouseover = [ on_mouseover, handleMouseover, $$props ];
-      div.__contextmenu = [ on_contextmenu, $$props ];
       var div_1 = child(div), text2 = child(div_1, true);
       reset(div_1);
       var node = sibling(div_1, 2), consequent = $$anchor3 => {
-        var div_2 = root_2();
-        html(child(div_2), (() => get(extraTagsHtml)), false, false);
+        var div_2 = root4();
+        html(div_2, () => get(extraTagsHtml), true);
         reset(div_2);
         append($$anchor3, div_2);
       };
-      if_block(node, ($$render => {
+      if_block(node, $$render => {
         if (isVisible()) $$render(consequent);
-      }));
+      });
       reset(div);
-      template_effect(($0 => {
-        classes = set_class(div, 1, "tree-item-self is-clickable nav-file-title", null, classes, $0);
-        set_attribute(div, "draggable", get(draggable));
-        set_attribute(div, "data-path", $$props.item.path);
+      template_effect(() => {
+        classes = set_class(div, 1, "tree-item-self is-clickable nav-file-title", null, classes, {
+          "is-active": get(isActive)
+        });
+        set_attribute2(div, "draggable", get(draggable));
+        set_attribute2(div, "data-path", $$props.item.path);
         set_text(text2, isVisible() ? $$props.item.displayName : "");
-      }), [ () => ({
-        "is-active": get(isActive)
-      }) ]);
+      });
       event("dragstart", div, dragStartFile);
-      event("focus", div, (() => {}));
+      delegated("click", div, evt => $$props.openFile($$props.item.path, evt.metaKey || evt.ctrlKey));
+      delegated("mouseover", div, e => {
+        (function handleMouseover(e, path) {
+          $$props.hoverPreview(e, path);
+        })(e, $$props.item.path);
+      });
+      event("focus", div, () => {});
+      delegated("contextmenu", div, evt => $$props.showMenu(evt, $$props.trail, void 0, [ $$props.item ]));
       append($$anchor2, div);
     };
     OnDemandRender($$anchor, {
@@ -3671,29 +5647,14 @@ function V2TreeItemComponent($$anchor, $$props) {
 
 delegate([ "click", "mouseover", "contextmenu" ]);
 
-function handleOpenItem(evt, viewType, $$props, filename) {
-  if ("tags" != viewType()) {
-    evt.preventDefault();
-    evt.stopPropagation();
-    $$props.openFile(get(filename), evt.metaKey || evt.ctrlKey);
-  }
-}
-
-var on_contextmenu2 = (evt, shouldResponsibleFor, $$props, trail, suppressLevels, viewType, tagName, filename, _items) => {
-  evt.stopPropagation();
-  if (shouldResponsibleFor(evt)) $$props.showMenu(evt, [ ...trail(), ...get(suppressLevels) ], "tags" == viewType() ? tagName() : get(filename), get(_items));
-}, root_22 = template('<div class="tree-item-self nav-folder-title"><div class="tree-item-inner nav-folder-title-content"> </div></div>'), root_6 = ns_template('<svg class="svg-icon"></svg>'), root_7 = template('<div class="tagfolder-titletagname"><!></div>'), root_8 = template('<div class="tagfolder-titletagname">...</div>'), on_click3 = (e, handleOpenScroll, trail, _items) => handleOpenScroll(e, trail(), get(_items).map((e2 => e2.path))), root_4 = template('<div><!></div> <div class="tree-item-inner nav-folder-title-content lsl-f"><!> <div class="tagfolder-quantity itemscount"><span class="itemscount"> </span></div></div>', 1), root_10 = template("<!> <!>", 1), root_15 = template('<div class="tree-item-children nav-folder-children"><!></div>'), root4 = template("<div><!> <!></div>");
+var root5 = from_html('<div class="tree-item-self nav-folder-title"><div class="tree-item-inner nav-folder-title-content"> </div></div>'), root_13 = from_svg('<svg class="svg-icon"></svg>'), root_2 = from_html('<div class="tagfolder-titletagname"></div>'), root_3 = from_html('<div class="tagfolder-titletagname">...</div>'), root_4 = from_html('<div><!></div> <div class="tree-item-inner nav-folder-title-content lsl-f"><!> <div class="tagfolder-quantity itemscount"><span class="itemscount"> </span></div></div>', 1), root_5 = from_html("<!> <!>", 1), root_6 = from_html('<div class="tree-item-children nav-folder-children"><!></div>'), root_7 = from_html("<div><!> <!></div>");
 
 function V2TreeFolderComponent_1($$anchor, $$props) {
   push($$props, true);
   const [$$stores, $$cleanup] = setup_stores();
-  var _a3, _b3, _c2;
-  let viewType = prop($$props, "viewType", 3, "tags"), thisName = prop($$props, "thisName", 3, ""), items = prop($$props, "items", 19, (() => [])), tagName = prop($$props, "tagName", 11, ""), tagNameDisp = prop($$props, "tagNameDisp", 27, (() => proxy([]))), trail = prop($$props, "trail", 19, (() => [])), depth = prop($$props, "depth", 3, 1), folderIcon = prop($$props, "folderIcon", 3, ""), headerTitle = prop($$props, "headerTitle", 3, ""), _setting = user_derived((() => store_get(tagFolderSetting, "$tagFolderSetting", $$stores)));
-  const expandLimit = user_derived((() => !get(_setting).expandLimit ? 0 : "links" == viewType() ? get(_setting).expandLimit + 1 : get(_setting).expandLimit)), _tagInfo = user_derived((() => store_get(tagInfo, "$tagInfo", $$stores))), _currentActiveFilePath = user_derived((() => store_get(currentFile, "$currentFile", $$stores)));
-  function handleOpenScroll(e, trails, filePaths) {
-    if ("tags" == viewType()) $$props.openScrollView(void 0, "", joinPartialPath(removeIntermediatePath(trails)).join(", "), filePaths); else if ("links" == viewType()) $$props.openScrollView(void 0, "", `Linked to ${get(filename)}`, filePaths);
-    e.preventDefault();
-  }
+  var _a5, _b3, _c2;
+  let viewType = prop($$props, "viewType", 3, "tags"), thisName = prop($$props, "thisName", 3, ""), items = prop($$props, "items", 19, () => []), tagName = prop($$props, "tagName", 11, ""), tagNameDisp = prop($$props, "tagNameDisp", 27, () => proxy([])), trail = prop($$props, "trail", 19, () => []), depth = prop($$props, "depth", 3, 1), folderIcon = prop($$props, "folderIcon", 3, ""), headerTitle = prop($$props, "headerTitle", 3, ""), _setting = user_derived(() => store_get(tagFolderSetting, "$tagFolderSetting", $$stores));
+  const expandLimit = user_derived(() => !get(_setting).expandLimit ? 0 : "links" == viewType() ? get(_setting).expandLimit + 1 : get(_setting).expandLimit), _tagInfo = user_derived(() => store_get(tagInfo, "$tagInfo", $$stores)), _currentActiveFilePath = user_derived(() => store_get(currentFile, "$currentFile", $$stores));
   function shouldResponsibleFor(evt) {
     if (evt.target instanceof Element && evt.target.matchParent(".is-clickable.mod-collapsible.nav-folder-title")) return true; else return false;
   }
@@ -3702,14 +5663,14 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
     if (shouldResponsibleFor(evt)) {
       evt.preventDefault();
       if (get(_setting).useMultiPaneList) selectedTags.set(trail());
-      v2expandedTags.update((evt2 => {
+      v2expandedTags.update(evt2 => {
         if (evt2.has(get(trailKey))) evt2.delete(get(trailKey)); else evt2.add(get(trailKey));
         return evt2;
-      }));
+      });
     }
   }
   let _lastParam, suppressLevels = state(proxy([])), children = state(proxy([])), isUpdating = state(false);
-  const viewContextID = `${null !== (_a3 = getContext("viewID")) && void 0 !== _a3 ? _a3 : ""}`;
+  const viewContextID = `${null !== (_a5 = getContext("viewID")) && void 0 !== _a5 ? _a5 : ""}`;
   let isFolderVisible = state(false);
   function splitArrayToBatch(items2) {
     const ret = [];
@@ -3726,7 +5687,7 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
   }
   function dragStartFiles(args) {
     if (!get(draggable)) return;
-    const files = get(_items).map((e => get(app).vault.getAbstractFileByPath(e.path))), param = get(dm).dragFiles(args, files);
+    const files = get(_items).map(e => get(app).vault.getAbstractFileByPath(e.path)), param = get(dm).dragFiles(args, files);
     if (param) return get(dm).onDragStart(args, param);
   }
   function dragStartName(args) {
@@ -3736,39 +5697,46 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
       const file = get(app).vault.getAbstractFileByPath(get(filename)), param = get(dm).dragFile(args, file);
       if (param) return get(dm).onDragStart(args, param); else return;
     }(args);
-    const expandedTags = [ ...ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath([ ...trail(), ...get(suppressLevels) ])))) ].map((e => trimTrailingSlash(e))).map((e => e.split("/").filter((ee => !isSpecialTag(ee))).join("/"))).filter((e => "" != e)).map((e => "#" + e)).join(" ").trim();
+    const expandedTags = [ ...ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath([ ...trail(), ...get(suppressLevels) ])))) ].map(e => trimTrailingSlash(e)).map(e => e.split("/").filter(ee => !isSpecialTag(ee)).join("/")).filter(e => "" != e).map(e => "#" + e).join(" ").trim();
     args.dataTransfer.setData("text/plain", expandedTags);
     args.dataTransfer.setData("Text", expandedTags);
     args.title = expandedTags;
     args.draggable = true;
     get(dm).onDragStart(args, args);
   }
-  const filename = user_derived((() => "tags" == viewType() ? "" : thisName().substring(thisName().indexOf(":") + 1))), thisInfo = user_derived((() => "links" != viewType() ? void 0 : getViewItemFromPath(thisName()))), thisLinks = user_derived((() => "links" != viewType() ? [] : (null !== (_b3 = null === get(thisInfo) || void 0 === get(thisInfo) ? void 0 : get(thisInfo).links) && void 0 !== _b3 ? _b3 : []).map((e => `${e}`)))), thisNameLC = user_derived((() => thisName().toLowerCase())), tagNameLC = user_derived((() => tagName().toLowerCase())), trailKey = user_derived((() => trail().join("*"))), trailLower = user_derived((() => trail().map((e => e.toLowerCase())))), collapsed = user_derived((() => !$$props.isRoot && !store_get(v2expandedTags, "$v2expandedTags", $$stores).has(get(trailKey)))), inMiddleOfTagHierarchy = user_derived((() => trail().length >= 1 && trail()[trail().length - 1].endsWith("/"))), previousTrail = user_derived((() => get(inMiddleOfTagHierarchy) ? trail()[trail().length - 1] : "")), lastTrailTagLC = user_derived((() => trimTrailingSlash(get(previousTrail)).toLowerCase())), _items = user_derived(items), tagsAllCI = user_derived((() => uniqueCaseIntensive(get(_items).flatMap((e => e.tags))))), tagsAllLower = user_derived((() => get(tagsAllCI).map((e => e.toLowerCase())))), isInDedicatedTag = user_derived((() => get(inMiddleOfTagHierarchy) && !get(tagsAllLower).contains(get(lastTrailTagLC)))), isMixedDedicatedTag = user_derived((() => get(inMiddleOfTagHierarchy))), displayTagCandidates = user_derived((() => {
+  function handleOpenItem(evt) {
+    if ("tags" != viewType()) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      $$props.openFile(get(filename), evt.metaKey || evt.ctrlKey);
+    }
+  }
+  const filename = user_derived(() => "tags" == viewType() ? "" : thisName().substring(thisName().indexOf(":") + 1)), thisInfo = user_derived(() => "links" != viewType() ? void 0 : getViewItemFromPath(thisName())), thisLinks = user_derived(() => "links" != viewType() ? [] : (null !== (_b3 = null === get(thisInfo) || void 0 === get(thisInfo) ? void 0 : get(thisInfo).links) && void 0 !== _b3 ? _b3 : []).map(e => `${e}`)), thisNameLC = user_derived(() => thisName().toLowerCase()), tagNameLC = user_derived(() => tagName().toLowerCase()), trailKey = user_derived(() => trail().join("*")), trailLower = user_derived(() => trail().map(e => e.toLowerCase())), collapsed = user_derived(() => !$$props.isRoot && !store_get(v2expandedTags, "$v2expandedTags", $$stores).has(get(trailKey))), inMiddleOfTagHierarchy = user_derived(() => trail().length >= 1 && trail()[trail().length - 1].endsWith("/")), previousTrail = user_derived(() => get(inMiddleOfTagHierarchy) ? trail()[trail().length - 1] : ""), lastTrailTagLC = user_derived(() => trimTrailingSlash(get(previousTrail)).toLowerCase()), _items = user_derived(items), tagsAllCI = user_derived(() => uniqueCaseIntensive(get(_items).flatMap(e => e.tags))), tagsAllLower = user_derived(() => get(tagsAllCI).map(e => e.toLowerCase())), isInDedicatedTag = user_derived(() => get(inMiddleOfTagHierarchy) && !get(tagsAllLower).contains(get(lastTrailTagLC))), isMixedDedicatedTag = user_derived(() => get(inMiddleOfTagHierarchy)), displayTagCandidates = user_derived(() => {
     let tagsAll = [];
     if ("links" == viewType()) {
-      if (!$$props.isRoot) if (!get(_setting).linkShowOnlyFDR) tagsAll = get(thisInfo) ? getAllLinksRecursive(get(thisInfo), [ ...trail() ]) : [ ...get(thisLinks) ]; else tagsAll = [ ...get(thisLinks) ]; else tagsAll = unique(get(_items).flatMap((e => e.links)));
-      if (!$$props.isRoot || get(_setting).expandUntaggedToRoot) tagsAll = tagsAll.filter((e => "_unlinked" != e));
-      tagsAll = tagsAll.filter((e => !trail().contains(e)));
+      if (!$$props.isRoot) if (!get(_setting).linkShowOnlyFDR) tagsAll = get(thisInfo) ? getAllLinksRecursive(get(thisInfo), [ ...trail() ]) : [ ...get(thisLinks) ]; else tagsAll = [ ...get(thisLinks) ]; else tagsAll = unique(get(_items).flatMap(e => e.links));
+      if (!$$props.isRoot || get(_setting).expandUntaggedToRoot) tagsAll = tagsAll.filter(e => "_unlinked" != e);
+      tagsAll = tagsAll.filter(e => !trail().contains(e));
     } else {
-      tagsAll = uniqueCaseIntensive(get(_items).flatMap((e => e.tags)));
-      if (!$$props.isRoot || get(_setting).expandUntaggedToRoot) tagsAll = tagsAll.filter((e => "_untagged" != e));
+      tagsAll = uniqueCaseIntensive(get(_items).flatMap(e => e.tags));
+      if (!$$props.isRoot || get(_setting).expandUntaggedToRoot) tagsAll = tagsAll.filter(e => "_untagged" != e);
     }
     return tagsAll;
-  })), tagsExceptAlreadyShown = user_derived((() => "tags" != viewType() ? [] : get(displayTagCandidates).filter((tag => trail().every((trail2 => trimTrailingSlash(tag.toLowerCase()) !== trimTrailingSlash(trail2.toLowerCase()))))))), passedTagWithoutThis = user_derived((() => {
+  }), tagsExceptAlreadyShown = user_derived(() => "tags" != viewType() ? [] : get(displayTagCandidates).filter(tag2 => trail().every(trail2 => trimTrailingSlash(tag2.toLowerCase()) !== trimTrailingSlash(trail2.toLowerCase())))), passedTagWithoutThis = user_derived(() => {
     const trimSlashedThisNameLC = "/" + trimSlash(thisName()).toLowerCase();
-    return get(tagsExceptAlreadyShown).filter((tag => {
-      const lc = tag.toLowerCase();
+    return get(tagsExceptAlreadyShown).filter(tag2 => {
+      const lc = tag2.toLowerCase();
       return lc != get(thisNameLC) && lc != get(tagNameLC);
-    })).filter((tag => !tag.toLowerCase().endsWith(trimSlashedThisNameLC)));
-  })), escapedPreviousTrail = user_derived((() => !get(isMixedDedicatedTag) ? get(previousTrail) : get(previousTrail).split("/").join("*"))), sparseIntermediateTags = user_derived((() => {
-    const t1 = !get(isInDedicatedTag) ? get(passedTagWithoutThis) : get(passedTagWithoutThis).filter((e => (e + "/").startsWith(get(previousTrail))));
-    if (!get(isInDedicatedTag)) return t1; else return t1.map((e => (e + "/").startsWith(get(previousTrail)) ? get(escapedPreviousTrail) + e.substring(get(previousTrail).length) : e));
-  })), tagsPhaseX1 = user_derived((() => get(sparseIntermediateTags))), $$d = user_derived((() => {
+    }).filter(tag2 => !tag2.toLowerCase().endsWith(trimSlashedThisNameLC));
+  }), escapedPreviousTrail = user_derived(() => !get(isMixedDedicatedTag) ? get(previousTrail) : get(previousTrail).split("/").join("*")), sparseIntermediateTags = user_derived(() => {
+    const t1 = !get(isInDedicatedTag) ? get(passedTagWithoutThis) : get(passedTagWithoutThis).filter(e => (e + "/").startsWith(get(previousTrail)));
+    if (!get(isInDedicatedTag)) return t1; else return t1.map(e => (e + "/").startsWith(get(previousTrail)) ? get(escapedPreviousTrail) + e.substring(get(previousTrail).length) : e);
+  }), tagsPhaseX1 = user_derived(() => get(sparseIntermediateTags)), $$d = user_derived(() => {
     let isSuppressibleLevel2 = false, existTags = get(tagsPhaseX1), existTagsFiltered1 = [];
     if (!get(_setting).doNotSimplifyTags && "links" != viewType()) if (1 == get(_items).length) {
       existTagsFiltered1 = existTags;
       isSuppressibleLevel2 = true;
-    } else if (1 == uniqueCaseIntensive(get(_items).map((e => [ ...e.tags ].sort().join("**")))).length) {
+    } else if (1 == uniqueCaseIntensive(get(_items).map(e => [ ...e.tags ].sort().join("**"))).length) {
       isSuppressibleLevel2 = true;
       existTagsFiltered1 = existTags;
     }
@@ -3776,11 +5744,11 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
       const removeItems = [ get(thisNameLC) ];
       if (get(_setting).reduceNestedParent) removeItems.push(...get(trailLower));
       let tagsOnNextLevel = [];
-      if ("tags" == viewType()) tagsOnNextLevel = uniqueCaseIntensive(existTags.map((e => {
+      if ("tags" == viewType()) tagsOnNextLevel = uniqueCaseIntensive(existTags.map(e => {
         const idx = e.indexOf("/");
         if (idx < 1) return e;
         let piece = e.substring(0, idx + 1), idx2 = idx;
-        for (;removeItems.some((e2 => e2.startsWith(piece.toLowerCase()))); ) {
+        for (;removeItems.some(e2 => e2.startsWith(piece.toLowerCase())); ) {
           idx2 = e.indexOf("/", idx2 + 1);
           if (-1 === idx2) {
             piece = e;
@@ -3789,18 +5757,18 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
           piece = e.substring(0, idx2 + 1);
         }
         return piece;
-      }))); else tagsOnNextLevel = unique(existTags);
+      })); else tagsOnNextLevel = unique(existTags);
       const trailShortest = removeIntermediatePath(trail());
-      existTagsFiltered1 = tagsOnNextLevel.filter((tag => trailShortest.every((trail2 => trimTrailingSlash(tag.toLowerCase()) !== trimTrailingSlash(trail2.toLowerCase())))));
+      existTagsFiltered1 = tagsOnNextLevel.filter(tag2 => trailShortest.every(trail2 => trimTrailingSlash(tag2.toLowerCase()) !== trimTrailingSlash(trail2.toLowerCase())));
     }
-    if (get(isMixedDedicatedTag) || get(isInDedicatedTag)) existTagsFiltered1 = existTagsFiltered1.map((e => e.replace(get(escapedPreviousTrail), get(previousTrail))));
-    if (get(isMixedDedicatedTag) || get(isInDedicatedTag)) existTagsFiltered1 = existTagsFiltered1.map((e => e.replace(get(escapedPreviousTrail), get(previousTrail))));
-    const existTagsFiltered1LC = existTagsFiltered1.map((e => e.toLowerCase()));
+    if (get(isMixedDedicatedTag) || get(isInDedicatedTag)) existTagsFiltered1 = existTagsFiltered1.map(e => e.replace(get(escapedPreviousTrail), get(previousTrail)));
+    if (get(isMixedDedicatedTag) || get(isInDedicatedTag)) existTagsFiltered1 = existTagsFiltered1.map(e => e.replace(get(escapedPreviousTrail), get(previousTrail)));
+    const existTagsFiltered1LC = existTagsFiltered1.map(e => e.toLowerCase());
     return {
-      filteredTags: uniqueCaseIntensive(existTagsFiltered1.map((e => existTagsFiltered1LC.contains(e.toLowerCase() + "/") ? e + "/" : e))),
+      filteredTags: uniqueCaseIntensive(existTagsFiltered1.map(e => existTagsFiltered1LC.contains(e.toLowerCase() + "/") ? e + "/" : e)),
       isSuppressibleLevel: isSuppressibleLevel2
     };
-  })), filteredTags = user_derived((() => get($$d).filteredTags)), isSuppressibleLevel = user_derived((() => get($$d).isSuppressibleLevel)), $$d_1 = user_derived((() => {
+  }), filteredTags = user_derived(() => get($$d).filteredTags), isSuppressibleLevel = user_derived(() => get($$d).isSuppressibleLevel), $$d_1 = user_derived(() => {
     let tags2 = [];
     const leftOverItemsSrc2 = [];
     if (!get(_items)) return {
@@ -3820,66 +5788,66 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
     }
     if (get(previousTrail).endsWith("/")) {
       const existTagsFiltered4 = [];
-      for (const tag of get(filteredTags)) if (!get(filteredTags).map((e => e.toLowerCase())).contains((get(previousTrail) + tag).toLowerCase())) existTagsFiltered4.push(tag);
+      for (const tag2 of get(filteredTags)) if (!get(filteredTags).map(e => e.toLowerCase()).contains((get(previousTrail) + tag2).toLowerCase())) existTagsFiltered4.push(tag2);
       tags2 = uniqueCaseIntensive(removeIntermediatePath(existTagsFiltered4));
     } else tags2 = uniqueCaseIntensive(removeIntermediatePath(get(filteredTags)));
     return {
       tags: tags2,
       leftOverItemsSrc: leftOverItemsSrc2
     };
-  })), tags = user_derived((() => get($$d_1).tags)), leftOverItemsSrc = user_derived((() => get($$d_1).leftOverItemsSrc)), linkedItems = user_derived((() => {
+  }), tags = user_derived(() => get($$d_1).tags), leftOverItemsSrc = user_derived(() => get($$d_1).leftOverItemsSrc), linkedItems = user_derived(() => {
     const ret = new Map;
     if ("tags" == viewType()) return ret;
-    for (const tag of get(displayTagCandidates)) if ("_unlinked" == tag) ret.set(tag, get(_items).filter((e => e.links.contains(tag)))); else {
-      const wItems = get(_items).filter((e => e.path == tag));
-      ret.set(tag, wItems);
+    for (const tag2 of get(displayTagCandidates)) if ("_unlinked" == tag2) ret.set(tag2, get(_items).filter(e => e.links.contains(tag2))); else {
+      const wItems = get(_items).filter(e => e.path == tag2);
+      ret.set(tag2, wItems);
     }
     return ret;
-  })), tagsOfLinkedItems = user_derived((() => {
+  }), tagsOfLinkedItems = user_derived(() => {
     let leftOverItems2 = [], tags2 = [];
     if ("tags" == viewType()) return {
       tags: tags2,
       leftOverItems: leftOverItems2
     };
-    if ("_unlinked" == thisName()) leftOverItems2 = get(_items); else get(displayTagCandidates).forEach((tag => {
-      if ("_unlinked" == tag) {
-        tags2.push(tag);
+    if ("_unlinked" == thisName()) leftOverItems2 = get(_items); else get(displayTagCandidates).forEach(tag2 => {
+      if ("_unlinked" == tag2) {
+        tags2.push(tag2);
         return;
       }
-      const x = getViewItemFromPath(tag);
+      const x = getViewItemFromPath(tag2);
       if (null == x) return false;
-      const existLinks = x.links.filter((e => !trail().contains(e) && e != thisName())), nextDepth = !get(expandLimit) || get(expandLimit) && depth() + 1 < get(expandLimit);
-      if (existLinks.length >= 2 && nextDepth) tags2.push(tag); else leftOverItems2.push(x);
-    }));
+      const existLinks = x.links.filter(e => !trail().contains(e) && e != thisName()), nextDepth = !get(expandLimit) || get(expandLimit) && depth() + 1 < get(expandLimit);
+      if (existLinks.length >= 2 && nextDepth) tags2.push(tag2); else leftOverItems2.push(x);
+    });
     return {
       tags: tags2,
       leftOverItems: leftOverItems2
     };
-  })), leftOverItemsUnsorted = user_derived((() => {
+  }), leftOverItemsUnsorted = user_derived(() => {
     if (get(_setting).useMultiPaneList && $$props.isMainTree) return [];
-    if ($$props.isRoot && $$props.isMainTree && !get(isSuppressibleLevel)) if (get(_setting).expandUntaggedToRoot) return get(_items).filter((e => e.tags.contains("_untagged") || e.tags.contains("_unlinked"))); else return [];
+    if ($$props.isRoot && $$props.isMainTree && !get(isSuppressibleLevel)) if (get(_setting).expandUntaggedToRoot) return get(_items).filter(e => e.tags.contains("_untagged") || e.tags.contains("_unlinked")); else return [];
     if ($$props.isRoot && !$$props.isMainTree) return get(_items);
-    if ("tags" == viewType()) if ("NONE" == get(_setting).hideItems) return get(_items); else if ("DEDICATED_INTERMIDIATES" == get(_setting).hideItems && get(isInDedicatedTag) || "ALL_EXCEPT_BOTTOM" == get(_setting).hideItems) return get(_items).filter((e => !get(children).map((e2 => e2[V2FI_IDX_CHILDREN])).flat().find((ee => e.path == ee.path)))); else return get(_items); else return get(leftOverItemsSrc);
-  })), leftOverItems = user_derived((() => get(_setting).sortExactFirst ? performSortExactFirst(get(_items), get(children), get(leftOverItemsUnsorted)) : get(leftOverItemsUnsorted)));
-  let isActive = user_derived((() => get(_items) && get(_items).some((e => e.path == get(_currentActiveFilePath))) || "links" == viewType() && (thisName() == get(_currentActiveFilePath) || get(tags).contains(get(_currentActiveFilePath)) || get(leftOverItems).some((e => e.path == get(_currentActiveFilePath))))));
-  const tagsDisp = user_derived((() => get(isSuppressibleLevel) && get(isInDedicatedTag) ? [ [ ...tagNameDisp(), ...get(suppressLevels).flatMap((e => e.split("/").map((e2 => renderSpecialTag(e2))))) ] ] : get(isSuppressibleLevel) ? [ tagNameDisp(), ...get(suppressLevels).map((e => e.split("/").map((e2 => renderSpecialTag(e2))))) ] : [ tagNameDisp() ])), classKey = user_derived((() => "links" == viewType() ? " tf-link" : " tf-tag")), tagsDispHtml = user_derived((() => get(isFolderVisible) ? get(tagsDisp).map((e => `<span class="tagfolder-tag tag-tag${get(classKey)}">${e.map((ee => `<span class="tf-tag-each">${escapeStringToHTML(ee)}</span>`)).join("")}</span>`)).join("") : "")), itemCount = user_derived((() => "tags" == viewType() ? null !== (_c2 = null === get(_items) || void 0 === get(_items) ? void 0 : get(_items).length) && void 0 !== _c2 ? _c2 : 0 : get(tags).length + get(leftOverItems).length)), leftOverItemsDisp = user_derived((() => splitArrayToBatch(get(leftOverItems)))), childrenDisp = user_derived((() => splitArrayToBatch(get(children)))), draggable = user_derived((() => !get(_setting).disableDragging)), app = user_derived((() => store_get(pluginInstance, "$pluginInstance", $$stores).app)), dm = user_derived((() => null === get(app) || void 0 === get(app) ? void 0 : get(app).dragManager));
-  user_effect((() => {
-    const key = get(trailKey) + ($$props.isRoot ? "-r" : "-x") + viewContextID, sortFunc = selectCompareMethodTags(get(_setting), "links" == viewType() ? {} : get(_tagInfo));
+    if ("tags" == viewType()) if ("NONE" == get(_setting).hideItems) return get(_items); else if ("DEDICATED_INTERMIDIATES" == get(_setting).hideItems && get(isInDedicatedTag) || "ALL_EXCEPT_BOTTOM" == get(_setting).hideItems) return get(_items).filter(e => !get(children).map(e2 => e2[V2FI_IDX_CHILDREN]).flat().find(ee => e.path == ee.path)); else return get(_items); else return get(leftOverItemsSrc);
+  }), leftOverItems = user_derived(() => get(_setting).sortExactFirst ? performSortExactFirst(get(_items), get(children), get(leftOverItemsUnsorted)) : get(leftOverItemsUnsorted));
+  let isActive = user_derived(() => get(_items) && get(_items).some(e => e.path == get(_currentActiveFilePath)) || "links" == viewType() && (thisName() == get(_currentActiveFilePath) || get(tags).contains(get(_currentActiveFilePath)) || get(leftOverItems).some(e => e.path == get(_currentActiveFilePath))));
+  const tagsDisp = user_derived(() => get(isSuppressibleLevel) && get(isInDedicatedTag) ? [ [ ...tagNameDisp(), ...get(suppressLevels).flatMap(e => e.split("/").map(e2 => renderSpecialTag(e2))) ] ] : get(isSuppressibleLevel) ? [ tagNameDisp(), ...get(suppressLevels).map(e => e.split("/").map(e2 => renderSpecialTag(e2))) ] : [ tagNameDisp() ]), classKey = user_derived(() => "links" == viewType() ? " tf-link" : " tf-tag"), tagsDispHtml = user_derived(() => get(isFolderVisible) ? get(tagsDisp).map(e => `<span class="tagfolder-tag tag-tag${get(classKey)}">${e.map(ee => `<span class="tf-tag-each">${escapeStringToHTML(ee)}</span>`).join("")}</span>`).join("") : ""), itemCount = user_derived(() => "tags" == viewType() ? null !== (_c2 = null === get(_items) || void 0 === get(_items) ? void 0 : get(_items).length) && void 0 !== _c2 ? _c2 : 0 : get(tags).length + get(leftOverItems).length), leftOverItemsDisp = user_derived(() => splitArrayToBatch(get(leftOverItems))), childrenDisp = user_derived(() => splitArrayToBatch(get(children))), draggable = user_derived(() => !get(_setting).disableDragging), app = user_derived(() => store_get(pluginInstance, "$pluginInstance", $$stores).app), dm = user_derived(() => null === get(app) || void 0 === get(app) ? void 0 : get(app).dragManager);
+  user_effect(() => {
+    const key2 = get(trailKey) + ($$props.isRoot ? "-r" : "-x") + viewContextID, sortFunc = selectCompareMethodTags(get(_setting), "links" == viewType() ? {} : get(_tagInfo));
     (function updateX(param) {
       if (!isSameAny(param, _lastParam)) {
         _lastParam = {
           ...param
         };
-        if (param.isFolderVisible || $$props.isRoot) scheduleOnceIfDuplicated("update-children-" + param.key, (async () => {
+        if (param.isFolderVisible || $$props.isRoot) scheduleOnceIfDuplicated("update-children-" + param.key, async () => {
           set(isUpdating, true);
           const ret = await collectTreeChildren(param);
           set(children, ret.children, true);
           set(suppressLevels, ret.suppressLevels, true);
           set(isUpdating, false);
-        }));
+        });
       }
     })({
-      key,
+      key: key2,
       expandLimit: get(expandLimit),
       depth: depth(),
       tags: get(tags),
@@ -3896,186 +5864,195 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
       isFolderVisible: get(isFolderVisible),
       sortFunc
     });
-  }));
-  var div = root4();
-  div.__click = toggleFolder;
-  div.__contextmenu = [ on_contextmenu2, shouldResponsibleFor, $$props, trail, suppressLevels, viewType, tagName, filename, _items ];
-  var node = child(div), consequent_1 = $$anchor2 => {
+  });
+  var div = root_7(), node = child(div), consequent_1 = $$anchor2 => {
     var fragment = comment(), node_1 = first_child(fragment), consequent = $$anchor3 => {
-      var div_1 = root_22(), div_2 = child(div_1), text2 = child(div_2, true);
+      var div_1 = root5(), div_2 = child(div_1), text2 = child(div_2, true);
       reset(div_2);
       reset(div_1);
-      template_effect((() => set_text(text2, headerTitle())));
+      template_effect(() => set_text(text2, headerTitle()));
       append($$anchor3, div_1);
     };
-    if_block(node_1, ($$render => {
+    if_block(node_1, $$render => {
       if ($$props.isRoot) $$render(consequent);
-    }));
-    append($$anchor2, fragment);
-  }, alternate = $$anchor2 => {
-    const expression = user_derived((() => `tree-item-self${!$$props.isRoot ? " is-clickable mod-collapsible" : ""} nav-folder-title tag-folder-title${get(isActive) ? " is-active" : ""}`));
-    OnDemandRender($$anchor2, {
-      get cssClass() {
-        return get(expression);
-      },
-      get isVisible() {
-        return get(isFolderVisible);
-      },
-      set isVisible($$value) {
-        set(isFolderVisible, $$value, true);
-      },
-      children: ($$anchor3, $$slotProps) => {
-        var fragment_2 = root_4(), div_3 = first_child(fragment_2);
-        let classes;
-        div_3.__click = toggleFolder;
-        var node_2 = child(div_3), consequent_2 = $$anchor4 => {
-          var fragment_3 = comment();
-          html(first_child(fragment_3), folderIcon, false, false);
-          append($$anchor4, fragment_3);
-        }, alternate_1 = $$anchor4 => {
-          append($$anchor4, root_6());
-        };
-        if_block(node_2, ($$render => {
-          if (get(isFolderVisible)) $$render(consequent_2); else $$render(alternate_1, false);
-        }));
-        reset(div_3);
-        var div_4 = sibling(div_3, 2);
-        div_4.__click = [ handleOpenItem, viewType, $$props, filename ];
-        var node_4 = child(div_4), consequent_3 = $$anchor4 => {
-          var div_5 = root_7();
-          html(child(div_5), (() => get(tagsDispHtml)), false, false);
-          reset(div_5);
-          template_effect((() => set_attribute(div_5, "draggable", get(draggable))));
-          event("dragstart", div_5, dragStartName);
-          append($$anchor4, div_5);
-        }, alternate_2 = $$anchor4 => {
-          append($$anchor4, root_8());
-        };
-        if_block(node_4, ($$render => {
-          if (get(isFolderVisible)) $$render(consequent_3); else $$render(alternate_2, false);
-        }));
-        var div_7 = sibling(node_4, 2);
-        div_7.__click = [ on_click3, handleOpenScroll, trail, _items ];
-        var span = child(div_7), text_1 = child(span, true);
-        reset(span);
-        reset(div_7);
-        reset(div_4);
-        template_effect(($0 => {
-          classes = set_class(div_3, 1, "tree-item-icon collapse-icon nav-folder-collapse-indicator", null, classes, $0);
-          set_attribute(span, "draggable", get(draggable));
-          set_text(text_1, get(itemCount));
-        }), [ () => ({
-          "is-collapsed": get(collapsed)
-        }) ]);
-        event("dragstart", span, dragStartFiles);
-        append($$anchor3, fragment_2);
-      },
-      $$slots: {
-        default: true
-      }
     });
+    append($$anchor2, fragment);
+  }, alternate_2 = $$anchor2 => {
+    {
+      let $0 = user_derived(() => `tree-item-self${!$$props.isRoot ? " is-clickable mod-collapsible" : ""} nav-folder-title tag-folder-title${get(isActive) ? " is-active" : ""}`);
+      OnDemandRender($$anchor2, {
+        get cssClass() {
+          return get($0);
+        },
+        get isVisible() {
+          return get(isFolderVisible);
+        },
+        set isVisible($$value) {
+          set(isFolderVisible, $$value, true);
+        },
+        children: ($$anchor3, $$slotProps) => {
+          var fragment_2 = root_4(), div_3 = first_child(fragment_2);
+          let classes;
+          var node_2 = child(div_3), consequent_2 = $$anchor4 => {
+            var fragment_3 = comment();
+            html(first_child(fragment_3), folderIcon);
+            append($$anchor4, fragment_3);
+          }, alternate = $$anchor4 => {
+            append($$anchor4, root_13());
+          };
+          if_block(node_2, $$render => {
+            if (get(isFolderVisible)) $$render(consequent_2); else $$render(alternate, -1);
+          });
+          reset(div_3);
+          var div_4 = sibling(div_3, 2), node_4 = child(div_4), consequent_3 = $$anchor4 => {
+            var div_5 = root_2();
+            html(div_5, () => get(tagsDispHtml), true);
+            reset(div_5);
+            template_effect(() => set_attribute2(div_5, "draggable", get(draggable)));
+            event("dragstart", div_5, dragStartName);
+            append($$anchor4, div_5);
+          }, alternate_1 = $$anchor4 => {
+            append($$anchor4, root_3());
+          };
+          if_block(node_4, $$render => {
+            if (get(isFolderVisible)) $$render(consequent_3); else $$render(alternate_1, -1);
+          });
+          var div_7 = sibling(node_4, 2), span = child(div_7), text_1 = child(span, true);
+          reset(span);
+          reset(div_7);
+          reset(div_4);
+          template_effect(() => {
+            classes = set_class(div_3, 1, "tree-item-icon collapse-icon nav-folder-collapse-indicator", null, classes, {
+              "is-collapsed": get(collapsed)
+            });
+            set_attribute2(span, "draggable", get(draggable));
+            set_text(text_1, get(itemCount));
+          });
+          delegated("click", div_3, toggleFolder);
+          delegated("click", div_4, handleOpenItem);
+          delegated("click", div_7, e => function handleOpenScroll(e, trails, filePaths) {
+            if ("tags" == viewType()) $$props.openScrollView(void 0, "", joinPartialPath(removeIntermediatePath(trails)).join(", "), filePaths); else if ("links" == viewType()) $$props.openScrollView(void 0, "", `Linked to ${get(filename)}`, filePaths);
+            e.preventDefault();
+          }(e, trail(), get(_items).map(e2 => e2.path)));
+          event("dragstart", span, dragStartFiles);
+          append($$anchor3, fragment_2);
+        },
+        $$slots: {
+          default: true
+        }
+      });
+    }
   };
-  if_block(node, ($$render => {
-    if ($$props.isRoot || !$$props.isMainTree) $$render(consequent_1); else $$render(alternate, false);
-  }));
-  var node_6 = sibling(node, 2), consequent_5 = $$anchor2 => {
-    var fragment_9 = comment();
+  if_block(node, $$render => {
+    if ($$props.isRoot || !$$props.isMainTree) $$render(consequent_1); else $$render(alternate_2, -1);
+  });
+  var node_5 = sibling(node, 2), consequent_5 = $$anchor2 => {
     const treeContent = ($$anchor3, childrenDisp2 = noop, leftOverItemsDisp2 = noop) => {
-      var fragment_4 = root_10(), node_7 = first_child(fragment_4);
-      each(node_7, 17, childrenDisp2, index, (($$anchor4, items2, $$index_1, $$array) => {
+      var fragment_4 = root_5(), node_6 = first_child(fragment_4);
+      each(node_6, 17, childrenDisp2, index, ($$anchor4, items2, $$index_1, $$array) => {
         var fragment_5 = comment();
-        each(first_child(fragment_5), 17, (() => get(items2)), index, (($$anchor5, $$item, $$index, $$array_1) => {
-          let f = () => get($$item)[0];
-          const expression_1 = user_derived((() => [ ...trail(), ...get(suppressLevels), f() ])), expression_2 = user_derived((() => get(isInDedicatedTag) ? depth() : depth() + 1));
-          V2TreeFolderComponent_1($$anchor5, {
-            get viewType() {
-              return viewType();
-            },
-            get items() {
-              return get($$item)[3];
-            },
-            get thisName() {
-              return f();
-            },
-            get trail() {
-              return get(expression_1);
-            },
-            get folderIcon() {
-              return folderIcon();
-            },
-            get openFile() {
-              return $$props.openFile;
-            },
-            isRoot: false,
-            get showMenu() {
-              return $$props.showMenu;
-            },
-            get isMainTree() {
-              return $$props.isMainTree;
-            },
-            get openScrollView() {
-              return $$props.openScrollView;
-            },
-            get hoverPreview() {
-              return $$props.hoverPreview;
-            },
-            get tagName() {
-              return get($$item)[1];
-            },
-            get tagNameDisp() {
-              return get($$item)[2];
-            },
-            get depth() {
-              return get(expression_2);
-            }
-          });
-        }));
+        each(first_child(fragment_5), 17, () => get(items2), index, ($$anchor5, $$item, $$index, $$array_1) => {
+          var $$array_2 = user_derived(() => to_array(get($$item), 4));
+          let f = () => get($$array_2)[0];
+          {
+            let $0 = user_derived(() => [ ...trail(), ...get(suppressLevels), f() ]), $1 = user_derived(() => get(isInDedicatedTag) ? depth() : depth() + 1);
+            V2TreeFolderComponent_1($$anchor5, {
+              get viewType() {
+                return viewType();
+              },
+              get items() {
+                return get($$array_2)[3];
+              },
+              get thisName() {
+                return f();
+              },
+              get trail() {
+                return get($0);
+              },
+              get folderIcon() {
+                return folderIcon();
+              },
+              get openFile() {
+                return $$props.openFile;
+              },
+              isRoot: false,
+              get showMenu() {
+                return $$props.showMenu;
+              },
+              get isMainTree() {
+                return $$props.isMainTree;
+              },
+              get openScrollView() {
+                return $$props.openScrollView;
+              },
+              get hoverPreview() {
+                return $$props.hoverPreview;
+              },
+              get tagName() {
+                return get($$array_2)[1];
+              },
+              get tagNameDisp() {
+                return get($$array_2)[2];
+              },
+              get depth() {
+                return get($1);
+              }
+            });
+          }
+        });
         append($$anchor4, fragment_5);
-      }));
-      each(sibling(node_7, 2), 17, leftOverItemsDisp2, index, (($$anchor4, items2, $$index_3, $$array_2) => {
+      });
+      each(sibling(node_6, 2), 17, leftOverItemsDisp2, index, ($$anchor4, items2, $$index_3, $$array_3) => {
         var fragment_7 = comment();
-        each(first_child(fragment_7), 17, (() => get(items2)), index, (($$anchor5, item) => {
-          const expression_3 = user_derived((() => $$props.isRoot ? [ ...trail() ] : [ ...trail(), ...get(suppressLevels) ]));
-          V2TreeItemComponent($$anchor5, {
-            get item() {
-              return get(item);
-            },
-            get openFile() {
-              return $$props.openFile;
-            },
-            get trail() {
-              return get(expression_3);
-            },
-            get showMenu() {
-              return $$props.showMenu;
-            },
-            get hoverPreview() {
-              return $$props.hoverPreview;
-            }
-          });
-        }));
+        each(first_child(fragment_7), 17, () => get(items2), index, ($$anchor5, item) => {
+          {
+            let $0 = user_derived(() => $$props.isRoot ? [ ...trail() ] : [ ...trail(), ...get(suppressLevels) ]);
+            V2TreeItemComponent($$anchor5, {
+              get item() {
+                return get(item);
+              },
+              get openFile() {
+                return $$props.openFile;
+              },
+              get trail() {
+                return get($0);
+              },
+              get showMenu() {
+                return $$props.showMenu;
+              },
+              get hoverPreview() {
+                return $$props.hoverPreview;
+              }
+            });
+          }
+        });
         append($$anchor4, fragment_7);
-      }));
+      });
       append($$anchor3, fragment_4);
     };
-    var node_11 = first_child(fragment_9), consequent_4 = $$anchor3 => {
-      var div_8 = root_15(), node_12 = child(div_8);
-      treeContent(node_12, (() => get(childrenDisp)), (() => get(leftOverItemsDisp)));
+    var fragment_9 = comment(), node_10 = first_child(fragment_9), consequent_4 = $$anchor3 => {
+      var div_8 = root_6(), node_11 = child(div_8);
+      treeContent(node_11, () => get(childrenDisp), () => get(leftOverItemsDisp));
       reset(div_8);
       append($$anchor3, div_8);
     }, alternate_3 = $$anchor3 => {
-      treeContent($$anchor3, (() => get(childrenDisp)), (() => get(leftOverItemsDisp)));
+      treeContent($$anchor3, () => get(childrenDisp), () => get(leftOverItemsDisp));
     };
-    if_block(node_11, ($$render => {
-      if (!$$props.isRoot) $$render(consequent_4); else $$render(alternate_3, false);
-    }));
+    if_block(node_10, $$render => {
+      if (!$$props.isRoot) $$render(consequent_4); else $$render(alternate_3, -1);
+    });
     append($$anchor2, fragment_9);
   };
-  if_block(node_6, ($$render => {
+  if_block(node_5, $$render => {
     if (!get(collapsed)) $$render(consequent_5);
-  }));
+  });
   reset(div);
-  template_effect((() => set_class(div, 1, `tree-item nav-folder${get(collapsed) ? " is-collapsed" : ""}${$$props.isRoot ? " mod-root" : ""}${get(isUpdating) ? " updating" : ""}`)));
+  template_effect(() => set_class(div, 1, `tree-item nav-folder${get(collapsed) ? " is-collapsed" : ""}${$$props.isRoot ? " mod-root" : ""}${get(isUpdating) ? " updating" : ""}`));
+  delegated("click", div, toggleFolder);
+  delegated("contextmenu", div, evt => {
+    evt.stopPropagation();
+    if (shouldResponsibleFor(evt)) $$props.showMenu(evt, [ ...trail(), ...get(suppressLevels) ], "tags" == viewType() ? tagName() : get(filename), get(_items));
+  });
   append($$anchor, div);
   pop();
   $$cleanup();
@@ -4083,55 +6060,40 @@ function V2TreeFolderComponent_1($$anchor, $$props) {
 
 delegate([ "click", "contextmenu" ]);
 
-var import_obsidian3 = require("obsidian");
-
-function toggleSearch(_, showSearch, $searchString) {
-  set(showSearch, !get(showSearch));
-  if (!get(showSearch)) store_set(searchString, "");
-}
-
-function clearSearch(__1, $searchString) {
-  store_set(searchString, "");
-}
-
-function doSwitch(__2, $$props) {
-  if ($$props.switchView) $$props.switchView();
-}
-
-function closeAllOpenedFolders() {
-  v2expandedTags.update((prev => {
-    prev.clear();
-    return prev;
-  }));
-}
-
-var root_13 = template('<div class="clickable-icon nav-action-button" aria-label="Change sort order"><!></div>  <div class="clickable-icon nav-action-button" aria-label="Expand limit"><!></div>  <div aria-label="Search"><!></div>', 1), root_23 = template('<div class="clickable-icon nav-action-button" aria-label="Switch List/Tree"><!></div>'), root_3 = template('<div aria-label="Toggle Incoming"><!></div>  <div aria-label="Toggle Outgoing"><!></div>  <div aria-label="Toggle Incoming&amp;Outgoing"><!></div>  <div aria-label="Toggle Hide indirect notes"><!></div>', 1), root_42 = template('<div class="clickable-icon nav-action-button" aria-label="Collapse all"><!></div>'), root_5 = template('<div class="search-row"><div class="search-input-container global-search-input-container"><input type="search" spellcheck="false" placeholder="Type to start search...">  <div class="search-input-clear-button" aria-label="Clear search"></div></div></div>'), root5 = template('<div hidden></div> <div class="nav-header"><div class="nav-buttons-container tagfolder-buttons-container"><div class="clickable-icon nav-action-button" aria-label="New note"><!></div> <!> <!> <!> <!></div></div> <!> <div class="nav-files-container node-insert-event svelte-1xm87ro"><!></div>', 1), $$css3 = {
-  hash: "svelte-1xm87ro",
-  code: ".nav-files-container.svelte-1xm87ro {height:100%;}"
+var import_obsidian5 = require("obsidian"), root6 = from_html('<div class="clickable-icon nav-action-button" aria-label="Change sort order"></div>  <div class="clickable-icon nav-action-button" aria-label="Expand limit"></div>  <div aria-label="Search"></div>', 1), root_14 = from_html('<div class="clickable-icon nav-action-button" aria-label="Switch List/Tree"></div>'), root_22 = from_html('<div aria-label="Toggle Incoming"></div>  <div aria-label="Toggle Outgoing"></div>  <div aria-label="Toggle Incoming&amp;Outgoing"></div>  <div aria-label="Toggle Hide indirect notes"></div>', 1), root_32 = from_html('<div class="clickable-icon nav-action-button" aria-label="Collapse all"></div>'), root_42 = from_html('<div class="search-row"><div class="search-input-container global-search-input-container"><input type="search" spellcheck="false" placeholder="Type to start search..."/>  <div class="search-input-clear-button" aria-label="Clear search"></div></div></div>'), root_52 = from_html('<div hidden=""></div> <div class="nav-header"><div class="nav-buttons-container tagfolder-buttons-container"><div class="clickable-icon nav-action-button" aria-label="New note"></div> <!> <!> <!> <!></div></div> <!> <div class="nav-files-container node-insert-event svelte-10n2ssk"><!></div>', 1), $$css3 = {
+  hash: "svelte-10n2ssk",
+  code: ".nav-files-container.svelte-10n2ssk {height:100%;}"
 };
 
 function TagFolderViewComponent($$anchor, $$props) {
   push($$props, true);
   append_styles($$anchor, $$css3);
-  const [$$stores, $$cleanup] = setup_stores(), $searchString = () => store_get(searchString, "$searchString", $$stores);
-  let vaultName = prop($$props, "vaultName", 3, ""), title = prop($$props, "title", 15, ""), tags = prop($$props, "tags", 31, (() => proxy([]))), viewType = prop($$props, "viewType", 3, "tags");
-  const isMainTree = user_derived((() => 0 == tags().length));
-  null === $$props.stateStore || void 0 === $$props.stateStore || $$props.stateStore.subscribe((state2 => {
-    tags(state2.tags);
-    title(state2.title);
-  }));
+  const $searchString = () => store_get(searchString, "$searchString", $$stores), [$$stores, $$cleanup] = setup_stores();
+  let vaultName = prop($$props, "vaultName", 3, ""), title = prop($$props, "title", 15, ""), tags = prop($$props, "tags", 31, () => proxy([])), viewType = prop($$props, "viewType", 3, "tags");
+  const isMainTree = user_derived(() => 0 == tags().length);
+  user_effect(() => {
+    if ($$props.stateStore) {
+      let unsubscribe = $$props.stateStore.subscribe(state2 => {
+        tags(state2.tags);
+        title(state2.title);
+      });
+      return () => {
+        unsubscribe();
+      };
+    }
+  });
   let updatedFiles = state(proxy([]));
-  appliedFiles.subscribe((async filenames => {
+  appliedFiles.subscribe(async filenames => {
     set(updatedFiles, null != filenames ? filenames : [], true);
-  }));
-  const viewItemsSrc = user_derived((() => {
+  });
+  const viewItemsSrc = user_derived(() => {
     if ("tags" == viewType()) return store_get(allViewItems, "$allViewItems", $$stores); else return store_get(allViewItemsByLink, "$allViewItemsByLink", $$stores);
-  }));
+  });
   let _setting = state(proxy(store_get(tagFolderSetting, "$tagFolderSetting", $$stores))), outgoingEnabled = state(false), incomingEnabled = state(false), bothEnabled = state(false), onlyFDREnabled = state(false);
-  tagFolderSetting.subscribe((setting => {
-    var _a3, _b3, _c2, _d, _e, _f;
+  tagFolderSetting.subscribe(setting => {
+    var _a5, _b3, _c2, _d, _e, _f;
     set(_setting, setting, true);
-    const incoming = null !== (_c2 = null === (_b3 = null === (_a3 = get(_setting).linkConfig) || void 0 === _a3 ? void 0 : _a3.incoming) || void 0 === _b3 ? void 0 : _b3.enabled) && void 0 !== _c2 ? _c2 : false, outgoing = null !== (_f = null === (_e = null === (_d = get(_setting).linkConfig) || void 0 === _d ? void 0 : _d.outgoing) || void 0 === _e ? void 0 : _e.enabled) && void 0 !== _f ? _f : false;
+    const incoming = null !== (_c2 = null === (_b3 = null === (_a5 = get(_setting).linkConfig) || void 0 === _a5 ? void 0 : _a5.incoming) || void 0 === _b3 ? void 0 : _b3.enabled) && void 0 !== _c2 ? _c2 : false, outgoing = null !== (_f = null === (_e = null === (_d = get(_setting).linkConfig) || void 0 === _d ? void 0 : _d.outgoing) || void 0 === _e ? void 0 : _e.enabled) && void 0 !== _f ? _f : false;
     if (!incoming && !outgoing) {
       let newSet = {
         ...get(_setting)
@@ -4146,8 +6108,22 @@ function TagFolderViewComponent($$anchor, $$props) {
       set(bothEnabled, incoming && outgoing, true);
     }
     set(onlyFDREnabled, get(_setting).linkShowOnlyFDR, true);
-  }));
-  let observer, showSearch = state(false), iconDivEl = state(void 0), newNoteIcon = state(""), folderIcon = state(""), upAndDownArrowsIcon = state(""), stackedLevels = state(""), searchIcon = state(""), switchIcon = state(""), outgoingIcon = state(""), incomingIcon = state(""), bothIcon = state(""), linkIcon = state(""), closeAllIcon = state("");
+  });
+  let showSearch = state(false);
+  user_effect(() => {
+    if ("" !== $searchString().trim()) set(showSearch, true);
+  });
+  function toggleSearch() {
+    set(showSearch, !get(showSearch));
+    if (!get(showSearch)) store_set(searchString, "");
+  }
+  function clearSearch() {
+    store_set(searchString, "");
+  }
+  function doSwitch() {
+    if ($$props.switchView) $$props.switchView();
+  }
+  let observer, iconDivEl = state(void 0), newNoteIcon = state(""), folderIcon = state(""), upAndDownArrowsIcon = state(""), stackedLevels = state(""), searchIcon = state(""), switchIcon = state(""), outgoingIcon = state(""), incomingIcon = state(""), bothIcon = state(""), linkIcon = state(""), closeAllIcon = state("");
   async function switchIncoming() {
     let newSet = {
       ...get(_setting)
@@ -4184,9 +6160,9 @@ function TagFolderViewComponent($$anchor, $$props) {
     null == observer || observer.unobserve(el);
   }
   function observeAllQueued() {
-    observingElQueue.forEach((el => {
+    observingElQueue.forEach(el => {
       null == observer || observer.observe(el);
-    }));
+    });
     observingElQueue = [];
   }
   setContext("observer", {
@@ -4204,183 +6180,185 @@ function TagFolderViewComponent($$anchor, $$props) {
     },
     unobserve
   });
-  onMount((() => {
-    observer = new IntersectionObserver((ex => {
+  onMount(() => {
+    observer = new IntersectionObserver(ex => {
       for (const v of ex) if (observingElements.has(v.target)) {
         const tg = observingElements.get(v.target);
         if (tg && tg.lastState !== v.isIntersecting) {
           tg.lastState = v.isIntersecting;
-          setTimeout((() => tg.callback(v.isIntersecting)), 10);
+          window.setTimeout(() => tg.callback(v.isIntersecting), 10);
         }
       }
-    }), {
+    }, {
       root: scrollParent,
       rootMargin: "40px 0px",
       threshold: 0
     });
     observeAllQueued();
     if (get(iconDivEl)) {
-      (0, import_obsidian3.setIcon)(get(iconDivEl), "right-triangle");
+      (0, import_obsidian5.setIcon)(get(iconDivEl), "right-triangle");
       set(folderIcon, `${get(iconDivEl).innerHTML}`);
-      (0, import_obsidian3.setIcon)(get(iconDivEl), "lucide-edit");
+      (0, import_obsidian5.setIcon)(get(iconDivEl), "lucide-edit");
       set(newNoteIcon, `${get(iconDivEl).innerHTML}`);
       if (get(isMainTree)) {
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "lucide-sort-asc");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "lucide-sort-asc");
         set(upAndDownArrowsIcon, get(iconDivEl).innerHTML, true);
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "stacked-levels");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "stacked-levels");
         set(stackedLevels, get(iconDivEl).innerHTML, true);
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "search");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "search");
         set(searchIcon, get(iconDivEl).innerHTML, true);
       }
       if ("links" == viewType()) {
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "links-coming-in");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "links-coming-in");
         set(incomingIcon, get(iconDivEl).innerHTML, true);
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "links-going-out");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "links-going-out");
         set(outgoingIcon, get(iconDivEl).innerHTML, true);
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "link");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "link");
         set(linkIcon, get(iconDivEl).innerHTML, true);
-        (0, import_obsidian3.setIcon)(get(iconDivEl), "lucide-link-2");
+        (0, import_obsidian5.setIcon)(get(iconDivEl), "lucide-link-2");
         set(bothIcon, get(iconDivEl).innerHTML, true);
       }
-      (0, import_obsidian3.setIcon)(get(iconDivEl), "lucide-arrow-left-right");
+      (0, import_obsidian5.setIcon)(get(iconDivEl), "lucide-arrow-left-right");
       set(switchIcon, get(iconDivEl).innerHTML, true);
-      (0, import_obsidian3.setIcon)(get(iconDivEl), "lucide-chevrons-down-up");
+      (0, import_obsidian5.setIcon)(get(iconDivEl), "lucide-chevrons-down-up");
       set(closeAllIcon, get(iconDivEl).innerHTML, true);
     }
-    const int = setInterval((() => {
+    const int = window.setInterval(() => {
       performHide.set(Date.now());
-    }), 5e3);
+    }, 5e3);
     return () => {
-      clearInterval(int);
+      window.clearInterval(int);
     };
-  }));
-  onDestroy((() => {
+  });
+  onDestroy(() => {
     null == observer || observer.disconnect();
-  }));
-  let headerTitle = user_derived((() => "" == title() ? `${"tags" == viewType() ? "Tags" : "Links"}: ${vaultName()}` : `Items: ${title()}`));
-  const viewItems = user_derived((() => {
-    var _a3;
+  });
+  let headerTitle = user_derived(() => "" == title() ? `${"tags" == viewType() ? "Tags" : "Links"}: ${vaultName()}` : `Items: ${title()}`);
+  const viewItems = user_derived(() => {
+    var _a5;
     if (!get(viewItemsSrc)) return [];
     if (get(isMainTree)) return get(viewItemsSrc);
     let items = get(viewItemsSrc);
-    const lowerTags = tags().map((e => e.toLowerCase()));
-    for (const tag of lowerTags) items = items.filter((e => e.tags.some((e2 => (e2.toLowerCase() + "/").startsWith(tag)))));
-    const firstLevel = trimTrailingSlash(null !== (_a3 = tags().first()) && void 0 !== _a3 ? _a3 : "").toLowerCase(), archiveTags = get(_setting).archiveTags.toLowerCase().replace(/[\n ]/g, "").split(",");
-    if (!archiveTags.contains(firstLevel)) items = items.filter((item => !item.tags.some((e => archiveTags.contains(e.toLowerCase())))));
+    const lowerTags = tags().map(e => e.toLowerCase());
+    for (const tag2 of lowerTags) items = items.filter(e => e.tags.some(e2 => (e2.toLowerCase() + "/").startsWith(tag2)));
+    const firstLevel = trimTrailingSlash(null !== (_a5 = tags().first()) && void 0 !== _a5 ? _a5 : "").toLowerCase(), archiveTags = get(_setting).archiveTags.toLowerCase().replace(/[\n ]/g, "").split(",");
+    if (!archiveTags.contains(firstLevel)) items = items.filter(item => !item.tags.some(e => archiveTags.contains(e.toLowerCase())));
     return items;
-  }));
+  });
   setContext("viewID", `${Math.random()}`);
-  var fragment = root5(), div = first_child(fragment);
-  bind_this(div, ($$value => set(iconDivEl, $$value)), (() => get(iconDivEl)));
+  function closeAllOpenedFolders() {
+    v2expandedTags.update(prev => {
+      prev.clear();
+      return prev;
+    });
+  }
+  var fragment = root_52(), div = first_child(fragment);
+  bind_this(div, $$value => set(iconDivEl, $$value), () => get(iconDivEl));
   var div_1 = sibling(div, 2), div_2 = child(div_1), div_3 = child(div_2);
-  div_3.__click = function(...$$args) {
-    var _a3;
-    null == (_a3 = $$props.newNote) || _a3.apply(this, $$args);
-  };
-  html(child(div_3), (() => get(newNoteIcon)), false, false);
+  html(div_3, () => get(newNoteIcon), true);
   reset(div_3);
-  var node_1 = sibling(div_3, 2), consequent = $$anchor2 => {
-    var fragment_1 = root_13(), div_4 = first_child(fragment_1);
-    div_4.__click = function(...$$args) {
-      var _a3;
-      null == (_a3 = $$props.showOrder) || _a3.apply(this, $$args);
-    };
-    html(child(div_4), (() => get(upAndDownArrowsIcon)), false, false);
+  var node = sibling(div_3, 2), consequent = $$anchor2 => {
+    var fragment_1 = root6(), div_4 = first_child(fragment_1);
+    html(div_4, () => get(upAndDownArrowsIcon), true);
     reset(div_4);
     var div_5 = sibling(div_4, 2);
-    div_5.__click = function(...$$args) {
-      var _a3;
-      null == (_a3 = $$props.showLevelSelect) || _a3.apply(this, $$args);
-    };
-    html(child(div_5), (() => get(stackedLevels)), false, false);
+    html(div_5, () => get(stackedLevels), true);
     reset(div_5);
     var div_6 = sibling(div_5, 2);
-    div_6.__click = [ toggleSearch, showSearch, $searchString ];
-    html(child(div_6), (() => get(searchIcon)), false, false);
+    html(div_6, () => get(searchIcon), true);
     reset(div_6);
-    template_effect((() => set_class(div_6, 1, "clickable-icon nav-action-button " + (get(showSearch) ? " is-active" : ""), "svelte-1xm87ro")));
+    template_effect(() => set_class(div_6, 1, "clickable-icon nav-action-button " + (get(showSearch) ? " is-active" : ""), "svelte-10n2ssk"));
+    delegated("click", div_4, function(...$$args) {
+      var _a5;
+      null == (_a5 = $$props.showOrder) || _a5.apply(this, $$args);
+    });
+    delegated("click", div_5, function(...$$args) {
+      var _a5;
+      null == (_a5 = $$props.showLevelSelect) || _a5.apply(this, $$args);
+    });
+    delegated("click", div_6, toggleSearch);
     append($$anchor2, fragment_1);
   };
-  if_block(node_1, ($$render => {
+  if_block(node, $$render => {
     if (get(isMainTree)) $$render(consequent);
-  }));
-  var node_5 = sibling(node_1, 2), consequent_1 = $$anchor2 => {
-    var div_7 = root_23();
-    div_7.__click = [ doSwitch, $$props ];
-    html(child(div_7), (() => get(switchIcon)), false, false);
+  });
+  var node_1 = sibling(node, 2), consequent_1 = $$anchor2 => {
+    var div_7 = root_14();
+    html(div_7, () => get(switchIcon), true);
     reset(div_7);
+    delegated("click", div_7, doSwitch);
     append($$anchor2, div_7);
   };
-  if_block(node_5, ($$render => {
+  if_block(node_1, $$render => {
     if ($$props.isViewSwitchable) $$render(consequent_1);
-  }));
-  var node_7 = sibling(node_5, 2), consequent_2 = $$anchor2 => {
-    var fragment_2 = root_3(), div_8 = first_child(fragment_2);
+  });
+  var node_2 = sibling(node_1, 2), consequent_2 = $$anchor2 => {
+    var fragment_2 = root_22(), div_8 = first_child(fragment_2);
     let classes;
-    div_8.__click = switchIncoming;
-    html(child(div_8), (() => get(incomingIcon)), false, false);
+    html(div_8, () => get(incomingIcon), true);
     reset(div_8);
     var div_9 = sibling(div_8, 2);
     let classes_1;
-    div_9.__click = switchOutgoing;
-    html(child(div_9), (() => get(outgoingIcon)), false, false);
+    html(div_9, () => get(outgoingIcon), true);
     reset(div_9);
     var div_10 = sibling(div_9, 2);
     let classes_2;
-    div_10.__click = switchBoth;
-    html(child(div_10), (() => get(bothIcon)), false, false);
+    html(div_10, () => get(bothIcon), true);
     reset(div_10);
     var div_11 = sibling(div_10, 2);
     let classes_3;
-    div_11.__click = switchOnlyFDR;
-    html(child(div_11), (() => get(linkIcon)), false, false);
+    html(div_11, () => get(linkIcon), true);
     reset(div_11);
-    template_effect((($0, $1, $2, $3) => {
-      classes = set_class(div_8, 1, "clickable-icon nav-action-button", null, classes, $0);
-      classes_1 = set_class(div_9, 1, "clickable-icon nav-action-button", null, classes_1, $1);
-      classes_2 = set_class(div_10, 1, "clickable-icon nav-action-button", null, classes_2, $2);
-      classes_3 = set_class(div_11, 1, "clickable-icon nav-action-button", null, classes_3, $3);
-    }), [ () => ({
-      "is-active": get(incomingEnabled)
-    }), () => ({
-      "is-active": get(outgoingEnabled)
-    }), () => ({
-      "is-active": get(bothEnabled)
-    }), () => ({
-      "is-active": get(onlyFDREnabled)
-    }) ]);
+    template_effect(() => {
+      classes = set_class(div_8, 1, "clickable-icon nav-action-button", null, classes, {
+        "is-active": get(incomingEnabled)
+      });
+      classes_1 = set_class(div_9, 1, "clickable-icon nav-action-button", null, classes_1, {
+        "is-active": get(outgoingEnabled)
+      });
+      classes_2 = set_class(div_10, 1, "clickable-icon nav-action-button", null, classes_2, {
+        "is-active": get(bothEnabled)
+      });
+      classes_3 = set_class(div_11, 1, "clickable-icon nav-action-button", null, classes_3, {
+        "is-active": get(onlyFDREnabled)
+      });
+    });
+    delegated("click", div_8, switchIncoming);
+    delegated("click", div_9, switchOutgoing);
+    delegated("click", div_10, switchBoth);
+    delegated("click", div_11, switchOnlyFDR);
     append($$anchor2, fragment_2);
   };
-  if_block(node_7, ($$render => {
+  if_block(node_2, $$render => {
     if ("links" == viewType()) $$render(consequent_2);
-  }));
-  var node_12 = sibling(node_7, 2), consequent_3 = $$anchor2 => {
-    var div_12 = root_42();
-    div_12.__click = [ closeAllOpenedFolders ];
-    html(child(div_12), (() => get(closeAllIcon)), false, false);
+  });
+  var node_3 = sibling(node_2, 2), consequent_3 = $$anchor2 => {
+    var div_12 = root_32();
+    html(div_12, () => get(closeAllIcon), true);
     reset(div_12);
+    delegated("click", div_12, closeAllOpenedFolders);
     append($$anchor2, div_12);
   };
-  if_block(node_12, ($$render => {
+  if_block(node_3, $$render => {
     if (get(isMainTree)) $$render(consequent_3);
-  }));
+  });
   reset(div_2);
   reset(div_1);
-  var node_14 = sibling(div_1, 2), consequent_4 = $$anchor2 => {
-    var div_13 = root_5(), div_14 = child(div_13), input = child(div_14);
+  var node_4 = sibling(div_1, 2), consequent_4 = $$anchor2 => {
+    var div_13 = root_42(), div_14 = child(div_13), input = child(div_14);
     remove_input_defaults(input);
     var div_15 = sibling(input, 2);
-    div_15.__click = [ clearSearch, $searchString ];
     reset(div_14);
     reset(div_13);
-    template_effect(($0 => set_style(div_15, `display:${null != $0 ? $0 : ""};`)), [ () => "" == $searchString().trim() ? "none" : "" ]);
-    bind_value(input, $searchString, ($$value => store_set(searchString, $$value)));
+    template_effect($0 => set_style(div_15, `display:${null != $0 ? $0 : ""};`), [ () => "" == $searchString().trim() ? "none" : "" ]);
+    bind_value(input, $searchString, $$value => store_set(searchString, $$value));
+    delegated("click", div_15, clearSearch);
     append($$anchor2, div_13);
   };
-  if_block(node_14, ($$render => {
+  if_block(node_4, $$render => {
     if (get(showSearch) && get(isMainTree)) $$render(consequent_4);
-  }));
-  var div_16 = sibling(node_14, 2);
+  });
+  var div_16 = sibling(node_4, 2);
   V2TreeFolderComponent_1(child(div_16), {
     get viewType() {
       return viewType();
@@ -4414,7 +6392,11 @@ function TagFolderViewComponent($$anchor, $$props) {
     }
   });
   reset(div_16);
-  bind_this(div_16, ($$value => scrollParent = $$value), (() => scrollParent));
+  bind_this(div_16, $$value => scrollParent = $$value, () => scrollParent);
+  delegated("click", div_3, function(...$$args) {
+    var _a5;
+    null == (_a5 = $$props.newNote) || _a5.apply(this, $$args);
+  });
   append($$anchor, fragment);
   pop();
   $$cleanup();
@@ -4422,9 +6404,9 @@ function TagFolderViewComponent($$anchor, $$props) {
 
 delegate([ "click" ]);
 
-var import_obsidian5 = require("obsidian"), import_obsidian4 = require("obsidian"), askString = (app, title, placeholder, initialText) => new Promise((res => {
-  new PopoverSelectString(app, title, placeholder, initialText, (result => res(result))).open();
-})), PopoverSelectString = class extends import_obsidian4.SuggestModal {
+var import_obsidian7 = require("obsidian"), import_obsidian6 = require("obsidian"), askString = (app, title, placeholder, initialText) => new Promise(res => {
+  new PopoverSelectString(app, title, placeholder, initialText, result => res(result)).open();
+}), PopoverSelectString = class extends import_obsidian6.SuggestModal {
   constructor(app, title, placeholder, initialText, callback) {
     super(app);
     this.callback = () => {};
@@ -4433,9 +6415,9 @@ var import_obsidian5 = require("obsidian"), import_obsidian4 = require("obsidian
     this.title = title;
     this.setPlaceholder(null != placeholder ? placeholder : ">");
     this.callback = callback;
-    setTimeout((() => {
+    window.setTimeout(() => {
       this.inputEl.value = initialText;
-    }));
+    });
     const parent = this.containerEl.querySelector(".prompt");
     if (parent) parent.addClass("override-input");
   }
@@ -4448,20 +6430,20 @@ var import_obsidian5 = require("obsidian"), import_obsidian4 = require("obsidian
     });
   }
   onChooseSuggestion(item, evt) {
-    var _a3;
-    null == (_a3 = this.callback) || _a3.call(this, item);
+    var _a5;
+    null == (_a5 = this.callback) || _a5.call(this, item);
     this.callback = void 0;
   }
   onClose() {
-    setTimeout((() => {
+    window.setTimeout(() => {
       if (this.callback) this.callback(false);
-    }), 100);
+    }, 100);
   }
 };
 
 function toggleObjectProp(obj, propName, value) {
   if (false === value) {
-    const newTagInfoEntries = Object.entries(obj || {}).filter((([key]) => key != propName));
+    const newTagInfoEntries = Object.entries(obj || {}).filter(([key2]) => key2 != propName);
     if (0 == newTagInfoEntries.length) return {}; else return Object.fromEntries(newTagInfoEntries);
   } else return {
     ...null != obj ? obj : {},
@@ -4469,7 +6451,19 @@ function toggleObjectProp(obj, propName, value) {
   };
 }
 
-var TagFolderViewBase = class extends import_obsidian5.ItemView {
+function getTagWranglerPlugin(app) {
+  var _a5, _b3;
+  const plugin = null == (_b3 = null == (_a5 = app.plugins) ? void 0 : _a5.plugins) ? void 0 : _b3["tag-wrangler"];
+  if (plugin && "function" == typeof plugin.rename) return plugin;
+}
+
+function getRenameTargetTag(expandedTagsAll) {
+  var _a5;
+  const tagParts = trimTrailingSlash(null != (_a5 = expandedTagsAll[expandedTagsAll.length - 1]) ? _a5 : "").split("/").filter(part => "" != part.trim());
+  if (0 != tagParts.length && !tagParts.some(part => isSpecialTag(part))) return tagParts.join("/");
+}
+
+var TagFolderViewBase = class extends import_obsidian7.ItemView {
   constructor() {
     super(...arguments);
     this.navigation = false;
@@ -4483,138 +6477,142 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     this.plugin.updateFileCaches();
   }
   showOrder(evt) {
-    const menu = new import_obsidian5.Menu;
-    menu.addItem((item => {
-      item.setTitle("Tags").setIcon("hashtag").onClick((evt2 => {
-        const menu2 = new import_obsidian5.Menu;
-        for (const key in OrderKeyTag) for (const direction in OrderDirection) menu2.addItem((item2 => {
-          const newSetting = `${key}_${direction}`;
-          item2.setTitle(OrderKeyTag[key] + " " + OrderDirection[direction]).onClick((async () => {
+    const menu = new import_obsidian7.Menu;
+    menu.addItem(item => {
+      item.setTitle("Tags").setIcon("hashtag").onClick(evt2 => {
+        const menu2 = new import_obsidian7.Menu;
+        for (const key2 in OrderKeyTag) for (const direction in OrderDirection) menu2.addItem(item2 => {
+          const newSetting = `${key2}_${direction}`;
+          item2.setTitle(OrderKeyTag[key2] + " " + OrderDirection[direction]).onClick(async () => {
             this.plugin.settings.sortTypeTag = newSetting;
             await this.plugin.saveSettings();
-          }));
+          });
           if (newSetting == this.plugin.settings.sortTypeTag) item2.setIcon("checkmark");
           return item2;
-        }));
+        });
         menu2.showAtPosition({
           x: evt.x,
           y: evt.y
         });
-      }));
+      });
       return item;
-    }));
-    menu.addItem((item => {
-      item.setTitle("Items").setIcon("document").onClick((evt2 => {
-        const menu2 = new import_obsidian5.Menu;
-        for (const key in OrderKeyItem) for (const direction in OrderDirection) menu2.addItem((item2 => {
-          const newSetting = `${key}_${direction}`;
-          item2.setTitle(OrderKeyItem[key] + " " + OrderDirection[direction]).onClick((async () => {
+    });
+    menu.addItem(item => {
+      item.setTitle("Items").setIcon("document").onClick(evt2 => {
+        const menu2 = new import_obsidian7.Menu;
+        for (const key2 in OrderKeyItem) for (const direction in OrderDirection) menu2.addItem(item2 => {
+          const newSetting = `${key2}_${direction}`;
+          item2.setTitle(OrderKeyItem[key2] + " " + OrderDirection[direction]).onClick(async () => {
             this.plugin.settings.sortType = newSetting;
             await this.plugin.saveSettings();
-          }));
+          });
           if (newSetting == this.plugin.settings.sortType) item2.setIcon("checkmark");
           return item2;
-        }));
+        });
         menu2.showAtPosition({
           x: evt.x,
           y: evt.y
         });
-      }));
+      });
       return item;
-    }));
+    });
     menu.showAtMouseEvent(evt);
   }
   showLevelSelect(evt) {
-    const menu = new import_obsidian5.Menu, setLevel = async level => {
+    const menu = new import_obsidian7.Menu, setLevel = async level => {
       this.plugin.settings.expandLimit = level;
       await this.plugin.saveSettings();
       maxDepth.set(level);
     };
-    for (const level of [ 2, 3, 4, 5 ]) menu.addItem((item => {
-      item.setTitle("Level " + (level - 1)).onClick((() => {
+    for (const level of [ 2, 3, 4, 5 ]) menu.addItem(item => {
+      item.setTitle("Level " + (level - 1)).onClick(() => {
         setLevel(level);
-      }));
+      });
       if (this.plugin.settings.expandLimit == level) item.setIcon("checkmark");
       return item;
-    }));
-    menu.addItem((item => {
-      item.setTitle("No limit").onClick((() => {
+    });
+    menu.addItem(item => {
+      item.setTitle("No limit").onClick(() => {
         setLevel(0);
-      }));
+      });
       if (0 == this.plugin.settings.expandLimit) item.setIcon("checkmark");
       return item;
-    }));
+    });
     menu.showAtMouseEvent(evt);
   }
   showMenu(evt, trail, targetTag, targetItems) {
-    const isTagTree = this.getViewType() == VIEW_TYPE_TAGFOLDER, menu = new import_obsidian5.Menu;
+    const isTagTree = this.getViewType() == VIEW_TYPE_TAGFOLDER, menu = new import_obsidian7.Menu;
     if (isTagTree) {
-      const expandedTagsAll = ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath(trail)))).map((e => trimTrailingSlash(e))), expandedTags = expandedTagsAll.map((e => e.split("/").filter((ee => !isSpecialTag(ee))).join("/"))).filter((e => "" != e)).map((e => "#" + e)).join(" ").trim(), displayExpandedTags = expandedTagsAll.map((e => e.split("/").filter((ee => renderSpecialTag(ee))).join("/"))).filter((e => "" != e)).map((e => "#" + e)).join(" ").trim();
-      if (navigator && navigator.clipboard) menu.addItem((item => item.setTitle(`Copy tags:${expandedTags}`).setIcon("hashtag").onClick((async () => {
+      const expandedTagsAll = ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath(trail)))).map(e => trimTrailingSlash(e)), expandedTags = expandedTagsAll.map(e => e.split("/").filter(ee => !isSpecialTag(ee)).join("/")).filter(e => "" != e).map(e => "#" + e).join(" ").trim(), displayExpandedTags = expandedTagsAll.map(e => e.split("/").filter(ee => renderSpecialTag(ee)).join("/")).filter(e => "" != e).map(e => "#" + e).join(" ").trim();
+      if (navigator && navigator.clipboard) menu.addItem(item => item.setTitle(`Copy tags:${expandedTags}`).setIcon("hashtag").onClick(async () => {
         await navigator.clipboard.writeText(expandedTags);
-        new import_obsidian5.Notice("Copied");
-      }))));
-      menu.addItem((item => item.setTitle("New note " + (targetTag ? "in here" : "as like this")).setIcon("create-new").onClick((async () => {
+        new import_obsidian7.Notice("Copied");
+      }));
+      menu.addItem(item => item.setTitle("New note " + (targetTag ? "in here" : "as like this")).setIcon("create-new").onClick(async () => {
         await this.plugin.createNewNote(trail);
-      }))));
+      }));
+      const renameTargetTag = targetTag ? getRenameTargetTag(expandedTagsAll) : void 0, tagWrangler = renameTargetTag ? getTagWranglerPlugin(this.app) : void 0;
+      if (renameTargetTag && tagWrangler) menu.addItem(item => item.setTitle(`Rename #${renameTargetTag}`).setIcon("pencil").onClick(async () => {
+        await tagWrangler.rename(renameTargetTag);
+      }));
       if (targetTag) if (this.plugin.settings.useTagInfo && null != this.plugin.tagInfo) {
-        const tag = targetTag;
-        if (tag in this.plugin.tagInfo && "key" in this.plugin.tagInfo[tag]) menu.addItem((item => item.setTitle("Unpin").setIcon("pin").onClick((async () => {
-          this.plugin.tagInfo[tag] = toggleObjectProp(this.plugin.tagInfo[tag], "key", false);
+        const tag2 = targetTag;
+        if (tag2 in this.plugin.tagInfo && "key" in this.plugin.tagInfo[tag2]) menu.addItem(item => item.setTitle("Unpin").setIcon("pin").onClick(async () => {
+          this.plugin.tagInfo[tag2] = toggleObjectProp(this.plugin.tagInfo[tag2], "key", false);
           this.plugin.applyTagInfo();
           await this.plugin.saveTagInfo();
-        })))); else menu.addItem((item => {
-          item.setTitle("Pin").setIcon("pin").onClick((async () => {
-            this.plugin.tagInfo[tag] = toggleObjectProp(this.plugin.tagInfo[tag], "key", "");
+        })); else menu.addItem(item => {
+          item.setTitle("Pin").setIcon("pin").onClick(async () => {
+            this.plugin.tagInfo[tag2] = toggleObjectProp(this.plugin.tagInfo[tag2], "key", "");
             this.plugin.applyTagInfo();
             await this.plugin.saveTagInfo();
-          }));
-        }));
-        menu.addItem((item => {
-          item.setTitle("Set an alternative label").setIcon("pencil").onClick((async () => {
-            var _a3;
-            const oldAlt = tag in this.plugin.tagInfo ? null != (_a3 = this.plugin.tagInfo[tag].alt) ? _a3 : "" : "", label = await askString(this.app, "", "", oldAlt);
+          });
+        });
+        menu.addItem(item => {
+          item.setTitle("Set an alternative label").setIcon("pencil").onClick(async () => {
+            var _a5;
+            const oldAlt = tag2 in this.plugin.tagInfo ? null != (_a5 = this.plugin.tagInfo[tag2].alt) ? _a5 : "" : "", label = await askString(this.app, "", "", oldAlt);
             if (false !== label) {
-              this.plugin.tagInfo[tag] = toggleObjectProp(this.plugin.tagInfo[tag], "alt", "" == label ? false : label);
+              this.plugin.tagInfo[tag2] = toggleObjectProp(this.plugin.tagInfo[tag2], "alt", "" == label ? false : label);
               this.plugin.applyTagInfo();
               await this.plugin.saveTagInfo();
             }
-          }));
-        }));
-        menu.addItem((item => {
-          item.setTitle("Change the mark").setIcon("pencil").onClick((async () => {
-            var _a3;
-            const oldMark = tag in this.plugin.tagInfo ? null != (_a3 = this.plugin.tagInfo[tag].mark) ? _a3 : "" : "", mark = await askString(this.app, "", "", oldMark);
+          });
+        });
+        menu.addItem(item => {
+          item.setTitle("Change the mark").setIcon("pencil").onClick(async () => {
+            var _a5;
+            const oldMark = tag2 in this.plugin.tagInfo ? null != (_a5 = this.plugin.tagInfo[tag2].mark) ? _a5 : "" : "", mark = await askString(this.app, "", "", oldMark);
             if (false !== mark) {
-              this.plugin.tagInfo[tag] = toggleObjectProp(this.plugin.tagInfo[tag], "mark", "" == mark ? false : mark);
+              this.plugin.tagInfo[tag2] = toggleObjectProp(this.plugin.tagInfo[tag2], "mark", "" == mark ? false : mark);
               this.plugin.applyTagInfo();
               await this.plugin.saveTagInfo();
             }
-          }));
-        }));
-        menu.addItem((item => {
-          item.setTitle("Redirect this tag to ...").setIcon("pencil").onClick((async () => {
-            var _a3;
-            const oldRedirect = tag in this.plugin.tagInfo ? null != (_a3 = this.plugin.tagInfo[tag].redirect) ? _a3 : "" : "", redirect = await askString(this.app, "", "", oldRedirect);
+          });
+        });
+        menu.addItem(item => {
+          item.setTitle("Redirect this tag to ...").setIcon("pencil").onClick(async () => {
+            var _a5;
+            const oldRedirect = tag2 in this.plugin.tagInfo ? null != (_a5 = this.plugin.tagInfo[tag2].redirect) ? _a5 : "" : "", redirect = await askString(this.app, "", "", oldRedirect);
             if (false !== redirect) {
-              this.plugin.tagInfo[tag] = toggleObjectProp(this.plugin.tagInfo[tag], "redirect", "" == redirect ? false : redirect);
+              this.plugin.tagInfo[tag2] = toggleObjectProp(this.plugin.tagInfo[tag2], "redirect", "" == redirect ? false : redirect);
               this.plugin.applyTagInfo();
               await this.plugin.saveTagInfo();
             }
-          }));
-        }));
+          });
+        });
         if (targetItems) {
-          menu.addItem((item => {
-            item.setTitle("Open scroll view").setIcon("sheets-in-box").onClick((async () => {
-              const files = targetItems.map((e => e.path));
+          menu.addItem(item => {
+            item.setTitle("Open scroll view").setIcon("sheets-in-box").onClick(async () => {
+              const files = targetItems.map(e => e.path);
               await this.plugin.openScrollView(void 0, displayExpandedTags, expandedTagsAll.join(", "), files);
-            }));
-          }));
-          menu.addItem((item => {
-            item.setTitle("Open list").setIcon("sheets-in-box").onClick((() => {
+            });
+          });
+          menu.addItem(item => {
+            item.setTitle("Open list").setIcon("sheets-in-box").onClick(() => {
               selectedTags.set(expandedTagsAll);
-            }));
-          }));
+            });
+          });
         }
       }
     }
@@ -4622,22 +6620,22 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
       const path = targetItems[0].path, file = this.app.vault.getAbstractFileByPath(path);
       this.app.workspace.trigger("file-menu", menu, file, "file-explorer");
       menu.addSeparator();
-      menu.addItem((item => item.setTitle("Open in new tab").setSection("open").setIcon("lucide-file-plus").onClick((async () => {
+      menu.addItem(item => item.setTitle("Open in new tab").setSection("open").setIcon("lucide-file-plus").onClick(async () => {
         await this.app.workspace.openLinkText(path, path, "tab");
-      }))));
-      menu.addItem((item => item.setTitle("Open to the right").setSection("open").setIcon("lucide-separator-vertical").onClick((async () => {
+      }));
+      menu.addItem(item => item.setTitle("Open to the right").setSection("open").setIcon("lucide-separator-vertical").onClick(async () => {
         await this.app.workspace.openLinkText(path, path, "split");
-      }))));
+      }));
     } else if (!isTagTree && targetTag) {
       const path = targetTag, file = this.app.vault.getAbstractFileByPath(path);
       this.app.workspace.trigger("file-menu", menu, file, "file-explorer");
       menu.addSeparator();
-      menu.addItem((item => item.setTitle("Open in new tab").setSection("open").setIcon("lucide-file-plus").onClick((async () => {
+      menu.addItem(item => item.setTitle("Open in new tab").setSection("open").setIcon("lucide-file-plus").onClick(async () => {
         await this.app.workspace.openLinkText(path, path, "tab");
-      }))));
-      menu.addItem((item => item.setTitle("Open to the right").setSection("open").setIcon("lucide-separator-vertical").onClick((async () => {
+      }));
+      menu.addItem(item => item.setTitle("Open to the right").setSection("open").setIcon("lucide-separator-vertical").onClick(async () => {
         await this.app.workspace.openLinkText(path, path, "split");
-      }))));
+      }));
     }
     if ("screenX" in evt) menu.showAtPosition({
       x: evt.pageX,
@@ -4652,7 +6650,7 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     let viewType = VIEW_TYPE_TAGFOLDER;
     const currentType = this.getViewType();
     if (currentType == VIEW_TYPE_TAGFOLDER) viewType = VIEW_TYPE_TAGFOLDER_LIST; else if (currentType == VIEW_TYPE_TAGFOLDER_LINK) return; else if (currentType == VIEW_TYPE_TAGFOLDER_LIST) viewType = VIEW_TYPE_TAGFOLDER;
-    const leaves = this.app.workspace.getLeavesOfType(viewType).filter((e => !e.getViewState().pinned && e != this.leaf));
+    const leaves = this.app.workspace.getLeavesOfType(viewType).filter(e => !e.getViewState().pinned && e != this.leaf);
     if (leaves.length) this.app.workspace.revealLeaf(leaves[0]);
   }
 }, TagFolderView = class extends TagFolderViewBase {
@@ -4684,16 +6682,16 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     const app = mount(TagFolderViewComponent, {
       target: this.containerEl,
       props: {
-        openFile: this.plugin.focusFile,
+        openFile: this.plugin.focusFile.bind(this.plugin),
         hoverPreview: (a, b) => this.plugin.hoverPreview(a, b),
         vaultName: this.app.vault.getName(),
-        showMenu: this.showMenu,
-        showLevelSelect: this.showLevelSelect,
-        showOrder: this.showOrder,
-        newNote: this.newNote,
-        openScrollView: this.plugin.openScrollView,
+        showMenu: this.showMenu.bind(this),
+        showLevelSelect: this.showLevelSelect.bind(this),
+        showOrder: this.showOrder.bind(this),
+        newNote: this.newNote.bind(this),
+        openScrollView: this.plugin.openScrollView.bind(this.plugin),
         isViewSwitchable: this.plugin.settings.useMultiPaneList,
-        switchView: this.switchView,
+        switchView: this.switchView.bind(this),
         viewType: this.treeViewType,
         saveSettings: this.saveSettings.bind(this)
       }
@@ -4706,7 +6704,7 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     this.component = void 0;
     return await Promise.resolve();
   }
-}, import_obsidian7 = require("obsidian"), TagFolderList = class extends TagFolderViewBase {
+}, import_obsidian9 = require("obsidian"), TagFolderList = class extends TagFolderViewBase {
   constructor(leaf, plugin) {
     super(leaf);
     this.icon = "stacked-levels";
@@ -4725,11 +6723,11 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
   }
   onPaneMenu(menu, source2) {
     super.onPaneMenu(menu, source2);
-    menu.addItem((item => {
-      item.setIcon("pin").setTitle("Pin").onClick((() => {
+    menu.addItem(item => {
+      item.setIcon("pin").setTitle("Pin").onClick(() => {
         this.leaf.togglePinned();
-      }));
-    }));
+      });
+    });
   }
   getIcon() {
     return "stacked-levels";
@@ -4760,16 +6758,16 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     this.component = mount(TagFolderViewComponent, {
       target: this.containerEl,
       props: {
-        openFile: this.plugin.focusFile,
-        hoverPreview: this.plugin.hoverPreview,
+        openFile: this.plugin.focusFile.bind(this.plugin),
+        hoverPreview: this.plugin.hoverPreview.bind(this.plugin),
         title: "",
-        showMenu: this.showMenu,
-        showLevelSelect: this.showLevelSelect,
-        showOrder: this.showOrder,
-        newNote: this.newNote,
-        openScrollView: this.plugin.openScrollView,
+        showMenu: this.showMenu.bind(this),
+        showLevelSelect: this.showLevelSelect.bind(this),
+        showOrder: this.showOrder.bind(this),
+        newNote: this.newNote.bind(this),
+        openScrollView: this.plugin.openScrollView.bind(this.plugin),
         isViewSwitchable: this.plugin.settings.useMultiPaneList,
-        switchView: this.switchView,
+        switchView: this.switchView.bind(this),
         saveSettings: this.saveSettings.bind(this),
         stateStore: this.stateStore
       }
@@ -4783,14 +6781,741 @@ var TagFolderViewBase = class extends import_obsidian5.ItemView {
     }
     return await Promise.resolve();
   }
-}, HideItemsType = {
+};
+
+function normaliseTag(tag2) {
+  return tag2.trim().replace(/^#/, "").replace(/\/+$/, "");
+}
+
+function uniqueCaseInsensitive(values) {
+  const seen = new Set, result = [];
+  for (const value of values) {
+    const key2 = value.toLowerCase();
+    if ("" != value && !seen.has(key2)) {
+      seen.add(key2);
+      result.push(value);
+    }
+  }
+  return result;
+}
+
+function folderMatches(path, folder) {
+  const pathLower = path.toLowerCase(), folderLower = folder.trim().replace(/^\/+|\/+$/g, "").toLowerCase();
+  if ("" == folderLower) return false; else return pathLower == folderLower || pathLower.startsWith(`${folderLower}/`);
+}
+
+function normalisePolicyTags(tags) {
+  return new Set(tags.map(normaliseTag).filter(Boolean).map(tag2 => tag2.toLowerCase()));
+}
+
+function normaliseLookupTags(rawTags, policy2) {
+  const redirects = new Map(Object.entries(policy2.redirects).map(([tag2, redirect]) => [ normaliseTag(tag2).toLowerCase(), normaliseTag(redirect) ]).filter(([tag2, redirect]) => "" != tag2 && "" != redirect)), redirected = rawTags.map(normaliseTag).filter(Boolean).map(tag2 => {
+    var _a5;
+    return null != (_a5 = redirects.get(tag2.toLowerCase())) ? _a5 : tag2;
+  });
+  return uniqueCaseInsensitive((policy2.splitNestedTags ? redirected.flatMap(tag2 => tag2.split("/").map(part => part.trim()).filter(Boolean)) : redirected).map(tag2 => {
+    var _a5;
+    return null != (_a5 = redirects.get(tag2.toLowerCase())) ? _a5 : tag2;
+  }));
+}
+
+function buildNoteLookupItems(sources, policy2) {
+  const ignoredDocumentTags = normalisePolicyTags(policy2.ignoreDocumentTags), ignoredTags = normalisePolicyTags(policy2.ignoreTags);
+  return sources.flatMap(source2 => {
+    if (policy2.targetFolders.length > 0 && !policy2.targetFolders.some(folder => folderMatches(source2.path, folder))) return [];
+    if (policy2.ignoreFolders.some(folder => folderMatches(source2.path, folder))) return [];
+    const tags = normaliseLookupTags(source2.tags, policy2);
+    if (tags.some(tag2 => ignoredDocumentTags.has(tag2.toLowerCase()))) return []; else return [ {
+      path: source2.path,
+      title: source2.title,
+      tags: tags.filter(tag2 => !ignoredTags.has(tag2.toLowerCase())),
+      mtime: source2.mtime
+    } ];
+  });
+}
+
+function parseTagInput(input) {
+  let query = input.trim();
+  const excluded = query.startsWith("-");
+  if (excluded) query = query.substring(1);
+  query = query.replace(/^#/, "").trim();
+  return {
+    excluded,
+    query
+  };
+}
+
+function tagMatchesCondition(noteTag, conditionTag) {
+  const tag2 = normaliseTag(noteTag).toLowerCase(), condition = normaliseTag(conditionTag).toLowerCase();
+  if ("" == tag2 || "" == condition) return false; else return tag2 == condition || tag2.startsWith(`${condition}/`);
+}
+
+function tagAncestors(tag2) {
+  const parts = normaliseTag(tag2).split("/").filter(Boolean);
+  return parts.map((_, index2) => parts.slice(0, index2 + 1).join("/"));
+}
+
+function getTagCompletions(items, conditions, input) {
+  var _a5;
+  const {excluded, query} = parseTagInput(input), queryLower = query.toLowerCase(), selected = new Set(conditions.map(condition => normaliseTag(condition.tag).toLowerCase())), counts = new Map;
+  for (const item of items) for (const tag2 of uniqueCaseInsensitive(item.tags.flatMap(tagAncestors))) {
+    const key2 = tag2.toLowerCase();
+    if (selected.has(key2)) continue;
+    const entry = null != (_a5 = counts.get(key2)) ? _a5 : {
+      tag: tag2,
+      paths: new Set
+    };
+    entry.paths.add(item.path);
+    counts.set(key2, entry);
+  }
+  return [ ...counts.values() ].filter(({tag: tag2}) => "" == queryLower || tag2.toLowerCase().includes(queryLower)).sort((left, right) => {
+    const leftPrefix = left.tag.toLowerCase().startsWith(queryLower) ? 1 : 0, rightPrefix = right.tag.toLowerCase().startsWith(queryLower) ? 1 : 0;
+    if (leftPrefix != rightPrefix) return rightPrefix - leftPrefix;
+    if (left.paths.size != right.paths.size) return right.paths.size - left.paths.size; else return left.tag.localeCompare(right.tag, void 0, {
+      numeric: true,
+      sensitivity: "base"
+    });
+  }).map(({tag: tag2, paths}) => ({
+    tag: tag2,
+    excluded,
+    noteCount: paths.size
+  }));
+}
+
+function scoreSubsequence(needle, haystack) {
+  var _a5;
+  const exactIndex = haystack.indexOf(needle);
+  if (exactIndex >= 0) return 2e3 + (0 == exactIndex ? 500 : 0) - exactIndex - (haystack.length - needle.length) / 100;
+  let position = -1, score = 0;
+  for (const character of needle) {
+    const next2 = haystack.indexOf(character, position + 1);
+    if (next2 < 0) return null;
+    const gap = next2 - position - 1;
+    score += 20 - Math.min(gap, 19);
+    if (0 == next2 || "/-_ ".includes(null != (_a5 = haystack[next2 - 1]) ? _a5 : "")) score += 10;
+    position = next2;
+  }
+  return score;
+}
+
+function scoreNoteQuery(item, query) {
+  const words = query.toLowerCase().trim().split(/\s+/).filter(Boolean);
+  if (0 == words.length) return 0;
+  const title = item.title.toLowerCase(), path = item.path.toLowerCase();
+  let total = 0;
+  for (const word of words) {
+    const titleScore = scoreSubsequence(word, title), pathScore = scoreSubsequence(word, path);
+    if (null == titleScore && null == pathScore) return null;
+    total += Math.max(null == titleScore ? -1 / 0 : titleScore + 200, null != pathScore ? pathScore : -1 / 0);
+  }
+  return total;
+}
+
+function uniqueConditions(conditions) {
+  const seen = new Set;
+  return conditions.filter(condition => {
+    const tag2 = normaliseTag(condition.tag), key2 = `${condition.excluded ? "-" : "+"}${tag2.toLowerCase()}`;
+    if ("" == tag2 || seen.has(key2)) return false;
+    seen.add(key2);
+    return true;
+  }).map(condition => ({
+    ...condition,
+    tag: normaliseTag(condition.tag)
+  }));
+}
+
+function rankNoteLookupItems(items, conditions, noteQuery, options = {}) {
+  const normalisedConditions = uniqueConditions(conditions), positive = normalisedConditions.filter(condition => !condition.excluded), excluded = normalisedConditions.filter(condition => condition.excluded);
+  return items.flatMap(item => {
+    if (null != options.excludedPath && item.path == options.excludedPath) return [];
+    if (excluded.some(condition => item.tags.some(tag2 => tagMatchesCondition(tag2, condition.tag)))) return [];
+    const matchedTags = positive.filter(condition => item.tags.some(tag2 => tagMatchesCondition(tag2, condition.tag))).map(condition => condition.tag);
+    if (positive.length > 0 && 0 == matchedTags.length) return [];
+    const queryScore = scoreNoteQuery(item, noteQuery);
+    if (null == queryScore) return []; else return [ {
+      ...item,
+      matchedTags,
+      matchCount: matchedTags.length,
+      queryScore
+    } ];
+  }).sort((left, right) => {
+    if (left.matchCount != right.matchCount) return right.matchCount - left.matchCount;
+    if (left.queryScore != right.queryScore) return right.queryScore - left.queryScore;
+    if (left.mtime != right.mtime) return right.mtime - left.mtime; else return left.path.localeCompare(right.path, void 0, {
+      numeric: true,
+      sensitivity: "base"
+    });
+  });
+}
+
+var import_obsidian10 = require("obsidian"), root7 = from_html('<button type="button" tabindex="-1"><span class="multi-select-pill-content svelte-kazjep"> </span> <span class="multi-select-pill-remove-button" aria-hidden="true">×</span></button>'), root_15 = from_html('<button type="button" role="option" tabindex="-1"><span> </span> <span class="count svelte-kazjep"> </span></button>'), root_23 = from_html('<div class="completions suggestion-container svelte-kazjep"><div class="suggestion svelte-kazjep" id="tagfolder-note-lookup-completions" role="listbox" aria-label="Tag completions"></div></div>'), root_33 = from_html('<span class="note-parent-path svelte-kazjep"> </span>'), root_43 = from_html('<span class="note-alternative-title svelte-kazjep"> </span>'), root_53 = from_html("<span> </span>"), root_62 = from_html('<span class="suggestion-aux match-count svelte-kazjep"> </span>'), root_72 = from_html('<button type="button" role="option" tabindex="-1"><div class="suggestion-content svelte-kazjep"><span class="note-location svelte-kazjep"><span class="note-file-name svelte-kazjep"> </span> <!></span> <div class="note-detail-row svelte-kazjep"><!> <span class="note-tags svelte-kazjep"></span></div></div> <!></button>'), root_8 = from_html('<div class="empty-result svelte-kazjep">No matching notes</div>'), root_9 = from_html('<div class="note-lookup svelte-kazjep"><div class="tag-field svelte-kazjep"><label for="tagfolder-note-lookup-tag-input" class="svelte-kazjep">Tags</label> <div class="tag-input-shell svelte-kazjep"><div class="tag-chips svelte-kazjep" id="tagfolder-note-lookup-selected-tags"><!> <input id="tagfolder-note-lookup-tag-input" type="text" role="combobox" spellcheck="false" autocomplete="off" aria-label="Tag conditions" aria-controls="tagfolder-note-lookup-completions tagfolder-note-lookup-notes tagfolder-note-lookup-selected-tags" class="svelte-kazjep"/></div></div> <!></div> <label for="tagfolder-note-lookup-note-input" class="svelte-kazjep">Note</label> <input id="tagfolder-note-lookup-note-input" class="note-input svelte-kazjep" type="text" role="combobox" spellcheck="false" autocomplete="off" placeholder="Type a file name or path…" aria-label="Note name or path" aria-controls="tagfolder-note-lookup-notes" aria-expanded="true"/> <div class="result-summary svelte-kazjep" aria-hidden="true"><span class="svelte-kazjep"> </span> <span class="svelte-kazjep">Tab: switch field · ↑↓: select · Enter: open</span></div> <div class="notes prompt-results svelte-kazjep" id="tagfolder-note-lookup-notes" role="listbox" aria-label="Matching notes"><!> <!></div> <div class="sr-only svelte-kazjep" aria-live="polite"> </div></div>'), $$css4 = {
+  hash: "svelte-kazjep",
+  code: '.note-lookup.svelte-kazjep {display:flex;flex-direction:column;gap:0.45rem;flex:1;width:100%;min-width:0;min-height:0;}.tagfolder-note-lookup-modal {width:min(46rem, 90vw);max-width:90vw;height:min(46rem, calc(100dvh - 2rem));max-height:calc(100dvh - 2rem);}.tagfolder-note-lookup-modal .modal-content {display:flex;flex:1;min-height:0;}label.svelte-kazjep {color:var(--text-muted);font-size:var(--font-ui-smaller);font-weight:var(--font-semibold);}.tag-input-shell.svelte-kazjep,\n\t.note-input.svelte-kazjep {background:var(--background-modifier-form-field);border:var(--input-border-width) solid var(--background-modifier-border);border-radius:var(--input-radius);box-shadow:var(--input-shadow);}.tag-input-shell.svelte-kazjep {width:100%;max-width:100%;min-width:0;overflow:hidden;border-radius:var(--radius-s);}.tag-input-shell.svelte-kazjep:focus-within,\n\t.note-input.svelte-kazjep:focus {border-color:var(--interactive-accent);box-shadow:0 0 0 2px var(--background-modifier-border-focus);}.tag-field.svelte-kazjep {position:relative;display:flex;flex-direction:column;gap:0.45rem;z-index:2;}.tag-chips.svelte-kazjep {display:flex;align-items:center;flex-wrap:wrap;gap:0.3rem;width:100%;max-width:100%;min-width:0;min-height:2.25rem;padding:0.3rem 0.45rem;}.tag-chips.svelte-kazjep input:where(.svelte-kazjep) {flex:1 1 9rem;min-width:7rem;border:0;box-shadow:none;background:transparent;padding:0.2rem;}.tag-chips.svelte-kazjep input:where(.svelte-kazjep):focus {border:0;box-shadow:none;}.tag-chip.svelte-kazjep {--pill-color: var(--tag-color);--pill-color-hover: var(--tag-color-hover);--pill-color-remove: var(--tag-color);--pill-color-remove-hover: var(--tag-color-hover);--pill-decoration: var(--tag-decoration);--pill-decoration-hover: var(--tag-decoration-hover);--pill-background: var(--tag-background);--pill-background-hover: var(--tag-background-hover);--pill-border-color: var(--tag-border-color);--pill-border-color-hover: var(--tag-border-color-hover);--pill-border-width: var(--tag-border-width);--pill-padding-x: var(--tag-padding-x);--pill-padding-y: var(--tag-padding-y);--pill-radius: var(--tag-radius);--pill-corner-shape: var(--tag-corner-shape);--pill-weight: var(--tag-weight);font-size:var(--tag-size);min-width:0;max-width:100%;height:auto;box-shadow:none;}.tag-chip.svelte-kazjep .multi-select-pill-content:where(.svelte-kazjep) {min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.tag-chip.excluded.svelte-kazjep {--pill-color: var(--text-error);--pill-color-hover: var(--text-error);--pill-color-remove: var(--text-error);--pill-color-remove-hover: var(--text-error);--pill-background: transparent;--pill-background-hover: var(--background-modifier-hover);--pill-border-color: var(--text-error);--pill-border-color-hover: var(--text-error);--pill-border-width: var(--border-width);border-style:dashed;}.tag-chip.active.svelte-kazjep::after {content:"";display:block;position:absolute;pointer-events:none;border-radius:var(--pill-radius);inset:0;box-shadow:0 0 0 1px var(--background-modifier-border-focus), inset 0 0 0 1px var(--background-modifier-border-focus);}.completions.svelte-kazjep {top:calc(100% + 0.25rem);left:0;right:0;max-width:none;max-height:14rem;}.completions.svelte-kazjep .suggestion:where(.svelte-kazjep) {overflow-y:auto;padding:var(--size-2-3);}.completion.svelte-kazjep,\n\t.note-result.svelte-kazjep {width:100%;border:0;background:transparent;box-shadow:none;color:var(--text-normal);text-align:left;}.completion.svelte-kazjep {display:flex;justify-content:space-between;}.completion.is-selected.svelte-kazjep,\n\t.note-result.is-selected.svelte-kazjep {background-color:var(--background-modifier-hover);}.count.svelte-kazjep,\n\t.result-summary.svelte-kazjep,\n\t.match-count.svelte-kazjep {color:var(--text-muted);font-size:var(--font-ui-smaller);}.note-input.svelte-kazjep {width:100%;padding:0.55rem 0.7rem;}.result-summary.svelte-kazjep {display:flex;justify-content:space-between;gap:1rem;}.notes.svelte-kazjep {flex:1;min-height:5rem;overflow-y:auto;border-top:1px solid var(--background-modifier-border);padding:var(--size-2-3) 0 0;}.note-result.svelte-kazjep {align-items:center;padding:var(--size-2-2) var(--size-4-2);}.note-result.svelte-kazjep .suggestion-content:where(.svelte-kazjep) {flex:1 1 auto;min-width:0;width:auto;overflow:hidden;}.note-detail-row.svelte-kazjep {display:flex;justify-content:space-between;gap:1rem;width:100%;min-width:0;}.note-result.svelte-kazjep .suggestion-aux:where(.svelte-kazjep) {flex:0 0 auto;align-self:center;}.note-location.svelte-kazjep {display:flex;align-items:baseline;gap:0.5rem;width:100%;min-width:0;overflow:hidden;}.note-file-name.svelte-kazjep {flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:var(--font-ui-small);font-weight:var(--font-semibold);}.note-parent-path.svelte-kazjep,\n\t.note-alternative-title.svelte-kazjep {color:var(--text-muted);font-size:var(--font-ui-smaller);}.note-parent-path.svelte-kazjep,\n\t.note-alternative-title.svelte-kazjep {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.note-parent-path.svelte-kazjep {flex:0 10 auto;min-width:0;max-width:40%;}.match-count.svelte-kazjep {white-space:nowrap;}.note-alternative-title.svelte-kazjep {min-width:0;}.note-tags.svelte-kazjep {display:flex;gap:0.4rem;flex-shrink:0;color:var(--text-accent);font-size:var(--font-ui-smaller);}.empty-result.svelte-kazjep {padding:2rem;text-align:center;color:var(--text-muted);}.sr-only.svelte-kazjep {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0;}\n\t@media (max-width: 600px) {.tagfolder-note-lookup-modal {width:calc(100vw - 0.75rem);max-width:calc(100vw - 0.75rem);height:calc(100dvh - 0.75rem);max-height:calc(100dvh - 0.75rem);}body.is-phone .tagfolder-note-lookup-modal {width:var(--dialog-width);max-width:var(--dialog-max-width);height:100%;max-height:var(--dialog-max-height);margin-top:auto;}.note-lookup.svelte-kazjep,\n\t\t.tag-field.svelte-kazjep {gap:0.3rem;}.tag-chips.svelte-kazjep {padding:0.2rem 0.3rem;max-height:min(calc(var(--input-height) * 1.5), 15dvh);overflow-x:hidden;overflow-y:auto;align-content:flex-start;}.note-input.svelte-kazjep {padding:0.4rem 0.55rem;}.note-result.svelte-kazjep {padding:var(--size-2-2) var(--size-4-2);}.note-location.svelte-kazjep {gap:0.35rem;}.result-summary.svelte-kazjep span:where(.svelte-kazjep):last-child,\n\t\t.note-tags.svelte-kazjep {display:none;}\n\t}'
+};
+
+function NoteLookupModal($$anchor, $$props) {
+  push($$props, true);
+  append_styles($$anchor, $$css4);
+  let initialConditions = prop($$props, "initialConditions", 19, () => []), conditions = state(proxy(untrack(() => initialConditions().map(condition => ({
+    ...condition
+  }))))), tagQuery = state(""), noteQuery = state(""), activeCompletionIndex = state(0), activeNoteIndex = state(0), activeChipIndex = state(-1), tagInputFocused = state(false), announcement = state(""), tagInputEl = state(void 0), noteInputEl = state(void 0);
+  const completions = user_derived(() => getTagCompletions($$props.notes, get(conditions), get(tagQuery)).slice(0, 12)), rankedNotes = user_derived(() => rankNoteLookupItems($$props.notes, get(conditions), get(noteQuery), {
+    excludedPath: $$props.excludedPath
+  })), visibleNotes = user_derived(() => get(rankedNotes).slice(0, 100)), positiveConditionCount = user_derived(() => get(conditions).filter(condition => !condition.excluded).length), showCompletions = user_derived(() => get(tagInputFocused) && "" != get(tagQuery).trim() && get(completions).length > 0), tagActiveDescendant = user_derived(() => {
+    if (get(activeChipIndex) >= 0) return `tagfolder-note-lookup-chip-${get(activeChipIndex)}`;
+    if (get(showCompletions)) return `tagfolder-note-lookup-completion-${get(activeCompletionIndex)}`;
+    if (get(visibleNotes).length > 0) return `tagfolder-note-lookup-note-${get(activeNoteIndex)}`;
+  }), noteActiveDescendant = user_derived(() => get(visibleNotes).length > 0 ? `tagfolder-note-lookup-note-${get(activeNoteIndex)}` : void 0);
+  user_effect(() => {
+    if (get(activeCompletionIndex) >= get(completions).length) set(activeCompletionIndex, Math.max(0, get(completions).length - 1), true);
+  });
+  user_effect(() => {
+    if (get(activeNoteIndex) >= get(visibleNotes).length) set(activeNoteIndex, Math.max(0, get(visibleNotes).length - 1), true);
+  });
+  user_effect(() => {
+    if (get(activeChipIndex) >= get(conditions).length) set(activeChipIndex, get(conditions).length - 1);
+  });
+  onMount(() => {
+    null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).focus();
+  });
+  user_effect(() => {
+    const index2 = get(activeNoteIndex);
+    if (0 != get(visibleNotes).length) null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).win.requestAnimationFrame(() => {
+      var _a5;
+      null === (_a5 = null === get(tagInputEl) || void 0 === get(tagInputEl) ? void 0 : get(tagInputEl).ownerDocument.getElementById(`tagfolder-note-lookup-note-${index2}`)) || void 0 === _a5 || _a5.scrollIntoView({
+        block: "nearest"
+      });
+    });
+  });
+  user_effect(() => {
+    const index2 = get(activeCompletionIndex);
+    if (get(showCompletions)) null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).win.requestAnimationFrame(() => {
+      var _a5;
+      null === (_a5 = null === get(tagInputEl) || void 0 === get(tagInputEl) ? void 0 : get(tagInputEl).ownerDocument.getElementById(`tagfolder-note-lookup-completion-${index2}`)) || void 0 === _a5 || _a5.scrollIntoView({
+        block: "nearest"
+      });
+    });
+  });
+  function moveIndex(current, length, delta) {
+    if (0 == length) return 0; else return (current + delta + length) % length;
+  }
+  function addCompletion(completion) {
+    set(conditions, [ ...get(conditions), {
+      tag: completion.tag,
+      excluded: completion.excluded
+    } ], true);
+    set(tagQuery, "");
+    set(activeCompletionIndex, 0);
+    set(activeNoteIndex, 0);
+    set(activeChipIndex, -1);
+    set(announcement, `${completion.excluded ? "Excluded" : "Added"} tag ${completion.tag}`);
+    null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).focus();
+  }
+  function removeCondition(index2) {
+    const removed = get(conditions)[index2];
+    if (removed) {
+      set(conditions, get(conditions).filter((_, conditionIndex) => conditionIndex != index2), true);
+      set(activeNoteIndex, 0);
+      if (0 == get(conditions).length) set(activeChipIndex, -1); else if (get(activeChipIndex) >= 0) set(activeChipIndex, Math.min(index2, get(conditions).length - 1), true);
+      set(announcement, `Removed tag ${removed.tag}`);
+      null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).focus();
+    }
+  }
+  function chooseActiveNote(newTab) {
+    const item = get(visibleNotes)[get(activeNoteIndex)];
+    if (item) $$props.openNote(item.path, newTab);
+  }
+  function noteFileName(item) {
+    var _a5;
+    return null !== (_a5 = item.path.split("/").pop()) && void 0 !== _a5 ? _a5 : item.path;
+  }
+  function noteParentPath(item) {
+    const separator = item.path.lastIndexOf("/");
+    return separator < 0 ? "" : item.path.substring(0, separator + 1);
+  }
+  function handleCommonKey(event2, current) {
+    if ("Tab" == event2.key) {
+      event2.preventDefault();
+      (function focusOtherInput(current) {
+        set(activeChipIndex, -1);
+        if ("tag" == current) null === get(noteInputEl) || void 0 === get(noteInputEl) || get(noteInputEl).focus(); else null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).focus();
+      })(current);
+      return true;
+    }
+    if ("Escape" == event2.key) {
+      event2.preventDefault();
+      if (get(activeChipIndex) >= 0) {
+        set(activeChipIndex, -1);
+        null === get(tagInputEl) || void 0 === get(tagInputEl) || get(tagInputEl).focus();
+      } else $$props.close();
+      return true;
+    }
+    return false;
+  }
+  var div = root_9(), div_1 = child(div), div_2 = sibling(child(div_1), 2), div_3 = child(div_2), node = child(div_3);
+  each(node, 19, () => get(conditions), condition => `${condition.excluded ? "-" : "+"}${condition.tag}`, ($$anchor2, condition, index2) => {
+    var button = root7();
+    let classes;
+    var span = child(button), text2 = child(span);
+    reset(span);
+    next(2);
+    reset(button);
+    template_effect(() => {
+      var _a5;
+      set_attribute2(button, "id", `tagfolder-note-lookup-chip-${get(index2)}`);
+      classes = set_class(button, 1, "tag-chip multi-select-pill svelte-kazjep", null, classes, {
+        excluded: get(condition).excluded,
+        active: get(activeChipIndex) == get(index2)
+      });
+      set_attribute2(button, "aria-label", `Remove ${get(condition).excluded ? "excluded " : ""}tag ${get(condition).tag}`);
+      set_text(text2, `${get(condition).excluded ? "- " : ""}#${null != (_a5 = get(condition).tag) ? _a5 : ""}`);
+    });
+    delegated("click", button, () => removeCondition(get(index2)));
+    append($$anchor2, button);
+  });
+  var input = sibling(node, 2);
+  remove_input_defaults(input);
+  bind_this(input, $$value => set(tagInputEl, $$value), () => get(tagInputEl));
+  reset(div_3);
+  reset(div_2);
+  var node_1 = sibling(div_2, 2), consequent = $$anchor2 => {
+    var div_4 = root_23(), div_5 = child(div_4);
+    each(div_5, 23, () => get(completions), completion => completion.tag, ($$anchor3, completion, index2) => {
+      var button_1 = root_15();
+      let classes_1;
+      var span_1 = child(button_1), text_1 = child(span_1);
+      reset(span_1);
+      var span_2 = sibling(span_1, 2), text_2 = child(span_2);
+      reset(span_2);
+      reset(button_1);
+      template_effect(() => {
+        var _a5, _b3;
+        set_attribute2(button_1, "id", `tagfolder-note-lookup-completion-${get(index2)}`);
+        classes_1 = set_class(button_1, 1, "completion suggestion-item mod-complex svelte-kazjep", null, classes_1, {
+          "is-selected": get(activeCompletionIndex) == get(index2)
+        });
+        set_attribute2(button_1, "aria-selected", get(activeCompletionIndex) == get(index2));
+        set_text(text_1, `${get(completion).excluded ? "-" : ""}#${null != (_a5 = get(completion).tag) ? _a5 : ""}`);
+        set_text(text_2, `${null != (_b3 = get(completion).noteCount) ? _b3 : ""} ${1 == get(completion).noteCount ? "note" : "notes"}`);
+      });
+      delegated("mousedown", button_1, event2 => event2.preventDefault());
+      event("mouseenter", button_1, () => set(activeCompletionIndex, get(index2), true));
+      delegated("click", button_1, () => addCompletion(get(completion)));
+      append($$anchor3, button_1);
+    });
+    reset(div_5);
+    reset(div_4);
+    append($$anchor2, div_4);
+  };
+  if_block(node_1, $$render => {
+    if (get(showCompletions)) $$render(consequent);
+  });
+  reset(div_1);
+  var input_1 = sibling(div_1, 4);
+  remove_input_defaults(input_1);
+  bind_this(input_1, $$value => set(noteInputEl, $$value), () => get(noteInputEl));
+  var div_6 = sibling(input_1, 2), span_3 = child(div_6), text_3 = child(span_3);
+  reset(span_3);
+  next(2);
+  reset(div_6);
+  var div_7 = sibling(div_6, 2), node_2 = child(div_7);
+  each(node_2, 19, () => get(visibleNotes), item => item.path, ($$anchor2, item, index2) => {
+    var button_2 = root_72();
+    let classes_2;
+    var div_8 = child(button_2), span_4 = child(div_8), span_5 = child(span_4), text_4 = child(span_5, true);
+    reset(span_5);
+    var node_3 = sibling(span_5, 2), consequent_1 = $$anchor3 => {
+      var span_6 = root_33(), text_5 = child(span_6, true);
+      reset(span_6);
+      template_effect($0 => set_text(text_5, $0), [ () => noteParentPath(get(item)) ]);
+      append($$anchor3, span_6);
+    }, d = user_derived(() => noteParentPath(get(item)));
+    if_block(node_3, $$render => {
+      if (get(d)) $$render(consequent_1);
+    });
+    reset(span_4);
+    var div_9 = sibling(span_4, 2), node_4 = child(div_9), consequent_2 = $$anchor3 => {
+      var span_7 = root_43(), text_6 = child(span_7, true);
+      reset(span_7);
+      template_effect(() => set_text(text_6, get(item).title));
+      append($$anchor3, span_7);
+    }, d_1 = user_derived(() => function hasAlternativeTitle(item) {
+      return item.title != noteFileName(item).replace(/\.md$/i, "");
+    }(get(item)));
+    if_block(node_4, $$render => {
+      if (get(d_1)) $$render(consequent_2);
+    });
+    var span_8 = sibling(node_4, 2);
+    each(span_8, 21, () => function displayTags(item) {
+      const positive = get(conditions).filter(condition => !condition.excluded);
+      return (0 == positive.length ? [ ...item.tags ] : item.tags.filter(tag2 => positive.some(condition => tagMatchesCondition(tag2, condition.tag)))).slice(0, 5);
+    }(get(item)), index, ($$anchor3, tag2) => {
+      var span_9 = root_53(), text_7 = child(span_9);
+      reset(span_9);
+      template_effect(() => {
+        var _a5;
+        return set_text(text_7, `#${null != (_a5 = get(tag2)) ? _a5 : ""}`);
+      });
+      append($$anchor3, span_9);
+    });
+    reset(span_8);
+    reset(div_9);
+    reset(div_8);
+    var node_5 = sibling(div_8, 2), consequent_3 = $$anchor3 => {
+      var span_10 = root_62(), text_8 = child(span_10);
+      reset(span_10);
+      template_effect(() => {
+        var _a5, _b3;
+        return set_text(text_8, `${null != (_a5 = get(item).matchCount) ? _a5 : ""}/${null != (_b3 = get(positiveConditionCount)) ? _b3 : ""}`);
+      });
+      append($$anchor3, span_10);
+    };
+    if_block(node_5, $$render => {
+      if (get(positiveConditionCount) > 0) $$render(consequent_3);
+    });
+    reset(button_2);
+    template_effect($0 => {
+      set_attribute2(button_2, "id", `tagfolder-note-lookup-note-${get(index2)}`);
+      classes_2 = set_class(button_2, 1, "note-result suggestion-item mod-complex search-suggest-item svelte-kazjep", null, classes_2, {
+        "is-selected": get(activeNoteIndex) == get(index2)
+      });
+      set_attribute2(button_2, "aria-selected", get(activeNoteIndex) == get(index2));
+      set_text(text_4, $0);
+    }, [ () => noteFileName(get(item)) ]);
+    delegated("mousedown", button_2, event2 => event2.preventDefault());
+    event("mouseenter", button_2, () => set(activeNoteIndex, get(index2), true));
+    delegated("click", button_2, event2 => $$props.openNote(get(item).path, event2.ctrlKey || event2.metaKey));
+    append($$anchor2, button_2);
+  });
+  var node_6 = sibling(node_2, 2), consequent_4 = $$anchor2 => {
+    append($$anchor2, root_8());
+  };
+  if_block(node_6, $$render => {
+    if (0 == get(visibleNotes).length) $$render(consequent_4);
+  });
+  reset(div_7);
+  var div_11 = sibling(div_7, 2), text_9 = child(div_11, true);
+  reset(div_11);
+  reset(div);
+  template_effect(() => {
+    var _a5;
+    set_attribute2(input, "placeholder", 0 == get(conditions).length ? "Type a tag…" : "Add a tag…");
+    set_attribute2(input, "aria-expanded", get(showCompletions));
+    set_attribute2(input, "aria-activedescendant", get(tagActiveDescendant));
+    set_attribute2(input_1, "aria-activedescendant", get(noteActiveDescendant));
+    set_text(text_3, `${null != (_a5 = get(rankedNotes).length) ? _a5 : ""} ${1 == get(rankedNotes).length ? "note" : "notes"}`);
+    set_text(text_9, get(announcement));
+  });
+  delegated("input", input, () => {
+    set(activeCompletionIndex, 0);
+    set(activeChipIndex, -1);
+  });
+  event("focus", input, () => set(tagInputFocused, true));
+  event("blur", input, () => set(tagInputFocused, false));
+  delegated("keydown", input, function handleTagKey(event2) {
+    if (!event2.isComposing) if (!handleCommonKey(event2, "tag")) {
+      if (get(activeChipIndex) >= 0) {
+        if ("ArrowLeft" == event2.key || "ArrowRight" == event2.key) {
+          event2.preventDefault();
+          const delta = "ArrowLeft" == event2.key ? -1 : 1, next2 = get(activeChipIndex) + delta;
+          if (next2 >= get(conditions).length) set(activeChipIndex, -1); else set(activeChipIndex, Math.max(0, next2), true);
+          return;
+        }
+        if ("Backspace" == event2.key || "Delete" == event2.key) {
+          event2.preventDefault();
+          removeCondition(get(activeChipIndex));
+          return;
+        }
+        if (1 == event2.key.length && !event2.ctrlKey && !event2.metaKey && !event2.altKey) set(activeChipIndex, -1);
+      }
+      if ("" == get(tagQuery)) if (!("ArrowLeft" == event2.key && get(conditions).length > 0)) if (!("Backspace" == event2.key && get(conditions).length > 0)) if ("ArrowUp" != event2.key && "ArrowDown" != event2.key) if ("Enter" != event2.key) {
+        if (" " == event2.key) event2.preventDefault();
+      } else {
+        event2.preventDefault();
+        chooseActiveNote(event2.ctrlKey || event2.metaKey);
+      } else {
+        event2.preventDefault();
+        set(activeNoteIndex, moveIndex(get(activeNoteIndex), get(visibleNotes).length, "ArrowUp" == event2.key ? -1 : 1), true);
+      } else {
+        event2.preventDefault();
+        removeCondition(get(conditions).length - 1);
+      } else {
+        event2.preventDefault();
+        set(activeChipIndex, get(conditions).length - 1);
+      } else {
+        if ("ArrowUp" == event2.key || "ArrowDown" == event2.key) {
+          event2.preventDefault();
+          set(activeCompletionIndex, moveIndex(get(activeCompletionIndex), get(completions).length, "ArrowUp" == event2.key ? -1 : 1), true);
+          return;
+        }
+        if ("Enter" == event2.key || " " == event2.key) {
+          event2.preventDefault();
+          const completion = get(completions)[get(activeCompletionIndex)];
+          if (completion) addCompletion(completion);
+        }
+      }
+    }
+  });
+  bind_value(input, () => get(tagQuery), $$value => set(tagQuery, $$value));
+  delegated("input", input_1, () => set(activeNoteIndex, 0));
+  delegated("keydown", input_1, function handleNoteKey(event2) {
+    if (!event2.isComposing) if (!handleCommonKey(event2, "note")) if ("ArrowUp" != event2.key && "ArrowDown" != event2.key) {
+      if ("Enter" == event2.key) {
+        event2.preventDefault();
+        chooseActiveNote(event2.ctrlKey || event2.metaKey);
+      }
+    } else {
+      event2.preventDefault();
+      set(activeNoteIndex, moveIndex(get(activeNoteIndex), get(visibleNotes).length, "ArrowUp" == event2.key ? -1 : 1), true);
+    }
+  });
+  bind_value(input_1, () => get(noteQuery), $$value => set(noteQuery, $$value));
+  append($$anchor, div);
+  pop();
+}
+
+delegate([ "click", "input", "keydown", "mousedown" ]);
+
+var NoteLookupModal2 = class extends import_obsidian10.Modal {
+  constructor(app, options) {
+    super(app);
+    this.options = options;
+  }
+  onOpen() {
+    this.setTitle("Note lookup");
+    this.modalEl.addClass("tagfolder-note-lookup-modal");
+    this.contentEl.empty();
+    this.component = mount(NoteLookupModal, {
+      target: this.contentEl,
+      props: {
+        notes: this.options.notes,
+        initialConditions: this.options.initialConditions,
+        excludedPath: this.options.excludedPath,
+        openNote: (path, newTab) => {
+          this.options.openNote(path, newTab);
+          this.close();
+        },
+        close: () => this.close()
+      }
+    });
+  }
+  onClose() {
+    if (this.component) {
+      unmount(this.component);
+      this.component = void 0;
+    }
+    this.contentEl.empty();
+  }
+};
+
+function openNoteLookup(app, options) {
+  new NoteLookupModal2(app, options).open();
+}
+
+var SAMPLE_NOTES = [ {
+  name: "Roadmap",
+  tags: [ "project/atlas", "status/active" ]
+}, {
+  name: "Release note",
+  tags: [ "project/atlas", "status/done" ]
+} ], projectTag = children => ({
+  label: "project",
+  kind: "tag",
+  children: [ {
+    label: "atlas",
+    kind: "tag",
+    children
+  } ]
+}), TAG_TREE_STYLE_SUGGESTIONS = [ {
+  id: "simple-list",
+  name: "Simple list",
+  description: "Show notes directly beneath each tag and display their other tags as labels.",
+  settings: {
+    disableNarrowingDown: true,
+    disableNestedTags: false,
+    hideItems: "DEDICATED_INTERMIDIATES",
+    reduceNestedParent: true,
+    mergeRedundantCombination: false,
+    doNotSimplifyTags: false
+  },
+  preview: [ projectTag([ {
+    label: "Roadmap",
+    kind: "note",
+    chips: [ "status/active" ]
+  }, {
+    label: "Release note",
+    kind: "note",
+    chips: [ "status/done" ]
+  } ]) ]
+}, {
+  id: "drill-down",
+  name: "Drill-down",
+  description: "Use other tags as additional folders and show notes at the deepest matching level.",
+  settings: {
+    disableNarrowingDown: false,
+    disableNestedTags: false,
+    hideItems: "ALL_EXCEPT_BOTTOM",
+    reduceNestedParent: true,
+    mergeRedundantCombination: false,
+    doNotSimplifyTags: false
+  },
+  preview: [ projectTag([ {
+    label: "status",
+    kind: "tag",
+    children: [ {
+      label: "active",
+      kind: "tag",
+      children: [ {
+        label: "Roadmap",
+        kind: "note"
+      } ]
+    }, {
+      label: "done",
+      kind: "tag",
+      children: [ {
+        label: "Release note",
+        kind: "note"
+      } ]
+    } ]
+  } ]) ]
+}, {
+  id: "full-tree",
+  name: "Full tree",
+  description: "Show notes at intermediate levels as well as within combinations of their tags.",
+  settings: {
+    disableNarrowingDown: false,
+    disableNestedTags: false,
+    hideItems: "NONE",
+    reduceNestedParent: true,
+    mergeRedundantCombination: false,
+    doNotSimplifyTags: false
+  },
+  preview: [ projectTag([ {
+    label: "Roadmap",
+    kind: "note"
+  }, {
+    label: "Release note",
+    kind: "note"
+  }, {
+    label: "status",
+    kind: "tag",
+    children: [ {
+      label: "active",
+      kind: "tag",
+      children: [ {
+        label: "Roadmap",
+        kind: "note"
+      } ]
+    }, {
+      label: "done",
+      kind: "tag",
+      children: [ {
+        label: "Release note",
+        kind: "note"
+      } ]
+    } ]
+  } ]) ]
+} ];
+
+function findTagTreeStyleSuggestion(id) {
+  return TAG_TREE_STYLE_SUGGESTIONS.find(suggestion => suggestion.id === id);
+}
+
+function applyTagTreeStyleSuggestion(settings, suggestion) {
+  return {
+    ...settings,
+    ...suggestion.settings
+  };
+}
+
+function appendPreviewNodes(document2, container, nodes) {
+  var _a5, _b3;
+  for (const node of nodes) {
+    const nodeEl = document2.createElement("div");
+    nodeEl.className = `tagfolder-style-preview-node is-${node.kind}`;
+    nodeEl.setAttribute("role", "treeitem");
+    const rowEl = document2.createElement("div");
+    rowEl.className = "tagfolder-style-preview-row";
+    const markerEl = document2.createElement("span");
+    markerEl.className = "tagfolder-style-preview-marker";
+    markerEl.setAttribute("aria-hidden", "true");
+    markerEl.textContent = "tag" === node.kind ? "▾" : "•";
+    rowEl.append(markerEl);
+    const labelEl = document2.createElement("span");
+    labelEl.className = "tagfolder-style-preview-node-label";
+    labelEl.textContent = node.label;
+    rowEl.append(labelEl);
+    for (const chip of null != (_a5 = node.chips) ? _a5 : []) {
+      const chipEl = document2.createElement("span");
+      chipEl.className = "tagfolder-style-preview-chip";
+      chipEl.textContent = chip;
+      rowEl.append(chipEl);
+    }
+    nodeEl.append(rowEl);
+    if (null == (_b3 = node.children) ? void 0 : _b3.length) {
+      nodeEl.setAttribute("aria-expanded", "true");
+      const childrenEl = document2.createElement("div");
+      childrenEl.className = "tagfolder-style-preview-children";
+      childrenEl.setAttribute("role", "group");
+      appendPreviewNodes(document2, childrenEl, node.children);
+      nodeEl.append(childrenEl);
+    }
+    container.append(nodeEl);
+  }
+}
+
+function renderTagTreeStylePreview(container, suggestion) {
+  container.replaceChildren();
+  container.hidden = !suggestion;
+  container.setAttribute("aria-live", "polite");
+  if (!suggestion) return;
+  const document2 = container.ownerDocument, descriptionEl = document2.createElement("div");
+  descriptionEl.className = "tagfolder-style-preview-description";
+  descriptionEl.textContent = suggestion.description;
+  container.append(descriptionEl);
+  const sampleLabelEl = document2.createElement("div");
+  sampleLabelEl.className = "tagfolder-style-preview-label";
+  sampleLabelEl.textContent = "Sample notes";
+  container.append(sampleLabelEl);
+  const sampleEl = document2.createElement("div");
+  sampleEl.className = "tagfolder-style-preview-sample";
+  for (const note of SAMPLE_NOTES) {
+    const noteEl = document2.createElement("div");
+    noteEl.className = "tagfolder-style-preview-sample-note";
+    const nameEl = document2.createElement("span");
+    nameEl.className = "tagfolder-style-preview-sample-name";
+    nameEl.textContent = note.name;
+    const tagsEl = document2.createElement("span");
+    tagsEl.className = "tagfolder-style-preview-sample-tags";
+    for (const tag2 of note.tags) {
+      const tagEl = document2.createElement("span");
+      tagEl.className = "tagfolder-style-preview-sample-tag";
+      tagEl.textContent = `#${tag2}`;
+      tagsEl.append(tagEl);
+    }
+    noteEl.append(nameEl, tagsEl);
+    sampleEl.append(noteEl);
+  }
+  container.append(sampleEl);
+  const treeLabelEl = document2.createElement("div");
+  treeLabelEl.className = "tagfolder-style-preview-label";
+  treeLabelEl.textContent = "Rendered project branch";
+  container.append(treeLabelEl);
+  const treeEl = document2.createElement("div");
+  treeEl.className = "tagfolder-style-preview-tree";
+  treeEl.setAttribute("role", "tree");
+  appendPreviewNodes(document2, treeEl, suggestion.preview);
+  container.append(treeEl);
+}
+
+var HideItemsType = {
   NONE: "Hide nothing",
   DEDICATED_INTERMIDIATES: "Only intermediates of nested tags",
   ALL_EXCEPT_BOTTOM: "All intermediates"
 };
 
 function dotted(object, notation) {
-  return notation.split(".").reduce(((a, b) => a && b in a ? a[b] : null), object);
+  return notation.split(".").reduce((a, b) => a && "object" == typeof a && b in a ? a[b] : null, object);
 }
 
 function getCompareMethodItems(settings) {
@@ -4822,12 +7547,93 @@ function getCompareMethodItems(settings) {
   }
 }
 
+function getCoreTemplatesFolder(app) {
+  var _a5, _b3, _c2, _d, _e, _f;
+  const internalPlugins = app.internalPlugins, templatesPlugin = null == (_a5 = null == internalPlugins ? void 0 : internalPlugins.getPluginById) ? void 0 : _a5.call(internalPlugins, "templates"), folder = null != (_f = null == (_c2 = null == (_b3 = null == templatesPlugin ? void 0 : templatesPlugin.instance) ? void 0 : _b3.options) ? void 0 : _c2.folder) ? _f : null == (_e = null == (_d = null == templatesPlugin ? void 0 : templatesPlugin.instance) ? void 0 : _d.options) ? void 0 : _e.templateFolder;
+  if (!folder) return null;
+  const normalizedFolder = (0, import_obsidian11.normalizePath)(folder);
+  return "/" == normalizedFolder ? "" : normalizedFolder;
+}
+
+function getTemplateFiles(app) {
+  const templateFolder = getCoreTemplatesFolder(app), markdownFiles = app.vault.getMarkdownFiles();
+  return (null == templateFolder || "" == templateFolder ? markdownFiles : markdownFiles.filter(file => {
+    const path = (0, import_obsidian11.normalizePath)(file.path);
+    return path == templateFolder || path.startsWith(`${templateFolder}/`);
+  })).sort((a, b) => compare(a.path, b.path));
+}
+
+function captureNewNoteTemplates(app) {
+  return getTemplateFiles(app).map(file => ({
+    path: file.path,
+    name: file.basename
+  }));
+}
+
+var NewNoteTemplateInputSuggest = class extends import_obsidian11.AbstractInputSuggest {
+  constructor(app, inputEl, templates, callback) {
+    super(app, inputEl);
+    this.templates = templates;
+    this.callback = callback;
+  }
+  getSuggestions(query) {
+    return filterNewNoteTemplateChoices(this.templates, query);
+  }
+  renderSuggestion(template, el) {
+    el.createDiv({
+      text: template.name
+    });
+    el.createDiv({
+      text: template.path,
+      cls: "suggestion-note"
+    });
+  }
+  selectSuggestion(template) {
+    this.setValue(template.path);
+    this.callback(template);
+    this.close();
+  }
+};
+
+async function askNewNoteTemplate(ui, app) {
+  const templates = captureNewNoteTemplates(app), selectedTemplate = await chooseNewNoteTemplate(ui, templates);
+  if (void 0 === selectedTemplate) new import_obsidian11.Notice("No templates found. Add a template, then try again.");
+  return selectedTemplate;
+}
+
+function getConfiguredNewNoteTemplate(app, templatePath) {
+  const inputPath = normalizeNewNoteTemplatePath(templatePath);
+  if ("" == inputPath) return null;
+  const templateFolder = getCoreTemplatesFolder(app), candidatePaths = [ inputPath, inputPath.endsWith(".md") ? inputPath : `${inputPath}.md` ];
+  if (null != templateFolder && "" != templateFolder && !inputPath.startsWith(`${templateFolder}/`)) candidatePaths.push(`${templateFolder}/${inputPath}`, inputPath.endsWith(".md") ? `${templateFolder}/${inputPath}` : `${templateFolder}/${inputPath}.md`);
+  const file = unique(candidatePaths).map(path => app.vault.getAbstractFileByPath(path)).find(file2 => file2 instanceof import_obsidian11.TFile && "md" == file2.extension);
+  if (null == file) {
+    new import_obsidian11.Notice(`Template not found: ${inputPath}`);
+    return null;
+  }
+  return {
+    path: file.path,
+    name: file.basename
+  };
+}
+
+function normalizeNewNoteTemplatePath(templatePath) {
+  const inputPath = templatePath.trim().replace(/^\[\[/, "").replace(/\]\]$/, "");
+  if ("" == inputPath) return "";
+  const normalizedPath = (0, import_obsidian11.normalizePath)(inputPath);
+  return "/" == normalizedPath ? "" : normalizedPath;
+}
+
+function splitSettingList(value) {
+  return value.split(/[\n,]/).map(entry => entry.trim()).filter(entry => "" != entry);
+}
+
 function onElement(el, event2, selector, callback, options) {
   el.on(event2, selector, callback, options);
   return () => el.off(event2, selector, callback, options);
 }
 
-var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
+var TagFolderPlugin5 = class extends import_obsidian11.Plugin {
   constructor() {
     super(...arguments);
     this.settings = {
@@ -4841,7 +7647,7 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     this.compareItems = (_, __) => 0;
     this.focusFile = (path, specialKey) => {
       if (this.currentOpeningFile == path) return;
-      const _targetFile = this.app.vault.getAbstractFileByPath(path), targetFile = _targetFile instanceof import_obsidian8.TFile ? _targetFile : this.app.vault.getFiles().find((f => f.path === path));
+      const _targetFile = this.app.vault.getAbstractFileByPath(path), targetFile = _targetFile instanceof import_obsidian11.TFile ? _targetFile : this.app.vault.getFiles().find(f => f.path === path);
       if (targetFile) if (specialKey) this.app.workspace.openLinkText(targetFile.path, targetFile.path, "tab"); else this.app.workspace.openLinkText(targetFile.path, targetFile.path);
     };
     this.fileCaches = [];
@@ -4888,10 +7694,11 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     const metadata = this.app.metadataCache.getCache(file.path);
     if ((null == metadata ? void 0 : metadata.frontmatter) && this.settings.frontmatterKey) {
       const d = dotted(metadata.frontmatter, this.settings.frontmatterKey);
-      if (d) return `${d}`;
+      if ("string" == typeof d) return d;
+      if ("number" == typeof d || "boolean" == typeof d) return String(d);
     }
     if (null == metadata ? void 0 : metadata.headings) {
-      const h1 = metadata.headings.find((e => 1 == e.level));
+      const h1 = metadata.headings.find(e => 1 == e.level);
       if (h1) return h1.heading;
     }
     return file.basename;
@@ -4905,26 +7712,73 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     if ("NAME : PATH" == this.settings.displayMethod) return `${filename} : ${displayPath}`;
     if ("PATH/NAME" == this.settings.displayMethod) return `${displayPath}/${filename}`; else return filename;
   }
+  getNoteLookupPolicy() {
+    const redirects = {};
+    if (this.settings.useTagInfo && this.tagInfo) for (const [tag2, info] of Object.entries(this.tagInfo)) if (info.redirect) redirects[tag2] = info.redirect;
+    return {
+      targetFolders: splitSettingList(this.settings.targetFolders),
+      ignoreFolders: splitSettingList(this.settings.ignoreFolders),
+      ignoreDocumentTags: splitSettingList(this.settings.ignoreDocTags),
+      ignoreTags: splitSettingList(this.settings.ignoreTags),
+      redirects,
+      splitNestedTags: this.settings.disableNestedTags
+    };
+  }
+  captureNoteLookupItems(policy2) {
+    var _a5;
+    const sources = [];
+    for (const file of this.app.vault.getMarkdownFiles()) {
+      const metadata = this.app.metadataCache.getFileCache(file);
+      if (metadata) sources.push({
+        path: file.path,
+        title: this.getFileTitle(file),
+        tags: null != (_a5 = (0, import_obsidian11.getAllTags)(metadata)) ? _a5 : [],
+        mtime: file.stat.mtime
+      });
+    }
+    return buildNoteLookupItems(sources, policy2);
+  }
+  openNoteLookupDialog(sourceFile) {
+    var _a5;
+    const policy2 = this.getNoteLookupPolicy(), notes = this.captureNoteLookupItems(policy2);
+    let initialConditions = [];
+    if (sourceFile) {
+      const metadata = this.app.metadataCache.getFileCache(sourceFile), ignoredTags = new Set([ ...policy2.ignoreTags, ...policy2.ignoreDocumentTags ].map(tag2 => tag2.trim().replace(/^#/, "").toLowerCase()));
+      initialConditions = normaliseLookupTags(metadata ? null != (_a5 = (0, import_obsidian11.getAllTags)(metadata)) ? _a5 : [] : [], policy2).filter(tag2 => !ignoredTags.has(tag2.toLowerCase())).map(tag2 => ({
+        tag: tag2,
+        excluded: false
+      }));
+    }
+    openNoteLookup(this.app, {
+      notes,
+      initialConditions,
+      excludedPath: null == sourceFile ? void 0 : sourceFile.path,
+      openNote: (path, newTab) => this.focusFile(path, newTab)
+    });
+  }
   async onload() {
     await this.loadSettings();
+    this.ui = createObsidianUi(this.app);
+    this.vaultText = createObsidianVaultTextAccess(this.app.vault);
+    this.vaultFrontmatter = createObsidianVaultFrontmatterAccess(this.app);
     this.hoverPreview = this.hoverPreview.bind(this);
     this.modifyFile = this.modifyFile.bind(this);
     this.setSearchString = this.setSearchString.bind(this);
     this.openScrollView = this.openScrollView.bind(this);
-    this.loadFileInfo = (0, import_obsidian8.debounce)(this.loadFileInfo.bind(this), this.settings.scanDelay, true);
+    this.loadFileInfo = (0, import_obsidian11.debounce)(this.loadFileInfo.bind(this), this.settings.scanDelay, true);
     pluginInstance.set(this);
-    this.registerView(VIEW_TYPE_TAGFOLDER, (leaf => new TagFolderView(leaf, this, "tags")));
-    this.registerView(VIEW_TYPE_TAGFOLDER_LINK, (leaf => new TagFolderView(leaf, this, "links")));
-    this.registerView(VIEW_TYPE_TAGFOLDER_LIST, (leaf => new TagFolderList(leaf, this)));
-    this.registerView(VIEW_TYPE_SCROLL, (leaf => new ScrollView(leaf, this)));
-    this.app.workspace.onLayoutReady((async () => {
+    this.registerView(VIEW_TYPE_TAGFOLDER, leaf => new TagFolderView(leaf, this, "tags"));
+    this.registerView(VIEW_TYPE_TAGFOLDER_LINK, leaf => new TagFolderView(leaf, this, "links"));
+    this.registerView(VIEW_TYPE_TAGFOLDER_LIST, leaf => new TagFolderList(leaf, this));
+    this.registerView(VIEW_TYPE_SCROLL, leaf => new ScrollView(leaf, this));
+    this.app.workspace.onLayoutReady(async () => {
       this.loadFileInfo();
       if (this.settings.alwaysOpen) {
         await this.initView();
         await this.activateView();
       }
       if (this.settings.useTagInfo) await this.loadTagInfo();
-    }));
+    });
     this.addCommand({
       id: "tagfolder-open",
       name: "Show Tag Folder",
@@ -4950,13 +7804,28 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       id: "tagfolder-create-similar",
       name: "Create a new note with the same tags",
       editorCallback: async (editor, view) => {
-        var _a3;
+        var _a5;
         const file = null == view ? void 0 : view.file;
         if (!file) return;
         const cache = this.app.metadataCache.getFileCache(file);
         if (!cache) return;
-        const tagsWithoutPrefix = (null != (_a3 = (0, import_obsidian8.getAllTags)(cache)) ? _a3 : []).map((e => trimPrefix(e, "#")));
+        const tagsWithoutPrefix = (null != (_a5 = (0, import_obsidian11.getAllTags)(cache)) ? _a5 : []).map(e => trimPrefix(e, "#"));
         await this.createNewNote(tagsWithoutPrefix);
+      }
+    });
+    this.addCommand({
+      id: "tagfolder-open-note-by-tags",
+      name: "Open note by tags",
+      callback: () => this.openNoteLookupDialog()
+    });
+    this.addCommand({
+      id: "tagfolder-open-note-with-similar-tags",
+      name: "Open note with similar tags",
+      checkCallback: checking => {
+        const file = this.app.workspace.getActiveFile();
+        if (!(file instanceof import_obsidian11.TFile) || "md" != file.extension) return false;
+        if (!checking) this.openNoteLookupDialog(file);
+        return true;
       }
     });
     this.metadataCacheChanged = this.metadataCacheChanged.bind(this);
@@ -4964,22 +7833,22 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     this.metadataCacheResolve = this.metadataCacheResolve.bind(this);
     this.metadataCacheResolved = this.metadataCacheResolved.bind(this);
     this.loadFileInfo = this.loadFileInfo.bind(this);
-    this.registerEvent(this.app.metadataCache.on("changed", this.metadataCacheChanged));
-    this.registerEvent(this.app.metadataCache.on("resolve", this.metadataCacheResolve));
-    this.registerEvent(this.app.metadataCache.on("resolved", this.metadataCacheResolved));
+    this.registerEvent(this.app.metadataCache.on("changed", file => this.metadataCacheChanged(file)));
+    this.registerEvent(this.app.metadataCache.on("resolve", file => this.metadataCacheResolve(file)));
+    this.registerEvent(this.app.metadataCache.on("resolved", () => this.metadataCacheResolved()));
     this.refreshAllTree = this.refreshAllTree.bind(this);
     this.refreshTree = this.refreshTree.bind(this);
-    this.registerEvent(this.app.vault.on("rename", this.refreshTree));
-    this.registerEvent(this.app.vault.on("delete", this.refreshTree));
-    this.registerEvent(this.app.vault.on("modify", this.modifyFile));
-    this.registerEvent(this.app.workspace.on("file-open", this.watchWorkspaceOpen));
+    this.registerEvent(this.app.vault.on("rename", (...args) => this.refreshTree(...args)));
+    this.registerEvent(this.app.vault.on("delete", (...args) => this.refreshTree(...args)));
+    this.registerEvent(this.app.vault.on("modify", (...args) => this.modifyFile(...args)));
+    this.registerEvent(this.app.workspace.on("file-open", (...args) => this.watchWorkspaceOpen(...args)));
     this.watchWorkspaceOpen(this.app.workspace.getActiveFile());
     this.addSettingTab(new TagFolderSettingTab(this.app, this));
     maxDepth.set(this.settings.expandLimit);
-    searchString.subscribe((search => {
+    searchString.subscribe(search => {
       this.searchString = search;
       this.refreshAllTree();
-    }));
+    });
     const setTagSearchString = (event2, tagString) => {
       if (tagString) {
         const regExpTagStr = new RegExp(`(^|\\s)${tagString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(\\s|$)`, "u"), regExpTagStrInv = new RegExp(`(^|\\s)-${tagString.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(\\s|$)`, "u");
@@ -4992,20 +7861,54 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
         event2.stopPropagation();
       }
     };
-    this.register(onElement(document, "click", 'a.tag[href^="#"]', ((event2, targetEl) => {
-      var _a3;
+    let metadataTagClickTimer = null;
+    this.register(onElement(activeDocument, "click", '.metadata-property[data-property-key="tags"] .multi-select-pill-content span, .metadata-property[data-property-key="tags"] .multi-select-pill', (event2, targetEl) => {
+      if (this.settings.overrideTagClicking) if (!event2.target.closest(".multi-select-pill-remove-button")) if (!(event2.detail > 1)) {
+        event2.preventDefault();
+        event2.stopPropagation();
+        event2.stopImmediatePropagation();
+        if (metadataTagClickTimer) {
+          window.clearTimeout(metadataTagClickTimer);
+          metadataTagClickTimer = null;
+        }
+        metadataTagClickTimer = window.setTimeout(() => {
+          var _a5;
+          metadataTagClickTimer = null;
+          let tagElement = targetEl;
+          if (targetEl.classList.contains("multi-select-pill")) {
+            const span = targetEl.querySelector(".multi-select-pill-content span");
+            if (span instanceof HTMLElement) tagElement = span;
+          }
+          let tagString = tagElement.innerText.trim();
+          if (tagString.startsWith("#")) tagString = tagString.substring(1);
+          if (tagString) {
+            setTagSearchString(event2, tagString);
+            const leaf = null == (_a5 = this.getView()) ? void 0 : _a5.leaf;
+            if (leaf) this.app.workspace.revealLeaf(leaf);
+          }
+        }, 200);
+      } else if (metadataTagClickTimer) {
+        window.clearTimeout(metadataTagClickTimer);
+        metadataTagClickTimer = null;
+      }
+    }, {
+      capture: true
+    }));
+    this.register(onElement(activeDocument, "click", 'a.tag[href^="#"]', (event2, targetEl) => {
+      var _a5;
       if (!this.settings.overrideTagClicking) return;
+      if (targetEl.closest('.metadata-property[data-property-key="tags"]')) return;
       const tagString = targetEl.innerText.substring(1);
       if (tagString) {
         setTagSearchString(event2, tagString);
-        const leaf = null == (_a3 = this.getView()) ? void 0 : _a3.leaf;
+        const leaf = null == (_a5 = this.getView()) ? void 0 : _a5.leaf;
         if (leaf) this.app.workspace.revealLeaf(leaf);
       }
-    }), {
+    }, {
       capture: true
     }));
-    this.register(onElement(document, "click", "span.cm-hashtag.cm-meta", ((event2, targetEl) => {
-      var _a3;
+    this.register(onElement(activeDocument, "click", "span.cm-hashtag.cm-meta", (event2, targetEl) => {
+      var _a5;
       if (!this.settings.overrideTagClicking) return;
       let enumTags = targetEl, tagString = "";
       for (;!enumTags.classList.contains("cm-hashtag-begin"); ) {
@@ -5016,7 +7919,7 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
         }
       }
       do {
-        if (enumTags instanceof HTMLElement) {
+        if (enumTags.instanceOf(HTMLElement)) {
           tagString += enumTags.innerText;
           if (enumTags.classList.contains("cm-hashtag-end")) break;
         }
@@ -5024,14 +7927,14 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       } while (enumTags);
       tagString = tagString.substring(1);
       setTagSearchString(event2, tagString);
-      const leaf = null == (_a3 = this.getView()) ? void 0 : _a3.leaf;
+      const leaf = null == (_a5 = this.getView()) ? void 0 : _a5.leaf;
       if (leaf) this.app.workspace.revealLeaf(leaf);
-    }), {
+    }, {
       capture: true
     }));
-    selectedTags.subscribe((newTags => {
+    selectedTags.subscribe(newTags => {
       this.openListView(newTags);
-    }));
+    });
   }
   watchWorkspaceOpen(file) {
     if (file) this.currentOpeningFile = file.path; else this.currentOpeningFile = "";
@@ -5047,37 +7950,37 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     if (null != this.getLinkView()) ;
   }
   refreshTree(file, oldName) {
-    if (oldName) this.refreshAllTree(); else if (file instanceof import_obsidian8.TFile) this.loadFileInfo(file);
+    if (oldName) this.refreshAllTree(); else if (file instanceof import_obsidian11.TFile) this.loadFileInfo(file);
   }
   refreshAllTree() {
     this.loadFileInfo();
   }
   getFileCacheLinks(file) {
     const cachedLinks = this.app.metadataCache.resolvedLinks;
-    return [ ...(null == this.getLinkView() ? [] : parseAllReference(cachedLinks, file.path, this.settings.linkConfig)).filter((e => e.endsWith(".md"))).map((e => `${e}`)) ];
+    return [ ...(null == this.getLinkView() ? [] : parseAllReference(cachedLinks, file.path, this.settings.linkConfig)).filter(e => e.endsWith(".md")).map(e => `${e}`) ];
   }
   getFileCacheData(file) {
     const metadata = this.app.metadataCache.getFileCache(file);
     if (!metadata) return false; else return {
       file,
       links: this.getFileCacheLinks(file),
-      tags: (0, import_obsidian8.getAllTags)(metadata) || []
+      tags: (0, import_obsidian11.getAllTags)(metadata) || []
     };
   }
   updateFileCachesAll() {
-    const caches = [ ...this.app.vault.getMarkdownFiles(), ...this.app.vault.getAllLoadedFiles().filter((e => "extension" in e && "canvas" == e.extension)) ].filter((file => {
-      var _a3;
-      return null != (_a3 = this.parsedFileCache.get(file.path)) ? _a3 : 0 != file.stat.mtime;
-    })).map((entry => this.getFileCacheData(entry))).filter((e => false !== e));
+    const caches = [ ...this.app.vault.getMarkdownFiles(), ...this.app.vault.getAllLoadedFiles().filter(e => "extension" in e && "canvas" == e.extension) ].filter(file => {
+      var _a5;
+      return null != (_a5 = this.parsedFileCache.get(file.path)) ? _a5 : 0 != file.stat.mtime;
+    }).map(entry => this.getFileCacheData(entry)).filter(e => false !== e);
     this.fileCaches = [ ...caches ];
     return this.isFileCacheChanged();
   }
   isFileCacheChanged() {
-    const fileCacheDump = JSON.stringify(this.fileCaches.map((e => ({
+    const fileCacheDump = JSON.stringify(this.fileCaches.map(e => ({
       path: e.file.path,
       links: e.links,
       tags: e.tags
-    }))));
+    })));
     if (this.oldFileCache == fileCacheDump) return false; else {
       this.oldFileCache = fileCacheDump;
       return true;
@@ -5091,15 +7994,15 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       do {
         const procDiff = diff;
         if (!procDiff) break;
-        const old = newCaches.find((fileCache => fileCache.file.path == procDiff.path));
-        if (old) newCaches = newCaches.filter((fileCache => fileCache !== old));
+        const old = newCaches.find(fileCache => fileCache.file.path == procDiff.path);
+        if (old) newCaches = newCaches.filter(fileCache => fileCache !== old);
         const newCache = this.getFileCacheData(procDiff);
         if (newCache) {
           if (null != this.getLinkView()) {
-            const oldLinks = (null == old ? void 0 : old.links) || [], newLinks = newCache.links, diffs2 = unique([ ...oldLinks, ...newLinks ]).filter((link2 => !oldLinks.contains(link2) || !newLinks.contains(link2)));
+            const oldLinks = (null == old ? void 0 : old.links) || [], newLinks = newCache.links, diffs2 = unique([ ...oldLinks, ...newLinks ]).filter(link2 => !oldLinks.contains(link2) || !newLinks.contains(link2));
             for (const filename of diffs2) {
               const file = this.app.vault.getAbstractFileByPath(filename);
-              if (file instanceof import_obsidian8.TFile) processDiffs.push(file);
+              if (file instanceof import_obsidian11.TFile) processDiffs.push(file);
             }
           }
           newCaches.push(newCache);
@@ -5112,19 +8015,19 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     return anyUpdated;
   }
   async getItemsList(mode) {
-    const items = [], ignoreDocTags = this.settings.ignoreDocTags.toLowerCase().replace(/[\n ]/g, "").split(","), ignoreTags = this.settings.ignoreTags.toLowerCase().replace(/[\n ]/g, "").split(","), ignoreFolders = this.settings.ignoreFolders.toLowerCase().replace(/\n/g, "").split(",").map((e => e.trim())).filter((e => !!e)), targetFolders = this.settings.targetFolders.toLowerCase().replace(/\n/g, "").split(",").map((e => e.trim())).filter((e => !!e)), searchItems = this.searchString.toLowerCase().split("|").map((ee => ee.split(" ").map((e => e.trim())))), today = Date.now(), archiveTags = this.settings.archiveTags.toLowerCase().replace(/[\n ]/g, "").split(",");
+    const items = [], ignoreDocTags = this.settings.ignoreDocTags.toLowerCase().replace(/[\n ]/g, "").split(","), ignoreTags = this.settings.ignoreTags.toLowerCase().replace(/[\n ]/g, "").split(","), ignoreFolders = this.settings.ignoreFolders.toLowerCase().replace(/\n/g, "").split(",").map(e => e.trim()).filter(e => !!e), targetFolders = this.settings.targetFolders.toLowerCase().replace(/\n/g, "").split(",").map(e => e.trim()).filter(e => !!e), searchItems = this.searchString.toLowerCase().split("|").map(ee => ee.split(" ").map(e => e.trim())), today = Date.now(), archiveTags = this.settings.archiveTags.toLowerCase().replace(/[\n ]/g, "").split(",");
     for (const fileCache of this.fileCaches) {
-      if (targetFolders.length > 0 && !targetFolders.some((e => "" != e && fileCache.file.path.toLowerCase().startsWith(e)))) continue;
-      if (ignoreFolders.some((e => "" != e && fileCache.file.path.toLowerCase().startsWith(e)))) continue;
+      if (targetFolders.length > 0 && !targetFolders.some(e => "" != e && fileCache.file.path.toLowerCase().startsWith(e))) continue;
+      if (ignoreFolders.some(e => "" != e && fileCache.file.path.toLowerCase().startsWith(e))) continue;
       await doEvents();
       const tagRedirectList = {};
-      if (this.settings.useTagInfo && this.tagInfo) for (const [key, taginfo] of Object.entries(this.tagInfo)) if (null == taginfo ? void 0 : taginfo.redirect) tagRedirectList[key] = taginfo.redirect;
+      if (this.settings.useTagInfo && this.tagInfo) for (const [key2, taginfo] of Object.entries(this.tagInfo)) if (null == taginfo ? void 0 : taginfo.redirect) tagRedirectList[key2] = taginfo.redirect;
       let allTags = [];
       if ("tag" == mode) {
         const allTagsDocs = unique(fileCache.tags);
-        allTags = unique(allTagsDocs.map((e => e.substring(1))).map((e => e in tagRedirectList ? tagRedirectList[e] : e)));
+        allTags = unique(allTagsDocs.map(e => e.substring(1)).map(e => e in tagRedirectList ? tagRedirectList[e] : e));
       } else allTags = unique(fileCache.links);
-      if (this.settings.disableNestedTags && "tag" == mode) allTags = allTags.map((e => e.split("/"))).flat();
+      if (this.settings.disableNestedTags && "tag" == mode) allTags = allTags.map(e => e.split("/")).flat();
       if (0 == allTags.length) if ("tag" == mode) allTags = [ "_untagged" ]; else if ("link" == mode) allTags = [ "_unlinked" ];
       if ("canvas" == fileCache.file.extension) allTags.push("_VIRTUAL_TAG_CANVAS");
       if (this.settings.useVirtualTag) {
@@ -5136,9 +8039,9 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
         path.pop();
         if (path.length > 0) allTags.push(`${path.join("/")}`);
       }
-      allTags = uniqueCaseIntensive(allTags.map((e => e in tagRedirectList ? tagRedirectList[e] : e)));
-      if (allTags.some((tag => ignoreDocTags.contains(tag.toLowerCase())))) continue;
-      if (searchItems.map((searchItem => {
+      allTags = uniqueCaseIntensive(allTags.map(e => e in tagRedirectList ? tagRedirectList[e] : e));
+      if (allTags.some(tag2 => ignoreDocTags.contains(tag2.toLowerCase()))) continue;
+      if (searchItems.map(searchItem => {
         let bx = false;
         if (0 == allTags.length) return false;
         for (const searchSrc of searchItem) {
@@ -5147,18 +8050,18 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
             search = search.substring(1);
             func = "startsWith";
           }
-          if (search.startsWith("-")) bx = bx || allTags.some((tag => tag.toLowerCase()[func](search.substring(1)))); else bx = bx || allTags.every((tag => !tag.toLowerCase()[func](search)));
+          if (search.startsWith("-")) bx = bx || allTags.some(tag2 => tag2.toLowerCase()[func](search.substring(1))); else bx = bx || allTags.every(tag2 => !tag2.toLowerCase()[func](search));
         }
         return bx;
-      })).every((e => e))) continue;
-      allTags = allTags.filter((tag => !ignoreTags.contains(tag.toLowerCase())));
+      }).every(e => e)) continue;
+      allTags = allTags.filter(tag2 => !ignoreTags.contains(tag2.toLowerCase()));
       const links = [ ...fileCache.links ];
       if (0 == links.length) links.push("_unlinked");
       if (this.settings.disableNarrowingDown && "tag" == mode) {
-        const archiveTagsMatched = allTags.filter((e => archiveTags.contains(e.toLowerCase()))), targetTags = 0 == archiveTagsMatched.length ? allTags : archiveTagsMatched;
+        const archiveTagsMatched = allTags.filter(e => archiveTags.contains(e.toLowerCase())), targetTags = 0 == archiveTagsMatched.length ? allTags : archiveTagsMatched;
         for (const tags of targetTags) items.push({
           tags: [ tags ],
-          extraTags: allTags.filter((e => e != tags)),
+          extraTags: allTags.filter(e => e != tags),
           path: fileCache.file.path,
           displayName: this.getDisplayName(fileCache.file),
           ancestors: [],
@@ -5182,7 +8085,7 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     return items;
   }
   loadFileInfo(diff) {
-    this.loadFileInfoAsync(diff).then((e => {}));
+    this.loadFileInfoAsync(diff).then(e => {});
   }
   isSettingChanged() {
     const strSetting = JSON.stringify(this.settings), isSettingChanged = strSetting != this.lastSettings, isSearchStringModified = this.searchString != this.lastSearchString;
@@ -5195,7 +8098,7 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       this.processingFileInfo = true;
       const cacheUpdated = this.updateFileCaches(diffs);
       if (this.isSettingChanged() || cacheUpdated) {
-        appliedFiles.set(diffs.map((e => e.path)));
+        appliedFiles.set(diffs.map(e => e.path));
         await this.applyFileInfoToView();
       }
       await this.applyUpdateIntoScroll(diffs);
@@ -5206,9 +8109,9 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       }
     } finally {
       this.processingFileInfo = false;
-    } else diffs.forEach((e => {
+    } else diffs.forEach(e => {
       this.loadFileInfoAsync(e);
-    }));
+    });
   }
   async applyFileInfoToView() {
     const itemsSorted = (await this.getItemsList("tag")).sort(this.compareItems);
@@ -5224,19 +8127,19 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
   }
   async loadFileInfoAsync(diff) {
     if (diff) {
-      if (diff && this.loadFileQueue.some((e => e.path == (null == diff ? void 0 : diff.path)))) ; else this.loadFileQueue.push(diff);
-      if (this.loadFileTimer) clearTimeout(this.loadFileTimer);
-      this.loadFileTimer = setTimeout((() => {
+      if (diff && this.loadFileQueue.some(e => e.path == (null == diff ? void 0 : diff.path))) ; else this.loadFileQueue.push(diff);
+      if (this.loadFileTimer) window.clearTimeout(this.loadFileTimer);
+      this.loadFileTimer = window.setTimeout(() => {
         if (0 === this.loadFileQueue.length) ; else {
           const diffs = [ ...this.loadFileQueue ];
           this.loadFileQueue = [];
           this.loadFileInfos(diffs);
         }
-      }), 200);
+      }, 200);
     } else {
       this.loadFileQueue = [];
       if (this.loadFileTimer) {
-        clearTimeout(this.loadFileTimer);
+        window.clearTimeout(this.loadFileTimer);
         this.loadFileTimer = void 0;
       }
       await this.loadFileInfos([]);
@@ -5251,9 +8154,9 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
       type: VIEW_TYPE_SCROLL,
       active: true,
       state: {
-        files: files.map((e => ({
+        files: files.map(e => ({
           path: e
-        }))),
+        })),
         title,
         tagPath
       }
@@ -5278,28 +8181,28 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
           ...viewStat,
           state: {
             ...viewStat.state,
-            files: viewStat.state.files.map((e => e.path == file.path ? {
+            files: viewStat.state.files.map(e => e.path == file.path ? {
               path: file.path
-            } : e))
+            } : e)
           }
         };
         await leaf.setViewState(newStat);
       }
       const tags = viewStat.state.tagPath.split(", ");
       let matchedFiles = this.allViewItems;
-      for (const tag of tags) matchedFiles = matchedFiles.filter((item => item.tags.map((tag2 => tag2.toLowerCase())).some((itemTag => itemTag == tag.toLowerCase() || (itemTag + "/").startsWith(tag.toLowerCase() + (tag.endsWith("/") ? "" : "/"))))));
-      const newFilesArray = matchedFiles.map((e => e.path));
-      if (newFilesArray.sort().join("-") != viewStat.state.files.map((e => e.path)).sort().join("-")) {
+      for (const tag2 of tags) matchedFiles = matchedFiles.filter(item => item.tags.map(tag3 => tag3.toLowerCase()).some(itemTag => itemTag == tag2.toLowerCase() || (itemTag + "/").startsWith(tag2.toLowerCase() + (tag2.endsWith("/") ? "" : "/"))));
+      const newFilesArray = matchedFiles.map(e => e.path);
+      if (newFilesArray.sort().join("-") != viewStat.state.files.map(e => e.path).sort().join("-")) {
         const newStat = {
           ...viewStat,
           state: {
             ...viewStat.state,
-            files: newFilesArray.map((path => {
-              const old = viewStat.state.files.find((e => e.path == path));
+            files: newFilesArray.map(path => {
+              const old = viewStat.state.files.find(e => e.path == path);
               if (old) return old; else return {
                 path
               };
-            }))
+            })
           }
         };
         await leaf.setViewState(newStat);
@@ -5307,9 +8210,9 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     }
   }
   async _initTagView() {
-    var _a3;
+    var _a5;
     const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_TAGFOLDER);
-    if (0 == leaves.length) await (null == (_a3 = this.app.workspace.getLeftLeaf(false)) ? void 0 : _a3.setViewState({
+    if (0 == leaves.length) await (null == (_a5 = this.app.workspace.getLeftLeaf(false)) ? void 0 : _a5.setViewState({
       type: VIEW_TYPE_TAGFOLDER,
       state: {
         treeViewType: "tags"
@@ -5326,9 +8229,9 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     }
   }
   async _initLinkView() {
-    var _a3;
+    var _a5;
     const leaves = this.app.workspace.getLeavesOfType(VIEW_TYPE_TAGFOLDER_LINK);
-    if (0 == leaves.length) await (null == (_a3 = this.app.workspace.getLeftLeaf(false)) ? void 0 : _a3.setViewState({
+    if (0 == leaves.length) await (null == (_a5 = this.app.workspace.getLeftLeaf(false)) ? void 0 : _a5.setViewState({
       type: VIEW_TYPE_TAGFOLDER_LINK,
       state: {
         treeViewType: "links"
@@ -5368,11 +8271,11 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     } else this.skipOnce = false;
   }
   getTagInfoFilename() {
-    return (0, import_obsidian8.normalizePath)(this.settings.tagInfo);
+    return (0, import_obsidian11.normalizePath)(this.settings.tagInfo);
   }
   getTagInfoFile() {
     const file = this.app.vault.getAbstractFileByPath(this.getTagInfoFilename());
-    if (file instanceof import_obsidian8.TFile) return file; else return null;
+    if (file instanceof import_obsidian11.TFile) return file; else return null;
   }
   applyTagInfo() {
     if (null != this.tagInfo) if (this.settings.useTagInfo) tagInfo.set(this.tagInfo);
@@ -5386,16 +8289,16 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     try {
       const bodyStartIndex = data.indexOf("\n---");
       if (!data.startsWith("---") || -1 === bodyStartIndex) return;
-      const yaml = data.substring(3, bodyStartIndex), yamlData = (0, import_obsidian8.parseYaml)(yaml), keys = Object.keys(yamlData);
+      const yaml = data.substring(3, bodyStartIndex), yamlData = (0, import_obsidian11.parseYaml)(yaml), keys = Object.keys(yamlData);
       this.tagInfoBody = data.substring(bodyStartIndex + 5);
       this.tagInfoFrontMatterBuffer = yamlData;
       const newTagInfo = {};
-      for (const key of keys) {
-        const w = yamlData[key];
+      for (const key2 of keys) {
+        const w = yamlData[key2];
         if (!w) continue;
         if ("object" != typeof w) continue;
-        const keys2 = [ "key", "mark", "alt", "redirect" ], entries = Object.entries(w).filter((([key2]) => keys2.some((e => key2.contains(e)))));
-        if (0 != entries.length) newTagInfo[key] = Object.fromEntries(entries);
+        const keys2 = [ "key", "mark", "alt", "redirect" ], entries = Object.entries(w).filter(([key3]) => keys2.some(e => key3.contains(e)));
+        if (0 != entries.length) newTagInfo[key2] = Object.fromEntries(entries);
       }
       this.tagInfo = newTagInfo;
       this.applyTagInfo();
@@ -5408,10 +8311,10 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     if (null == this.tagInfo) return;
     let file = this.getTagInfoFile();
     if (null == file) file = await this.app.vault.create(this.getTagInfoFilename(), "");
-    await this.app.fileManager.processFrontMatter(file, (matter => {
+    await this.app.fileManager.processFrontMatter(file, matter => {
       const ti = Object.entries(this.tagInfo);
-      for (const [key, value] of ti) if (void 0 === value) delete matter[key]; else matter[key] = value;
-    }));
+      for (const [key2, value] of ti) if (void 0 === value) delete matter[key2]; else matter[key2] = value;
+    });
   }
   async refreshAllViewItems() {
     this.parsedFileCache.clear();
@@ -5424,6 +8327,7 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    this.settings.newNoteTemplate = normalizeNewNoteTemplatePath(this.settings.newNoteTemplate);
     await this.loadTagInfo();
     tagFolderSetting.set(this.settings);
     this.compareItems = getCompareMethodItems(this.settings);
@@ -5436,13 +8340,13 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     this.refreshAllViewItems();
   }
   async openListView(tagSrc) {
-    var _a3, _b3;
+    var _a5, _b3;
     if (!tagSrc) return;
     const tags = "root" == tagSrc.first() ? tagSrc.slice(1) : tagSrc;
     let theLeaf;
     for (const leaf of this.app.workspace.getLeavesOfType(VIEW_TYPE_TAGFOLDER_LIST)) {
       const state2 = leaf.getViewState();
-      if (null == (_a3 = state2.state) ? void 0 : _a3.tags) {
+      if (null == (_a5 = state2.state) ? void 0 : _a5.tags) {
         if (state2.state.tags.slice().sort().join("-") == tags.slice().sort().join("-")) {
           this.app.workspace.setActiveLeaf(leaf, {
             focus: true
@@ -5466,11 +8370,11 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
 
        case "":
        default:
-        if (!import_obsidian8.Platform.isMobile) theLeaf = this.app.workspace.createLeafBySplit(parent, "horizontal", false); else theLeaf = this.app.workspace.getLeftLeaf(false);
+        if (!import_obsidian11.Platform.isMobile) theLeaf = this.app.workspace.createLeafBySplit(parent, "horizontal", false); else theLeaf = this.app.workspace.getLeftLeaf(false);
         break;
       }
     }
-    const title = tags.map((e => e.split("/").map((ee => renderSpecialTag(ee))).join("/"))).join(" ");
+    const title = tags.map(e => e.split("/").map(ee => renderSpecialTag(ee)).join("/")).join(" ");
     await theLeaf.setViewState({
       type: VIEW_TYPE_TAGFOLDER_LIST,
       active: true,
@@ -5482,14 +8386,29 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
     await this.app.workspace.revealLeaf(theLeaf);
   }
   async createNewNote(tags) {
-    const expandedTagsAll = ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath(null != tags ? tags : [])))).map((e => trimTrailingSlash(e))), expandedTags = expandedTagsAll.map((e => e.split("/").filter((ee => !isSpecialTag(ee))).join("/"))).filter((e => "" != e)).map((e => "#" + e)).join(" ").trim(), ww = await this.app.fileManager.createAndOpenMarkdownFile();
-    if (this.settings.useFrontmatterTagsForNewNotes) await this.app.fileManager.processFrontMatter(ww, (matter => {
-      var _a3;
-      matter.tags = null != (_a3 = matter.tags) ? _a3 : [];
-      matter.tags = expandedTagsAll.filter((e => !isSpecialTag(e))).filter((e => matter.tags.indexOf(e) < 0)).concat(matter.tags);
-    })); else await this.app.vault.append(ww, expandedTags);
+    const expandedTagsAll = ancestorToLongestTag(ancestorToTags(joinPartialPath(removeIntermediatePath(null != tags ? tags : [])))).map(e => trimTrailingSlash(e)), expandedTags = expandedTagsAll.map(e => e.split("/").filter(ee => !isSpecialTag(ee)).join("/")).filter(e => "" != e).map(e => "#" + e).join(" ").trim(), configuredTemplatePath = normalizeNewNoteTemplatePath(this.settings.newNoteTemplate);
+    let selectedTemplate = null;
+    if ("" != configuredTemplatePath) {
+      const configuredTemplate = getConfiguredNewNoteTemplate(this.app, configuredTemplatePath);
+      if (null != configuredTemplate) selectedTemplate = configuredTemplate; else {
+        const promptedTemplate = await askNewNoteTemplate(this.ui, this.app);
+        if (void 0 === promptedTemplate) return;
+        selectedTemplate = promptedTemplate;
+      }
+    }
+    const ww = await this.app.fileManager.createAndOpenMarkdownFile();
+    if (ww instanceof import_obsidian11.TFile) await populateNewNote({
+      vault: this.vaultText,
+      frontmatter: this.vaultFrontmatter,
+      notePath: ww.path,
+      template: selectedTemplate,
+      expandedTagsAll,
+      expandedTags,
+      frontmatterTags: expandedTagsAll.filter(e => !isSpecialTag(e)),
+      useFrontmatterTags: this.settings.useFrontmatterTagsForNewNotes
+    });
   }
-}, TagFolderSettingTab = class extends import_obsidian8.PluginSettingTab {
+}, TagFolderSettingTab = class extends import_obsidian11.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
@@ -5500,247 +8419,267 @@ var TagFolderPlugin5 = class extends import_obsidian8.Plugin {
   display() {
     const {containerEl} = this;
     containerEl.empty();
-    containerEl.createEl("h2", {
-      text: "Behavior"
-    });
-    new import_obsidian8.Setting(containerEl).setName("Always Open").setDesc("Place TagFolder on the left pane and activate it at every Obsidian launch").addToggle((toggle => toggle.setValue(this.plugin.settings.alwaysOpen).onChange((async value => {
+    const newNoteTemplates = captureNewNoteTemplates(this.app);
+    new import_obsidian11.Setting(containerEl).setName("Behavior").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Always Open").setDesc("Place TagFolder on the left pane and activate it at every Obsidian launch").addToggle(toggle => toggle.setValue(this.plugin.settings.alwaysOpen).onChange(async value => {
       this.plugin.settings.alwaysOpen = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Use pinning").setDesc("When this feature is enabled, the pin information is saved in the file set in the next configuration.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.useTagInfo).onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Use pinning").setDesc("When this feature is enabled, the pin information is saved in the file set in the next configuration.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.useTagInfo).onChange(async value => {
         this.plugin.settings.useTagInfo = value;
         if (this.plugin.settings.useTagInfo) await this.plugin.loadTagInfo();
         await this.plugin.saveSettings();
         pi.setDisabled(!value);
-      }));
-    }));
-    const pi = new import_obsidian8.Setting(containerEl).setName("Pin information file").setDisabled(!this.plugin.settings.useTagInfo).addText((text2 => {
-      text2.setValue(this.plugin.settings.tagInfo).onChange((async value => {
+      });
+    });
+    const pi = new import_obsidian11.Setting(containerEl).setName("Pin information file").setDisabled(!this.plugin.settings.useTagInfo).addText(text2 => {
+      text2.setValue(this.plugin.settings.tagInfo).onChange(async value => {
         this.plugin.settings.tagInfo = value;
         if (this.plugin.settings.useTagInfo) await this.plugin.loadTagInfo();
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Disable narrowing down").setDesc("When this feature is enabled, relevant tags will be shown with the title instead of making a sub-structure.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.disableNarrowingDown).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Disable narrowing down").setDesc("When this feature is enabled, relevant tags will be shown with the title instead of making a sub-structure.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.disableNarrowingDown).onChange(async value => {
         this.plugin.settings.disableNarrowingDown = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Files"
+      });
     });
-    new import_obsidian8.Setting(containerEl).setName("Display method").setDesc("How to show a title of files").addDropdown((dropdown => dropdown.addOptions({
+    new import_obsidian11.Setting(containerEl).setName("Files").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Display method").setDesc("How to show a title of files").addDropdown(dropdown => dropdown.addOptions({
       "PATH/NAME": "PATH/NAME",
       NAME: "NAME",
       "NAME : PATH": "NAME : PATH"
-    }).setValue(this.plugin.settings.displayMethod).onChange((async value => {
+    }).setValue(this.plugin.settings.displayMethod).onChange(async value => {
       this.plugin.settings.displayMethod = value;
       this.plugin.loadFileInfo();
       await this.plugin.saveSettings();
-    }))));
-    const setOrderMethod = async (key, order) => {
+    }));
+    const setOrderMethod = async (key2, order) => {
       const oldSetting = this.plugin.settings.sortType.split("_");
-      if (!key) key = oldSetting[0];
+      if (!key2) key2 = oldSetting[0];
       if (!order) order = oldSetting[1];
-      this.plugin.settings.sortType = `${key}_${order}`;
+      this.plugin.settings.sortType = `${key2}_${order}`;
       await this.plugin.saveSettings();
     };
-    new import_obsidian8.Setting(containerEl).setName("Order method").setDesc("how to order items").addDropdown((dd => {
-      dd.addOptions(OrderKeyItem).setValue(this.plugin.settings.sortType.split("_")[0]).onChange((key => setOrderMethod(key, void 0)));
-    })).addDropdown((dd => {
-      dd.addOptions(OrderDirection).setValue(this.plugin.settings.sortType.split("_")[1]).onChange((order => setOrderMethod(void 0, order)));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Prioritize items which are not contained in sub-folder").setDesc("If this has been enabled, the items which have no more extra tags are first.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.sortExactFirst).onChange((async value => {
+    new import_obsidian11.Setting(containerEl).setName("Order method").setDesc("how to order items").addDropdown(dd => {
+      dd.addOptions(OrderKeyItem).setValue(this.plugin.settings.sortType.split("_")[0]).onChange(key2 => setOrderMethod(key2, void 0));
+    }).addDropdown(dd => {
+      dd.addOptions(OrderDirection).setValue(this.plugin.settings.sortType.split("_")[1]).onChange(order => setOrderMethod(void 0, order));
+    });
+    new import_obsidian11.Setting(containerEl).setName("Prioritize items which are not contained in sub-folder").setDesc("If this has been enabled, the items which have no more extra tags are first.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.sortExactFirst).onChange(async value => {
         this.plugin.settings.sortExactFirst = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Use title").setDesc("Use value in the frontmatter or first level one heading for `NAME`.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.useTitle).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Use title").setDesc("Use value in the frontmatter or first level one heading for `NAME`.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.useTitle).onChange(async value => {
         this.plugin.settings.useTitle = value;
         fpath.setDisabled(!value);
         await this.plugin.saveSettings();
-      }));
-    }));
-    const fpath = new import_obsidian8.Setting(containerEl).setName("Frontmatter path").setDisabled(!this.plugin.settings.useTitle).addText((text2 => {
-      text2.setValue(this.plugin.settings.frontmatterKey).onChange((async value => {
+      });
+    });
+    const fpath = new import_obsidian11.Setting(containerEl).setName("Frontmatter path").setDisabled(!this.plugin.settings.useTitle).addText(text2 => {
+      text2.setValue(this.plugin.settings.frontmatterKey).onChange(async value => {
         this.plugin.settings.frontmatterKey = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Tags"
+      });
     });
-    const setOrderMethodTag = async (key, order) => {
+    new import_obsidian11.Setting(containerEl).setName("Tags").setHeading();
+    let selectedTagTreeStyle, applyTagTreeStyleButton;
+    const tagTreeStyleSuggestionEl = containerEl.createDiv({
+      cls: "tagfolder-style-suggestion"
+    });
+    new import_obsidian11.Setting(tagTreeStyleSuggestionEl).setName("Suggested tag tree style").setDesc("Apply a suggested combination of tag tree settings.").addDropdown(dropdown => {
+      dropdown.addOption("", "Select a style");
+      for (const suggestion of TAG_TREE_STYLE_SUGGESTIONS) dropdown.addOption(suggestion.id, suggestion.name);
+      dropdown.setValue("").onChange(value => {
+        selectedTagTreeStyle = findTagTreeStyleSuggestion(value);
+        null == applyTagTreeStyleButton || applyTagTreeStyleButton.setDisabled(!selectedTagTreeStyle);
+        renderTagTreeStylePreview(tagTreeStylePreviewEl, selectedTagTreeStyle);
+      });
+    }).addButton(button => {
+      applyTagTreeStyleButton = button;
+      button.setButtonText("Apply").setDisabled(true).onClick(async () => {
+        if (!selectedTagTreeStyle) return;
+        const appliedStyleName = selectedTagTreeStyle.name;
+        this.plugin.settings = applyTagTreeStyleSuggestion(this.plugin.settings, selectedTagTreeStyle);
+        await this.plugin.saveSettings();
+        this.display();
+        new import_obsidian11.Notice(`Applied '${appliedStyleName}' settings.`);
+      });
+    });
+    const tagTreeStylePreviewEl = tagTreeStyleSuggestionEl.createDiv({
+      cls: "tagfolder-style-preview"
+    });
+    renderTagTreeStylePreview(tagTreeStylePreviewEl);
+    const setOrderMethodTag = async (key2, order) => {
       const oldSetting = this.plugin.settings.sortTypeTag.split("_");
-      if (!key) key = oldSetting[0];
+      if (!key2) key2 = oldSetting[0];
       if (!order) order = oldSetting[1];
-      this.plugin.settings.sortTypeTag = `${key}_${order}`;
+      this.plugin.settings.sortTypeTag = `${key2}_${order}`;
       await this.plugin.saveSettings();
     };
-    new import_obsidian8.Setting(containerEl).setName("Order method").setDesc("how to order tags").addDropdown((dd => {
-      dd.addOptions(OrderKeyTag).setValue(this.plugin.settings.sortTypeTag.split("_")[0]).onChange((key => setOrderMethodTag(key, void 0)));
-    })).addDropdown((dd => {
-      dd.addOptions(OrderDirection).setValue(this.plugin.settings.sortTypeTag.split("_")[1]).onChange((order => setOrderMethodTag(void 0, order)));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Use virtual tags").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.useVirtualTag).onChange((async value => {
+    new import_obsidian11.Setting(containerEl).setName("Order method").setDesc("how to order tags").addDropdown(dd => {
+      dd.addOptions(OrderKeyTag).setValue(this.plugin.settings.sortTypeTag.split("_")[0]).onChange(key2 => setOrderMethodTag(key2, void 0));
+    }).addDropdown(dd => {
+      dd.addOptions(OrderDirection).setValue(this.plugin.settings.sortTypeTag.split("_")[1]).onChange(order => setOrderMethodTag(void 0, order));
+    });
+    new import_obsidian11.Setting(containerEl).setName("Use virtual tags").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.useVirtualTag).onChange(async value => {
         this.plugin.settings.useVirtualTag = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Display folder as tag").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.displayFolderAsTag).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Display folder as tag").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.displayFolderAsTag).onChange(async value => {
         this.plugin.settings.displayFolderAsTag = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Store tags in frontmatter for new notes").setDesc("Otherwise, tags are stored with #hashtags at the top of the note").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.useFrontmatterTagsForNewNotes).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Store tags in frontmatter for new notes").setDesc("When enabled, tags are written to the note Properties. If no new-note template is selected, TagFolder still creates the note and stores tags here instead of as #hashtags.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.useFrontmatterTagsForNewNotes).onChange(async value => {
         this.plugin.settings.useFrontmatterTagsForNewNotes = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Actions"
+      });
     });
-    new import_obsidian8.Setting(containerEl).setName("Search tags inside TagFolder when clicking tags").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.overrideTagClicking).onChange((async value => {
+    new import_obsidian11.Setting(containerEl).setName("Template for new notes").setDesc("When set to a valid markdown file path, new notes use this template without opening the template picker. The .md extension is optional.").addText(text2 => {
+      text2.setPlaceholder("Templates/New note").setValue(this.plugin.settings.newNoteTemplate).onChange(async value => {
+        this.plugin.settings.newNoteTemplate = normalizeNewNoteTemplatePath(value);
+        await this.plugin.saveSettings();
+      });
+      new NewNoteTemplateInputSuggest(this.app, text2.inputEl, newNoteTemplates, template => {
+        this.plugin.settings.newNoteTemplate = template.path;
+        this.plugin.saveSettings();
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Actions").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Search tags inside TagFolder when clicking tags").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.overrideTagClicking).onChange(async value => {
         this.plugin.settings.overrideTagClicking = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("List files in a separated pane").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.useMultiPaneList).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("List files in a separated pane").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.useMultiPaneList).onChange(async value => {
         this.plugin.settings.useMultiPaneList = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Show list in").setDesc("This option applies to the newly opened list").addDropdown((dropdown => {
-      dropdown.addOptions(enumShowListIn).setValue(this.plugin.settings.showListIn).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Show list in").setDesc("This option applies to the newly opened list").addDropdown(dropdown => {
+      dropdown.addOptions(enumShowListIn).setValue(this.plugin.settings.showListIn).onChange(async value => {
         this.plugin.settings.showListIn = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Arrangements"
+      });
     });
-    new import_obsidian8.Setting(containerEl).setName("Hide Items").setDesc("Hide items on the landing or nested tags").addDropdown((dd => {
-      dd.addOptions(HideItemsType).setValue(this.plugin.settings.hideItems).onChange((async key => {
-        if ("NONE" == key || "DEDICATED_INTERMIDIATES" == key || "ALL_EXCEPT_BOTTOM" == key) this.plugin.settings.hideItems = key;
+    new import_obsidian11.Setting(containerEl).setName("Arrangements").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Hide Items").setDesc("Hide items on the landing or nested tags").addDropdown(dd => {
+      dd.addOptions(HideItemsType).setValue(this.plugin.settings.hideItems).onChange(async key2 => {
+        if ("NONE" == key2 || "DEDICATED_INTERMIDIATES" == key2 || "ALL_EXCEPT_BOTTOM" == key2) this.plugin.settings.hideItems = key2;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Merge redundant combinations").setDesc("When this feature is enabled, a/b and b/a are merged into a/b if there is no intermediates.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.mergeRedundantCombination).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Merge redundant combinations").setDesc("When this feature is enabled, a/b and b/a are merged into a/b if there is no intermediates.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.mergeRedundantCombination).onChange(async value => {
         this.plugin.settings.mergeRedundantCombination = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Do not simplify empty folders").setDesc("Keep empty folders, even if they can be simplified.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.doNotSimplifyTags).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Do not simplify empty folders").setDesc("Keep empty folders, even if they can be simplified.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.doNotSimplifyTags).onChange(async value => {
         this.plugin.settings.doNotSimplifyTags = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Do not treat nested tags as dedicated levels").setDesc("Treat nested tags as normal tags").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.disableNestedTags).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Do not treat nested tags as dedicated levels").setDesc("Treat nested tags as normal tags").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.disableNestedTags).onChange(async value => {
         this.plugin.settings.disableNestedTags = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Reduce duplicated parents in nested tags").setDesc("If enabled, #web/css, #web/javascript will merged into web -> css -> javascript").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.reduceNestedParent).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Reduce duplicated parents in nested tags").setDesc("If enabled, #web/css, #web/javascript will merged into web -> css -> javascript").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.reduceNestedParent).onChange(async value => {
         this.plugin.settings.reduceNestedParent = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Keep untagged items on the root").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.expandUntaggedToRoot).onChange((async value => {
+      });
+    });
+    new import_obsidian11.Setting(containerEl).setName("Keep untagged items on the root").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.expandUntaggedToRoot).onChange(async value => {
         this.plugin.settings.expandUntaggedToRoot = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Link Folder"
+      });
     });
-    new import_obsidian8.Setting(containerEl).setName("Use Incoming").setDesc("").addToggle((toggle => toggle.setValue(this.plugin.settings.linkConfig.incoming.enabled).onChange((async value => {
+    new import_obsidian11.Setting(containerEl).setName("Link Folder").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Use Incoming").setDesc("").addToggle(toggle => toggle.setValue(this.plugin.settings.linkConfig.incoming.enabled).onChange(async value => {
       this.plugin.settings.linkConfig.incoming.enabled = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Use Outgoing").setDesc("").addToggle((toggle => toggle.setValue(this.plugin.settings.linkConfig.outgoing.enabled).onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Use Outgoing").setDesc("").addToggle(toggle => toggle.setValue(this.plugin.settings.linkConfig.outgoing.enabled).onChange(async value => {
       this.plugin.settings.linkConfig.outgoing.enabled = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Hide indirectly linked notes").setDesc("").addToggle((toggle => toggle.setValue(this.plugin.settings.linkShowOnlyFDR).onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Hide indirectly linked notes").setDesc("").addToggle(toggle => toggle.setValue(this.plugin.settings.linkShowOnlyFDR).onChange(async value => {
       this.plugin.settings.linkShowOnlyFDR = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Connect linked tree").setDesc("").addToggle((toggle => toggle.setValue(this.plugin.settings.linkCombineOtherTree).onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Connect linked tree").setDesc("").addToggle(toggle => toggle.setValue(this.plugin.settings.linkCombineOtherTree).onChange(async value => {
       this.plugin.settings.linkCombineOtherTree = value;
       await this.plugin.saveSettings();
-    }))));
-    containerEl.createEl("h2", {
-      text: "Filters"
-    });
-    new import_obsidian8.Setting(containerEl).setName("Target Folders").setDesc("If configured, the plugin will only target files in it.").addTextArea((text2 => text2.setValue(this.plugin.settings.targetFolders).setPlaceholder("study,documents/summary").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Filters").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Target Folders").setDesc("If configured, the plugin will only target files in it.").addTextArea(text2 => text2.setValue(this.plugin.settings.targetFolders).setPlaceholder("study,documents/summary").onChange(async value => {
       this.plugin.settings.targetFolders = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Ignore Folders").setDesc("Ignore documents in specific folders.").addTextArea((text2 => text2.setValue(this.plugin.settings.ignoreFolders).setPlaceholder("template,list/standard_tags").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Ignore Folders").setDesc("Ignore documents in specific folders.").addTextArea(text2 => text2.setValue(this.plugin.settings.ignoreFolders).setPlaceholder("template,list/standard_tags").onChange(async value => {
       this.plugin.settings.ignoreFolders = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Ignore note Tag").setDesc("If the note has the tag listed below, the note would be treated as there was not.").addTextArea((text2 => text2.setValue(this.plugin.settings.ignoreDocTags).setPlaceholder("test,test1,test2").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Ignore note Tag").setDesc("If the note has the tag listed below, the note would be treated as there was not.").addTextArea(text2 => text2.setValue(this.plugin.settings.ignoreDocTags).setPlaceholder("test,test1,test2").onChange(async value => {
       this.plugin.settings.ignoreDocTags = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Ignore Tag").setDesc("Tags in the list would be treated as there were not.").addTextArea((text2 => text2.setValue(this.plugin.settings.ignoreTags).setPlaceholder("test,test1,test2").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Ignore Tag").setDesc("Tags in the list would be treated as there were not.").addTextArea(text2 => text2.setValue(this.plugin.settings.ignoreTags).setPlaceholder("test,test1,test2").onChange(async value => {
       this.plugin.settings.ignoreTags = value;
       await this.plugin.saveSettings();
-    }))));
-    new import_obsidian8.Setting(containerEl).setName("Archive tags").setDesc("If configured, notes with these tags will be moved under the tag.").addTextArea((text2 => text2.setValue(this.plugin.settings.archiveTags).setPlaceholder("archived, discontinued").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Archive tags").setDesc("If configured, notes with these tags will be moved under the tag.").addTextArea(text2 => text2.setValue(this.plugin.settings.archiveTags).setPlaceholder("archived, discontinued").onChange(async value => {
       this.plugin.settings.archiveTags = value;
       await this.plugin.saveSettings();
-    }))));
-    containerEl.createEl("h2", {
-      text: "Misc"
-    });
-    new import_obsidian8.Setting(containerEl).setName("Tag scanning delay").setDesc("Sets the delay for reflecting metadata changes to the tag tree. (Plugin reload is required.)").addText((text2 => {
-      (text2 = text2.setValue(this.plugin.settings.scanDelay + "").onChange((async value => {
+    }));
+    new import_obsidian11.Setting(containerEl).setName("Misc").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Tag scanning delay").setDesc("Sets the delay for reflecting metadata changes to the tag tree. (Plugin reload is required.)").addText(text2 => {
+      (text2 = text2.setValue(this.plugin.settings.scanDelay + "").onChange(async value => {
         const newDelay = Number.parseInt(value, 10);
         if (newDelay) {
           this.plugin.settings.scanDelay = newDelay;
           await this.plugin.saveSettings();
         }
-      }))).inputEl.setAttribute("type", "number");
+      })).inputEl.setAttribute("type", "number");
       text2.inputEl.setAttribute("min", "250");
       return text2;
-    }));
-    new import_obsidian8.Setting(containerEl).setName("Disable dragging tags").setDesc("The `Dragging tags` is using internal APIs. If something happens, please disable this once and try again.").addToggle((toggle => {
-      toggle.setValue(this.plugin.settings.disableDragging).onChange((async value => {
+    });
+    new import_obsidian11.Setting(containerEl).setName("Disable dragging tags").setDesc("The `Dragging tags` is using internal APIs. If something happens, please disable this once and try again.").addToggle(toggle => {
+      toggle.setValue(this.plugin.settings.disableDragging).onChange(async value => {
         this.plugin.settings.disableDragging = value;
         await this.plugin.saveSettings();
-      }));
-    }));
-    containerEl.createEl("h2", {
-      text: "Utilities"
+      });
     });
-    new import_obsidian8.Setting(containerEl).setName("Dumping tags for reporting bugs").setDesc("If you want to open an issue to the GitHub, this information can be useful. and, also if you want to keep secrets about names of tags, you can use `disguised`.").addButton((button => button.setButtonText("Copy tags").setDisabled(false).onClick((async () => {
-      const items = (await this.plugin.getItemsList("tag")).map((e => e.tags.filter((e2 => "_untagged" != e2)))).filter((e => e.length));
-      await navigator.clipboard.writeText(items.map((e => e.map((e2 => `#${e2}`)).join(", "))).join("\n"));
-      new import_obsidian8.Notice("Copied to clipboard");
-    })))).addButton((button => button.setButtonText("Copy disguised tags").setDisabled(false).onClick((async () => {
+    new import_obsidian11.Setting(containerEl).setName("Utilities").setHeading();
+    new import_obsidian11.Setting(containerEl).setName("Dumping tags for reporting bugs").setDesc("If you want to open an issue to the GitHub, this information can be useful. and, also if you want to keep secrets about names of tags, you can use `disguised`.").addButton(button => button.setButtonText("Copy tags").setDisabled(false).onClick(async () => {
+      const items = (await this.plugin.getItemsList("tag")).map(e => e.tags.filter(e2 => "_untagged" != e2)).filter(e => e.length);
+      await navigator.clipboard.writeText(items.map(e => e.map(e2 => `#${e2}`).join(", ")).join("\n"));
+      new import_obsidian11.Notice("Copied to clipboard");
+    })).addButton(button => button.setButtonText("Copy disguised tags").setDisabled(false).onClick(async () => {
       const x = new Map;
       let i = 0;
-      const items = (await this.plugin.getItemsList("tag")).map((e => e.tags.filter((e2 => "_untagged" != e2)).map((e2 => e2.split("/").map((e3 => e3.startsWith("_VIRTUAL") ? e3 : x.has(e3) ? x.get(e3) : (x.set(e3, "tag" + i++), 
-      i))).join("/"))).filter((e2 => e2.length))));
-      await navigator.clipboard.writeText(items.map((e => e.map((e2 => `#${e2}`)).join(", "))).join("\n"));
-      new import_obsidian8.Notice("Copied to clipboard");
-    }))));
+      const items = (await this.plugin.getItemsList("tag")).map(e => e.tags.filter(e2 => "_untagged" != e2).map(e2 => e2.split("/").map(e3 => e3.startsWith("_VIRTUAL") ? e3 : x.has(e3) ? x.get(e3) : (x.set(e3, "tag" + i++), 
+      i)).join("/")).filter(e2 => e2.length));
+      await navigator.clipboard.writeText(items.map(e => e.map(e2 => `#${e2}`).join(", ")).join("\n"));
+      new import_obsidian11.Notice("Copied to clipboard");
+    }));
   }
 };
 /* nosourcemap */

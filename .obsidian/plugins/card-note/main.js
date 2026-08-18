@@ -4187,7 +4187,7 @@ var require_lodash = __commonJS({
           customizer = typeof customizer == "function" ? customizer : undefined2;
           return baseIsMatch(object, source, getMatchData(source), customizer);
         }
-        function isNaN(value) {
+        function isNaN2(value) {
           return isNumber(value) && value != +value;
         }
         function isNative(value) {
@@ -5264,7 +5264,7 @@ var require_lodash = __commonJS({
         lodash.isMap = isMap;
         lodash.isMatch = isMatch;
         lodash.isMatchWith = isMatchWith;
-        lodash.isNaN = isNaN;
+        lodash.isNaN = isNaN2;
         lodash.isNative = isNative;
         lodash.isNil = isNil;
         lodash.isNull = isNull;
@@ -5744,7 +5744,13 @@ var import_obsidian = require("obsidian");
 var FileNameCheckModal = class extends import_obsidian.Modal {
   constructor(config) {
     super(config.plugin.app);
-    this.getNameDesc = (fileName, blockName) => {
+    //newName: Promise<string>;
+    __publicField(this, "section");
+    __publicField(this, "onSubmit");
+    __publicField(this, "errorMessage");
+    __publicField(this, "userInput");
+    __publicField(this, "plugin");
+    __publicField(this, "getNameDesc", (fileName, blockName) => {
       const frag = document.createDocumentFragment();
       frag.createDiv().innerText = `Create file ${fileName}`;
       if (blockName) {
@@ -5752,7 +5758,7 @@ var FileNameCheckModal = class extends import_obsidian.Modal {
         frag.createDiv().innerText = `Link to block ${fileName}`;
       }
       return frag;
-    };
+    });
     this.plugin = config.plugin;
     this.userInput = config.name;
     this.section = config.section;
@@ -5854,7 +5860,6 @@ function getEA(view) {
 function isExcalidrawView(view) {
   return view.getViewType() === VIEW_TYPE_EXCALIDRAW;
 }
-var MAX_IMAGE_SIZE = 500;
 async function insertEmbeddableOnDrawing(event, view, fileLink, file, plugin) {
   try {
     const ea = getEA();
@@ -5866,8 +5871,8 @@ async function insertEmbeddableOnDrawing(event, view, fileLink, file, plugin) {
     const id = ea.addEmbeddable(
       pos.x,
       pos.y,
-      MAX_IMAGE_SIZE,
-      MAX_IMAGE_SIZE,
+      plugin.settings.canvasNodeWidth,
+      plugin.settings.canvasNodeHeight,
       fileLink,
       file
     );
@@ -5896,7 +5901,11 @@ async function createTextOnDrawing(event, view, text2, plugin) {
     const id = ea.addText(
       pos.x,
       pos.y,
-      text2
+      text2,
+      {
+        width: plugin.settings.canvasNodeWidth,
+        height: plugin.settings.canvasNodeHeight
+      }
     );
     await view.addElements(ea.getElements(), false, true, void 0, true);
     return id;
@@ -5935,6 +5944,9 @@ async function addLink(fromNodeId, toNodeId, view, plugin) {
 
 // src/adapters/obsidian/index.ts
 var OBSIDIAN_CANVAS = "canvas";
+function isFileView(view) {
+  return view ? "file" in view : false;
+}
 function isObsidianCanvasView(view) {
   return (view == null ? void 0 : view.getViewType()) === OBSIDIAN_CANVAS;
 }
@@ -5988,8 +6000,8 @@ function getLinkBlocks(select, file, plugin) {
     return plugin.findLinkBlocks(file, from + textOffset, to + textOffset);
   }
 }
-async function userAction(plugin, section, selected) {
-  const folderPath = plugin.settings.defaultFolder;
+async function userAction(plugin, section, selected, defaultFolder) {
+  const folderPath = defaultFolder();
   const getUserRename = (config) => {
     return new Promise((resolve) => {
       const onSubmit = (action2) => {
@@ -6315,10 +6327,18 @@ var dragExtension = (plugin) => {
     let source;
     let listener;
     const handleDrop = async (e) => {
+      const drawView = plugin.getDropView(e);
+      const getDefaultFolder = () => {
+        var _a, _b;
+        const sourceFile = getFile(source);
+        const canvasFile = drawView == null ? void 0 : drawView.file;
+        const folderPath = plugin.settings.createToSouceFileFolder ? (_a = sourceFile == null ? void 0 : sourceFile.parent) == null ? void 0 : _a.path : plugin.settings.createToCanvasFolder ? (_b = canvasFile == null ? void 0 : canvasFile.parent) == null ? void 0 : _b.path : plugin.settings.defaultFolder;
+        return folderPath != null ? folderPath : plugin.settings.defaultFolder;
+      };
       const createFileAndDraw = async (whiteboard) => {
         var _a;
         const section = info.type === "line" && info.section ? info.section : getSection(source, info, plugin);
-        const action = await userAction(plugin, section, info);
+        const action = await userAction(plugin, section, info, getDefaultFolder);
         if (!isBreak(action) && action.type !== "cancel") {
           extractSelect(
             action,
@@ -6330,18 +6350,17 @@ var dragExtension = (plugin) => {
           );
         }
       };
-      const drawView = plugin.getDropView(e);
       if (isExcalidrawView(drawView)) {
         createFileAndDraw(
           {
             located: drawView,
             draw: async (target) => {
               const createNode = typeof target === "string" ? createTextOnDrawing(e, drawView, target, plugin) : insertEmbeddableOnDrawing(e, drawView, target.text, target.file, plugin);
+              const createNodeId = await createNode;
+              if (createNodeId === void 0 || createNodeId === null)
+                return;
               if (plugin.settings.autoLink && isCanvasEditorNode(source == null ? void 0 : source.fileEditor)) {
-                const createNodeId = await createNode;
-                if (createNodeId) {
-                  await addLink(source.fileEditor.id, createNodeId, drawView, plugin);
-                }
+                await addLink(source.fileEditor.id, createNodeId, drawView, plugin);
               }
             },
             updateLinks: (para) => {
@@ -6375,13 +6394,19 @@ var dragExtension = (plugin) => {
           located: drawView,
           draw: async (target) => {
             const dropCanvas = drawView.canvas;
+            const size2 = {
+              width: plugin.settings.canvasNodeWidth,
+              height: plugin.settings.canvasNodeHeight
+            };
             const createNode = typeof target === "string" ? dropCanvas.createTextNode({
               text: target,
               pos,
-              save: false
+              size: size2,
+              focus: false
             }) : dropCanvas.createFileNode({
               file: target.file,
               pos,
+              size: size2,
               subpath: target.subpath,
               save: false
             });
@@ -6425,7 +6450,10 @@ var dragExtension = (plugin) => {
             } else {
               await dropCanvas.requestFrame();
             }
-            dropCanvas.requestSave();
+            await dropCanvas.requestSave();
+            if (plugin.settings.fitContentHeight) {
+              fitContentHeight(createNode);
+            }
           },
           updateLinks: (para) => {
             const { linkMatch, getNewPath } = para;
@@ -6577,11 +6605,67 @@ var dragExtension = (plugin) => {
       throttle(addSymbolWhenMouseMove, 0.2)(event, view);
     }
   });
-  return [
-    dragSymbolSet,
-    mouseMoveWatch
-  ];
+  const dragCompart = new import_state.Compartment();
+  const mouseMoveCompart = new import_state.Compartment();
+  return {
+    extensions: [
+      dragCompart.of(dragSymbolSet),
+      mouseMoveCompart.of(mouseMoveWatch)
+    ],
+    toggleDragSymbol: (view, show) => {
+      view.dispatch({
+        effects: [
+          dragCompart.reconfigure(show ? dragSymbolSet : []),
+          mouseMoveCompart.reconfigure(show ? mouseMoveWatch : [])
+        ]
+        // StateEffect.reconfigure.of([])
+      });
+    }
+  };
 };
+function fitContentHeight(node) {
+  return asyncContentRenderObserveWrapper(node, (entries) => {
+    for (let entry of entries) {
+      node == null ? void 0 : node.onResizeDblclick(new MouseEvent("dblclick"), "bottom");
+    }
+  });
+}
+function asyncContentRenderObserveWrapper(node, subscriptions) {
+  return new Promise((resolve, reject) => {
+    var _a, _b, _c, _d, _e;
+    try {
+      if (((_a = node.child) == null ? void 0 : _a.previewMode.renderer.sizerEl) === void 0 || ((_b = node.child) == null ? void 0 : _b.previewMode.renderer.sizerEl) === null)
+        node.render();
+      const previewSizerWithoutContent = (_e = (_d = (_c = node.child) == null ? void 0 : _c.previewMode) == null ? void 0 : _d.renderer) == null ? void 0 : _e.sizerEl;
+      if (previewSizerWithoutContent === void 0) {
+        resolve();
+        return;
+      }
+      let prevRenderSectionsCount = 0;
+      const renderObserve = new ResizeObserver((entries) => {
+        requestAnimationFrame(() => {
+          var _a2, _b2, _c2, _d2;
+          const currentSectionCount = (_d2 = (_c2 = (_b2 = (_a2 = node.child) == null ? void 0 : _a2.previewMode) == null ? void 0 : _b2.renderer.sections) == null ? void 0 : _c2.length) != null ? _d2 : 0;
+          if (currentSectionCount !== prevRenderSectionsCount)
+            subscriptions(entries, renderObserve);
+          prevRenderSectionsCount = currentSectionCount;
+        });
+      });
+      renderObserve.observe(previewSizerWithoutContent, { box: "border-box" });
+      const id = setInterval(() => {
+        var _a2, _b2, _c2, _d2;
+        const currentSectionCount = (_d2 = (_c2 = (_b2 = (_a2 = node.child) == null ? void 0 : _a2.previewMode) == null ? void 0 : _b2.renderer.sections) == null ? void 0 : _c2.length) != null ? _d2 : 0;
+        if (currentSectionCount <= prevRenderSectionsCount) {
+          renderObserve.disconnect();
+          clearInterval(id);
+          resolve();
+        }
+      }, 500);
+    } catch (error) {
+      reject(`fit content height error: ${error}`);
+    }
+  });
+}
 
 // src/view/cardSearchView.ts
 var import_obsidian13 = require("obsidian");
@@ -7499,35 +7583,6 @@ var PUBLIC_VERSION = "4";
 // node_modules/svelte/src/runtime/internal/disclose-version/index.js
 if (typeof window !== "undefined")
   (window.__svelte || (window.__svelte = { v: /* @__PURE__ */ new Set() })).v.add(PUBLIC_VERSION);
-
-// node_modules/tslib/tslib.es6.js
-function __awaiter(thisArg, _arguments, P, generator) {
-  function adopt(value) {
-    return value instanceof P ? value : new P(function(resolve) {
-      resolve(value);
-    });
-  }
-  return new (P || (P = Promise))(function(resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-}
 
 // src/view/components/Search.svelte
 var import_obsidian12 = require("obsidian");
@@ -10307,14 +10362,14 @@ function create_fragment7(ctx) {
 }
 var extendMatchRange = (result, cache) => {
   var _a;
-  return (_a = result === null || result === void 0 ? void 0 : result.matches.map((match) => {
+  return (_a = result == null ? void 0 : result.matches.map((match) => {
     var _a2, _b, _c;
-    const matchInternalLink = (_b = (_a2 = cache === null || cache === void 0 ? void 0 : cache.embeds) === null || _a2 === void 0 ? void 0 : _a2.map(getCacheOffset).find(Touch(match))) !== null && _b !== void 0 ? _b : (_c = cache === null || cache === void 0 ? void 0 : cache.links) === null || _c === void 0 ? void 0 : _c.map(getCacheOffset).find(Touch(match));
+    const matchInternalLink = (_c = (_a2 = cache == null ? void 0 : cache.embeds) == null ? void 0 : _a2.map(getCacheOffset).find(Touch(match))) != null ? _c : (_b = cache == null ? void 0 : cache.links) == null ? void 0 : _b.map(getCacheOffset).find(Touch(match));
     return matchInternalLink ? [
       Math.min(matchInternalLink[0], match[0]),
       Math.max(matchInternalLink[1], match[1])
     ] : match;
-  })) !== null && _a !== void 0 ? _a : [];
+  })) != null ? _a : [];
 };
 var showContentCounts = 3;
 function instance5($$self, $$props, $$invalidate) {
@@ -10343,7 +10398,7 @@ function instance5($$self, $$props, $$invalidate) {
     if (data2) {
       const cache = app.metadataCache.getFileCache(fileMatch.file);
       const matches = (0, import_lodash.uniqWith)(extendMatchRange(fileMatch.match, cache), (a, b) => Touch(a)(b));
-      return (_a = cache === null || cache === void 0 ? void 0 : cache.sections) === null || _a === void 0 ? void 0 : _a.map((section) => {
+      return (_a = cache == null ? void 0 : cache.sections) == null ? void 0 : _a.map((section) => {
         const sectionPostion = getCacheOffset(section);
         const [start, end] = sectionPostion;
         const matchInSection = matches.filter(InRange(sectionPostion));
@@ -10382,12 +10437,7 @@ function instance5($$self, $$props, $$invalidate) {
     }
     if (matches) {
       view.plugin.onClickOpenFile(e, fileMatch.file, {
-        eState: {
-          match: {
-            content: data !== null && data !== void 0 ? data : "",
-            matches
-          }
-        }
+        eState: { match: { content: data != null ? data : "", matches } }
       });
       e.stopPropagation();
     }
@@ -10406,16 +10456,16 @@ function instance5($$self, $$props, $$invalidate) {
       view.plugin.onClickOpenFile(e, fileMatch.file);
     }
   };
-  const setContent = () => __awaiter(void 0, void 0, void 0, function* () {
+  const setContent = async () => {
     var _a;
     const content = validCacheReadFilesExtension.contains(fileMatch.file.extension) ? fileMatch.content ? Promise.resolve(fileMatch.content) : app.vault.cachedRead(fileMatch.file) : Promise.resolve(fileMatch.content);
-    data = yield content;
-    $$invalidate(3, contents = (_a = parsing(data)) !== null && _a !== void 0 ? _a : [
+    data = await content;
+    $$invalidate(3, contents = (_a = parsing(data)) != null ? _a : [
       {
         content: app.fileManager.generateMarkdownLink(fileMatch.file, "")
       }
     ]);
-  });
+  };
   const dragCard = (dragStart) => {
     var _a;
     const createFileInView = (drop) => {
@@ -10426,7 +10476,7 @@ function instance5($$self, $$props, $$invalidate) {
         drawView.canvas.createFileNode({ file: fileMatch.file, pos, save: true });
       }
       if (isExcalidrawView(drawView)) {
-        const link = view.app.fileManager.generateMarkdownLink(fileMatch.file, (_b = (_a2 = drawView.file) === null || _a2 === void 0 ? void 0 : _a2.path) !== null && _b !== void 0 ? _b : "");
+        const link = view.app.fileManager.generateMarkdownLink(fileMatch.file, (_b = (_a2 = drawView.file) == null ? void 0 : _a2.path) != null ? _b : "");
         insertEmbeddableOnDrawing(drop, drawView, link, fileMatch.file, view.plugin);
       }
     };
@@ -10441,10 +10491,10 @@ function instance5($$self, $$props, $$invalidate) {
       position: "absolute",
       transform: "translate(-1000px,-1000px)"
     });
-    (_a = dragStart.dataTransfer) === null || _a === void 0 ? void 0 : _a.setDragImage(dragSymbol, 0, 30);
-    setTimeout(() => __awaiter(void 0, void 0, void 0, function* () {
-      listener = view.plugin.listenDragAndDrop(dragStart, data !== null && data !== void 0 ? data : "", createFileInView);
-    }));
+    (_a = dragStart.dataTransfer) == null ? void 0 : _a.setDragImage(dragSymbol, 0, 30);
+    setTimeout(async () => {
+      listener = view.plugin.listenDragAndDrop(dragStart, data != null ? data : "", createFileInView);
+    });
   };
   const reset = (dragEnd) => {
     listener.reset();
@@ -11771,11 +11821,11 @@ function instance8($$self, $$props, $$invalidate) {
   const filesReadyForSearch = derived([filesNew, include, exclude], ([$files, $include2, $exclude2], set) => {
     const getRemovePattern = () => {
       var _a;
-      return (_a = tryCreateRegex($exclude2)) !== null && _a !== void 0 ? _a : { test: (str) => false };
+      return (_a = tryCreateRegex($exclude2)) != null ? _a : { test: (str) => false };
     };
     const getIncludePattern = () => {
       var _a;
-      return (_a = tryCreateRegex($include2)) !== null && _a !== void 0 ? _a : { test: (str) => true };
+      return (_a = tryCreateRegex($include2)) != null ? _a : { test: (str) => true };
     };
     const includeFiles = $files.filter((file) => {
       const remove = $exclude2.length != 0 && getRemovePattern().test(file.path);
@@ -11788,12 +11838,12 @@ function instance8($$self, $$props, $$invalidate) {
     [filesReadyForSearch, queryNew, searchSettings],
     ([$files, $query, $setting], set) => {
       const searchMethod = $setting.useRegex ? searchByRegex($query, $setting.matchCase ? "g" : "gi") : search($query);
-      const finds = $query.length !== 0 ? Promise.all($files.map((file) => __awaiter(void 0, void 0, void 0, function* () {
+      const finds = $query.length !== 0 ? Promise.all($files.map(async (file) => {
         var fileCache = $searchedFiles.find((f) => isSearchedFile(f) && f.file.path === file.path);
         var content = fileCache && fileCache.file.stat.mtime === file.stat.mtime ? Promise.resolve(fileCache.content) : validCacheReadFilesExtension.contains(file.extension) ? view.app.vault.cachedRead(file) : Promise.resolve("");
-        const cont = yield content;
-        return searchMethod(file, cont !== null && cont !== void 0 ? cont : "");
-      }))).then((files) => files.filter((f) => f !== void 0)) : Promise.resolve($files);
+        const cont = await content;
+        return searchMethod(file, cont != null ? cont : "");
+      })).then((files) => files.filter((f) => f !== void 0)) : Promise.resolve($files);
       finds.then((data) => set(data));
     },
     []
@@ -11836,21 +11886,21 @@ function instance8($$self, $$props, $$invalidate) {
     const del = view.app.vault.on("delete", registerVaultEvent((delF) => {
       set_store_value(filesNew, $filesNew = $filesNew.filter((of) => of !== delF), $filesNew);
     }));
-    const modify = view.app.vault.on("modify", registerVaultEvent((mf) => __awaiter(void 0, void 0, void 0, function* () {
+    const modify = view.app.vault.on("modify", registerVaultEvent(async (mf) => {
       set_store_value(filesNew, $filesNew = $filesNew.map((of) => of === mf ? mf : of), $filesNew);
-    })));
+    }));
     const rename = view.app.vault.on("rename", (tf, oldPath) => registerVaultEvent((renameFile) => {
       set_store_value(filesNew, $filesNew = $filesNew.map((old) => old.path === oldPath ? renameFile : old), $filesNew);
     })(tf));
-    const leafChange = view.app.workspace.on("active-leaf-change", (leaf) => __awaiter(void 0, void 0, void 0, function* () {
-      if ((leaf === null || leaf === void 0 ? void 0 : leaf.view.getViewType()) === view.getViewType() && grid) {
+    const leafChange = view.app.workspace.on("active-leaf-change", async (leaf) => {
+      if ((leaf == null ? void 0 : leaf.view.getViewType()) === view.getViewType() && grid) {
         grid.scrollTo({ scrollLeft: 0, scrollTop: 0 });
         grid.scrollTo({
           scrollLeft: offset.scrollLeft,
           scrollTop: offset.scrollTop
         });
       }
-    }));
+    });
     return () => {
       vault.offref(create);
       vault.offref(modify);
@@ -11928,8 +11978,8 @@ function instance8($$self, $$props, $$invalidate) {
   ];
   const computeGapStyle = (style, padding) => {
     var _a, _b;
-    const top = ((_a = style.top) !== null && _a !== void 0 ? _a : 0) + gutter2, left = ((_b = style.left) !== null && _b !== void 0 ? _b : 0) + gutter2 + padding, width = typeof style.width === "number" ? style.width - gutter2 : style.width, height = typeof style.height === "number" ? style.height - gutter2 : style.height;
-    return Object.assign(Object.assign({}, style), { top, left, width, height });
+    const top = ((_a = style.top) != null ? _a : 0) + gutter2, left = ((_b = style.left) != null ? _b : 0) + gutter2 + padding, width = typeof style.width === "number" ? style.width - gutter2 : style.width, height = typeof style.height === "number" ? style.height - gutter2 : style.height;
+    return { ...style, top, left, width, height };
   };
   const rememberScrollOffsetForFileUpdate = (0, import_obsidian12.debounce)(
     (props) => {
@@ -11999,6 +12049,8 @@ var VIEW_TYPE_CARDNOTESEARCH = "card-notes-view";
 var CardSearchView = class extends import_obsidian13.ItemView {
   constructor(leaf, plugin) {
     super(leaf);
+    __publicField(this, "plugin");
+    __publicField(this, "component");
     this.plugin = plugin;
   }
   getViewType() {
@@ -12026,6 +12078,9 @@ var import_obsidian14 = require("obsidian");
 var LinkSettingModel = class extends import_obsidian14.Modal {
   constructor(plugin, onSubmit) {
     super(plugin.app);
+    __publicField(this, "plugin");
+    __publicField(this, "label");
+    __publicField(this, "onSubmit");
     this.plugin = plugin;
     this.onSubmit = onSubmit;
   }
@@ -12055,25 +12110,45 @@ var DEFAULT_SETTINGS = {
   dragSymbol: "\u{1F494}",
   dragSymbolSize: 18,
   defaultFolder: "",
+  createToSouceFileFolder: false,
+  createToCanvasFolder: false,
   columnWidth: 250,
   rowHeight: 250,
-  autoLink: false,
+  autoLink: true,
   arrowTo: "end",
+  showDragSymbol: true,
+  fitContentHeight: true,
+  canvasNodeHeight: 500,
+  canvasNodeWidth: 500,
   query: "string",
   useRegex: false,
   matchCase: false,
   showSearchDetail: false,
   include: "",
-  exclude: ""
+  exclude: "",
+  autoPreview: false,
+  lastPreviewIndex: void 0,
+  previewNodeInfo: void 0
 };
 var CardNote = class extends import_obsidian15.Plugin {
   constructor() {
     super(...arguments);
-    this.settings = DEFAULT_SETTINGS;
+    __publicField(this, "settings", DEFAULT_SETTINGS);
+    __publicField(this, "hotReloadExtensions", []);
+    __publicField(this, "pluginExtensions", []);
+    __publicField(this, "toggleDragSymbol", () => {
+    });
+    __publicField(this, "applyAutoPreviewNode", () => {
+    });
+    __publicField(this, "autoPreviewAttribute", "cardnote-preview-leaf");
   }
   async onload() {
     await this.loadSettings();
-    this.registerEditorExtension(dragExtension(this));
+    const { extensions, toggleDragSymbol } = dragExtension(this);
+    this.pluginExtensions = extensions;
+    this.hotReloadExtensions = this.settings.showDragSymbol ? [...extensions] : [];
+    this.registerEditorExtension(this.hotReloadExtensions);
+    this.toggleDragSymbol = toggleDragSymbol;
     this.registerView(
       VIEW_TYPE_CARDNOTESEARCH,
       (leaf) => new CardSearchView(leaf, this)
@@ -12085,8 +12160,102 @@ var CardNote = class extends import_obsidian15.Plugin {
     );
     this.addCommands();
     this.addSettingTab(new CardNoteTab(this.app, this));
+    this.applyAutoPreviewNode = this.createOpenCanvasNodeFileEvent(this);
+    this.registerEvent(
+      this.app.workspace.on("quit", (tasks) => {
+        if (!this.settings.autoPreview)
+          return;
+        tasks.add(async () => {
+          const leaves = [];
+          this.app.workspace.iterateAllLeaves((leaf) => {
+            leaves.push(leaf);
+          });
+          let i = -1;
+          this.settings.lastPreviewIndex = void 0;
+          for (let leaf of leaves) {
+            i = i + 1;
+            const previewNodeInfo = leaf.containerEl.getAttribute(this.autoPreviewAttribute);
+            if (previewNodeInfo !== null) {
+              this.settings.lastPreviewIndex = i;
+              this.settings.previewNodeInfo = JSON.parse(decodeURI(previewNodeInfo));
+              this.saveSettings();
+              break;
+            }
+            ;
+          }
+        });
+      })
+    );
+    if (this.settings.autoPreview && this.settings.lastPreviewIndex !== void 0) {
+      this.settings.autoPreview = false;
+      this.app.workspace.onLayoutReady(() => {
+        let i = 0;
+        this.app.workspace.iterateAllLeaves((leaf) => {
+          var _a;
+          if (i === this.settings.lastPreviewIndex && this.settings.previewNodeInfo !== void 0 && isFileView(leaf.view) && ((_a = leaf.view.file) == null ? void 0 : _a.path) === this.settings.previewNodeInfo[1]) {
+            leaf.containerEl.setAttribute(this.autoPreviewAttribute, encodeURI(JSON.stringify(this.settings.previewNodeInfo)));
+          }
+          i++;
+        });
+        this.settings.autoPreview = true;
+        this.app.workspace.iterateAllLeaves(this.applyAutoPreviewNode);
+      });
+    }
+    this.registerEvent(
+      this.app.workspace.on("active-leaf-change", this.applyAutoPreviewNode)
+    );
+  }
+  createOpenCanvasNodeFileEvent(plugin) {
+    const getPreviewLeaf = async () => {
+      let previeLeaf = null;
+      plugin.app.workspace.iterateAllLeaves((leaf2) => {
+        const isPreviewLeaf = leaf2.containerEl.getAttribute(this.autoPreviewAttribute);
+        if (isPreviewLeaf !== null)
+          previeLeaf = leaf2;
+      });
+      const createNew = async () => {
+        const newLeaf = plugin.app.workspace.getLeaf("split");
+        return newLeaf;
+      };
+      const leaf = previeLeaf != null ? previeLeaf : await createNew();
+      return leaf;
+    };
+    let activeView = void 0;
+    function openPreviewLeaf() {
+      if (!plugin.settings.autoPreview)
+        return;
+      requestAnimationFrame(async () => {
+        var _a, _b;
+        const canvas = activeView.canvas;
+        const selectedNodes = canvas.selection;
+        if (selectedNodes.size !== 1)
+          return;
+        const [node] = selectedNodes;
+        if (!isCanvasFileNode(node))
+          return;
+        plugin.settings.previewNodeInfo = [node.id, node.file.path, (_b = (_a = activeView == null ? void 0 : activeView.file) == null ? void 0 : _a.path) != null ? _b : ""];
+        const previewLeaf = await getPreviewLeaf();
+        previewLeaf.containerEl.setAttribute(plugin.autoPreviewAttribute, encodeURI(JSON.stringify(plugin.settings.previewNodeInfo)));
+        previewLeaf.openLinkText(node.file.path + node.subpath, "");
+        plugin.app.workspace.setActiveLeaf(previewLeaf);
+      });
+    }
+    return (leaf) => {
+      if (leaf === null || !plugin.settings.autoPreview)
+        return;
+      const view = leaf.view;
+      if (view instanceof import_obsidian15.TextFileView && isObsidianCanvasView(view)) {
+        activeView = view;
+        view.containerEl.addEventListener("click", openPreviewLeaf);
+      }
+    };
   }
   addCommands() {
+    this.addCommand({
+      id: "open-search-view",
+      name: "Open Search View",
+      callback: () => this.activateView()
+    });
     this.addCommand({
       id: "set-label",
       name: "Set Default Label",
@@ -12100,7 +12269,7 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "auto-link",
       name: "Enable Auto Link",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => !this.settings.autoLink,
         () => {
           this.settings.autoLink = true;
@@ -12110,7 +12279,7 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "cancel-auto-link",
       name: "Disable Auto Link",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => this.settings.autoLink,
         () => {
           this.settings.autoLink = false;
@@ -12120,7 +12289,7 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "arrow-to-from",
       name: "Arrow to From",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => this.settings.arrowTo !== "from",
         () => {
           this.settings.arrowTo = "from";
@@ -12130,7 +12299,7 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "arrow-to-end",
       name: "Arrow to End",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => this.settings.arrowTo !== "end",
         () => {
           this.settings.arrowTo = "end";
@@ -12140,7 +12309,7 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "arrow-to-both",
       name: "Arrow to Both",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => this.settings.arrowTo !== "both",
         () => {
           this.settings.arrowTo = "both";
@@ -12150,15 +12319,134 @@ var CardNote = class extends import_obsidian15.Plugin {
     this.addCommand({
       id: "arrow-to-none",
       name: "Arrow to None",
-      checkCallback: this.changeAutoLinkSettings(
+      checkCallback: this.checkCallbackFactory(
         () => this.settings.arrowTo !== "none",
         () => {
           this.settings.arrowTo = "none";
         }
       )
     });
+    this.addCommand({
+      id: "set-fixed-size",
+      name: "Set Fixed Size",
+      checkCallback: this.checkCallbackFactory(
+        () => this.settings.fitContentHeight,
+        () => {
+          this.settings.fitContentHeight = false;
+        }
+      )
+    });
+    this.addCommand({
+      id: "fit-to-content",
+      name: "Fit to Content",
+      checkCallback: this.checkCallbackFactory(
+        () => !this.settings.fitContentHeight,
+        () => {
+          this.settings.fitContentHeight = true;
+        }
+      )
+    });
+    this.addCommand({
+      id: "show-drag-symbol",
+      name: "Show Drag Symbol",
+      editorCheckCallback: (checking, editor, ctx) => {
+        const checkCallback = this.checkCallbackFactory(
+          () => !this.settings.showDragSymbol,
+          () => {
+            this.settings.showDragSymbol = true;
+            const inCanvas = ctx.contentEl === void 0;
+            if (inCanvas)
+              this.toggleDragSymbol(editor.cm, this.settings.showDragSymbol);
+            const extensions = this.hotReloadExtensions;
+            this.pluginExtensions.forEach((ext) => {
+              extensions.push(ext);
+            });
+            this.toggleDragSymbol(editor.cm, true);
+            this.app.workspace.updateOptions();
+          }
+        );
+        return checkCallback(checking);
+      }
+    });
+    this.addCommand({
+      id: "hide-drag-symbol",
+      name: "Hide Drag Symbol",
+      editorCheckCallback: (checking, editor, ctx) => {
+        const checkCallback = this.checkCallbackFactory(
+          () => this.settings.showDragSymbol,
+          () => {
+            this.settings.showDragSymbol = false;
+            const inCanvas = ctx.contentEl === void 0;
+            if (inCanvas)
+              this.toggleDragSymbol(editor.cm, this.settings.showDragSymbol);
+            var extensions = this.hotReloadExtensions;
+            [...Array(extensions.length).keys()].forEach((_) => {
+              extensions.pop();
+            });
+            this.app.workspace.updateOptions();
+          }
+        );
+        return checkCallback(checking);
+      }
+    });
+    this.addCommand({
+      id: "create-to-specified-folder",
+      name: "Create New File in Default Folder",
+      checkCallback: this.checkCallbackFactory(
+        () => this.settings.createToCanvasFolder || this.settings.createToSouceFileFolder,
+        () => {
+          this.settings.createToCanvasFolder = false;
+          this.settings.createToSouceFileFolder = false;
+        }
+      )
+    });
+    this.addCommand({
+      id: "create-to-source-file-folder",
+      name: "Create New File in Source File Folder",
+      checkCallback: this.checkCallbackFactory(
+        () => !this.settings.createToSouceFileFolder,
+        () => {
+          this.settings.createToSouceFileFolder = true;
+          this.settings.createToCanvasFolder = false;
+        }
+      )
+    });
+    this.addCommand({
+      id: "create-to-canvas-folder",
+      name: "Create New File in Canvas File Folder",
+      checkCallback: this.checkCallbackFactory(
+        () => !this.settings.createToCanvasFolder,
+        () => {
+          this.settings.createToCanvasFolder = true;
+          this.settings.createToSouceFileFolder = false;
+        }
+      )
+    });
+    this.addCommand({
+      id: "enable-auto-preview",
+      name: "Enable Auto Preview",
+      checkCallback: this.checkCallbackFactory(
+        () => !this.settings.autoPreview,
+        () => {
+          this.settings.autoPreview = true;
+          this.app.workspace.iterateAllLeaves((leaf) => {
+            this.applyAutoPreviewNode(leaf);
+          });
+        }
+      )
+    });
+    this.addCommand({
+      id: "disable-auto-preview",
+      name: "Disable Auto Preview",
+      checkCallback: this.checkCallbackFactory(
+        () => this.settings.autoPreview,
+        () => {
+          this.settings.autoPreview = false;
+        }
+      )
+    });
   }
-  changeAutoLinkSettings(check, action) {
+  checkCallbackFactory(check, action) {
     return (checking) => {
       if (check()) {
         if (!checking) {
@@ -12184,6 +12472,8 @@ var CardNote = class extends import_obsidian15.Plugin {
     workspace.revealLeaf(leaf);
   }
   onunload() {
+    this.settings.lastPreviewIndex = void 0;
+    this.saveSettings();
   }
   async loadSettings() {
     this.settings = Object.assign(
@@ -12464,12 +12754,13 @@ var CardNote = class extends import_obsidian15.Plugin {
 var CardNoteTab = class extends import_obsidian15.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
+    __publicField(this, "plugin");
     this.plugin = plugin;
   }
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian15.Setting(containerEl).setName("Drag symbol").setDesc("You can set your prefer drag symbol here").addText(
+    new import_obsidian15.Setting(containerEl).setName("Drag symbol").setDesc("You can set your prefer drag symbol here.").addText(
       (text2) => text2.setPlaceholder("Enter your drag symbol here").setValue(this.plugin.settings.dragSymbol).onChange(async (value) => {
         this.plugin.settings.dragSymbol = value;
         await this.plugin.saveSettings();
@@ -12482,6 +12773,33 @@ var CardNoteTab = class extends import_obsidian15.PluginSettingTab {
         await this.plugin.saveSettings();
       })
     );
+    new import_obsidian15.Setting(containerEl).setName("Fiexed size").setDesc(`Set a fixed size for the note created by this plugin in Canvas.`).addText((text2) => {
+      text2.inputEl.before("Width: ");
+      text2.setPlaceholder("500").setValue(this.plugin.settings.canvasNodeWidth.toString()).onChange(async (value) => {
+        const rowHeight = parseInt(value);
+        if (!isNaN(rowHeight) && rowHeight > 0) {
+          this.plugin.settings.canvasNodeWidth = rowHeight;
+          await this.plugin.saveSettings();
+        }
+      });
+      text2.inputEl.after("px", document.createElement("hr"));
+    }).addText((text2) => {
+      text2.inputEl.before("Height: ");
+      text2.setPlaceholder("500").setValue(this.plugin.settings.canvasNodeHeight.toString()).onChange(async (value) => {
+        const columnWidth = parseInt(value);
+        if (!isNaN(columnWidth) && columnWidth > 0) {
+          this.plugin.settings.canvasNodeHeight = columnWidth;
+          await this.plugin.saveSettings();
+        }
+      });
+      text2.inputEl.after("px");
+    });
+    new import_obsidian15.Setting(containerEl).setName("Fit to content height").setDesc("Automatically adjust the height of the note in the canvas to fit the content height.").addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.fitContentHeight).onChange(async (value) => {
+        this.plugin.settings.fitContentHeight = value;
+        await this.plugin.saveSettings();
+      });
+    });
   }
   addSizeSetting() {
     const desc = (value) => {

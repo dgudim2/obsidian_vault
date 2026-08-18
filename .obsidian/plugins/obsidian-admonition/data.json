@@ -2,7 +2,7 @@
   "userAdmonitions": {
     "definition": {
       "type": "definition",
-      "color": "142, 192, 124",
+      "color": "rgb(142, 192, 124)",
       "icon": {
         "type": "obsidian",
         "name": "lucide-chevrons-left-right"
@@ -15,7 +15,7 @@
     },
     "theorem": {
       "type": "theorem",
-      "color": "254, 128, 25",
+      "color": "rgb(254, 128, 25)",
       "icon": {
         "type": "obsidian",
         "name": "lucide-align-start-vertical"
@@ -27,7 +27,7 @@
     },
     "problem": {
       "type": "problem",
-      "color": "251, 73, 52",
+      "color": "rgb(251, 73, 52)",
       "icon": {
         "type": "octicons",
         "name": "issue-opened"
@@ -39,7 +39,7 @@
     },
     "solution": {
       "type": "solution",
-      "color": "184, 187, 38",
+      "color": "rgb(184, 187, 38)",
       "icon": {
         "type": "octicons",
         "name": "issue-closed"
@@ -51,10 +51,10 @@
     },
     "explanation": {
       "type": "explanation",
-      "color": "167, 82, 173",
+      "color": "rgb(167, 82, 173)",
       "icon": {
         "name": "info",
-        "type": "font-awesome"
+        "type": "fas"
       },
       "command": false,
       "title": "Explanation",
@@ -64,7 +64,7 @@
     },
     "analysis": {
       "type": "analysis",
-      "color": "184, 187, 38",
+      "color": "rgb(184, 187, 38)",
       "icon": {
         "name": "project-diagram",
         "type": "font-awesome"
@@ -78,26 +78,26 @@
   },
   "syntaxHighlight": true,
   "copyButton": true,
-  "version": "10.3.2",
+  "version": "12.0.5",
   "autoCollapse": true,
   "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
   "dropShadow": true,
   "hideEmpty": false,
+  "icons": [
+    "octicons",
+    "rpg",
+    "fas"
+  ],
+  "rpgDownloadedOnce": false,
+  "useSnippet": false,
+  "snippetPath": "custom-admonitions.b75f10",
   "open": {
     "admonitions": true,
     "icons": true,
     "other": true,
     "advanced": true
   },
-  "icons": [
-    "octicons",
-    "rpg"
-  ],
-  "useFontAwesome": true,
-  "rpgDownloadedOnce": false,
-  "msDocConverted": false,
-  "useSnippet": false,
-  "snippetPath": "custom-admonitions.b75f10"
+  "useFontAwesome": false
 }
